@@ -3,6 +3,8 @@ package com.dream.beautifullife.util;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
 
 /**
  * Created by admin on 2015/9/9.
@@ -34,5 +36,17 @@ public class AndroidUtil {
             return -1;
         }
         return pi.versionCode;
+    }
+
+    public static String getDeviceId(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String deviceId = tm.getDeviceId();
+        return deviceId;
+    }
+
+    public static String getMacAddress(Context context) {
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        String macAddress = wm.getConnectionInfo().getMacAddress();
+        return macAddress;
     }
 }
