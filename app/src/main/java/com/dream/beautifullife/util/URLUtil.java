@@ -33,15 +33,15 @@ public class URLUtil {
        return encodeValue(parmas, "UTF-8");
     }
 
-    private static HashMap<String,String> encode(HashMap<String,String> parmas,String charsetName,Callback callback) throws UnsupportedEncodingException {
+    private static HashMap<String,String> encode(HashMap<String,String> params,String charsetName,Callback callback) throws UnsupportedEncodingException {
 
-        HashMap<String,String> tempParams = (HashMap<String,String>)parmas.clone();
+        HashMap<String,String> tempParams = (HashMap<String,String>)params.clone();
         tempParams.clear();
 
-        for(Map.Entry<String,String> entry : parmas.entrySet()){
+        for(Map.Entry<String,String> entry : params.entrySet()){
             String key = entry.getKey();
             String value = entry.getValue();
-            callback.encode(key,value);
+            callback.encode(key, value);
             tempParams.put(key,value);
         }
         return  tempParams;
