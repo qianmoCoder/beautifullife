@@ -27,5 +27,6 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.squareup.okio:okio:1.6.0'
     compile 'com.facebook.fresco:fresco:0.7.0+'
+    compile 'de.greenrobot:greendao:2.0.0'
     compile files('libs/pinyin4j-2.5.0.jar')
 }
