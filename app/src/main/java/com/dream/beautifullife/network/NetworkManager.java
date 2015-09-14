@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.dream.beautifullife.util.MD5Utils;
 import com.dream.beautifullife.util.URLUtil;
@@ -18,6 +19,26 @@ import java.util.HashMap;
 public class NetworkManager {
 
 	public static void get(Context context, String url, HashMap<String, String> params, String md5Param) throws Exception {
+		request(context, url, params, md5Param, new CallBack() {
+
+			@Override
+			public OKHttpRequest getRequest(String url) {
+				return OKHttpRequest.getInstanceByGet(url);
+			}
+		});
+	}
+
+	public static void post(Context context, String url, HashMap<String, String> params, String md5Param) throws Exception {
+		request(context, url, params, md5Param, new CallBack() {
+
+			@Override
+			public OKHttpRequest getRequest(String url) {
+				return OKHttpRequest.getInstanceByPost(url);
+			}
+		});
+	}
+
+	private static void request(Context context, String url, HashMap<String, String> params, String md5Param, CallBack callback) throws Exception {
 		PackageManager manager = context.getPackageManager();
 		PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
 
@@ -33,8 +54,7 @@ public class NetworkManager {
 				tempParams.put(md5Param, URLEncoder.encode(validate, "UTF-8"));
 			}
 		}
-
-		OKHttpRequest httpRequest = OKHttpRequest.getInstanceByGet(url);
+		OKHttpRequest httpRequest = callback.getRequest(url);
 		httpRequest.setHeaders(headers);
 		httpRequest.setParams(tempParams);
 
@@ -42,17 +62,18 @@ public class NetworkManager {
 
 			@Override
 			public void onSuccess(String response) {
+				Log.v("lhz", "response: " + response);
 			}
 
 			@Override
 			public void onFailure(Request request, Exception e) {
-
+				Log.v("lhz", "e: " + e.toString());
 			}
 
 		});
 	}
 
-	public static void post(String url, HashMap<String, String> params) {
-
+	private interface CallBack {
+		public OKHttpRequest getRequest(String url);
 	}
 }
