@@ -10,45 +10,51 @@ import java.util.Map;
  */
 public class URLUtil {
 
-    public static HashMap<String,String> encodeAll(HashMap<String,String> parmas, final String charsetName) throws UnsupportedEncodingException {
-        return encode(parmas, charsetName, new Callback() {
-            @Override
-            public void encode(String key, String value) throws UnsupportedEncodingException{
-                URLEncoder.encode(key,charsetName);
-                URLEncoder.encode(value,charsetName);
-            }
-        });
-    }
+	public static HashMap<String, String> encodeAll(HashMap<String, String> params, final String charsetName) throws UnsupportedEncodingException {
+		return encode(params, charsetName, new Callback() {
 
-    public static HashMap<String,String> encodeValue(HashMap<String,String> parmas, final String charsetName) throws UnsupportedEncodingException {
-        return encode(parmas, charsetName, new Callback() {
-            @Override
-            public void encode(String key, String value) throws UnsupportedEncodingException{
-                URLEncoder.encode(value,charsetName);
-            }
-        });
-    }
+			@Override
+			public HashMap<String, String> encode(HashMap<String, String> params) throws UnsupportedEncodingException {
+				HashMap<String, String> tempParams = (HashMap<String, String>) params.clone();
+				for (Map.Entry<String, String> param : params.entrySet()) {
+					String key = param.getKey();
+					String value = param.getValue();
+					tempParams.put(URLEncoder.encode(key, charsetName), URLEncoder.encode(value, charsetName));
+				}
+				return tempParams;
+			}
+		});
+	}
 
-    public static HashMap<String,String> encodeValueUTF8(HashMap<String,String> parmas) throws UnsupportedEncodingException {
-       return encodeValue(parmas, "UTF-8");
-    }
+	public static HashMap<String, String> encodeAllUTF8(HashMap<String, String> parmas) throws UnsupportedEncodingException {
+		return encodeAll(parmas, "UTF-8");
+	}
 
-    private static HashMap<String,String> encode(HashMap<String,String> params,String charsetName,Callback callback) throws UnsupportedEncodingException {
+	public static HashMap<String, String> encodeValue(HashMap<String, String> params, final String charsetName) throws UnsupportedEncodingException {
+		return encode(params, charsetName, new Callback() {
 
-        HashMap<String,String> tempParams = (HashMap<String,String>)params.clone();
-        tempParams.clear();
+			@Override
+			public HashMap<String, String> encode(HashMap<String, String> params) throws UnsupportedEncodingException {
+				HashMap<String, String> tempParams = (HashMap<String, String>) params.clone();
+				for (Map.Entry<String, String> param : params.entrySet()) {
+					String key = param.getKey();
+					String value = param.getValue();
+					tempParams.put(key, URLEncoder.encode(value, charsetName));
+				}
+				return tempParams;
+			}
+		});
+	}
 
-        for(Map.Entry<String,String> entry : params.entrySet()){
-            String key = entry.getKey();
-            String value = entry.getValue();
-            callback.encode(key, value);
-            tempParams.put(key,value);
-        }
-        return  tempParams;
-    }
+	public static HashMap<String, String> encodeValueUTF8(HashMap<String, String> parmas) throws UnsupportedEncodingException {
+		return encodeValue(parmas, "UTF-8");
+	}
 
-    public interface Callback{
-         void encode(String key,String value) throws UnsupportedEncodingException;
-    }
+	private static HashMap<String, String> encode(HashMap<String, String> params, String charsetName, Callback callback) throws UnsupportedEncodingException {
+		return callback.encode(params);
+	}
+
+	public interface Callback {
+		HashMap<String, String> encode(HashMap<String, String> params) throws UnsupportedEncodingException;
+	}
 }
-

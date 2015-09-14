@@ -25,7 +25,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,10 +32,6 @@ import java.util.Set;
 import okio.BufferedSink;
 
 /**
- * 创建日期：2015年9月6日 版权所有 悦畅科技有限公司。 保留所有权利。<br>
- * 项目名：悟空停车 - Android客户端<br>
- * 描述：
- * 
  * @author admin
  */
 public class OKHttpManager {
@@ -107,38 +102,56 @@ public class OKHttpManager {
 		});
 	}
 
-	private Builder createBuilder(String url, Object tag) {
+	private Builder createBuilder(OKHttpRequest httpRequest) throws IOException {
 
 		Builder builder = new Builder();
+
+		String url = httpRequest.getUrl();
+		String method = httpRequest.getMethod();
+		Object tag = httpRequest.getTag();
+
+		Map<String, String> headers = httpRequest.getHeaders();
+		Map<String, String> params = httpRequest.getParams();
+
+		if (params != null) {
+			Map<String, String> tempParams = URLUtil.encodeAllUTF8((HashMap<String, String>) params);
+			if (method.equalsIgnoreCase(OKHttpRequest.METHOD_GET)) {
+				String result = getParamString(tempParams);
+				if (!url.contains("?")) {
+					url = url + "?" + result;
+				} else {
+					url = url + "&" + result;
+				}
+			} else {
+				List<Param<String, String>> res = mapToParams(params);
+				FormEncodingBuilder formEncodingBuilder = new FormEncodingBuilder();
+				for (Param<String, String> param : res) {
+					formEncodingBuilder.add(param.first, param.second);
+				}
+				RequestBody requestBody = formEncodingBuilder.build();
+				builder.post(requestBody);
+			}
+		}
+
 		builder.url(url);
 
 		if (tag != null) {
 			builder.tag(tag);
 		}
 
+		if (headers != null) {
+			for (Map.Entry<String, String> param : headers.entrySet()) {
+				builder.addHeader(param.getKey(), param.getValue());
+			}
+		}
+
 		return builder;
 	}
 
-	private Request buildRequest(String url, Object tag) {
-		return createBuilder(url, tag).build();
-	}
-
-	private Request buildRequest(String url, Object tag, RequestBody requestBody) {
-		Builder builder = createBuilder(url, tag);
+	private Request buildPostRequest(OKHttpRequest httpRequest, RequestBody requestBody) throws IOException {
+		Builder builder = createBuilder(httpRequest);
 		builder.post(requestBody);
 		return builder.build();
-	}
-
-	private Request buildPostRequest(String url, Object tag, Map<String, String> params) {
-		List<Param<String, String>> res = mapToParams(params);
-		FormEncodingBuilder builder = new FormEncodingBuilder();
-		for (Param<String, String> param : res) {
-			builder.add(param.first, param.second);
-		}
-
-		RequestBody requestBody = builder.build();
-
-		return buildRequest(url, tag, requestBody);
 	}
 
 	private Call buildCall(Request request) {
@@ -157,91 +170,40 @@ public class OKHttpManager {
 		return res;
 	}
 
-	/**
-	 * Get 同步请求
-	 */
-	public Response get(String url) throws IOException {
-		Request request = buildRequest(url, null);
-		return sendRequest(request);
-	}
-
-	public Response get(String url, Object tag) throws IOException {
-		Request request = buildRequest(url, tag);
-		return sendRequest(request);
-	}
-
-	/**
-	 * Get 异步请求
-	 */
-	public <T> void get(String url, ResultCallBack<T> callback) throws IOException {
-		get(url, null, callback);
-	}
-
-	public <T> void get(String url, Object tag, ResultCallBack<T> callback) throws IOException {
-		Request request = buildRequest(url, tag);
-		sendRequest(request, callback);
-	}
-
-	public <T> void get(String url, Object tag, Map<String, String> headers, ResultCallBack<T> callback) throws IOException {
-		Builder builder = createBuilder(url, tag);
-		for (Map.Entry<String, String> param : headers.entrySet()) {
-			builder.addHeader(param.getKey(), param.getValue());
+	private String getParamString(Map<String, String> urlParams) {
+		StringBuilder result = new StringBuilder();
+		for (Map.Entry<String, String> entry : urlParams.entrySet()) {
+			if (result.length() > 0) {
+				result.append("&");
+			}
+			result.append((String) entry.getKey());
+			result.append("=");
+			result.append((String) entry.getValue());
 		}
-		Request request = builder.build();
-		sendRequest(request, callback);
-	}
-
-	public <T> void get(String url, Object tag, Map<String, String> headers, Map<String, String> params, ResultCallBack<T> callback) throws IOException {
-		Builder builder = createBuilder(url, tag);
-		for (Map.Entry<String, String> param : headers.entrySet()) {
-			builder.addHeader(param.getKey(), param.getValue());
-		}
-		
-		params = URLUtil.encodeValueUTF8((HashMap<String, String>) params);
-		
-//		if (!url.contains("?")) {
-//			        url = url + "?" + paramString;
-//		       } else {
-//			       url = url + "&" + paramString;
-//		     }
-//		}
-		Request request = builder.build();
-		sendRequest(request, callback);
+		return result.toString();
 	}
 
 	/**
-	 * Post 同步请求
+	 * 同步请求
 	 */
-	public Response post(String url, Map<String, String> params) throws IOException {
-		return post(url, null, params);
-	}
 
-	public Response post(String url, Object tag, Map<String, String> params) throws IOException {
-		Request request = buildPostRequest(url, tag, params);
+	public Response request(OKHttpRequest httpRequest) throws IOException {
+		Request request = createBuilder(httpRequest).build();
 		return sendRequest(request);
 	}
 
 	/**
-	 * Post 异步请求
+	 * 异步请求
 	 */
-	public <T> void post(String url, Map<String, String> params, ResultCallBack<T> callback) throws IOException {
-		LinkedHashMap<String, String> temp = (LinkedHashMap<String, String>) params;
-		temp = (LinkedHashMap<String, String>) URLUtil.encodeValue(temp, "UTF-8");
-		post(url, null, params, callback);
-	}
-
-	public <T> void post(String url, Object tag, Map<String, String> params, ResultCallBack<T> callback) throws IOException {
-		Request request = buildPostRequest(url, tag, params);
+	public <T> void request(OKHttpRequest httpRequest, ResultCallBack<T> callback) throws IOException {
+		Request request = createBuilder(httpRequest).build();
 		sendRequest(request, callback);
 	}
 
-	public Response post(String url, byte[] bodyBytes) throws IOException {
-		return post(url, bodyBytes);
-	}
 
-	public Response post(String url, Object tag, byte[] bodyBytes) throws IOException {
+	public Response request(OKHttpRequest httpRequest, byte[] bodyBytes) throws IOException {
 		RequestBody requestBody = RequestBody.create(MEDIA_TYPE_APP_OCTET_STREAM, bodyBytes);
-		Request request = buildRequest(url, tag, requestBody);
+		Request request = buildPostRequest(httpRequest, requestBody);
 		return sendRequest(request);
 	}
 
