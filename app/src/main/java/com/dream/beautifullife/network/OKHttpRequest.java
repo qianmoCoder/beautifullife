@@ -29,17 +29,11 @@ public class OKHttpRequest {
 	}
 
 	public static OKHttpRequest getInstanceByGet(String url) {
-		if (okHttpRequest == null) {
-			okHttpRequest = new OKHttpRequest(url, METHOD_GET);
-		}
-		return okHttpRequest;
+		return new OKHttpRequest(url, METHOD_GET);
 	}
 
 	public static OKHttpRequest getInstanceByPost(String url) {
-		if (okHttpRequest == null) {
-			okHttpRequest = new OKHttpRequest(url, METHOD_POST);
-		}
-		return okHttpRequest;
+		return new OKHttpRequest(url, METHOD_POST);
 	}
 
 	/**

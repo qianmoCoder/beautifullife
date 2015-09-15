@@ -18,8 +18,16 @@ import java.util.HashMap;
  */
 public class NetworkManager {
 
-	public static void get(Context context, String url, HashMap<String, String> params, String md5Param) throws Exception {
-		request(context, url, params, md5Param, new CallBack() {
+	public static void get(Context context, String url) throws Exception {
+		get(context, url, null, "", true);
+	}
+
+	public static void get(Context context, String url, HashMap<String, String> params, boolean isEncode) throws Exception {
+		get(context, url, params, "", isEncode);
+	}
+
+	public static void get(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode) throws Exception {
+		request(context, url, params, md5Param, isEncode, new CallBack() {
 
 			@Override
 			public OKHttpRequest getRequest(String url) {
@@ -28,8 +36,12 @@ public class NetworkManager {
 		});
 	}
 
+	public static void post(Context context, String url, HashMap<String, String> params) throws Exception {
+		post(context, url, params, "");
+	}
+
 	public static void post(Context context, String url, HashMap<String, String> params, String md5Param) throws Exception {
-		request(context, url, params, md5Param, new CallBack() {
+		request(context, url, params, md5Param, true, new CallBack() {
 
 			@Override
 			public OKHttpRequest getRequest(String url) {
@@ -38,7 +50,7 @@ public class NetworkManager {
 		});
 	}
 
-	private static void request(Context context, String url, HashMap<String, String> params, String md5Param, CallBack callback) throws Exception {
+	private static void request(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback) throws Exception {
 		PackageManager manager = context.getPackageManager();
 		PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
 
@@ -46,7 +58,17 @@ public class NetworkManager {
 		headers.put("versionName", info.versionName);
 		headers.put("platform", "android");
 
-		HashMap<String, String> tempParams = URLUtil.encodeValueUTF8(params);
+		HashMap<String, String> tempParams;
+
+		if (params == null) {
+			tempParams = new HashMap<String, String>();
+		} else {
+			if (isEncode) {
+				tempParams = URLUtil.encodeValueUTF8(params);
+			} else {
+				tempParams = (HashMap<String, String>) params.clone();
+			}
+		}
 
 		if (!TextUtils.isEmpty(md5Param)) {
 			if (params != null) {

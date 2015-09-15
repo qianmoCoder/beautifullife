@@ -113,7 +113,7 @@ public class OKHttpManager {
 		Map<String, String> headers = httpRequest.getHeaders();
 		Map<String, String> params = httpRequest.getParams();
 
-		if (params != null) {
+		if (params != null && params.size() > 0) {
 			Map<String, String> tempParams = URLUtil.encodeAllUTF8((HashMap<String, String>) params);
 			if (method.equalsIgnoreCase(OKHttpRequest.METHOD_GET)) {
 				String result = getParamString(tempParams);
@@ -199,7 +199,6 @@ public class OKHttpManager {
 		Request request = createBuilder(httpRequest).build();
 		sendRequest(request, callback);
 	}
-
 
 	public Response request(OKHttpRequest httpRequest, byte[] bodyBytes) throws IOException {
 		RequestBody requestBody = RequestBody.create(MEDIA_TYPE_APP_OCTET_STREAM, bodyBytes);
