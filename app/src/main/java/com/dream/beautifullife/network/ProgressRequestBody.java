@@ -4,35 +4,26 @@ import java.io.IOException;
 
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ResponseBody;
 
 import okio.Buffer;
 import okio.BufferedSink;
-import okio.BufferedSource;
 import okio.ForwardingSink;
-import okio.ForwardingSource;
 import okio.Okio;
 import okio.Sink;
-import okio.Source;
 
-/**
- * 创建日期：2015年9月6日 版权所有 悦畅科技有限公司。 保留所有权利。<br>
- * 项目名：悟空停车 - Android客户端<br>
- * 描述：
- * 
- * @author admin
- */
 public class ProgressRequestBody extends RequestBody {
 
 	private final RequestBody requestBody;
 
-	private final ProgressResponseListener progressListener;
-
 	private BufferedSink bufferedSink;
+	private ProgressHttpResponseHandler progressHttpResponseHandler;
 
-	public ProgressRequestBody(RequestBody requestBody, ProgressResponseListener progressListener) {
+	public ProgressRequestBody(RequestBody requestBody) {
 		this.requestBody = requestBody;
-		this.progressListener = progressListener;
+	}
+
+	public void setListener(ProgressHttpResponseHandler progressHttpResponseHandler) {
+		this.progressHttpResponseHandler = progressHttpResponseHandler;
 	}
 
 	@Override
@@ -68,7 +59,9 @@ public class ProgressRequestBody extends RequestBody {
 					contentLength = contentLength();
 				}
 				bytesWritten += byteCount;
-				progressListener.onResponseProgress(bytesWritten, contentLength, bytesWritten == contentLength);
+				if (progressHttpResponseHandler != null) {
+					progressHttpResponseHandler.onProgress(bytesWritten, contentLength, bytesWritten == contentLength);
+				}
 			}
 		};
 	}

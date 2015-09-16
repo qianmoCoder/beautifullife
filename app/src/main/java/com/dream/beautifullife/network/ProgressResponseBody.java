@@ -22,13 +22,16 @@ public class ProgressResponseBody extends ResponseBody {
 
 	private final ResponseBody responseBody;
 
-	private final ProgressResponseListener progressListener;
+	private ProgressHttpResponseHandler progressHttpResponseHandler;
 
 	private BufferedSource bufferedSource;
 
-	public ProgressResponseBody(ResponseBody responseBody, ProgressResponseListener progressListener) {
+	public ProgressResponseBody(ResponseBody responseBody) {
 		this.responseBody = responseBody;
-		this.progressListener = progressListener;
+	}
+
+	public void setListener(ProgressHttpResponseHandler progressHttpResponseHandler) {
+		this.progressHttpResponseHandler = progressHttpResponseHandler;
 	}
 
 	@Override
@@ -46,7 +49,7 @@ public class ProgressResponseBody extends ResponseBody {
 		if (bufferedSource == null) {
 			bufferedSource = Okio.buffer(source(responseBody.source()));
 		}
-		return null;
+		return bufferedSource;
 	}
 
 	private Source source(Source source) {
@@ -58,7 +61,9 @@ public class ProgressResponseBody extends ResponseBody {
 			public long read(Buffer sink, long byteCount) throws IOException {
 				long bytesRead = super.read(sink, byteCount);
 				totalBytesRead += bytesRead != -1 ? bytesRead : 0;
-				progressListener.onResponseProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+				if (progressHttpResponseHandler != null) {
+					progressHttpResponseHandler.onProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+				}
 				return bytesRead;
 			}
 		};

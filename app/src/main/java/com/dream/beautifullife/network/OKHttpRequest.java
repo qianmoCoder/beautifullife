@@ -3,13 +3,6 @@ package com.dream.beautifullife.network;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 创建日期：2015年9月14日 版权所有 悦畅科技有限公司。 保留所有权利。<br>
- * 项目名：悟空停车 - Android客户端<br>
- * 描述：
- * 
- * @author admin
- */
 public class OKHttpRequest {
 
 	public static final String METHOD_GET = "GET";
@@ -20,8 +13,6 @@ public class OKHttpRequest {
 	private HashMap<String, String> headers;
 	private HashMap<String, String> params;
 	private String method;
-
-	private static OKHttpRequest okHttpRequest;
 
 	private OKHttpRequest(String url, String method) {
 		this.url = url;

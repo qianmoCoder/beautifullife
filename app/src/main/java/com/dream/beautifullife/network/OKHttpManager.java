@@ -1,16 +1,18 @@
 package com.dream.beautifullife.network;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import com.dream.beautifullife.util.URLUtil;
-import com.google.gson.Gson;
-import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -19,16 +21,9 @@ import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import okio.BufferedSink;
 
 /**
@@ -42,15 +37,17 @@ public class OKHttpManager {
 	public static final MediaType MEDIA_TYPE_TXT_PLAIN = MediaType.parse("text/plain;charset=utf-8");
 	public static final MediaType MEDIA_TYPE_TXT_X_MARKDOWN = MediaType.parse("text/x-markdown;charset=utf-8");
 
-	private OkHttpClient mOkHttpClient;
+	public static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
 
-	private Gson mGson;
+	public static final int METHOD_REQUEST = 0x001;
+	public static final int METHOD_REPONSE = 0x002;
+
+	private OkHttpClient mOkHttpClient;
 
 	private Handler mHandler;
 
 	private OKHttpManager() {
 		mOkHttpClient = new OkHttpClient();
-		mGson = new Gson();
 		mHandler = new Handler(Looper.getMainLooper());
 	}
 
@@ -58,46 +55,30 @@ public class OKHttpManager {
 		return SingletonHolder.instance;
 	}
 
+	public OkHttpClient getOkHttpClient() {
+		return mOkHttpClient;
+	}
+
 	private static class SingletonHolder {
 		private static OKHttpManager instance = new OKHttpManager();
 	}
 
-	private <T> void sendResponseMessage(final Call call, final Request request, final Response response, final ResultCallBack resultCallBack) {
+	private void sendResponseMessage(final Response response, final ResponseHandlerInterface responseHandlerInterface) {
 		mHandler.post(new Runnable() {
 
 			@Override
 			public void run() {
-				resultCallBack.onResponse(call, request, response);
+				responseHandlerInterface.onResponse(response);
 			}
 		});
 	}
 
-	private void sendSuccessMessage(final Object response, final ResultCallBack resultCallBack) {
+	private <T> void sendFailureMessage(final Request request, final Exception e, final ResponseHandlerInterface responseHandlerInterface) {
 		mHandler.post(new Runnable() {
 
 			@Override
 			public void run() {
-				resultCallBack.onSuccess(response);
-			}
-		});
-	}
-
-	private <T> void sendFailureMessage(final Request request, final Exception e, final ResultCallBack resultCallBack) {
-		mHandler.post(new Runnable() {
-
-			@Override
-			public void run() {
-				resultCallBack.onFailure(request, e);
-			}
-		});
-	}
-
-	private void sendErrorMessage(final Request request, final Exception e, final ResultCallBack resultCallBack) {
-		mHandler.post(new Runnable() {
-
-			@Override
-			public void run() {
-				resultCallBack.onError(request);
+				responseHandlerInterface.onFailure(request, e);
 			}
 		});
 	}
@@ -184,26 +165,60 @@ public class OKHttpManager {
 	}
 
 	/**
-	 * 同步请求
+	 * sync
 	 */
-
 	public Response request(OKHttpRequest httpRequest) throws IOException {
 		Request request = createBuilder(httpRequest).build();
 		return sendRequest(request);
 	}
 
 	/**
-	 * 异步请求
+	 * async
 	 */
-	public <T> void request(OKHttpRequest httpRequest, ResultCallBack<T> callback) throws IOException {
+	public void request(OKHttpRequest httpRequest, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
 		Request request = createBuilder(httpRequest).build();
-		sendRequest(request, callback);
+		sendRequest(request, responseHandlerInterface, isRunOnUiThread);
 	}
 
-	public Response request(OKHttpRequest httpRequest, byte[] bodyBytes) throws IOException {
+	public void request(OKHttpRequest httpRequest, byte[] bodyBytes, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
 		RequestBody requestBody = RequestBody.create(MEDIA_TYPE_APP_OCTET_STREAM, bodyBytes);
+		request(httpRequest, requestBody, responseHandlerInterface, isRunOnUiThread);
+	}
+
+	public void request(OKHttpRequest httpRequest, RequestBody requestBody, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
 		Request request = buildPostRequest(httpRequest, requestBody);
-		return sendRequest(request);
+		sendRequest(request, responseHandlerInterface, isRunOnUiThread);
+	}
+	
+	public void request(OKHttpRequest httpRequest, final ProgressHttpResponseHandler progressHttpResponseHandler, boolean isRunOnUiThread, int type) throws IOException {
+		if (type == METHOD_REPONSE) {
+			OkHttpClient client = mOkHttpClient.clone();
+			client.networkInterceptors().add(new Interceptor() {
+				@Override
+				public Response intercept(Chain chain) throws IOException {
+					// 拦截
+					Response originalResponse = chain.proceed(chain.request());
+					// 包装响应体并返回
+					ProgressResponseBody responseBody = new ProgressResponseBody(originalResponse.body());
+					responseBody.setListener(progressHttpResponseHandler);
+					return originalResponse.newBuilder().body(responseBody).build();
+				}
+			});
+			Request request = createBuilder(httpRequest).build();
+			Call call = client.newCall(request);
+			sendRequest(call, progressHttpResponseHandler, isRunOnUiThread);
+		}
+
+		if(type == METHOD_REQUEST){
+			ProgressRequestBody requestBody = new ProgressRequestBody(getRequest().body());
+			requestBody.setListener(progressHttpResponseHandler);
+			Request request = buildPostRequest(httpRequest, requestBody);
+			sendRequest(request, progressHttpResponseHandler, isRunOnUiThread);
+		}
+	}
+
+	public void cancel(Object tag) {
+		mOkHttpClient.cancel(tag);
 	}
 
 	private Response sendRequest(Request request) throws IOException {
@@ -211,41 +226,33 @@ public class OKHttpManager {
 		return call.execute();
 	}
 
-	private <T> void sendRequest(Request request, ResultCallBack<T> callback) {
+	private void sendRequest(Request request, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) {
 		Call call = buildCall(request);
-		deliveryResult(call, callback);
+		sendRequest(call, responseHandlerInterface, isRunOnUiThread);
 	}
 
-	private <T> void deliveryResult(final Call call, final ResultCallBack<T> callback) {
-		final ResultCallBack<T> resultCallBack = callback;
+	private void sendRequest(Call call, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) {
+		deliveryResult(call, responseHandlerInterface, isRunOnUiThread);
+	}
+
+	private void deliveryResult(final Call call, final ResponseHandlerInterface responseHandlerInterface, final boolean isRunOnUiThread) {
 		call.enqueue(new Callback() {
 
 			@Override
 			public void onResponse(Response response) throws IOException {
-				sendResponseMessage(call, response.request(), response, resultCallBack);
-				if (response.isSuccessful()) {
-					try {
-						String string = response.body().string();
-						Type type = callback.getType();
-						if (type == String.class) {
-							sendSuccessMessage(string, resultCallBack);
-						} else {
-							T t = mGson.fromJson(string, type);
-							// gson.fromJson(response.body().charStream(), type.getClass());
-							sendSuccessMessage(t, resultCallBack);
-						}
-					} catch (Exception e) {
-						sendFailureMessage(response.request(), e, resultCallBack);
-					}
+				if (isRunOnUiThread) {
+					sendResponseMessage(response, responseHandlerInterface);
 				} else {
-					resultCallBack.onError(response.request());
+					responseHandlerInterface.onResponse(response);
 				}
 			}
 
 			@Override
 			public void onFailure(Request paramRequest, IOException paramIOException) {
-				if (resultCallBack != null) {
-					resultCallBack.onFailure(paramRequest, paramIOException);
+				if (isRunOnUiThread) {
+					sendFailureMessage(paramRequest, paramIOException, responseHandlerInterface);
+				} else {
+					responseHandlerInterface.onFailure(paramRequest, paramIOException);
 				}
 			}
 		});
@@ -266,17 +273,6 @@ public class OKHttpManager {
 
 		public String toString() {
 			return "(" + first + "." + second + ")";
-		}
-	}
-
-	public void post(String url) throws IOException {
-		RequestBody formBody = new FormEncodingBuilder().add("platform", "android").add("name", "bug").add("subject", "xxx").build();
-		Request request = new Builder().url(url).post(formBody).build();
-		Response response = mOkHttpClient.newCall(request).execute();
-		if (response.isSuccessful()) {
-			Log.v("", response.body().string());
-		} else {
-			Log.v("", response.code() + "");
 		}
 	}
 
@@ -338,64 +334,23 @@ public class OKHttpManager {
 	}
 
 	// 使用FormEncodingBuilder来构建和HTML<form>标签相同效果的请求体。键值对将使用一种HTML兼容形式的URL编码来进行编码。
-	public void runForm() throws Exception {
+	public Request getRequestForm() {
 		RequestBody formBody = new FormEncodingBuilder().add("search", "Jurassic Park").build();
 		Request request = new Builder().url("https://en.wikipedia.org/w/index.php").post(formBody).build();
-
-		Response response = mOkHttpClient.newCall(request).execute();
-		if (!response.isSuccessful())
-			throw new IOException("Unexpected code " + response);
-
-		System.out.println(response.body().string());
+		return request;
 	}
 
-	// MultipartBuilder可以构建复杂的请求体，与HTML文件上传形式兼容。多块请求体中每块请求都是一个请求体，可以定义自己的请求头。这些请求头可以用来描述这块请求，例如他的Content-Disposition。如果Content-Length和Content-Type可用的话，他们会被自动添加到请求头中。
-	private static final String IMGUR_CLIENT_ID = "...";
-	private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+	private static final String IMGUR_CLIENT_ID = "...";;
 
-	public void run() throws Exception {
-		// Use the imgur image upload API as documented at https://api.imgur.com/endpoints/image
+	// MultipartBuilder可以构建复杂的请求体，与HTML文件上传形式兼容。多块请求体中每块请求都是一个请求体，可以定义自己的请求头。这些请求头可以用来描述这块请求，例如他的Content-Disposition。如果Content-Length和Content-Type可用的话，他们会被自动添加到请求头中。
+	public Request getRequest() {
 		RequestBody requestBody = new MultipartBuilder().type(MultipartBuilder.FORM).addPart(Headers.of("Content-Disposition", "form-data; name=\"title\""), RequestBody.create(null, "Square Logo"))
 				.addPart(Headers.of("Content-Disposition", "form-data; name=\"image\""), RequestBody.create(MEDIA_TYPE_PNG, new File("website/static/logo-square.png"))).build();
 
+		// RequestBody requestBodyTemp = new MultipartBuilder().type(MultipartBuilder.FORM).addFormDataPart("hello", "android").addFormDataPart("photo", file.getName(), RequestBody.create(null, file))
+		// .addPart(Headers.of("Content-Disposition", "form-data; name=\"another\";filename=\"another.dex\""), RequestBody.create(MediaType.parse("application/octet-stream"), file)).build();
+
 		Request request = new Builder().header("Authorization", "Client-ID " + IMGUR_CLIENT_ID).url("https://api.imgur.com/3/image").post(requestBody).build();
-
-		Response response = mOkHttpClient.newCall(request).execute();
-		if (!response.isSuccessful())
-			throw new IOException("Unexpected code " + response);
-
-		System.out.println(response.body().string());
-	}
-
-	public static abstract class ResultCallBack<T> {
-
-		private Type type;
-
-		public ResultCallBack() {
-			type = getSuperclassTypeParameter(getClass());
-		}
-
-		private Type getSuperclassTypeParameter(Class<?> subclass) {
-			Type superclass = subclass.getGenericSuperclass();
-			if ((superclass instanceof Class)) {
-				throw new RuntimeException("Missing type parameter.");
-			}
-			ParameterizedType parameterized = (ParameterizedType) superclass;
-			return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);
-		}
-
-		public final Type getType() {
-			return type;
-		}
-
-		public void onResponse(Call call, Request request, Response response) {
-		}
-
-		public abstract void onSuccess(T response);
-
-		public abstract void onFailure(Request request, Exception e);
-
-		public void onError(Request request) {
-		}
+		return request;
 	}
 }
