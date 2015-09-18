@@ -13,10 +13,10 @@ public abstract class StreamHttpResponseHandler extends AsyncHttpResponseHandler
 			try {
 				onResponse(response.body().byteStream());
 			} catch (IOException e) {
-				onError(response.code(), response);
+				onError(response.code(), response, e);
 			}
 		} else {
-			onError(response.code(), response);
+			onError(response.code(), response, new Throwable());
 		}
 	}
 

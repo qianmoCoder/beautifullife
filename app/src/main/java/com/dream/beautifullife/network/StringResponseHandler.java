@@ -4,8 +4,7 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public abstract class StringResponseHandler extends AsyncHttpResponseHandler {
-
+public abstract class StringResponseHandler extends SyncHttpResponseHandler {
 
 	@Override
 	public void onResponse(Response response) {
@@ -14,10 +13,10 @@ public abstract class StringResponseHandler extends AsyncHttpResponseHandler {
 				String string = response.body().string();
 				onResponse(string);
 			} catch (IOException e) {
-				onError(response.code(), response);
+				onUIError(response.code(), response, e);
 			}
 		} else {
-			onError(response.code(), response);
+			onUIError(response.code(), response, new Throwable());
 		}
 	}
 

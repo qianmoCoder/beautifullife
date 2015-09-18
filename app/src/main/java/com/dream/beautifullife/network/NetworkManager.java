@@ -7,6 +7,8 @@ import java.util.HashMap;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 
 /**
@@ -17,8 +19,11 @@ public class NetworkManager {
 	private OKHttpManager mOkHttpManager;
 	private static NetworkManager mNetworkManager;
 
+	private Handler mHandler;
+
 	private NetworkManager() {
 		mOkHttpManager = OKHttpManager.getInstance();
+		mHandler = new Handler(Looper.getMainLooper());
 	}
 
 	public static NetworkManager getInstance() {
@@ -43,7 +48,7 @@ public class NetworkManager {
 			public OKHttpRequest getRequest(String url) {
 				return OKHttpRequest.getInstanceByGet(url);
 			}
-		}, responseHandlerInterface, true);
+		}, responseHandlerInterface);
 	}
 
 	public static void post(Context context, String url, HashMap<String, String> params, boolean isEncode, ResponseHandlerInterface responseHandlerInterface) throws Exception {
@@ -57,33 +62,37 @@ public class NetworkManager {
 			public OKHttpRequest getRequest(String url) {
 				return OKHttpRequest.getInstanceByPost(url);
 			}
-		}, responseHandlerInterface, true);
+		}, responseHandlerInterface);
 	}
 
-	public static void request(Context context, OKHttpRequest request) throws IOException {
+	public static void request(OKHttpRequest request) throws IOException {
 		getInstance().getOkHttpManager().request(request);
 	}
 
-	public void download(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface,
-			boolean isRunOnUiThread) throws Exception {
-		OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, callback);
+	public void download(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, final ProgressHttpResponseHandler responseHandlerInterface) throws Exception {
+		OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, new CallBack() {
+			@Override
+			public OKHttpRequest getRequest(String url) {
+				return OKHttpRequest.getInstanceByGet(url);
+			}
+		});
 		if (responseHandlerInterface instanceof ProgressHttpResponseHandler) {
-			mOkHttpManager.request(httpRequest, (ProgressHttpResponseHandler) responseHandlerInterface, isRunOnUiThread, OKHttpManager.METHOD_REPONSE);
+			mOkHttpManager.request(httpRequest, responseHandlerInterface, OKHttpManager.METHOD_REPONSE);
 		}
 	}
 
-	public void upload(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface,
-			boolean isRunOnUiThread) throws Exception {
+	public void upload(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface)
+			throws Exception {
 		OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, callback);
 		if (responseHandlerInterface instanceof ProgressHttpResponseHandler) {
-			mOkHttpManager.request(httpRequest, (ProgressHttpResponseHandler) responseHandlerInterface, isRunOnUiThread, OKHttpManager.METHOD_REQUEST);
+			mOkHttpManager.request(httpRequest, (ProgressHttpResponseHandler) responseHandlerInterface, OKHttpManager.METHOD_REQUEST);
 		}
 	}
-	
-	public void request(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface,
-			boolean isRunOnUiThread) throws Exception {
+
+	public void request(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface)
+			throws Exception {
 		OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, callback);
-		mOkHttpManager.request(httpRequest, responseHandlerInterface, isRunOnUiThread);
+		mOkHttpManager.request(httpRequest, responseHandlerInterface);
 	}
 
 	private OKHttpRequest getRequest(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback) throws Exception {

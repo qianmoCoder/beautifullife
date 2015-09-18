@@ -60,7 +60,7 @@ public class ProgressRequestBody extends RequestBody {
 				}
 				bytesWritten += byteCount;
 				if (progressHttpResponseHandler != null) {
-					progressHttpResponseHandler.onProgress(bytesWritten, contentLength, bytesWritten == contentLength);
+					progressHttpResponseHandler.onUIProgress(bytesWritten, contentLength);
 				}
 			}
 		};

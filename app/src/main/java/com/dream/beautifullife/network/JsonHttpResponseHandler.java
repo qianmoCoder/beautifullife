@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Response;
 
-public abstract class JsonHttpResponseHandler<T> extends AsyncHttpResponseHandler {
+public abstract class JsonHttpResponseHandler<T> extends SyncHttpResponseHandler {
 
 	private Gson mGson;
 
@@ -42,10 +42,10 @@ public abstract class JsonHttpResponseHandler<T> extends AsyncHttpResponseHandle
 				// gson.fromJson(response.body().charStream(), type.getClass());
 				onResponse(t);
 			} catch (IOException e) {
-				onError(response.code(), response);
+				onUIError(response.code(), response, e);
 			}
 		} else {
-			onError(response.code(), response);
+			onUIError(response.code(), response, new Throwable());
 		}
 	}
 

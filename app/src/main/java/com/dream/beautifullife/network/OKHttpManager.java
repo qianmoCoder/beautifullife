@@ -1,13 +1,8 @@
 package com.dream.beautifullife.network;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.util.Log;
 
+import com.dream.beautifullife.util.URLUtil;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -21,9 +16,14 @@ import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import okio.BufferedSink;
 
 /**
@@ -44,11 +44,8 @@ public class OKHttpManager {
 
 	private OkHttpClient mOkHttpClient;
 
-	private Handler mHandler;
-
 	private OKHttpManager() {
 		mOkHttpClient = new OkHttpClient();
-		mHandler = new Handler(Looper.getMainLooper());
 	}
 
 	public static OKHttpManager getInstance() {
@@ -61,26 +58,6 @@ public class OKHttpManager {
 
 	private static class SingletonHolder {
 		private static OKHttpManager instance = new OKHttpManager();
-	}
-
-	private void sendResponseMessage(final Response response, final ResponseHandlerInterface responseHandlerInterface) {
-		mHandler.post(new Runnable() {
-
-			@Override
-			public void run() {
-				responseHandlerInterface.onResponse(response);
-			}
-		});
-	}
-
-	private <T> void sendFailureMessage(final Request request, final Exception e, final ResponseHandlerInterface responseHandlerInterface) {
-		mHandler.post(new Runnable() {
-
-			@Override
-			public void run() {
-				responseHandlerInterface.onFailure(request, e);
-			}
-		});
 	}
 
 	private Builder createBuilder(OKHttpRequest httpRequest) throws IOException {
@@ -175,22 +152,22 @@ public class OKHttpManager {
 	/**
 	 * async
 	 */
-	public void request(OKHttpRequest httpRequest, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
+	public void request(OKHttpRequest httpRequest, ResponseHandlerInterface responseHandlerInterface) throws IOException {
 		Request request = createBuilder(httpRequest).build();
-		sendRequest(request, responseHandlerInterface, isRunOnUiThread);
+		sendRequest(request, responseHandlerInterface);
 	}
 
-	public void request(OKHttpRequest httpRequest, byte[] bodyBytes, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
+	public void request(OKHttpRequest httpRequest, byte[] bodyBytes, ResponseHandlerInterface responseHandlerInterface) throws IOException {
 		RequestBody requestBody = RequestBody.create(MEDIA_TYPE_APP_OCTET_STREAM, bodyBytes);
-		request(httpRequest, requestBody, responseHandlerInterface, isRunOnUiThread);
+		request(httpRequest, requestBody, responseHandlerInterface);
 	}
 
-	public void request(OKHttpRequest httpRequest, RequestBody requestBody, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) throws IOException {
+	public void request(OKHttpRequest httpRequest, RequestBody requestBody, ResponseHandlerInterface responseHandlerInterface) throws IOException {
 		Request request = buildPostRequest(httpRequest, requestBody);
-		sendRequest(request, responseHandlerInterface, isRunOnUiThread);
+		sendRequest(request, responseHandlerInterface);
 	}
-	
-	public void request(OKHttpRequest httpRequest, final ProgressHttpResponseHandler progressHttpResponseHandler, boolean isRunOnUiThread, int type) throws IOException {
+
+	public void request(OKHttpRequest httpRequest, final ProgressHttpResponseHandler progressHttpResponseHandler, int type) throws IOException {
 		if (type == METHOD_REPONSE) {
 			OkHttpClient client = mOkHttpClient.clone();
 			client.networkInterceptors().add(new Interceptor() {
@@ -199,21 +176,20 @@ public class OKHttpManager {
 					// 拦截
 					Response originalResponse = chain.proceed(chain.request());
 					// 包装响应体并返回
-					ProgressResponseBody responseBody = new ProgressResponseBody(originalResponse.body());
-					responseBody.setListener(progressHttpResponseHandler);
+					ProgressResponseBody responseBody = new ProgressResponseBody(originalResponse.body(), progressHttpResponseHandler);
 					return originalResponse.newBuilder().body(responseBody).build();
 				}
 			});
 			Request request = createBuilder(httpRequest).build();
 			Call call = client.newCall(request);
-			sendRequest(call, progressHttpResponseHandler, isRunOnUiThread);
+			sendRequest(call, progressHttpResponseHandler);
 		}
 
-		if(type == METHOD_REQUEST){
+		if (type == METHOD_REQUEST) {
 			ProgressRequestBody requestBody = new ProgressRequestBody(getRequest().body());
 			requestBody.setListener(progressHttpResponseHandler);
 			Request request = buildPostRequest(httpRequest, requestBody);
-			sendRequest(request, progressHttpResponseHandler, isRunOnUiThread);
+			sendRequest(request, progressHttpResponseHandler);
 		}
 	}
 
@@ -226,34 +202,26 @@ public class OKHttpManager {
 		return call.execute();
 	}
 
-	private void sendRequest(Request request, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) {
+	private void sendRequest(Request request, ResponseHandlerInterface responseHandlerInterface) {
 		Call call = buildCall(request);
-		sendRequest(call, responseHandlerInterface, isRunOnUiThread);
+		sendRequest(call, responseHandlerInterface);
 	}
 
-	private void sendRequest(Call call, ResponseHandlerInterface responseHandlerInterface, boolean isRunOnUiThread) {
-		deliveryResult(call, responseHandlerInterface, isRunOnUiThread);
+	private void sendRequest(Call call, ResponseHandlerInterface responseHandlerInterface) {
+		deliveryResult(call, responseHandlerInterface);
 	}
 
-	private void deliveryResult(final Call call, final ResponseHandlerInterface responseHandlerInterface, final boolean isRunOnUiThread) {
+	private void deliveryResult(final Call call, final ResponseHandlerInterface responseHandlerInterface) {
 		call.enqueue(new Callback() {
 
 			@Override
 			public void onResponse(Response response) throws IOException {
-				if (isRunOnUiThread) {
-					sendResponseMessage(response, responseHandlerInterface);
-				} else {
-					responseHandlerInterface.onResponse(response);
-				}
+				responseHandlerInterface.onResponse(response);
 			}
 
 			@Override
 			public void onFailure(Request paramRequest, IOException paramIOException) {
-				if (isRunOnUiThread) {
-					sendFailureMessage(paramRequest, paramIOException, responseHandlerInterface);
-				} else {
-					responseHandlerInterface.onFailure(paramRequest, paramIOException);
-				}
+				responseHandlerInterface.onFailure(paramRequest, paramIOException);
 			}
 		});
 	}
