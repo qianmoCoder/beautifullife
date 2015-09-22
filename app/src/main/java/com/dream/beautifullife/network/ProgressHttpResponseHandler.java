@@ -1,14 +1,14 @@
 package com.dream.beautifullife.network;
 
+import android.os.Message;
+
+import com.squareup.okhttp.Response;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-
-import com.squareup.okhttp.Response;
-
-import android.os.Message;
 
 public abstract class ProgressHttpResponseHandler extends SyncHttpResponseHandler {
 

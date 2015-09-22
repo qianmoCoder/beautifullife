@@ -1,13 +1,13 @@
 package com.dream.beautifullife.network;
 
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public abstract class SyncHttpResponseHandler implements ResponseHandlerInterface {
 
@@ -45,7 +45,9 @@ public abstract class SyncHttpResponseHandler implements ResponseHandlerInterfac
 
 	public abstract void onUIError(int code, Response response, Throwable e);
 
-	public abstract void onUIProgress(long bytes, long contentLength);
+	public void onUIProgress(long bytes, long contentLength) {
+
+	}
 
 	private static class UIHandler extends Handler {
 		// 弱引用

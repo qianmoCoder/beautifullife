@@ -1,12 +1,12 @@
 package com.dream.beautifullife.network;
 
-import java.io.IOException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 public abstract class JsonHttpResponseHandler<T> extends SyncHttpResponseHandler {
 
@@ -33,22 +33,18 @@ public abstract class JsonHttpResponseHandler<T> extends SyncHttpResponseHandler
 	}
 
 	@Override
-	public void onResponse(Response response) {
-		if (response.isSuccessful()) {
-			try {
-				String string = response.body().string();
-				Type type = getType();
-				T t = mGson.fromJson(string, type);
-				// gson.fromJson(response.body().charStream(), type.getClass());
-				onResponse(t);
-			} catch (IOException e) {
-				onUIError(response.code(), response, e);
-			}
-		} else {
-			onUIError(response.code(), response, new Throwable());
+	public void onUIResponse(Response response) {
+		try {
+			String string = response.body().string();
+			Type type = getType();
+			T t = mGson.fromJson(string, type);
+			// gson.fromJson(response.body().charStream(), type.getClass());
+			onUIResponse(t);
+		} catch (IOException e) {
+			onUIError(response.code(), response, e);
 		}
 	}
 
-	public abstract void onResponse(T response);
+	public abstract void onUIResponse(T response);
 
 }

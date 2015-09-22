@@ -9,14 +9,10 @@ public abstract class StreamHttpResponseHandler extends AsyncHttpResponseHandler
 
 	@Override
 	public void onResponse(Response response) {
-		if (response.isSuccessful()) {
-			try {
-				onResponse(response.body().byteStream());
-			} catch (IOException e) {
-				onError(response.code(), response, e);
-			}
-		} else {
-			onError(response.code(), response, new Throwable());
+		try {
+			onResponse(response.body().byteStream());
+		} catch (IOException e) {
+			onError(response.code(), response, e);
 		}
 	}
 
