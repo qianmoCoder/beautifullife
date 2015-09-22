@@ -1,16 +1,49 @@
 package com.dream.beautifullife;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.dream.beautifullife.widget.NumberProgressBar;
+import com.dream.beautifullife.widget.OnProgressBarListener;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MainActivity extends Activity implements OnProgressBarListener {
+
+    NumberProgressBar bnp;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_number);
+
+        bnp = (NumberProgressBar)findViewById(R.id.numberbar1);
+        bnp.setOnProgressBarListener(this);
+
+        Button btn = (Button) findViewById(R.id.btnClick);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                bnp.incrementProgressBy(1);
+                            }
+                        });
+                    }
+                }, 1000, 100);
+            }
+        });
     }
 
     @Override
@@ -33,5 +66,41 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onProgressChange(int current, int max) {
+        if(current == max){
+            bnp.setProgress(0);
+            bnp.setReachedBarColor(0xff3498DB);
+            bnp.setProgressTextColor(0xff3498DB);
+            timer.cancel();
+        }
+
+        if(current == 20){
+            bnp.setReachedBarColor(0xff70A800);
+            bnp.setProgressTextColor(0xff70A800);
+        }else if(current == 30){
+            bnp.setReachedBarColor(0xffFF3D7F);
+            bnp.setProgressTextColor(0xffFF3D7F);
+        }
+        else if(current ==40){
+            bnp.setReachedBarColor(0xffE74C3C);
+            bnp.setProgressTextColor(0xffE74C3C);
+        }
+        else if(current ==50){
+            bnp.setReachedBarColor(0xff6DBCDB);
+            bnp.setProgressTextColor(0xff6DBCDB);
+        }else if(current == 60){
+            bnp.setReachedBarColor(0xffFFC73B);
+            bnp.setProgressTextColor(0xffFFC73B);
+        }
+        else if(current == 70){
+            bnp.setReachedBarColor(0xffFF530D);
+            bnp.setProgressTextColor(0xffFF530D);
+        }else if(current == 80){
+            bnp.setReachedBarColor(0xffECF0F1);
+            bnp.setProgressTextColor(0xffECF0F1);
+        }
     }
 }

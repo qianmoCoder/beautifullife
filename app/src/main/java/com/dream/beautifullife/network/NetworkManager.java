@@ -1,15 +1,19 @@
 package com.dream.beautifullife.network;
 
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+
+import com.dream.beautifullife.util.CollectionUtil;
+import com.dream.beautifullife.util.MD5Utils;
+import com.dream.beautifullife.util.URLUtil;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 /**
  * @author admin
@@ -76,7 +80,7 @@ public class NetworkManager {
 				return OKHttpRequest.getInstanceByGet(url);
 			}
 		});
-		if (responseHandlerInterface instanceof ProgressHttpResponseHandler) {
+		if (responseHandlerInterface != null) {
 			mOkHttpManager.request(httpRequest, responseHandlerInterface, OKHttpManager.METHOD_REPONSE);
 		}
 	}
@@ -99,11 +103,11 @@ public class NetworkManager {
 		PackageManager manager = context.getPackageManager();
 		PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
 
-		HashMap<String, String> headers = new HashMap<String, String>();
+		HashMap<String, String> headers = CollectionUtil.hashMap();
 		headers.put("versionName", info.versionName);
 		headers.put("platform", "android");
 
-		HashMap<String, String> tempParams;
+		HashMap<String, String> tempParams = CollectionUtil.hashMap();
 
 		if (params == null) {
 			tempParams = new HashMap<String, String>();
@@ -111,7 +115,10 @@ public class NetworkManager {
 			if (isEncode) {
 				tempParams = URLUtil.encodeValueUTF8(params);
 			} else {
-				tempParams = (HashMap<String, String>) params.clone();
+				Object tempObject = params.clone();
+				if(tempObject instanceof  HashMap) {
+					tempParams = (HashMap) params.clone();
+				}
 			}
 		}
 
@@ -122,7 +129,7 @@ public class NetworkManager {
 			}
 		}
 		OKHttpRequest httpRequest = callback.getRequest(url);
-		if (headers != null) {
+		if (headers.size() > 0) {
 			httpRequest.setHeaders(headers);
 		}
 		if (tempParams != null) {
@@ -141,7 +148,7 @@ public class NetworkManager {
 
 	private interface CallBack {
 
-		public OKHttpRequest getRequest(String url);
+		 OKHttpRequest getRequest(String url);
 	}
 
 }
