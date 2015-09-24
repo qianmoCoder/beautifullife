@@ -1,19 +1,19 @@
-package com.dream.beautifullife;
+package com.dream.beautifullife.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.dream.beautifullife.R;
 import com.dream.beautifullife.widget.NumberProgressBar;
 import com.dream.beautifullife.widget.OnProgressBarListener;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends Activity implements OnProgressBarListener {
+public class MainActivity extends BaseActivity implements OnProgressBarListener {
 
     NumberProgressBar bnp;
     Timer timer;

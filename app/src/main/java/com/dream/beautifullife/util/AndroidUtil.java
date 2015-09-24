@@ -1,10 +1,13 @@
 package com.dream.beautifullife.util;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
+
+import java.util.List;
 
 /**
  * Created by admin on 2015/9/9.
@@ -48,5 +51,17 @@ public class AndroidUtil {
         WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         String macAddress = wm.getConnectionInfo().getMacAddress();
         return macAddress;
+    }
+
+    public static String getProcessName(Context context) {
+        int pid = android.os.Process.myPid();
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+            if (appProcess.pid == pid) {
+                return appProcess.processName;
+            }
+        }
+        return "";
     }
 }
