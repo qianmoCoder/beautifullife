@@ -16,6 +16,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected BaseActivity baseActivity;
 
+    private View mRootView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +30,14 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = getContentView(inflater,container,savedInstanceState);
-        return view;
+        if(mRootView == null){
+            mRootView = getContentView(inflater,container,savedInstanceState);
+        }
+        ViewGroup parent = (ViewGroup)mRootView.getParent();
+        if(parent != null){
+            parent.removeView(mRootView);
+        }
+        return mRootView;
     }
 
     public abstract View getContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
