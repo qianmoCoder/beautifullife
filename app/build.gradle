@@ -29,4 +29,5 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.7.0+'
     compile 'de.greenrobot:greendao:2.0.0'
     compile files('libs/pinyin4j-2.5.0.jar')
+    compile files('libs/jsoup-1.8.3.jar')
 }
