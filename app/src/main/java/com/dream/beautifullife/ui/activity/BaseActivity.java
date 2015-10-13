@@ -12,7 +12,7 @@ import com.dream.beautifullife.app.BeautifulLifeApplication;
 /**
  * Created by admin on 2015/9/24.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = "BaseActivity";
 
@@ -20,8 +20,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BeautifulLifeApplication.addActivity(this);
+        setContentView(getContentViewId());
         Log.v(TAG, "className: " + getClass().getName());
     }
+
+    public abstract int getContentViewId();
 
     @Override
     protected void onResume() {

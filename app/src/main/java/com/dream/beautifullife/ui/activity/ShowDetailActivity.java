@@ -68,4 +68,9 @@ public class ShowDetailActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    @Override
+    public int getContentViewId() {
+        return 0;
+    }
 }

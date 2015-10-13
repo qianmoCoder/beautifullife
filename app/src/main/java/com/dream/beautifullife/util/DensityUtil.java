@@ -1,11 +1,17 @@
 package com.dream.beautifullife.util;
 
 import android.content.Context;
+import android.content.res.Resources;
 
 /**
  * Created by admin on 2015/9/10.
  */
 public class DensityUtil {
+
+
+    public static int dpToPx(int dp){
+        return (int)(dp * Resources.getSystem().getDisplayMetrics().density);
+    }
 
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
