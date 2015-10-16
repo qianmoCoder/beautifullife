@@ -1,96 +1,41 @@
 package com.dream.beautifullife.network;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import java.lang.ref.WeakReference;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 public abstract class SyncHttpResponseHandler implements ResponseHandlerInterface {
 
-	private static final int ONRESPONSE = 0x001;
+    public final void onResponse(Response response) {
+       Observable.just(response).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Response>() {
+            @Override
+            public void call(Response response) {
+                if (response.isSuccessful()) {
+                    onUIResponse(response);
+                } else {
+                    onUIError(response.code(), response, new Throwable());
+                }
+            }
+        });
+    }
 
-	private static final int ONFAILURE = 0x002;
+    public final void onFailure(Request request, final Exception e) {
+        Observable.just(request).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Request>() {
+            @Override
+            public void call(Request request) {
+                onUIFailure(request,e);
+            }
+        });
+    }
 
-	private static final int ONERROR = 0x003;
+    public abstract void onUIResponse(Response response);
 
-	protected static final int ONUIPROGRESS = 0x004;
+    public abstract void onUIFailure(Request request, Exception e);
 
-	protected final Handler mHandler = new UIHandler(Looper.getMainLooper(), this);
-
-	public void onResponse(Response response) {
-		Message msg = Message.obtain();
-		msg.obj = new AsyncTaskResult(response);
-		if (response.isSuccessful()) {
-			msg.what = ONRESPONSE;
-		} else {
-			msg.what = ONERROR;
-		}
-		mHandler.sendMessage(msg);
-	}
-
-	public void onFailure(Request request, Exception e) {
-		Message msg = Message.obtain();
-		msg.what = ONFAILURE;
-		msg.obj = new AsyncTaskResult(request, e);
-		mHandler.sendMessage(msg);
-	}
-
-	public abstract void onUIResponse(Response response);
-
-	public abstract void onUIFailure(Request request, Exception e);
-
-	public abstract void onUIError(int code, Response response, Throwable e);
-
-	public void onUIProgress(long bytes, long contentLength) {
-
-	}
-
-	private static class UIHandler extends Handler {
-		// 弱引用
-		private final WeakReference<SyncHttpResponseHandler> mSyncHttpResponseHandler;
-
-		public UIHandler(Looper looper, SyncHttpResponseHandler uiProgressResponseListener) {
-			super(looper);
-			mSyncHttpResponseHandler = new WeakReference<SyncHttpResponseHandler>(uiProgressResponseListener);
-		}
-
-		@Override
-		public void handleMessage(Message msg) {
-			SyncHttpResponseHandler uiProgressResponseListener = mSyncHttpResponseHandler.get();
-			switch (msg.what) {
-				case ONRESPONSE:
-					uiProgressResponseListener.onUIResponse((Response) msg.obj);
-					break;
-				case ONFAILURE: {
-					AsyncTaskResult result = (AsyncTaskResult) msg.obj;
-					uiProgressResponseListener.onUIFailure((Request) result.mData[0], (Exception) result.mData[1]);
-					break;
-				}
-				case ONERROR:
-					Response response = (Response) msg.obj;
-					uiProgressResponseListener.onUIError(response.code(), response, new Throwable());
-					break;
-				case ONUIPROGRESS: {
-					AsyncTaskResult result = (AsyncTaskResult) msg.obj;
-					uiProgressResponseListener.onUIProgress((Long) result.mData[0], (Long) result.mData[1]);
-				}
-					break;
-				default:
-					break;
-			}
-		}
-	}
-
-	protected static class AsyncTaskResult {
-		final Object[] mData;
-
-		AsyncTaskResult(Object... data) {
-			mData = data;
-		}
-	}
+    public abstract void onUIError(int code, Response response, Throwable e);
 
 }

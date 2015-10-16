@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity
 //                    }
 //                })
 //                .start();
+
     }
 
     private void startContentAnimation() {

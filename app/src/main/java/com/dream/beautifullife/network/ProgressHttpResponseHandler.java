@@ -1,70 +1,110 @@
 package com.dream.beautifullife.network;
 
-import android.os.Message;
-
 import com.squareup.okhttp.Response;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
-public abstract class ProgressHttpResponseHandler extends SyncHttpResponseHandler {
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
-	private File mFile;
+public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandler {
 
-	public ProgressHttpResponseHandler() {
-	}
+    private File mFile;
 
-	public ProgressHttpResponseHandler(File downFile) {
-		this.mFile = downFile;
-	}
+    public ProgressHttpResponseHandler() {
+    }
 
-	@Override
-	public void onResponse(Response response) {
-		BufferedInputStream bufferedInputStream = null;
-		BufferedOutputStream bufferedOutputStream = null;
-		try {
-			InputStream inputStream = response.body().byteStream();
-			bufferedInputStream = new BufferedInputStream(inputStream);
+    public ProgressHttpResponseHandler(File downFile) {
+        this.mFile = downFile;
+    }
 
-			long length = response.body().contentLength();
-			if (mFile != null) {
-				bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File("")));
-			}
-			byte[] buffer = new byte[1024];
-			int len = -1;
-			long bytesWritten = 0L;
-			while ((len = bufferedInputStream.read(buffer)) != -1) {
-				if (bufferedOutputStream != null) {
-					bufferedOutputStream.write(buffer, 0, len);
-				}
-				bytesWritten += len;
-				Message msg = Message.obtain();
-				msg.obj = new AsyncTaskResult(bytesWritten, length);
-				msg.what = ONUIPROGRESS;
-				mHandler.sendMessage(msg);
-			}
-			if (bufferedOutputStream != null) {
-				bufferedOutputStream.flush();
-			}
+    @Override
+    public void onResponse(final Response response) {
+        Observable.create(new Observable.OnSubscribe<Long>() {
+            @Override
+            public void call(Subscriber<? super Long> subscriber) {
+                BufferedInputStream bufferedInputStream = null;
+                BufferedOutputStream bufferedOutputStream = null;
+                try {
+                    InputStream inputStream = response.body().byteStream();
+                    bufferedInputStream = new BufferedInputStream(inputStream);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			onUIError(response.code(), response, e);
-		} finally {
-			try {
-				if (bufferedInputStream != null) {
-					bufferedInputStream.close();
-				}
+                    if (mFile != null) {
+                        bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File("")));
+                    }
+                    byte[] buffer = new byte[1024];
+                    int len = -1;
+                    long bytesWritten = 0L;
+                    while ((len = bufferedInputStream.read(buffer)) != -1) {
+                        if (bufferedOutputStream != null) {
+                            bufferedOutputStream.write(buffer, 0, len);
+                        }
+                        bytesWritten += len;
+                        subscriber.onNext(bytesWritten);
+                    }
+                    if (bufferedOutputStream != null) {
+                        bufferedOutputStream.flush();
+                    }
+                    subscriber.onCompleted();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    subscriber.onError(e);
+                } finally {
+                    try {
+                        if (bufferedInputStream != null) {
+                            bufferedInputStream.close();
+                        }
 
-				if (bufferedOutputStream != null) {
-					bufferedOutputStream.close();
-				}
-			} catch (Exception e) {
-				onUIError(response.code(), response, e);
-			}
-		}
-	}
+                        if (bufferedOutputStream != null) {
+                            bufferedOutputStream.close();
+                        }
+                    } catch (Exception e) {
+                        subscriber.onError(e);
+                    }
+                }
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Long>() {
+
+            @Override
+            public void onCompleted() {
+                try {
+                    long length = response.body().contentLength();
+                    onUIProgress(length,length);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable paramThrowable) {
+                onUIError(response.code(), response, paramThrowable);
+            }
+
+            @Override
+            public void onNext(Long paramT) {
+                try {
+                    long length = response.body().contentLength();
+                    onUIProgress(paramT,length);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public abstract void onUIProgress(long bytes, long contentLength);
+
+    public abstract void onUIError(int code, Response response, Throwable e);
+
+    @Override
+    public void onError(int code, Response response, Throwable e) {
+
+    }
 }

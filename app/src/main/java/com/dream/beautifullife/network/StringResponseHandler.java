@@ -7,7 +7,7 @@ import java.io.IOException;
 public abstract class StringResponseHandler extends SyncHttpResponseHandler {
 
 	@Override
-	public void onResponse(Response response) {
+	public void onUIResponse(Response response) {
 		try {
 			String string = response.body().string();
 			onUIResponse(string);

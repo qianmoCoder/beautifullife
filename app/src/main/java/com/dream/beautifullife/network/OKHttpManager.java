@@ -97,6 +97,8 @@ public class OKHttpManager {
 			builder.tag(tag);
 		}
 
+//		builder.header("","");
+
 		if (headers != null) {
 			for (Map.Entry<String, String> param : headers.entrySet()) {
 				builder.addHeader(param.getKey(), param.getValue());
@@ -186,7 +188,7 @@ public class OKHttpManager {
 		}
 
 		if (type == METHOD_REQUEST) {
-			ProgressRequestBody requestBody = new ProgressRequestBody(getRequest().body());
+			ProgressRequestBody requestBody = new ProgressRequestBody(postFormParameters().body());
 			requestBody.setListener(progressHttpResponseHandler);
 			Request request = buildPostRequest(httpRequest, requestBody);
 			sendRequest(request, progressHttpResponseHandler);
@@ -301,8 +303,21 @@ public class OKHttpManager {
 		System.out.println(response.body().string());
 	}
 
+	public void postFile() throws IOException {
+		File file = new File("README.md");
+
+		RequestBody requestBody = RequestBody.create(MEDIA_TYPE_MARKDOWN, file);
+		Request request = new Builder().url("https://api.github.com/markdown/raw").post(requestBody).build();
+
+		Response response = mOkHttpClient.newCall(request).execute();
+		if (!response.isSuccessful())
+			throw new IOException("Unexpected code " + response);
+
+		System.out.println(response.body().string());
+	}
+
 	// 使用FormEncodingBuilder来构建和HTML<form>标签相同效果的请求体。键值对将使用一种HTML兼容形式的URL编码来进行编码。
-	public Request getRequestForm() {
+	public Request postFormParameters() {
 		RequestBody formBody = new FormEncodingBuilder().add("search", "Jurassic Park").build();
 		Request request = new Builder().url("https://en.wikipedia.org/w/index.php").post(formBody).build();
 		return request;
@@ -311,7 +326,7 @@ public class OKHttpManager {
 	private static final String IMGUR_CLIENT_ID = "...";;
 
 	// MultipartBuilder可以构建复杂的请求体，与HTML文件上传形式兼容。多块请求体中每块请求都是一个请求体，可以定义自己的请求头。这些请求头可以用来描述这块请求，例如他的Content-Disposition。如果Content-Length和Content-Type可用的话，他们会被自动添加到请求头中。
-	public Request getRequest() {
+	public Request postMultipartRequest() {
 		RequestBody requestBody = new MultipartBuilder().type(MultipartBuilder.FORM).addPart(Headers.of("Content-Disposition", "form-data; name=\"title\""), RequestBody.create(null, "Square Logo"))
 				.addPart(Headers.of("Content-Disposition", "form-data; name=\"image\""), RequestBody.create(MEDIA_TYPE_PNG, new File("website/static/logo-square.png"))).build();
 
@@ -320,5 +335,16 @@ public class OKHttpManager {
 
 		Request request = new Builder().header("Authorization", "Client-ID " + IMGUR_CLIENT_ID).url("https://api.imgur.com/3/image").post(requestBody).build();
 		return request;
+	}
+
+	public void uploadFile(Map<String,String> map,List<String> paths){
+		MultipartBuilder builder = new MultipartBuilder().type(MultipartBuilder.FORM);
+		for (String key :map.keySet()){
+			builder.addFormDataPart(key,map.get(key));
+		}
+
+		for (String path:paths){
+			builder.addFormDataPart("upload",null,RequestBody.create(MEDIA_TYPE_PNG,new File(path)));
+		}
 	}
 }
