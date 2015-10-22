@@ -25,6 +25,14 @@ public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandl
         this.mFile = downFile;
     }
 
+    public void setFile(File file) {
+        this.mFile = file;
+    }
+
+    public File getFile() {
+        return mFile;
+    }
+
     @Override
     public void onResponse(final Response response) {
         Observable.create(new Observable.OnSubscribe<Long>() {
