@@ -3,8 +3,13 @@ package com.dream.beautifullife.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.dream.beautifullife.network.OKHttpManager;
 import com.dream.beautifullife.util.AndroidUtil;
 
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -35,6 +40,7 @@ public class BeautifulLifeApplication extends Application {
         String packageName = mApplication.getPackageName();
         if (processName.equals(packageName)) {// 防止多进程重复实始化
             sCacheActivities = new LinkedHashMap<Integer, WeakReference<Activity>>();
+            Glide.get(this).register(GlideUrl.class, InputStream.class,new OkHttpUrlLoader.Factory(OKHttpManager.getInstance().getOkHttpClient()));
             initSDK();
         }
     }

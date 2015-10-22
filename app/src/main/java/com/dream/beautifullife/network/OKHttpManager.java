@@ -7,6 +7,7 @@ import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.MultipartBuilder;
@@ -18,6 +19,7 @@ import com.squareup.okhttp.Response;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,14 +74,8 @@ public class OKHttpManager {
 		Map<String, String> params = httpRequest.getParams();
 
 		if (params != null && params.size() > 0) {
-			Map<String, String> tempParams = URLUtil.encodeAllUTF8((HashMap<String, String>) params);
 			if (method.equalsIgnoreCase(OKHttpRequest.METHOD_GET)) {
-				String result = getParamString(tempParams);
-				if (!url.contains("?")) {
-					url = url + "?" + result;
-				} else {
-					url = url + "&" + result;
-				}
+				url = getUrl(url,params);
 			} else {
 				List<Param<String, String>> res = mapToParams(params);
 				FormEncodingBuilder formEncodingBuilder = new FormEncodingBuilder();
@@ -114,7 +110,13 @@ public class OKHttpManager {
 		return builder.build();
 	}
 
+	// OAuth
 	private Call buildCall(Request request) {
+//		OkHttpOAuthConsumer consumer = new OkHttpOAuthConsumer("CONSUMER_KEY","CONSUMER_SECRET");
+//		consumer.setTokenWithSecret("token", "secret");
+//
+//		mOkHttpClient.interceptors().add(new SigningInterceptor(consumer));
+//		request = (Request)consumer.sign(request).unwrap();
 		Call call = mOkHttpClient.newCall(request);
 		return call;
 	}
@@ -130,7 +132,21 @@ public class OKHttpManager {
 		return res;
 	}
 
-	private String getParamString(Map<String, String> urlParams) {
+	private String getUrl(String url,Map<String, String> urlParams){
+		if(urlParams == null || urlParams.size() <=0){
+			return url;
+		}
+		HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+		for (Map.Entry<String, String> entry : urlParams.entrySet()) {
+			urlBuilder.addQueryParameter(entry.getKey(),entry.getValue());
+		}
+		return urlBuilder.build().toString();
+	}
+
+	private String getParamString(String url,Map<String, String> urlParams) throws UnsupportedEncodingException {
+
+		Map<String, String> tempParams = URLUtil.encodeAllUTF8((HashMap<String, String>) urlParams);
+
 		StringBuilder result = new StringBuilder();
 		for (Map.Entry<String, String> entry : urlParams.entrySet()) {
 			if (result.length() > 0) {
@@ -140,7 +156,14 @@ public class OKHttpManager {
 			result.append("=");
 			result.append((String) entry.getValue());
 		}
-		return result.toString();
+
+		String temp = result.toString();
+		if (!url.contains("?")) {
+			url = url + "?" + temp;
+		} else {
+			url = url + "&" + temp;
+		}
+		return url;
 	}
 
 	/**
