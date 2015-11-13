@@ -34,12 +34,12 @@ public class ShowDetailActivity extends BaseActivity {
 
         setContentView(R.layout.show_detail);
 
-        addFragmentToStack(fragmentName,FRAGMENT_ADD);
+        addFragmentToStack(fragmentName, FRAGMENT_ADD);
     }
 
     private void addFragmentToStack(String fragmentName, int type) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment newFragment = null;
+        Fragment newFragment;
         try {
             newFragment = (Fragment) Class.forName(fragmentName).newInstance();
             if (bundle != null) {
@@ -50,18 +50,20 @@ public class ShowDetailActivity extends BaseActivity {
             return;
         }
 
-        // ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
-        switch (type) {
-            case FRAGMENT_ADD:
-                ft.replace(R.id.container, newFragment, fragmentName);
-                break;
-            case FRAGMENT_REPLACE:
-                ft.replace(R.id.container, newFragment, fragmentName);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
-                break;
+        if (null != newFragment) {
+            // ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
+            switch (type) {
+                case FRAGMENT_ADD:
+                    ft.replace(R.id.container, newFragment, fragmentName);
+                    break;
+                case FRAGMENT_REPLACE:
+                    ft.replace(R.id.container, newFragment, fragmentName);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    ft.addToBackStack(null);
+                    break;
+            }
+            ft.commitAllowingStateLoss();
         }
-        ft.commitAllowingStateLoss();
     }
 
     @Override
