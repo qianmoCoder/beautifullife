@@ -5,13 +5,13 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public abstract class SyncHttpResponseHandler implements ResponseHandlerInterface {
 
     public final void onResponse(Response response) {
-        Observable.just(response).observeOn(Schedulers.computation()).subscribe(new Action1<Response>() {
+        Observable.just(response).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Response>() {
             @Override
             public void call(Response response) {
                 if (response.isSuccessful()) {
@@ -24,7 +24,7 @@ public abstract class SyncHttpResponseHandler implements ResponseHandlerInterfac
     }
 
     public final void onFailure(Request request, final Exception e) {
-        Observable.just(request).observeOn(Schedulers.computation()).subscribe(new Action1<Request>() {
+        Observable.just(request).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Request>() {
             @Override
             public void call(Request request) {
                 onUIFailure(request, e);

@@ -18,9 +18,8 @@ import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
-
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * 创建日期：2015年10月19日 版权所有 悦畅科技有限公司。 保留所有权利。<br>
@@ -62,7 +61,7 @@ public class RetrofitManager {
             @Override
             public void onResponse(retrofit.Response<T> paramResponse, Retrofit paramRetrofit) {
                 //404  paramResponse.errorBody().string()
-                Observable.just(paramResponse).observeOn(Schedulers.computation()).subscribe(new Action1<retrofit.Response<T>>() {
+                Observable.just(paramResponse).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<retrofit.Response<T>>() {
 
                     @Override
                     public void call(retrofit.Response<T> arg0) {
