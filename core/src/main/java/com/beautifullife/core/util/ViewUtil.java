@@ -1,4 +1,4 @@
-package com.dream.beautifullife.util;
+package com.beautifullife.core.util;
 
 import android.app.Activity;
 import android.view.View;

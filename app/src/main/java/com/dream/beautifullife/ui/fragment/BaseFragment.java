@@ -1,6 +1,7 @@
 package com.dream.beautifullife.ui.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -23,6 +24,11 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         baseActivity = (BaseActivity)getActivity();
         initData();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     public abstract void initData();

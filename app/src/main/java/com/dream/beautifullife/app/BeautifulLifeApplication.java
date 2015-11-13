@@ -3,11 +3,11 @@ package com.dream.beautifullife.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.beautifullife.core.network.okhttp.OKHttpManager;
+import com.beautifullife.core.util.AndroidUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.integration.okhttp.OkHttpUrlLoader;
 import com.bumptech.glide.load.model.GlideUrl;
-import com.dream.beautifullife.network.OKHttpManager;
-import com.dream.beautifullife.util.AndroidUtil;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -32,7 +32,6 @@ public class BeautifulLifeApplication extends Application {
         super.onCreate();
         mApplication = this;
         init();
-
     }
 
     private void init() {

@@ -1,4 +1,4 @@
-package com.dream.beautifullife.util;
+package com.beautifullife.core.util;
 
 /**
  * Created by admin on 2015/9/25.

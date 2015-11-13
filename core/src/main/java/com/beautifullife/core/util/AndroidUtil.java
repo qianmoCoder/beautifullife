@@ -1,4 +1,4 @@
-package com.dream.beautifullife.util;
+package com.beautifullife.core.util;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

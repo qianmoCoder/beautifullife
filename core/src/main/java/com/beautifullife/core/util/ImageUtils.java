@@ -1,4 +1,4 @@
-package com.dream.beautifullife.network;
+package com.beautifullife.core.util;
 
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;

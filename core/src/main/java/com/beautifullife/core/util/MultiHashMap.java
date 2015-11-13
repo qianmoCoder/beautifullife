@@ -1,4 +1,4 @@
-package com.dream.beautifullife.util;
+package com.beautifullife.core.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

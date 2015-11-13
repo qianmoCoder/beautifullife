@@ -5,6 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
+        //app package name
         applicationId "com.dream.beautifullife"
         minSdkVersion 14
         targetSdkVersion 23
@@ -12,36 +13,41 @@ android {
         versionName "1.0"
     }
     buildTypes {
+//        debug {
+//            //debug模式
+//        }
         release {
+            //是否进行混淆
             minifyEnabled false
+            //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    //移除lint检查的error
+    lintOptions {
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':core')
     compile 'com.android.support:design:23.0.1'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:cardview-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.1'
-    compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.google.dagger:dagger:2.0.1'
     compile 'com.google.dagger:dagger-compiler:2.0.1'
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
-    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.squareup.okio:okio:1.6.0'
-    compile 'se.akerfeldt:okhttp-signpost:1.0.0'
     compile 'oauth.signpost:signpost-core:1.2.1.2'
     compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.github.bumptech.glide:okhttp-integration:1.3.1'
     compile 'com.facebook.fresco:fresco:0.7.0+'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'org.jsoup:jsoup:1.8.3'
-    compile 'com.belerweb:pinyin4j:2.5.0'
-    compile 'de.greenrobot:greendao:2.0.0'
     compile 'io.reactivex:rxandroid:1.0.1'
-    compile 'io.reactivex:rxjava:1.0.14'
 }
