@@ -12,6 +12,7 @@ import java.io.InputStream;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandler {
@@ -34,7 +35,7 @@ public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandl
     }
 
     @Override
-    public void onResponse(final Response response) {
+    public void onResponsed(final Response response) {
         Observable.create(new Observable.OnSubscribe<Long>() {
             @Override
             public void call(Subscriber<? super Long> subscriber) {
@@ -92,7 +93,7 @@ public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandl
 
             @Override
             public void onError(Throwable paramThrowable) {
-                onUIError(response.code(), response, paramThrowable);
+                onUIError(paramThrowable);
             }
 
             @Override
@@ -107,12 +108,19 @@ public abstract class ProgressHttpResponseHandler extends AsyncHttpResponseHandl
         });
     }
 
+    @Override
+    public void onFailed(int errorCode, Response response) {
+        Observable.just(response).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Response>() {
+            @Override
+            public void call(Response response) {
+                onUIFailed(response.code(), response);
+            }
+        });
+    }
+
     public abstract void onUIProgress(long bytes, long contentLength);
 
-    public abstract void onUIError(int code, Response response, Throwable e);
+    public abstract void onUIError(Throwable e);
 
-    @Override
-    public void onError(int code, Response response, Throwable e) {
-
-    }
+    public abstract void onUIFailed(int errorCode, Response response);
 }

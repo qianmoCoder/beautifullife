@@ -7,15 +7,15 @@ import java.io.InputStream;
 
 public abstract class StreamHttpResponseHandler extends AsyncHttpResponseHandler {
 
-	@Override
-	public void onResponse(Response response) {
-		try {
-			onResponse(response.body().byteStream());
-		} catch (IOException e) {
-			onError(response.code(), response, e);
-		}
-	}
+    @Override
+    public void onResponsed(Response response) {
+        try {
+            onResponse(response.body().byteStream());
+        } catch (IOException e) {
+            onError(e);
+        }
+    }
 
-	public abstract void onResponse(InputStream response);
+    public abstract void onResponse(InputStream response);
 
 }

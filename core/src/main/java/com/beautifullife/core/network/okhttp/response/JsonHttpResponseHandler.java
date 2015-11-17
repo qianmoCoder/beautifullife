@@ -41,7 +41,7 @@ public abstract class JsonHttpResponseHandler<T> extends SyncHttpResponseHandler
             // gson.fromJson(response.body().charStream(), type.getClass());
             onUIResponse(t);
         } catch (IOException e) {
-            onUIError(response.code(), response, e);
+            onUIError(e);
         }
     }
 

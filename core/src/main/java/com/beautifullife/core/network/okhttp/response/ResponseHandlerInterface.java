@@ -8,4 +8,5 @@ public interface ResponseHandlerInterface {
     void onResponse(Response response);
 
     void onFailure(Request request, Exception e);
+
 }

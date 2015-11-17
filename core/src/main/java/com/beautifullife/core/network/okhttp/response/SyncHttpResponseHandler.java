@@ -1,6 +1,8 @@
 package com.beautifullife.core.network.okhttp.response;
 
 
+import android.util.Pair;
+
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -17,17 +19,18 @@ public abstract class SyncHttpResponseHandler implements ResponseHandlerInterfac
                 if (response.isSuccessful()) {
                     onUIResponse(response);
                 } else {
-                    onUIError(response.code(), response, new Throwable());
+                    onUIFailed(response.code(), response);
                 }
             }
         });
     }
 
-    public final void onFailure(Request request, final Exception e) {
-        Observable.just(request).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Request>() {
+    public final void onFailure(Request request, Exception e) {
+        Observable.just(Pair.create(request, e)).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Pair<Request, Exception>>() {
+
             @Override
-            public void call(Request request) {
-                onUIFailure(request, e);
+            public void call(Pair<Request, Exception> requestExceptionPair) {
+                onUIFailure(requestExceptionPair.first, requestExceptionPair.second);
             }
         });
     }
@@ -36,6 +39,7 @@ public abstract class SyncHttpResponseHandler implements ResponseHandlerInterfac
 
     public abstract void onUIFailure(Request request, Exception e);
 
-    public abstract void onUIError(int code, Response response, Throwable e);
+    public abstract void onUIFailed(int errorCode, Response response);
 
+    public abstract void onUIError(Throwable e);
 }
