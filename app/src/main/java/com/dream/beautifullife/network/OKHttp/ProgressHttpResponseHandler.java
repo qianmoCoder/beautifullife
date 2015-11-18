@@ -1,5 +1,6 @@
-package com.dream.beautifullife.network;
+package com.dream.beautifullife.network.OKHttp;
 
+import com.dream.beautifullife.network.AsyncHttpResponseHandler;
 import com.squareup.okhttp.Response;
 
 import java.io.BufferedInputStream;

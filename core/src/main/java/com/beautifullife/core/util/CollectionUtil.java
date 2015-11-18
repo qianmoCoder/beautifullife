@@ -1,6 +1,7 @@
 package com.beautifullife.core.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -14,8 +15,8 @@ import java.util.Set;
  */
 public class CollectionUtil {
 
-    public static <K,V> HashMap<K,V> hashMap(){
-        return new HashMap<K,V>();
+    public static <K, V> HashMap<K, V> hashMap() {
+        return new HashMap<K, V>();
     }
 
     public static <K, V> LinkedHashMap<K, V> linkedHashMap() {
@@ -37,4 +38,9 @@ public class CollectionUtil {
     public static <T> Queue<T> queue() {
         return new LinkedList<T>();
     }
+
+    public static boolean isEmpty(Collection collection) {
+        return null == collection || collection.isEmpty();
+    }
+
 }

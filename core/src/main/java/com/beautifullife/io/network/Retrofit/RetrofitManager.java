@@ -1,9 +1,9 @@
-package com.beautifullife.core.network.Retrofit;
+package com.beautifullife.io.network.Retrofit;
 
 import android.content.Context;
 
-import com.beautifullife.core.network.okhttp.OKHttpManager;
-import com.beautifullife.core.network.okhttp.response.ResponseHandlerInterface;
+import com.beautifullife.io.network.okhttp.OKHttpManager;
+import com.beautifullife.io.network.okhttp.response.ResponseHandlerInterface;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request.Builder;
@@ -21,6 +21,13 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
+/**
+ * 创建日期：2015年10月19日 版权所有 悦畅科技有限公司。 保留所有权利。<br>
+ * 项目名：悟空停车 - Android客户端<br>
+ * 描述：
+ *
+ * @author admin
+ */
 public class RetrofitManager {
 
     public static void createOKhttpClient() {

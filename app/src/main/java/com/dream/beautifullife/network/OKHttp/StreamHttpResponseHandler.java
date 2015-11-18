@@ -1,8 +1,9 @@
-package com.dream.beautifullife.network;
+package com.dream.beautifullife.network.OKHttp;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.dream.beautifullife.network.AsyncHttpResponseHandler;
 import com.squareup.okhttp.Response;
 
 public abstract class StreamHttpResponseHandler extends AsyncHttpResponseHandler {

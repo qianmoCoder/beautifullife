@@ -1,5 +1,6 @@
-package com.dream.beautifullife.network;
+package com.dream.beautifullife.network.OKHttp;
 
+import com.dream.beautifullife.network.OKHttp.SyncHttpResponseHandler;
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Response;

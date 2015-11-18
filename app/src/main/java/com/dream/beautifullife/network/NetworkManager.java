@@ -5,9 +5,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.beautifullife.core.network.okhttp.request.OKHttpDownloadRequest;
 import com.beautifullife.core.network.okhttp.request.OKHttpGetRequest;
 import com.beautifullife.core.network.okhttp.request.OKHttpPostRequest;
 import com.beautifullife.core.network.okhttp.request.OKHttpRequest;
+import com.beautifullife.core.network.okhttp.request.OKHttpUploadRequest;
+import com.beautifullife.core.network.okhttp.response.ProgressHttpResponseHandler;
 import com.beautifullife.core.network.okhttp.response.ResponseHandlerInterface;
 import com.beautifullife.core.util.CollectionUtil;
 import com.beautifullife.core.util.MD5Utils;
@@ -23,6 +26,7 @@ import java.util.HashMap;
 public class NetworkManager {
 
     public static OKHttpGetRequest get(Context context) throws Exception {
+
         OKHttpGetRequest.Builder request = (OKHttpGetRequest.Builder) getRequest(context, OKHttpGetRequest.create());
         return request.build();
     }
@@ -33,10 +37,10 @@ public class NetworkManager {
     }
 
     public static void post(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, ResponseHandlerInterface responseHandlerInterface) throws UnsupportedEncodingException {
-        HashMap<String, String> tempParams = CollectionUtil.hashMap();
+        HashMap<String, String> tempParams;
 
         if (params == null) {
-            tempParams = new HashMap<String, String>();
+            tempParams = CollectionUtil.hashMap();
         } else {
             if (isEncode) {
                 tempParams = URLUtil.encodeValueUTF8(params);
@@ -53,36 +57,17 @@ public class NetworkManager {
         }
     }
 
-    //    public static void request(OKHttpRequest request) throws IOException {
-//        getInstance().getOkHttpManager().request(request);
-//    }
-//
-//    public void download(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, final ProgressHttpResponseHandler responseHandlerInterface) throws Exception {
-//        OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, new CallBack() {
-//            @Override
-//            public OKHttpRequest getRequest(String url) {
-//                return OKHttpRequest.getInstanceByGet(url);
-//            }
-//        });
-//        if (responseHandlerInterface != null) {
-//            mOkHttpManager.request(httpRequest, responseHandlerInterface, OKHttpManager.METHOD_REPONSE);
-//        }
-//    }
-//
-//    public void upload(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface)
-//            throws Exception {
-//        OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, callback);
-//        if (responseHandlerInterface instanceof ProgressHttpResponseHandler) {
-//            mOkHttpManager.request(httpRequest, (ProgressHttpResponseHandler) responseHandlerInterface, OKHttpManager.METHOD_REQUEST);
-//        }
-//    }
-//
-//    public void request(Context context, String url, HashMap<String, String> params, String md5Param, boolean isEncode, CallBack callback, ResponseHandlerInterface responseHandlerInterface)
-//            throws Exception {
-//        OKHttpRequest httpRequest = getRequest(context, url, params, md5Param, isEncode, callback);
-//        mOkHttpManager.request(httpRequest, responseHandlerInterface);
-//    }
-//
+    public OKHttpDownloadRequest download(Context context, ProgressHttpResponseHandler responseHandlerInterface) throws Exception {
+        OKHttpDownloadRequest.Builder request = (OKHttpDownloadRequest.Builder) getRequest(context, OKHttpDownloadRequest.create());
+        return request.build();
+    }
+
+    public OKHttpUploadRequest upload(Context context, ResponseHandlerInterface responseHandlerInterface)
+            throws Exception {
+        OKHttpUploadRequest.Builder request = (OKHttpUploadRequest.Builder) getRequest(context, OKHttpUploadRequest.create());
+        return request.build();
+    }
+
     private static OKHttpRequest.Builder getRequest(Context context, OKHttpRequest.Builder builder) throws Exception {
         PackageManager manager = context.getPackageManager();
         PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);

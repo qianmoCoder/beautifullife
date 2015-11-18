@@ -1,4 +1,4 @@
-package com.dream.beautifullife.rxandroid;
+package com.beautifullife.core.rx;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;

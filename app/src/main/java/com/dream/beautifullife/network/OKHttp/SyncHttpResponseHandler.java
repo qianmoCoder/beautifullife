@@ -1,6 +1,7 @@
-package com.dream.beautifullife.network;
+package com.dream.beautifullife.network.OKHttp;
 
 
+import com.dream.beautifullife.network.ResponseHandlerInterface;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
