@@ -2,6 +2,7 @@ package com.beautifullife.core.network.okhttp.request;
 
 import com.beautifullife.core.network.okhttp.OKHttpManager;
 import com.beautifullife.core.network.okhttp.response.ResponseHandlerInterface;
+import com.beautifullife.core.util.CollectionUtil;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
@@ -41,6 +42,14 @@ public abstract class OKHttpRequest {
 
         public T tag(Object tag) {
             this.tag = tag;
+            return (T) this;
+        }
+
+        public T addHeader(String name, String value) {
+            if (headers == null) {
+                headers = CollectionUtil.linkedHashMap();
+            }
+            headers.put(name, value);
             return (T) this;
         }
 
