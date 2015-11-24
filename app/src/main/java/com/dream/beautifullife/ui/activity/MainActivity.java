@@ -1,5 +1,7 @@
 package com.dream.beautifullife.ui.activity;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -9,17 +11,33 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Toast;
 
 import com.beautifullife.core.util.DensityUtil;
+import com.beautifullife.core.util.SystemBarTintManager;
 import com.dream.beautifullife.R;
+import com.dream.beautifullife.ui.adapter.MyAdapter;
+import com.dream.beautifullife.ui.misc.DividerItemDecoration;
+import com.dream.beautifullife.widget.ChannelUtil;
+import com.jakewharton.rxbinding.view.RxView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +60,16 @@ public class MainActivity extends AppCompatActivity
     @Bind(R.id.nav_view)
     NavigationView navigationView;
 
+    @Bind(R.id.my_recycle_view)
+    RecyclerView recyclerView;
+
+    LinearLayoutManager linearLayoutManager;
+
+    MyAdapter myAdapter;
+
+    @Bind(R.id.content_main)
+    View contentMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +79,9 @@ public class MainActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        RxView.clicks(fab).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
-            public void onClick(View view) {
+            public void call(Void aVoid) {
                 Snackbar.make(mCoordinatorLayout, "Replace with your own action", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
             }
@@ -64,12 +92,60 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
             pendingIntroAnimation = true;
         }
+
+        Toast.makeText(this, ChannelUtil.getChannel(this), Toast.LENGTH_SHORT).show();
+
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+//        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setHasFixedSize(true);
+
+        final List<String> tempList = new ArrayList<>();
+
+        Observable.range(3, 50).subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                tempList.add(integer + "");
+            }
+        });
+        myAdapter = new MyAdapter(tempList);
+        recyclerView.setAdapter(myAdapter);
+        float paddingStart = 72;
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST, paddingStart, true));
+    }
+
+    private void applyKitKatTranslucency() {
+
+        // KitKat translucent navigation/status bar.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+            SystemBarTintManager mTintManager = new SystemBarTintManager(this);
+            mTintManager.setStatusBarTintEnabled(true);
+            mTintManager.setNavigationBarTintEnabled(true);
+            mTintManager.setTintColor(getResources().getColor(R.color.colorAccent));
+
+        }
+
+    }
+
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
     private void initView() {
@@ -86,7 +162,6 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
 
 
     @Override
@@ -127,7 +202,29 @@ public class MainActivity extends AppCompatActivity
 //                        startContentAnimation();
 //                    }
 //                })
-//                .start();
+//                .start(); View shape = rootView.findViewById(R.id.circle);
+
+        // Create a reveal {@link Animator} that starts clipping the view from
+        // the top left corner until the whole view is covered.
+//        Animator animator = ViewAnimationUtils.createCircularReveal(
+//                contentMain,
+//                0,
+//                0,
+//                0,
+//                (float) Math.hypot(contentMain.getWidth(), contentMain.getHeight()));
+//
+//        // Set a natural ease-in/ease-out interpolator.
+//        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+//
+//        // Finally start the animation
+//        animator.start();
+
+        contentMain.animate()
+                .translationY(0)
+                .setInterpolator(new OvershootInterpolator(1.f))
+                .setStartDelay(300)
+                .setDuration(ANIM_DURATION_FAB)
+                .start();
 
     }
 
