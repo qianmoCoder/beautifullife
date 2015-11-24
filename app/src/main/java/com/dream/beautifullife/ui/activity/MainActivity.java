@@ -26,7 +26,6 @@ import com.beautifullife.core.util.DensityUtil;
 import com.beautifullife.core.util.SystemBarTintManager;
 import com.dream.beautifullife.R;
 import com.dream.beautifullife.ui.adapter.MyAdapter;
-import com.dream.beautifullife.ui.misc.DividerItemDecoration;
 import com.dream.beautifullife.widget.ChannelUtil;
 import com.jakewharton.rxbinding.view.RxView;
 
@@ -117,8 +116,6 @@ public class MainActivity extends AppCompatActivity
         });
         myAdapter = new MyAdapter(tempList);
         recyclerView.setAdapter(myAdapter);
-        float paddingStart = 72;
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST, paddingStart, true));
     }
 
     private void applyKitKatTranslucency() {
