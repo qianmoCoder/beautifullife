@@ -2,9 +2,7 @@ package com.beautifullife.core.network.okhttp.response;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.$Gson$Types;
-import com.squareup.okhttp.Response;
 
-import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -33,14 +31,13 @@ public abstract class JsonHttpResponseHandler<T> extends SyncHttpResponseHandler
     }
 
     @Override
-    public void onUIResponse(Response response) {
+    public void onUIResponse(String string) {
         try {
-            String string = response.body().string();
             Type type = getType();
             T t = mGson.fromJson(string, type);
             // gson.fromJson(response.body().charStream(), type.getClass());
             onUIResponse(t);
-        } catch (IOException e) {
+        } catch (Exception e) {
             onUIError(e);
         }
     }

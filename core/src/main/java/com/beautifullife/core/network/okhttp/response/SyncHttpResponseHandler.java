@@ -6,23 +6,41 @@ import android.util.Pair;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import java.io.IOException;
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 public abstract class SyncHttpResponseHandler implements ResponseHandlerInterface {
 
-    public final void onResponse(Response response) {
-        Observable.just(response).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Response>() {
-            @Override
-            public void call(Response response) {
-                if (response.isSuccessful()) {
-                    onUIResponse(response);
-                } else {
+    public final void onResponse(final Response response) {
+        if (response.isSuccessful()) {
+            try {
+                String string = response.body().string();
+                Observable.just(string).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        onUIResponse(s);
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                Observable.just(e).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Exception>() {
+                    @Override
+                    public void call(Exception e) {
+                        onUIError(e);
+                    }
+                });
+            }
+        } else {
+            Observable.just(response).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Response>() {
+                @Override
+                public void call(Response response) {
                     onUIFailed(response.code(), response);
                 }
-            }
-        });
+            });
+        }
     }
 
     public final void onFailure(Request request, Exception e) {
@@ -35,7 +53,7 @@ public abstract class SyncHttpResponseHandler implements ResponseHandlerInterfac
         });
     }
 
-    public abstract void onUIResponse(Response response);
+    public abstract void onUIResponse(String string);
 
     public abstract void onUIFailure(Request request, Exception e);
 
