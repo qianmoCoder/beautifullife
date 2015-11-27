@@ -48,5 +48,5 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.7.0+'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'org.jsoup:jsoup:1.8.3'
-    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.beautifullife.core:icore:1.0.0'
 }
