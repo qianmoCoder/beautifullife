@@ -1,11 +1,37 @@
 <resources>
-    <string name="app_name">BeautifulLife</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">ddu</string>
     <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Main Begin -->
+    <string name="main_tab_study">学习</string>
+    <string name="main_tab_work">工作</string>
+    <string name="main_tab_life">生活</string>
+    <string name="main_tab_me">我</string>
+    <string name="main_exit_msg">再按一次退出程序</string>
+    <!-- Main Begin-->
+
+    <!-- Web Begin -->
+    <string name="web_refresh">刷新</string>
+    <!-- Web End -->
+
+    <!-- Common -->
+    <string name="common_cancel">取消</string>
+    <string name="common_please_wait">请稍候...</string>
+    <string name="no_install_app_store">未发现应用商店</string>
+
+    <!-- Life Begin -->
+    <string name="life_calculator">计算器</string>
+    <string name="life_calculator_house">房贷计算器</string>
+    <string name="life_calculator_income">个税计算器</string>
+    <string name="life_joke">笑话</string>
+    <string name="life_sentiment">感悟</string>
+    <string name="help"><a href="http://www.baidu.com">打开app</a></string>
+    <string name="parse1">{hello} [world]</string>
+    <string name="parse2">(hello) [world]</string>
+    <string name="parse3">"{hello} (world)"</string>
+    <string name="parset">^hello^ (world)</string>
+    <!-- Life End -->
 
     <!-- Accessibility description sent when user starts drawing a lock pattern. [CHAR LIMIT=NONE] -->
     <string name="lockscreen_access_pattern_start">Pattern started</string>
@@ -15,4 +41,5 @@
     <string name="lockscreen_access_pattern_cell_added">Cell added</string>
     <!-- Accessibility description sent when user completes drawing a pattern. [CHAR LIMIT=NONE] -->
     <string name="lockscreen_access_pattern_detected">Pattern completed</string>
+
 </resources>
