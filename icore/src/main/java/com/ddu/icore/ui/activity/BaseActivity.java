@@ -55,24 +55,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseObse
         if (isShowTitleBar()) {
             super.setContentView(R.layout.activity_base);
             mViewGroup = findView(R.id.ll_activity_base);
-//            mTitleBar = (TitleBar) mViewGroup.findViewById(R.id.ll_title_bar);
-            setTitleBar();
+            mTitleBar = (TitleBar) mViewGroup.findViewById(R.id.ll_title_bar);
             getLayoutInflater().inflate(layoutResID, mViewGroup);
         } else {
             super.setContentView(layoutResID);
         }
 
-    }
-
-    public int setTitleBarResId() {
-        return R.layout.widget_title_bar;
-    }
-
-    private void setTitleBar() {
-        mCustomerTitleBar = mLayoutInflater.inflate(setTitleBarResId(), mViewGroup);
-        if (mCustomerTitleBar instanceof TitleBar) {
-            mTitleBar = (TitleBar) mCustomerTitleBar;
-        }
     }
 
     public void startFragment(@NonNull Class fragment) {

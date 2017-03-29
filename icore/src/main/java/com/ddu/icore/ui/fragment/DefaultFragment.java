@@ -30,25 +30,13 @@ public abstract class DefaultFragment extends BaseFragment {
     public View getContentView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (isShowTitleBar()) {
             mView = inflater.inflate(R.layout.activity_base, container, false);
-
-//            mTitleBar = (TitleBar) mView.findViewById(R.id.ll_title_bar);
-            setTitleBar();
-
+            mTitleBar = (TitleBar) mView.findViewById(R.id.ll_title_bar);
             inflater.inflate(getLayoutId(), (ViewGroup) mView, true);
         } else {
             mView = inflater.inflate(getLayoutId(), container, false);
         }
         initView();
         return mView;
-    }
-
-    public int setTitleBarResId() {
-        return R.layout.widget_title_bar;
-    }
-
-    private void setTitleBar() {
-        mCustomerTitleBar = LayoutInflater.from(mContext).inflate(setTitleBarResId(), (ViewGroup) mView);
-        mTitleBar = (TitleBar) mCustomerTitleBar.findViewById(R.id.ll_title_bar);
     }
 
     public abstract int getLayoutId();
