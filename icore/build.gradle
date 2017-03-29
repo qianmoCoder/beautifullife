@@ -36,5 +36,4 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.alibaba:fastjson:1.2.30'
-    compile 'com.android.support:support-annotations:26.0.0-alpha1'
 }
