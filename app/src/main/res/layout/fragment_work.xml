@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mm="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+
+    <LinearLayout
+        style="@style/DefaultLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.ddu.icore.ui.view.OptionItemView
+            android:id="@+id/oiv_fragment"
+            style="@style/DefaultRelativeLayout"
+            mm:carrowImage="@drawable/right_arrow_gray"
+            mm:ctitleText="FragmentState" />
+    </LinearLayout>
+
+    <com.ddu.ui.view.AlignTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准,确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textSize="@dimen/dp_16"
+        android:gravity="center"/>
+</LinearLayout>

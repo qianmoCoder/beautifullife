@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Android获取JS返回值</title>
+    <style>
+        button{
+            border-style: none;
+            width: 100%;
+            height: 60px;
+            background-color: #0099ee;
+            color: #ffffff;
+            font-size: 20px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="btn">Android获取JS返回值</button>
+
+<script>
+    window.onload = function(){
+       var json = {"name":"乔布斯","age":24,"company":"苹果公司"};
+        var jsonStr =  JSON.stringify(json);
+       var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // js调用Android方法，给Android方法传值
+            window.ETCPSBridge.invoke(jsonStr);
+        };
+    };
+</script>
+</body>
+</html>

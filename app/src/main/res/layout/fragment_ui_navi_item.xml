@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_navi_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fragment_ui_navi_item_selector"
+    android:padding="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/tv_navi_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:gravity="center_vertical"
+        android:textColor="@color/fragment_ui_navi_item_text_selector"
+        android:textSize="@dimen/sp_17" />
+</RelativeLayout>

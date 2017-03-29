@@ -1,0 +1,144 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            style="@style/UIShapeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CODE" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_stroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="strokeWidth"
+                    android:inputType="number"
+                    android:text="3" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_round_radius"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="roundRadius"
+                    android:inputType="number"
+                    android:text="8" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_angle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="angle"
+                    android:inputType="number"
+                    android:text="30" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_stroke_color"
+                    style="@style/UIShapeRowWidget.UIButton"
+                    android:background="@color/c_3b8fed"
+                    android:text="边框颜色" />
+
+                <Button
+                    android:id="@+id/btn_begin_color"
+                    style="@style/UIShapeRowWidget.UIButton"
+                    android:background="@color/c_255779"
+                    android:text="开始颜色" />
+
+                <Button
+                    android:id="@+id/btn_middle_color"
+                    style="@style/UIShapeRowWidget.UIButton"
+                    android:background="@color/c_3e7492"
+                    android:text="中间颜色" />
+
+                <Button
+                    android:id="@+id/btn_end_color"
+                    style="@style/UIShapeRowWidget.UIButton"
+                    android:background="@color/c_a6c0cd"
+                    android:text="结束颜色" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点我查看样式" />
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/UIShapeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XML" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试"
+                android:background="@drawable/fragment_ui_shape_selector" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

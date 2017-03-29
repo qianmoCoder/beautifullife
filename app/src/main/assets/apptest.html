@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<h1>APP 测试</h1>
+
+<script>
+
+
+setTimeout(function(){
+	var json = {
+		type:'sharewx',
+		url: 'http://etcp.cn', // 页面地址
+	    imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
+	    title: 'etcp title', // 标题
+	    content: '摘要',// 摘要,
+	    callback:'ETCPSBridgeCallback'
+	};
+        var jsonStr =  JSON.stringify(json);
+	ETCPSBridge.invoke(jsonStr)
+	
+},500)
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,155 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1"
+    android:padding="@dimen/dp_10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="当前城市" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutRight"
+                android:text="北京" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="收入类型" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutRight"
+                android:text="工资、薪金所得" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="年龄" />
+
+            <EditText
+                android:id="@+id/et_income_age"
+                style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
+                android:hint="请输入您的年龄"
+                android:inputType="numberSigned" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="税前月薪" />
+
+            <EditText
+                android:id="@+id/et_income_tax"
+                style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
+                android:hint="个税起征点为3500元"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="月平均工资" />
+
+            <EditText
+                android:id="@+id/et_income_average"
+                style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
+                android:hint="当地月平均工资"
+                android:inputType="numberDecimal"
+                android:text="" />
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/btn_income_tax"
+            style="@style/DefaultButton"
+            android:layout_width="match_parent"
+            android:text="计算" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="@dimen/dp_5">
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="工资" />
+
+            <TextView
+                android:id="@+id/tv_total_money"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="五险" />
+
+            <TextView
+                android:id="@+id/tv_insurance"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="公积金" />
+
+            <TextView
+                android:id="@+id/tv_providentFund"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="合计扣除" />
+
+            <TextView
+                android:id="@+id/tv_total_tax_before_deduction"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="个税" />
+
+            <TextView
+                android:id="@+id/tv_tax"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="合计扣除" />
+
+            <TextView
+                android:id="@+id/tv_total_deduction"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="工资收入" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="医保收入" />
+
+            <TextView
+                android:id="@+id/tv_health_insurance_money"
+                style="@style/IncomeTaxGridLayoutRight.Red"
+                android:text="" />
+
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>

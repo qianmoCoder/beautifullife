@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <!-- 角度 -->
+    <corners android:radius="@dimen/dp_3" />
+    <!-- 填充色 -->
+    <solid android:color="@color/c_ffffff" />
+    <!-- 描边 设置线宽及颜色 -->
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/c_20000000" />
+
+</shape>

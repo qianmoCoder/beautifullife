@@ -1,0 +1,324 @@
+
+<html lang="">
+<head>
+	<meta charset="UTF-8">
+	<title>企鹅看看JSAPI Demo</title>
+	<meta name="author" content="dazhao">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+</head>
+
+<body>
+<link rel="stylesheet" type="text/css" href="http://frozenui.github.io/demo/frozenui/1.2.1/css/global.css">
+<link rel="stylesheet" type="text/css" href="http://frozenui.github.io/demo/static/demo.css">
+<script src="http://frozenui.github.io/demo/frozenjs/lib/zepto.min.js"></script>
+<script src="http://frozenui.github.io/demo/frozenjs/1.0.1/frozen.js"></script>
+
+<!--
+<script type="text/javascript" charset="UTF-8" src="http://mat1.gtimg.com/15/kk/jsapi/qqkkapi.js"></script>
+
+
+<script src="http://pub.idqqimg.com/qqmobile/qqapi.js?_bid=152"></script>http://qzs.qq.com/qzone/phone/m/v4/widget/mobile/jsbridge.js?v=1 -->
+
+<style>
+	body {
+	padding-top: 5px;
+
+	}
+	input{width: 60px;height: 30px; line-height: 30px; border:solid 1px #e9e9e9; border-radius: 3px;}
+
+	button{
+	border-style: none;
+	width: 100%;
+	height: 60px;
+	background-color: #0099ee;
+	color: #ffffff;
+	font-size: 20px;
+	border-radius: 8px;
+	text-align: center;
+	line-height: 60px;
+	}
+</style>
+
+<h1 style="line-height:50px; text-align:center; font-size:20px;">ETCP APP JSAPI</h1>
+<div class="content">
+
+
+	<!-- ============================MQQ CORE ========================================= -->
+
+	<div class="ui-tooltips ui-tooltips-state">
+		<div class="ui-tooltips-cnt ui-border-b">
+			页面跳转类型API
+		</div>
+	</div>
+	<div class="ui-tooltips ui-tooltips-guide">
+
+		<div class="ui-tooltips-cnt ui-border-b">
+			优惠券界面
+			<button class="ui-btn" id="coupon">执行</button>
+		</div>
+	</div>
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			积分商城界面
+			<button class="ui-btn" id="integral">执行</button>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- ============================MQQ CORE ========================================= -->
+	<div class="ui-tooltips ui-tooltips-state">
+		<div class="ui-tooltips-cnt ui-border-b">
+			视图操作类API
+		</div>
+	</div>
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			关闭当前webview
+			<button class="ui-btn" id="closeWebview">执行</button>
+		</div>
+	</div>
+
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			设置页面标题
+			<button class="ui-btn" id="setTitle">执行</button>
+		</div>
+	</div>
+
+
+
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			分享ToWxFriend
+			<button class="ui-btn" id="shareToFriend">执行</button>
+		</div>
+	</div>
+
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			分享ToWxPyq
+			<button class="ui-btn" id="shareToPyq">执行</button>
+		</div>
+	</div>
+
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			微信支付
+			<button class="ui-btn" id="payToWx">执行</button>
+		</div>
+	</div>
+
+	<div class="ui-tooltips ui-tooltips-guide">
+		<div class="ui-tooltips-cnt ui-border-b">
+			支付宝支付
+			<button class="ui-btn" id="payToAlipay">执行</button>
+		</div>
+	</div>
+
+
+
+
+	<!-- ============================MQQ CORE =========================================
+   <div class="ui-tooltips ui-tooltips-state">
+       <div class="ui-tooltips-cnt ui-border-b">
+           数据请求类API
+       </div>
+   </div>
+
+    -->
+
+
+</div>
+<button id="btn">Android获取JS返回值</button>
+<script type="text/javascript">
+
+window.onload = function(){
+       var json = {"name":"乔布斯","age":24,"company":"苹果公司"};
+        var jsonStr =  JSON.stringify(json);
+       var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            // js调用Android方法，给Android方法传值
+            window.ETCPSBridge.invoke(jsonStr);
+        };
+    };
+
+if(!ETCPSBridge){
+    var ETCPSBridge = {
+        invoke:function(data,callback){
+            callback && callback()
+        }
+    }
+}
+// ETCPSBridge.invoke({
+//     type:'sharewx',
+//     url: 'http://etcp.cn', // 页面地址
+//     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
+//     title: 'etcp title', // 标题
+//     content: '摘要'
+// },function(){
+//     alert(1234)
+// })
+
+
+// ETCPSBridge.invoke({
+//     type:'sharewx',
+//     url: 'http://etcp.cn', // 页面地址
+//     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
+//     title: 'etcp title', // 标题
+//     content: '摘要',// 摘要,
+//     callback:'ETCPSBridgeCallback'
+// })
+
+
+
+
+<!--$("#coupon").tap(function(){-->
+	<!--var json = {-->
+        <!--type:'coupon',-->
+        <!--callback:'ETCPSBridgeCoupon'-->
+    <!--};-->
+	<!--var jsonStr =  JSON.stringify(json);-->
+    <!--ETCPSBridge.invoke(jsonStr)-->
+
+    <!--function ETCPSBridgeCoupon(data){-->
+        <!--//-->
+        <!--alert('ETCPSBridgeCoupon')-->
+    <!--}-->
+
+<!--})-->
+
+$("#integral").tap(function(){
+    ETCPSBridge.invoke({
+        type:'integral',
+        callback:'ETCPSBridgeIntegral'
+    })
+    function ETCPSBridgeIntegral(data){
+        //
+        alert('ETCPSBridgeIntegral')
+    }
+
+})
+
+
+
+$("#closeWebview").tap(function(){
+    ETCPSBridge.invoke({
+        type:'closeWebview',
+        callback:'ETCPSBridgeCloseWebview'
+    })
+
+})
+function ETCPSBridgeCloseWebview(data){
+        //
+        alert('ETCPSBridgeCloseWebview')
+    }
+$("#setTitle").tap(function(){
+    ETCPSBridge.invoke({
+        type:'setTitle',
+        title:'新标题',
+        callback:'ETCPSBridgeSetTitle'
+    })
+
+})
+function ETCPSBridgeSetTitle(data){
+        //
+        alert('ETCPSBridgeSetTitle')
+    }
+$("#shareToFriend").tap(function(){
+
+    ETCPSBridge.invoke(JSON.stringify({
+        type:'shareToFriend',
+        url: 'http://etcp.cn', // 页面地址
+        imgurl:'http://etcp.cn/static/images/01.png', // 图片地址
+        title: 'etcpApp', // 标题
+        content: 'etcp分享', // 摘要
+        callback:'ETCPSBridgeShareToFriend'
+    }))
+
+},function(){
+    return '1'
+})
+
+
+function ETCPSBridgeShareToFriend(data){
+
+        setTimeout(function(){
+            alert(1)
+        },0)
+}
+$("#shareToPyq").tap(function(){
+    ETCPSBridge.invoke(JSON.stringify({
+        type:'shareToPyq',
+        url: 'http://etcp.cn', // 页面地址
+        imgurl:'http://etcp.cn/static/images/01.png', // 图片地址
+        title: 'etcpApp', // 标题
+        content: 'etcp分享', // 摘要
+        callback:'ETCPSBridgeShareToPyq'
+    })
+
+})
+function ETCPSBridgeShareToPyq(data){
+        alert(data)
+    }
+$("#payToWx").tap(function(){
+    ETCPSBridge.invoke({
+        type:'payToWx',
+        // _noncestr:'',
+        // _package:'',
+        // _partnerid:"",
+        // _prepayid:'',
+        // _sign:"",
+        // _timestamp:'',
+        // dataModel:'',
+
+        appid : 'wxa3a84e297fc05e62',
+        noncestr : '1349029099',
+        package : "Sign=WXPay",
+        partnerid : '1227845701',
+        prepayid : 'wx201608241349039c91d4b80f0375941543',
+        sign : 'E35A0EDB9BE7474A17EFF46B1227331B',
+        timestamp : '1472017742'
+    })
+
+})
+function ETCPSBridgePayToWx(data){
+    //
+    alert('ETCPSBridgePay')
+}
+
+
+$("#payToAlipay").tap(function(){
+    ETCPSBridge.invoke({
+        type:'payToAlipay',
+        // _noncestr:'',
+        // _package:'',
+        // _partnerid:"",
+        // _prepayid:'',
+        // _sign:"",
+        // _timestamp:'',
+        // dataModel:'',
+
+        account : "0.10",
+        notifyUrl : "http://newpay.test.etcp.cn/service/paymentnotify/notifyalipay",
+        orderId : 'pay20160823175749385731'
+    })
+
+})
+function ETCPSBridgePayToAlipay(data){
+    //
+    alert('payToAlipay')
+}
+</script>
+
+
+</body>
+</html>

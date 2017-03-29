@@ -1,0 +1,114 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mm="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_life_calculator_house"
+                style="@style/DefaultRelativeLayout">
+
+                <TextView
+                    style="@style/DefaultRelativeLayoutText"
+                    android:text="@string/life_calculator_house" />
+
+                <ImageView
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_life_calculator_income"
+                style="@style/DefaultRelativeLayout">
+
+                <TextView
+                    style="@style/DefaultRelativeLayoutText"
+                    android:text="@string/life_calculator_income" />
+
+                <ImageView
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_joke" style="@style/DefaultRelativeLayout">
+
+                <TextView
+                    style="@style/DefaultRelativeLayoutText"
+                    android:text="@string/life_joke" />
+
+                <ImageView
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+            </RelativeLayout>
+
+            <RelativeLayout style="@style/DefaultRelativeLayout">
+
+                <TextView
+                    style="@style/DefaultRelativeLayoutText"
+                    android:text="@string/life_sentiment" />
+
+                <ImageView
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+            </RelativeLayout>
+
+            <com.ddu.icore.ui.view.OptionItemView
+                style="@style/DefaultRelativeLayout"
+                mm:ctitleText="Hello"
+                mm:cdescriptionText="World"
+                mm:carrowImage="@drawable/right_arrow_gray"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text="@string/help" />
+
+        <TextView
+            android:id="@+id/tvHelp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text="@string/parse1" />
+
+        <TextView
+            android:id="@+id/tvHelp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text="@string/parse2" />
+        <TextView
+            android:id="@+id/tvHelp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:text="@string/parse3" />
+
+    </LinearLayout>
+
+</ScrollView>

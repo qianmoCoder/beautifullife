@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string-array name="study_ui_title">
+    <item>UI</item>
+    <item>RxJava</item>
+    <item>Retrofit</item>
+    <item>Glide</item>
+  </string-array>
+
+  <string-array name="study_ui_description">
+    <item>layout shape drawable</item>
+    <item>RxJava 相关</item>
+    <item>Retrofit 相关</item>
+    <item>Glide 相关</item>
+  </string-array>
+
+</resources>

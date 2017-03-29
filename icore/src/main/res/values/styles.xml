@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- TitleBar -->
+    <style name="TitleBarLayout">
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/c_f0f0f0</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+    </style>
+
+    <style name="TitleBarItemLayout">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">@dimen/dp_80</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="TitleBarItemLayout.Left">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="TitleBarItemLayout.Right">
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="TitleBarText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dp_18</item>
+    </style>
+
+    <style name="TitleBarText.Left">
+        <item name="android:textColor">@color/c_333333</item>
+    </style>
+
+    <style name="TitleBarText.Right">
+        <item name="android:textColor">@color/c_4897fa</item>
+    </style>
+
+</resources>

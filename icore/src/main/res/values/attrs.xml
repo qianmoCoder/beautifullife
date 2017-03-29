@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="ctitleText" format="string" />
+    <attr name="ctitleTextSize" format="dimension" />
+    <attr name="ctitleTextColor" format="color" />
+    <attr name="cdescriptionText" format="string" />
+    <attr name="cdescriptionTextSize" format="dimension" />
+    <attr name="cdescriptionTextColor" format="color" />
+    <attr name="cimage" format="reference" />
+    <attr name="cimageScaleType">
+        <enum name="fillXY" value="1" />
+        <enum name="center" value="5" />
+    </attr>
+    <attr name="carrowImage" format="reference" />
+    <attr name="carrowImageScaleType">
+        <enum name="fillXY" value="1" />
+        <enum name="center" value="5" />
+    </attr>
+
+    <declare-styleable name="CustomItemView">
+        <attr name="ctitleText" />
+        <attr name="ctitleTextSize" />
+        <attr name="ctitleTextColor" />
+        <attr name="cdescriptionText" />
+        <attr name="cdescriptionTextSize" />
+        <attr name="cdescriptionTextColor" />
+        <attr name="cimage" />
+        <attr name="cimageScaleType" />
+        <attr name="carrowImage" />
+        <attr name="carrowImageScaleType" />
+    </declare-styleable>
+
+    <declare-styleable name="common_title">
+
+        <!-- 背景颜色 -->
+        <attr name="bgColor" format="reference" />
+
+        <!-- 左侧图片 -->
+        <attr name="backBtnSrc" format="reference" />
+
+        <!-- 右侧图片 -->
+        <attr name="rightBtnSrc" format="reference" />
+        <attr name="rightBtn2Src" format="reference" />
+
+        <!-- 文字title -->
+        <attr name="titleText" format="reference" />
+        <attr name="titleColor" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PlateEditText">
+
+        <!-- 背景颜色 -->
+        <attr name="plate_hint" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpacing" format="dimension" />
+    </declare-styleable>
+
+    <!-- 末行对齐方式 -->
+    <declare-styleable name="AlignTextView">
+        <attr name="align" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 标点转换 -->
+    <declare-styleable name="CBAlignTextView">
+        <attr name="punctuationConvert" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="icore_dividerLinearLayout">
+        <attr name="icore_divider" format="reference" />
+        <attr name="icore_divider_height" format="dimension" />
+        <attr name="icore_divider_margin_left" format="dimension" />
+        <attr name="icore_divider_margin_right" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="icore_strike_thru">
+        <attr name="strike_thru_color" format="color" />
+        <attr name="strike_thru_width" format="dimension" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,368 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_ecedf1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_marginTop="0dp">
+
+            <RelativeLayout style="@style/MortgageRelativeLayout">
+
+                <TextView
+                    android:id="@+id/tv_repayment"
+                    style="@style/MortgageText"
+                    android:layout_width="wrap_content"
+                    android:text="还款方式：" />
+
+                <RadioGroup
+                    android:id="@+id/rg_life_repayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_repayment"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="等额本息"
+                        android:textColor="@color/c_515151"
+                        android:textSize="@dimen/sp_14" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="等额本金"
+                        android:textColor="@color/c_515151"
+                        android:textSize="@dimen/sp_14" />
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout style="@style/MortgageRelativeLayout">
+
+                <TextView
+                    android:id="@+id/tv_loan_desc"
+                    style="@style/MortgageText"
+                    android:text="贷款金额" />
+
+                <TextView
+                    android:id="@+id/tv_loan_money"
+                    style="@style/MortgageTextDesc"
+                    android:layout_alignParentRight="true"
+                    android:text="万元" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/tv_loan_money"
+                    android:layout_toRightOf="@id/tv_loan_desc"
+                    android:background="@null"
+                    android:gravity="right" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_mortgage"
+                style="@style/MortgageRelativeLayout">
+
+                <TextView
+                    android:id="@+id/tv_loan"
+                    style="@style/MortgageText"
+                    android:text="按揭年数" />
+
+                <ImageView
+                    android:id="@+id/iv_mortgage"
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+                <TextView
+                    android:id="@+id/tv_loan_year"
+                    style="@style/MortgageTextDesc"
+                    android:layout_toLeftOf="@id/iv_mortgage"
+                    android:text="万元" />
+
+            </RelativeLayout>
+
+            <RelativeLayout style="@style/MortgageRelativeLayout">
+
+                <TextView
+                    android:id="@+id/tv_rate_desc"
+                    style="@style/MortgageText"
+                    android:text="利&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;率" />
+
+                <ImageView
+                    android:id="@+id/iv_rate_mortgage"
+                    style="@style/DefaultRelativeLayoutRightImg"
+                    android:background="@drawable/right_arrow_gray" />
+
+                <TextView
+                    android:id="@+id/tv_rate"
+                    style="@style/MortgageTextDesc"
+                    android:layout_toLeftOf="@id/iv_rate_mortgage"
+                    android:text="万元" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/dp_10" />
+
+                <Button
+                    android:id="@+id/btn_calculator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_20"
+                    android:background="@drawable/default_btn_selector"
+                    android:text="开始计算" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="参考月供"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="1000.00元" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mortgage"
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:padding="@dimen/dp_10">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pc_mortgage"
+                android:layout_width="250dp"
+                android:layout_height="250dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参考月供"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="1000.00元" />
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

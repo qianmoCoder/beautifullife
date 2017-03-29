@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/dialog_corners_bg"
+    android:gravity="center"
+    android:minHeight="180dp"
+    android:minWidth="230dp"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:lines="2"
+        android:textColor="@color/c_666666"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_left"
+            style="@style/DefaultButton.Cancel"
+            android:backgroundTint="@color/c_ff0000"
+            android:drawableTint="@color/c_ff0000"
+            android:foregroundTint="@color/c_ff0000"
+            />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/space"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_right"
+            style="@style/DefaultButton.OK"
+            />
+    </LinearLayout>
+
+</LinearLayout>
