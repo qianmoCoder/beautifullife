@@ -3,9 +3,9 @@
     android:shape="rectangle">
 
     <!-- 角度 -->
-    <corners android:radius="3dp" />
+    <corners android:radius="5dp" />
     <!-- 填充色 -->
-    <solid android:color="@color/c_cc41aaf2" />
+    <solid android:color="@color/c_b24897fa" />
     <!-- 描边 设置线宽及颜色 -->
     <stroke
         android:width="0.5dp"

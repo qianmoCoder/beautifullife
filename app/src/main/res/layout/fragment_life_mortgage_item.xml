@@ -130,8 +130,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_20"
-                    android:background="@drawable/default_btn_selector"
+                    android:background="@drawable/shape_view_blue"
                     android:text="开始计算" />
+
+                <Button
+                    android:id="@+id/btn_calculator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_20"
+                    android:background="@drawable/default_btn_selector"
+                    android:text="开关" />
             </LinearLayout>
 
         </LinearLayout>

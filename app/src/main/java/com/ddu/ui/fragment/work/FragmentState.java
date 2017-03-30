@@ -12,12 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.ddu.icore.ui.drop.DropCover;
-import com.ddu.icore.ui.drop.DropFake;
-import com.ddu.icore.ui.drop.DropManager;
+import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
-import com.ddu.R;
+import com.ddu.ui.drop.DropCover;
+import com.ddu.ui.drop.DropFake;
+import com.ddu.ui.drop.DropManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

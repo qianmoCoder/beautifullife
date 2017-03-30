@@ -1,4 +1,4 @@
-package com.ddu.icore.ui.drop;
+package com.ddu.ui.drop;
 
 import android.content.Context;
 import android.graphics.Bitmap;

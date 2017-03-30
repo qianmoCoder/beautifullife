@@ -42,6 +42,8 @@ public class LoanFragment extends DefaultFragment {
     @Nullable
     @BindView(R.id.btn_calculator)
     Button btnCalculator;
+    @BindView(R.id.btn_calculator1)
+    Button btnCalculator1;
     @Nullable
     @BindView(R.id.pc_mortgage)
     PieChart mPieChart;
@@ -130,8 +132,10 @@ public class LoanFragment extends DefaultFragment {
 //        l.setYOffset(10f);
     }
 
+    private boolean isEnabled = false;
 
-    @OnClick({R.id.rl_mortgage, R.id.btn_calculator})
+
+    @OnClick({R.id.rl_mortgage, R.id.btn_calculator, R.id.btn_calculator1})
     public void onClick(@NonNull View view) {
         switch (view.getId()) {
             case R.id.rl_mortgage:
@@ -139,6 +143,10 @@ public class LoanFragment extends DefaultFragment {
                 break;
             case R.id.btn_calculator:
                 setData();
+                break;
+            case R.id.btn_calculator1:
+                btnCalculator.setEnabled(isEnabled);
+                isEnabled = !isEnabled;
                 break;
             default:
                 break;
