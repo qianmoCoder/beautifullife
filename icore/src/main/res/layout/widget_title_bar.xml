@@ -60,8 +60,8 @@
 
         <ImageView
             android:id="@+id/iv_title_bar_right"
-            android:layout_width="@dimen/dp_25"
-            android:layout_height="@dimen/dp_25"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="match_parent"
             android:scaleType="center"
             android:src="@drawable/setting_white"
             android:visibility="gone"

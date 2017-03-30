@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- TitleBar -->
+    <!-- TitleBar Begin -->
     <style name="TitleBarLayout">
         <item name="android:layout_height">@dimen/dp_50</item>
         <item name="android:layout_width">match_parent</item>
@@ -37,6 +37,49 @@
 
     <style name="TitleBarText.Right">
         <item name="android:textColor">@color/c_4897fa</item>
+    </style>
+    <!-- TitleBar End -->
+
+    <!-- Default Dialog Begin -->
+    <style name="DefaultDialogText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/dp_17</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DefaultDialogText.Left">
+        <item name="android:textColor">@color/c_4897fa</item>
+    </style>
+
+    <style name="DefaultDialogText.Right">
+        <item name="android:textColor">@color/c_272727</item>
+    </style>
+    <!-- Default Dialog End -->
+
+    <!-- Bottom Dialog Begin -->
+    <style name="BottomDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
+    <!-- Bottom Dialog End -->
+
+    <style name="MorePopupAnim">
+        <item name="android:windowEnterAnimation">@anim/popup_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/popup_exit_anim</item>
+    </style>
+
+
+    <style name="MorePopupStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@anim/popup_exit_anim</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:duplicateParentState">true</item>
     </style>
 
 </resources>

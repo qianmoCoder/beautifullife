@@ -1,7 +1,7 @@
 /*
  * 创建日期：2012-10-18
  */
-package com.ddu.icore.util;
+package com.ddu.icore.util.sys;
 
 import android.content.ComponentName;
 import android.content.Context;

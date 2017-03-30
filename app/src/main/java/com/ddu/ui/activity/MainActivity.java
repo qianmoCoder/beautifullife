@@ -11,14 +11,14 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.R;
 import com.ddu.app.App;
+import com.ddu.icore.ui.activity.BaseActivity;
+import com.ddu.icore.util.ToastUtils;
 import com.ddu.ui.fragment.LifeFragment;
 import com.ddu.ui.fragment.MeFragment;
 import com.ddu.ui.fragment.StudyFragment;
 import com.ddu.ui.fragment.WorkFragment;
-import com.ddu.util.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void exit() {
         if (!isExit) {
             isExit = true;
-            ToastUtil.showSuccessToast(R.string.main_exit_msg);
+            ToastUtils.showSuccessToast(R.string.main_exit_msg);
             App.postDelayed(new Runnable() {
                 @Override
                 public void run() {

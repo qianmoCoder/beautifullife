@@ -57,16 +57,16 @@
             android:layout_alignTop="@id/usrNameTv"
             android:layout_marginRight="@dimen/dp_10" />
 
-        <com.ddu.icore.ui.drop.DropFake
-            android:id="@+id/unread_number_tip"
-            android:layout_width="28dip"
-            android:layout_height="28dip"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/tv_detail"
-            android:singleLine="true"
-            android:text="3"
-            android:textColor="@color/c_4897fa"
-            android:textSize="12sp" />
+        <!--<com.ddu.icore.ui.drop.DropFake-->
+            <!--android:id="@+id/unread_number_tip"-->
+            <!--android:layout_width="28dip"-->
+            <!--android:layout_height="28dip"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_below="@id/tv_detail"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="3"-->
+            <!--android:textColor="@color/c_4897fa"-->
+            <!--android:textSize="12sp" />-->
 
     </RelativeLayout>
 
@@ -146,11 +146,11 @@
             mm:strike_thru_width="3dp" />
     </LinearLayout>
 
-    <com.ddu.icore.ui.drop.DropCover
-        android:id="@+id/unread_cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
+    <!--<com.ddu.icore.ui.drop.DropCover-->
+        <!--android:id="@+id/unread_cover"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="invisible" />-->
 
 
 </LinearLayout>

@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ddu.icore.util.ViewUtils;
 import com.ddu.R;
+import com.ddu.icore.util.ToastUtils;
+import com.ddu.icore.util.ViewUtils;
 
 
 public class DialogUtils {
@@ -27,7 +28,7 @@ public class DialogUtils {
             @Override
             public void onShow(DialogInterface dialog) {
                 // 提示加载时，关闭Toast提示
-                ToastUtil.cancel();
+                ToastUtils.cancel();
             }
         });
 
@@ -94,7 +95,7 @@ public class DialogUtils {
             @Override
             public void onShow(DialogInterface dialog) {
                 // 提示加载时，关闭Toast提示
-                ToastUtil.cancel();
+                ToastUtils.cancel();
             }
         });
 

@@ -15,9 +15,6 @@ import android.widget.RelativeLayout;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
-import com.ddu.ui.drop.DropCover;
-import com.ddu.ui.drop.DropFake;
-import com.ddu.ui.drop.DropManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,12 +30,12 @@ public class FragmentState extends DefaultFragment {
     @BindView(R.id.rl_person_info)
     RelativeLayout rlPersonInfo;
 
-    @Nullable
-    @BindView(R.id.unread_number_tip)
-    DropFake dropFake;
-    @Nullable
-    @BindView(R.id.unread_cover)
-    DropCover dropCover;
+//    @Nullable
+//    @BindView(R.id.unread_number_tip)
+//    DropFake dropFake;
+//    @Nullable
+//    @BindView(R.id.unread_cover)
+//    DropCover dropCover;
 
     @Nullable
     @BindView(R.id.iv_guide_hand)
@@ -75,31 +72,31 @@ public class FragmentState extends DefaultFragment {
     @Override
     public void initView() {
         unbinder = ButterKnife.bind(this, mView);
-        dropFake.setText("3");
-        dropFake.setClickListener(new DropFake.ITouchListener() {
-            @Override
-            public void onDown() {
-                DropManager.getInstance().setCurrentId("0");
-                DropManager.getInstance().getDropCover().down(dropFake, "3");
-            }
-
-            @Override
-            public void onMove(float curX, float curY) {
-                DropManager.getInstance().getDropCover().move(curX, curY);
-            }
-
-            @Override
-            public void onUp() {
-                DropManager.getInstance().getDropCover().up();
-            }
-        });
-
-        DropManager.getInstance().init(mContext, dropCover, new DropCover.IDropCompletedListener() {
-            @Override
-            public void onCompleted(Object id, boolean explosive) {
-
-            }
-        });
+//        dropFake.setText("3");
+//        dropFake.setClickListener(new DropFake.ITouchListener() {
+//            @Override
+//            public void onDown() {
+//                DropManager.getInstance().setCurrentId("0");
+//                DropManager.getInstance().getDropCover().down(dropFake, "3");
+//            }
+//
+//            @Override
+//            public void onMove(float curX, float curY) {
+//                DropManager.getInstance().getDropCover().move(curX, curY);
+//            }
+//
+//            @Override
+//            public void onUp() {
+//                DropManager.getInstance().getDropCover().up();
+//            }
+//        });
+//
+//        DropManager.getInstance().init(mContext, dropCover, new DropCover.IDropCompletedListener() {
+//            @Override
+//            public void onCompleted(Object id, boolean explosive) {
+//
+//            }
+//        });
 
         setDefaultTitle("我");
     }

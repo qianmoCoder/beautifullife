@@ -1,4 +1,4 @@
-package com.ddu.util;
+package com.ddu.icore.util;
 
 import android.app.Activity;
 import android.graphics.Rect;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import com.ddu.R;
+import com.ddu.icore.R;
 
 
 /**
@@ -17,7 +17,7 @@ import com.ddu.R;
  */
 public class PopupUtils {
 
-    public static void showDefaultPopupWindow(@NonNull Activity activity, @NonNull View view, View popupView) {
+    public static void showTopRightPopupWindow(@NonNull Activity activity, @NonNull View view, View popupView) {
         Rect frame = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
 

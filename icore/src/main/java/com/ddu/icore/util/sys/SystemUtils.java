@@ -1,4 +1,4 @@
-package com.ddu.icore.util;
+package com.ddu.icore.util.sys;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;

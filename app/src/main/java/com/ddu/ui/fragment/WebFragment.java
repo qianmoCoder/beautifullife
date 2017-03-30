@@ -21,11 +21,11 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
-import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.util.UrlUtils;
 import com.ddu.R;
+import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.util.PopupUtils;
+import com.ddu.icore.util.UrlUtils;
 import com.ddu.ui.helper.WebAppInterface;
-import com.ddu.util.PopupUtils;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -133,7 +133,9 @@ public class WebFragment extends DefaultFragment {
 
     private void showPopupWindow(@NonNull View v) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.fragemt_web_more_popup, null);
-        PopupUtils.showDefaultPopupWindow(baseActivity, v, view);
+//        PopupUtils.showTopRightPopupWindow(baseActivity, v, view);
+//        PopupUtils.showPopupWindow(view).showAtLocation(v.getParent(), Gravity.RIGHT,);
+        PopupUtils.showPopupWindow(view).showAsDropDown(v);
     }
 
     @NonNull

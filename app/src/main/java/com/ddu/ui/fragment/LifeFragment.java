@@ -91,7 +91,7 @@ public class LifeFragment extends DefaultFragment {
         parse(textPhrase2);
 
         TextPhrase textPhrase3 = TextPhrase.from(mContext, R.string.parse3);
-        textPhrase3.sencodSeparator("^^");
+        textPhrase3.secondSeparator("^^");
         parse(textPhrase3);
 
         textView1.setText(textPhrase1.format());

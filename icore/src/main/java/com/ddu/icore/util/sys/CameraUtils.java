@@ -1,4 +1,4 @@
-package com.ddu.icore.util;
+package com.ddu.icore.util.sys;
 
 import android.content.Context;
 import android.content.Intent;

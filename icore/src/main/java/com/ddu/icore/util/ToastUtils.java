@@ -1,6 +1,7 @@
-package com.ddu.util;
+package com.ddu.icore.util;
 
-import android.content.Context;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.support.v4.widget.Space;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -10,24 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ddu.icore.util.ViewUtils;
-import com.ddu.R;
-import com.ddu.app.App;
+import com.ddu.icore.R;
+import com.ddu.icore.app.BaseApp;
 
 
-public class ToastUtil {
+public class ToastUtils {
 
     private static Toast sToast;
 
-    private static Context mContext;
-
-    static {
-        mContext = App.getContext();
-    }
-
-
     public static void showSuccessToast(int resId) {
-        showSuccessToast(mContext.getString(resId));
+        showDefaultToast(resId, true);
     }
 
     public static void showSuccessToast(String message) {
@@ -35,7 +28,7 @@ public class ToastUtil {
     }
 
     public static void showErrorToast(int resId) {
-        showErrorToast(mContext.getString(resId));
+        showDefaultToast(resId, false);
     }
 
     public static void showErrorToast(String message) {
@@ -43,32 +36,46 @@ public class ToastUtil {
     }
 
     public static void showImageToast(int imId) {
-        showCustomToast(mContext, "", imId, Toast.LENGTH_SHORT);
+        showCustomToast("", imId, Toast.LENGTH_SHORT);
     }
 
     public static void showTextToast(int msgId) {
-        showTextToast(mContext.getString(msgId));
+        showCustomToast(msgId, -1, Toast.LENGTH_SHORT);
     }
 
     public static void showTextToast(String msg) {
-        showCustomToast(mContext, msg, -1, Toast.LENGTH_SHORT);
+        showCustomToast(msg, -1, Toast.LENGTH_SHORT);
     }
 
-    private static void showDefaultToast(String msg, boolean isSuccess) {
+    public static void showDefaultToast(String msg, boolean isSuccess) {
         int resId = isSuccess ? R.drawable.toast_right_icon : R.drawable.toast_error_icon;
-        showCustomToast(mContext, msg, resId, Toast.LENGTH_SHORT);
+        showCustomToast(msg, resId, Toast.LENGTH_SHORT);
     }
 
-    private static void showCustomToast(final Context context, final String msg, final int imgRes, final int duration) {
-        App.post(new Runnable() {
+    public static void showDefaultToast(int resId, boolean isSuccess) {
+        int imgResId = isSuccess ? R.drawable.toast_right_icon : R.drawable.toast_error_icon;
+        showCustomToast(resId, imgResId, Toast.LENGTH_SHORT);
+    }
+
+    public static void showCustomToast(final String msg, final int imgRes, final int duration) {
+        showToast(msg, imgRes, duration);
+    }
+
+    public static void showCustomToast(@StringRes int resId, final int imgRes, final int duration) {
+        String msg = BaseApp.getContext().getString(resId);
+        showToast(msg, imgRes, duration);
+    }
+
+    public static void showToast(final String msg, @DrawableRes final int imgResId, final int duration) {
+        BaseApp.post(new Runnable() {
             @Override
             public void run() {
                 try {
                     if (sToast == null) {
-                        sToast = new Toast(context);
+                        sToast = new Toast(BaseApp.getContext());
                     }
 
-                    LayoutInflater layoutInflater = LayoutInflater.from(context);
+                    LayoutInflater layoutInflater = LayoutInflater.from(BaseApp.getContext());
                     View toastRoot = layoutInflater.inflate(R.layout.toast_custom, null);
 
                     Space space = ViewUtils.findViewById(toastRoot, R.id.space_toast);
@@ -82,10 +89,10 @@ public class ToastUtil {
                         tv.setVisibility(View.VISIBLE);
                     }
 
-                    if (imgRes == -1) {
+                    if (imgResId == -1) {
                         space.setVisibility(View.GONE);
                     } else {
-                        iv.setImageResource(imgRes);
+                        iv.setImageResource(imgResId);
                         iv.setVisibility(View.VISIBLE);
                     }
                     sToast.setView(toastRoot);
@@ -94,7 +101,7 @@ public class ToastUtil {
                     sToast.show();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BaseApp.getContext(), msg, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_corners_white_bg"
+    android:gravity="center"
+    android:minHeight="@dimen/dp_150"
+    android:minWidth="@dimen/dp_300"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_46"
+        android:gravity="center"
+        android:textColor="@color/c_272727"
+        android:textSize="@dimen/dp_14"
+        android:visibility="gone"
+        tools:text="Title？"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_dddddd"
+        android:visibility="invisible" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_15"
+        android:gravity="center"
+        android:minHeight="@dimen/dp_101">
+
+        <TextView
+            android:id="@+id/tv_dialog_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/dp_5"
+            android:textColor="@color/c_000000"
+            android:textSize="@dimen/dp_16"
+            tools:text="Message" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/c_dddddd" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_49"
+        android:divider="@drawable/divider_linear_layout"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/tv_dialog_btn_left"
+            style="@style/DefaultDialogText.Left"
+            tools:text="我知道了" />
+
+        <TextView
+            android:id="@+id/tv_dialog_btn_right"
+            style="@style/DefaultDialogText.Right"
+            android:visibility="gone"
+            tools:text="我知道了"
+            tools:visibility="visible" />
+    </LinearLayout>
+</LinearLayout>
