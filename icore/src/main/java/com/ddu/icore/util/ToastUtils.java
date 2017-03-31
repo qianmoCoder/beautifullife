@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ddu.icore.R;
 import com.ddu.icore.app.BaseApp;
+import com.ddu.icore.util.sys.ViewUtils;
 
 
 public class ToastUtils {

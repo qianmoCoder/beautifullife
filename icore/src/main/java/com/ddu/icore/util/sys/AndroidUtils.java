@@ -24,6 +24,9 @@ import android.text.Selection;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
+import android.webkit.WebStorage;
 import android.widget.EditText;
 
 import java.io.File;
@@ -435,6 +438,18 @@ public class AndroidUtils {
         ComponentName component = cinfo.topActivity;
         return component.getPackageName();
     }
-
+    
+    public static void clearWebCache(Context context) {
+        try {
+            CookieSyncManager.createInstance(context);
+            CookieManager cm = CookieManager.getInstance();
+            cm.removeSessionCookie();
+            cm.removeAllCookie();
+            CookieSyncManager.getInstance().sync();
+            WebStorage.getInstance().deleteAllData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

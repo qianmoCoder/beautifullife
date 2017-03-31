@@ -2,6 +2,7 @@ package com.ddu.icore.util.sys;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +17,15 @@ import android.text.TextUtils;
  * Created by yzbzz on 16/7/25.
  */
 public class SystemUtils {
+
+    public static void openSetting(Activity activity) {
+        Intent intent = new Intent("/");
+        ComponentName cm = new ComponentName("com.android.settings",
+                "com.android.settings.WirelessSettings");
+        intent.setComponent(cm);
+        intent.setAction("android.intent.action.VIEW");
+        activity.startActivityForResult(intent, 0);
+    }
 
     // 跳转系统网络设置界面
     public static boolean startActivitySettingWireless(@NonNull Context context) {

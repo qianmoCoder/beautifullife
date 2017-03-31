@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.R;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
 

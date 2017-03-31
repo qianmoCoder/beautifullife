@@ -2,7 +2,9 @@ package com.ddu.icore.util.sys;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Point;
 import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
 
 
 public class DensityUtils {
@@ -34,5 +36,20 @@ public class DensityUtils {
     public static float getScale(@NonNull Activity act) {
         int height = act.getWindowManager().getDefaultDisplay().getHeight();
         return height / DEFAULT_720P_HEIGHT;
+    }
+
+    public static Point getScreenMetrics(Context context){
+        DisplayMetrics dm =context.getResources().getDisplayMetrics();
+        int w_screen = dm.widthPixels;
+        int h_screen = dm.heightPixels;
+        return new Point(w_screen, h_screen);
+
+    }
+
+    public static float getScreenRate(Context context){
+        Point P = getScreenMetrics(context);
+        float H = P.y;
+        float W = P.x;
+        return (H/W);
     }
 }

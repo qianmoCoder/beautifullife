@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.OnClick;
 

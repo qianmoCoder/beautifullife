@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 public class ShareDialogFragment extends BottomDialogFragment implements View.OnClickListener {
 

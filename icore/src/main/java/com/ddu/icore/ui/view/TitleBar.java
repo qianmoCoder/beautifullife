@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.ddu.icore.R;
 import com.ddu.icore.ui.help.ITitleBar;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 /**
  * Created by yzbzz on 2017/1/23.

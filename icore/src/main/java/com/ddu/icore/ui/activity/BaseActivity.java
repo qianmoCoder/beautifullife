@@ -20,7 +20,7 @@ import com.ddu.icore.common.BaseObserver;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.navigation.Navigator;
 import com.ddu.icore.ui.view.TitleBar;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseObserver {
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.icore.util.ToastUtils;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 
 public class DialogUtils {

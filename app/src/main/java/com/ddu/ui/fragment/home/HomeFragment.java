@@ -13,7 +13,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.BaseFragment;
-import com.ddu.icore.util.ViewUtils;
+import com.ddu.icore.util.sys.ViewUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
