@@ -30,6 +30,10 @@
         <activity
             android:name=".icore.ui.activity.ShowDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.activity.ShareActivity"
+            android:theme="@style/ShareStyle" />
     </application>
 
 </manifest>
