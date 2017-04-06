@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.R;
-import com.ddu.ui.fragment.study.ui.TextViewFragment;
+import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -44,7 +44,7 @@ public class WorkFragment extends DefaultFragment {
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
 //                startFragment(FragmentA.class, bundle);
-                startFragment(TextViewFragment.class);
+                startFragment(RecyclerViewFragment.class);
             }
         });
         setTitle(R.string.main_tab_work);

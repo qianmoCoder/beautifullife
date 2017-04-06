@@ -31,7 +31,7 @@ public abstract class CommonRecycleViewAdapter<T> extends RecyclerView.Adapter<R
     protected final Context mContext;
     @NonNull
     protected final List<T> mItems;
-    boolean canLoop = true;
+    boolean canLoop = false;
     int size;
 
     public CommonRecycleViewAdapter(Context context, @Nullable List<T> items) {

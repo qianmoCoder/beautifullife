@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.ddu.icore.R;
 import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.ui.view.TitleBar;
+import com.ddu.icore.util.sys.ViewUtils;
 
 public abstract class DefaultFragment extends BaseFragment {
 
@@ -105,6 +106,10 @@ public abstract class DefaultFragment extends BaseFragment {
 
     public TitleBar getTitleBar() {
         return mTitleBar;
+    }
+
+    public <T extends View> T findViewById(int resId) {
+        return ViewUtils.findViewById(mView, resId);
     }
 
 }
