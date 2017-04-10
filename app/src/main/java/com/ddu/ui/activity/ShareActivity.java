@@ -3,11 +3,13 @@ package com.ddu.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.icore.dialog.ShareAdapter;
@@ -15,6 +17,10 @@ import com.ddu.icore.dialog.ShareEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMWeb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +43,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_share_all);
+
         Window win = this.getWindow();
         WindowManager.LayoutParams lp = win.getAttributes();
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         win.setGravity(Gravity.BOTTOM);
         win.setAttributes(lp);
-        init();
 
+        init();
     }
 
     private void init() {
@@ -89,6 +96,13 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         shareAdapter.setOnItemClickListener(new ShareAdapter.OnClickListener<ShareEntity>() {
             @Override
             public void onClick(ShareEntity data, int position) {
+
+                UMWeb web = new UMWeb("http://www.baidu.com");
+                web.setTitle("this is music title");
+                web.setThumb(null);
+                web.setDescription("my description");
+                new ShareAction(ShareActivity.this).withMedia(web).setPlatform(SHARE_MEDIA.ALIPAY).share();
+
                 ToastUtils.showTextToast(data.getName() + " " + position);
                 finish();
             }
@@ -117,4 +131,32 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         super.finish();
         overridePendingTransition(R.anim.bottom_view_anim_enter, R.anim.bottom_view_anim_exit);
     }
+
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //分享开始的回调
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat", "platform" + platform);
+
+            Toast.makeText(mContext, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(mContext, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if (t != null) {
+                Log.d("throw", "throw:" + t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(mContext, platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
 }

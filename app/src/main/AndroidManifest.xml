@@ -34,6 +34,15 @@
         <activity
             android:name=".ui.activity.ShareActivity"
             android:theme="@style/ShareStyle" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5126ff896c738f2bfa000438">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng">
+        </meta-data>
     </application>
 
 </manifest>

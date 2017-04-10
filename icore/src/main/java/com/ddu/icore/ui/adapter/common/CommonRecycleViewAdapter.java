@@ -29,15 +29,13 @@ import java.util.List;
 public abstract class CommonRecycleViewAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected final Context mContext;
+
     @NonNull
     protected final List<T> mItems;
-    boolean canLoop = false;
-    int size;
 
     public CommonRecycleViewAdapter(Context context, @Nullable List<T> items) {
         mContext = context;
         mItems = (items != null) ? items : new ArrayList<T>();
-        size = mItems.size();
     }
 
     @NonNull
@@ -50,25 +48,12 @@ public abstract class CommonRecycleViewAdapter<T> extends RecyclerView.Adapter<R
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        int realPosition = toRealPosition(position);
-        bindView(holder, mItems.get(realPosition), position);
-    }
-
-    public int toRealPosition(int position) {
-        int realCount = getRealCount();
-        if (realCount == 0)
-            return 0;
-        int realPosition = position % realCount;
-        return realPosition;
-    }
-
-    public int getRealCount() {
-        return mItems == null ? 0 : mItems.size();
+        bindView(holder, mItems.get(position), position);
     }
 
     @Override
     public int getItemCount() {
-        return canLoop ? Integer.MAX_VALUE : getRealCount();
+        return mItems == null ? 0 : mItems.size();
     }
 
     public abstract View getView(ViewGroup parent, int viewType);

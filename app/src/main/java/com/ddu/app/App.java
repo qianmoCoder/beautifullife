@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.ddu.icore.app.BaseApp;
 import com.ddu.R;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.util.SystemUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,12 +29,22 @@ public class App extends BaseApp {
 
     private RefWatcher refWatcher;
 
+    //各个平台的配置，建议放在全局Application或者程序入口
+    {
+        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
+        PlatformConfig.setAlipay("2015111700822536");
+        PlatformConfig.setQQZone("1101352191","UB0rBnD2D1d4CGod");
+        PlatformConfig.setSinaWeibo("2623948793","bcba1c5f2947cf26b5be2536b05151d0","");
+
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         mApplication = this;
         mContext = getApplicationContext();
         init();
+        UMShareAPI.get(this);
     }
 
     private void init() {
