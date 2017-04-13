@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.ShareDialogFragment;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.ui.view.CustomerTimeLineMarker;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.OnClick;
@@ -16,17 +14,13 @@ import butterknife.OnClick;
 /**
  * Created by lhz on 16/4/6.
  */
-public class FragmentA extends DefaultFragment {
+public class FragmentC extends DefaultFragment {
 
     private Button mBtnOk;
-    private Button button;
-
-    private CustomerTimeLineMarker item_time_line_mark;
-
 
     @NonNull
-    public static FragmentA newInstance() {
-        FragmentA fragment = new FragmentA();
+    public static FragmentC newInstance() {
+        FragmentC fragment = new FragmentC();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -38,6 +32,7 @@ public class FragmentA extends DefaultFragment {
 
     }
 
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_work_state;
@@ -46,25 +41,26 @@ public class FragmentA extends DefaultFragment {
     @Override
     public void initView() {
         mBtnOk = ViewUtils.findViewById(mView, R.id.btn_ok);
-        button = ViewUtils.findViewById(mView, R.id.button);
-        item_time_line_mark = ViewUtils.findViewById(mView, R.id.item_time_line_mark);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
-                bottomSheetDialogFragment.show(getFragmentManager(), "");
-            }
-        });
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentB f = FragmentB.newInstance();
-//                replaceFragment(f);
-                item_time_line_mark.setCount(2);
-
+                //FragmentManager.POP_BACK_STACK_INCLUSIVE
+//                String tag = FragmentA.class.getName();
+//                Log.v("lhz", "tag: " + tag);
+//
+//                int size = getFragmentManager().getBackStackEntryCount();
+//                for (int i = 0; i < size; i++) {
+//                    FragmentManager.BackStackEntry backStackEntry = getFragmentManager().getBackStackEntryAt(i);
+//                    Log.v("lhz", backStackEntry.getName());
+//
+//                }
+//
+//
+//                boolean rst = getFragmentManager().popBackStackImmediate(tag, 0);
+//                Log.v("lhz", "rst: " + rst);
             }
         });
-        setDefaultTitle("FragmentA");
+        setDefaultTitle("FragmentC");
     }
 
     @OnClick(R.id.rl_person_info)

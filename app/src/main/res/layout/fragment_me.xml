@@ -85,8 +85,8 @@
             <com.ddu.icore.ui.view.OptionItemView
                 style="@style/DefaultRelativeLayout"
                 mm:carrowImage="@drawable/right_arrow_gray"
-                mm:cdescriptionText="World"
-                mm:ctitleText="Hello" />
+                mm:crightText="World"
+                mm:cleftText="Hello" />
 
         </LinearLayout>
 
@@ -117,7 +117,7 @@
         <com.ddu.icore.ui.view.OptionItemView
             style="@style/DefaultRelativeLayout"
             mm:carrowImage="@drawable/right_arrow_gray"
-            mm:ctitleText="设置" />
+            mm:cleftText="设置" />
 
         <TextView
             android:id="@+id/tvU"

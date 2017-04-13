@@ -35,14 +35,24 @@
             android:name=".ui.activity.ShareActivity"
             android:theme="@style/ShareStyle" />
 
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.activity.LoginActivity1"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.activity.LoginActivity2"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5126ff896c738f2bfa000438">
-        </meta-data>
+            android:value="5126ff896c738f2bfa000438"></meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Umeng">
-        </meta-data>
+            android:value="Umeng"></meta-data>
     </application>
 
 </manifest>

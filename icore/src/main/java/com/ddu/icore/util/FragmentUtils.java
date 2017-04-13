@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 /**
  * Created by liuhongzhe on 16/7/15.
@@ -32,6 +33,7 @@ public class FragmentUtils {
 
     public static void attachFragment(int type, @NonNull FragmentTransaction ft, @NonNull Fragment fragment, int frameId) {
         String tag = fragment.getClass().getName();
+        Log.v("lhz","fu: " + tag);
         switch (type) {
             case FRAGMENT_ADD:
                 ft.add(frameId, fragment, tag);
@@ -41,7 +43,7 @@ public class FragmentUtils {
                 break;
             case FRAGMENT_ADD_TO_BACK_STACK:
                 ft.replace(frameId, fragment, tag);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.setTransition(FragmentTransaction.TRANSIT_NONE);
                 ft.addToBackStack(null);
                 break;
             default:

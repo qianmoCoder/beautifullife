@@ -76,8 +76,8 @@
 
             <com.ddu.icore.ui.view.OptionItemView
                 style="@style/DefaultRelativeLayout"
-                mm:ctitleText="Hello"
-                mm:cdescriptionText="World"
+                mm:cleftText="Hello"
+                mm:crightText="World"
                 mm:carrowImage="@drawable/right_arrow_gray"/>
 
         </LinearLayout>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="ctitleText" format="string" />
-    <attr name="ctitleTextSize" format="dimension" />
-    <attr name="ctitleTextColor" format="color" />
-    <attr name="cdescriptionText" format="string" />
-    <attr name="cdescriptionTextSize" format="dimension" />
-    <attr name="cdescriptionTextColor" format="color" />
+    <attr name="cleftText" format="string" />
+    <attr name="cleftTextSize" format="dimension" />
+    <attr name="cleftTextColor" format="color" />
+    <attr name="crightText" format="string" />
+    <attr name="crightTextSize" format="dimension" />
+    <attr name="crightTextColor" format="color" />
     <attr name="cimage" format="reference" />
     <attr name="cimageScaleType">
         <enum name="fillXY" value="1" />
@@ -19,12 +19,12 @@
     </attr>
 
     <declare-styleable name="CustomItemView">
-        <attr name="ctitleText" />
-        <attr name="ctitleTextSize" />
-        <attr name="ctitleTextColor" />
-        <attr name="cdescriptionText" />
-        <attr name="cdescriptionTextSize" />
-        <attr name="cdescriptionTextColor" />
+        <attr name="cleftText" />
+        <attr name="cleftTextSize" />
+        <attr name="cleftTextColor" />
+        <attr name="crightText" />
+        <attr name="crightTextSize" />
+        <attr name="crightTextColor" />
         <attr name="cimage" />
         <attr name="cimageScaleType" />
         <attr name="carrowImage" />
@@ -91,6 +91,16 @@
         <attr name="rvp_singlePageFling" format="boolean" />
         <attr name="rvp_inertia" format="boolean"/>
         <attr name="rvp_millisecondsPerInch" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="TimeLineMarker">
+        <attr name="markerSize" format="dimension" />
+        <attr name="marker" format="color|reference" />
+        <attr name="beginLine" format="color|reference" />
+        <attr name="endLine" format="color|reference" />
+        <attr name="lineSize" format="dimension" />
+        <attr name="topOffset" format="dimension" />
+        <attr name="spaceOffset" format="dimension" />
     </declare-styleable>
 
 </resources>

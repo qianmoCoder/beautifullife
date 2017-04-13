@@ -54,7 +54,7 @@ public class ShareDialogFragment extends BottomDialogFragment implements View.On
         shareEntities.add(shareEntity);
         shareEntities.add(shareEntity1);
         shareEntities.add(shareEntity2);
-//        shareEntities.add(shareEntity3);
+        shareEntities.add(shareEntity3);
 //        shareEntities.add(shareEntity4);
 
     }

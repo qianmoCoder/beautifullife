@@ -44,6 +44,8 @@ public class FragmentB extends DefaultFragment {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentC f = FragmentC.newInstance();
+//                replaceFragment(f);
             }
         });
         setDefaultTitle("FragmentB");

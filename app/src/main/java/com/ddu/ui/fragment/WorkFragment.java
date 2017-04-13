@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,7 +8,7 @@ import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.activity.ShareActivity;
+import com.ddu.ui.fragment.work.FragmentA;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -44,9 +43,9 @@ public class WorkFragment extends DefaultFragment {
             public void onClick(View v) {
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
-//                startFragment(ShareDialogFragment.class);
-                startActivity(new Intent(mContext, ShareActivity.class));
-                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
+                startFragment(FragmentA.class);
+//                startActivity(new Intent(mContext, LoginActivity.class));
+//                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
             }
         });
         setTitle(R.string.main_tab_work);

@@ -1,10 +1,3 @@
-/*
- * @项目名称: ETCP停车
- * @文件名称: OptionItemView.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
-
 package com.ddu.icore.ui.view;
 
 import android.content.Context;
@@ -15,21 +8,14 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
 import com.ddu.icore.util.sys.ViewUtils;
 
 
-/*
- * @项目名称: ETCP停车
- * @文件名称: OptionItemView.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
-
-public class OptionItemView extends LinearLayout {
+public class OptionItemView extends RelativeLayout {
 
     private Context mContext;
 
@@ -66,30 +52,30 @@ public class OptionItemView extends LinearLayout {
             ivIcon.setScaleType(sScaleTypeArray[mImageScale]);
         }
 
-        String title = a.getString(R.styleable.CustomItemView_ctitleText);
+        String title = a.getString(R.styleable.CustomItemView_cleftText);
         if (!TextUtils.isEmpty(title)) {
             tvTitle.setText(title);
         } else {
             tvTitle.setVisibility(GONE);
         }
 
-        int color = a.getColor(R.styleable.CustomItemView_ctitleTextColor, Color.BLACK);
+        int color = a.getColor(R.styleable.CustomItemView_cleftTextColor, Color.BLACK);
         tvTitle.setTextColor(color);
 
-        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_ctitleTextColor, 16);
+        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_cleftTextColor, 16);
         tvTitle.setTextSize(size);
 
-        String content = a.getString(R.styleable.CustomItemView_cdescriptionText);
+        String content = a.getString(R.styleable.CustomItemView_crightText);
         if (!TextUtils.isEmpty(content)) {
             tvContent.setText(content);
         } else {
             tvContent.setVisibility(GONE);
         }
 
-        int contentColor = a.getColor(R.styleable.CustomItemView_cdescriptionTextColor, 0xff666666);
+        int contentColor = a.getColor(R.styleable.CustomItemView_crightTextColor, 0xff666666);
         tvContent.setTextColor(contentColor);
 
-        int contentSize = a.getDimensionPixelSize(R.styleable.CustomItemView_cdescriptionTextSize, 14);
+        int contentSize = a.getDimensionPixelSize(R.styleable.CustomItemView_crightTextSize, 14);
         tvContent.setTextSize(contentSize);
 
         int arrowResId = a.getResourceId(R.styleable.CustomItemView_carrowImage, -1);
@@ -112,8 +98,8 @@ public class OptionItemView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.option_item_view, this);
         ivIcon = ViewUtils.findViewById(this, R.id.iv_icon);
-        tvTitle = ViewUtils.findViewById(this, R.id.tv_title);
-        tvContent = ViewUtils.findViewById(this, R.id.tv_content);
+        tvTitle = ViewUtils.findViewById(this, R.id.tv_left_text);
+        tvContent = ViewUtils.findViewById(this, R.id.tv_right_text);
         ivArrow = ViewUtils.findViewById(this, R.id.iv_arrow);
     }
 

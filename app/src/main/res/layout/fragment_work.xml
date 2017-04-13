@@ -15,7 +15,7 @@
             android:id="@+id/oiv_fragment"
             style="@style/DefaultRelativeLayout"
             mm:carrowImage="@drawable/right_arrow_gray"
-            mm:ctitleText="FragmentState" />
+            mm:cleftText="FragmentState" />
     </LinearLayout>
 
     <com.ddu.ui.view.AlignTextView
@@ -25,4 +25,16 @@
         android:layout_marginTop="@dimen/dp_10"
         android:textSize="@dimen/dp_16"
         android:gravity="center"/>
+
+
+    <com.ddu.icore.ui.view.CustomerTimeLineMarker
+        android:id="@+id/item_time_line_mark"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/dp_300"
+        android:layout_gravity="center"
+        mm:beginLine="@color/c_cccccc"
+        mm:endLine="@color/c_cccccc"
+        mm:lineSize="1dp"
+        mm:marker="@drawable/ic_timeline_default_marker"
+        mm:markerSize="7dp" />
 </LinearLayout>

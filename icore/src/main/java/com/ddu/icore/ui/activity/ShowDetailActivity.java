@@ -3,6 +3,7 @@ package com.ddu.icore.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.AnimRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,11 +25,20 @@ public class ShowDetailActivity extends BaseActivity {
     @Nullable
     private String fragmentName;
     private Fragment fragment;
-    private int type;
+    private int type = FragmentUtils.FRAGMENT_REPLACE;
 
     private FragmentManager mFragmentManager;
 
     private boolean isShowTitleBar = false;
+
+    @AnimRes
+    private int enter;
+    @AnimRes
+    private int exit;
+    @AnimRes
+    private int popEnter;
+    @AnimRes
+    private int popExit;
 
     @NonNull
     public static Intent getShowDetailIntent(Context context, String fragmentName, @Nullable Bundle bundle) {
@@ -48,7 +58,8 @@ public class ShowDetailActivity extends BaseActivity {
         setContentView(R.layout.show_detail);
 
         mFragmentManager = getSupportFragmentManager();
-        replaceFragment(fragment, type);
+
+        replaceFragment(fragment, bundle);
     }
 
 
@@ -59,7 +70,6 @@ public class ShowDetailActivity extends BaseActivity {
         }
         if (bundle != null) {
             fragmentName = bundle.getString(KEY_FRAGMENT_NAME);
-            type = bundle.getInt(KEY_TYPE, FragmentUtils.FRAGMENT_REPLACE);
         }
 
         if (!TextUtils.isEmpty(fragmentName)) {
@@ -80,11 +90,21 @@ public class ShowDetailActivity extends BaseActivity {
     public void replaceFragment(@Nullable Fragment fragment, int type) {
         if (null != fragment) {
             FragmentTransaction ft = mFragmentManager.beginTransaction();
-//            ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
             FragmentUtils.attachFragment(type, ft, fragment, R.id.container);
         }
     }
 
+    public void replaceFragment(@Nullable Fragment fragment, Bundle bundle) {
+        if (null != fragment) {
+            FragmentTransaction ft = mFragmentManager.beginTransaction();
+
+            if (null != bundle) {
+                type = bundle.getInt(KEY_TYPE, FragmentUtils.FRAGMENT_REPLACE);
+            }
+//            ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
+            FragmentUtils.attachFragment(type, ft, fragment, R.id.container);
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

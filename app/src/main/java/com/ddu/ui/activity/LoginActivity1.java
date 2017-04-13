@@ -13,7 +13,7 @@ import com.ddu.icore.util.sys.ViewUtils;
 /**
  * Created by liuhongzhe on 16/5/13.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity1 extends BaseActivity {
 
     private Button mBtnOk;
 
@@ -26,11 +26,10 @@ public class LoginActivity extends BaseActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, LoginActivity1.class));
+                startActivity(new Intent(mContext, LoginActivity2.class));
             }
         });
-
-        setDefaultTitle("zero");
+        setDefaultTitle("one");
     }
 
     public void login() {
