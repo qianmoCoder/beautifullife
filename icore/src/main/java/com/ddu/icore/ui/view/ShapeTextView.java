@@ -3,6 +3,7 @@ package com.ddu.icore.ui.view;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -16,9 +17,12 @@ import com.ddu.icore.R;
 
 public class ShapeTextView extends AppCompatTextView {
 
-    private int mNormalColor = 0;
-    private int mPressedColor = 0;
-    private int mDisableColor = 0;
+    private int mNormalTextColor = 0;
+    private int mPressedTextColor = 0;
+    private int mDisableTextColor = 0;
+
+    private Drawable mBackground;
+    private ColorDrawable mColorDrawable;
 
     private ColorStateList mColorStateList;
     private GradientDrawable mNormalBackground;
@@ -71,78 +75,89 @@ public class ShapeTextView extends AppCompatTextView {
 
     private void setup(AttributeSet attrs) {
 
-        states = new int[4][];
-
-        Drawable drawable = getBackground();
-        if (drawable != null && drawable instanceof StateListDrawable) {
-            mStateBackground = (StateListDrawable) drawable;
-        } else {
-            mStateBackground = new StateListDrawable();
-        }
+        mBackground = getBackground();
 
         mNormalBackground = new GradientDrawable();
         mPressedBackground = new GradientDrawable();
         mDisableBackground = new GradientDrawable();
 
-        //pressed, focused, normal, Disable
-        states[0] = new int[]{android.R.attr.state_enabled, android.R.attr.state_pressed};
-        states[1] = new int[]{android.R.attr.state_enabled, android.R.attr.state_focused};
-        states[3] = new int[]{-android.R.attr.state_enabled};
-        states[2] = new int[]{android.R.attr.state_enabled};
+        if (null != mBackground) {
+            setBackground(mBackground);
+        } else {
+            states = new int[4][];
 
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ShapeView);
+            mStateBackground = new StateListDrawable();
 
-        //get original text color as default
-        //set text color
-        mColorStateList = getTextColors();
-        int mDefaultNormalTextColor = mColorStateList.getColorForState(states[2], getCurrentTextColor());
-        int mDefaultPressedTextColor = mColorStateList.getColorForState(states[0], getCurrentTextColor());
-        int mDefaultDisableTextColor = mColorStateList.getColorForState(states[3], getCurrentTextColor());
+            //pressed, focused, normal, Disable
+            states[0] = new int[]{android.R.attr.state_enabled, android.R.attr.state_pressed};
+            states[1] = new int[]{android.R.attr.state_enabled, android.R.attr.state_focused};
+            states[3] = new int[]{-android.R.attr.state_enabled};
+            states[2] = new int[]{android.R.attr.state_enabled};
 
-        mNormalColor = a.getColor(R.styleable.ShapeView_normalColor, mDefaultNormalTextColor);
-        mPressedColor = a.getColor(R.styleable.ShapeView_pressedColor, mDefaultPressedTextColor);
-        mDisableColor = a.getColor(R.styleable.ShapeView_disableColor, mDefaultDisableTextColor);
-        setTextColor();
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ShapeView);
 
-        //set animation duration
-        mDuration = a.getInteger(R.styleable.ShapeView_animationDuration, mDuration);
-        mStateBackground.setEnterFadeDuration(mDuration);
-        mStateBackground.setExitFadeDuration(mDuration);
+            //get original text color as default
+            //set text color
+            mColorStateList = getTextColors();
+            int mDefaultNormalTextColor = mColorStateList.getColorForState(states[2], getCurrentTextColor());
+            int mDefaultPressedTextColor = mColorStateList.getColorForState(states[0], getCurrentTextColor());
+            int mDefaultDisableTextColor = mColorStateList.getColorForState(states[3], getCurrentTextColor());
 
-        //set background color
-        mNormalBackgroundColor = a.getColor(R.styleable.ShapeView_normalBackgroundColor, 0);
-        mPressedBackgroundColor = a.getColor(R.styleable.ShapeView_pressedBackgroundColor, 0);
-        mDisableBackgroundColor = a.getColor(R.styleable.ShapeView_disableBackgroundColor, 0);
-        mNormalBackground.setColor(mNormalBackgroundColor);
-        mPressedBackground.setColor(mPressedBackgroundColor);
-        mDisableBackground.setColor(mDisableBackgroundColor);
+            mNormalTextColor = a.getColor(R.styleable.ShapeView_normalTextColor, mDefaultNormalTextColor);
+            mPressedTextColor = a.getColor(R.styleable.ShapeView_pressedTextColor, mDefaultPressedTextColor);
+            mDisableTextColor = a.getColor(R.styleable.ShapeView_disableTextColor, mDefaultDisableTextColor);
+            setTextColor();
 
-        //set radius
-        mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
-        mRound = a.getBoolean(R.styleable.ShapeView_round, false);
-        mSegmented = a.getBoolean(R.styleable.ShapeView_segmented, false);
-        mNormalBackground.setCornerRadius(mRadius);
-        mPressedBackground.setCornerRadius(mRadius);
-        mDisableBackground.setCornerRadius(mRadius);
+            //set animation duration
+            mDuration = a.getInteger(R.styleable.ShapeView_animationDuration, mDuration);
+            mStateBackground.setEnterFadeDuration(mDuration);
+            mStateBackground.setExitFadeDuration(mDuration);
 
-        //set stroke
-        mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
-        mStrokeDashGap = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
-        mNormalStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_normalStrokeWidth, 0);
-        mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_pressedStrokeWidth, 0);
-        mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_disableStrokeWidth, 0);
-        mNormalStrokeColor = a.getColor(R.styleable.ShapeView_normalStrokeColor, 0);
-        mPressedStrokeColor = a.getColor(R.styleable.ShapeView_pressedStrokeColor, 0);
-        mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, 0);
-        setStroke();
+            //set background color
+            if (mBackground instanceof ColorDrawable) {
+                mColorDrawable = (ColorDrawable) mBackground;
+            }
+            int defValue = 0;
+            if (null != mColorDrawable) {
+                defValue = mColorDrawable.getColor();
+            }
+            mNormalBackgroundColor = a.getColor(R.styleable.ShapeView_normalBackgroundColor, defValue);
+            mPressedBackgroundColor = a.getColor(R.styleable.ShapeView_pressedBackgroundColor, 0);
+            mDisableBackgroundColor = a.getColor(R.styleable.ShapeView_disableBackgroundColor, 0);
 
-        //set background
-        mStateBackground.addState(states[0], mPressedBackground);
-        mStateBackground.addState(states[1], mPressedBackground);
-        mStateBackground.addState(states[3], mDisableBackground);
-        mStateBackground.addState(states[2], mNormalBackground);
-        setBackgroundDrawable(mStateBackground);
-        a.recycle();
+            mNormalBackground.setColor(mNormalBackgroundColor);
+            mPressedBackground.setColor(mPressedBackgroundColor);
+            mDisableBackground.setColor(mDisableBackgroundColor);
+
+            //set radius
+            mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
+            mNormalBackground.setCornerRadius(mRadius);
+            mPressedBackground.setCornerRadius(mRadius);
+            mDisableBackground.setCornerRadius(mRadius);
+
+            mRound = a.getBoolean(R.styleable.ShapeView_round, false);
+            mSegmented = a.getBoolean(R.styleable.ShapeView_segmented, false);
+
+            //set stroke
+            mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
+            mStrokeDashGap = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
+            mNormalStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_normalStrokeWidth, 0);
+            mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_pressedStrokeWidth, 0);
+            mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_disableStrokeWidth, 0);
+            mNormalStrokeColor = a.getColor(R.styleable.ShapeView_normalStrokeColor, 0);
+            mPressedStrokeColor = a.getColor(R.styleable.ShapeView_pressedStrokeColor, 0);
+            mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, 0);
+            setStroke();
+
+            //set background
+            mStateBackground.addState(states[0], mPressedBackground);
+            mStateBackground.addState(states[1], mPressedBackground);
+            mStateBackground.addState(states[3], mDisableBackground);
+            mStateBackground.addState(states[2], mNormalBackground);
+
+            setBackgroundDrawable(mStateBackground);
+            a.recycle();
+        }
     }
 
 
@@ -213,7 +228,9 @@ public class ShapeTextView extends AppCompatTextView {
     }
 
     private void setStroke(GradientDrawable mBackground, int mStrokeColor, int mStrokeWidth) {
-        mBackground.setStroke(mStrokeWidth, mStrokeColor, mStrokeDashWidth, mStrokeDashGap);
+        if (null != mBackground) {
+            mBackground.setStroke(mStrokeWidth, mStrokeColor, mStrokeDashWidth, mStrokeDashGap);
+        }
     }
 
     public void setRadius(@FloatRange(from = 0) float radius) {
@@ -288,31 +305,31 @@ public class ShapeTextView extends AppCompatTextView {
     }
 
     private void setTextColor() {
-        int[] colors = new int[]{mPressedColor, mPressedColor, mNormalColor, mDisableColor};
+        int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
         mColorStateList = new ColorStateList(states, colors);
         setTextColor(mColorStateList);
     }
 
     public void setStateTextColor(@ColorInt int normal, @ColorInt int pressed, @ColorInt int Disable) {
-        this.mNormalColor = normal;
-        this.mPressedColor = pressed;
-        this.mDisableColor = Disable;
+        this.mNormalTextColor = normal;
+        this.mPressedTextColor = pressed;
+        this.mDisableTextColor = Disable;
         setTextColor();
     }
 
     public void setNormalTextColor(@ColorInt int normalTextColor) {
-        this.mNormalColor = normalTextColor;
+        this.mNormalTextColor = normalTextColor;
         setTextColor();
 
     }
 
     public void setPressedTextColor(@ColorInt int pressedTextColor) {
-        this.mPressedColor = pressedTextColor;
+        this.mPressedTextColor = pressedTextColor;
         setTextColor();
     }
 
     public void setDisableTextColor(@ColorInt int DisableTextColor) {
-        this.mDisableColor = DisableTextColor;
+        this.mDisableTextColor = DisableTextColor;
         setTextColor();
     }
 }

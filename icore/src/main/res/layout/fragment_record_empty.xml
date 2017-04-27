@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ @项目名称: ETCP停车
+  ~ @文件名称: activity_capture.xml
+  ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
+  ~ 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_no_record"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_empty_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无记录"
+        android:textColor="@color/c_999999"
+        android:textSize="@dimen/dp_20" />
+
+</LinearLayout>
+
+

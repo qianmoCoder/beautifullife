@@ -22,6 +22,7 @@ import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
@@ -438,7 +439,7 @@ public class AndroidUtils {
         ComponentName component = cinfo.topActivity;
         return component.getPackageName();
     }
-    
+
     public static void clearWebCache(Context context) {
         try {
             CookieSyncManager.createInstance(context);
@@ -450,6 +451,24 @@ public class AndroidUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setFullscreen(Activity activity, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (on) {
+            winParams.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        } else {
+            winParams.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        }
+        win.setAttributes(winParams);
+    }
+
+    public static void setRotationAnimation(Activity activity, int rotationAnimation) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        winParams.rotationAnimation = rotationAnimation;
+        win.setAttributes(winParams);
     }
 
 }

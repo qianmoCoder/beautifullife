@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20">
+
+    <!--<com.ddu.icore.ui.view.ShapeView-->
+    <!--android:layout_width="@dimen/dp_200"-->
+    <!--android:layout_height="@dimen/dp_100" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_000000"
+        android:orientation="vertical">
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/text_test1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="change text color"
+           />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/text_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="change text color"
+            app:disableBackgroundColor="@color/colorPrimary"
+            app:disableColor="@android:color/holo_orange_dark"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:normalColor="@android:color/white"
+            app:pressedBackgroundColor="@color/colorPrimary"
+            app:pressedColor="@android:color/holo_red_light" />
+
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/background_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="change background"
+            android:textColor="@android:color/white"
+            app:disableBackgroundColor="@android:color/holo_red_light"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:pressedBackgroundColor="@color/colorPrimaryDark" />
+
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/radius_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="with radius"
+            android:textColor="@android:color/white"
+            app:disableBackgroundColor="@android:color/holo_red_light"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:radius="5dp" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/round_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="round radius"
+            android:textColor="@android:color/white"
+            app:disableBackgroundColor="@android:color/holo_red_light"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:radius="2dp"
+            app:round="true" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/different_radius_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="different_radius"
+            android:textColor="@android:color/white"
+            app:disableBackgroundColor="@android:color/holo_red_light"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:pressedBackgroundColor="@color/colorPrimaryDark" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/dash_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="with dash"
+            app:disableColor="@android:color/holo_orange_dark"
+            app:disableStrokeColor="@android:color/holo_orange_dark"
+            app:disableStrokeWidth="2dp"
+            app:normalColor="@android:color/white"
+            app:normalStrokeColor="@android:color/white"
+            app:normalStrokeWidth="2dp"
+            app:pressedColor="@android:color/holo_red_light"
+            app:pressedStrokeColor="@android:color/holo_red_light"
+            app:pressedStrokeWidth="2dp"
+            app:radius="5dp"
+            app:strokeDashGap="5dp"
+            app:strokeDashWidth="5dp" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/stroke_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="with stroke"
+            app:disableColor="@android:color/holo_orange_dark"
+            app:disableStrokeColor="@android:color/holo_orange_dark"
+            app:disableStrokeWidth="2dp"
+            app:normalColor="@android:color/white"
+            app:normalStrokeColor="@android:color/white"
+            app:normalStrokeWidth="2dp"
+            app:pressedColor="@android:color/holo_red_light"
+            app:pressedStrokeColor="@android:color/holo_red_light"
+            app:pressedStrokeWidth="2dp"
+            app:radius="5dp" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/stroke_background_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="keep stroke"
+            app:normalColor="@android:color/white"
+            app:normalStrokeColor="@android:color/white"
+            app:normalStrokeWidth="2dp"
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:pressedColor="@android:color/white"
+            app:pressedStrokeColor="@android:color/white"
+            app:pressedStrokeWidth="2dp"
+            app:radius="5dp" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/stroke_background_test2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="stroke_background"
+            app:normalColor="@android:color/white"
+            app:normalStrokeColor="@android:color/white"
+            app:normalStrokeWidth="2dp"
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:pressedColor="@android:color/white"
+            app:radius="5dp" />
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/stroke_background_animation_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="stroke_background_animation"
+            app:animationDuration="200"
+            app:normalColor="@android:color/white"
+            app:normalStrokeColor="@android:color/white"
+            app:normalStrokeWidth="2dp"
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:pressedColor="@android:color/white"
+            app:radius="5dp" />
+    </LinearLayout>
+
+</ScrollView>

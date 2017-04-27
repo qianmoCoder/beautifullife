@@ -1,4 +1,4 @@
-package com.ddu.icore.dialog;
+package com.ddu.icore.entity;
 
 /**
  * Created by yzbzz on 2017/3/31.

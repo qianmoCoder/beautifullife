@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.icore.dialog.ShareAdapter;
-import com.ddu.icore.dialog.ShareEntity;
+import com.ddu.icore.entity.ShareEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;

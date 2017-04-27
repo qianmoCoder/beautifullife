@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.app.App;
@@ -31,6 +33,10 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
     @Nullable
     @BindView(R.id.srl_swipe_refresh)
     SwipeRefreshLayout mSrlSwipeRefresh;
+
+    @Nullable
+    @BindView(R.id.btn_ok)
+    Button mBtnOk;
 
     @NonNull
     private List<String> mDatas = new ArrayList<>();
@@ -82,6 +88,16 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
         };
 
         mRvSwipeRefresh.setAdapter(mAdapter);
+
+        mAdapter.setEmptyView(R.layout.empty_view, mRvSwipeRefresh);
+
+        mBtnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatas.clear();
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

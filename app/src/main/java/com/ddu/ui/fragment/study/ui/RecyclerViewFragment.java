@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.ddu.R;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
@@ -57,6 +58,25 @@ public class RecyclerViewFragment extends DefaultFragment {
             }
         });
         recyclerView.setHasFixedSize(true);
+        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
+            @Override
+            public boolean onFling(int velocityX, int velocityY) {
+                Log.v("lhz", "dx: " + velocityX + " dy: " + velocityY);
+                return false;
+            }
+        });
+
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                Log.v("lhz", "newState: " + newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                Log.v("lhz", "dx: " + dx + " dy: " + dy);
+            }
+        });
 
 //        PagerStartSnapHelper snapHelper = new PagerStartSnapHelper();
 //        PagerSnapHelper snapHelper = new PagerSnapHelper();

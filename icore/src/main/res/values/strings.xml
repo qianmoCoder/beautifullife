@@ -6,4 +6,10 @@
     <string name="weixin_circle_friend">朋友圈</string>
 
     <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+
+    <string name="no_data">暂无数据</string>
+
+    <string name="parse_data_error">解析数据失败!</string>
+    <string name="request_error_msg">获取数据失败!（%d）</string>
 </resources>

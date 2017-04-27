@@ -103,4 +103,39 @@
         <attr name="spaceOffset" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="ShapeView">
+
+        <attr name="normalTextColor" format="color|reference"/>
+        <attr name="pressedTextColor" format="color|reference"/>
+        <attr name="disableTextColor" format="color|reference"/>
+
+        <attr name="strokeDashWidth" format="dimension|reference"/>
+        <attr name="strokeDashGap" format="dimension|reference"/>
+
+        <attr name="normalStrokeWidth" format="dimension|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension|reference"/>
+        <attr name="disableStrokeWidth" format="dimension|reference"/>
+
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="disableStrokeColor" format="color|reference"/>
+
+        <attr name="normalBackgroundColor" format="color|reference"/>
+        <attr name="pressedBackgroundColor" format="color|reference"/>
+        <attr name="disableBackgroundColor" format="color|reference"/>
+
+        <attr name="radius" format="dimension|reference"/>
+        <attr name="round" format="boolean|reference"/>
+        <attr name="segmented" format="boolean|reference"/>
+
+        <attr name="animationDuration" format="integer|reference"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="StateImageView">
+        <attr name="normalBackground" format="color|reference"/>
+        <attr name="pressedBackground" format="color|reference"/>
+        <attr name="disableBackground" format="color|reference"/>
+        <attr name="AnimationDuration" format="integer|reference"/>
+    </declare-styleable>
 </resources>

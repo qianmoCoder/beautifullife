@@ -19,7 +19,6 @@ package com.ddu.icore.ui.adapter.common;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -34,7 +33,7 @@ public abstract class DefaultRecycleViewAdapter<T> extends CommonRecycleViewAdap
     @Override
     public View getView(ViewGroup parent, int viewType) {
         int layoutId = getLayoutId(viewType);
-        return LayoutInflater.from(mContext).inflate(layoutId, parent, false);
+        return mLayoutInflater.inflate(layoutId, parent, false);
     }
 
     @NonNull

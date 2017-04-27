@@ -33,7 +33,6 @@ public class FragmentUtils {
 
     public static void attachFragment(int type, @NonNull FragmentTransaction ft, @NonNull Fragment fragment, int frameId) {
         String tag = fragment.getClass().getName();
-        Log.v("lhz","fu: " + tag);
         switch (type) {
             case FRAGMENT_ADD:
                 ft.add(frameId, fragment, tag);

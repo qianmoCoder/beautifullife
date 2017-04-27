@@ -35,13 +35,25 @@
             android:name=".ui.activity.ShareActivity"
             android:theme="@style/ShareStyle" />
 
+        <activity android:name=".ui.activity.WebActivity" />
+
         <activity
             android:name=".ui.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".ui.activity.LoginActivity1"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask">
+            <!--<intent-filter>-->
+                <!--<data android:scheme="etcp" />-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+            <!--</intent-filter>-->
+        </activity>
+
 
         <activity
             android:name=".ui.activity.LoginActivity2"
