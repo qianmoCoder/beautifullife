@@ -1,33 +1,32 @@
 package com.ddu.icore.ui.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 import com.ddu.icore.ui.help.ShapeInject;
 
-public class ShapeTextView extends AppCompatTextView {
+public class ShapeEditText extends AppCompatEditText {
 
     private ShapeInject mShapeInject;
 
-    public ShapeTextView(Context context) {
+    public ShapeEditText(Context context) {
         this(context, null);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.textViewStyle);
+    public ShapeEditText(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.editTextStyle);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setup(attrs);
     }
 
     private void setup(AttributeSet attrs) {
         mShapeInject = new ShapeInject(this);
-        mShapeInject.init(attrs, true);
+        mShapeInject.init(attrs, false);
     }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

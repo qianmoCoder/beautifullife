@@ -18,12 +18,13 @@
         android:background="@color/c_000000"
         android:orientation="vertical">
 
-        <com.ddu.icore.ui.view.ShapeTextView
-            android:id="@+id/text_test1"
+        <com.ddu.icore.ui.view.ShapeEditText
+            android:id="@+id/text_testset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
+            android:background="@null"
             android:padding="10dp"
             android:text="change text color"
             android:textColor="@color/c_ff0000"
@@ -31,6 +32,39 @@
             app:normalStrokeColor="@color/c_ff4141"
             app:normalStrokeWidth="1dp"
             app:radius="5dp" />
+
+
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/text_testsb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="change text color"
+            android:textColor="@color/c_ff0000"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:normalStrokeColor="@color/c_ff4141"
+            app:normalStrokeWidth="1dp"
+            app:radius="10dp"
+            app:shapeType="round" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/text_test1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="change text color"
+            android:textColor="@color/c_ff0000"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:normalStrokeColor="@color/c_ff4141"
+            app:normalStrokeWidth="1dp"
+            app:radius="5dp"
+            app:shapeType="segment" />
 
         <com.ddu.icore.ui.view.ShapeTextView
             android:id="@+id/text_test"
@@ -45,7 +79,8 @@
             app:normalBackgroundColor="@color/colorPrimary"
             app:normalTextColor="@android:color/white"
             app:pressedBackgroundColor="@color/colorPrimary"
-            app:pressedTextColor="@android:color/holo_red_light" />
+            app:pressedTextColor="@android:color/holo_red_light"
+            app:shapeType="oval" />
 
 
         <com.ddu.icore.ui.view.ShapeButton
@@ -59,7 +94,8 @@
             android:textColor="@android:color/white"
             app:disableBackgroundColor="@android:color/holo_red_light"
             app:normalBackgroundColor="@color/colorPrimary"
-            app:pressedBackgroundColor="@color/colorPrimaryDark" />
+            app:pressedBackgroundColor="@color/colorPrimaryDark"
+            app:shapeType="round_rect" />
 
 
         <com.ddu.icore.ui.view.ShapeTextView

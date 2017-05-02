@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.ui.view.ShapeTextView;
+import com.ddu.icore.ui.view.ShapeButton;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.ButterKnife;
@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 public class DrawFragment extends DefaultFragment {
 
     private Unbinder unbinder;
-    private ShapeTextView shapeTextView;
+    private ShapeButton shapeTextView;
 
     @NonNull
     public static DrawFragment newInstance(String taskId) {
@@ -44,7 +44,7 @@ public class DrawFragment extends DefaultFragment {
         shapeTextView = ViewUtils.findViewById(mView, R.id.different_radius_test);
 //        shapeTextView.setRadius(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
         int height = shapeTextView.getHeight();
-        shapeTextView.setSegmented(true);
+//        shapeTextView.getShapeInject().setSegmented(true);
     }
 
     @Override
