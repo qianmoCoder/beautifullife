@@ -179,7 +179,7 @@ public class LoanFragment extends DefaultFragment {
             }
         };
         recyclerView.setAdapter(defaultRecycleViewAdapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(baseActivity, DividerItemDecoration.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new DividerItemDecoration(baseActivity, DividerItemDecoration.VERTICAL));
         dialog.setContentView(view);
         dialog.setAnimation(R.style.BottomToTopAnim);
         dialog.showBottomView(true);

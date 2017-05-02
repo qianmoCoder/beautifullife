@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
 
 import com.ddu.R;
+import com.ddu.app.App;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.util.sys.DensityUtils;
+import com.ddu.ui.view.DividerItemDecoration;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -35,15 +39,25 @@ public class RecyclerViewFragment extends DefaultFragment {
         return R.layout.fragment_recycle_view;
     }
 
+    private LinearLayoutManager linearLayoutManager;
+
     @Override
     public void initView() {
         recyclerView = findViewById(R.id.rv_up);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        for (int position = 0; position < 7; position++)
-            localImages.add(getResId("ic_test_" + position, R.drawable.class));
+
+        App.getMainThreadHandler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int position = 0; position < 2; position++) {
+                    localImages.add(getResId("ic_test_" + position, R.drawable.class));
+                }
+                recyclerView.getAdapter().notifyDataSetChanged();
+            }
+        }, 2000);
 
         recyclerView.setAdapter(new DefaultRecycleViewAdapter<Integer>(mContext, localImages) {
 
@@ -53,35 +67,55 @@ public class RecyclerViewFragment extends DefaultFragment {
             }
 
             @Override
-            public void bindView(ViewHolder viewHolder, Integer data, int position) {
+            public void bindView(final ViewHolder viewHolder, Integer data, int position) {
+                DisplayMetrics display = getResources().getDisplayMetrics();
+                final int width = DensityUtils.dip2px(mContext, 20);
+                int w = display.widthPixels - width;
+                viewHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(w, ViewGroup.LayoutParams.MATCH_PARENT));
                 viewHolder.setImageResource(R.id.iv_up, data);
             }
         });
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setOnFlingListener(new RecyclerView.OnFlingListener() {
-            @Override
-            public boolean onFling(int velocityX, int velocityY) {
-                Log.v("lhz", "dx: " + velocityX + " dy: " + velocityY);
-                return false;
-            }
-        });
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            boolean mScrolled = false;
+
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                Log.v("lhz", "newState: " + newState);
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && mScrolled) {
+                    mScrolled = false;
+                }
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                Log.v("lhz", "dx: " + dx + " dy: " + dy);
+                super.onScrolled(recyclerView, dx, dy);
+                if (dx != 0 || dy != 0) {
+                    mScrolled = true;
+                }
             }
         });
+//        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
 
-//        PagerStartSnapHelper snapHelper = new PagerStartSnapHelper();
-//        PagerSnapHelper snapHelper = new PagerSnapHelper();
+//        LinearEndSnapHelper snapHelper = new LinearEndSnapHelper();
 //        snapHelper.attachToRecyclerView(recyclerView);
 
+    }
+
+
+    public int findLastItemPosition() {
+        return linearLayoutManager.findLastCompletelyVisibleItemPosition();
+    }
+
+    public boolean canScrollPullLeft() {
+        int lastChild = findLastItemPosition();
+        if (lastChild + 1 >= recyclerView.getAdapter().getItemCount()) {
+            return true;
+        }
+        return false;
     }
 
     public static int getResId(String variableName, @NonNull Class<?> c) {

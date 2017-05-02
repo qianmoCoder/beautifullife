@@ -8,7 +8,7 @@ import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.fragment.study.ui.DrawFragment;
+import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
 import com.ddu.util.NotificationUtils;
 
 /**
@@ -50,7 +50,7 @@ public class WorkFragment extends DefaultFragment {
 //                startActivity(intent);
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
-                startFragment(DrawFragment.class);
+                startFragment(RecyclerViewFragment.class);
 //                startActivity(new Intent(mContext, WebActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d

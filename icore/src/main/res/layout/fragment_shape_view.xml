@@ -26,7 +26,11 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="change text color"
-           />
+            android:textColor="@color/c_ff0000"
+            app:normalBackgroundColor="@color/colorPrimary"
+            app:normalStrokeColor="@color/c_ff4141"
+            app:normalStrokeWidth="1dp"
+            app:radius="5dp" />
 
         <com.ddu.icore.ui.view.ShapeTextView
             android:id="@+id/text_test"
@@ -37,11 +41,11 @@
             android:padding="10dp"
             android:text="change text color"
             app:disableBackgroundColor="@color/colorPrimary"
-            app:disableColor="@android:color/holo_orange_dark"
+            app:disableTextColor="@android:color/holo_orange_dark"
             app:normalBackgroundColor="@color/colorPrimary"
-            app:normalColor="@android:color/white"
+            app:normalTextColor="@android:color/white"
             app:pressedBackgroundColor="@color/colorPrimary"
-            app:pressedColor="@android:color/holo_red_light" />
+            app:pressedTextColor="@android:color/holo_red_light" />
 
 
         <com.ddu.icore.ui.view.ShapeButton
@@ -108,15 +112,15 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="with dash"
-            app:disableColor="@android:color/holo_orange_dark"
             app:disableStrokeColor="@android:color/holo_orange_dark"
             app:disableStrokeWidth="2dp"
-            app:normalColor="@android:color/white"
+            app:disableTextColor="@android:color/holo_orange_dark"
             app:normalStrokeColor="@android:color/white"
             app:normalStrokeWidth="2dp"
-            app:pressedColor="@android:color/holo_red_light"
+            app:normalTextColor="@android:color/white"
             app:pressedStrokeColor="@android:color/holo_red_light"
             app:pressedStrokeWidth="2dp"
+            app:pressedTextColor="@android:color/holo_red_light"
             app:radius="5dp"
             app:strokeDashGap="5dp"
             app:strokeDashWidth="5dp" />
@@ -129,15 +133,15 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="with stroke"
-            app:disableColor="@android:color/holo_orange_dark"
             app:disableStrokeColor="@android:color/holo_orange_dark"
             app:disableStrokeWidth="2dp"
-            app:normalColor="@android:color/white"
+            app:disableTextColor="@android:color/holo_orange_dark"
             app:normalStrokeColor="@android:color/white"
             app:normalStrokeWidth="2dp"
-            app:pressedColor="@android:color/holo_red_light"
+            app:normalTextColor="@android:color/white"
             app:pressedStrokeColor="@android:color/holo_red_light"
             app:pressedStrokeWidth="2dp"
+            app:pressedTextColor="@android:color/holo_red_light"
             app:radius="5dp" />
 
         <com.ddu.icore.ui.view.ShapeButton
@@ -148,13 +152,13 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="keep stroke"
-            app:normalColor="@android:color/white"
             app:normalStrokeColor="@android:color/white"
             app:normalStrokeWidth="2dp"
+            app:normalTextColor="@android:color/white"
             app:pressedBackgroundColor="@color/colorPrimaryDark"
-            app:pressedColor="@android:color/white"
             app:pressedStrokeColor="@android:color/white"
             app:pressedStrokeWidth="2dp"
+            app:pressedTextColor="@android:color/white"
             app:radius="5dp" />
 
         <com.ddu.icore.ui.view.ShapeButton
@@ -165,11 +169,11 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="stroke_background"
-            app:normalColor="@android:color/white"
             app:normalStrokeColor="@android:color/white"
             app:normalStrokeWidth="2dp"
+            app:normalTextColor="@android:color/white"
             app:pressedBackgroundColor="@color/colorPrimaryDark"
-            app:pressedColor="@android:color/white"
+            app:pressedTextColor="@android:color/white"
             app:radius="5dp" />
 
         <com.ddu.icore.ui.view.ShapeButton
@@ -181,11 +185,11 @@
             android:padding="10dp"
             android:text="stroke_background_animation"
             app:animationDuration="200"
-            app:normalColor="@android:color/white"
             app:normalStrokeColor="@android:color/white"
             app:normalStrokeWidth="2dp"
+            app:normalTextColor="@android:color/white"
             app:pressedBackgroundColor="@color/colorPrimaryDark"
-            app:pressedColor="@android:color/white"
+            app:pressedTextColor="@android:color/white"
             app:radius="5dp" />
     </LinearLayout>
 

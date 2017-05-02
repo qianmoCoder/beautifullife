@@ -10,6 +10,6 @@
         android:layout_height="@dimen/dp_150"
         android:layout_marginTop="@dimen/dp_32"
         android:clipToPadding="false"
-        android:paddingRight="@dimen/dp_30" />
+        android:fitsSystemWindows="true" />
 
 </RelativeLayout>

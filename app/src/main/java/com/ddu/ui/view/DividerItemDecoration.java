@@ -21,7 +21,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public static final int HORIZONTAL = LinearLayout.HORIZONTAL;
     public static final int VERTICAL = LinearLayout.VERTICAL;
 
-    private static final int[] ATTRS = new int[]{ android.R.attr.listDivider };
+    private static final int[] ATTRS = new int[]{android.R.attr.listDivider};
 
     private Drawable mDivider;
 
@@ -36,7 +36,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
      * Creates a divider {@link RecyclerView.ItemDecoration} that can be used with a
      * {@link LinearLayoutManager}.
      *
-     * @param context Current context, it will be used to access resources.
+     * @param context     Current context, it will be used to access resources.
      * @param orientation Divider orientation. Should be {@link #HORIZONTAL} or {@link #VERTICAL}.
      */
     public DividerItemDecoration(Context context, int orientation) {
@@ -141,10 +141,16 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                RecyclerView.State state) {
+//        int position = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
+        int position = parent.getChildAdapterPosition(view);
         if (mOrientation == VERTICAL) {
             outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
         } else {
-            outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
+            if (position < parent.getLayoutManager().getItemCount() - 1) {
+                outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
+            } else {
+                outRect.set(0, 0, 0, 0);
+            }
         }
     }
 }
