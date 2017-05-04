@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -56,7 +57,7 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             mDatas.add("i - " + i);
         }
     }
@@ -74,7 +75,9 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
         mSrlSwipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
+        mRvSwipeRefresh.setHasFixedSize(true);
         mRvSwipeRefresh.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvSwipeRefresh.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new DefaultRecycleViewAdapter<String>(mContext, mDatas) {
             @Override
             public int getLayoutId(int viewType) {

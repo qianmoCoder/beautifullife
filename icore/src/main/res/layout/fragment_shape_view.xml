@@ -18,6 +18,18 @@
         android:background="@color/c_000000"
         android:orientation="vertical">
 
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/text_testsb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="change text color"
+            android:textColor="@color/c_ff0000"
+            app:normalBackgroundColor="@color/colorPrimary" />
+
         <com.ddu.icore.ui.view.ShapeEditText
             android:id="@+id/text_testset"
             android:layout_width="wrap_content"
@@ -107,10 +119,12 @@
             android:padding="10dp"
             android:text="with radius"
             android:textColor="@android:color/white"
+            app:direction="right"
             app:disableBackgroundColor="@android:color/holo_red_light"
             app:normalBackgroundColor="@color/colorPrimary"
             app:pressedBackgroundColor="@color/colorPrimaryDark"
-            app:radius="5dp" />
+            app:radius="5dp"
+            app:shapeType="segment" />
 
         <com.ddu.icore.ui.view.ShapeButton
             android:id="@+id/round_test"
@@ -124,8 +138,7 @@
             app:disableBackgroundColor="@android:color/holo_red_light"
             app:normalBackgroundColor="@color/colorPrimary"
             app:pressedBackgroundColor="@color/colorPrimaryDark"
-            app:radius="2dp"
-            app:round="true" />
+            app:radius="2dp" />
 
         <com.ddu.icore.ui.view.ShapeButton
             android:id="@+id/different_radius_test"

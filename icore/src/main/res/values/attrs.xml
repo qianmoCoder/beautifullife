@@ -125,8 +125,6 @@
         <attr name="disableBackgroundColor" format="color|reference" />
 
         <attr name="radius" format="dimension|reference" />
-        <attr name="round" format="boolean|reference" />
-        <attr name="segmented" format="boolean|reference" />
 
         <attr name="animationDuration" format="integer|reference" />
 
@@ -135,6 +133,11 @@
             <enum name="round" value="0x02" />
             <enum name="round_rect" value="0x04" />
             <enum name="segment" value="0x08" />
+        </attr>
+
+        <attr name="direction">
+            <enum name="left" value="0x0010" />
+            <enum name="right" value="0x0020" />
         </attr>
 
     </declare-styleable>

@@ -20,6 +20,14 @@ import com.ddu.icore.R;
 
 public class ShapeInject {
 
+    public static int OVAL = 0x01;
+    public static int ROUND = 0x02;
+    public static int ROUND_RECT = 0x04;
+    public static int SEGMENT = 0x08;
+
+    public static int DIRECTION_LEFT = 0x0010;
+    public static int DIRECTION_RIGHT = 0x0020;
+
     private int mNormalTextColor = 0;
     private int mPressedTextColor = 0;
     private int mDisableTextColor = 0;
@@ -38,10 +46,7 @@ public class ShapeInject {
     //radius
     private float mRadius = 0;
 
-    public static int OVAL = 0x01;
-    public static int ROUND = 0x02;
-    public static int ROUND_RECT = 0x04;
-    public static int SEGMENT = 0x08;
+    private int direction = DIRECTION_LEFT;
 
     private int shapeTypeNull = 0x00;
     private int shapeType = shapeTypeNull;
@@ -137,6 +142,7 @@ public class ShapeInject {
             mDisableBackground.setCornerRadius(mRadius);
 
             shapeType = a.getInt(R.styleable.ShapeView_shapeType, shapeTypeNull);
+            direction = a.getInt(R.styleable.ShapeView_direction, DIRECTION_LEFT);
 
             //set stroke
             mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
@@ -261,11 +267,18 @@ public class ShapeInject {
     }
 
     public void setSegmented() {
+        setSegmented(direction);
+    }
+
+    public void setSegmented(final int direction) {
         mTextView.post(new Runnable() {
             @Override
             public void run() {
                 float radius = mTextView.getMeasuredHeight();
                 float[] radii = new float[]{radius, radius, 0, 0, 0, 0, radius, radius};
+                if (direction == DIRECTION_RIGHT) {
+                    radii = new float[]{0, 0, radius, radius, radius, radius, 0, 0};
+                }
                 setRadius(radii);
             }
         });
@@ -352,5 +365,13 @@ public class ShapeInject {
 
     public void setShapeType(int shapeType) {
         this.shapeType = shapeType;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 }
