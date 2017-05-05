@@ -1,12 +1,15 @@
 package com.ddu.icore.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.ddu.icore.R;
+import com.ddu.icore.refresh.PullToRefreshBase;
+import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
-import com.ddu.icore.util.sys.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +18,19 @@ import java.util.List;
  * Created by yzbzz on 2017/4/19.
  */
 
-public abstract class AbstractRecylerViewFragment<D, A extends DefaultRecycleViewAdapter> extends DefaultFragment {
+public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleViewAdapter> extends DefaultFragment {
 
+    protected PullToRefreshScrollView mPullToRefreshScrollView;
+
+    protected TextView mTvDescription;
     protected RecyclerView mRvDefault;
     protected LinearLayoutManager mLinearLayoutManager;
 
     protected List<D> mDataEntities = new ArrayList<>();
 
     protected A mAdapter;
+
+    protected PullToRefreshBase.Mode mMode;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -36,14 +44,34 @@ public abstract class AbstractRecylerViewFragment<D, A extends DefaultRecycleVie
 
     @Override
     public void initView() {
-        mRvDefault = ViewUtils.findViewById(mView, R.id.rl_default);
+
+        mPullToRefreshScrollView = findViewById(R.id.default_refresh_view);
+        mTvDescription = findViewById(R.id.tv_description);
+
         mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        mRvDefault = findViewById(R.id.rl_default);
         mRvDefault.setLayoutManager(mLinearLayoutManager);
         mRvDefault.setHasFixedSize(true);
         mRvDefault.setNestedScrollingEnabled(false);
+        mRvDefault.addItemDecoration(getItemDecoration());
 
         mAdapter = getAdapter();
         mRvDefault.setAdapter(mAdapter);
+
+        initRefreshView();
+        mMode = mPullToRefreshScrollView.getMode();
+    }
+
+    public void initRefreshView() {
+    }
+
+
+    public RecyclerView.ItemDecoration getItemDecoration() {
+        return new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
+    }
+
+    public TextView getTvDescription() {
+        return mTvDescription;
     }
 
     public abstract A getAdapter();

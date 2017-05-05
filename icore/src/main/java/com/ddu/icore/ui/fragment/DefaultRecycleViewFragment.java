@@ -13,7 +13,7 @@ import java.util.List;
  * Created by yzbzz on 2017/4/19.
  */
 
-public abstract class DefaultRecylerViewFragment<E extends BaseEntity, D, A extends DefaultRecycleViewAdapter> extends AbstractRecylerViewFragment<D, A> {
+public abstract class DefaultRecycleViewFragment<E extends BaseEntity, D, A extends DefaultRecycleViewAdapter> extends AbstractRecycleViewFragment<D, A> {
 
     protected E mEntity;
 

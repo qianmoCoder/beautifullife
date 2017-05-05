@@ -1,28 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
-  ~ @项目名称: ETCP停车
-  ~ @文件名称: activity_capture.xml
-  ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
-  ~ 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
-  -->
-
-
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ddu.icore.refresh.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/default_refresh_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/c_f3f3f3"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:scrollbars="none"
+    app:ptrAnimationStyle="flip">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:padding="@dimen/dp_6"
+            android:text="已完成支付记录"
+            android:textColor="@color/c_666666"
+            android:textSize="@dimen/dp_16"
+            android:visibility="gone" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rl_default"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_description">
 
         </android.support.v7.widget.RecyclerView>
     </RelativeLayout>
 
-</merge>
+</com.ddu.icore.refresh.PullToRefreshScrollView>

@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ @项目名称: ETCP停车
-  ~ @文件名称: dialog_corners_bg.xml
-  ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
-  ~ 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
-  -->
-
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 填充色 -->
     <solid android:color="@color/c_ffffff" />
