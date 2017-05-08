@@ -9,6 +9,8 @@ import com.ddu.icore.refresh.internal.RotateLoadingLayout;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
+import com.ddu.ui.view.FooterView;
+import com.ddu.ui.view.HeaderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,8 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void initRefreshView() {
-//        mPullToRefreshScrollView.setHeaderView(new HeaderView(mContext, mPullToRefreshScrollView));
-//        mPullToRefreshScrollView.setFooterView(new FooterView(mContext, mPullToRefreshScrollView));
+        mPullToRefreshScrollView.setHeader(new HeaderView(mContext, mPullToRefreshScrollView));
+        mPullToRefreshScrollView.setFooter(new FooterView(mContext, mPullToRefreshScrollView));
         mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.BOTH);
         mPullToRefreshScrollView.setOnRefreshListener(this);
     }

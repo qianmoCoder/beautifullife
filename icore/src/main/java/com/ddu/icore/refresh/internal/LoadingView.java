@@ -1,5 +1,6 @@
 package com.ddu.icore.refresh.internal;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,19 +19,19 @@ public abstract class LoadingView {
     }
 
     public final int getContentSize(PullToRefreshBase.Orientation direction) {
-        int size;
-        switch (direction) {
-            case HORIZONTAL:
-                size = mView.getWidth();
-                break;
-            case VERTICAL:
-                size = mView.getHeight();
-                break;
-            default:
-                size = mView.getHeight();
-                break;
-        }
-        return size;
+//        int size;
+//        switch (direction) {
+//            case HORIZONTAL:
+//                size = mView.getContentSize();
+//                break;
+//            case VERTICAL:
+//            default:
+//                size = mView.getHeight();
+//                break;
+//        }
+        Log.v("lhz","mView: " + mView.getHeight());
+        Log.v("lhz","mView s: " + mView.getContentSize());
+        return mView.getContentSize();
     }
 
 

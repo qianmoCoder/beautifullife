@@ -25,8 +25,6 @@ public class RotateLoadingLayout extends LoadingLayout {
     public RotateLoadingLayout(Context context, Mode mode, Orientation scrollDirection) {
         super(context, mode, scrollDirection);
 
-//		mRotateDrawableWhilePulling = attrs.getBoolean(R.styleable.PullToRefresh_ptrRotateDrawableWhilePulling, true);
-
         mHeaderImage.setScaleType(ScaleType.MATRIX);
         mHeaderImageMatrix = new Matrix();
         mHeaderImage.setImageMatrix(mHeaderImageMatrix);

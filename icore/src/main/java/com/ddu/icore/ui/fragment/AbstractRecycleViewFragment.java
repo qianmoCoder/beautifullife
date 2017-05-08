@@ -31,6 +31,7 @@ public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleVie
     protected A mAdapter;
 
     protected PullToRefreshBase.Mode mMode;
+    protected RecyclerView.ItemDecoration mItemDecoration;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -53,7 +54,12 @@ public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleVie
         mRvDefault.setLayoutManager(mLinearLayoutManager);
         mRvDefault.setHasFixedSize(true);
         mRvDefault.setNestedScrollingEnabled(false);
-        mRvDefault.addItemDecoration(getItemDecoration());
+
+        mItemDecoration = getItemDecoration();
+
+        if (null != mItemDecoration) {
+            mRvDefault.addItemDecoration(getItemDecoration());
+        }
 
         mAdapter = getAdapter();
         mRvDefault.setAdapter(mAdapter);
