@@ -28,7 +28,8 @@
             android:padding="10dp"
             android:text="change text color"
             android:textColor="@color/c_ff0000"
-            app:normalBackgroundColor="@color/colorPrimary" />
+            app:normalBackgroundColor="@color/c_46b942"
+            app:shapeType="segment" />
 
         <com.ddu.icore.ui.view.ShapeEditText
             android:id="@+id/text_testset"
