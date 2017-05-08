@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.ddu.R;
 import com.ddu.app.App;
 import com.ddu.icore.refresh.PullToRefreshBase;
+import com.ddu.icore.refresh.internal.RotateLoadingLayout;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class DRVFragment extends AbstractRecycleViewFragment implements PullToRefreshBase.OnRefreshListener2 {
 
+    private RotateLoadingLayout rotateLoadingLayout;
     private List<String> mDatas = new ArrayList<>();
 
     @Override
@@ -45,6 +47,8 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void initRefreshView() {
+//        mPullToRefreshScrollView.setHeaderView(new HeaderView(mContext, mPullToRefreshScrollView));
+//        mPullToRefreshScrollView.setFooterView(new FooterView(mContext, mPullToRefreshScrollView));
         mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.BOTH);
         mPullToRefreshScrollView.setOnRefreshListener(this);
     }

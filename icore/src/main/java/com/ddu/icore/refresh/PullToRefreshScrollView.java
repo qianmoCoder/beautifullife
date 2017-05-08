@@ -17,13 +17,6 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
         super(context, attrs);
     }
 
-    public PullToRefreshScrollView(Context context, Mode mode) {
-        super(context, mode);
-    }
-
-    public PullToRefreshScrollView(Context context, Mode mode, AnimationStyle style) {
-        super(context, mode, style);
-    }
 
     @Override
     public final Orientation getPullToRefreshScrollDirection() {
