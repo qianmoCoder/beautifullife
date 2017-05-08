@@ -15,10 +15,10 @@ import android.webkit.WebView;
 
 import com.ddu.R;
 import com.ddu.icore.aidl.GodIntent;
+import com.ddu.icore.common.IObserver;
+import com.ddu.icore.common.ObserverManager;
+import com.ddu.icore.logic.Actions;
 import com.ddu.icore.util.UrlUtils;
-import com.ddu.logic.common.LogicActions;
-import com.ddu.logic.common.ObserverManager;
-import com.ddu.logic.common.UIObserver;
 
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 
 
-public class WebActivity extends Activity implements UIObserver {
+public class WebActivity extends Activity implements IObserver<GodIntent> {
 
 
     private WebView webView;
@@ -148,7 +148,7 @@ public class WebActivity extends Activity implements UIObserver {
 
     @Override
     public void registerObserver() {
-        ObserverManager.getInstance().registerObserver(LogicActions.TEST_ACTION, this);
+        ObserverManager.getInstance().registerObserver(Actions.TEST_ACTION, this);
     }
 
     @Override

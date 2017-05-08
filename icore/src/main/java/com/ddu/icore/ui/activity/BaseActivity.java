@@ -16,13 +16,13 @@ import android.widget.TextView;
 
 import com.ddu.icore.R;
 import com.ddu.icore.aidl.GodIntent;
-import com.ddu.icore.common.BaseObserver;
+import com.ddu.icore.common.IObserver;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.navigation.Navigator;
 import com.ddu.icore.ui.view.TitleBar;
 import com.ddu.icore.util.sys.ViewUtils;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseObserver {
+public abstract class BaseActivity extends AppCompatActivity implements IObserver<GodIntent> {
 
     protected Context mContext;
     protected Application mApplication;
@@ -44,9 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseObse
         mContext = this;
         mApplication = getApplication();
         mApplicationContext = getApplicationContext();
-
         mLayoutInflater = LayoutInflater.from(mContext);
-
         registerObserver();
     }
 
@@ -78,10 +76,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseObse
 
     @Override
     public void registerObserver() {
+
     }
 
     @Override
     public void onReceiverNotify(GodIntent godIntent) {
+
     }
 
     @Override

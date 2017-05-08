@@ -17,7 +17,7 @@ public class MultiHashMap<K, V> {
     }
 
     public MultiHashMap(int capacity) {
-        model = new LinkedHashMap<K, ArrayList<V>>(capacity < 8 ? 8 : capacity);
+        model = new LinkedHashMap<>(capacity < 8 ? 8 : capacity);
     }
 
     public void clear() {
@@ -72,11 +72,6 @@ public class MultiHashMap<K, V> {
         }
     }
 
-    /**
-     * 低效率, 需要遍历
-     *
-     * @param val
-     */
     public void removeValue(V val) {
         for (Map.Entry<K, ArrayList<V>> e : model.entrySet()) {
             ArrayList<V> ls = e.getValue();

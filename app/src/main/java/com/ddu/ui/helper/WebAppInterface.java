@@ -7,8 +7,8 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 
 import com.ddu.icore.aidl.GodIntent;
-import com.ddu.logic.common.LogicActions;
-import com.ddu.logic.common.ObserverManager;
+import com.ddu.icore.common.ObserverManager;
+import com.ddu.icore.logic.Actions;
 
 import org.json.JSONObject;
 
@@ -29,11 +29,11 @@ public class WebAppInterface {
             JSONObject jsonString = new JSONObject(json);
             String callback = jsonString.getString("callback");
             GodIntent godIntent = new GodIntent();
-            godIntent.setAction(LogicActions.TEST_ACTION);
+            godIntent.setAction(Actions.TEST_ACTION);
             Bundle bundle = new Bundle();
             bundle.putString("method",callback);
             godIntent.setBundle(bundle);
-            ObserverManager.getInstance().notifyUi(godIntent);
+            ObserverManager.getInstance().notify(godIntent);
         } catch (Exception e) {
 
         }

@@ -13,7 +13,6 @@ import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.sys.DensityUtils;
-import com.ddu.ui.view.DividerItemDecoration;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class RecyclerViewFragment extends DefaultFragment {
         App.getMainThreadHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                for (int position = 0; position < 2; position++) {
+                for (int position = 0; position < 7; position++) {
                     localImages.add(getResId("ic_test_" + position, R.drawable.class));
                 }
                 recyclerView.getAdapter().notifyDataSetChanged();
@@ -77,32 +76,12 @@ public class RecyclerViewFragment extends DefaultFragment {
         });
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            boolean mScrolled = false;
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && mScrolled) {
-                    mScrolled = false;
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (dx != 0 || dy != 0) {
-                    mScrolled = true;
-                }
-            }
-        });
+//        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
 //        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
-
 //        LinearEndSnapHelper snapHelper = new LinearEndSnapHelper();
 //        snapHelper.attachToRecyclerView(recyclerView);
-
+//        LinearEndSnapHelper snapHelper = new LinearEndSnapHelper();
+//        snapHelper.attachToRecyclerView(recyclerView);
     }
 
 

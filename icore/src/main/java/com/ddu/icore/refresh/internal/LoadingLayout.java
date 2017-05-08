@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
@@ -21,7 +20,7 @@ import com.ddu.icore.R;
 import com.ddu.icore.refresh.PullToRefreshBase.Mode;
 import com.ddu.icore.refresh.PullToRefreshBase.Orientation;
 
-public abstract class LoadingLayout extends FrameLayout implements ILoadingLayout {
+public abstract class LoadingLayout extends LoadingView implements ILoadingLayout {
 
     static final String LOG_TAG = "PullToRefresh-LoadingLayout";
 
@@ -97,20 +96,9 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
         reset();
     }
 
-    public final void setHeight(int height) {
-        ViewGroup.LayoutParams lp = getLayoutParams();
-        lp.height = height;
-        requestLayout();
-    }
-
-    public final void setWidth(int width) {
-        ViewGroup.LayoutParams lp = getLayoutParams();
-        lp.width = width;
-        requestLayout();
-    }
-
-    public final int getContentSize() {
-        switch (mScrollDirection) {
+    @Override
+    public int getContentSize(Orientation direction) {
+        switch (direction) {
             case HORIZONTAL:
                 return mInnerLayout.getWidth();
             case VERTICAL:
@@ -305,4 +293,8 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
         }
     }
 
+    @Override
+    public View getLoadingView() {
+        return this;
+    }
 }

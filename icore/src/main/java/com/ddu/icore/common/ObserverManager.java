@@ -4,7 +4,6 @@ package com.ddu.icore.common;
 import android.support.annotation.NonNull;
 
 import com.ddu.icore.aidl.GodIntent;
-import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.util.MultiHashMap;
 
 import java.lang.ref.WeakReference;
@@ -18,9 +17,7 @@ import java.util.Set;
 public class ObserverManager {
 
     @NonNull
-    private MultiHashMap<Integer, WeakReference<BaseObserver>> observers = new MultiHashMap<>();
-    @NonNull
-    private MultiHashMap<Integer, WeakReference<BaseObserver>> listeners = new MultiHashMap<>();
+    private MultiHashMap<Integer, WeakReference<IObserver>> observers = new MultiHashMap<>();
 
     @NonNull
     public static ObserverManager getInstance() {
@@ -32,23 +29,23 @@ public class ObserverManager {
         private static ObserverManager instance = new ObserverManager();
     }
 
-    public void registerObserver(int action, BaseObserver observer) {
+    public void registerObserver(int action, IObserver observer) {
         synchronized (observers) {
             observers.put(action, new WeakReference<>(observer));
         }
     }
 
-    public void unRegisterObserver(BaseObserver observer) {
+    public void unRegisterObserver(IObserver observer) {
         synchronized (observers) {
-            Set<Map.Entry<Integer, ArrayList<WeakReference<BaseObserver>>>> entrySet = observers.entrySet();
-            for (Map.Entry<Integer, ArrayList<WeakReference<BaseObserver>>> entry : entrySet) {
-                ArrayList<WeakReference<BaseObserver>> list = entry.getValue();
+            Set<Map.Entry<Integer, ArrayList<WeakReference<IObserver>>>> entrySet = observers.entrySet();
+            for (Map.Entry<Integer, ArrayList<WeakReference<IObserver>>> entry : entrySet) {
+                ArrayList<WeakReference<IObserver>> list = entry.getValue();
                 if (list == null || list.size() == 0) {
                     continue;
                 }
-                Iterator<WeakReference<BaseObserver>> iterator = list.iterator();
+                Iterator<WeakReference<IObserver>> iterator = list.iterator();
                 while (iterator.hasNext()) {
-                    WeakReference<BaseObserver> uiObserver = iterator.next();
+                    WeakReference<IObserver> uiObserver = iterator.next();
                     if (observer == uiObserver.get()) {
                         iterator.remove();
                     }
@@ -57,15 +54,15 @@ public class ObserverManager {
         }
     }
 
-    public void unRegisterObserver(int action, BaseObserver observer) {
+    public void unRegisterObserver(int action, IObserver observer) {
         synchronized (observers) {
-            ArrayList<WeakReference<BaseObserver>> list = observers.get(action);
+            ArrayList<WeakReference<IObserver>> list = observers.get(action);
             if (list == null || list.size() == 0) {
                 return;
             }
-            Iterator<WeakReference<BaseObserver>> iterator = list.iterator();
+            Iterator<WeakReference<IObserver>> iterator = list.iterator();
             while (iterator.hasNext()) {
-                WeakReference<BaseObserver> uiObserver = iterator.next();
+                WeakReference<IObserver> uiObserver = iterator.next();
                 if (observer == uiObserver.get()) {
                     iterator.remove();
                 }
@@ -75,48 +72,19 @@ public class ObserverManager {
 
     public void notify(@NonNull GodIntent godIntent) {
         int action = godIntent.getAction();
-        final GodIntent intent = godIntent;
-        ArrayList<WeakReference<BaseObserver>> listeners = observers.get(action);
-        if (null == listeners || listeners.size() == 0) {
-            return;
-        }
-        listeners.removeAll(Collections.singleton(null));
-        for (WeakReference<BaseObserver> weakListener : listeners) {
-            final BaseObserver listener = weakListener.get();
-            if (listener != null) {
-                BaseApp.post(new Runnable() {
-                    public void run() {
-                        try {
-                            listener.onReceiverNotify(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }
+        notify(action);
     }
 
-    public void notifyAll(int action) {
-        final GodIntent godIntent = new GodIntent();
-        godIntent.setAction(action);
-        ArrayList<WeakReference<BaseObserver>> listeners = observers.get(action);
+    public void notify(int action) {
+        ArrayList<WeakReference<IObserver>> listeners = observers.get(action);
         if (null == listeners || listeners.size() == 0) {
             return;
         }
         listeners.removeAll(Collections.singleton(null));
-        for (WeakReference<BaseObserver> weakListener : listeners) {
-            final BaseObserver listener = weakListener.get();
+        for (WeakReference<IObserver> weakListener : listeners) {
+            final IObserver listener = weakListener.get();
             if (listener != null) {
-                BaseApp.post(new Runnable() {
-                    public void run() {
-                        try {
-                            listener.onReceiverNotify(godIntent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                listener.onReceiverNotify(action);
             }
         }
     }

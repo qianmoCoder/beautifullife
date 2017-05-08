@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ @项目名称: ETCP停车
   ~ @文件名称: ids.xml
   ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
@@ -8,8 +7,10 @@
 
 <resources>
 
-    <item type="id" name="gridview" />
-    <item type="id" name="webview" />
-    <item type="id" name="scrollview" />
+    <item name="gridview" type="id" />
+    <item name="webview" type="id" />
+    <item name="scrollview" type="id" />
+
+    <item name="refresh_loading_view" type="id" />
 
 </resources>

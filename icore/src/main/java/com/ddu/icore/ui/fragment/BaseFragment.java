@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ddu.icore.aidl.GodIntent;
-import com.ddu.icore.common.BaseObserver;
+import com.ddu.icore.common.IObserver;
 import com.ddu.icore.common.ObserverManager;
 
 
-public abstract class BaseFragment extends Fragment implements BaseObserver {
+public abstract class BaseFragment extends Fragment implements IObserver<GodIntent> {
 
     @Nullable
     protected View mRootView;
