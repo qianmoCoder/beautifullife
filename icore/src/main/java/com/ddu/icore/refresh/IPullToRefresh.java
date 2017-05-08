@@ -3,7 +3,6 @@ package com.ddu.icore.refresh;
 import android.view.View;
 import android.view.animation.Interpolator;
 
-import com.ddu.icore.refresh.internal.ILoadingLayout;
 import com.ddu.icore.refresh.PullToRefreshBase.Mode;
 import com.ddu.icore.refresh.PullToRefreshBase.OnPullEventListener;
 import com.ddu.icore.refresh.PullToRefreshBase.OnRefreshListener;
@@ -41,34 +40,6 @@ public interface IPullToRefresh<T extends View> {
      * @return boolean - true if the View is filtering Touch Events
      */
     boolean getFilterTouchEvents();
-
-    /**
-     * Returns a proxy object which allows you to call methods on all of the
-     * LoadingLayouts (the Views which show when Pulling/Refreshing).
-     * <p/>
-     * You should not keep the result of this method any longer than you need
-     * it.
-     *
-     * @return Object which will proxy any calls you make on it, to all of the
-     * LoadingLayouts.
-     */
-    ILoadingLayout getLoadingLayoutProxy();
-
-    /**
-     * Returns a proxy object which allows you to call methods on the
-     * LoadingLayouts (the Views which show when Pulling/Refreshing). The actual
-     * LoadingLayout(s) which will be affected, are chosen by the parameters you
-     * give.
-     * <p/>
-     * You should not keep the result of this method any longer than you need
-     * it.
-     *
-     * @param includeStart - Whether to include the Start/Header Views
-     * @param includeEnd   - Whether to include the End/Footer Views
-     * @return Object which will proxy any calls you make on it, to the
-     * LoadingLayouts included.
-     */
-    ILoadingLayout getLoadingLayoutProxy(boolean includeStart, boolean includeEnd);
 
     /**
      * Get the mode that this view has been set to. If this returns

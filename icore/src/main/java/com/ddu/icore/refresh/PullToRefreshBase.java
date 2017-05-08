@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 
 import com.ddu.icore.R;
 import com.ddu.icore.refresh.internal.FlipLoadingLayout;
-import com.ddu.icore.refresh.internal.ILoadingLayout;
 import com.ddu.icore.refresh.internal.LoadingLayout;
 import com.ddu.icore.refresh.internal.RotateLoadingLayout;
 
@@ -149,16 +148,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     @Override
     public final boolean getFilterTouchEvents() {
         return mFilterTouchEvents;
-    }
-
-    @Override
-    public final ILoadingLayout getLoadingLayoutProxy() {
-        return getLoadingLayoutProxy(true, true);
-    }
-
-    @Override
-    public final ILoadingLayout getLoadingLayoutProxy(boolean includeStart, boolean includeEnd) {
-        return createLoadingLayoutProxy(includeStart, includeEnd);
     }
 
     @Override
@@ -375,31 +364,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         mFilterTouchEvents = filterEvents;
     }
 
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy()}.
-     */
-    public void setLastUpdatedLabel(CharSequence label) {
-        getLoadingLayoutProxy().setLastUpdatedLabel(label);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy()}.
-     */
-    public void setLoadingDrawable(Drawable drawable) {
-        getLoadingLayoutProxy().setLoadingDrawable(drawable);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy(boolean, boolean)}.
-     */
-    public void setLoadingDrawable(Drawable drawable, Mode mode) {
-        getLoadingLayoutProxy(mode.showHeaderLoadingLayout(), mode.showFooterLoadingLayout()).setLoadingDrawable(
-                drawable);
-    }
-
     @Override
     public void setLongClickable(boolean longClickable) {
         getRefreshableView().setLongClickable(longClickable);
@@ -433,22 +397,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy()}.
-     */
-    public void setPullLabel(CharSequence pullLabel) {
-        getLoadingLayoutProxy().setPullLabel(pullLabel);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy(boolean, boolean)}.
-     */
-    public void setPullLabel(CharSequence pullLabel, Mode mode) {
-        getLoadingLayoutProxy(mode.showHeaderLoadingLayout(), mode.showFooterLoadingLayout()).setPullLabel(pullLabel);
-    }
-
-    /**
      * @param enable Whether Pull-To-Refresh should be used
      * @deprecated This simple calls setMode with an appropriate mode based on
      * the passed value.
@@ -472,40 +420,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         if (!isRefreshing()) {
             setState(State.MANUAL_REFRESHING, doScroll);
         }
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy()}.
-     */
-    public void setRefreshingLabel(CharSequence refreshingLabel) {
-        getLoadingLayoutProxy().setRefreshingLabel(refreshingLabel);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy(boolean, boolean)}.
-     */
-    public void setRefreshingLabel(CharSequence refreshingLabel, Mode mode) {
-        getLoadingLayoutProxy(mode.showHeaderLoadingLayout(), mode.showFooterLoadingLayout()).setRefreshingLabel(
-                refreshingLabel);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy()}.
-     */
-    public void setReleaseLabel(CharSequence releaseLabel) {
-        setReleaseLabel(releaseLabel, Mode.BOTH);
-    }
-
-    /**
-     * @deprecated You should now call this method on the result of
-     * {@link #getLoadingLayoutProxy(boolean, boolean)}.
-     */
-    public void setReleaseLabel(CharSequence releaseLabel, Mode mode) {
-        getLoadingLayoutProxy(mode.showHeaderLoadingLayout(), mode.showFooterLoadingLayout()).setReleaseLabel(
-                releaseLabel);
     }
 
     public void setScrollAnimationInterpolator(Interpolator interpolator) {
@@ -568,30 +482,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      */
     protected final void addViewInternal(View child, ViewGroup.LayoutParams params) {
         super.addView(child, -1, params);
-    }
-
-    protected LoadingLayout createLoadingLayout(Context context, Mode mode, TypedArray attrs) {
-        LoadingLayout layout = mLoadingAnimationStyle.createLoadingLayout(context, mode,
-                getPullToRefreshScrollDirection(), attrs);
-        layout.setVisibility(View.INVISIBLE);
-        return layout;
-    }
-
-    /**
-     * Used internally for {@link #getLoadingLayoutProxy(boolean, boolean)}.
-     * Allows derivative classes to include any extra LoadingLayouts.
-     */
-    protected LoadingLayoutProxy createLoadingLayoutProxy(final boolean includeStart, final boolean includeEnd) {
-        LoadingLayoutProxy proxy = new LoadingLayoutProxy();
-
-        if (includeStart && mMode.showHeaderLoadingLayout()) {
-            proxy.addLayout(mHeaderLayout);
-        }
-        if (includeEnd && mMode.showFooterLoadingLayout()) {
-            proxy.addLayout(mFooterLayout);
-        }
-
-        return proxy;
     }
 
     /**
@@ -1091,8 +981,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         addRefreshableView(context, mRefreshableView);
 
         // We need to create now layouts now
-        mHeaderLayout = createLoadingLayout(context, Mode.PULL_FROM_START, a);
-        mFooterLayout = createLoadingLayout(context, Mode.PULL_FROM_END, a);
+        mHeaderLayout = new RotateLoadingLayout(context, Mode.PULL_FROM_START, getPullToRefreshScrollDirection());
+        mFooterLayout = new RotateLoadingLayout(context, Mode.PULL_FROM_END, getPullToRefreshScrollDirection());
 
         /**
          * Styleables from XML
@@ -1306,7 +1196,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
             }
         }
 
-        LoadingLayout createLoadingLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
+        LoadingLayout createLoadingLayout(Context context, Mode mode, Orientation scrollDirection) {
             switch (this) {
                 case ROTATE:
                 default:
