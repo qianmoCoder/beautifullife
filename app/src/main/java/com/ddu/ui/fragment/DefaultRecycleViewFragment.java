@@ -1,9 +1,10 @@
-package com.ddu.icore.ui.fragment;
+package com.ddu.ui.fragment;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ddu.icore.R;
 import com.ddu.icore.entity.BaseEntity;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
 import com.ddu.icore.util.ToastUtils;
 
 import java.lang.reflect.ParameterizedType;

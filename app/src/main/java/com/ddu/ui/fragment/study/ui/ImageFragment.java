@@ -62,7 +62,7 @@ public class ImageFragment extends DefaultFragment {
     }
 
     private void setImg(boolean isBigModel) {
-        int resId = isBigModel ? R.drawable.home_icon_glod_card : R.drawable.guide_hand;
+        int resId = isBigModel ? R.drawable.guide_hand : R.drawable.guide_hand;
         for (int i = 1; i < 10; i++) {
             ImageView imageView = ViewUtils.findViewById(mView, getResId("iv" + i, R.id.class));
             imageView.setImageResource(resId);
