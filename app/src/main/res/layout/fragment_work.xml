@@ -15,16 +15,16 @@
             android:id="@+id/oiv_fragment"
             style="@style/DefaultRelativeLayout"
             mm:carrowImage="@drawable/right_arrow_gray"
-            mm:cleftText="FragmentState" />
+            mm:leftText="FragmentState" />
     </LinearLayout>
 
     <com.ddu.ui.view.AlignTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准,确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准"
         android:layout_marginTop="@dimen/dp_10"
-        android:textSize="@dimen/dp_16"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准,确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准"
+        android:textSize="@dimen/dp_16" />
 
 
     <com.ddu.icore.ui.view.CustomerTimeLineMarker

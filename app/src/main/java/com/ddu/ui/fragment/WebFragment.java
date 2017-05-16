@@ -102,9 +102,8 @@ public class WebFragment extends DefaultFragment {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//        mWebView.loadUrl(url);
-        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "ETCPSBridge");
+        mWebView.loadUrl(url);
+        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
         initTitle();
     }
 
@@ -177,9 +176,9 @@ public class WebFragment extends DefaultFragment {
 
         @Override
         public boolean shouldOverrideUrlLoading(@NonNull WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-//            return super.shouldOverrideUrlLoading(view, url);
+//            view.loadUrl(url);
+//            return true;
+            return super.shouldOverrideUrlLoading(view, url);
         }
 
     };

@@ -26,13 +26,13 @@ public class AndroidUtils {
         }
     }
 
-    public static void gotoEtcp(@NonNull Context context) {
+    public static void gotoIcore(@NonNull Context context) {
         try {
-            Uri uri = Uri.parse("etcp://details?id=3");
+            Uri uri = Uri.parse("Icore://details?id=3");
             Intent intent = new Intent(Intent.ACTION_VIEW,uri);
 //            intent.setComponent(new ComponentName("com.ddu.myapplication", "com.ddu.myapplication.MainActivity"));
-//            intent.setAction("etcp");
-//            intent.setAction("etcp");
+//            intent.setAction("Icore");
+//            intent.setAction("Icore");
 //            intent.setDataAndType(uri, context.getPackageName());
 //            intent.setData(uri);
 //            Intent intent = PackageMan

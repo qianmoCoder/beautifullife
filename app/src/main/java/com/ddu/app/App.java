@@ -2,16 +2,20 @@ package com.ddu.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.ddu.R;
+import com.ddu.db.entity.StudyContent;
+import com.ddu.db.gen.DaoMaster;
+import com.ddu.db.gen.DaoSession;
+import com.ddu.db.gen.StudyContentDao;
 import com.ddu.icore.app.BaseApp;
 import com.ddu.util.SystemUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
 import java.lang.ref.WeakReference;
@@ -19,24 +23,19 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * Created by yzbzz on 16/4/6.
  */
 public class App extends BaseApp {
 
-//    private static DaoSession daoSession;
+    private static DaoSession daoSession;
 
     private RefWatcher refWatcher;
-
-    //各个平台的配置，建议放在全局Application或者程序入口
-    {
-        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
-        PlatformConfig.setAlipay("2015111700822536");
-        PlatformConfig.setQQZone("1101352191","UB0rBnD2D1d4CGod");
-        PlatformConfig.setSinaWeibo("2623948793","bcba1c5f2947cf26b5be2536b05151d0","");
-
-    }
 
     @Override
     public void onCreate() {
@@ -52,7 +51,7 @@ public class App extends BaseApp {
         String packageName = mApplication.getPackageName();
         if (processName.equals(packageName)) {// 防止多进程重复实始化
             sCacheActivities = new LinkedHashMap<>();
-//            setupDatabase();
+            setupDatabase();
             registerActivityLifecycleCallbacks(this);
             initData();
             refWatcher = LeakCanary.install(this);
@@ -68,49 +67,39 @@ public class App extends BaseApp {
         String[] titleList = getResources().getStringArray(R.array.study_ui_title);
         String[] descList = getResources().getStringArray(R.array.study_ui_description);
 
-//        final StudyContentDao studyContentDao = daoSession.getStudyContentDao();
-//        studyContentDao.deleteAll();
-//
-//        Observable<String> observableTitle = Observable.from(titleList);
-//        Observable<String> observableDescList = Observable.from(descList);
-//
-//        Observable.zip(observableTitle, observableDescList, new Func2<String, String, StudyContent>() {
-//            @NonNull
-//            @Override
-//            public StudyContent call(String title, String desc) {
-//                StudyContent studyItemModel = new StudyContent();
-//                studyItemModel.setTitle(title);
-//                studyItemModel.setDescription(desc);
-//                studyItemModel.setType(title);
-//                return studyItemModel;
-//            }
-//        }).subscribe(new Subscriber<StudyContent>() {
-//            @Override
-//            public void onCompleted() {
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//
-//            }
-//
-//            @Override
-//            public void onNext(StudyContent studyContent) {
-//                studyContentDao.insertOrReplace(studyContent);
-//            }
-//        });
+        final StudyContentDao studyContentDao = daoSession.getStudyContentDao();
+        studyContentDao.deleteAll();
+
+        Observable<String> observableTitle = Observable.fromArray(titleList);
+        Observable<String> observableDescList = Observable.fromArray(descList);
+
+        Observable.zip(observableTitle, observableDescList, new BiFunction<String, String, StudyContent>() {
+            @Override
+            public StudyContent apply(@io.reactivex.annotations.NonNull String s, @io.reactivex.annotations.NonNull String s2) throws Exception {
+                StudyContent studyItemModel = new StudyContent();
+                studyItemModel.setTitle(s);
+                studyItemModel.setDescription(s2);
+                studyItemModel.setType(s);
+                return studyItemModel;
+            }
+        }).subscribe(new Consumer<StudyContent>() {
+            @Override
+            public void accept(@io.reactivex.annotations.NonNull StudyContent studyContent) throws Exception {
+                studyContentDao.insertOrReplace(studyContent);
+            }
+        });
     }
 
-//    private void setupDatabase() {
-//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "ddu", null);
-//        SQLiteDatabase db = helper.getWritableDatabase();
-//        DaoMaster daoMaster = new DaoMaster(db);
-//        daoSession = daoMaster.newSession();
-//    }
-//
-//    public static DaoSession getDaoSession() {
-//        return daoSession;
-//    }
+    private void setupDatabase() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "ddu", null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+    }
+
+    public static DaoSession getDaoSession() {
+        return daoSession;
+    }
 
     /**
      * 向缓存中添加Activity

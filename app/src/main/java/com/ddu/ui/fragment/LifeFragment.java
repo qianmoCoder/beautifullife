@@ -73,7 +73,7 @@ public class LifeFragment extends DefaultFragment {
     public void initView() {
         unbinder = ButterKnife.bind(this, mView);
 //        String html = "<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>\"  \n" +
-//                "                +\"<p><a href=\\\"etcp://details?id=3/\\\">超链接HTML入门</a>学习HTML!</p><p><font color=\\\"#aabb00\\\">颜色1\"  \n" +
+//                "                +\"<p><a href=\\\"Icore://details?id=3/\\\">超链接HTML入门</a>学习HTML!</p><p><font color=\\\"#aabb00\\\">颜色1\"  \n" +
 //                "                +\"</p><p><font color=\\\"#00bbaa\\\">颜色2</p><h1>标题1</h1><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>\" +  \n" +
 //                "                \"下面是网络图片</p><img src=\\\"http://avatar.csdn.net/0/3/8/2_zhang957411207.jpg\\\"/></body></html>";
 //        textView.setText(Html.fromHtml(html));
@@ -126,7 +126,7 @@ public class LifeFragment extends DefaultFragment {
             case R.id.rl_joke:
                 Bundle bundle = new Bundle();
                 bundle.putString("title", "测试");
-                bundle.putString("url", "http://www.wdxhb.com/m/etcpjsapi.html");
+                bundle.putString("url", "http://www.wdxhb.com/m/Icorejsapi.html");
                 startFragment(WebFragment.class);
                 break;
         }

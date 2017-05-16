@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ShareDialogFragment extends BottomDialogFragment implements View.OnClickListener {
 
+    private static int SPAN_COUNT = 3;
+
     private TextView mTvCancel;
     private RecyclerView mRecyclerView;
 
@@ -68,14 +70,15 @@ public class ShareDialogFragment extends BottomDialogFragment implements View.On
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_share_all, container, false);
+        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_share, container, false);
 
         mTvCancel = ViewUtils.findViewById(linearLayout, R.id.tv_cancel);
         mTvCancel.setOnClickListener(this);
 
         mRecyclerView = ViewUtils.findViewById(linearLayout, R.id.rv_share);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
+        int spanCount = shareEntities.size() < SPAN_COUNT ? shareEntities.size() % SPAN_COUNT : SPAN_COUNT;
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), spanCount);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
         shareAdapter = new ShareAdapter(getContext(), shareEntities);

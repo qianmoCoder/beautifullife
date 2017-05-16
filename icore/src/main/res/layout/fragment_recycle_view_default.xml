@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/c_f3f3f3"
     android:fillViewport="true"
-    android:scrollbars="none"
-    app:ptrAnimationStyle="flip">
+    android:overScrollMode="never"
+    android:paddingTop="@dimen/dp_3"
+    android:scrollbars="none">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +29,11 @@
             android:id="@+id/rl_default"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tv_description">
+            android:layout_below="@id/tv_description"
+            android:clipToPadding="false"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none">
 
         </android.support.v7.widget.RecyclerView>
     </RelativeLayout>

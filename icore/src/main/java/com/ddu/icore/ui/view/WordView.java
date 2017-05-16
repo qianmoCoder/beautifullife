@@ -7,7 +7,6 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
 
 /**
  * Created by yzbzz on 2017/3/28.
@@ -39,9 +38,7 @@ public class WordView extends AppCompatTextView {
 
     @Override
     public void draw(Canvas canvas) {
-        Log.v("lhz","old rect: " + canvas.getClipBounds().toShortString());
         RectF rect = new RectF(ShrinkX, ShrinkY, getMeasuredWidth() - ShrinkX, getMeasuredHeight() - ShrinkY);
-        Log.v("lhz","rect: " + rect.toShortString());
         if (OffsetX != 0 || OffsetY != 0) {
             canvas.translate(OffsetX, OffsetY);
         }

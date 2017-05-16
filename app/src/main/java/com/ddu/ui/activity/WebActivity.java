@@ -88,7 +88,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
 //            }
 //
 //        });
-        //http://www.wdxhb.com/m/etcpjsapi.html
+        //http://www.wdxhb.com/m/Icorejsapi.html
 //        webView.loadUrl("https://prism.zhongan.com/activities/refundcard/index?channel=c4084540");
 
         AssetManager am = getAssets();
@@ -101,7 +101,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        webView.addJavascriptInterface(new WebAppInterface(this), "ETCPSBridge");
+//        webView.addJavascriptInterface(new WebAppInterface(this), "IcoreSBridge");
     }
 
     class JavascriptInterface {

@@ -28,6 +28,8 @@ import butterknife.Unbinder;
  */
 public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    private static final String TAG = "ARGUMENT_TASK_ID";
+
     @Nullable
     @BindView(R.id.rv_swipe_refresh)
     RecyclerView mRvSwipeRefresh;

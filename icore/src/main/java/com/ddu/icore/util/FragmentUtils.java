@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 /**
  * Created by liuhongzhe on 16/7/15.
@@ -41,8 +40,8 @@ public class FragmentUtils {
                 ft.replace(frameId, fragment, tag);
                 break;
             case FRAGMENT_ADD_TO_BACK_STACK:
-                ft.replace(frameId, fragment, tag);
-                ft.setTransition(FragmentTransaction.TRANSIT_NONE);
+                ft.add(frameId, fragment, tag);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 break;
             default:
@@ -51,4 +50,5 @@ public class FragmentUtils {
         }
         ft.commitAllowingStateLoss();
     }
+
 }

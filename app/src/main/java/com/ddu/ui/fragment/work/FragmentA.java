@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.ShareDialogFragment;
+import com.ddu.icore.ui.activity.ShowDetailActivity;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.CustomerTimeLineMarker;
+import com.ddu.icore.util.FragmentUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.OnClick;
@@ -51,8 +52,10 @@ public class FragmentA extends DefaultFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
-                bottomSheetDialogFragment.show(getFragmentManager(), "");
+//                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
+//                bottomSheetDialogFragment.show(getFragmentManager(), "");
+//                replaceFragment(FragmentB.newInstance());
+                ((ShowDetailActivity) mActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK);
             }
         });
         mBtnOk.setOnClickListener(new View.OnClickListener() {

@@ -79,7 +79,7 @@ public class LoanFragment extends DefaultFragment {
 
     @NonNull
     protected String[] mParties = new String[]{
-            "a", "b", "c", "LoginLogic"
+            "a", "b", "c", "LogicActions"
     };
 
     public static final int[] COLORFUL_COLORS = {

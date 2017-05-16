@@ -129,8 +129,7 @@
         <ImageView
             android:id="@+id/iv_common"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home_icon_glod_card" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </ScrollView>

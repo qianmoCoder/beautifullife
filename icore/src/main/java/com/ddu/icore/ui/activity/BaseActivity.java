@@ -41,6 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IObserve
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(null);
         mContext = this;
         mApplication = getApplication();
         mApplicationContext = getApplicationContext();
@@ -63,6 +64,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IObserve
 
     public void startFragment(@NonNull Class fragment) {
         startFragment(fragment, null);
+    }
+
+    public void startFragment(@NonNull String fragmentName) {
+        Navigator.startShowDetailActivity(this, fragmentName, null);
     }
 
     public void startFragment(@NonNull Class<? extends Fragment> fragment, Bundle bundle) {

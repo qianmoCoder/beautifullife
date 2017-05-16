@@ -94,7 +94,7 @@ public class IncomeTaxFragment extends DefaultFragment {
 //        AnimatorUtils.rotationX(btnIncomeTax, 2000, 0f, 180f, 0f).start();
         calculator();
         try {
-//            URL url = new URL("http://behappy.etcp.com/app/");
+//            URL url = new URL("http://behappy.Icore.com/app/");
 //            intentToSms("18610289732", url.toString());
         } catch (Exception e) {
             e.printStackTrace();

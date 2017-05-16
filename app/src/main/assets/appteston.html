@@ -45,7 +45,7 @@
 	}
 </style>
 
-<h1 style="line-height:50px; text-align:center; font-size:20px;">ETCP APP JSAPI</h1>
+<h1 style="line-height:50px; text-align:center; font-size:20px;">Icore APP JSAPI</h1>
 <div class="content">
 
 
@@ -147,35 +147,35 @@ window.onload = function(){
        var btn = document.getElementById("btn");
         btn.onclick = function(){
             // js调用Android方法，给Android方法传值
-            window.ETCPSBridge.invoke(jsonStr);
+            window.IcoreSBridge.invoke(jsonStr);
         };
     };
 
-if(!ETCPSBridge){
-    var ETCPSBridge = {
+if(!IcoreSBridge){
+    var IcoreSBridge = {
         invoke:function(data,callback){
             callback && callback()
         }
     }
 }
-// ETCPSBridge.invoke({
+// IcoreSBridge.invoke({
 //     type:'sharewx',
-//     url: 'http://etcp.cn', // 页面地址
+//     url: 'http://Icore.cn', // 页面地址
 //     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
-//     title: 'etcp title', // 标题
+//     title: 'Icore title', // 标题
 //     content: '摘要'
 // },function(){
 //     alert(1234)
 // })
 
 
-// ETCPSBridge.invoke({
+// IcoreSBridge.invoke({
 //     type:'sharewx',
-//     url: 'http://etcp.cn', // 页面地址
+//     url: 'http://Icore.cn', // 页面地址
 //     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
-//     title: 'etcp title', // 标题
+//     title: 'Icore title', // 标题
 //     content: '摘要',// 摘要,
-//     callback:'ETCPSBridgeCallback'
+//     callback:'IcoreSBridgeCallback'
 // })
 
 
@@ -184,26 +184,26 @@ if(!ETCPSBridge){
 <!--$("#coupon").tap(function(){-->
 	<!--var json = {-->
         <!--type:'coupon',-->
-        <!--callback:'ETCPSBridgeCoupon'-->
+        <!--callback:'IcoreSBridgeCoupon'-->
     <!--};-->
 	<!--var jsonStr =  JSON.stringify(json);-->
-    <!--ETCPSBridge.invoke(jsonStr)-->
+    <!--IcoreSBridge.invoke(jsonStr)-->
 
-    <!--function ETCPSBridgeCoupon(data){-->
+    <!--function IcoreSBridgeCoupon(data){-->
         <!--//-->
-        <!--alert('ETCPSBridgeCoupon')-->
+        <!--alert('IcoreSBridgeCoupon')-->
     <!--}-->
 
 <!--})-->
 
 $("#integral").tap(function(){
-    ETCPSBridge.invoke({
+    IcoreSBridge.invoke({
         type:'integral',
-        callback:'ETCPSBridgeIntegral'
+        callback:'IcoreSBridgeIntegral'
     })
-    function ETCPSBridgeIntegral(data){
+    function IcoreSBridgeIntegral(data){
         //
-        alert('ETCPSBridgeIntegral')
+        alert('IcoreSBridgeIntegral')
     }
 
 })
@@ -211,37 +211,37 @@ $("#integral").tap(function(){
 
 
 $("#closeWebview").tap(function(){
-    ETCPSBridge.invoke({
+    IcoreSBridge.invoke({
         type:'closeWebview',
-        callback:'ETCPSBridgeCloseWebview'
+        callback:'IcoreSBridgeCloseWebview'
     })
 
 })
-function ETCPSBridgeCloseWebview(data){
+function IcoreSBridgeCloseWebview(data){
         //
-        alert('ETCPSBridgeCloseWebview')
+        alert('IcoreSBridgeCloseWebview')
     }
 $("#setTitle").tap(function(){
-    ETCPSBridge.invoke({
+    IcoreSBridge.invoke({
         type:'setTitle',
         title:'新标题',
-        callback:'ETCPSBridgeSetTitle'
+        callback:'IcoreSBridgeSetTitle'
     })
 
 })
-function ETCPSBridgeSetTitle(data){
+function IcoreSBridgeSetTitle(data){
         //
-        alert('ETCPSBridgeSetTitle')
+        alert('IcoreSBridgeSetTitle')
     }
 $("#shareToFriend").tap(function(){
 
-    ETCPSBridge.invoke(JSON.stringify({
+    IcoreSBridge.invoke(JSON.stringify({
         type:'shareToFriend',
-        url: 'http://etcp.cn', // 页面地址
-        imgurl:'http://etcp.cn/static/images/01.png', // 图片地址
-        title: 'etcpApp', // 标题
-        content: 'etcp分享', // 摘要
-        callback:'ETCPSBridgeShareToFriend'
+        url: 'http://Icore.cn', // 页面地址
+        imgurl:'http://Icore.cn/static/images/01.png', // 图片地址
+        title: 'IcoreApp', // 标题
+        content: 'Icore分享', // 摘要
+        callback:'IcoreSBridgeShareToFriend'
     }))
 
 },function(){
@@ -249,28 +249,28 @@ $("#shareToFriend").tap(function(){
 })
 
 
-function ETCPSBridgeShareToFriend(data){
+function IcoreSBridgeShareToFriend(data){
 
         setTimeout(function(){
             alert(1)
         },0)
 }
 $("#shareToPyq").tap(function(){
-    ETCPSBridge.invoke(JSON.stringify({
+    IcoreSBridge.invoke(JSON.stringify({
         type:'shareToPyq',
-        url: 'http://etcp.cn', // 页面地址
-        imgurl:'http://etcp.cn/static/images/01.png', // 图片地址
-        title: 'etcpApp', // 标题
-        content: 'etcp分享', // 摘要
-        callback:'ETCPSBridgeShareToPyq'
+        url: 'http://Icore.cn', // 页面地址
+        imgurl:'http://Icore.cn/static/images/01.png', // 图片地址
+        title: 'IcoreApp', // 标题
+        content: 'Icore分享', // 摘要
+        callback:'IcoreSBridgeShareToPyq'
     })
 
 })
-function ETCPSBridgeShareToPyq(data){
+function IcoreSBridgeShareToPyq(data){
         alert(data)
     }
 $("#payToWx").tap(function(){
-    ETCPSBridge.invoke({
+    IcoreSBridge.invoke({
         type:'payToWx',
         // _noncestr:'',
         // _package:'',
@@ -290,14 +290,14 @@ $("#payToWx").tap(function(){
     })
 
 })
-function ETCPSBridgePayToWx(data){
+function IcoreSBridgePayToWx(data){
     //
-    alert('ETCPSBridgePay')
+    alert('IcoreSBridgePay')
 }
 
 
 $("#payToAlipay").tap(function(){
-    ETCPSBridge.invoke({
+    IcoreSBridge.invoke({
         type:'payToAlipay',
         // _noncestr:'',
         // _package:'',
@@ -308,12 +308,12 @@ $("#payToAlipay").tap(function(){
         // dataModel:'',
 
         account : "0.10",
-        notifyUrl : "http://newpay.test.etcp.cn/service/paymentnotify/notifyalipay",
+        notifyUrl : "http://newpay.test.Icore.cn/service/paymentnotify/notifyalipay",
         orderId : 'pay20160823175749385731'
     })
 
 })
-function ETCPSBridgePayToAlipay(data){
+function IcoreSBridgePayToAlipay(data){
     //
     alert('payToAlipay')
 }

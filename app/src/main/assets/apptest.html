@@ -13,14 +13,14 @@
 setTimeout(function(){
 	var json = {
 		type:'sharewx',
-		url: 'http://etcp.cn', // 页面地址
+		url: 'http://http://baidu.com.cn', // 页面地址
 	    imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
-	    title: 'etcp title', // 标题
+	    title: 'title', // 标题
 	    content: '摘要',// 摘要,
-	    callback:'ETCPSBridgeCallback'
+	    callback:'IcoreSBridgeCallback'
 	};
         var jsonStr =  JSON.stringify(json);
-	ETCPSBridge.invoke(jsonStr)
+	IcoreSBridge.invoke(jsonStr)
 	
 },500)
 </script>

@@ -51,6 +51,10 @@ public abstract class DefaultFragment extends BaseFragment {
         baseActivity.startFragment(className);
     }
 
+    public void startFragment(@NonNull String className) {
+        baseActivity.startFragment(className);
+    }
+
     public void startFragment(@NonNull Class className, Bundle bundle) {
         baseActivity.startFragment(className, bundle);
     }

@@ -18,6 +18,26 @@
         android:background="@color/c_000000"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shape_view_red_hollow_oval"
+            android:text="hello" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dp_5"
+            android:text="排序删除"
+            android:textColor="@color/c_ff0000"
+            android:textSize="@dimen/dp_12"
+            app:normalStrokeColor="@color/c_ff4141"
+            app:normalStrokeWidth="0.5dp"
+            app:shapeType="round_rect" />
+
         <com.ddu.icore.ui.view.ShapeButton
             android:id="@+id/text_testsb1"
             android:layout_width="wrap_content"

@@ -263,7 +263,6 @@
         <item name="android:layout_width">@dimen/dp_100</item>
         <item name="android:layout_height">@dimen/dp_100</item>
         <item name="android:layout_margin">@dimen/dp_3</item>
-        <item name="android:src">@drawable/home_icon_glod_card</item>
         <item name="android:background">@color/c_ff0000</item>
     </style>
 
@@ -431,6 +430,13 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="RoundRectItem">
+        <item name="android:paddingBottom">@dimen/dp_2</item>
+        <item name="android:paddingLeft">@dimen/dp_5</item>
+        <item name="android:paddingRight">@dimen/dp_5</item>
+        <item name="android:paddingTop">@dimen/dp_2</item>
     </style>
 
 </resources>

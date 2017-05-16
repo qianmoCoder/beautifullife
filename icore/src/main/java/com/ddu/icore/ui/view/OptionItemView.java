@@ -19,17 +19,15 @@ public class OptionItemView extends RelativeLayout {
 
     private Context mContext;
 
-    private TextView tvTitle;
-    private TextView tvContent;
+    private TextView tvLeftText;
+    private TextView tvRightText;
     private ImageView ivIcon;
 
     private ImageView ivArrow;
 
 
     public OptionItemView(Context context) {
-        super(context);
-        mContext = context;
-        init();
+        this(context, null);
     }
 
     public OptionItemView(@NonNull Context context, AttributeSet attrs) {
@@ -40,43 +38,43 @@ public class OptionItemView extends RelativeLayout {
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomItemView);
 
-        int resId = a.getResourceId(R.styleable.CustomItemView_cimage, -1);
+        int resId = a.getResourceId(R.styleable.CustomItemView_image, -1);
         if (resId > 0) {
             ivIcon.setImageResource(resId);
         } else {
             ivIcon.setVisibility(GONE);
         }
 
-        int mImageScale = a.getInt(R.styleable.CustomItemView_cimageScaleType, -1);
+        int mImageScale = a.getInt(R.styleable.CustomItemView_imageScaleType, -1);
         if (mImageScale > 0) {
             ivIcon.setScaleType(sScaleTypeArray[mImageScale]);
         }
 
-        String title = a.getString(R.styleable.CustomItemView_cleftText);
+        String title = a.getString(R.styleable.CustomItemView_leftText);
         if (!TextUtils.isEmpty(title)) {
-            tvTitle.setText(title);
+            tvLeftText.setText(title);
         } else {
-            tvTitle.setVisibility(GONE);
+            tvLeftText.setVisibility(GONE);
         }
 
-        int color = a.getColor(R.styleable.CustomItemView_cleftTextColor, Color.BLACK);
-        tvTitle.setTextColor(color);
+        int color = a.getColor(R.styleable.CustomItemView_leftTextColor, Color.BLACK);
+        tvLeftText.setTextColor(color);
 
-        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_cleftTextColor, 16);
-        tvTitle.setTextSize(size);
+        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_leftTextColor, 16);
+        tvLeftText.setTextSize(size);
 
-        String content = a.getString(R.styleable.CustomItemView_crightText);
+        String content = a.getString(R.styleable.CustomItemView_rightText);
         if (!TextUtils.isEmpty(content)) {
-            tvContent.setText(content);
+            tvRightText.setText(content);
         } else {
-            tvContent.setVisibility(GONE);
+            tvRightText.setVisibility(GONE);
         }
 
-        int contentColor = a.getColor(R.styleable.CustomItemView_crightTextColor, 0xff666666);
-        tvContent.setTextColor(contentColor);
+        int contentColor = a.getColor(R.styleable.CustomItemView_rightTextColor, 0xff666666);
+        tvRightText.setTextColor(contentColor);
 
-        int contentSize = a.getDimensionPixelSize(R.styleable.CustomItemView_crightTextSize, 14);
-        tvContent.setTextSize(contentSize);
+        int contentSize = a.getDimensionPixelSize(R.styleable.CustomItemView_rightTextSize, 14);
+        tvRightText.setTextSize(contentSize);
 
         int arrowResId = a.getResourceId(R.styleable.CustomItemView_carrowImage, -1);
         if (arrowResId > 0) {
@@ -95,21 +93,21 @@ public class OptionItemView extends RelativeLayout {
     }
 
     private void init() {
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         inflater.inflate(R.layout.option_item_view, this);
         ivIcon = ViewUtils.findViewById(this, R.id.iv_icon);
-        tvTitle = ViewUtils.findViewById(this, R.id.tv_left_text);
-        tvContent = ViewUtils.findViewById(this, R.id.tv_right_text);
+        tvLeftText = ViewUtils.findViewById(this, R.id.tv_left_text);
+        tvRightText = ViewUtils.findViewById(this, R.id.tv_right_text);
         ivArrow = ViewUtils.findViewById(this, R.id.iv_arrow);
     }
 
 
-    public void setTitle(String str) {
-        tvTitle.setText(str);
+    public void setLeftText(String str) {
+        tvLeftText.setText(str);
     }
 
-    public void setTitle(int id) {
-        tvTitle.setText(id);
+    public void setLeftText(int id) {
+        tvLeftText.setText(id);
     }
 
     public void setIcon(int id) {
@@ -117,9 +115,9 @@ public class OptionItemView extends RelativeLayout {
         ivIcon.setImageResource(id);
     }
 
-    public void setContent(String content) {
-        tvContent.setText(content);
-        tvContent.setVisibility(VISIBLE);
+    public void setRightText(String content) {
+        tvRightText.setText(content);
+        tvRightText.setVisibility(VISIBLE);
     }
 
     public void setArrowVisibility(int visibility) {

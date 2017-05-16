@@ -72,10 +72,6 @@ public class ObserverManager {
 
     public void notify(@NonNull GodIntent godIntent) {
         int action = godIntent.getAction();
-        notify(action);
-    }
-
-    public void notify(int action) {
         ArrayList<WeakReference<IObserver>> listeners = observers.get(action);
         if (null == listeners || listeners.size() == 0) {
             return;
@@ -84,8 +80,14 @@ public class ObserverManager {
         for (WeakReference<IObserver> weakListener : listeners) {
             final IObserver listener = weakListener.get();
             if (listener != null) {
-                listener.onReceiverNotify(action);
+                listener.onReceiverNotify(godIntent);
             }
         }
+    }
+
+    public void notify(int action) {
+        GodIntent godIntent = new GodIntent();
+        godIntent.setAction(action);
+        notify(godIntent);
     }
 }

@@ -1,12 +1,96 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c_ecedf1">
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_study"
-        android:layout_marginTop="@dimen/dp_32"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/c_f3f3f3"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_study"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="scrollable">
+
+            </android.support.design.widget.TabLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_study"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/c_f3f3f3"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_10"
+                android:visibility="invisible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="切换栏目" />
+
+                <com.ddu.icore.ui.view.ShapeTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_5"
+                    android:paddingTop="@dimen/dp_2"
+                    android:text="排序删除"
+                    android:textColor="@color/c_ff0000"
+                    app:normalStrokeColor="@color/c_ff4141"
+                    app:normalStrokeWidth="1dp"
+                    app:shapeType="round_rect" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_add_item"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="match_parent"
+            android:contentDescription=""
+            android:maxHeight="?attr/actionBarSize"
+            android:src="@drawable/icon_add" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_study"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+        <FrameLayout
+            android:id="@+id/fl_study"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/c_4897fa"
+            android:clickable="true"
+            android:visibility="invisible">
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
+

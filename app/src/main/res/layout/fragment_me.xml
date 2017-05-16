@@ -5,6 +5,12 @@
     android:background="@color/c_ecedf1"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/et_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
     <RelativeLayout
         android:id="@+id/rl_person_info"
         android:layout_width="match_parent"
@@ -58,15 +64,15 @@
             android:layout_marginRight="@dimen/dp_10" />
 
         <!--<com.ddu.icore.ui.drop.DropFake-->
-            <!--android:id="@+id/unread_number_tip"-->
-            <!--android:layout_width="28dip"-->
-            <!--android:layout_height="28dip"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_below="@id/tv_detail"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="3"-->
-            <!--android:textColor="@color/c_4897fa"-->
-            <!--android:textSize="12sp" />-->
+        <!--android:id="@+id/unread_number_tip"-->
+        <!--android:layout_width="28dip"-->
+        <!--android:layout_height="28dip"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@id/tv_detail"-->
+        <!--android:singleLine="true"-->
+        <!--android:text="3"-->
+        <!--android:textColor="@color/c_4897fa"-->
+        <!--android:textSize="12sp" />-->
 
     </RelativeLayout>
 
@@ -85,8 +91,8 @@
             <com.ddu.icore.ui.view.OptionItemView
                 style="@style/DefaultRelativeLayout"
                 mm:carrowImage="@drawable/right_arrow_gray"
-                mm:crightText="World"
-                mm:cleftText="Hello" />
+                mm:leftText="Hello"
+                mm:rightText="World" />
 
         </LinearLayout>
 
@@ -117,7 +123,7 @@
         <com.ddu.icore.ui.view.OptionItemView
             style="@style/DefaultRelativeLayout"
             mm:carrowImage="@drawable/right_arrow_gray"
-            mm:cleftText="设置" />
+            mm:leftText="设置" />
 
         <TextView
             android:id="@+id/tvU"
@@ -128,29 +134,29 @@
             android:textSize="@dimen/dp_20" />
 
         <!--<com.ddu.ui.view.CustomTextView-->
-            <!--android:layout_width="@dimen/dp_100"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="@dimen/dp_5"-->
-            <!--android:text="200元dddhhelooksdjfsdjkfjabacesdkjfwerwerwesfjkdsfkieww"-->
-            <!--android:textSize="@dimen/dp_20"-->
-            <!--mm:strike_thru_color="@color/c_ff0000"-->
-            <!--mm:strike_thru_width="3dp" />-->
+        <!--android:layout_width="@dimen/dp_100"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/dp_5"-->
+        <!--android:text="200元dddhhelooksdjfsdjkfjabacesdkjfwerwerwesfjkdsfkieww"-->
+        <!--android:textSize="@dimen/dp_20"-->
+        <!--mm:strike_thru_color="@color/c_ff0000"-->
+        <!--mm:strike_thru_width="3dp" />-->
         <com.ddu.ui.view.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="@dimen/dp_5"
             android:text="200元"
             android:textSize="@dimen/dp_20"
-            android:gravity="center"
             mm:strike_thru_color="@color/c_ff0000"
             mm:strike_thru_width="3dp" />
     </LinearLayout>
 
     <!--<com.ddu.icore.ui.drop.DropCover-->
-        <!--android:id="@+id/unread_cover"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="invisible" />-->
+    <!--android:id="@+id/unread_cover"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:visibility="invisible" />-->
 
 
 </LinearLayout>

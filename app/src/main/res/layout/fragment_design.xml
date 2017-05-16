@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="ETCP" />
+                android:text="Icore" />
 
         </android.support.v7.widget.Toolbar>
 

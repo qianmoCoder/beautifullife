@@ -83,8 +83,6 @@ public class CustomTextView extends AppCompatTextView {
             Paint textPaint = getPaint();
             textPaint.getTextBounds(result, 0, result.length(), bounds);
             canvas.drawLine(bounds.left, y, bounds.right, y, paint);
-            Log.v("lhz", "bounds: " + bounds.toShortString());
-            Log.v("lhz", "offset: " + getLayout().getOffsetForHorizontal(i, getScaleX()));
         }
 
     }

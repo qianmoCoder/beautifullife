@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextPaint;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -37,6 +38,9 @@ public class MeFragment extends DefaultFragment {
     @Nullable
     @BindView(R.id.rl_person_info)
     RelativeLayout rlPersonInfo;
+    @Nullable
+    @BindView(R.id.et_text)
+    EditText etText;
 
 //    @Nullable
 //    @BindView(R.id.unread_number_tip)
@@ -153,7 +157,7 @@ public class MeFragment extends DefaultFragment {
         paint.setStrokeWidth(3);
         paint.setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         tvU.getPaint().set(paint);
-
+        etText.setText("http://bike.Icore.cn?token=d2043816-f516-4788-a794-2334fef2c59c&userId=10015298&version=4.7.0&platform=1");
     }
 
     @OnClick(R.id.rl_person_info)

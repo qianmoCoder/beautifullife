@@ -20,7 +20,7 @@ public class RotateLoadingLayout extends LoadingLayout {
 
     private float mRotationPivotX, mRotationPivotY;
 
-    private boolean mRotateDrawableWhilePulling = true;
+    private boolean mRotateDrawableWhilePulling = false;
 
     public RotateLoadingLayout(Context context, Mode mode, Orientation scrollDirection) {
         super(context, mode, scrollDirection);

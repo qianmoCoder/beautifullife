@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -32,6 +33,12 @@ android {
     }
     productFlavors {
     }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.ddu.db.gen'
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
@@ -51,7 +58,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.alibaba:fastjson:1.2.30'
     compile 'com.jakewharton:butterknife:8.0.1'
-    compile 'org.greenrobot:greendao:2.2.1'
+    compile 'org.greenrobot:greendao:3.2.2'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'com.facebook.rebound:rebound:0.3.8'
