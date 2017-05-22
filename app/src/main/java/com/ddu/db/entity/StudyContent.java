@@ -15,12 +15,15 @@ public class StudyContent {
     private String title;
     private String description;
     private String type;
-    @Generated(hash = 1604577655)
-    public StudyContent(Long id, String title, String description, String type) {
+    private boolean isOld;
+    @Generated(hash = 1934119038)
+    public StudyContent(Long id, String title, String description, String type,
+            boolean isOld) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.type = type;
+        this.isOld = isOld;
     }
     @Generated(hash = 1184820481)
     public StudyContent() {
@@ -48,5 +51,11 @@ public class StudyContent {
     }
     public void setType(String type) {
         this.type = type;
+    }
+    public boolean getIsOld() {
+        return this.isOld;
+    }
+    public void setIsOld(boolean isOld) {
+        this.isOld = isOld;
     }
 }

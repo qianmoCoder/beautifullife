@@ -1,6 +1,15 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.ddu.icore.ui.view.ShapeTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tv_tag"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_view_transparent"
-    android:padding="@dimen/dp_2" />
+    android:layout_margin="@dimen/dp_5"
+    android:gravity="center"
+    android:padding="@dimen/dp_5"
+    android:text="头条"
+    android:textSize="@dimen/dp_13"
+    app:normalBackgroundColor="@color/c_cccccc"
+    app:normalStrokeColor="@color/c_666666"
+    app:normalStrokeWidth="0.5dp"
+    app:shapeType="round_rect" />
 

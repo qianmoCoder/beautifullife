@@ -20,9 +20,8 @@ public class DrawFragment extends DefaultFragment {
     private ShapeButton shapeTextView;
 
     @NonNull
-    public static DrawFragment newInstance(String taskId) {
+    public static DrawFragment newInstance(String id) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARGUMENT_TASK_ID, taskId);
         DrawFragment fragment = new DrawFragment();
         fragment.setArguments(arguments);
         return fragment;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tags>
+    <Tag name="UI" isOld="0">layout shape drawable</Tag>
+    <Tag name="Animator" isOld="0">Animator</Tag>
+    <Tag name="RxJava" isOld="0">RxJava</Tag>
+    <Tag name="Retrofit" isOld="0">Retrofit</Tag>
+    <Tag name="Glide" isOld="0">Glide</Tag>
+    <Tag name="Fragment" isOld="0">Fragment</Tag>
+    <Tag name="ViewPager" isOld="0">ViewPager</Tag>
+    <Tag name="高仿" isOld="0">网易</Tag>
+
+    <Tag name="Tag1" isOld="1">Tag1</Tag>
+    <Tag name="Tag2" isOld="1">Tag2</Tag>
+    <Tag name="Tag3" isOld="1">Tag3</Tag>
+    <Tag name="Tag4" isOld="1">Tag4</Tag>
+    <Tag name="Tag5" isOld="1">Tag5</Tag>
+    <Tag name="Tag6" isOld="1">Tag6</Tag>
+    <Tag name="Tag7" isOld="1">Tag7</Tag>
+    <Tag name="Tag8" isOld="1">Tag8</Tag>
+    <Tag name="Tag9" isOld="1">Tag9</Tag>
+    <Tag name="Tag0" isOld="1">Tag0</Tag>
+
+</Tags>
+

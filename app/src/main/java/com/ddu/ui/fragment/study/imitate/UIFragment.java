@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study;
+package com.ddu.ui.fragment.study.imitate;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -21,7 +21,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
 import com.ddu.logic.LogicActions;
 import com.ddu.ui.adapter.StudyContentFragmentPagerAdapter;
-import com.ddu.ui.fragment.study.ui.DrawFragment;
+import com.ddu.ui.fragment.study.StudyTagsFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +32,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dalvik.system.DexFile;
+import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Predicate;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -56,7 +60,7 @@ public class StudyFragment extends DefaultFragment {
 
     private boolean isShow;
 
-    private DrawFragment mDrawFragment;
+    private StudyTagsFragment mStudyTagsFragment;
 
     private Unbinder unbinder;
 
@@ -77,13 +81,22 @@ public class StudyFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mDrawFragment = DrawFragment.newInstance("1");
+
+        mStudyTagsFragment = StudyTagsFragment.newInstance();
 
         studyContents = DbManager.getStudyContentDao().loadAll();
 
-        for (StudyContent studyContent : studyContents) {
-            mTitles.add(studyContent.getTitle());
-        }
+        Observable.fromIterable(studyContents).filter(new Predicate<StudyContent>() {
+            @Override
+            public boolean test(@NonNull StudyContent studyContent) throws Exception {
+                return studyContent.getIsOld();
+            }
+        }).subscribe(new Consumer<StudyContent>() {
+            @Override
+            public void accept(@NonNull StudyContent studyContent) throws Exception {
+                mTitles.add(studyContent.getTitle());
+            }
+        });
     }
 
     @Override
@@ -137,8 +150,8 @@ public class StudyFragment extends DefaultFragment {
         });
         FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-        if (!mDrawFragment.isAdded()) {
-            ft.replace(R.id.fl_study, mDrawFragment);
+        if (!mStudyTagsFragment.isAdded()) {
+            ft.replace(R.id.fl_study, mStudyTagsFragment);
         }
         ft.commitAllowingStateLoss();
         setTitle("学习");

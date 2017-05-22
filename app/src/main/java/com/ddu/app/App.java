@@ -16,6 +16,7 @@ import com.ddu.db.gen.DaoSession;
 import com.ddu.db.gen.StudyContentDao;
 import com.ddu.icore.app.BaseApp;
 import com.ddu.util.SystemUtils;
+import com.ddu.util.xml.PullParserUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.umeng.socialize.UMShareAPI;
@@ -66,12 +67,21 @@ public class App extends BaseApp {
     }
 
     private void initData() {
+        final StudyContentDao studyContentDao = daoSession.getStudyContentDao();
+        long count = studyContentDao.count();
+
+        if (count <= 0) {
+            try {
+                loadFile(studyContentDao);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void loadStringArray(final StudyContentDao studyContentDao) {
         String[] titleList = getResources().getStringArray(R.array.study_ui_title);
         String[] descList = getResources().getStringArray(R.array.study_ui_description);
-
-        final StudyContentDao studyContentDao = daoSession.getStudyContentDao();
-        studyContentDao.deleteAll();
-
         Observable<String> observableTitle = Observable.fromArray(titleList);
         Observable<String> observableDescList = Observable.fromArray(descList);
 
@@ -90,6 +100,21 @@ public class App extends BaseApp {
                 studyContentDao.insertOrReplace(studyContent);
             }
         });
+    }
+
+    private void loadFile(final StudyContentDao studyContentDao) {
+//        Properties props = new Properties();
+//        try {
+//            props.load(mContext.getAssets().open(""));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        try {
+            List<StudyContent> studyContents = PullParserUtils.getStudyContent(mContext.getAssets().open("config_tag.xml"));
+            studyContentDao.insertOrReplaceInTx(studyContents);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setupDatabase() {

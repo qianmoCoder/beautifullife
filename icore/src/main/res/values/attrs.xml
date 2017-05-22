@@ -192,4 +192,6 @@
         <attr name="ptrDrawableTop" format="reference" />
         <attr name="ptrDrawableBottom" format="reference" />
     </declare-styleable>
+    <declare-styleable name="ICoreBanner"><attr format="boolean" name="canLoop"/></declare-styleable>
+    <eat-comment/>
 </resources>

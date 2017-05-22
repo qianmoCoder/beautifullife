@@ -84,7 +84,7 @@
             android:id="@+id/fl_study"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/c_4897fa"
+            android:background="@color/c_f3f3f3"
             android:clickable="true"
             android:visibility="invisible">
 

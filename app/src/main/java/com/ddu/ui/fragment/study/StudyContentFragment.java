@@ -8,6 +8,7 @@ import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
 import com.ddu.icore.util.MultiHashMap;
 import com.ddu.ui.adapter.StudyRecycleViewAdapter;
+import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
 import com.ddu.ui.fragment.study.ui.DrawFragment;
@@ -45,6 +46,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, SwipeRefreshFragment.class);
         mMaps.put(0, TextViewFragment.class);
         mMaps.put(0, ToolBarFragment.class);
+        mMaps.put(0, BottomSheetFragment.class);
     }
 
     private int index;
@@ -76,7 +78,6 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     @Override
     public void initView() {
         super.initView();
-        setTitle("学习");
         mAdapter.setItemClickListener(this);
     }
 

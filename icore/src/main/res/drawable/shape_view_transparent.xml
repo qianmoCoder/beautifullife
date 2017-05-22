@@ -5,7 +5,7 @@
     <!-- 角度 -->
     <corners android:radius="5dp" />
     <!-- 填充色 -->
-    <solid android:color="@color/c_00000000" />
+    <solid android:color="@color/c_cccccc" />
     <!-- 描边 设置线宽及颜色 -->
     <stroke
         android:width="0.5dp"
