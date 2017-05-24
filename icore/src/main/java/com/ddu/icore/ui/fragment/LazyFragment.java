@@ -38,4 +38,6 @@ public class LazyFragment extends BaseFragment {
         }
         return null;
     }
+
+
 }

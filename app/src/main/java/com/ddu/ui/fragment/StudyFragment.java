@@ -181,5 +181,4 @@ public class StudyFragment extends DefaultFragment {
         return classes;
     }
 
-
 }

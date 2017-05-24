@@ -7,6 +7,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,37 @@ public abstract class BaseActivity extends AppCompatActivity implements IObserve
         mApplicationContext = getApplicationContext();
         mLayoutInflater = LayoutInflater.from(mContext);
         registerObserver();
+        Log.v("lhz", getClass().getName() + " onCreate");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("lhz", getClass().getName() + " onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.v("lhz", getClass().getName() + " onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v("lhz", getClass().getName() + " onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("lhz", getClass().getName() + " onStop");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.v("lhz", getClass().getName() + " onStart");
     }
 
     @Override

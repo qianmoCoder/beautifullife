@@ -17,6 +17,7 @@ import com.ddu.R;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.ui.fragment.work.FragmentA;
 import com.ddu.ui.view.BottomView;
 import com.ddu.ui.view.DividerItemDecoration;
 import com.github.mikephil.charting.charts.PieChart;
@@ -147,6 +148,7 @@ public class LoanFragment extends DefaultFragment {
             case R.id.btn_calculator1:
                 btnCalculator.setEnabled(isEnabled);
                 isEnabled = !isEnabled;
+                startFragment(FragmentA.class);
                 break;
             default:
                 break;

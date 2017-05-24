@@ -60,7 +60,7 @@ public class OptionItemView extends RelativeLayout {
         int color = a.getColor(R.styleable.CustomItemView_leftTextColor, Color.BLACK);
         tvLeftText.setTextColor(color);
 
-        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_leftTextColor, 16);
+        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_leftTextSize, 16);
         tvLeftText.setTextSize(size);
 
         String content = a.getString(R.styleable.CustomItemView_rightText);

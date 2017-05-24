@@ -10,6 +10,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IntRange;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
@@ -73,21 +74,22 @@ public class ShapeInject {
 
     StateListDrawable mStateBackground;
 
+    private View mView;
     private TextView mTextView;
 
-    public ShapeInject(TextView textView) {
-        mTextView = textView;
+    public ShapeInject(View view) {
+        mView = view;
     }
 
     public void init(AttributeSet attrs, boolean isUserSystemBackground) {
-        mBackground = mTextView.getBackground();
+        mBackground = mView.getBackground();
 
         mNormalBackground = new GradientDrawable();
         mPressedBackground = new GradientDrawable();
         mDisableBackground = new GradientDrawable();
 
         if (null != mBackground && isUserSystemBackground) {
-            mTextView.setBackground(mBackground);
+            mView.setBackground(mBackground);
         } else {
             states = new int[4][];
 
@@ -99,20 +101,23 @@ public class ShapeInject {
             states[3] = new int[]{-android.R.attr.state_enabled};
             states[2] = new int[]{android.R.attr.state_enabled};
 
-            TypedArray a = mTextView.getContext().obtainStyledAttributes(attrs, R.styleable.ShapeView);
+            TypedArray a = mView.getContext().obtainStyledAttributes(attrs, R.styleable.ShapeView);
 
             //get original text color as default
             //set text color
-            mColorStateList = mTextView.getTextColors();
-            int currentTextColor = mTextView.getCurrentTextColor();
-            int mDefaultNormalTextColor = mColorStateList.getColorForState(states[2], currentTextColor);
-            int mDefaultPressedTextColor = mColorStateList.getColorForState(states[0], currentTextColor);
-            int mDefaultDisableTextColor = mColorStateList.getColorForState(states[3], currentTextColor);
+            if (mView instanceof TextView) {
+                mTextView = (TextView) mView;
+                mColorStateList = mTextView.getTextColors();
+                int currentTextColor = mTextView.getCurrentTextColor();
+                int mDefaultNormalTextColor = mColorStateList.getColorForState(states[2], currentTextColor);
+                int mDefaultPressedTextColor = mColorStateList.getColorForState(states[0], currentTextColor);
+                int mDefaultDisableTextColor = mColorStateList.getColorForState(states[3], currentTextColor);
 
-            mNormalTextColor = a.getColor(R.styleable.ShapeView_normalTextColor, mDefaultNormalTextColor);
-            mPressedTextColor = a.getColor(R.styleable.ShapeView_pressedTextColor, mDefaultPressedTextColor);
-            mDisableTextColor = a.getColor(R.styleable.ShapeView_disableTextColor, mDefaultDisableTextColor);
-            setTextColor();
+                mNormalTextColor = a.getColor(R.styleable.ShapeView_normalTextColor, mDefaultNormalTextColor);
+                mPressedTextColor = a.getColor(R.styleable.ShapeView_pressedTextColor, mDefaultPressedTextColor);
+                mDisableTextColor = a.getColor(R.styleable.ShapeView_disableTextColor, mDefaultDisableTextColor);
+                setTextColor();
+            }
 
             //set animation duration
             mDuration = a.getInteger(R.styleable.ShapeView_animationDuration, mDuration);
@@ -331,9 +336,11 @@ public class ShapeInject {
     }
 
     private void setTextColor() {
-        int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
-        mColorStateList = new ColorStateList(states, colors);
-        mTextView.setTextColor(mColorStateList);
+        if (null != mTextView) {
+            int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
+            mColorStateList = new ColorStateList(states, colors);
+            mTextView.setTextColor(mColorStateList);
+        }
     }
 
     public void setStateTextColor(@ColorInt int normal, @ColorInt int pressed, @ColorInt int Disable) {
