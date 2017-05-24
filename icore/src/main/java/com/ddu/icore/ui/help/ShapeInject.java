@@ -168,7 +168,7 @@ public class ShapeInject {
             mStateBackground.addState(states[2], mNormalBackground);
 
             //set background
-            mTextView.setBackground(mStateBackground);
+            mView.setBackground(mStateBackground);
             a.recycle();
         }
     }
@@ -244,10 +244,10 @@ public class ShapeInject {
     }
 
     public void setRoundRect() {
-        mTextView.post(new Runnable() {
+        mView.post(new Runnable() {
             @Override
             public void run() {
-                int height = mTextView.getMeasuredHeight();
+                int height = mView.getMeasuredHeight();
                 setRadius(height / 2f);
             }
         });
@@ -260,11 +260,11 @@ public class ShapeInject {
     }
 
     public void setRound() {
-        mTextView.post(new Runnable() {
+        mView.post(new Runnable() {
             @Override
             public void run() {
-                int height = mTextView.getMeasuredHeight();
-                int width = mTextView.getMeasuredWidth();
+                int height = mView.getMeasuredHeight();
+                int width = mView.getMeasuredWidth();
                 int size = Math.max(height, width);
                 setRound(size);
             }
@@ -276,10 +276,10 @@ public class ShapeInject {
     }
 
     public void setSegmented(final int direction) {
-        mTextView.post(new Runnable() {
+        mView.post(new Runnable() {
             @Override
             public void run() {
-                float radius = mTextView.getMeasuredHeight();
+                float radius = mView.getMeasuredHeight();
                 float[] radii = new float[]{radius, radius, 0, 0, 0, 0, radius, radius};
                 if (direction == DIRECTION_RIGHT) {
                     radii = new float[]{0, 0, radius, radius, radius, radius, 0, 0};
