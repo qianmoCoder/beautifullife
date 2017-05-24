@@ -1,10 +1,13 @@
 package com.ddu.ui.fragment.study.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.widget.LinearLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.ui.help.ShapeInjectHelper;
 import com.ddu.icore.ui.view.ShapeButton;
 import com.ddu.icore.util.sys.ViewUtils;
 
@@ -18,6 +21,7 @@ public class DrawFragment extends DefaultFragment {
 
     private Unbinder unbinder;
     private ShapeButton shapeTextView;
+    private LinearLayout linearLayout;
 
     @NonNull
     public static DrawFragment newInstance(String id) {
@@ -44,6 +48,19 @@ public class DrawFragment extends DefaultFragment {
 //        shapeTextView.setRadius(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
         int height = shapeTextView.getHeight();
 //        shapeTextView.getShapeInject().setSegmented(true);
+
+        linearLayout = findViewById(R.id.ll_customer);
+        final ShapeInjectHelper shapeInjectHelper = new ShapeInjectHelper(linearLayout);
+        shapeInjectHelper.backgroundColor(Color.BLUE);
+//        shapeInjectHelper.strokeWidth(2, Color.RED, 5, 5);
+        shapeInjectHelper.shapeType(ShapeInjectHelper.ROUND_RECT);
+        linearLayout.post(new Runnable() {
+            @Override
+            public void run() {
+
+                shapeInjectHelper.setBackground();
+            }
+        });
     }
 
     @Override
