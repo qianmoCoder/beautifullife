@@ -1,13 +1,11 @@
 package com.ddu.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.ddu.R;
-import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.ui.activity.BaseActivity;
+import com.ddu.icore.ui.help.ShapeInjectHelper;
 import com.ddu.icore.util.sys.ViewUtils;
 
 /**
@@ -15,29 +13,21 @@ import com.ddu.icore.util.sys.ViewUtils;
  */
 public class LoginActivity extends BaseActivity {
 
-    private Button mBtnOk;
+    private RelativeLayout mRlLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_work_state);
-
-        mBtnOk = ViewUtils.findViewById(this, R.id.btn_ok);
-        mBtnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, LoginActivity1.class));
-            }
-        });
-
-        setDefaultTitle("zero");
+        setContentView(R.layout.fragment_login);
+        mRlLogin = ViewUtils.findViewById(this, R.id.rl_login);
+        ShapeInjectHelper shapeInjectHelper = new ShapeInjectHelper(mRlLogin);
+        shapeInjectHelper.backgroundColor(0xffffff);
+        shapeInjectHelper.radius(5);
+        shapeInjectHelper.setBackground();
     }
 
-    public void login() {
-        GodIntent msg = new GodIntent();
-        msg.setAction(1);
-        msg.putString("", "");
-        msg.putString("", "");
+    @Override
+    public boolean isShowTitleBar() {
+        return false;
     }
-
 }

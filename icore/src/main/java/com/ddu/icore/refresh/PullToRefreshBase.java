@@ -2,6 +2,7 @@ package com.ddu.icore.refresh;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -922,6 +923,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     private void addRefreshableView(Context context, T refreshableView) {
         mRefreshableViewWrapper = new FrameLayout(context);
+        mRefreshableViewWrapper.setBackgroundColor(Color.YELLOW);
         mRefreshableViewWrapper.addView(refreshableView, ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
 

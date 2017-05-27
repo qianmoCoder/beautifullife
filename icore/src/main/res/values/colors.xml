@@ -33,6 +33,7 @@
     <color name="c_cc999999">#cc999999</color>
 
     <color name="c_cccccc">#cccccc</color>
+    <color name="c_ecedef">#ecedef</color>
     <color name="c_dddddd">#dddddd</color>
     <color name="c_ef163f">#ef163f</color>
     <color name="c_f0f0f0">#f0f0f0</color>
@@ -58,5 +59,7 @@
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
     <color name="c_e0000000">#e0000000</color>
+
+    <color name="c_397ede">#397ede</color>
 
 </resources>

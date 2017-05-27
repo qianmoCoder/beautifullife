@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_corners_white_bg"
+    android:minHeight="@dimen/dp_202"
+    android:minWidth="@dimen/dp_300"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <TextView
+            style="@style/LoginTextStyle"
+            android:layout_centerInParent="true"
+            android:text="登录" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_refresh_normal" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_middle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_64"
+        android:layout_below="@id/rl_top"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_25">
+
+        <TextView
+            android:id="@+id/tv_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请输入正确的手机号"
+            android:textColor="#f50633"
+            android:textSize="@dimen/dp_12"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/c_333333"
+                android:textColorHint="@color/c_999999"
+                android:textSize="@dimen/dp_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/c_cccccc" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.ddu.icore.ui.view.ShapeButton
+        android:id="@+id/btn_next"
+        style="@style/DefaultShapeButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_10"
+        android:enabled="false"
+        android:text="下一步" />
+
+
+</LinearLayout>

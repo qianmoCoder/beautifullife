@@ -1,0 +1,144 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_corners_white_bg"
+    android:minHeight="@dimen/dp_202"
+    android:minWidth="@dimen/dp_300"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <ImageView
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_refresh_normal" />
+
+        <TextView
+            style="@style/LoginTextStyle"
+            android:layout_centerInParent="true"
+            android:text="输入验证码" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_refresh_normal" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_25">
+
+        <TextView
+            android:id="@+id/tv_error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_20"
+            android:gravity="center"
+            android:text="输入出错了"
+            android:textColor="@color/c_f50633"
+            android:visibility="invisible"
+            android:textSize="@dimen/dp_12"/>
+
+        <com.ddu.icore.ui.view.NumberInputView
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5">
+
+            <TextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/c_cccccc"
+                android:textSize="@dimen/dp_14"
+                tools:text="13552219023" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tv_count_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:textColor="@color/c_cccccc"
+                    android:textSize="@dimen/dp_14"
+                    tools:text="53s 后重发" />
+
+                <com.ddu.icore.ui.view.ShapeTextView
+                    android:id="@+id/btn_resend"
+                    style="@style/DefaultGhostShapeButtonStyle"
+                    android:layout_width="@dimen/dp_60"
+                    android:layout_height="@dimen/dp_28"
+                    android:layout_gravity="center|right"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="重发"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_voice_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:divider="@drawable/divider_linear_layout"
+            android:orientation="vertical"
+            android:showDividers="beginning|end"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_voice_code"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="没收到？尝试电话获取验证码"
+                android:textColor="@color/c_397ede"
+                android:textSize="@dimen/dp_14" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_user_rule"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_15"
+            android:text="输入验证码既代表同意《用户协议》"
+            android:textColor="@color/c_cccccc"
+            android:textSize="@dimen/dp_10" />
+
+    </LinearLayout>
+
+</LinearLayout>

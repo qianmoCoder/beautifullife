@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="这是这是scrollview1以外的文字" />
+
+    <ScrollView
+        android:id="@+id/scroll_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="500dip"
+            android:background="#ff00ffff"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:text="这是scrollview1里的text" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:text="这是scrollview1里的text" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:text="这是scrollview1里的text" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dip"
+                android:text="这是scrollview1里的text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.ddu.icore.refresh.PullToRefreshScrollView
+                    android:id="@+id/scroll_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button1" />
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button2" />
+
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button3" />
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button4" />
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button1" />
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button2" />
+
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button3" />
+
+                        <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button4" />
+
+                        <Button
+                            android:id="@+id/scoll_button1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button1" />
+
+                        <Button
+                            android:id="@+id/scroll_button2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="scroll2里的button2" />
+
+
+                        <Button
+                            android:id="@+id/scroll_button3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button3" />
+
+                        <Button
+                            android:id="@+id/scroll_button4"
+                            android:layout_width="fill_parent"
+                            android:layout_height="200dip"
+                            android:text="scroll2里的button4" />
+
+                        <WebView
+                            android:id="@+id/wv_other"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></WebView>
+
+                    </LinearLayout>
+
+                </com.ddu.icore.refresh.PullToRefreshScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -3,6 +3,9 @@ package com.ddu.icore.util.sys;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +17,15 @@ import android.view.View;
 public class ViewUtils {
 
     private static final String FRAGMENT_CON = "NoSaveStateFrameLayout";
+
+    @ColorInt
+    public static int getColor(Context context, @ColorRes int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getResources().getColor(color, null);
+        } else {
+            return context.getResources().getColor(color);
+        }
+    }
 
     @NonNull
     public static <T extends View> T findViewById(@NonNull View view, int resId) {

@@ -8,7 +8,7 @@ import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.fragment.work.TestDesignFragment;
+import com.ddu.ui.dialog.LoginDialog;
 import com.ddu.util.NotificationUtils;
 
 /**
@@ -50,8 +50,8 @@ public class WorkFragment extends DefaultFragment {
 //                startActivity(intent);
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
-                startFragment(TestDesignFragment.class);
-//                startActivity(new Intent(mContext, WebActivity.class));
+//                startFragment(TestDesignFragment.class);
+//                startActivity(new Intent(mContext, LoginActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d
 //                intent.setAction("android.intent.action.VIEW");
@@ -59,6 +59,8 @@ public class WorkFragment extends DefaultFragment {
 //                intent.setData(content_url);
 //                startActivity(intent);
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
+                LoginDialog loginDialog = LoginDialog.newInstance();
+                loginDialog.show(getFragmentManager(), "loginLog");
             }
         });
         setTitle(R.string.main_tab_work);

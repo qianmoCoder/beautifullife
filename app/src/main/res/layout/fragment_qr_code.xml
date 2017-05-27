@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_corners_white_bg"
+    android:minHeight="@dimen/dp_202"
+    android:minWidth="@dimen/dp_300"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <TextView
+            style="@style/LoginTextStyle"
+            android:layout_centerInParent="true"
+            android:text="输入图片中数字" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_refresh_normal" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_middle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_25">
+
+        <TextView
+            android:id="@+id/tv_error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_20"
+            android:gravity="center"
+            android:text="输入出错了"
+            android:textColor="@color/c_f50633"
+            android:textSize="@dimen/dp_12"
+            android:visibility="invisible" />
+
+        <com.ddu.icore.ui.view.NumberInputView
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dp_16"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5">
+
+            <ImageView
+                android:id="@+id/iv_qr_code"
+                android:layout_width="@dimen/dp_188"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/verify_number_default_bg" />
+
+            <TextView
+                android:id="@+id/tv_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center|right"
+                android:drawableLeft="@drawable/ic_refresh_normal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_5"
+                android:text="刷新"
+                android:textColor="@color/c_333333"
+                android:textSize="@dimen/dp_14" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

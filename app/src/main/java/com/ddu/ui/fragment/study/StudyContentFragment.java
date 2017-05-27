@@ -8,14 +8,18 @@ import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
 import com.ddu.icore.util.MultiHashMap;
 import com.ddu.ui.adapter.StudyRecycleViewAdapter;
+import com.ddu.ui.fragment.person.PersonalInfoFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
+import com.ddu.ui.fragment.study.ui.DialogFragment;
 import com.ddu.ui.fragment.study.ui.DrawFragment;
 import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
+import com.ddu.ui.fragment.study.ui.InnerScrollViewFragment;
 import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
 import com.ddu.ui.fragment.study.ui.RenderScriptFragment;
+import com.ddu.ui.fragment.study.ui.SegmentPullToRefreshFragment;
 import com.ddu.ui.fragment.study.ui.ShapeFragment;
 import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
@@ -35,6 +39,10 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, PersonalInfoFragment.class);
+        mMaps.put(0, SegmentPullToRefreshFragment.class);
+        mMaps.put(0, InnerScrollViewFragment.class);
+        mMaps.put(0, DialogFragment.class);
         mMaps.put(0, DesignFragment.class);
         mMaps.put(0, DrawFragment.class);
         mMaps.put(0, DRVFragment.class);

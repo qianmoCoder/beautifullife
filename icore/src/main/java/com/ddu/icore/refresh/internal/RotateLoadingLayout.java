@@ -1,6 +1,7 @@
 package com.ddu.icore.refresh.internal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.view.animation.Animation;
@@ -35,6 +36,7 @@ public class RotateLoadingLayout extends LoadingLayout {
         mRotateAnimation.setDuration(ROTATION_ANIMATION_DURATION);
         mRotateAnimation.setRepeatCount(Animation.INFINITE);
         mRotateAnimation.setRepeatMode(Animation.RESTART);
+        setBackgroundColor(Color.RED);
     }
 
     public void onLoadingDrawableSet(Drawable imageDrawable) {

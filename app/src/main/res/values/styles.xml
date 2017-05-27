@@ -426,10 +426,11 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowNoTitle">true</item>
         <!--是否启用标题栏-->
-        <item name="android:background">@null</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:background">@null</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="RoundRectItem">
@@ -438,5 +439,36 @@
         <item name="android:paddingRight">@dimen/dp_5</item>
         <item name="android:paddingTop">@dimen/dp_2</item>
     </style>
+
+    <style name="LoginTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:textColor">@color/c_333333</item>
+    </style>
+
+
+    <style name="DefaultShapeButtonStyle">
+        <item name="radius">3dp</item>
+        <item name="normalBackgroundColor">@color/c_1a82e2</item>
+        <item name="pressedBackgroundColor">@color/c_267ccb</item>
+        <item name="disableBackgroundColor">@color/c_cccccc</item>
+        <item name="android:textColor">@color/c_ffffff</item>
+    </style>
+
+    <style name="DefaultGhostShapeButtonStyle">
+        <item name="radius">3dp</item>
+        <item name="normalBackgroundColor">@color/c_ffffff</item>
+        <item name="pressedBackgroundColor">@color/c_d7ecff</item>
+        <item name="disableBackgroundColor">@color/c_4cffffff</item>
+        <item name="normalStrokeWidth">@dimen/dp_1</item>
+        <item name="pressedStrokeWidth">@dimen/dp_1</item>
+        <item name="disableStrokeWidth">@dimen/dp_1</item>
+        <item name="normalStrokeColor">@color/c_1a82e2</item>
+        <item name="pressedStrokeColor">@color/c_1a82e2</item>
+        <item name="disableStrokeColor">@color/c_4c1a82e2</item>
+        <item name="android:textColor">@color/c_1a82e2</item>
+    </style>
+
 
 </resources>
