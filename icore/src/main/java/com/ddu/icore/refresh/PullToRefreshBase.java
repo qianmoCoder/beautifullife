@@ -77,6 +77,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     private Interpolator mScrollAnimationInterpolator;
 
+    private LoadingView mRefreshView;
+
     private LoadingView mHeaderView;
     private LoadingView mFooterView;
 
@@ -85,6 +87,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     private OnPullEventListener<T> mOnPullEventListener;
 
     private SmoothScrollRunnable mCurrentSmoothScrollRunnable;
+
+    private ViewGroup contentView;
+    private Context mContext;
 
     // ===========================================================
     // Constructors
@@ -106,6 +111,15 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         init(context, null);
     }
 
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        contentView = (ViewGroup) findViewById(R.id.refresh_content_view);
+//        if (null != contentView) {
+//            LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, 150);
+//            contentView.addView(new RotateLoadingLayout(mContext, Mode.PULL_FROM_START, getPullToRefreshScrollDirection()), 0, layoutParams);
+//        }
+    }
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
@@ -599,6 +613,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     protected void onRefreshing(final boolean doScroll) {
         if (mMode.showHeaderLoadingLayout()) {
             mHeaderView.refreshing();
+            if (null != mRefreshView) {
+                mRefreshView.refreshing();
+            }
         }
         if (mMode.showFooterLoadingLayout()) {
             mFooterView.refreshing();
@@ -645,6 +662,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
                 break;
             case PULL_FROM_START:
                 mHeaderView.releaseToRefresh();
+                if (null != mRefreshView) {
+                    mRefreshView.releaseToRefresh();
+                }
                 break;
             default:
                 // NO-OP
@@ -662,6 +682,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
         // Always reset both layouts, just in case...
         mHeaderView.reset();
+        mRefreshView.reset();
         mFooterView.reset();
 
         smoothScrollTo(0);
@@ -849,7 +870,11 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
         switch (getPullToRefreshScrollDirection()) {
             case VERTICAL:
-                scrollTo(0, value);
+                if (null != contentView) {
+                    contentView.scrollTo(0, value);
+                } else {
+                    scrollTo(0, value);
+                }
                 break;
             case HORIZONTAL:
                 scrollTo(value, 0);
@@ -944,6 +969,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     private void init(Context context, AttributeSet attrs) {
+        mContext = context;
         switch (getPullToRefreshScrollDirection()) {
             case HORIZONTAL:
                 setOrientation(LinearLayout.HORIZONTAL);
@@ -1012,6 +1038,10 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         mHeaderView = loadingView;
     }
 
+    public void setRefreshView(LoadingView loadingView) {
+        mRefreshView = loadingView;
+    }
+
     public void setFooter(LoadingView loadingView) {
         mFooterView = loadingView;
     }
@@ -1075,6 +1105,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
                 case PULL_FROM_START:
                 default:
                     mHeaderView.onPull(scale);
+                    if (null != mRefreshView) {
+                        mRefreshView.onPull(scale);
+                    }
                     break;
             }
 
@@ -1131,7 +1164,11 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
                 break;
             case VERTICAL:
             default:
-                oldScrollValue = getScrollY();
+                if (null != contentView) {
+                    oldScrollValue = contentView.getScrollY();
+                } else {
+                    oldScrollValue = getScrollY();
+                }
                 break;
         }
 

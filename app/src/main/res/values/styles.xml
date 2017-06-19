@@ -263,7 +263,7 @@
         <item name="android:layout_width">@dimen/dp_100</item>
         <item name="android:layout_height">@dimen/dp_100</item>
         <item name="android:layout_margin">@dimen/dp_3</item>
-        <item name="android:background">@color/c_ff0000</item>
+        <item name="android:background">@drawable/home_icon_notification_bg</item>
     </style>
 
     <style name="UITextStyle">

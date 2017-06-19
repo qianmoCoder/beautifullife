@@ -15,12 +15,10 @@ import com.ddu.R;
 import com.ddu.icore.dialog.ShareAdapter;
 import com.ddu.icore.entity.ShareEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
-import com.ddu.icore.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.umeng.socialize.ShareAction;
+import com.ddu.ui.dialog.LoginDialog;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.media.UMWeb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,14 +95,16 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onClick(ShareEntity data, int position) {
 
-                UMWeb web = new UMWeb("http://www.baidu.com");
-                web.setTitle("this is music title");
-                web.setThumb(null);
-                web.setDescription("my description");
-                new ShareAction(ShareActivity.this).withMedia(web).setPlatform(SHARE_MEDIA.ALIPAY).share();
-
-                ToastUtils.showTextToast(data.getName() + " " + position);
-                finish();
+//                UMWeb web = new UMWeb("http://www.baidu.com");
+//                web.setTitle("this is music title");
+//                web.setThumb(null);
+//                web.setDescription("my description");
+//                new ShareAction(ShareActivity.this).withMedia(web).setPlatform(SHARE_MEDIA.ALIPAY).share();
+//
+//                ToastUtils.showTextToast(data.getName() + " " + position);
+//                finish();
+                LoginDialog loginDialog = LoginDialog.newInstance();
+                loginDialog.showDialog(ShareActivity.this);
             }
         });
     }
@@ -129,7 +129,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.bottom_view_anim_enter, R.anim.bottom_view_anim_exit);
+        overridePendingTransition(R.anim.frament_alpha_in, R.anim.frament_alpha_out);
     }
 
     private UMShareListener umShareListener = new UMShareListener() {

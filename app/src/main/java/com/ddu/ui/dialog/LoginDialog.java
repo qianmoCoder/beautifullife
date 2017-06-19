@@ -2,6 +2,7 @@ package com.ddu.ui.dialog;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -134,5 +135,13 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
             QRCodeDialog qrCodeDialog = QRCodeDialog.newInstance(mPhoneNum);
             qrCodeDialog.show(getFragmentManager(), "qrCodeDialog");
         }
+    }
+
+    public void showDialog() {
+        show(getFragmentManager(), "LoginDialog");
+    }
+
+    public void showDialog(FragmentActivity fragmentActivity) {
+        show(fragmentActivity.getSupportFragmentManager(), "LoginDialog");
     }
 }

@@ -1,5 +1,6 @@
 package com.ddu.ui.dialog;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.view.NumberInputView;
 import com.ddu.icore.util.AnimatorUtils;
+import com.ddu.icore.util.sys.AndroidUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import static com.ddu.R.id.tv_error_msg;
@@ -78,6 +80,14 @@ public class VerificationCodeDialog extends DialogFragment implements View.OnCli
 
         mLlVoiceCode = ViewUtils.findViewById(mLlLogin, R.id.ll_voice_code);
         mEtPhoneNumber = ViewUtils.findViewById(mLlLogin, R.id.et_phone_number);
+        mEtPhoneNumber.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                mEtPhoneNumber.getEt().performClick();
+//                mEtPhoneNumber.getll().performClick();
+                AndroidUtils.showSoftInput((Activity) mContext, mEtPhoneNumber.getEt());
+            }
+        }, 300);
         mEtPhoneNumber.setOnInputCallback(new NumberInputView.OnInputCallback() {
             @Override
             public void onInputComplete(String inputText) {
@@ -96,6 +106,7 @@ public class VerificationCodeDialog extends DialogFragment implements View.OnCli
         int id = v.getId();
         switch (id) {
             case R.id.btn_resend:
+                mEtPhoneNumber.clearText();
                 reSend();
                 break;
         }
@@ -134,5 +145,13 @@ public class VerificationCodeDialog extends DialogFragment implements View.OnCli
     public void onDestroy() {
         super.onDestroy();
         mRegisterTimer.cancel();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            mEtPhoneNumber.performClick();
+        }
     }
 }

@@ -65,7 +65,8 @@
                 android:maxLength="11"
                 android:textColor="@color/c_333333"
                 android:textColorHint="@color/c_999999"
-                android:textSize="@dimen/dp_16" />
+                android:textSize="@dimen/dp_16"
+                android:focusableInTouchMode="true"/>
 
             <View
                 android:layout_width="match_parent"

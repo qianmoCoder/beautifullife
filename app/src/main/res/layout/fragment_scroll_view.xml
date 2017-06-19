@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:overScrollMode="never"
+    android:scrollbars="none">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -12,20 +14,18 @@
 
 
         <LinearLayout
+            android:id="@+id/refresh_content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/c_ff0000"
+            android:background="@color/colorAccent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <FrameLayout
+                android:id="@+id/fl_refresh_content"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_150"
-                android:background="@color/c_f7b218"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/dp_5"
-                android:paddingRight="@dimen/dp_10">
+                android:layout_height="@dimen/dp_150">
 
-            </RelativeLayout>
+            </FrameLayout>
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
@@ -51,7 +51,7 @@
             android:id="@+id/rl_title_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_150"
-            android:background="@color/c_3b8fed"
+            android:background="@color/c_999999"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/dp_5"
             android:paddingRight="@dimen/dp_10"

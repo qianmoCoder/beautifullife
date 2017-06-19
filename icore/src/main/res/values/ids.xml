@@ -13,5 +13,6 @@
 
     <item name="refresh_loading_view" type="id" />
     <item name="item_tag" type="id" />
+    <item name="refresh_content_view" type="id" />
 
 </resources>

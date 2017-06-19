@@ -37,4 +37,9 @@
         mm:lineSize="1dp"
         mm:marker="@drawable/ic_timeline_default_marker"
         mm:markerSize="7dp" />
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

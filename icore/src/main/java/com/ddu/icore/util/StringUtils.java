@@ -12,6 +12,16 @@ public class StringUtils {
         return String.format("%.2f", d);
     }
 
+    public static String formatMoney(String money) {
+        double payMoney;
+        try {
+            payMoney = Double.parseDouble(money);
+        } catch (Exception e) {
+            payMoney = 0.0;
+        }
+        return String.format("%.2f", payMoney);
+    }
+
     public static boolean isChineseChar(String text) {
         Pattern pattern = Pattern.compile("[\\u4e00-\\u9fa5]");
         Matcher matcher = pattern.matcher(text);

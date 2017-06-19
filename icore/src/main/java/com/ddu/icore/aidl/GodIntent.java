@@ -69,4 +69,8 @@ public class GodIntent implements Parcelable {
             return new GodIntent[size];
         }
     };
+
+    public void doSomething() {
+
+    }
 }

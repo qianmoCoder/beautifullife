@@ -67,7 +67,6 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
     }
 
     public abstract void initData(Bundle savedInstanceState);
-
     @Nullable
     public abstract View getContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 

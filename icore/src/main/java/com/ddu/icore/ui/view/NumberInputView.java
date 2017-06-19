@@ -95,6 +95,15 @@ public class NumberInputView extends FrameLayout implements TextWatcher {
         initChildView();
     }
 
+    public EditText getEt() {
+        return mHintEditText;
+    }
+
+    public LinearLayout getll() {
+        return linearLayout;
+    }
+
+
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {

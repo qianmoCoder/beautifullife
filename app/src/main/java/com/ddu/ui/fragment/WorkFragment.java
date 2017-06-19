@@ -1,15 +1,17 @@
 package com.ddu.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
+import com.ddu.icore.util.StringUtils;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.dialog.LoginDialog;
-import com.ddu.util.NotificationUtils;
+import com.ddu.ui.activity.ShareActivity;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -17,6 +19,8 @@ import com.ddu.util.NotificationUtils;
 public class WorkFragment extends DefaultFragment {
 
     private OptionItemView mOptionItemView;
+
+    private TextView mTvMoney;
 
     @NonNull
     public static WorkFragment newInstance() {
@@ -38,12 +42,13 @@ public class WorkFragment extends DefaultFragment {
 
     @Override
     public void initView() {
+        mTvMoney = findViewById(R.id.tv_money);
         mOptionItemView = ViewUtils.findViewById(mView, R.id.oiv_fragment);
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                NotificationUtils.notification(mContext);
+//                NotificationUtils.notification(mContext);
 
 //                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + "18610909732"));
 //                intent.putExtra("sms_body", "http://t.cn/RXlnf0d");
@@ -51,7 +56,7 @@ public class WorkFragment extends DefaultFragment {
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
 //                startFragment(TestDesignFragment.class);
-//                startActivity(new Intent(mContext, LoginActivity.class));
+                startActivity(new Intent(mContext, ShareActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d
 //                intent.setAction("android.intent.action.VIEW");
@@ -59,10 +64,12 @@ public class WorkFragment extends DefaultFragment {
 //                intent.setData(content_url);
 //                startActivity(intent);
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
-                LoginDialog loginDialog = LoginDialog.newInstance();
-                loginDialog.show(getFragmentManager(), "loginLog");
+//                LoginDialog loginDialog = LoginDialog.newInstance();
+//                loginDialog.show(getFragmentManager(), "loginLog");
+
             }
         });
         setTitle(R.string.main_tab_work);
+        mTvMoney.setText(StringUtils.formatMoney(""));
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.ui.dialog.BottomSheetDialog;
 
 /**
  * Created by yzbzz on 2017/5/25.
@@ -16,6 +17,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 public class DialogFragment extends DefaultFragment {
 
     private Button btnUI;
+    private Button btnBottomDialog;
 
     @Override
     public int getLayoutId() {
@@ -25,6 +27,13 @@ public class DialogFragment extends DefaultFragment {
     @Override
     public void initView() {
         btnUI = findViewById(R.id.btn_dialog);
+        btnBottomDialog = findViewById(R.id.btn_bottom_dialog);
+        btnBottomDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         btnUI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +43,8 @@ public class DialogFragment extends DefaultFragment {
                 builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        BottomSheetDialog bottomSheetDialog = BottomSheetDialog.newInstance();
+                        bottomSheetDialog.show(getFragmentManager(),"bottomSheetDialog");
                     }
                 });
                 builder.setNegativeButton("我知道了", new DialogInterface.OnClickListener() {
