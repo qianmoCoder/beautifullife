@@ -42,4 +42,53 @@
         android:id="@+id/tv_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="附近车场"
+            android:textColor="@color/c_333333"
+            android:textSize="@dimen/dp_18" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@id/tv_description">
+
+
+            <ImageView
+                android:id="@+id/iv_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_refresh_normal" />
+
+
+            <TextView
+                android:id="@+id/tv_nearby_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_refresh"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="恒润商务中心恒润商务中心恒润商务中心"
+                android:textColor="@color/c_999999"
+                android:textSize="@dimen/dp_12" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -11,7 +10,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.StringUtils;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.activity.ShareActivity;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -55,8 +53,8 @@ public class WorkFragment extends DefaultFragment {
 //                startActivity(intent);
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
-//                startFragment(TestDesignFragment.class);
-                startActivity(new Intent(mContext, ShareActivity.class));
+                startFragment(WebFragment.class);
+//                startActivity(new Intent(mContext, ShareActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d
 //                intent.setAction("android.intent.action.VIEW");

@@ -9,7 +9,9 @@
     <color name="c_000000">#000000</color>
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
+    <color name="c_cc000000">#cc000000</color>
     <color name="c_e0000000">#e0000000</color>
+    <color name="c_e5000000">#e5000000</color>
     <color name="c_ffffff">#ffffff</color>
     <color name="c_4cffffff">#4cffffff</color>
     <color name="c_333042">#333042</color>

@@ -47,6 +47,7 @@ public class MortgageFragment extends DefaultFragment {
         SampleFragmentPagerAdapter adapter = new SampleFragmentPagerAdapter(baseActivity.getSupportFragmentManager(),baseActivity);
         vpLifeMortgage.setAdapter(adapter);
         tlLifeMortgage.setupWithViewPager(vpLifeMortgage);
+        vpLifeMortgage.setCurrentItem(0);
         setDefaultTitle("房贷计算器");
     }
 
@@ -56,7 +57,7 @@ public class MortgageFragment extends DefaultFragment {
     }
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-        final int PAGE_COUNT = 3;
+        final int PAGE_COUNT = 0;
         @NonNull
         private String tabTitles[] = new String[]{"缴费", "入场", "更多"};
         private Context context;

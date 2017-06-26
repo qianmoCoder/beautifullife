@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,21 +30,21 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
         super.onCreate(savedInstanceState);
         mActivity = getActivity();
         initData(savedInstanceState);
-        Log.v("lhz", getClass().getName() + " onCreate ");
+//        Log.v("lhz", getClass().getName() + " onCreate ");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = context;
-        Log.v("lhz", getClass().getName() + " onAttach ");
+//        Log.v("lhz", getClass().getName() + " onAttach ");
     }
 
 
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.v("lhz", getClass().getName() + " onCreateView");
+//        Log.v("lhz", getClass().getName() + " onCreateView");
         if (null == mRootView) {
             if (getUserVisibleHint()) {
                 onDataLoad();
@@ -63,7 +62,7 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.v("lhz", getClass().getName() + " onViewCreated ");
+//        Log.v("lhz", getClass().getName() + " onViewCreated ");
     }
 
     public abstract void initData(Bundle savedInstanceState);
@@ -86,7 +85,7 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
     }
 
     public void onDataLoad() {
-        Log.v("lhz", getClass().getName() + " onDataLoad");
+//        Log.v("lhz", getClass().getName() + " onDataLoad");
     }
 
     @Override
@@ -122,43 +121,43 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        Log.v("lhz", getClass().getName() + " hidden: " + hidden);
+//        Log.v("lhz", getClass().getName() + " hidden: " + hidden);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.v("lhz", getClass().getName() + " onResume");
+//        Log.v("lhz", getClass().getName() + " onResume");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.v("lhz", getClass().getName() + " onStart");
+//        Log.v("lhz", getClass().getName() + " onStart");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.v("lhz", getClass().getName() + " onStop");
+//        Log.v("lhz", getClass().getName() + " onStop");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.v("lhz", getClass().getName() + " onPause");
+//        Log.v("lhz", getClass().getName() + " onPause");
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.v("lhz", getClass().getName() + " setUserVisibleHint: " + isVisibleToUser);
+//        Log.v("lhz", getClass().getName() + " setUserVisibleHint: " + isVisibleToUser);
     }
 
     @Override
     public void onAttachFragment(Fragment childFragment) {
         super.onAttachFragment(childFragment);
-        Log.v("lhz", getClass().getName() + " onAttachFragment");
+//        Log.v("lhz", getClass().getName() + " onAttachFragment");
     }
 
 

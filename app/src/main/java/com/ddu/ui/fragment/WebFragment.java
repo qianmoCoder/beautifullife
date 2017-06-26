@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,19 +15,24 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.PopupUtils;
 import com.ddu.icore.util.UrlUtils;
-import com.ddu.ui.helper.WebAppInterface;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -41,14 +47,17 @@ import butterknife.Unbinder;
 public class WebFragment extends DefaultFragment {
 
     @Nullable
-    @BindView(R.id.fl_web)
-    FrameLayout flWeb;
-    @Nullable
-    @BindView(R.id.pb_web)
-    ProgressBar pbWeb;
+//    @BindView(R.id.fl_web)
+            FrameLayout flWeb;
+    //    @Nullable
+//    @BindView(R.id.pb_web)
+//    ProgressBar pbWeb;
     @Nullable
     @BindView(R.id.wv_web)
     WebView mWebView;
+
+    @BindView(R.id.btn_reload)
+    Button btnReload;
 
     private WebSettings mWebSettings;
     @Nullable
@@ -77,6 +86,8 @@ public class WebFragment extends DefaultFragment {
         }
     }
 
+    private boolean isLoadFirst;
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_web;
@@ -89,22 +100,70 @@ public class WebFragment extends DefaultFragment {
         mWebSettings = mWebView.getSettings();
         mWebSettings.setJavaScriptEnabled(true);
         mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        mWebSettings.setSupportZoom(true);
+        mWebSettings.setUseWideViewPort(true);
+        mWebSettings.setLoadWithOverviewMode(true);
 
         mWebView.setWebViewClient(webViewClient);
         mWebView.setWebChromeClient(webChromeClient);
-//        AssetManager am = mContext.getAssets();
-//        try {
-//            InputStream is = am.open("apptest.html");
-//            byte[] buffer = new byte[10000];
-//            is.read(buffer);
-//            String data = new String(buffer, "utf-8");
-//            mWebView.loadData(data, "text/html; charset=UTF-8", null);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        mWebView.loadUrl(url);
-        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
+
+//        reload("protocol.html");
+        mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
+//        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
+//        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
+        mWebView.addJavascriptInterface(this, "ETCPSBridge");
         initTitle();
+        btnReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                mWebView.loadUrl("about:blank");
+//                mWebView.clearView();
+                if (isLoadFirst) {
+                    mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
+                } else {
+                    mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
+                }
+
+                isLoadFirst = !isLoadFirst;
+            }
+        });
+    }
+
+    private void reload(String xml) {
+        mWebView.clearView();
+        mWebView.measure(10, 10);
+        AssetManager am = mContext.getAssets();
+        try {
+            InputStream is = am.open(xml);
+            byte[] buffer = new byte[10000];
+            is.read(buffer);
+            String data = new String(buffer, "utf-8");
+            mWebView.loadData(data, "text/html; charset=UTF-8", null);
+            mWebView.requestLayout();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @JavascriptInterface
+    public void resize(final String json) {
+        //{“type":"webGotoApp","value":"etcp://6","callback":"ETCPSBridgeWebGotoApp6"}
+        Log.v("lhz", "json: " + json);
+        mWebView.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject jsonObject = new JSONObject(json);
+                    String type = jsonObject.getString("type");
+                    double height = jsonObject.getDouble("height");
+                    Log.v("lhz", "height: " + height + " " + mWebView.getHeight());
+                    int heightT = (int) (height * getResources().getDisplayMetrics().density);
+                    mWebView.setLayoutParams(new LinearLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, heightT));
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
 
     public void initTitle() {
@@ -142,7 +201,7 @@ public class WebFragment extends DefaultFragment {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            pbWeb.setProgress(newProgress);
+//            pbWeb.setProgress(newProgress);
             super.onProgressChanged(view, newProgress);
         }
 
@@ -161,17 +220,21 @@ public class WebFragment extends DefaultFragment {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-            pbWeb.setVisibility(View.VISIBLE);
+//            pbWeb.setVisibility(View.VISIBLE);
         }
 
         @Override
         public void onPageFinished(@NonNull WebView view, String url) {
+            view.loadUrl("javascript:ETCPSBridge.resize(JSON.stringify({type:'getHeight',height:document.body.getBoundingClientRect().height}))");
+//            view.loadUrl("javascript:MyApp.resize(document.querySelector('body').offsetHeight);");
+//            view.loadUrl("javascript:MyApp.resize(document.body.getBoundingClientRect().height)");
             super.onPageFinished(view, url);
-            pbWeb.setVisibility(View.GONE);
+//            pbWeb.setVisibility(View.GONE);
             String title = view.getTitle();
             if (!TextUtils.isEmpty(title)) {
                 setDefaultTitle(title);
             }
+            mWebView.setVisibility(View.VISIBLE);
         }
 
         @Override
