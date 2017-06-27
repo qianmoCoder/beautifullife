@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ddu.indicator.TabPageIndicator
+        android:id="@+id/tpi"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_50">
+
+    </com.ddu.indicator.TabPageIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_tpi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>
