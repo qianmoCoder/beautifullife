@@ -3,7 +3,7 @@
     <RelativeLayout
         android:id="@+id/refresh_loading_view"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="150dp"
         android:background="@color/c_00000000">
 
         <!--<TextView-->

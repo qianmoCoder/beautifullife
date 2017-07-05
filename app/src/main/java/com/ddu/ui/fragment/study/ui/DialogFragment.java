@@ -1,14 +1,15 @@
 package com.ddu.ui.fragment.study.ui;
 
-import android.content.DialogInterface;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.ui.dialog.BottomSheetDialog;
+import com.ddu.icore.util.AnimatorUtils;
 
 /**
  * Created by yzbzz on 2017/5/25.
@@ -19,6 +20,14 @@ public class DialogFragment extends DefaultFragment {
     private Button btnUI;
     private Button btnBottomDialog;
 
+    private ImageView mIvCar;
+    private ImageView mIvG;
+
+    private ObjectAnimator objectAnimator;
+    private ObjectAnimator rotationY;
+    private ObjectAnimator scaleByObjectAnimator;
+    private AnimatorSet animatorSet;
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_ui_dialog;
@@ -27,35 +36,57 @@ public class DialogFragment extends DefaultFragment {
     @Override
     public void initView() {
         btnUI = findViewById(R.id.btn_dialog);
+        mIvCar = findViewById(R.id.iv_car);
+        mIvG = findViewById(R.id.iv_g);
+
         btnBottomDialog = findViewById(R.id.btn_bottom_dialog);
         btnBottomDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mIvCar.setVisibility(View.VISIBLE);
+                mIvCar.setPivotX(mIvCar.getWidth() / 2);
+                mIvCar.setPivotY(mIvCar.getHeight());
+                mIvG.setPivotX(mIvG.getWidth());
+                mIvG.setPivotY(mIvG.getHeight() / 2);
+                animatorSet.start();
+                rotationY.start();
             }
         });
         btnUI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setTitle("我是标题");
-                builder.setMessage("当文字eiwrowejowoejjwoidosjsoie");
-                builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        BottomSheetDialog bottomSheetDialog = BottomSheetDialog.newInstance();
-                        bottomSheetDialog.show(getFragmentManager(),"bottomSheetDialog");
-                    }
-                });
-                builder.setNegativeButton("我知道了", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                builder.create().show();
+                mIvCar.setVisibility(View.INVISIBLE);
+                scaleByObjectAnimator.cancel();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//                builder.setTitle("我是标题");
+//                builder.setMessage("当文字eiwrowejowoejjwoidosjsoie");
+//                builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        BottomSheetDialog bottomSheetDialog = BottomSheetDialog.newInstance();
+//                        bottomSheetDialog.show(getFragmentManager(),"bottomSheetDialog");
+//                    }
+//                });
+//                builder.setNegativeButton("我知道了", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//                builder.create().show();
             }
         });
+        initAnimator();
+    }
+
+
+    private void initAnimator() {
+        scaleByObjectAnimator = AnimatorUtils.scaleByObjectAnimator(mIvCar, 500, 0f, 1f);
+        objectAnimator = AnimatorUtils.scaleY(mIvCar, 500, true, 1.1f, 1f, 1.1f);
+        rotationY = AnimatorUtils.rotationY(mIvG, 500, 0, 60);
+        rotationY.setStartDelay(300);
+        animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(scaleByObjectAnimator, objectAnimator);
     }
 
     @Override

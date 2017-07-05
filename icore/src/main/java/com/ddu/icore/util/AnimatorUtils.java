@@ -6,6 +6,7 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -56,6 +57,42 @@ public class AnimatorUtils {
 //        objectAnimator.setRepeatMode(ObjectAnimator.RESTART);
 //        objectAnimator.setRepeatCount(ObjectAnimator.INFINITE);
         return objectAnimator;
+    }
+
+    public static ObjectAnimator scaleX(View target, long duration, boolean isLooper, float... values) {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(target, View.SCALE_X, values);
+        objectAnimator.setDuration(duration);
+        if (isLooper) {
+            objectAnimator.setRepeatMode(ValueAnimator.REVERSE);
+            objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        }
+        return objectAnimator;
+    }
+
+    public static ObjectAnimator scaleY(View target, long duration, boolean isLooper, float... values) {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(target, View.SCALE_Y, values);
+        objectAnimator.setDuration(duration);
+        if (isLooper) {
+            objectAnimator.setRepeatMode(ValueAnimator.REVERSE);
+            objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        }
+        return objectAnimator;
+    }
+
+    public static AnimatorSet scale(View target, long duration, float... values) {
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setDuration(duration);
+        animatorSet.playTogether(scaleX(target, duration, false, values), scaleY(target, duration, false, values));
+        return animatorSet;
+    }
+
+    public static ObjectAnimator scaleByObjectAnimator(View target, long duration, float... values) {
+        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f);
+        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(target, scaleX, scaleY);
+        animator.setDuration(duration);
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        return animator;
     }
 
     public static AnimatorSet composeIn(View first, View second, View three) {

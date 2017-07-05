@@ -17,4 +17,41 @@
         android:layout_height="wrap_content"
         android:text="弹窗" />
 
+    <FrameLayout
+        android:id="@+id/fl_animator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:src="@drawable/ptf_icon" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/c_20000000">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_14"
+                android:layout_marginRight="@dimen/dp_18"
+                android:id="@+id/iv_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ptf_car"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_26"
+                android:id="@+id/iv_g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ptf_g" />
+        </FrameLayout>
+
+    </FrameLayout>
+
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -63,6 +64,7 @@ public class RotateLoadingLayout extends LoadingLayout {
             angle = Math.max(0f, Math.min(180f, scaleOfLayout * 360f - 180f));
         }
 
+        Log.v("lhz", "angle: " + angle + " mRotationPivotX: " + mRotationPivotX + " mRotationPivotY: " + mRotationPivotY);
         mHeaderImageMatrix.setRotate(angle, mRotationPivotX, mRotationPivotY);
         mHeaderImage.setImageMatrix(mHeaderImageMatrix);
     }

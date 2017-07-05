@@ -13,10 +13,53 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_160">
+
+            <FrameLayout
+                android:id="@+id/fl_animator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:src="@drawable/ptf_icon" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/c_20000000">
+
+                    <ImageView
+                        android:id="@+id/iv_car"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginRight="@dimen/dp_18"
+                        android:layout_marginTop="@dimen/dp_14"
+                        android:src="@drawable/ptf_car"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/iv_g"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_26"
+                        android:src="@drawable/ptf_g" />
+                </FrameLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/refresh_content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/c_ffffff"
+            android:background="@color/c_00000000"
             android:orientation="vertical">
 
             <FrameLayout
@@ -28,7 +71,7 @@
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_10"
                 android:background="@color/c_4897fa" />
 
             <LinearLayout
@@ -37,6 +80,7 @@
                 android:background="@color/c_2e2b3b">
 
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -48,8 +92,7 @@
             android:orientation="horizontal"
             android:paddingLeft="@dimen/dp_5"
             android:paddingRight="@dimen/dp_10"
-            android:visibility="visible">
-        </RelativeLayout>
+            android:visibility="visible"></RelativeLayout>
 
     </FrameLayout>
 
