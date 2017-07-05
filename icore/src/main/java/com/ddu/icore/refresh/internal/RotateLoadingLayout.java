@@ -64,7 +64,6 @@ public class RotateLoadingLayout extends LoadingLayout {
             angle = Math.max(0f, Math.min(180f, scaleOfLayout * 360f - 180f));
         }
 
-        Log.v("lhz", "angle: " + angle + " mRotationPivotX: " + mRotationPivotX + " mRotationPivotY: " + mRotationPivotY);
         mHeaderImageMatrix.setRotate(angle, mRotationPivotX, mRotationPivotY);
         mHeaderImage.setImageMatrix(mHeaderImageMatrix);
     }
