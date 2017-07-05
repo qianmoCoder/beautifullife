@@ -3,15 +3,14 @@
     <RelativeLayout
         android:id="@+id/refresh_loading_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/c_ffffff"
-        android:padding="@dimen/dp_12">
+        android:layout_height="50dp"
+        android:background="@color/c_00000000">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="hello Icore" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:text="hello Icore" />-->
 
     </RelativeLayout>
 </merge>

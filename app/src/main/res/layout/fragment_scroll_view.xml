@@ -12,12 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <LinearLayout
             android:id="@+id/refresh_content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
+            android:background="@color/c_ffffff"
             android:orientation="vertical">
 
             <FrameLayout
@@ -30,21 +29,15 @@
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
-                android:background="@color/c_f5f5f5" />
+                android:background="@color/c_4897fa" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_500"
-                android:layout_marginTop="@dimen/dp_10">
+                android:layout_height="@dimen/dp_650"
+                android:background="@color/c_2e2b3b">
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_500"
-                android:layout_marginTop="@dimen/dp_10">
-
-            </LinearLayout>
         </LinearLayout>
 
         <RelativeLayout
@@ -56,9 +49,7 @@
             android:paddingLeft="@dimen/dp_5"
             android:paddingRight="@dimen/dp_10"
             android:visibility="visible">
-
         </RelativeLayout>
-
 
     </FrameLayout>
 

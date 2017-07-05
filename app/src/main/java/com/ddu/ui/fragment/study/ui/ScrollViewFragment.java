@@ -10,6 +10,7 @@ import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.refresh.internal.RotateLoadingLayout;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.ui.view.CustomerScrollView;
+import com.ddu.ui.view.CustomerView;
 
 /**
  * Created by yzbzz on 2017/5/26.
@@ -20,6 +21,7 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
     private PullToRefreshScrollView customerScrollView;
     private FrameLayout frameLayout;
     private RotateLoadingLayout rotateLoadingLayout;
+    private CustomerView customerView;
 
     @Override
     public int getLayoutId() {
@@ -31,8 +33,12 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
         frameLayout = findViewById(R.id.fl_refresh_content);
         customerScrollView = findViewById(R.id.csv_activity_base);
         rotateLoadingLayout = new RotateLoadingLayout(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView.getPullToRefreshScrollDirection());
-        frameLayout.addView(rotateLoadingLayout);
-        customerScrollView.setRefreshView(rotateLoadingLayout);
+
+        customerView = new CustomerView(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView);
+
+        frameLayout.addView(customerView);
+
+        customerScrollView.setRefreshView(customerView);
         customerScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
