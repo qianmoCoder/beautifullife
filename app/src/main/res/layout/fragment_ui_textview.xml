@@ -10,6 +10,17 @@
         android:orientation="vertical"
         android:padding="@dimen/dp_10">
 
+        <com.ddu.ui.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:text="200元"
+            android:textSize="@dimen/dp_20"
+            app:strike_thru_color="@color/c_ff0000"
+            app:strike_thru_offset="10dp"
+            app:strike_thru_width="3dp" />
+
         <com.ddu.ui.view.RevealTextView
             android:id="@+id/tv_reveal_text_view"
             style="@style/DefaultButton"
@@ -144,6 +155,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/shape_view_yellow_hollow_oval"
             android:text="SHAPE" />
+
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

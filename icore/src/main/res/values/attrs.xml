@@ -76,6 +76,7 @@
     <declare-styleable name="icore_strike_thru">
         <attr name="strike_thru_color" format="color" />
         <attr name="strike_thru_width" format="dimension" />
+        <attr name="strike_thru_offset" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="RecyclerViewPager">

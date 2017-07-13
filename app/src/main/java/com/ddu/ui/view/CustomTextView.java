@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.ddu.R;
 
@@ -20,6 +19,7 @@ public class CustomTextView extends AppCompatTextView {
 
     private int color;
     private int width;
+    private int offset;
 
     private Paint paint;
 
@@ -38,6 +38,7 @@ public class CustomTextView extends AppCompatTextView {
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.icore_strike_thru);
         color = a.getColor(R.styleable.icore_strike_thru_strike_thru_color, Color.BLACK);
         width = a.getDimensionPixelSize(R.styleable.icore_strike_thru_strike_thru_width, 1);
+        offset = a.getDimensionPixelOffset(R.styleable.icore_strike_thru_strike_thru_offset, 0);
         a.recycle();
 
         initPaint();
@@ -65,25 +66,49 @@ public class CustomTextView extends AppCompatTextView {
         paint.setStrikeThruText(true);
         paint.setFlags(Paint.ANTI_ALIAS_FLAG);
 
-        int lineCount = getLineCount();
-        float y;
-        String text = getText().toString().trim();
-        String result = "";
-        for (int i = 0; i < lineCount; i++) {
-            Rect rect = new Rect();
-            getLineBounds(i, rect);
+        String text = getText().toString();
 
-            int start = getLayout().getLineStart(i);
-            int end = getLayout().getLineEnd(i);
-            result = text.substring(start, end);
+        int width = getWidth();
+        int height = getHeight();
 
-            y = rect.top + (rect.bottom - rect.top) / 2 + width / 2;
+        int paddingLeft = getPaddingLeft();
+        int paddingRight = getPaddingRight();
 
-            Rect bounds = new Rect();
-            Paint textPaint = getPaint();
-            textPaint.getTextBounds(result, 0, result.length(), bounds);
-            canvas.drawLine(bounds.left, y, bounds.right, y, paint);
-        }
+        int lineY = height / 2;
+
+        Paint textPaint = getPaint();
+        Rect bounds = new Rect();
+        textPaint.getTextBounds(text, 0, text.length(), bounds);
+
+        int lineWidth = (width - bounds.width()) / 2 - offset;
+
+        int rightLineX = width - lineWidth;
+
+        canvas.drawLine(paddingLeft, lineY, lineWidth, lineY, paint);
+        canvas.drawLine(rightLineX, lineY, width - paddingRight, lineY, paint);
+
+
+//        int lineCount = getLineCount();
+//        float y;
+//
+//        String result = "";
+//        for (int i = 0; i < lineCount; i++) {
+//            Rect rect = new Rect();
+//            getLineBounds(i, rect);
+//
+//            int start = getLayout().getLineStart(i);
+//            int end = getLayout().getLineEnd(i);
+//            result = text.substring(start, end);
+//
+//            y = rect.top + (rect.bottom - rect.top) / 2 + width / 2;
+//
+//            Rect bounds = new Rect();
+//            Paint textPaint = getPaint();
+//            textPaint.getTextBounds(result, 0, result.length(), bounds);
+//            int widht = getWidth() - bounds.right;
+//            canvas.drawLine(bounds.left + getPaddingLeft(), y, widht / 2, y, paint);
+//            canvas.drawLine(bounds.left + getPaddingLeft() + widht / 2 + bounds.right, y, widht / 2, y, paint);
+//        }
 
     }
 
