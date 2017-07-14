@@ -111,4 +111,9 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
     private Drawable getDrawable() {
         return mContext.getResources().getDrawable(R.drawable.ptf_g);
     }
+
+    @Override
+    public boolean isShowTitleBar() {
+        return false;
+    }
 }

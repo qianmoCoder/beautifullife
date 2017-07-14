@@ -15,6 +15,7 @@ import com.ddu.ui.fragment.study.ui.DesignFragment;
 import com.ddu.ui.fragment.study.ui.DialogFragment;
 import com.ddu.ui.fragment.study.ui.DrawFragment;
 import com.ddu.ui.fragment.study.ui.FlexboxFragment;
+import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
 import com.ddu.ui.fragment.study.ui.InnerScrollViewFragment;
 import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
@@ -41,6 +42,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, FrameLayoutFragment.class);
         mMaps.put(0, TabPageIndicatorFragment.class);
         mMaps.put(0, ScrollViewFragment.class);
         mMaps.put(0, PersonalInfoFragment.class);
