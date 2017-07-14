@@ -48,6 +48,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
 
         public MyScrollView(Context context, AttributeSet attrs) {
             super(context, attrs);
+            setFillViewport(true);
         }
 
         @Override
