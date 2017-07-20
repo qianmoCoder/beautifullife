@@ -1,6 +1,7 @@
 <resources>
 
     <!-- dp begin -->
+    <dimen name="dp_30_">-30dp</dimen>
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_2">2dp</dimen>

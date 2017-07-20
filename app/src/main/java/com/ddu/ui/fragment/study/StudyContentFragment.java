@@ -27,6 +27,7 @@ import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TabPageIndicatorFragment;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
 import com.ddu.ui.fragment.study.ui.ToolBarFragment;
+import com.ddu.ui.fragment.study.ui.WuBaFragment;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, WuBaFragment.class);
         mMaps.put(0, FrameLayoutFragment.class);
         mMaps.put(0, TabPageIndicatorFragment.class);
         mMaps.put(0, ScrollViewFragment.class);
