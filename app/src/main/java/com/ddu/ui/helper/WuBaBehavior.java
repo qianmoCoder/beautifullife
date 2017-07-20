@@ -149,10 +149,6 @@ public class WuBaBehavior extends CoordinatorLayout.Behavior<View>{
         ll_search.setTranslationY(y);
         mRecyclerView.setTranslationY(y);
 
-        //mRecyclerView高度
-        CoordinatorLayout.LayoutParams layoutParams = ((CoordinatorLayout.LayoutParams) mRecyclerView.getLayoutParams());
-        layoutParams.height = (int) (((CoordinatorLayout) mRecyclerView.getParent()).getHeight() - mRecyclerView.getY());
-        mRecyclerView.setLayoutParams(layoutParams);
     }
 
     private float getDependentCollapsed() {
