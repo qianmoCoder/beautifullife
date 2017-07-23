@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.ddu.R;
@@ -17,6 +18,8 @@ import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
+import in.srain.cube.views.ptr.PtrUIHandler;
+import in.srain.cube.views.ptr.indicator.PtrIndicator;
 
 /**
  * Created by yzbzz on 16/4/11.
@@ -59,19 +62,50 @@ public class PersonalInfoFragment extends DefaultFragment {
             }
         });
 
-        PtrHandler ptrHandler=new PtrHandler() {
+        PtrHandler ptrHandler = new PtrHandler() {
 
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-                return mVerticalOffset==0 && PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
+                return mVerticalOffset == 0 && PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
             }
+
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-//                currentPage = 1;
-//                initDates();
+                ptrFrameLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ptrFrameLayout.refreshComplete();
+                    }
+                }, 2000);
             }
         };
         ptrFrameLayout.setPtrHandler(ptrHandler);
+        ptrFrameLayout.addPtrUIHandler(new PtrUIHandler() {
+            @Override
+            public void onUIReset(PtrFrameLayout frame) {
+                Log.v("lhz", "onUIReset");
+            }
+
+            @Override
+            public void onUIRefreshPrepare(PtrFrameLayout frame) {
+                Log.v("lhz", "onUIRefreshPrepare");
+            }
+
+            @Override
+            public void onUIRefreshBegin(PtrFrameLayout frame) {
+                Log.v("lhz", "onUIRefreshBegin");
+            }
+
+            @Override
+            public void onUIRefreshComplete(PtrFrameLayout frame) {
+                Log.v("lhz", "onUIRefreshComplete");
+            }
+
+            @Override
+            public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
+                Log.v("lhz", "onUIPositionChange: " + ptrIndicator.getCurrentPosY() + " " + ptrIndicator.getOffsetY());
+            }
+        });
     }
 
     private void initInstances() {
