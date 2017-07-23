@@ -134,5 +134,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_scrolling1">ScrollingActivity1</string>
+    <string name="title_activity_scrolling3">ScrollingActivity3</string>
 
 </resources>

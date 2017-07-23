@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.ScrollingActivity1"
+            android:name=".ui.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,9 +78,13 @@
         <!-- android:name=".ui.activity.ScrollingActivity" -->
         <!-- android:label="@string/title_activity_scrolling" -->
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
+        <!-- <activity -->
+        <!-- android:name=".ui.activity.ScrollingActivity1" -->
+        <!-- android:label="@string/title_activity_scrolling1" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
         <!--<activity-->
-            <!--android:name=".ui.activity.ScrollingActivity1"-->
-            <!--android:label="@string/title_activity_scrolling1"-->
+            <!--android:name=".ui.activity.ScrollingActivity3"-->
+            <!--android:label="@string/title_activity_scrolling3"-->
             <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
     </application>
 

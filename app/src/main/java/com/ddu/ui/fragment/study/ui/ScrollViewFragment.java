@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.ddu.R;
+import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.refresh.internal.RotateLoadingLayout;
 import com.ddu.icore.ui.fragment.DefaultFragment;
@@ -43,28 +44,33 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
         initAnimator();
 
         frameLayout = findViewById(R.id.fl_refresh_content);
-//
-//
-//
-//        frameLayout.addView(customerView);
-////        customerScrollView.setHeader(customerView);
-//        customerScrollView.setRefreshView(customerView);
-//        customerScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
-//            @Override
-//            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-//                customerScrollView.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        customerScrollView.onRefreshComplete();
-//                    }
-//                }, 2000);
-//            }
-//
-//            @Override
-//            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-//                customerScrollView.onRefreshComplete();
-//            }
-//        });
+        customerScrollView = findViewById(R.id.csv_activity_base);
+        rotateLoadingLayout = new RotateLoadingLayout(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView.getPullToRefreshScrollDirection());
+
+        customerView = new CustomerView(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView);
+        customerView.setCarImageView(mIvCar);
+        customerView.setIvG(mIvG);
+
+
+        frameLayout.addView(customerView);
+//        customerScrollView.setHeader(customerView);
+        customerScrollView.setRefreshView(customerView);
+        customerScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                customerScrollView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        customerScrollView.onRefreshComplete();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+                customerScrollView.onRefreshComplete();
+            }
+        });
     }
 
     private Matrix mHeaderImageMatrix;
