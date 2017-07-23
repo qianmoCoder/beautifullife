@@ -3,6 +3,7 @@ package com.ddu.ui.fragment.study.ui;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -55,9 +56,9 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
         frameLayout.addView(customerView);
 //        customerScrollView.setHeader(customerView);
         customerScrollView.setRefreshView(customerView);
-        customerScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
+        customerScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<NestedScrollView>() {
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+            public void onPullDownToRefresh(PullToRefreshBase<NestedScrollView> refreshView) {
                 customerScrollView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -67,7 +68,7 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
             }
 
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+            public void onPullUpToRefresh(PullToRefreshBase<NestedScrollView> refreshView) {
                 customerScrollView.onRefreshComplete();
             }
         });

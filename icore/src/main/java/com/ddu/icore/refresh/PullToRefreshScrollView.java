@@ -1,13 +1,15 @@
 package com.ddu.icore.refresh;
 
 import android.content.Context;
+import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ScrollView;
 
 import com.ddu.icore.R;
 
-public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
+public class PullToRefreshScrollView extends PullToRefreshBase<NestedScrollView> {
+
+    private boolean canScroll = true;
 
     public PullToRefreshScrollView(Context context) {
         super(context);
@@ -24,15 +26,19 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
     }
 
     @Override
-    protected ScrollView createRefreshableView(Context context, AttributeSet attrs) {
-        ScrollView scrollView = new MyScrollView(context, attrs);
+    protected NestedScrollView createRefreshableView(Context context, AttributeSet attrs) {
+        NestedScrollView scrollView = new MyScrollView(context, attrs);
         scrollView.setId(R.id.scrollview);
         return scrollView;
     }
 
     @Override
     protected boolean isReadyForPullStart() {
-        return mRefreshableView.getScrollY() == 0;
+        return canScroll && mRefreshableView.getScrollY() == 0;
+    }
+
+    public void setCanScroll(boolean canScroll) {
+        this.canScroll = canScroll;
     }
 
     @Override
@@ -44,7 +50,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
         return false;
     }
 
-    public class MyScrollView extends ScrollView {
+    public class MyScrollView extends NestedScrollView {
 
         public MyScrollView(Context context, AttributeSet attrs) {
             super(context, attrs);
@@ -68,7 +74,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
 
     public interface ScrollViewListener {
 
-        void onScrollChanged(ScrollView scrollView, int x, int y, int oldx, int oldy);
+        void onScrollChanged(NestedScrollView scrollView, int x, int y, int oldx, int oldy);
 
     }
 

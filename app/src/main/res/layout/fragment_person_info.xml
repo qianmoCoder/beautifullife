@@ -123,16 +123,16 @@
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        <com.ddu.icore.refresh.PullToRefreshScrollView
             android:id="@+id/ptf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <android.support.v4.widget.NestedScrollView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">
+                android:layout_height="match_parent">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -265,16 +265,16 @@
 
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
-            </android.support.v4.widget.NestedScrollView>
-        </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+            </FrameLayout>
+        </com.ddu.icore.refresh.PullToRefreshScrollView>
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"
-        android:background="@color/c_4897fa"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:background="@color/c_4897fa">
 
     </LinearLayout>
 
