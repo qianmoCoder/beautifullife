@@ -7,97 +7,17 @@
     android:fitsSystemWindows="true"
     tools:context="com.ddu.ui.activity.ScrollingActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_150"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="观察者View child"
+        app:layout_behavior="com.ddu.ui.activity.EasyBehavior" />
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_61"
-                android:title=""
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-
-                <LinearLayout
-                    android:id="@+id/ll_weather"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15 "
-                        android:textSize="26sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="空气优：37"
-                        android:textSize="14sp" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.Toolbar>
-
-            <RelativeLayout
-                android:id="@+id/rl_title_bar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_61"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/dp_10"
-                android:visibility="visible">
-
-                <LinearLayout
-                    android:id="@+id/ll_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:background="#ffffff"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="  广州 "
-                        android:textColor="#90000000"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text=" 找工作 找房子 找服务 "
-                        android:textColor="#90000000"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-            </RelativeLayout>
-
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_scrolling" />
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="被观察View dependency" />
 
 </android.support.design.widget.CoordinatorLayout>
