@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,7 +21,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.ShareDialogFragment;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
 
@@ -28,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import okhttp3.HttpUrl;
 
 
 /**
@@ -140,9 +141,14 @@ public class MeFragment extends DefaultFragment {
 //                }
 //                baseActivity.recreate();
 
-                ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
-                shareDialogFragment.show(getFragmentManager(), "h");
-
+//                ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
+//                shareDialogFragment.show(getFragmentManager(), "h");
+                HttpUrl httpUrl = HttpUrl.parse("etcp://6?synId=6&isFeedBack=0");
+                if (null != httpUrl) {
+                    Log.v("lhz", "host: " + httpUrl.host());
+                } else {
+                    Log.v("lhz", "httpUrl is null");
+                }
 //                startFragment(ToolBarFragment.class);
             }
         });

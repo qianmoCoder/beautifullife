@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="RtlHardcoded">
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:id="@+id/home_main"
     tools:context="com.ddu.ui.activity.ScrollingActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -19,7 +29,7 @@
             android:layout_height="@dimen/dp_120"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:title=""
             app:titleEnabled="false">
 
@@ -49,7 +59,6 @@
                         android:text="空气优：37"
                         android:textSize="14sp" />
 
-
                 </LinearLayout>
 
             </android.support.v7.widget.Toolbar>
@@ -61,8 +70,11 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="@dimen/dp_10"
-                android:visibility="visible">
+                android:visibility="visible"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10">
 
                 <LinearLayout
                     android:id="@+id/ll_search"
@@ -91,10 +103,10 @@
 
             </RelativeLayout>
 
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_scrolling" />
 
 </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
