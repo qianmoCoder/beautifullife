@@ -1,16 +1,21 @@
 package com.ddu.ui.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.TextPhrase;
-import com.ddu.R;
 import com.ddu.ui.fragment.life.IncomeTaxFragment;
 import com.ddu.ui.fragment.life.MortgageFragment;
 
@@ -49,6 +54,9 @@ public class LifeFragment extends DefaultFragment {
     @BindView(R.id.tvHelp3)
     TextView textView3;
 
+    @BindView(R.id.iv_icon)
+    ImageView ivIcon;
+
     private Unbinder unbinder;
 
     @NonNull
@@ -80,6 +88,10 @@ public class LifeFragment extends DefaultFragment {
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         initText();
         setTitle(R.string.main_tab_life);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_b);
+        RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        bitmapDrawable.setCornerRadius(10);
+        ivIcon.setImageDrawable(bitmapDrawable);
     }
 
     private void initText() {
