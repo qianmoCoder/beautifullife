@@ -108,7 +108,7 @@ public class WebFragment extends DefaultFragment {
         mWebView.setWebChromeClient(webChromeClient);
 
 //        reload("protocol.html");
-        mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
+        mWebView.loadUrl("http://www.baidu.com");
 //        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 //        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
         mWebView.addJavascriptInterface(this, "ETCPSBridge");
@@ -118,12 +118,12 @@ public class WebFragment extends DefaultFragment {
             public void onClick(View v) {
 //                mWebView.loadUrl("about:blank");
 //                mWebView.clearView();
-                if (isLoadFirst) {
-                    mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
-                } else {
-                    mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-                }
-
+//                if (isLoadFirst) {
+//                    mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
+//                } else {
+//                    mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
+//                }
+                mWebView.reload();
                 isLoadFirst = !isLoadFirst;
             }
         });

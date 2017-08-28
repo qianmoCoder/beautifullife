@@ -8,6 +8,7 @@ import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
 import com.ddu.icore.util.MultiHashMap;
 import com.ddu.ui.adapter.StudyRecycleViewAdapter;
+import com.ddu.ui.fragment.WebFragment;
 import com.ddu.ui.fragment.person.PersonalInfoFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
@@ -18,6 +19,7 @@ import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
 import com.ddu.ui.fragment.study.ui.InnerScrollViewFragment;
+import com.ddu.ui.fragment.study.ui.PathMeasureFragment;
 import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
 import com.ddu.ui.fragment.study.ui.RenderScriptFragment;
 import com.ddu.ui.fragment.study.ui.ScrollViewFragment;
@@ -43,7 +45,9 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, WebFragment.class);
         mMaps.put(0, WuBaFragment.class);
+        mMaps.put(0, PathMeasureFragment.class);
         mMaps.put(0, FrameLayoutFragment.class);
         mMaps.put(0, TabPageIndicatorFragment.class);
         mMaps.put(0, ScrollViewFragment.class);
