@@ -19,6 +19,7 @@ import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
 import com.ddu.ui.fragment.study.ui.InnerScrollViewFragment;
+import com.ddu.ui.fragment.study.ui.PaletteFragment;
 import com.ddu.ui.fragment.study.ui.PathMeasureFragment;
 import com.ddu.ui.fragment.study.ui.RecyclerViewFragment;
 import com.ddu.ui.fragment.study.ui.RenderScriptFragment;
@@ -29,6 +30,7 @@ import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TabPageIndicatorFragment;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
 import com.ddu.ui.fragment.study.ui.ToolBarFragment;
+import com.ddu.ui.fragment.study.ui.ViewFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
 
 import java.util.ArrayList;
@@ -45,6 +47,8 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, PaletteFragment.class);
+        mMaps.put(0, ViewFragment.class);
         mMaps.put(0, WebFragment.class);
         mMaps.put(0, WuBaFragment.class);
         mMaps.put(0, PathMeasureFragment.class);

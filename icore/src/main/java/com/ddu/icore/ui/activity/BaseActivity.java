@@ -7,6 +7,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -188,4 +189,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IObserve
     public void setFragmentCallback(OnFragmentCallback mOnFragmentCallback) {
         this.mOnFragmentCallback = mOnFragmentCallback;
     }
+
+    private AppCompatDelegate appCompatDelegate;
+
 }
