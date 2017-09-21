@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
+import com.ddu.app.GlideApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.TextPhrase;
 import com.ddu.ui.fragment.life.IncomeTaxFragment;
@@ -92,6 +93,9 @@ public class LifeFragment extends DefaultFragment {
         RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
         bitmapDrawable.setCornerRadius(10);
         ivIcon.setImageDrawable(bitmapDrawable);
+
+
+        GlideApp.with(this).load("").placeholder(R.drawable.debug_drawer_header_bg).error(R.drawable.debug_drawer_header_bg).into(ivIcon);
     }
 
     private void initText() {
