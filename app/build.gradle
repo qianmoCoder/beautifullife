@@ -4,6 +4,13 @@ apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.meituan.judasplugin'
 
 android {
+
+    signingConfigs {
+        debug {
+            storeFile file("${rootDir}/debug.keystore")
+        }
+    }
+
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
@@ -15,14 +22,24 @@ android {
         versionName "1.0"
     }
     buildTypes {
-//        debug {
-//            //debug模式
-//        }
+        debug {
+            //debug模式
+//            buildConfigField("String", "asid", "\"release\"")
+            manifestPlaceholders = [BUILD_TYPE_VALUE: "debug"]
+        }
         release {
             //是否进行混淆
             minifyEnabled false
+//            buildConfigField("String", "asid", "\"release\"")
             //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            manifestPlaceholders = [BUILD_TYPE_VALUE: "release"]
+        }
+
+        qa.initWith(buildTypes.release)
+        qa {
+            manifestPlaceholders = [BUILD_TYPE_VALUE: "qa"]
         }
     }
     //移除lint检查的error
@@ -34,13 +51,11 @@ android {
     }
     productFlavors {
     }
-
     greendao {
         schemaVersion 1
         daoPackage 'com.ddu.db.gen'
         targetGenDir 'src/main/java'
     }
-
     dataBinding {
         enabled = true
     }
@@ -51,6 +66,7 @@ dependencies {
     compile project(':icore')
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    qaCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'

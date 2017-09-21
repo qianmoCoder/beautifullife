@@ -1,94 +1,104 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mm="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/c_ecedf1"
-    android:orientation="vertical"
-    android:padding="@dimen/dp_10">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        style="@style/DefaultLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/c_ecedf1"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
 
-        <com.ddu.icore.ui.view.OptionItemView
-            android:id="@+id/oiv_fragment"
-            style="@style/DefaultRelativeLayout"
-            mm:carrowImage="@drawable/right_arrow_gray"
-            mm:leftText="FragmentState" />
-    </LinearLayout>
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <com.ddu.ui.view.AlignTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:gravity="center"
-        android:text="确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准,确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准"
-        android:textSize="@dimen/dp_16" />
-
-
-    <com.ddu.icore.ui.view.CustomerTimeLineMarker
-        android:id="@+id/item_time_line_mark"
-        android:layout_width="50dp"
-        android:layout_height="@dimen/dp_300"
-        android:layout_gravity="center"
-        mm:beginLine="@color/c_cccccc"
-        mm:endLine="@color/c_cccccc"
-        mm:lineSize="1dp"
-        mm:marker="@drawable/ic_timeline_default_marker"
-        mm:markerSize="7dp" />
-
-    <TextView
-        android:id="@+id/tv_money"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_10"
-        android:paddingRight="@dimen/dp_10">
-
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_fragment"
+                style="@style/DefaultRelativeLayout"
+                mm:carrowImage="@drawable/right_arrow_gray"
+                mm:leftText="FragmentState" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.ddu.ui.view.AlignTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="附近车场"
-            android:textColor="@color/c_333333"
-            android:textSize="@dimen/dp_18" />
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
+            android:text="确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准,确定车已离场，此次停车您将无法电子支付，停车费用以出口收费为准"
+            android:textSize="@dimen/dp_16" />
+
+
+        <com.ddu.icore.ui.view.CustomerTimeLineMarker
+            android:id="@+id/item_time_line_mark"
+            android:layout_width="50dp"
+            android:layout_height="@dimen/dp_300"
+            android:layout_gravity="center"
+            mm:beginLine="@color/c_cccccc"
+            mm:endLine="@color/c_cccccc"
+            mm:lineSize="1dp"
+            mm:marker="@drawable/ic_timeline_default_marker"
+            mm:markerSize="7dp" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_toRightOf="@id/tv_description">
-
-
-            <ImageView
-                android:id="@+id/iv_refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_refresh_normal" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10">
 
 
             <TextView
-                android:id="@+id/tv_nearby_refresh"
+                android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/iv_refresh"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="恒润商务中心恒润商务中心恒润商务中心"
-                android:textColor="@color/c_999999"
-                android:textSize="@dimen/dp_12" />
-        </RelativeLayout>
+                android:text="附近车场"
+                android:textColor="@color/c_333333"
+                android:textSize="@dimen/dp_18" />
 
-    </RelativeLayout>
-</LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@id/tv_description">
+
+
+                <ImageView
+                    android:id="@+id/iv_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_refresh_normal" />
+
+
+                <TextView
+                    android:id="@+id/tv_nearby_refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/iv_refresh"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="恒润商务中心恒润商务中心恒润商务中心"
+                    android:textColor="@color/c_999999"
+                    android:textSize="@dimen/dp_12" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

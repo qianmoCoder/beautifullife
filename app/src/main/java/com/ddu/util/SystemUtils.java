@@ -78,7 +78,7 @@ public class SystemUtils {
 
     public static String getMacAddress() {
         Context context = App.getContext();
-        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         String macAddress = wm.getConnectionInfo().getMacAddress();
         return macAddress;
     }

@@ -1,5 +1,6 @@
 package com.ddu.ui.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
-import com.ddu.icore.util.StringUtils;
+import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
 
 /**
@@ -19,6 +20,7 @@ public class WorkFragment extends DefaultFragment {
     private OptionItemView mOptionItemView;
 
     private TextView mTvMoney;
+    private TextView mTvModel;
 
     @NonNull
     public static WorkFragment newInstance() {
@@ -41,6 +43,7 @@ public class WorkFragment extends DefaultFragment {
     @Override
     public void initView() {
         mTvMoney = findViewById(R.id.tv_money);
+        mTvModel = findViewById(R.id.tv_model);
         mOptionItemView = ViewUtils.findViewById(mView, R.id.oiv_fragment);
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,8 @@ public class WorkFragment extends DefaultFragment {
             }
         });
         setTitle(R.string.main_tab_work);
-        mTvMoney.setText(StringUtils.formatMoney(""));
+        mTvMoney.setText(DnsConfig.getBaseUrl());
+        mTvModel.setText(Build.MODEL + Build.BRAND);
+
     }
 }

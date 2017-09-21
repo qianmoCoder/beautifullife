@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.ddu.R;
 import com.ddu.db.entity.StudyContent;
@@ -248,7 +250,10 @@ public class App extends BaseApp {
             Configuration newConfig = new Configuration();
             newConfig.setToDefaults();
             //设置默认
-            createConfigurationContext(newConfig);
+//            res.updateConfiguration(newConfig, res.getDisplayMetrics());
+            Context context = createConfigurationContext(newConfig);
+            res = context.getResources();
+            Log.v("lhz","version: " + Build.VERSION.SDK_INT);
         }
         return res;
     }

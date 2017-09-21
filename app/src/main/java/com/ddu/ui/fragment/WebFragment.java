@@ -8,6 +8,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -104,11 +106,24 @@ public class WebFragment extends DefaultFragment {
         mWebSettings.setUseWideViewPort(true);
         mWebSettings.setLoadWithOverviewMode(true);
 
+        mWebSettings.setJavaScriptEnabled(true);
+        mWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        mWebSettings.setDomStorageEnabled(true);
+        mWebSettings.setDatabaseEnabled(true);
+        mWebSettings.setAppCacheEnabled(true);
+        mWebSettings.setAllowFileAccess(true);
+        mWebSettings.setSavePassword(true);
+        mWebSettings.setSupportZoom(true);
+        mWebSettings.setBuiltInZoomControls(true);
+        mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        mWebSettings.setUseWideViewPort(true);
+
         mWebView.setWebViewClient(webViewClient);
         mWebView.setWebChromeClient(webChromeClient);
 
 //        reload("protocol.html");
-        mWebView.loadUrl("http://www.baidu.com");
+        mWebView.loadUrl("http://miop.test.etcp.cn");
 //        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 //        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
         mWebView.addJavascriptInterface(this, "ETCPSBridge");
@@ -212,10 +227,17 @@ public class WebFragment extends DefaultFragment {
                 setDefaultTitle(title);
             }
         }
+
     };
 
     @NonNull
     private WebViewClient webViewClient = new WebViewClient() {
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+//            super.onReceivedSslError(view, handler, error);
+            handler.proceed();
+        }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -225,7 +247,7 @@ public class WebFragment extends DefaultFragment {
 
         @Override
         public void onPageFinished(@NonNull WebView view, String url) {
-            view.loadUrl("javascript:ETCPSBridge.resize(JSON.stringify({type:'getHeight',height:document.body.getBoundingClientRect().height}))");
+//            view.loadUrl("javascript:ETCPSBridge.resize(JSON.stringify({type:'getHeight',height:document.body.getBoundingClientRect().height}))");
 //            view.loadUrl("javascript:MyApp.resize(document.querySelector('body').offsetHeight);");
 //            view.loadUrl("javascript:MyApp.resize(document.body.getBoundingClientRect().height)");
             super.onPageFinished(view, url);
@@ -239,9 +261,9 @@ public class WebFragment extends DefaultFragment {
 
         @Override
         public boolean shouldOverrideUrlLoading(@NonNull WebView view, String url) {
-//            view.loadUrl(url);
-//            return true;
-            return super.shouldOverrideUrlLoading(view, url);
+            view.loadUrl(url);
+            return true;
+//            return super.shouldOverrideUrlLoading(view, url);
         }
 
     };
