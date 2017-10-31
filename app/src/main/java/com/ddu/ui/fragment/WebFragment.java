@@ -1,5 +1,6 @@
 package com.ddu.ui.fragment;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -7,11 +8,14 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,12 +28,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
+import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.ddu.R;
+import com.ddu.app.GlideApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.PopupUtils;
 import com.ddu.icore.util.UrlUtils;
+import com.ddu.util.HttpUtils;
 
 import org.json.JSONObject;
 
@@ -37,11 +47,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -61,6 +81,15 @@ public class WebFragment extends DefaultFragment {
     @BindView(R.id.btn_reload)
     Button btnReload;
 
+    @BindView(R.id.iv_place)
+    ImageView iv_place;
+
+    @BindView(R.id.pb_loading)
+    ProgressBar progressBar;
+
+//    @BindView(R.id.iv_progress)
+//    ImageView iv_progress;
+
     private WebSettings mWebSettings;
     @Nullable
     private String title;
@@ -68,6 +97,7 @@ public class WebFragment extends DefaultFragment {
     private String url;
 
     private Unbinder unbinder;
+
 
     @NonNull
     public static WebFragment newInstance(String title, String url) {
@@ -138,11 +168,247 @@ public class WebFragment extends DefaultFragment {
 //                } else {
 //                    mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 //                }
-                mWebView.reload();
-                isLoadFirst = !isLoadFirst;
+//                mWebView.reload();
+//                isLoadFirst = !isLoadFirst;
+
+                post1();
+            }
+        });
+
+//        final ObjectAnimator anim = ObjectAnimator.ofInt(iv_place, "ImageLevel", 0, 10000);
+//        anim.setDuration(800);
+//        anim.setRepeatCount(ObjectAnimator.INFINITE);
+//        anim.start();
+//
+//        iv_progress.setImageResource(R.drawable.glide_rotate);
+//        iv_place.setImageResource(R.drawable.glide_rotate);
+        GlideApp.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").into(new ImageViewTarget<Drawable>(iv_place) {
+            @Override
+            protected void setResource(@Nullable Drawable resource) {
+                Log.v("lhz", "setResource");
+            }
+
+            @Override
+            public void onResourceReady(Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                super.onResourceReady(resource, transition);
+//                Log.v("lhz", "onResourceReady");
+                iv_place.setImageDrawable(resource);
+//                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                super.onLoadFailed(errorDrawable);
+//                Log.v("lhz", "onLoadFailed");
+            }
+
+            @Override
+            public void onLoadCleared(@Nullable Drawable placeholder) {
+                super.onLoadCleared(placeholder);
+//                Log.v("lhz", "onLoadCleared");
+            }
+        });
+
+//        GlideApp.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").listener(new RequestListener<Drawable>() {
+//            @Override
+//            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                Log.v("lhz", "onLoadFailed");
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                Log.v("lhz", "onResourceReady");
+//                return false;
+//            }
+//        }).into(new ImageViewTarget<Drawable>(iv_place) {
+//            @Override
+//            protected void setResource(@Nullable Drawable resource) {
+//                iv_place.setImageDrawable(resource);
+//                Log.v("lhz", "setResource");
+//            }
+//        });
+    }
+
+    private void post1() {
+//        final HashMap<String, Object> params = new LinkedHashMap<String, Object>();
+//        params.put("scene", "2759");
+////        params.put("page", "pages/main/main");
+////        params.put("width", "430");
+////        params.put("auto_color", "false");
+////        JSONObject jsonObject = new JSONObject();
+////        try {
+////            jsonObject.put("r", "0");
+////            jsonObject.put("g", "0");
+////            jsonObject.put("b", "0");
+////            String line_color = jsonObject.toString();
+////            Log.v("lhz", "line_color: " + line_color);
+////            params.put("line_color", line_color);
+////        } catch (Exception e) {
+////
+////        }
+//        String accessToken = "YXGzQVOUIrdZxqMcoL3LeLtDZrm7nJZwN1N2CvzpmmII9aXYQs3S2LuG7gNjtbTHBNH_I8ry7z8La-Fx-eah7v5kq_zqDZhyq3IsIdENayxkNS56G5wkHlYBBE91UcA9PKQbAJAYTZ";
+//        final String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;
+//        Log.v("lhz", "url: " + url);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                HttpUtils.post(url, params);
+//            }
+//        }).start();
+        String accessToken = "gFonXmV4ENkG2250CxYE96_SyxpSYMWMtp6naQbVHBpak2oYjUcDZHhf8rqUoThUN3yYaFcWURXNKuWG1CVaF0qf2X4iZONosv_WWqwjeY0WKDhACAESL";
+        post(accessToken);
+    }
+
+    private void qrCode(String accessToken) {
+        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+        String url = "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=" + accessToken;
+        Log.v("lhz", "url: " + url);
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
+        Request.Builder builder = new Request.Builder();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("path", "pages/index");
+            jsonObject.put("width", 430);
+
+        } catch (Exception e) {
+
+        }
+        String line_color = jsonObject.toString();
+        Log.v("lhz", "line_color: " + line_color);
+        final RequestBody requestBody = RequestBody.create(JSON, line_color);
+        builder.addHeader("content-type", "application/json;charset:utf-8");
+        builder.post(requestBody);
+        builder.url(url);
+        final Request request = builder.build();
+
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.v("lhz", "e: " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+
+                saveAdData(responseBody.byteStream());
+//                Log.v("lhz", "string: " + string);
             }
         });
     }
+
+    private void post(String accessToken) {
+        String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;
+        Log.v("lhz", "url: " + url);
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
+        Request.Builder builder = new Request.Builder();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("scene", "park2011");
+            jsonObject.put("page", "pages/main/main");
+            jsonObject.put("width", 1024);
+            jsonObject.put("auto_color", true);
+
+            JSONObject jsonObject1 = new JSONObject();
+            jsonObject1.put("r", "0");
+            jsonObject1.put("g", "0");
+            jsonObject1.put("b", "0");
+
+            jsonObject.put("line_color", jsonObject1);
+        } catch (Exception e) {
+
+        }
+        String line_color = jsonObject.toString();
+        Log.v("lhz", "data: " + line_color);
+        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+
+        final RequestBody requestBody = RequestBody.create(JSON, line_color);
+        builder.addHeader("content-type", "application/json;charset:utf-8");
+        builder.url(url);
+        builder.post(requestBody);
+
+        final Request request = builder.build();
+
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.v("lhz", "e: " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+
+//                String string = responseBody.string();
+                saveAdData(responseBody.byteStream());
+//                Log.v("lhz", "string: " + string);
+            }
+        });
+
+    }
+
+    private void get() {
+        String getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc07f9d67923d676d&secret=75a05e5d99fa43189c65c81d96b2bf23";
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
+        Request.Builder builder = new Request.Builder();
+        builder.url(url);
+        final Request request = builder.build();
+
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.v("lhz", "e: " + e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+
+                String string = responseBody.string();
+//                saveAdData(responseBody.byteStream());
+                Log.v("lhz", "string: " + string);
+            }
+        });
+    }
+
+    private void saveAdData(InputStream inputStream) {
+        boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        if (!isGranted) {
+            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        } else {
+            HttpUtils.saveAd(inputStream);
+        }
+    }
+
+
+    public static String appendUrl(String url, Map<String, String> urlParams) {
+        if (null == url) {
+            return "";
+        }
+        if (urlParams == null || urlParams.size() <= 0) {
+            return url;
+        }
+        HttpUrl httpUrl = HttpUrl.parse(url);
+        if (null == httpUrl) {
+            return url;
+        }
+        HttpUrl.Builder urlBuilder = httpUrl.newBuilder();
+        for (Map.Entry<String, String> entry : urlParams.entrySet()) {
+            urlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
+        }
+        return urlBuilder.build().toString();
+    }
+
+    private void getQRCode() {
+
+    }
+
 
     private void reload(String xml) {
         mWebView.clearView();

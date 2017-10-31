@@ -20,7 +20,7 @@
                 style="@style/DefaultRelativeLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_b" />
+                android:background="@drawable/shape_view_blue" />
 
             <FrameLayout
                 android:layout_width="wrap_content"

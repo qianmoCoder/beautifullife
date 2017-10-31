@@ -1,16 +1,28 @@
 package com.ddu.ui.fragment;
 
-import android.os.Build;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ddu.R;
+import com.ddu.app.App;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
+import com.ddu.ui.dialog.LoginDialog;
+
+import java.util.List;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -56,7 +68,7 @@ public class WorkFragment extends DefaultFragment {
 //                startActivity(intent);
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
-                startFragment(WebFragment.class);
+//                startFragment(WebFragment.class);
 //                startActivity(new Intent(mContext, ShareActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d
@@ -65,14 +77,40 @@ public class WorkFragment extends DefaultFragment {
 //                intent.setData(content_url);
 //                startActivity(intent);
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
-//                LoginDialog loginDialog = LoginDialog.newInstance();
-//                loginDialog.show(getFragmentManager(), "loginLog");
+                LoginDialog loginDialog = LoginDialog.newInstance();
+                loginDialog.setTag("new tag");
+                loginDialog.show(getFragmentManager(), "loginLog");
+                App.getMainThreadHandler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+//                        Fragment fragment = getFragmentManager().getPrimaryNavigationFragment();
+//                        Log.v("lhz","ff: " + fragment.getClass().getName());
+                        List<Fragment> fragments = getFragmentManager().getFragments();
+                        for (Fragment f : fragments) {
+                            if (f instanceof DialogFragment) {
+                                Log.v("lhz", "name: " + f.getClass().getName());
+                            }
+                        }
 
+                    }
+                }, 1500);
             }
         });
         setTitle(R.string.main_tab_work);
         mTvMoney.setText(DnsConfig.getBaseUrl());
-        mTvModel.setText(Build.MODEL + Build.BRAND);
+        //+ com.ddu.util.SystemUtils.getDeviceId()
+        boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
+        if (!isGranted) {
+            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
+        } else {
+            Context context = App.getContext();
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            StringBuilder stringBuilder = new StringBuilder();
+//            stringBuilder.append(tm.getSimOperatorName()+" ");
+            stringBuilder.append(tm.getSubscriberId());
+            mTvModel.setText(stringBuilder.toString());
+//            mTvModel.setText(Build.MODEL + Build.BRAND + " " + Build.DEVICE + " " + Build.PRODUCT + Build.DISPLAY + Build.USER + "-" + Build.SERIAL + " " + SystemUtils.getDeviceId());
+        }
 
     }
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,8 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
 
     private boolean isFirstClick = true;
 
+    private String tagItem = "default";
+
     public static LoginDialog newInstance() {
 
         Bundle args = new Bundle();
@@ -52,7 +55,7 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
+        Log.v("lhz", "tag: " + tagItem);
         LinearLayout mLlLogin = (LinearLayout) inflater.inflate(R.layout.fragment_login, container, false);
         mTvToast = ViewUtils.findViewById(mLlLogin, R.id.tv_toast);
         mBtnNext = ViewUtils.findViewById(mLlLogin, R.id.btn_next);
@@ -143,5 +146,9 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
 
     public void showDialog(FragmentActivity fragmentActivity) {
         show(fragmentActivity.getSupportFragmentManager(), "LoginDialog");
+    }
+
+    public void setTag(String tag) {
+        this.tagItem = tag;
     }
 }

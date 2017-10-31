@@ -1,12 +1,8 @@
 package com.ddu.ui.fragment;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.app.GlideApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.TextPhrase;
 import com.ddu.ui.fragment.life.IncomeTaxFragment;
@@ -89,13 +84,35 @@ public class LifeFragment extends DefaultFragment {
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         initText();
         setTitle(R.string.main_tab_life);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_b);
-        RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-        bitmapDrawable.setCornerRadius(10);
-        ivIcon.setImageDrawable(bitmapDrawable);
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_b);
+//        RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+//        bitmapDrawable.setCornerRadius(10);
+//        ivIcon.setImageDrawable(bitmapDrawable);
 
 
-        GlideApp.with(this).load("").placeholder(R.drawable.debug_drawer_header_bg).error(R.drawable.debug_drawer_header_bg).into(ivIcon);
+//        GlideApp.with(this).load(R.drawable.icon_b).into(new ImageViewTarget<Drawable>(ivIcon) {
+//            @Override
+//            protected void setResource(@Nullable Drawable resource) {
+//                Log.v("lhz", "setResource");
+//                ivIcon.setImageDrawable(resource);
+////                if (null != defaultDialogFragment) {
+////                    defaultDialogFragment.dismissAllowingStateLoss();
+////                }
+//            }
+//
+//            @Override
+//            public void onLoadStarted(@Nullable Drawable placeholder) {
+//                super.onLoadStarted(placeholder);
+//                Log.v("lhz", "onLoadStarted");
+//            }
+//
+//            @Override
+//            public void onStart() {
+//                super.onStart();
+//                Log.v("lhz", "onStart");
+//            }
+//        });
+
     }
 
     private void initText() {
