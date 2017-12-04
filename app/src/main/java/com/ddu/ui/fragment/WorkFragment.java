@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -20,9 +18,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.dialog.LoginDialog;
-
-import java.util.List;
+import com.ddu.ui.dialog.WaitingDialog;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -77,23 +73,42 @@ public class WorkFragment extends DefaultFragment {
 //                intent.setData(content_url);
 //                startActivity(intent);
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
-                LoginDialog loginDialog = LoginDialog.newInstance();
-                loginDialog.setTag("new tag");
-                loginDialog.show(getFragmentManager(), "loginLog");
+                final WaitingDialog selectDialog = new WaitingDialog();
+                selectDialog.show(getFragmentManager(), "");
                 App.getMainThreadHandler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        Fragment fragment = getFragmentManager().getPrimaryNavigationFragment();
-//                        Log.v("lhz","ff: " + fragment.getClass().getName());
-                        List<Fragment> fragments = getFragmentManager().getFragments();
-                        for (Fragment f : fragments) {
-                            if (f instanceof DialogFragment) {
-                                Log.v("lhz", "name: " + f.getClass().getName());
-                            }
-                        }
-
+                        Log.v("lhz", "isDetached: " + selectDialog.isDetached());
+                        Log.v("lhz", "isHidden: " + selectDialog.isHidden());
+                        Log.v("lhz", "isRemoving: " + selectDialog.isRemoving());
+                        Log.v("lhz", "isVisible: " + selectDialog.isVisible());
+                        Log.v("lhz", "isAdded: " + selectDialog.isAdded());
+                        Log.v("lhz", "isInLayout: " + selectDialog.isInLayout());
                     }
-                }, 1500);
+                }, 2000);
+
+//                startFragment(WebFragment.class);
+//                App.getMainThreadHandler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+////                        Fragment fragment = getFragmentManager().getPrimaryNavigationFragment();
+////                        Log.v("lhz","ff: " + fragment.getClass().getName());
+////                        List<Fragment> fragments = getFragmentManager().getFragments();
+////                        for (Fragment f : fragments) {
+////                            if (f instanceof DialogFragment) {
+////                                Log.v("lhz", "name: " + f.getClass().getName());
+////                            }
+////                        }
+//                        LoginDialog loginDialog = LoginDialog.newInstance();
+////                        loginDialog.setTag("new tag");
+////                        loginDialog.show(getFragmentManager(), "loginLog");
+//
+//                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                        transaction.add(loginDialog, "loading");
+//                        transaction.commitAllowingStateLoss();
+//
+//                    }
+//                }, 1500);
             }
         });
         setTitle(R.string.main_tab_work);

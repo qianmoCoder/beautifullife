@@ -11,6 +11,8 @@ import com.ddu.ui.adapter.StudyRecycleViewAdapter;
 import com.ddu.ui.fragment.WebFragment;
 import com.ddu.ui.fragment.person.PersonalInfoFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
+import com.ddu.ui.fragment.study.ui.CameraFragment;
+import com.ddu.ui.fragment.study.ui.ConstraintFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
 import com.ddu.ui.fragment.study.ui.DialogFragment;
@@ -30,6 +32,7 @@ import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TabPageIndicatorFragment;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
 import com.ddu.ui.fragment.study.ui.ToolBarFragment;
+import com.ddu.ui.fragment.study.ui.UIFragment;
 import com.ddu.ui.fragment.study.ui.ViewFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
 
@@ -47,6 +50,9 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, UIFragment.class);
+        mMaps.put(0, ConstraintFragment.class);
+        mMaps.put(0, CameraFragment.class);
         mMaps.put(0, PaletteFragment.class);
         mMaps.put(0, ViewFragment.class);
         mMaps.put(0, WebFragment.class);

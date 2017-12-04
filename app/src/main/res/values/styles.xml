@@ -245,8 +245,8 @@
     <!-- Lift End-->
 
     <style name="BottomToTopAnim" parent="android:Animation">
-        <item name="@android:windowEnterAnimation">@anim/bottom_view_anim_enter</item>
-        <item name="@android:windowExitAnimation">@anim/bottom_view_anim_exit</item>
+        <item name="android:windowEnterAnimation">@anim/bottom_view_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/bottom_view_anim_exit</item>
     </style>
 
     <!-- UI Begin -->

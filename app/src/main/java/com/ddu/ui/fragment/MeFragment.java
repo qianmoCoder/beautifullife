@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextPaint;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
@@ -28,13 +29,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import okhttp3.HttpUrl;
 
 
 /**
  * Created by lhz on 16/4/6.
  */
 public class MeFragment extends DefaultFragment {
+
+    final static int COUNTS = 10;//点击次数
+    final static long DURATION = 3 * 1000;//规定有效时间
+    long[] mHits = new long[COUNTS];
 
     @Nullable
     @BindView(R.id.rl_person_info)
@@ -131,6 +135,9 @@ public class MeFragment extends DefaultFragment {
 //        });
 
         llSetting.setOnClickListener(new View.OnClickListener() {
+
+            long[] mHints = new long[3];
+
             @Override
             public void onClick(View v) {
 //                int mode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -143,15 +150,40 @@ public class MeFragment extends DefaultFragment {
 
 //                ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
 //                shareDialogFragment.show(getFragmentManager(), "h");
-                HttpUrl httpUrl = HttpUrl.parse("etcp://6?synId=6&isFeedBack=0");
-                if (null != httpUrl) {
-                    Log.v("lhz", "host: " + httpUrl.host());
-                } else {
-                    Log.v("lhz", "httpUrl is null");
-                }
+//                HttpUrl httpUrl = HttpUrl.parse("etcp://6?synId=6&isFeedBack=0");
+//                if (null != httpUrl) {
+//                    Log.v("lhz", "host: " + httpUrl.host());
+//                } else {
+//                    Log.v("lhz", "httpUrl is null");
+//                }
 //                startFragment(ToolBarFragment.class);
+
+//                System.arraycopy(mHints, 1, mHints, 0, mHints.length - 1);
+//                //获得当前系统已经启动的时间
+//                mHints[mHints.length - 1] = SystemClock.uptimeMillis();
+//                if (SystemClock.uptimeMillis() - mHints[0] <= 500)
+//                    Toast.makeText(mContext, "当你点击三次之后才会出现", Toast.LENGTH_SHORT).show();
+
+
+                /**
+                 * 实现双击方法
+                 * src 拷贝的源数组
+                 * srcPos 从源数组的那个位置开始拷贝.
+                 * dst 目标数组
+                 * dstPos 从目标数组的那个位子开始写数据
+                 * length 拷贝的元素的个数
+                 */
+                System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+                //实现左移，然后最后一个位置更新距离开机的时间，如果最后一个时间和最开始时间小于DURATION，即连续5次点击
+                mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+                if (mHits[0] >= (SystemClock.uptimeMillis() - DURATION)) {
+                    String tips = "您已在[" + DURATION + "]ms内连续点击【" + mHits.length + "】次了！！！";
+                    Toast.makeText(mContext, tips, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
         setTitle(R.string.main_tab_me);
 
 //        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(tvU.getText());
@@ -162,7 +194,9 @@ public class MeFragment extends DefaultFragment {
         paint.setColor(Color.RED);
         paint.setStrokeWidth(3);
         paint.setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        tvU.getPaint().set(paint);
+        tvU.getPaint().
+
+                set(paint);
         etText.setText("http://bike.Icore.cn?token=d2043816-f516-4788-a794-2334fef2c59c&userId=10015298&version=4.7.0&platform=1");
     }
 

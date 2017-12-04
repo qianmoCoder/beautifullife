@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ @项目名称: ETCP停车
+  ~ @文件名称: titlebar.xml
+  ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
+  ~ 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_55"
+    android:background="@color/c_3b8fed">
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/btn_left_image"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:scaleType="center"
+            android:src="@drawable/titlebar_back_icon"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:text="lefttext"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/btn_left_close"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:scaleType="center"
+            android:src="@drawable/setting_white"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/right_image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:scaleType="center"
+            android:src="@drawable/setting_white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/c_41aaf2"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_toLeftOf="@id/ll_right"
+        android:layout_toRightOf="@id/ll_left"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="http://www.baidu.com.baidu.com.baidu.aabc"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:visibility="visible"
+        />
+
+</RelativeLayout>

@@ -80,4 +80,13 @@
         <attr name="aspect" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="WaitingBarStyleable">
+        <attr name="point_width" format="reference|dimension" />
+        <attr name="point_height" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="LoweImageView">
+        <attr name="ratio" format="reference|dimension|float" />
+    </declare-styleable>
+
 </resources>

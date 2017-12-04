@@ -3,6 +3,7 @@ package com.ddu.ui.dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -150,5 +151,10 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
 
     public void setTag(String tag) {
         this.tagItem = tag;
+    }
+
+    @Override
+    public int show(FragmentTransaction transaction, String tag) {
+        return super.show(transaction, tag);
     }
 }
