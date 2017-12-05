@@ -20,6 +20,8 @@ public class ShapeInjectHelper {
 
     public static final int DIRECTION_LEFT = 0x0010;
     public static final int DIRECTION_RIGHT = 0x0020;
+    public static final int DIRECTION_TOP = 0x0040;
+    public static final int DIRECTION_BOTTOM = 0x0080;
 
 
     private Drawable mBackground;
@@ -88,7 +90,7 @@ public class ShapeInjectHelper {
 
     public ShapeInjectHelper backgroundColor(int argb) {
         mNormalBackground.setColor(argb);
-        mPressedBackground.setColor(argb);
+        mDisableBackground.setColor(argb);
         mPressedBackground.setColor(argb);
         return this;
     }
@@ -159,9 +161,15 @@ public class ShapeInjectHelper {
 
     private void setSegmented(final int direction) {
         float radius = mViewGroup.getMeasuredHeight();
-        float[] radii = new float[]{radius, radius, 0, 0, 0, 0, radius, radius};
-        if (direction == DIRECTION_RIGHT) {
+        float[] radii;
+        if (direction == DIRECTION_TOP) {
+            radii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
+        } else if (direction == DIRECTION_BOTTOM) {
+            radii = new float[]{0, 0, 0, 0, radius, radius, radius, radius};
+        } else if (direction == DIRECTION_RIGHT) {
             radii = new float[]{0, 0, radius, radius, radius, radius, 0, 0};
+        } else {
+            radii = new float[]{radius, radius, 0, 0, 0, 0, radius, radius};
         }
         setRadius(radii);
     }
@@ -209,7 +217,7 @@ public class ShapeInjectHelper {
     public @interface IShapeType {
     }
 
-    @IntDef({DIRECTION_LEFT, DIRECTION_RIGHT})
+    @IntDef({DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_TOP, DIRECTION_BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
     public @interface IShapeDirection {
     }

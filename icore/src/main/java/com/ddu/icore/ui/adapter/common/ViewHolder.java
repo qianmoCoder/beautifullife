@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.ddu.icore.util.sys.ViewUtils;
@@ -71,6 +72,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder setImageDrawable(int viewId, Drawable drawable) {
         ImageView view = getView(viewId);
         view.setImageDrawable(drawable);
+        return this;
+    }
+
+    public ViewHolder setChecked(int viewId, boolean checked) {
+        RadioButton radioButton = getView(viewId);
+        radioButton.setChecked(checked);
         return this;
     }
 
