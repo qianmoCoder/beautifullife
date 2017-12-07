@@ -40,7 +40,7 @@ public class DownloadManagerUtils {
 
         request.allowScanningByMediaScanner();
 //        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
-
+        request.setAllowedOverRoaming(false);
         // 通知栏
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setTitle("下载");

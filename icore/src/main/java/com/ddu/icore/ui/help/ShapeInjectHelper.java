@@ -6,7 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IntDef;
-import android.view.ViewGroup;
+import android.view.View;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -49,18 +49,18 @@ public class ShapeInjectHelper {
 
     StateListDrawable mStateBackground;
 
-    private ViewGroup mViewGroup;
+    private View mView;
 
     private int shapeTypeNull = 0x00;
     private
     @IShapeType
     int shapeType = shapeTypeNull;
 
-    public ShapeInjectHelper(ViewGroup viewGroup) {
+    public ShapeInjectHelper(View view) {
 
-        mViewGroup = viewGroup;
+        mView = view;
 
-        mBackground = mViewGroup.getBackground();
+        mBackground = mView.getBackground();
 
         mNormalBackground = new GradientDrawable();
         mPressedBackground = new GradientDrawable();
@@ -133,9 +133,9 @@ public class ShapeInjectHelper {
     }
 
     public ShapeInjectHelper setBackground() {
-        if (null != mViewGroup) {
-            int height = mViewGroup.getMeasuredHeight();
-            int width = mViewGroup.getMeasuredWidth();
+        if (null != mView) {
+            int height = mView.getMeasuredHeight();
+            int width = mView.getMeasuredWidth();
             int size = Math.max(height, width);
             if (shapeType == OVAL) {
                 setOval();
@@ -151,7 +151,7 @@ public class ShapeInjectHelper {
         mStateBackground.addState(states[1], mPressedBackground);
         mStateBackground.addState(states[3], mDisableBackground);
         mStateBackground.addState(states[2], mNormalBackground);
-        mViewGroup.setBackground(mStateBackground);
+        mView.setBackground(mStateBackground);
         return this;
     }
 
@@ -160,7 +160,7 @@ public class ShapeInjectHelper {
     }
 
     private void setSegmented(final int direction) {
-        float radius = mViewGroup.getMeasuredHeight();
+        float radius = mView.getMeasuredHeight();
         float[] radii;
         if (direction == DIRECTION_TOP) {
             radii = new float[]{radius, radius, radius, radius, 0, 0, 0, 0};
@@ -183,7 +183,7 @@ public class ShapeInjectHelper {
     }
 
     private void setRoundRect() {
-        int height = mViewGroup.getMeasuredHeight();
+        int height = mView.getMeasuredHeight();
         setRadius(height / 2f);
     }
 
@@ -194,8 +194,8 @@ public class ShapeInjectHelper {
     }
 
     private void setRound() {
-        int height = mViewGroup.getMeasuredHeight();
-        int width = mViewGroup.getMeasuredWidth();
+        int height = mView.getMeasuredHeight();
+        int width = mView.getMeasuredWidth();
         int size = Math.max(height, width);
         setRound(size);
     }

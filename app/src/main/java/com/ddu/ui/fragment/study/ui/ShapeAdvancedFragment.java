@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.help.ShapeInjectHelper;
+import com.ddu.icore.util.sys.DownloadManagerUtils;
 
 /**
  * Created by yzbzz on 16/4/14.
@@ -50,11 +52,12 @@ public class ShapeAdvancedFragment extends DefaultFragment {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DownloadManagerUtils.downLoad(mContext,"etcp.apk","http://7xj3cg.com2.z0.glb.qiniucdn.com/ETCP_Android.apk");
                 mLLItems.removeAllViews();
                 int count = Integer.parseInt(mEtText.getText().toString());
                 int resId = R.layout.fragment_ui_common_textview;
                 for (int i = 0; i < count; i++) {
-                    final LinearLayout linearLayout = (LinearLayout) getLayoutInflater().inflate(resId, null);
+                    final TextView linearLayout = (TextView) getLayoutInflater().inflate(resId, null);
                     ShapeInjectHelper shapeInjectHelper = new ShapeInjectHelper(linearLayout);
                     if (i == 0) {
                         shapeInjectHelper.shapeType(ShapeInjectHelper.SEGMENT);

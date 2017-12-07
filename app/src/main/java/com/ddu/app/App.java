@@ -1,7 +1,9 @@
 package com.ddu.app;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +19,7 @@ import com.ddu.db.gen.DaoMaster;
 import com.ddu.db.gen.DaoSession;
 import com.ddu.db.gen.StudyContentDao;
 import com.ddu.icore.app.BaseApp;
+import com.ddu.icore.util.sys.DownLoadCompleteReceiver;
 import com.ddu.util.SystemUtils;
 import com.ddu.util.xml.PullParserUtils;
 import com.squareup.leakcanary.LeakCanary;
@@ -61,6 +64,8 @@ public class App extends BaseApp {
             initData();
             refWatcher = LeakCanary.install(this);
         }
+        IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        registerReceiver(new DownLoadCompleteReceiver(),filter);
     }
 
     public static RefWatcher getRefWatcher(@NonNull Context context) {

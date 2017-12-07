@@ -153,7 +153,8 @@ public class WebFragment extends DefaultFragment {
         mWebView.setWebChromeClient(webChromeClient);
 
 //        reload("protocol.html");
-        mWebView.loadUrl("http://miop.test.etcp.cn");
+//        mWebView.loadUrl("http://miop.test.etcp.cn");
+        mWebView.loadUrl("http://www.baidu.com");
 //        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 //        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
         mWebView.addJavascriptInterface(this, "ETCPSBridge");
