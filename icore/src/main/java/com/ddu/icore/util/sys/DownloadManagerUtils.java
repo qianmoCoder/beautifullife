@@ -35,19 +35,18 @@ public class DownloadManagerUtils {
     }
 
     private static DownloadManager.Request getRequest(String apkName, String url) {
-        Uri uri = Uri.parse(url);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
+        Uri Download_Uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(Download_Uri);
+
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setAllowedOverRoaming(false);
+        request.setTitle("Download");
+        request.setDescription("Android Data download");
+        request.setDestinationInExternalPublicDir(DOWNLOAD_DIR_TYPE, apkName);
 
         request.allowScanningByMediaScanner();
-//        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
-        request.setAllowedOverRoaming(false);
-        // 通知栏
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setTitle("下载");
-        request.setDescription("应用正在下载");
-        request.setVisibleInDownloadsUi(true);
-        request.setDestinationInExternalPublicDir(DOWNLOAD_DIR_TYPE, apkName);
         request.setMimeType("application/vnd.android.package-archive");
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
         return request;
     }
