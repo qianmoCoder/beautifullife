@@ -24,6 +24,7 @@ import com.ddu.ui.adapter.StudyContentFragmentPagerAdapter;
 import com.ddu.ui.fragment.study.StudyTagsFragment;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -155,6 +156,45 @@ public class StudyFragment extends DefaultFragment {
         }
         ft.commitAllowingStateLoss();
         setTitle("学习");
+
+        setFixedTagLayoutOnPageChangeListener();
+    }
+
+    // 解决点击tab抖动的bug
+    private void setFixedTagLayoutOnPageChangeListener() {
+        try {
+            Field field = TabLayout.class.getDeclaredField("mPageChangeListener");
+            field.setAccessible(true);
+            field.set(this, new FixedTagLayoutOnPageChangeListener(tlStudy));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static class FixedTagLayoutOnPageChangeListener extends TabLayout.TabLayoutOnPageChangeListener {
+        private boolean isTouchState;
+
+        public FixedTagLayoutOnPageChangeListener(TabLayout tabLayout) {
+            super(tabLayout);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            super.onPageScrollStateChanged(state);
+            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
+                isTouchState = true;
+            } else if (state == ViewPager.SCROLL_STATE_IDLE) {
+                isTouchState = false;
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (isTouchState) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+        }
     }
 
     @Override

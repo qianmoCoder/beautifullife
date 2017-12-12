@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 public class GodIntent implements Parcelable {
 
     private int action;
-    private Bundle bundle;
+    private Bundle bundle = new Bundle();
 
     public int getAction() {
         return action;
@@ -29,6 +29,18 @@ public class GodIntent implements Parcelable {
         this.bundle = bundle;
     }
 
+    public void putInt(String key, int value) {
+        bundle.putInt(key, value);
+    }
+
+    public int getInt(String key) {
+        return bundle.getInt(key);
+    }
+
+    public void putLong(String key, long value) {
+        bundle.putLong(key, value);
+    }
+
     public void putString(String key, String value) {
         bundle.putString(key, value);
     }
@@ -36,6 +48,11 @@ public class GodIntent implements Parcelable {
     public String getString(String key) {
         return bundle.getString(key, "");
     }
+
+    public <T> T getKey(String key) {
+        return (T) bundle.get(key);
+    }
+
 
     @Override
     public int describeContents() {

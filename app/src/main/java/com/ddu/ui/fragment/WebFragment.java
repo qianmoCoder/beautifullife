@@ -35,10 +35,12 @@ import android.widget.ProgressBar;
 import com.bumptech.glide.request.target.ImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.ddu.R;
+import com.ddu.app.App;
 import com.ddu.app.GlideApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.PopupUtils;
 import com.ddu.icore.util.UrlUtils;
+import com.ddu.ui.helper.WebAppInterface;
 import com.ddu.util.HttpUtils;
 
 import org.json.JSONObject;
@@ -154,9 +156,9 @@ public class WebFragment extends DefaultFragment {
 
 //        reload("protocol.html");
 //        mWebView.loadUrl("http://miop.test.etcp.cn");
-        mWebView.loadUrl("http://www.baidu.com");
+        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 //        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-//        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "IcoreSBridge");
+        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "ETCPSBridge");
         mWebView.addJavascriptInterface(this, "ETCPSBridge");
         initTitle();
         btnReload.setOnClickListener(new View.OnClickListener() {
@@ -300,6 +302,16 @@ public class WebFragment extends DefaultFragment {
             }
         });
     }
+
+    public void excute(final String method, final String json) {
+        App.post(new Runnable() {
+            @Override
+            public void run() {
+                mWebView.loadUrl("javascript:" + method + "(" + json + ")");
+            }
+        });
+    }
+
 
     private void post(String accessToken) {
         String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;

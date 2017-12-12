@@ -11,6 +11,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.app.App;
@@ -18,7 +19,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.ddu.ui.dialog.WaitingDialog;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -57,6 +57,16 @@ public class WorkFragment extends DefaultFragment {
             @Override
             public void onClick(View v) {
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Toast.makeText(mContext, "hello", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Log.v("lhz", Log.getStackTraceString(e));
+                        }
+                    }
+                }).start();
 //                NotificationUtils.notification(mContext);
 
 //                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + "18610909732"));
@@ -65,7 +75,7 @@ public class WorkFragment extends DefaultFragment {
 //                Bundle bundle = new Bundle();
 //                bundle.putInt("type", FragmentUtils.FRAGMENT_ADD);
 //                startFragment(WebFragment.class);
-//                startActivity(new Intent(mContext, ShareActivity.class));
+//                startActivity(new Intent(mContext, WebActivity.class));
 //                Intent intent = new Intent();
 //                //http://t.cn/RXlnf0d
 //                intent.setAction("android.intent.action.VIEW");
@@ -73,19 +83,19 @@ public class WorkFragment extends DefaultFragment {
 //                intent.setData(content_url);
 //                startActivity(intent);
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
-                final WaitingDialog selectDialog = new WaitingDialog();
-                selectDialog.show(getFragmentManager(), "");
-                App.getMainThreadHandler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.v("lhz", "isDetached: " + selectDialog.isDetached());
-                        Log.v("lhz", "isHidden: " + selectDialog.isHidden());
-                        Log.v("lhz", "isRemoving: " + selectDialog.isRemoving());
-                        Log.v("lhz", "isVisible: " + selectDialog.isVisible());
-                        Log.v("lhz", "isAdded: " + selectDialog.isAdded());
-                        Log.v("lhz", "isInLayout: " + selectDialog.isInLayout());
-                    }
-                }, 2000);
+//                final WaitingDialog selectDialog = new WaitingDialog();
+//                selectDialog.show(getFragmentManager(), "");
+//                App.getMainThreadHandler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.v("lhz", "isDetached: " + selectDialog.isDetached());
+//                        Log.v("lhz", "isHidden: " + selectDialog.isHidden());
+//                        Log.v("lhz", "isRemoving: " + selectDialog.isRemoving());
+//                        Log.v("lhz", "isVisible: " + selectDialog.isVisible());
+//                        Log.v("lhz", "isAdded: " + selectDialog.isAdded());
+//                        Log.v("lhz", "isInLayout: " + selectDialog.isInLayout());
+//                    }
+//                }, 2000);
 
 //                startFragment(WebFragment.class);
 //                App.getMainThreadHandler().postDelayed(new Runnable() {

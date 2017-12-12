@@ -2,23 +2,38 @@ package com.ddu.ui.helper;
 
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 
-import com.ddu.ui.dialog.LoginDialog;
+import com.ddu.ui.fragment.WebFragment;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
 
 public class WebAppInterface {
 
     Context mContext;
+    WebFragment mFagment;
+
 
     public WebAppInterface(Context context) {
         mContext = context;
     }
 
+    public WebAppInterface(WebFragment context) {
+        mFagment = context;
+    }
+
     @JavascriptInterface
     public void invoke(String json) {
+        try {
+            Log.v("lhz", "json: " + json);
+            getUserStatusInfo(new JSONObject(json));
+        } catch (Exception e) {
 
-//        Log.v("lhz", "json: " + json);
+        }
+
 //
 //        try {
 //            JSONObject jsonString = new JSONObject(json);
@@ -33,8 +48,28 @@ public class WebAppInterface {
 //
 //        }
 
-        LoginDialog loginDialog = LoginDialog.newInstance();
-        loginDialog.showDialog((FragmentActivity) mContext);
+//        LoginDialog loginDialog = LoginDialog.newInstance();
+//        loginDialog.showDialog((FragmentActivity) mContext);
+
+    }
+
+    public void getUserStatusInfo(JSONObject jsonString) {
+        try {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("userId", "10086");
+
+
+            String callBack = jsonString.getString("callback");
+            if (!TextUtils.isEmpty(callBack)) {
+                if (null != mFagment) {
+                    mFagment.excute(callBack, jsonObject.toString());
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

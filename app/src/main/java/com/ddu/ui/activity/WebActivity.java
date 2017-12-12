@@ -5,25 +5,26 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.ddu.R;
+import com.ddu.app.App;
 import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.common.IObserver;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.logic.Actions;
 import com.ddu.icore.util.UrlUtils;
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 
@@ -37,7 +38,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_web);
+        setContentView(R.layout.activity_web);
         init();
         registerObserver();
     }
@@ -46,12 +47,12 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
     private void init() {
         // html url
         context = this;
-        webView = (WebView) findViewById(R.id.wv_web);
-//        WebSettings settings = webView.getSettings();
-//        settings.setJavaScriptEnabled(true);
-//        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-//        settings.setSupportZoom(true);
-//        settings.setBuiltInZoomControls(true);
+        webView = findViewById(R.id.webview);
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setSupportZoom(true);
+        settings.setBuiltInZoomControls(true);
 
 //        webView.setWebChromeClient(new WebChromeClient() {
 //
@@ -89,19 +90,36 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
 //
 //        });
         //http://www.wdxhb.com/m/Icorejsapi.html
-//        webView.loadUrl("https://prism.zhongan.com/activities/refundcard/index?channel=c4084540");
+        webView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 
-        AssetManager am = getAssets();
+//        AssetManager am = getAssets();
+//        try {
+//            InputStream is = am.open("protocol.html");
+//            byte[] buffer = new byte[10000];
+//            is.read(buffer);
+//            String data = new String(buffer, "utf-8");
+//            webView.loadData(data, "text/html; charset=UTF-8", null);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        webView.addJavascriptInterface(new JavascriptInterface(), "ETCPSBridge");
+    }
+
+    public void getUserStatusInfo(JSONObject jsonString) {
         try {
-            InputStream is = am.open("protocol.html");
-            byte[] buffer = new byte[10000];
-            is.read(buffer);
-            String data = new String(buffer, "utf-8");
-            webView.loadData(data, "text/html; charset=UTF-8", null);
-        } catch (IOException e) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("userId", "10086");
+
+
+            String callBack = jsonString.getString("callback");
+            if (!TextUtils.isEmpty(callBack)) {
+                webView.loadUrl("javascript:" + callBack + "(" + jsonObject.toString() + ")");
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-//        webView.addJavascriptInterface(new WebAppInterface(this), "IcoreSBridge");
+
     }
 
     class JavascriptInterface {
@@ -109,15 +127,29 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         @SuppressWarnings("unused")
         @android.webkit.JavascriptInterface
         /** 解决Android 17（包括17）之后js无法调用Android方法*/
-        public void invoke(String json) {
-            try {
-                Log.v("lhz", json);
-                JSONObject jsonObject = new JSONObject(json);
-                String type = jsonObject.getString("type");
-                Log.v("lhz", "type: " + type);
-            } catch (Exception e) {
-                Log.v("lhz", e.toString());
-            }
+        public void invoke(String jsonString) {
+
+            final String json = jsonString;
+            App.getMainThreadHandler().post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Log.v("lhz", "json: " + json);
+                        getUserStatusInfo(new JSONObject(json));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+//            try {
+//                Log.v("lhz", json);
+//                JSONObject jsonObject = new JSONObject(json);
+//                String type = jsonObject.getString("type");
+//                Log.v("lhz", "type: " + type);
+//            } catch (Exception e) {
+//                Log.v("lhz", e.toString());
+//            }
 
 
 //            try {

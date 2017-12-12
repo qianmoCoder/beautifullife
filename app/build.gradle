@@ -30,6 +30,7 @@ android {
             //debug模式
 //            buildConfigField("String", "asid", "\"release\"")
             manifestPlaceholders = [BUILD_TYPE_VALUE: "debug"]
+            signingConfig signingConfigs.debug
         }
         release {
             //是否进行混淆

@@ -9,4 +9,5 @@ public class Actions {
 
     public static int EXIT_ACTION = BASE_ACTION++;
     public static int TEST_ACTION = BASE_ACTION++;
+    public static int DOWNLOAD_COMPLETE = BASE_ACTION++;
 }

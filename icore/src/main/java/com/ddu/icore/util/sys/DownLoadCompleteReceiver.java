@@ -13,6 +13,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 
+import com.ddu.icore.aidl.GodIntent;
+import com.ddu.icore.common.ObserverManager;
+import com.ddu.icore.logic.Actions;
 import com.ddu.icore.util.ToastUtils;
 
 
@@ -44,7 +47,11 @@ public class DownLoadCompleteReceiver extends BroadcastReceiver {
                             break;
                         //下载完成
                         case DownloadManager.STATUS_SUCCESSFUL:
-                            DownloadManagerUtils.startInstall(context.getApplicationContext(), id);
+                            GodIntent godIntent = new GodIntent();
+                            godIntent.setAction(Actions.DOWNLOAD_COMPLETE);
+                            godIntent.putLong("downloadId", id);
+                            ObserverManager.getInstance().notify(godIntent);
+//                            DownloadManagerUtils.startInstall(context.getApplicationContext(), id);
                             break;
                         //下载失败
                         case DownloadManager.STATUS_FAILED:
