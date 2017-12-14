@@ -22,7 +22,7 @@ public abstract class DefaultRecycleViewFragment<E extends BaseEntity, D, A exte
         mEntity = JSONObject.parseObject(result, getType(0));
         if (null != mEntity) {
             if (mEntity.isSuccess()) {
-                ToastUtils.showTextToast(mEntity.getMessage());
+                ToastUtils.showToast(mEntity.getMessage());
             } else {
                 List<D> dataEntities = getEntityData();
                 mDataEntities.clear();

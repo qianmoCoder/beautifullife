@@ -101,7 +101,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
         shareAdapter.setOnItemClickListener(new ShareAdapter.OnClickListener<ShareEntity>() {
             @Override
             public void onClick(ShareEntity data, int position) {
-                ToastUtils.showTextToast(data.getName() + " " + position);
+                ToastUtils.showToast(data.getName() + " " + position);
             }
         });
 

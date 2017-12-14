@@ -22,7 +22,7 @@ public class AndroidUtils {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            ToastUtils.showErrorToast(R.string.no_install_app_store);
+            ToastUtils.showToast(R.string.no_install_app_store);
         }
     }
 
@@ -40,7 +40,7 @@ public class AndroidUtils {
 //            Intent intent1 = context.getPackageManager().getLaunchIntentForPackage("com.ddu.myapplication");
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            ToastUtils.showErrorToast(R.string.no_install_app_store);
+            ToastUtils.showToast(R.string.no_install_app_store);
         }
     }
 

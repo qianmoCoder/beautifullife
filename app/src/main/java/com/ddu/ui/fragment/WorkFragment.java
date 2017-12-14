@@ -85,7 +85,7 @@ public class WorkFragment extends DefaultFragment {
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
 //                final WaitingDialog selectDialog = new WaitingDialog();
 //                selectDialog.show(getFragmentManager(), "");
-//                App.getMainThreadHandler().postDelayed(new Runnable() {
+//                App.getMainHandler().postDelayed(new Runnable() {
 //                    @Override
 //                    public void run() {
 //                        Log.v("lhz", "isDetached: " + selectDialog.isDetached());
@@ -98,7 +98,7 @@ public class WorkFragment extends DefaultFragment {
 //                }, 2000);
 
 //                startFragment(WebFragment.class);
-//                App.getMainThreadHandler().postDelayed(new Runnable() {
+//                App.getMainHandler().postDelayed(new Runnable() {
 //                    @Override
 //                    public void run() {
 ////                        Fragment fragment = getFragmentManager().getPrimaryNavigationFragment();

@@ -16,7 +16,7 @@ import java.util.Map;
 public class BaseApp extends Application implements Application.ActivityLifecycleCallbacks {
 
     @NonNull
-    protected static Handler mainThreadHandler = new Handler();
+    protected static Handler sMainHandler = new Handler();
 
     protected static BaseApp mApplication;
 
@@ -42,16 +42,16 @@ public class BaseApp extends Application implements Application.ActivityLifecycl
     }
 
     @NonNull
-    public static Handler getMainThreadHandler() {
-        return mainThreadHandler;
+    public static Handler getMainHandler() {
+        return sMainHandler;
     }
 
     public static void post(Runnable r) {
-        mainThreadHandler.post(r);
+        sMainHandler.post(r);
     }
 
     public static void postDelayed(Runnable r, long delayMillis) {
-        mainThreadHandler.postDelayed(r, delayMillis);
+        sMainHandler.postDelayed(r, delayMillis);
     }
 
     public Map<Integer, WeakReference<Activity>> getCacheActivities() {

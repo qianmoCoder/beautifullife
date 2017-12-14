@@ -1,4 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/c_272727"
@@ -10,6 +11,35 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/dp_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/c_4897fa">
+
+            <com.ddu.icore.ui.view.CircleImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_test_0"
+                app:civ_border_color="@color/dark"
+                app:civ_border_width="2dp" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="wrap_content" />
+
+            <com.ddu.icore.ui.view.CircleImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_test_0"
+                app:civ_border_color="@color/light"
+                app:civ_border_width="2dp" />
+
+
+        </LinearLayout>
 
         <GridLayout
             android:layout_width="match_parent"

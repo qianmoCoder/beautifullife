@@ -40,7 +40,7 @@ public class VideoFragment extends DefaultFragment {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showTextToast("hello");
+                ToastUtils.showToast("hello");
             }
         });
         mVideoView = findViewById(R.id.surface_view);
@@ -72,7 +72,7 @@ public class VideoFragment extends DefaultFragment {
             }
         });
 
-        App.getMainThreadHandler().postDelayed(new Runnable() {
+        App.getMainHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 llOther.setVisibility(View.VISIBLE);

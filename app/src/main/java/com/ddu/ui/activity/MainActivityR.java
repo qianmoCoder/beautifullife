@@ -145,7 +145,7 @@ public class MainActivityR extends BaseActivity implements RadioGroup.OnCheckedC
     public void exit() {
         if (!isExit) {
             isExit = true;
-            ToastUtils.showSuccessToast(R.string.main_exit_msg);
+            ToastUtils.showToast(R.string.main_exit_msg);
             App.postDelayed(new Runnable() {
                 @Override
                 public void run() {

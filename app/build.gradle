@@ -35,6 +35,8 @@ android {
         release {
             //是否进行混淆
             minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
 //            buildConfigField("String", "asid", "\"release\"")
             //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

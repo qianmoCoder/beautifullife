@@ -55,7 +55,7 @@ public class DownLoadCompleteReceiver extends BroadcastReceiver {
                             break;
                         //下载失败
                         case DownloadManager.STATUS_FAILED:
-                            ToastUtils.showErrorToast("下载失败");
+                            ToastUtils.showToast("下载失败");
                             break;
                     }
                 }

@@ -65,7 +65,10 @@ public abstract class BaseFragment extends Fragment implements IObserver<GodInte
 //        Log.v("lhz", getClass().getName() + " onViewCreated ");
     }
 
-    public abstract void initData(Bundle savedInstanceState);
+    public void initData(Bundle savedInstanceState) {
+
+    }
+
     @Nullable
     public abstract View getContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 

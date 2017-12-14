@@ -56,10 +56,14 @@
     <color name="c_b2ff4141">#b2ff4141</color>
     <color name="c_99ff4141">#99ff4141</color>
 
+    <color name="c_a0000000">#A0000000</color>
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
     <color name="c_e0000000">#e0000000</color>
 
     <color name="c_397ede">#397ede</color>
+
+    <color name="dark">#FF222222</color>
+    <color name="light">#FFEEEEEE</color>
 
 </resources>

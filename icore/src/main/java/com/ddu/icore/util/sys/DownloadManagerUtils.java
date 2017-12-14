@@ -26,7 +26,7 @@ public class DownloadManagerUtils {
 
     public static void downLoad(Context context, String apkName, String url) {
         if (DOWNLOAD_ID != -1) {
-            ToastUtils.showTextToast("应用正在下载,请稍候");
+            ToastUtils.showToast("应用正在下载,请稍候");
         } else {
             DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
             long id = downloadManager.enqueue(getRequest(apkName, url));

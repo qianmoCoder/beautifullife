@@ -64,7 +64,7 @@ public class RenderScriptFragment extends DefaultFragment {
 
                 linearLayout.setVisibility(View.INVISIBLE);
 
-                DialogUtils.showDialog(mContext, R.drawable.toast_right_icon, "Hello", "OK", new DialogUtils.ITwoButtonListener() {
+                DialogUtils.showDialog(mContext, R.drawable.icon_add, "Hello", "OK", new DialogUtils.ITwoButtonListener() {
                     @Override
                     public void onBtnCancelClickListener(@NonNull Dialog dialog) {
                         dialog.dismiss();

@@ -170,7 +170,7 @@ public class FragmentState extends DefaultFragment {
             }
         });
 //        ivGuideDelete.setVisibility(View.INVISIBLE);
-//        App.getMainThreadHandler().postDelayed(new Runnable() {
+//        App.getMainHandler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
 //                animation.start();

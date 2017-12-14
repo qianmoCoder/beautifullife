@@ -21,4 +21,25 @@
         <item>网易</item>
     </string-array>
 
+    <string-array name="progress_value_options">
+        <item>Cycle between 0% and 100%</item>
+        <item>0%</item>
+        <item>10%</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="progress_color_options">
+        <item>Default</item>
+        <item>Red</item>
+        <item>Magenta</item>
+    </string-array>
+    <string-array name="wheel_color_options">
+        <item>Default</item>
+        <item>Light Gray</item>
+        <item>Gray</item>
+    </string-array>
+
 </resources>

@@ -1,13 +1,10 @@
 package com.ddu.icore.util;
 
-import android.support.annotation.DrawableRes;
+import android.content.Context;
 import android.support.annotation.StringRes;
-import android.support.v4.widget.Space;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,101 +15,86 @@ import com.ddu.icore.util.sys.ViewUtils;
 
 public class ToastUtils {
 
-    private static Toast sToast;
+    private Toast mToast;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
+    private View mView;
+    private TextView mTextView;
 
-    public static void showSuccessToast(int resId) {
-        showDefaultToast(resId, true);
+    private ToastUtils() {
+        mContext = BaseApp.getContext();
+        mLayoutInflater = LayoutInflater.from(mContext);
+        initToast();
+        initView();
     }
 
-    public static void showSuccessToast(String message) {
-        showDefaultToast(message, true);
+    private void initToast() {
+        mToast = new Toast(mContext);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
     }
 
-    public static void showErrorToast(int resId) {
-        showDefaultToast(resId, false);
+
+    private void initView() {
+        mView = mLayoutInflater.inflate(R.layout.default_toast, null);
+        mTextView = ViewUtils.findViewById(mView, R.id.tv_toast);
     }
 
-    public static void showErrorToast(String message) {
-        showDefaultToast(message, false);
+
+    private static class SingletonHolder {
+        private static ToastUtils instance = new ToastUtils();
     }
 
-    public static void showImageToast(int imId) {
-        showCustomToast("", imId, Toast.LENGTH_SHORT);
+    public static ToastUtils getInstance() {
+        return ToastUtils.SingletonHolder.instance;
     }
 
-    public static void showTextToast(int msgId) {
-        showCustomToast(msgId, -1, Toast.LENGTH_SHORT);
+
+    public static void showToast(String text) {
+        showToast(text, Toast.LENGTH_SHORT);
     }
 
-    public static void showTextToast(String msg) {
-        showCustomToast(msg, -1, Toast.LENGTH_SHORT);
+    public static void showToast(@StringRes int resId) {
+        showToast(resId, Toast.LENGTH_SHORT);
     }
 
-    public static void showDefaultToast(String msg, boolean isSuccess) {
-        int resId = isSuccess ? R.drawable.toast_right_icon : R.drawable.toast_error_icon;
-        showCustomToast(msg, resId, Toast.LENGTH_SHORT);
-    }
-
-    public static void showDefaultToast(int resId, boolean isSuccess) {
-        int imgResId = isSuccess ? R.drawable.toast_right_icon : R.drawable.toast_error_icon;
-        showCustomToast(resId, imgResId, Toast.LENGTH_SHORT);
-    }
-
-    public static void showCustomToast(final String msg, final int imgRes, final int duration) {
-        showToast(msg, imgRes, duration);
-    }
-
-    public static void showCustomToast(@StringRes int resId, final int imgRes, final int duration) {
-        String msg = BaseApp.getContext().getString(resId);
-        showToast(msg, imgRes, duration);
-    }
-
-    public static void showToast(final String msg, @DrawableRes final int imgResId, final int duration) {
+    public static <T> void showToast(final T text, final int duration) {
         BaseApp.post(new Runnable() {
             @Override
             public void run() {
                 try {
-                    if (sToast == null) {
-                        sToast = new Toast(BaseApp.getContext());
+                    if (text instanceof String) {
+                        getInstance().showTextToast((String) text, duration);
+                    } else if (text instanceof Integer) {
+                        getInstance().showTextToast((Integer) text, duration);
                     }
-
-                    LayoutInflater layoutInflater = LayoutInflater.from(BaseApp.getContext());
-                    View toastRoot = layoutInflater.inflate(R.layout.toast_custom, null);
-
-                    Space space = ViewUtils.findViewById(toastRoot, R.id.space_toast);
-                    TextView tv = ViewUtils.findViewById(toastRoot, R.id.tv_toast);
-                    ImageView iv = ViewUtils.findViewById(toastRoot, R.id.iv_toast);
-
-                    if (TextUtils.isEmpty(msg)) {
-                        space.setVisibility(View.GONE);
-                    } else {
-                        tv.setText(msg);
-                        tv.setVisibility(View.VISIBLE);
-                    }
-
-                    if (imgResId == -1) {
-                        space.setVisibility(View.GONE);
-                    } else {
-                        iv.setImageResource(imgResId);
-                        iv.setVisibility(View.VISIBLE);
-                    }
-                    sToast.setView(toastRoot);
-                    sToast.setGravity(Gravity.CENTER, 0, 0);
-                    sToast.setDuration(duration);
-                    sToast.show();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(BaseApp.getContext(), msg, Toast.LENGTH_SHORT).show();
+                    if (text instanceof String) {
+                        Toast.makeText(BaseApp.getContext(), (String) text, duration).show();
+                    } else if (text instanceof Integer) {
+                        Toast.makeText(BaseApp.getContext(), (Integer) text, duration).show();
+                    }
+
                 }
             }
         });
     }
 
+    private void showTextToast(@StringRes int resId, int duration) {
+        mTextView.setText(resId);
+        mToast.setDuration(duration);
+        mToast.show();
+    }
+
+    private void showTextToast(CharSequence text, int duration) {
+        mTextView.setText(text);
+        mToast.setDuration(duration);
+        mToast.show();
+    }
+
     public static void cancel() {
         try {
-            if (sToast != null) {
-                sToast.cancel();
-            }
+            getInstance().mToast.cancel();
         } catch (Exception e) {
             e.printStackTrace();
         }

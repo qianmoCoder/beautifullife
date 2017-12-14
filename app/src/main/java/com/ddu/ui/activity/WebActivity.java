@@ -130,7 +130,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         public void invoke(String jsonString) {
 
             final String json = jsonString;
-            App.getMainThreadHandler().post(new Runnable() {
+            App.getMainHandler().post(new Runnable() {
                 @Override
                 public void run() {
                     try {
