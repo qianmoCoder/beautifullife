@@ -9,12 +9,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.app.App;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.ui.widget.HeaderOrFooterRecycleViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,7 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
     private List<String> mDatas = new ArrayList<>();
 
     private DefaultRecycleViewAdapter<String> mAdapter;
+    private HeaderOrFooterRecycleViewAdapter advanceRecycleViewAdapter;
 
     private Unbinder unbinder;
 
@@ -92,7 +95,19 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
             }
         };
 
-        mRvSwipeRefresh.setAdapter(mAdapter);
+        advanceRecycleViewAdapter = new HeaderOrFooterRecycleViewAdapter(mAdapter);
+        TextView textView = new TextView(mContext);
+        textView.setText("Header");
+        TextView textView1 = new TextView(mContext);
+        textView1.setText("Footer");
+        TextView textView2 = new TextView(mContext);
+        textView2.setText("Footer");
+        advanceRecycleViewAdapter.addHeaderView(textView);
+//        advanceRecycleViewAdapter.addHeaderView(textView1);
+//        advanceRecycleViewAdapter.addFooterView(textView2);
+        advanceRecycleViewAdapter.addFooterView(textView1);
+
+        mRvSwipeRefresh.setAdapter(advanceRecycleViewAdapter);
 
         mAdapter.setEmptyView(R.layout.empty_view, mRvSwipeRefresh);
 
@@ -100,7 +115,7 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
             @Override
             public void onClick(View v) {
                 mDatas.clear();
-                mAdapter.notifyDataSetChanged();
+                advanceRecycleViewAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -125,7 +140,7 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
                 for (int i = size; i < size + 10; i++) {
                     mDatas.add("i - " + i);
                 }
-                mAdapter.notifyDataSetChanged();
+                advanceRecycleViewAdapter.notifyDataSetChanged();
                 mSrlSwipeRefresh.setRefreshing(false);
             }
         }, 2000);

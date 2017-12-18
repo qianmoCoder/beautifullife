@@ -36,6 +36,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     private int downLoadId = -1;
 
     private Button mBtnStart;
+    private Button mBtnStop;
     private EditText mEtText;
     private LinearLayout mLLItems;
 
@@ -66,7 +67,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
         if (Build.VERSION.SDK_INT >= 26) {
             boolean b = mContext.getPackageManager().canRequestPackageInstalls();
 //            if (b) {
-            DownloadManagerUtils.startInstall(mContext, downLoadId);//安装应用的逻辑(写自己的就可以)
+            DownloadManagerUtils.startInstall(mContext, "etcp.apk");
 //            } else {
             //请求安装未知应用来源的权限
 //                requestPermissions(new String[]{Manifest.permission.WRITE_SETTINGS}, INSTALL_PACKAGES_REQUESTCODE);
@@ -74,7 +75,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
 //                requestPermissions(new String[]{Manifest.permission.CAMERA}, 0);
 //            }
         } else {
-            DownloadManagerUtils.startInstall(mContext, downLoadId);
+            DownloadManagerUtils.startInstall(mContext, "etcp.apk");
         }
 
     }
@@ -124,14 +125,22 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     public void initView() {
         mLLItems = findViewById(R.id.ll_items);
         mBtnStart = findViewById(R.id.btn_start);
+        mBtnStop = findViewById(R.id.btn_stop);
         mEtText = findViewById(R.id.et_count);
+
+        mBtnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkIsAndroidO();
+            }
+        });
 
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                checkIsAndroidO();
 //                gotoSetting();
-                DownloadManagerUtils.downLoad(mContext, "etcp.apk", "http://7xj3cg.com2.z0.glb.qiniucdn.com/ETCP_Android.apk");
+//                DownloadManagerUtils.downLoad(mContext, "etcp.apk", "http://7xj3cg.com2.z0.glb.qiniucdn.com/ETCP_Android.apk");
                 mLLItems.removeAllViews();
                 int count = Integer.parseInt(mEtText.getText().toString());
                 int resId = R.layout.fragment_ui_common_textview;

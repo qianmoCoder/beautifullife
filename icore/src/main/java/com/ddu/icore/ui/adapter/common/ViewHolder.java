@@ -14,12 +14,10 @@ import com.ddu.icore.util.sys.ViewUtils;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    public View mConvertView;
     private SparseArray<View> mViews;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
-        mConvertView = itemView;
         mViews = new SparseArray<>();
     }
 
@@ -27,7 +25,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
         if (null == view) {
-            view = ViewUtils.findViewById(mConvertView, viewId);
+            view = ViewUtils.findViewById(itemView, viewId);
             mViews.append(viewId, view);
         }
         return (T) view;
