@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements WrapperRecyclerViewAdapter {
 
@@ -27,7 +28,7 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     public int getItemViewType(int position) {
         int numHeaders = getHeadersCount();
         if (position < numHeaders) {
-            return mHeaderViewInfos.get(position).viewType;
+            return ViewTypeSpec.makeItemViewTypeSpec(position, ViewTypeSpec.HEADER);
         }
 
         int adjPosition = position - numHeaders;
@@ -40,7 +41,7 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
             }
         }
 
-        return mFooterViewInfos.get(adjPosition - adapterCount).viewType;
+        return ViewTypeSpec.makeItemViewTypeSpec(adjPosition - adapterCount, ViewTypeSpec.FOOTER);
     }
 
     @Override
@@ -53,50 +54,35 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
     @Override
-    public long getItemId(int position) {
-        int numHeaders = getHeadersCount();
-        if (mAdapter != null && position >= numHeaders) {
-            int adjPosition = position - numHeaders;
-            int adapterCount = mAdapter.getItemCount();
-            if (adjPosition < adapterCount) {
-                return mAdapter.getItemId(adjPosition);
-            }
-        }
-        return -1;
-    }
-
-    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder headerItemViewHolder = onCreateHeaderOrFooterItemViewHolder(parent, viewType, mHeaderViewInfos);
-        if (null != headerItemViewHolder) {
-            return headerItemViewHolder;
-        }
-
-        RecyclerView.ViewHolder footerItemViewHolder = onCreateHeaderOrFooterItemViewHolder(parent, viewType, mFooterViewInfos);
-        if (null != footerItemViewHolder) {
-            return footerItemViewHolder;
-        }
-
-        return mAdapter.onCreateViewHolder(parent, viewType);
-    }
-
-    public RecyclerView.ViewHolder onCreateHeaderOrFooterItemViewHolder(ViewGroup parent, int viewType, ArrayList<FixedViewInfo> mViewList) {
         RecyclerView.ViewHolder viewHolder;
-        View view = null;
-        for (FixedViewInfo fixedViewInfo : mViewList) {
-            if (fixedViewInfo.viewType == viewType) {
-                view = fixedViewInfo.view;
-                break;
-            }
-        }
-        if (null == view) {
-            viewHolder = null;
+
+        int type = ViewTypeSpec.getType(viewType);
+        int value = ViewTypeSpec.getValue(viewType);
+
+        if (type == ViewTypeSpec.HEADER) {
+            viewHolder = getHeaderOrFooterViewHolder(mHeaderViewInfos, value);
+        } else if (type == ViewTypeSpec.FOOTER) {
+            viewHolder = getHeaderOrFooterViewHolder(mFooterViewInfos, value);
         } else {
-            viewHolder = new ViewHolder(view);
+            viewHolder = mAdapter.onCreateViewHolder(parent, viewType);
+        }
+        if (null == viewHolder) {
+            viewHolder = mAdapter.onCreateViewHolder(parent, viewType);
         }
         return viewHolder;
     }
 
+    private ViewHolder getHeaderOrFooterViewHolder(List<FixedViewInfo> fixedViewInfos, int value) {
+        ViewHolder viewHolder = null;
+        if (value >= 0 && value < fixedViewInfos.size()) {
+            View view = fixedViewInfos.get(value).view;
+            if (null != view) {
+                viewHolder = new ViewHolder(view);
+            }
+        }
+        return viewHolder;
+    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -138,9 +124,9 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
 
 
     public void addHeaderView(View v, Object data, boolean isSelectable) {
-        mHeaderViewInfos.add(newFixedViewInfo(v, data, isSelectable, ITEM_VIEW_TYPE_HEADER));
-//        notifyDataSetChanged();
-        mAdapter.notifyDataSetChanged();
+        if (mHeaderViewInfos.add(newFixedViewInfo(v, data, isSelectable, ITEM_VIEW_TYPE_HEADER))) {
+            notifyDataSetChanged();
+        }
     }
 
     public void addHeaderView(View v) {
@@ -148,9 +134,9 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
     public void addFooterView(View v, Object data, boolean isSelectable) {
-        mFooterViewInfos.add(newFixedViewInfo(v, data, isSelectable, ITEM_VIEW_TYPE_FOOTER));
-//        notifyDataSetChanged();
-        mAdapter.notifyDataSetChanged();
+        if (mFooterViewInfos.add(newFixedViewInfo(v, data, isSelectable, ITEM_VIEW_TYPE_FOOTER))) {
+            notifyDataSetChanged();
+        }
     }
 
     public void addFooterView(View v) {
@@ -203,6 +189,29 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     @Override
     public RecyclerView.Adapter getWrappedAdapter() {
         return mAdapter;
+    }
+
+    static class ViewTypeSpec {
+
+        static final int TYPE_SHIFT = 30;
+        static final int TYPE_MASK = 0x3 << TYPE_SHIFT;
+
+        public static final int HEADER = 1 << TYPE_SHIFT;
+        public static final int FOOTER = 2 << TYPE_SHIFT;
+        public static final int LOADER = 3 << TYPE_SHIFT;
+
+        public static int makeItemViewTypeSpec(int value, int type) {
+            return (value & ~TYPE_MASK) | (type & TYPE_MASK);
+        }
+
+        public static int getType(int viewType) {
+            //noinspection ResourceType
+            return (viewType & TYPE_MASK);
+        }
+
+        public static int getValue(int viewType) {
+            return (viewType & ~TYPE_MASK);
+        }
     }
 
 }

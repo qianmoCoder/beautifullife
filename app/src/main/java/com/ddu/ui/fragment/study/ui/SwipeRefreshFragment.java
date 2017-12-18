@@ -62,7 +62,7 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 2; i++) {
             mDatas.add("i - " + i);
         }
     }
@@ -102,10 +102,12 @@ public class SwipeRefreshFragment extends DefaultFragment implements SwipeRefres
         textView1.setText("Footer");
         TextView textView2 = new TextView(mContext);
         textView2.setText("Footer");
+        TextView textView3 = new TextView(mContext);
+        textView3.setText("Footer");
         advanceRecycleViewAdapter.addHeaderView(textView);
-//        advanceRecycleViewAdapter.addHeaderView(textView1);
-//        advanceRecycleViewAdapter.addFooterView(textView2);
-        advanceRecycleViewAdapter.addFooterView(textView1);
+        advanceRecycleViewAdapter.addHeaderView(textView1);
+        advanceRecycleViewAdapter.addFooterView(textView2);
+        advanceRecycleViewAdapter.addFooterView(textView3);
 
         mRvSwipeRefresh.setAdapter(advanceRecycleViewAdapter);
 
