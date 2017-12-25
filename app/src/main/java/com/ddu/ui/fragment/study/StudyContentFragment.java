@@ -37,6 +37,7 @@ import com.ddu.ui.fragment.study.ui.TextViewFragment;
 import com.ddu.ui.fragment.study.ui.ToolBarFragment;
 import com.ddu.ui.fragment.study.ui.UIFragment;
 import com.ddu.ui.fragment.study.ui.ViewFragment;
+import com.ddu.ui.fragment.study.ui.WifiFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
 
 import java.util.ArrayList;
@@ -53,6 +54,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     private static MultiHashMap<Integer, Class> mMaps = new MultiHashMap<>();
 
     static {
+        mMaps.put(0, WifiFragment.class);
         mMaps.put(0, ProgressWheelFragment.class);
         mMaps.put(0, SnackBarFragment.class);
         mMaps.put(0, ShapeAdvancedFragment.class);

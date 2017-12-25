@@ -122,7 +122,7 @@ public class WorkFragment extends DefaultFragment {
             }
         });
         setTitle(R.string.main_tab_work);
-        mTvMoney.setText(DnsConfig.getBaseUrl());
+        mTvMoney.setText(DnsConfig.getBuildType());
         //+ com.ddu.util.SystemUtils.getDeviceId()
         boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
         if (!isGranted) {

@@ -1,7 +1,5 @@
 package com.ddu.ui.fragment.study.ui;
 
-import android.os.Bundle;
-
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 
@@ -10,10 +8,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
  */
 
 public class ConstraintFragment extends DefaultFragment {
-    @Override
-    public void initData(Bundle savedInstanceState) {
-
-    }
 
     @Override
     public int getLayoutId() {
@@ -22,6 +16,5 @@ public class ConstraintFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-
     }
 }

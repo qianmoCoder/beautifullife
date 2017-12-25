@@ -2,15 +2,18 @@ package com.ddu.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.ddu.receiver.NetInfoBroadcastReceiver;
 import com.ddu.R;
 import com.ddu.db.entity.StudyContent;
 import com.ddu.db.gen.DaoMaster;
@@ -60,7 +63,13 @@ public class App extends BaseApp {
             registerActivityLifecycleCallbacks(this);
             initData();
             refWatcher = LeakCanary.install(this);
+            registorNetInfoBroadcastReceiver();
         }
+    }
+
+    private void registorNetInfoBroadcastReceiver() {
+        IntentFilter filter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        this.registerReceiver(new NetInfoBroadcastReceiver(), filter);
     }
 
     public static RefWatcher getRefWatcher(@NonNull Context context) {
@@ -253,7 +262,7 @@ public class App extends BaseApp {
 //            res.updateConfiguration(newConfig, res.getDisplayMetrics());
             Context context = createConfigurationContext(newConfig);
             res = context.getResources();
-            Log.v("lhz","version: " + Build.VERSION.SDK_INT);
+            Log.v("lhz", "version: " + Build.VERSION.SDK_INT);
         }
         return res;
     }

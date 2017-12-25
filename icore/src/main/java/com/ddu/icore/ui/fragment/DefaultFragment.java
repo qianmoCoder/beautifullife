@@ -12,7 +12,6 @@ import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.ui.activity.ShowDetailActivity;
 import com.ddu.icore.ui.view.TitleBar;
 import com.ddu.icore.util.FragmentUtils;
-import com.ddu.icore.util.sys.ViewUtils;
 
 public abstract class DefaultFragment extends BaseFragment {
 
@@ -122,7 +121,7 @@ public abstract class DefaultFragment extends BaseFragment {
     }
 
     public <T extends View> T findViewById(int resId) {
-        return ViewUtils.findViewById(mView, resId);
+        return mView.findViewById(resId);
     }
 
 }

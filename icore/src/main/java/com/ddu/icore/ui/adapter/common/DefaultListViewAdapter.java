@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 16/4/3.
  */
-public abstract class DefaultListViewAdapter<T> extends CommonListViewAdapter<T, ViewHolder> {
+public abstract class DefaultListViewAdapter<T> extends AbsListViewAdapter<T, ViewHolder> {
 
     public DefaultListViewAdapter(Context context, List<T> list) {
         super(context, list);

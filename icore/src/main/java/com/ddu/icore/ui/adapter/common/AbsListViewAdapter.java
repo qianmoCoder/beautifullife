@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 16/4/3.
  */
-public abstract class CommonListViewAdapter<T, VH> extends BaseAdapter {
+public abstract class AbsListViewAdapter<T, VH> extends BaseAdapter {
 
     protected Context mContext;
 
@@ -23,7 +23,7 @@ public abstract class CommonListViewAdapter<T, VH> extends BaseAdapter {
 
     protected LayoutInflater mLayoutInflater;
 
-    public CommonListViewAdapter(Context context, @Nullable List<T> list) {
+    public AbsListViewAdapter(Context context, @Nullable List<T> list) {
         mContext = context;
         mList = (null != list) ? list : new ArrayList<T>();
         mLayoutInflater = LayoutInflater.from(mContext);
