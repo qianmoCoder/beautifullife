@@ -84,8 +84,6 @@ public class LifeFragment extends DefaultFragment {
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         initText();
         setTitle(R.string.main_tab_life);
-//        RxPermissions rxPermissions = new RxPermissions(getActivity());
-//        rxPermissions.request(Manifest.permission.CALL_PHONE).subscribe();
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_b);
 //        RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
 //        bitmapDrawable.setCornerRadius(10);
