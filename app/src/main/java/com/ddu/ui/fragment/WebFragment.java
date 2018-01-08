@@ -32,11 +32,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.ImageViewTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.ddu.R;
 import com.ddu.app.App;
-import com.ddu.app.GlideApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.PopupUtils;
 import com.ddu.icore.util.UrlUtils;
@@ -172,7 +172,7 @@ public class WebFragment extends DefaultFragment {
 //
 //        iv_progress.setImageResource(R.drawable.glide_rotate);
 //        iv_place.setImageResource(R.drawable.glide_rotate);
-        GlideApp.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").into(new ImageViewTarget<Drawable>(iv_place) {
+        Glide.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").into(new ImageViewTarget<Drawable>(iv_place) {
             @Override
             protected void setResource(@Nullable Drawable resource) {
                 Log.v("lhz", "setResource");
