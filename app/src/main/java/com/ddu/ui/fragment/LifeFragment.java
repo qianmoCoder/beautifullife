@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,7 +14,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.TextPhrase;
 import com.ddu.ui.fragment.life.IncomeTaxFragment;
 import com.ddu.ui.fragment.life.MortgageFragment;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,8 +84,8 @@ public class LifeFragment extends DefaultFragment {
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         initText();
         setTitle(R.string.main_tab_life);
-        RxPermissions rxPermissions = new RxPermissions(getActivity());
-        rxPermissions.request(Manifest.permission.CALL_PHONE).subscribe();
+//        RxPermissions rxPermissions = new RxPermissions(getActivity());
+//        rxPermissions.request(Manifest.permission.CALL_PHONE).subscribe();
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_b);
 //        RoundedBitmapDrawable bitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
 //        bitmapDrawable.setCornerRadius(10);
