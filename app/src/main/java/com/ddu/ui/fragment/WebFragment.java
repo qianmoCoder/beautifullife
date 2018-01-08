@@ -155,25 +155,12 @@ public class WebFragment extends DefaultFragment {
         mWebView.setWebChromeClient(webChromeClient);
 
 //        reload("protocol.html");
-//        mWebView.loadUrl("http://miop.test.etcp.cn");
-        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-//        mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "ETCPSBridge");
-        mWebView.addJavascriptInterface(this, "ETCPSBridge");
+        mWebView.addJavascriptInterface(new WebAppInterface(mContext), "SBridge");
+        mWebView.addJavascriptInterface(this, "SBridge");
         initTitle();
         btnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mWebView.loadUrl("about:blank");
-//                mWebView.clearView();
-//                if (isLoadFirst) {
-//                    mWebView.loadUrl("http://webapp.test.etcp.cn/operateActive/operatelist");
-//                } else {
-//                    mWebView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
-//                }
-//                mWebView.reload();
-//                isLoadFirst = !isLoadFirst;
-
                 post1();
             }
         });
@@ -441,7 +428,6 @@ public class WebFragment extends DefaultFragment {
 
     @JavascriptInterface
     public void resize(final String json) {
-        //{“type":"webGotoApp","value":"etcp://6","callback":"ETCPSBridgeWebGotoApp6"}
         Log.v("lhz", "json: " + json);
         mWebView.post(new Runnable() {
             @Override
@@ -526,7 +512,6 @@ public class WebFragment extends DefaultFragment {
 
         @Override
         public void onPageFinished(@NonNull WebView view, String url) {
-//            view.loadUrl("javascript:ETCPSBridge.resize(JSON.stringify({type:'getHeight',height:document.body.getBoundingClientRect().height}))");
 //            view.loadUrl("javascript:MyApp.resize(document.querySelector('body').offsetHeight);");
 //            view.loadUrl("javascript:MyApp.resize(document.body.getBoundingClientRect().height)");
             super.onPageFinished(view, url);

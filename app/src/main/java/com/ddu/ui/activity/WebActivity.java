@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,8 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 
@@ -89,20 +92,17 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
 //            }
 //
 //        });
-        //http://www.wdxhb.com/m/Icorejsapi.html
-        webView.loadUrl("http://fe.test.etcp.cn/api/app/etcpjsapi.html");
 
-//        AssetManager am = getAssets();
-//        try {
-//            InputStream is = am.open("protocol.html");
-//            byte[] buffer = new byte[10000];
-//            is.read(buffer);
-//            String data = new String(buffer, "utf-8");
-//            webView.loadData(data, "text/html; charset=UTF-8", null);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        webView.addJavascriptInterface(new JavascriptInterface(), "ETCPSBridge");
+        AssetManager am = getAssets();
+        try {
+            InputStream is = am.open("protocol.html");
+            byte[] buffer = new byte[10000];
+            is.read(buffer);
+            String data = new String(buffer, "utf-8");
+            webView.loadData(data, "text/html; charset=UTF-8", null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void getUserStatusInfo(JSONObject jsonString) {

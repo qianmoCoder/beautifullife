@@ -67,7 +67,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
         if (Build.VERSION.SDK_INT >= 26) {
             boolean b = mContext.getPackageManager().canRequestPackageInstalls();
 //            if (b) {
-            DownloadManagerUtils.startInstall(mContext, "etcp.apk");
+            DownloadManagerUtils.startInstall(mContext, "icore.apk");
 //            } else {
             //请求安装未知应用来源的权限
 //                requestPermissions(new String[]{Manifest.permission.WRITE_SETTINGS}, INSTALL_PACKAGES_REQUESTCODE);
@@ -75,7 +75,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
 //                requestPermissions(new String[]{Manifest.permission.CAMERA}, 0);
 //            }
         } else {
-            DownloadManagerUtils.startInstall(mContext, "etcp.apk");
+            DownloadManagerUtils.startInstall(mContext, "icore.apk");
         }
 
     }
@@ -140,7 +140,6 @@ public class ShapeAdvancedFragment extends DefaultFragment {
             public void onClick(View v) {
 //                checkIsAndroidO();
 //                gotoSetting();
-//                DownloadManagerUtils.downLoad(mContext, "etcp.apk", "http://7xj3cg.com2.z0.glb.qiniucdn.com/ETCP_Android.apk");
                 mLLItems.removeAllViews();
                 int count = Integer.parseInt(mEtText.getText().toString());
                 int resId = R.layout.fragment_ui_common_textview;

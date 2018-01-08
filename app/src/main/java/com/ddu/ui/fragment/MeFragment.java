@@ -150,12 +150,6 @@ public class MeFragment extends DefaultFragment {
 
 //                ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
 //                shareDialogFragment.show(getFragmentManager(), "h");
-//                HttpUrl httpUrl = HttpUrl.parse("etcp://6?synId=6&isFeedBack=0");
-//                if (null != httpUrl) {
-//                    Log.v("lhz", "host: " + httpUrl.host());
-//                } else {
-//                    Log.v("lhz", "httpUrl is null");
-//                }
 //                startFragment(ToolBarFragment.class);
 
 //                System.arraycopy(mHints, 1, mHints, 0, mHints.length - 1);

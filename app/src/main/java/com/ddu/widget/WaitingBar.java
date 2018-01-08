@@ -1,13 +1,5 @@
 package com.ddu.widget;
 
-/*
- * @项目名称: ETCP停车
- * @文件名称: WaitingBar.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -22,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ddu.R;
-
 
 @SuppressLint("NewApi")
 public class WaitingBar extends LinearLayout {

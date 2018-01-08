@@ -1,9 +1,3 @@
-/*
- * @项目名称: ETCP停车
- * @文件名称: IcsLinearLayout.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
 
 package com.ddu.indicator;
 
@@ -14,22 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.LinearLayout;
 
-/*
- * @项目名称: ETCP停车
- * @文件名称: IcsLinearLayout.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
 
-/**
- * A simple extension of a regular linear layout that supports the divider API
- * of Android 4.0+. The dividers are added adjacent to the children by changing
- * their layout params. If you need to rely on the margins which fall in the
- * same orientation as the layout you should wrap the child in a simple
- * {@link android.widget.FrameLayout} so it can receive the margin.
- */
 class IcsLinearLayout extends LinearLayout {
-    private static final int[] LL = new int[] {
+    private static final int[] LL = new int[]{
         /* 0 */ android.R.attr.divider,
         /* 1 */ android.R.attr.showDividers,
         /* 2 */ android.R.attr.dividerPadding,
@@ -179,7 +160,7 @@ class IcsLinearLayout extends LinearLayout {
 
     private boolean hasDividerBeforeChildAt(int childIndex) {
         if (childIndex == 0 || childIndex == getChildCount()) {
-          return false;
+            return false;
         }
         if ((mShowDividers & SHOW_DIVIDER_MIDDLE) != 0) {
             boolean hasVisibleViewBefore = false;
