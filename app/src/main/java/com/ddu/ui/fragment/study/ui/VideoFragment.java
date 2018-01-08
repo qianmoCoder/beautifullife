@@ -45,7 +45,7 @@ public class VideoFragment extends DefaultFragment {
         });
         mVideoView = findViewById(R.id.surface_view);
         mVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() +
-                "/" + R.raw.etcp_guide));
+                "/" + R.raw.videoviewdemo));
 //        mVideoView.setMediaController(new MediaController(mContext));
         mVideoView.requestFocus();
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

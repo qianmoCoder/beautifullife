@@ -76,7 +76,7 @@ public class HttpUtils {
     }
 
     public static void saveAd(InputStream inputStream) {
-        File file = new File(Environment.getExternalStorageDirectory() + "/etcp/1.jpg");
+        File file = new File(Environment.getExternalStorageDirectory() + "/icore/1.jpg");
         Log.v("lhz", "file: " + file.getAbsolutePath());
         FileOutputStream out = null;
         try {

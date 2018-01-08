@@ -13,17 +13,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.ddu.receiver.NetInfoBroadcastReceiver;
 import com.ddu.R;
 import com.ddu.db.entity.StudyContent;
 import com.ddu.db.gen.DaoMaster;
 import com.ddu.db.gen.DaoSession;
 import com.ddu.db.gen.StudyContentDao;
 import com.ddu.icore.app.BaseApp;
+import com.ddu.receiver.NetInfoBroadcastReceiver;
 import com.ddu.util.SystemUtils;
 import com.ddu.util.xml.PullParserUtils;
 import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 import com.umeng.socialize.UMShareAPI;
 
 import java.lang.ref.WeakReference;
@@ -43,8 +42,6 @@ public class App extends BaseApp {
 
     private static DaoSession daoSession;
 
-    private RefWatcher refWatcher;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -62,7 +59,10 @@ public class App extends BaseApp {
             setupDatabase();
             registerActivityLifecycleCallbacks(this);
             initData();
-            refWatcher = LeakCanary.install(this);
+
+            if (!LeakCanary.isInAnalyzerProcess(this)) {
+                LeakCanary.install(this);
+            }
             registorNetInfoBroadcastReceiver();
         }
     }
@@ -70,11 +70,6 @@ public class App extends BaseApp {
     private void registorNetInfoBroadcastReceiver() {
         IntentFilter filter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
         this.registerReceiver(new NetInfoBroadcastReceiver(), filter);
-    }
-
-    public static RefWatcher getRefWatcher(@NonNull Context context) {
-        App app = (App) context.getApplicationContext();
-        return app.refWatcher;
     }
 
     private void initData() {
