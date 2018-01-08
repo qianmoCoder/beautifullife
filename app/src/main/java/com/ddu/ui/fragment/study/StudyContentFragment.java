@@ -41,6 +41,7 @@ import com.ddu.ui.fragment.study.ui.WifiFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by yzbzz on 2017/5/9.
@@ -110,6 +111,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
             itemEntity.setClassName(key.getName());
             mDataEntities.add(itemEntity);
         }
+        Collections.sort(mDataEntities);
     }
 
 

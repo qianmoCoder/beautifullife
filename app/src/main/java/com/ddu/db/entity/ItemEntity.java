@@ -1,10 +1,12 @@
 package com.ddu.db.entity;
 
+import android.support.annotation.NonNull;
+
 /**
  * Created by yzbzz on 2017/5/12.
  */
 
-public class ItemEntity {
+public class ItemEntity implements Comparable<ItemEntity> {
 
     private String title;
     private String className;
@@ -23,5 +25,10 @@ public class ItemEntity {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    @Override
+    public int compareTo(@NonNull ItemEntity old) {
+        return title.compareTo(old.title);
     }
 }
