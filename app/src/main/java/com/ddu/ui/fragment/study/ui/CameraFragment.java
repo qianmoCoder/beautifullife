@@ -15,10 +15,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
+import com.ddu.acitvityresult.ActivityResultInfo;
+import com.ddu.acitvityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.util.GetImagePath;
 
 import java.io.File;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by yzbzz on 2017/11/14.
@@ -53,7 +57,21 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.btn_camera:
-                startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE);
+                RxActivityResult.with(mActivity)
+                        .startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE)
+                        .subscribe(new Consumer<ActivityResultInfo>() {
+                            @Override
+                            public void accept(ActivityResultInfo activityResultInfo) throws Exception {
+                                String path = GetImagePath.getPath(mContext, doSomething());
+                                Log.v("lhz", "path: " + path);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.v("lhz", "throwable: " + throwable);
+                            }
+                        });
+//                startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE);
                 break;
         }
     }
@@ -65,7 +83,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         mFile = new File(Environment.getExternalStorageDirectory().getPath(), "ddu_photo_temp" + System.currentTimeMillis() + ".png");
 //        if (android.os.Build.VERSION.SDK_INT < 24) {
-            photoUri = Uri.fromFile(mFile);
+        photoUri = Uri.fromFile(mFile);
 //        } else {
 //            photoUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mFile);
 ////            ContentValues contentValues = new ContentValues(1);
@@ -79,16 +97,16 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         return intent;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case CAMERA_REQUEST_CODE:
-                String path = GetImagePath.getPath(mContext, doSomething());
-                Log.v("lhz", "path: " + path);
-                break;
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//            case CAMERA_REQUEST_CODE:
+//                String path = GetImagePath.getPath(mContext, doSomething());
+//                Log.v("lhz", "path: " + path);
+//                break;
+//        }
+//    }
 
     private Uri doSomething() {
         Uri inputUri;
