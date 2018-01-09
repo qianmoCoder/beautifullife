@@ -191,7 +191,7 @@ public class MeFragment extends DefaultFragment {
         tvU.getPaint().
 
                 set(paint);
-        etText.setText("http://bike.Icore.cn?token=d2043816-f516-4788-a794-2334fef2c59c&userId=10015298&version=4.7.0&platform=1");
+        etText.setText("");
     }
 
     @OnClick(R.id.rl_person_info)
