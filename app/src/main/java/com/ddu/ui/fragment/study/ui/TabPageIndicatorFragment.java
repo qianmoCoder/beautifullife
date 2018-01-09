@@ -14,6 +14,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.indicator.TabPageIndicator;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
@@ -41,8 +42,7 @@ public class TabPageIndicatorFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getFragmentManager(), mContext));
-        tpi.setViewPager(viewPager);
+
     }
 
     @Override
@@ -52,10 +52,12 @@ public class TabPageIndicatorFragment extends DefaultFragment {
 
     @Override
     public void initView() {
+        unbinder = ButterKnife.bind(this, mView);
+        viewPager.setAdapter(new SampleFragmentPagerAdapter(getFragmentManager(), mContext));
+        tpi.setViewPager(viewPager);
     }
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-        final int PAGE_COUNT = 10;
         @NonNull
         private String tabTitles[] = new String[]{"缴费", "入场", "更多"};
         private Context context;
@@ -67,7 +69,7 @@ public class TabPageIndicatorFragment extends DefaultFragment {
 
         @Override
         public int getCount() {
-            return PAGE_COUNT;
+            return tabTitles.length;
         }
 
         @NonNull
