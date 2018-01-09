@@ -1,5 +1,6 @@
 package com.ddu.ui.fragment.study.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -13,12 +14,15 @@ import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.ddu.R;
 import com.ddu.acitvityresult.ActivityResultInfo;
 import com.ddu.acitvityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.util.GetImagePath;
+import com.ddu.icore.util.ToastUtils;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
 
@@ -33,6 +37,9 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     final private static int CAMERA_REQUEST_CODE = 1;
 
     private Button btnCamera;
+    private ImageView ivPhoto;
+
+    private RxPermissions rxPermissions;
 
 
     @Override
@@ -42,13 +49,15 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
 
     @Override
     public void initView() {
+        ivPhoto = findViewById(R.id.iv_photo);
         btnCamera = findViewById(R.id.btn_camera);
         btnCamera.setOnClickListener(this);
+        setDefaultTitle("拍照");
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        rxPermissions = new RxPermissions(mActivity);
     }
 
 
@@ -57,22 +66,53 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.btn_camera:
-                RxActivityResult.with(mActivity)
-                        .startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE)
-                        .subscribe(new Consumer<ActivityResultInfo>() {
-                            @Override
-                            public void accept(ActivityResultInfo activityResultInfo) throws Exception {
-                                String path = GetImagePath.getPath(mContext, doSomething());
-                                Log.v("lhz", "path: " + path);
+                if (!rxPermissions.isGranted(Manifest.permission.CAMERA)) {
+                    rxPermissions.request(Manifest.permission.CAMERA).subscribe(new Consumer<Boolean>() {
+                        @Override
+                        public void accept(Boolean aBoolean) throws Exception {
+                            if (aBoolean) {
+                                getPhoto();
+                            } else {
+                                ToastUtils.showToast("没有拍照权限");
                             }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.v("lhz", "throwable: " + throwable);
-                            }
-                        });
-//                startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE);
+                        }
+                    });
+                } else {
+                    getPhoto();
+                }
                 break;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (null != mFile && mFile.exists()) {
+            mFile.delete();
+        }
+    }
+
+    private void getPhoto() {
+        RxActivityResult.with(mActivity)
+                .startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE)
+                .subscribe(new Consumer<ActivityResultInfo>() {
+                    @Override
+                    public void accept(ActivityResultInfo activityResultInfo) throws Exception {
+//                        String path = GetImagePath.getPath(mContext, doSomething());
+                        showPhoto();
+                        ToastUtils.showToast("拍照成功");
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUtils.showToast("拍照失败: " + throwable.getMessage());
+                    }
+                });
+    }
+
+    private void showPhoto() {
+        if (null != mFile) {
+            Glide.with(this).load(mFile).into(ivPhoto);
         }
     }
 
@@ -82,31 +122,16 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     protected Intent startCamera(Activity mContext) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         mFile = new File(Environment.getExternalStorageDirectory().getPath(), "ddu_photo_temp" + System.currentTimeMillis() + ".png");
-//        if (android.os.Build.VERSION.SDK_INT < 24) {
-        photoUri = Uri.fromFile(mFile);
-//        } else {
-//            photoUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mFile);
-////            ContentValues contentValues = new ContentValues(1);
-////            contentValues.put(MediaStore.Images.Media.DATA, mFile.getAbsolutePath());
-////            photoUri = mContext.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-//
-//        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            photoUri = Uri.fromFile(mFile);
+        } else {
+            photoUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mFile);
+        }
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
         Log.v("lhz", "photoUri: " + photoUri);
         return intent;
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case CAMERA_REQUEST_CODE:
-//                String path = GetImagePath.getPath(mContext, doSomething());
-//                Log.v("lhz", "path: " + path);
-//                break;
-//        }
-//    }
 
     private Uri doSomething() {
         Uri inputUri;

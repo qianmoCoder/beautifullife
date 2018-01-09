@@ -2,6 +2,7 @@ package com.ddu.ui.fragment.study.ui;
 
 import android.os.Bundle;
 
+import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 
 /**
@@ -16,7 +17,7 @@ public class BottomSheetFragment extends DefaultFragment {
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.fragment_bottom_sheet;
     }
 
     @Override

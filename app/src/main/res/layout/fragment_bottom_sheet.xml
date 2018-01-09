@@ -12,8 +12,8 @@
         android:layout_height="@dimen/dp_50"
         android:background="@color/c_3b8fed"
         android:orientation="horizontal"
-        android:paddingRight="@dimen/dp_10"
         android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_10"
         android:visibility="visible">
 
         <ImageView
