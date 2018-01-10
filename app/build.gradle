@@ -12,13 +12,16 @@ android {
 
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
+
     defaultConfig {
         //app package name
         applicationId "com.ddu"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+
+        minSdkVersion    19
+        targetSdkVersion 27
+        versionCode      1
+        versionName      "1.0"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath true
@@ -77,9 +80,6 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     implementation 'org.greenrobot:greendao:3.2.2'
@@ -113,4 +113,5 @@ dependencies {
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.orhanobut:logger:2.1.1'
 }

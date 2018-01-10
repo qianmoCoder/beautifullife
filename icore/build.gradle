@@ -4,14 +4,18 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.yzbzz'
 
 android {
+
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
+
     defaultConfig {
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+//        rootProject.projectConfig.each { k, v -> k v }
+        minSdkVersion    19
+        targetSdkVersion 27
+        versionCode      1
+        versionName      "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,10 +32,13 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    api "com.android.support:design:$rootProject.supportLibraryVersion"
-    api "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    api "com.android.support:palette-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:support-v4:$supportLibraryVersion"
+    api "com.android.support:appcompat-v7:$supportLibraryVersion"
+    api "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    api "com.android.support:design:$supportLibraryVersion"
+    api "com.android.support:cardview-v7:$supportLibraryVersion"
+    api "com.android.support:palette-v7:$supportLibraryVersion"
+
+    api 'io.reactivex.rxjava2:rxjava:2.1.7'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }

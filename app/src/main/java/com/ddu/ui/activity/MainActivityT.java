@@ -24,10 +24,10 @@ public class MainActivityT extends BaseActivity implements OnProgressBarListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_number);
 
-        bnp = (NumberProgressBar)findViewById(R.id.numberbar1);
+        bnp = findViewById(R.id.numberbar1);
         bnp.setOnProgressBarListener(this);
 
-        Button btn = (Button) findViewById(R.id.btnClick);
+        Button btn = findViewById(R.id.btnClick);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

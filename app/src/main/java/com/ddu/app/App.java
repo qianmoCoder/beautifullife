@@ -22,6 +22,9 @@ import com.ddu.icore.app.BaseApp;
 import com.ddu.receiver.NetInfoBroadcastReceiver;
 import com.ddu.util.SystemUtils;
 import com.ddu.util.xml.PullParserUtils;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.DiskLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.umeng.socialize.UMShareAPI;
 
@@ -49,6 +52,8 @@ public class App extends BaseApp {
         mContext = getApplicationContext();
         init();
         UMShareAPI.get(this);
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.addLogAdapter(new DiskLogAdapter());
     }
 
     private void init() {

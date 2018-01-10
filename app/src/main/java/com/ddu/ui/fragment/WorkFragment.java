@@ -8,10 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.app.App;
@@ -19,6 +17,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -56,17 +55,7 @@ public class WorkFragment extends DefaultFragment {
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Toast.makeText(mContext, "hello", Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            Log.v("lhz", Log.getStackTraceString(e));
-                        }
-                    }
-                }).start();
+                Logger.i("workFramenti");
 //                NotificationUtils.notification(mContext);
 
 //                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + "18610909732"));

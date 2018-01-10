@@ -157,7 +157,7 @@ public class StudyFragment extends DefaultFragment {
         ft.commitAllowingStateLoss();
         setTitle("学习");
 
-        setFixedTagLayoutOnPageChangeListener();
+//        setFixedTagLayoutOnPageChangeListener();
     }
 
     // 解决点击tab抖动的bug
