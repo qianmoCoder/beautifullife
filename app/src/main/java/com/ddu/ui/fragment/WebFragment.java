@@ -246,7 +246,7 @@ public class WebFragment extends DefaultFragment {
 //                HttpUtils.post(url, params);
 //            }
 //        }).start();
-        String accessToken = "gFonXmV4ENkG2250CxYE96_SyxpSYMWMtp6naQbVHBpak2oYjUcDZHhf8rqUoThUN3yYaFcWURXNKuWG1CVaF0qf2X4iZONosv_WWqwjeY0WKDhACAESL";
+        String accessToken = "5_hjX_2De-wJWccsaypbpKXnYsVxPU5EhP3W_LCSScNreW8an-Dw5492uAN07P0eh-L3SeMS_GXQOfbMXiFn-H5hjMLSFWnk5oaH-XG-iFyllgF0tXOcVo1xl6hjRkSTCJk19iiI_dsReaGgP4HQPgAEATCB";
         post(accessToken);
     }
 
@@ -308,7 +308,7 @@ public class WebFragment extends DefaultFragment {
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("scene", "park2011");
+            jsonObject.put("scene", "park2733");
             jsonObject.put("page", "pages/main/main");
             jsonObject.put("width", 1024);
             jsonObject.put("auto_color", true);
@@ -353,7 +353,7 @@ public class WebFragment extends DefaultFragment {
     }
 
     private void get() {
-        String getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxc07f9d67923d676d&secret=75a05e5d99fa43189c65c81d96b2bf23";
+        String getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&";
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
         Request.Builder builder = new Request.Builder();
         builder.url(url);
