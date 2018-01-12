@@ -81,6 +81,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
     implementation 'org.greenrobot:greendao:3.2.2'
 
