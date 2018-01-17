@@ -17,7 +17,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
-import com.orhanobut.logger.Logger;
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -55,7 +54,13 @@ public class WorkFragment extends DefaultFragment {
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.i("workFramenti");
+//                Log.v("lhz", "v: " + v.getX() + " " + v.getX());
+//                Log.v("lhz", "v p: " + v.getPivotX() + " " + v.getPivotY());
+//                Log.v("lhz", "v r: " + v.getRotationX() + " " + v.getRotationY());
+//                Log.v("lhz", "v s: " + v.getScaleX() + " " + v.getScaleY());
+//                Log.v("lhz", "v sr: " + v.getScrollX() + " " + v.getScrollY());
+//                Log.v("lhz", "v t: " + v.getTranslationX() + " " + v.getTranslationY());
+//                TouchDelegate touchDelegate = mOptionItemView.getTouchDelegate();
 //                NotificationUtils.notification(mContext);
 
 //                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + "18610909732"));

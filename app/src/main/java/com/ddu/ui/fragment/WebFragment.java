@@ -246,7 +246,7 @@ public class WebFragment extends DefaultFragment {
 //                HttpUtils.post(url, params);
 //            }
 //        }).start();
-        String accessToken = "5_hjX_2De-wJWccsaypbpKXnYsVxPU5EhP3W_LCSScNreW8an-Dw5492uAN07P0eh-L3SeMS_GXQOfbMXiFn-H5hjMLSFWnk5oaH-XG-iFyllgF0tXOcVo1xl6hjRkSTCJk19iiI_dsReaGgP4HQPgAEATCB";
+        String accessToken = "5_zPg-cJK5RFmWzPZWKpInEz4wGe6urxzzIDTOVKGuzhHWNow4VrWpEW0LU6960n6BGcntk0IkYjG5si21c3PALDfXmgZTsHyQ-zKGfIyebP6iR4JSEFLQ6QF9S6nsEvH_bo9tGhbn0-faavG5WSKcAFACYQ";
         post(accessToken);
     }
 
@@ -308,7 +308,7 @@ public class WebFragment extends DefaultFragment {
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("scene", "park2733");
+            jsonObject.put("scene", "park2218");
             jsonObject.put("page", "pages/main/main");
             jsonObject.put("width", 1024);
             jsonObject.put("auto_color", true);

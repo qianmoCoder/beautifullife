@@ -8,8 +8,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -192,4 +194,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IObserve
 
     private AppCompatDelegate appCompatDelegate;
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.v("lhz", "dispatchTouchEvent: " + ev.getX() + " " + ev.getY());
+        return super.dispatchTouchEvent(ev);
+    }
 }
