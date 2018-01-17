@@ -52,7 +52,7 @@ public class HttpUtils {
 //                sb.append(line);
 //            }
 //            response = sb.toString();
-            saveAd(conn.getInputStream());
+            saveAd(conn.getInputStream(), "");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -75,15 +75,20 @@ public class HttpUtils {
         return response;
     }
 
-    public static void saveAd(InputStream inputStream) {
-        File file = new File(Environment.getExternalStorageDirectory() + "/icore/1.jpg");
-        Log.v("lhz", "file: " + file.getAbsolutePath());
+    public static void saveAd(InputStream inputStream, String fileName) {
+        File file = new File(Environment.getExternalStorageDirectory() + "/icore");
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        File pic = new File(file, fileName + ".jpg");
+        Log.v("lhz", "file: " + pic.getAbsolutePath());
         FileOutputStream out = null;
         try {
-            if (!file.exists()) {
-                file.createNewFile();
+            if (!pic.exists()) {
+                pic.createNewFile();
             }
-            out = new FileOutputStream(file, false);
+            out = new FileOutputStream(pic, false);
             int len = 0;
             byte[] buf = new byte[1024];
             while ((len = inputStream.read(buf, 0, 1024)) != -1) {

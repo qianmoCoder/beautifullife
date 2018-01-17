@@ -40,6 +40,7 @@ import com.ddu.app.App;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.PopupUtils;
 import com.ddu.icore.util.UrlUtils;
+import com.ddu.sdk.network.OkHttpUtils;
 import com.ddu.ui.helper.WebAppInterface;
 import com.ddu.util.HttpUtils;
 
@@ -48,6 +49,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -55,6 +57,12 @@ import java.util.regex.Matcher;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -246,48 +254,7 @@ public class WebFragment extends DefaultFragment {
 //                HttpUtils.post(url, params);
 //            }
 //        }).start();
-        String accessToken = "5_hjX_2De-wJWccsaypbpKXnYsVxPU5EhP3W_LCSScNreW8an-Dw5492uAN07P0eh-L3SeMS_GXQOfbMXiFn-H5hjMLSFWnk5oaH-XG-iFyllgF0tXOcVo1xl6hjRkSTCJk19iiI_dsReaGgP4HQPgAEATCB";
-        post(accessToken);
-    }
-
-    private void qrCode(String accessToken) {
-        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
-        String url = "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=" + accessToken;
-        Log.v("lhz", "url: " + url);
-        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
-        Request.Builder builder = new Request.Builder();
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("path", "pages/index");
-            jsonObject.put("width", 430);
-
-        } catch (Exception e) {
-
-        }
-        String line_color = jsonObject.toString();
-        Log.v("lhz", "line_color: " + line_color);
-        final RequestBody requestBody = RequestBody.create(JSON, line_color);
-        builder.addHeader("content-type", "application/json;charset:utf-8");
-        builder.post(requestBody);
-        builder.url(url);
-        final Request request = builder.build();
-
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.v("lhz", "e: " + e.toString());
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ResponseBody responseBody = response.body();
-
-                saveAdData(responseBody.byteStream());
-//                Log.v("lhz", "string: " + string);
-            }
-        });
+        post("", "", "");
     }
 
     public void excute(final String method, final String json) {
@@ -300,89 +267,106 @@ public class WebFragment extends DefaultFragment {
     }
 
 
-    private void post(String accessToken) {
-        String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;
-        Log.v("lhz", "url: " + url);
-        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
-        Request.Builder builder = new Request.Builder();
+    private void post(String parkId, String appId, String appSecret) {
+        final String fileName = "park" + parkId;
 
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("scene", "park2733");
-            jsonObject.put("page", "pages/main/main");
-            jsonObject.put("width", 1024);
-            jsonObject.put("auto_color", true);
-
-            JSONObject jsonObject1 = new JSONObject();
-            jsonObject1.put("r", "0");
-            jsonObject1.put("g", "0");
-            jsonObject1.put("b", "0");
-
-            jsonObject.put("line_color", jsonObject1);
-        } catch (Exception e) {
-
-        }
-        String line_color = jsonObject.toString();
-        Log.v("lhz", "data: " + line_color);
-        MediaType JSON = MediaType.parse("application/json;charset=utf-8");
-
-        final RequestBody requestBody = RequestBody.create(JSON, line_color);
-        builder.addHeader("content-type", "application/json;charset:utf-8");
-        builder.url(url);
-        builder.post(requestBody);
-
-        final Request request = builder.build();
-
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        getToken(appId, appSecret, new ICallback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.v("lhz", "e: " + e.toString());
-            }
+            public void execute(Object o) {
+                String accessToken = (String) o;
+                Log.v("lhz", "accessToken: " + accessToken);
+                String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;
+                OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
+                Request.Builder builder = new Request.Builder();
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ResponseBody responseBody = response.body();
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("scene", fileName);
+                    jsonObject.put("page", "pages/main/main");
+                    jsonObject.put("width", 1024);
+                    jsonObject.put("auto_color", true);
 
-//                String string = responseBody.string();
-                saveAdData(responseBody.byteStream());
-//                Log.v("lhz", "string: " + string);
+                    JSONObject jsonObject1 = new JSONObject();
+                    jsonObject1.put("r", "0");
+                    jsonObject1.put("g", "0");
+                    jsonObject1.put("b", "0");
+
+                    jsonObject.put("line_color", jsonObject1);
+                } catch (Exception e) {
+
+                }
+                String line_color = jsonObject.toString();
+                MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+
+                final RequestBody requestBody = RequestBody.create(JSON, line_color);
+                builder.addHeader("content-type", "application/json;charset:utf-8");
+                builder.url(url);
+                builder.post(requestBody);
+
+                final Request request = builder.build();
+
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.v("lhz", "e: " + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        ResponseBody responseBody = response.body();
+                        saveAdData(responseBody.byteStream(), fileName);
+                    }
+                });
             }
         });
 
     }
 
-    private void get() {
-        String getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&";
+    interface ICallback {
+        void execute(Object o);
+    }
+
+    private void getToken(String appId, String appSecret, final ICallback callback) {
+
+        Map<String, String> urlParams = new HashMap<>();
+        urlParams.put("grant_type", "client_credential");
+        urlParams.put("appid", appId);
+        urlParams.put("secret", appSecret);
+
+        String getUrl = OkHttpUtils.appendUrl("https://api.weixin.qq.com/cgi-bin/token", urlParams);
+
+
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
         Request.Builder builder = new Request.Builder();
-        builder.url(url);
+        builder.url(getUrl);
+
         final Request request = builder.build();
+        final Call call = okHttpClient.newCall(request);
 
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.v("lhz", "e: " + e.toString());
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                Response response = call.execute();
+                e.onNext(response.body().string());
+                e.onComplete();
             }
-
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                ResponseBody responseBody = response.body();
-
-                String string = responseBody.string();
-//                saveAdData(responseBody.byteStream());
-                Log.v("lhz", "string: " + string);
+            public void accept(String s) throws Exception {
+                JSONObject jsonObject = new JSONObject(s);
+                callback.execute(jsonObject.get("access_token"));
             }
         });
     }
 
-    private void saveAdData(InputStream inputStream) {
+    private void saveAdData(InputStream inputStream, String fileName) {
         boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         if (!isGranted) {
             ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         } else {
-            HttpUtils.saveAd(inputStream);
+            HttpUtils.saveAd(inputStream, fileName);
         }
     }
 
