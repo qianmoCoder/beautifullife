@@ -93,7 +93,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     }
 
     private void getPhoto() {
-        RxActivityResult.with(mActivity)
+        RxActivityResult.Companion.with(mActivity)
                 .startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE)
                 .subscribe(new Consumer<ActivityResultInfo>() {
                     @Override

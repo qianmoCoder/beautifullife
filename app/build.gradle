@@ -5,6 +5,8 @@ import org.aspectj.tools.ajc.Main
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.meituan.judasplugin'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 
