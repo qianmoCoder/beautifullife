@@ -39,8 +39,6 @@ dependencies {
     icoreDependencies.each {
         k -> api k
     }
-    compile 'org.aspectj:aspectjrt:1.8.10'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 android.libraryVariants.all { variant ->

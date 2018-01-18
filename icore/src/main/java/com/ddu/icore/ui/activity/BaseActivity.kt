@@ -78,7 +78,6 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
     }
 
     override fun registerObserver() {
-
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {

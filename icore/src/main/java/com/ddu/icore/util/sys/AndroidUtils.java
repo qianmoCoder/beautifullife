@@ -192,43 +192,12 @@ public class AndroidUtils {
         ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(text);
     }
 
-    // 隐藏输入法（根据activity当前焦点所在控件的WindowToken）
-    public static void hideSoftInput(@NonNull Activity activity, @Nullable View editText) {
-        View view;
-        if (editText == null) {
-            view = activity.getCurrentFocus();
-        } else {
-            view = editText;
-        }
-
-        if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethod.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
 
     /**
      * 显示软键盘（根据焦点所在的控件）
      */
     public static void showSoftInput(@NonNull Context context) {
         ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-    }
-
-    /**
-     * 显示输入法（根据activity当前焦点所在控件的WindowToken）
-     */
-    public static void showSoftInput(@NonNull Activity activity, @Nullable View editText) {
-        View view;
-        if (editText == null) {
-            view = activity.getCurrentFocus();
-        } else {
-            view = editText;
-        }
-
-        if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethod.showSoftInput(view, 0);
-        }
     }
 
     /**
@@ -338,40 +307,6 @@ public class AndroidUtils {
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * 应用是否在前台运行
-     *
-     * @param context
-     * @return
-     */
-    public static boolean isAppOnForeground(@NonNull Context context) {
-        return isAppOnForeground(context, context.getPackageName());
-    }
-
-    /**
-     * 根据包名判断应用是否在前台运行
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
-    public static boolean isAppOnForeground(@NonNull Context context, @Nullable String packageName) {
-        if (packageName != null) {
-            // Returns a list of application processes that are running on the device
-            ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
-            if (appProcesses != null) {
-                for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
-                    // The name of the process that this object is associated with.
-                    if (appProcess.processName.equals(packageName) && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == appProcess.importance) {
-                        return true;
                     }
                 }
             }

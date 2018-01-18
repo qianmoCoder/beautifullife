@@ -178,31 +178,6 @@ class WebFragment : DefaultFragment() {
     }
 
     private fun post1() {
-        //        final HashMap<String, Object> params = new LinkedHashMap<String, Object>();
-        //        params.put("scene", "2759");
-        ////        params.put("page", "pages/main/main");
-        ////        params.put("width", "430");
-        ////        params.put("auto_color", "false");
-        ////        JSONObject jsonObject = new JSONObject();
-        ////        try {
-        ////            jsonObject.put("r", "0");
-        ////            jsonObject.put("g", "0");
-        ////            jsonObject.put("b", "0");
-        ////            String line_color = jsonObject.toString();
-        ////            Log.v("lhz", "line_color: " + line_color);
-        ////            params.put("line_color", line_color);
-        ////        } catch (Exception e) {
-        ////
-        ////        }
-        //        String accessToken = "YXGzQVOUIrdZxqMcoL3LeLtDZrm7nJZwN1N2CvzpmmII9aXYQs3S2LuG7gNjtbTHBNH_I8ry7z8La-Fx-eah7v5kq_zqDZhyq3IsIdENayxkNS56G5wkHlYBBE91UcA9PKQbAJAYTZ";
-        //        final String url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken;
-        //        Log.v("lhz", "url: " + url);
-        //        new Thread(new Runnable() {
-        //            @Override
-        //            public void run() {
-        //                HttpUtils.post(url, params);
-        //            }
-        //        }).start();
         val accessToken = "5_zPg-cJK5RFmWzPZWKpInEz4wGe6urxzzIDTOVKGuzhHWNow4VrWpEW0LU6960n6BGcntk0IkYjG5si21c3PALDfXmgZTsHyQ-zKGfIyebP6iR4JSEFLQ6QF9S6nsEvH_bo9tGhbn0-faavG5WSKcAFACYQ"
         post(accessToken)
     }

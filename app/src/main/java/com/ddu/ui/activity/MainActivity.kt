@@ -65,6 +65,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             transaction.hide(it)
         }
 
+
 //        for (f in fragment) {
 //            if (f != null) {
 //                if (!f.isHidden) {
@@ -82,7 +83,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         return super.onKeyDown(keyCode, event)
     }
 
-    fun exit() {
+    private fun exit() {
         if (!isExit) {
             isExit = true
             ToastUtils.showToast(R.string.main_exit_msg)
