@@ -23,6 +23,11 @@ val Context.screenHeight
 //    startActivity(intent)
 //}
 
+fun View.hideKeyboard(): Boolean? {
+    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+    return inputMethodManager?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+}
+
 fun Activity.hideKeyboard(view: View?): Boolean? {
     val currentView = currentFocus ?: view
     currentView?.let {

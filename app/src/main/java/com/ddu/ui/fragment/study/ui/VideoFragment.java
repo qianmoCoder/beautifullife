@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.VideoView;
 
 import com.ddu.R;
-import com.ddu.app.App;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
 import com.ddu.icore.util.ToastUtils;
@@ -72,7 +72,7 @@ public class VideoFragment extends DefaultFragment {
             }
         });
 
-        App.getMainHandler().postDelayed(new Runnable() {
+        BaseApp.Companion.postDelayed(new Runnable() {
             @Override
             public void run() {
                 llOther.setVisibility(View.VISIBLE);

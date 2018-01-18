@@ -180,7 +180,7 @@ class MeFragment : DefaultFragment() {
             }
         })
         //        iv_guide_delete.setVisibility(View.INVISIBLE);
-        //        App.getMainHandler().postDelayed(new Runnable() {
+        //        BaseApp.Companion().postDelayed(new Runnable() {
         //            @Override
         //            public void run() {
         //                animation.start();

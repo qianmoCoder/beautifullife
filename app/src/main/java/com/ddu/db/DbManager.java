@@ -15,7 +15,7 @@ public class DbManager {
     private static BoxStore boxStore;
 
     static {
-        boxStore = App.getBoxStore();
+        boxStore = App.Companion.getBoxStore();
     }
 
     public static Box<StudyContent> getStudyContentBox() {

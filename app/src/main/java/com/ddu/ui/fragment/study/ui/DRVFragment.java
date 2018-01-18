@@ -3,7 +3,7 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 
 import com.ddu.R;
-import com.ddu.app.App;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
@@ -55,7 +55,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        App.postDelayed(new Runnable() {
+        BaseApp.Companion.postDelayed(new Runnable() {
             @Override
             public void run() {
                 int size = mDatas.size();
@@ -70,7 +70,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        App.postDelayed(new Runnable() {
+        BaseApp.Companion.postDelayed(new Runnable() {
             @Override
             public void run() {
                 int size = mDatas.size();

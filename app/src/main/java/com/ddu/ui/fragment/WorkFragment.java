@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.app.App;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
@@ -79,7 +79,7 @@ public class WorkFragment extends DefaultFragment {
 //                mActivity.overridePendingTransition(R.anim.bottom_view_anim_enter,R.anim.bottom_view_anim_exit);
 //                final WaitingDialog selectDialog = new WaitingDialog();
 //                selectDialog.show(getFragmentManager(), "");
-//                App.getMainHandler().postDelayed(new Runnable() {
+//                BaseApp.Companion().postDelayed(new Runnable() {
 //                    @Override
 //                    public void run() {
 //                        Log.v("lhz", "isDetached: " + selectDialog.isDetached());
@@ -92,7 +92,7 @@ public class WorkFragment extends DefaultFragment {
 //                }, 2000);
 
 //                startFragment(WebFragment.class);
-//                App.getMainHandler().postDelayed(new Runnable() {
+//                BaseApp.Companion().postDelayed(new Runnable() {
 //                    @Override
 //                    public void run() {
 ////                        Fragment fragment = getFragmentManager().getPrimaryNavigationFragment();
@@ -122,7 +122,7 @@ public class WorkFragment extends DefaultFragment {
         if (!isGranted) {
             ActivityCompat.requestPermissions(getMActivity(), new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
         } else {
-            Context context = App.getContext();
+            Context context = BaseApp.Companion.getContext();
             TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             StringBuilder stringBuilder = new StringBuilder();
 //            stringBuilder.append(tm.getSimOperatorName()+" ");

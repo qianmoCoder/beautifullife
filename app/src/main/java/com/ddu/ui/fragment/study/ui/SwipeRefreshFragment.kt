@@ -6,7 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
 import com.ddu.R
-import com.ddu.app.App
+import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
@@ -86,7 +86,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
     }
 
     override fun onRefresh() {
-        App.postDelayed({
+        BaseApp.postDelayed(Runnable{
             val size = mDatas.size
             for (i in size until size + 10) {
                 mDatas.add("i - " + i)

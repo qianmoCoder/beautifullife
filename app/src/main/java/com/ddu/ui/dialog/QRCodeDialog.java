@@ -33,7 +33,7 @@ public class QRCodeDialog extends DialogFragment implements View.OnClickListener
 
     public static QRCodeDialog newInstance(String phone) {
         Bundle args = new Bundle();
-        args.putString(VerificationCodeDialog.EXTRA_PHONE, phone);
+        args.putString(VerificationCodeDialog.Companion.getEXTRA_PHONE(), phone);
         QRCodeDialog fragment = new QRCodeDialog();
         fragment.setArguments(args);
         return fragment;
@@ -91,8 +91,8 @@ public class QRCodeDialog extends DialogFragment implements View.OnClickListener
     }
 
     private void startTo() {
-        String tempPhone = getArguments().getString(VerificationCodeDialog.EXTRA_PHONE, "");
-        VerificationCodeDialog verificationCodeDialog = VerificationCodeDialog.newInstance(tempPhone);
+        String tempPhone = getArguments().getString(VerificationCodeDialog.Companion.getEXTRA_PHONE(), "");
+        VerificationCodeDialog verificationCodeDialog = VerificationCodeDialog.Companion.newInstance(tempPhone);
         verificationCodeDialog.show(getFragmentManager(), "verificationCodeDialog");
     }
 

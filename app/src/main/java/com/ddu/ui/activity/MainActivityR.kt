@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.widget.RadioGroup
 import com.ddu.R
-import com.ddu.app.App
+import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.util.ToastUtils
 import com.ddu.ui.fragment.LifeFragment
@@ -102,7 +102,7 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
         if (!isExit) {
             isExit = true
             ToastUtils.showToast(R.string.main_exit_msg)
-            App.postDelayed({ isExit = false }, 2000)
+            BaseApp.postDelayed(Runnable{ isExit = false }, 2000)
         } else {
             finish()
         }

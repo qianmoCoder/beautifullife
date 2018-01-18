@@ -16,8 +16,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.ddu.R;
-import com.ddu.app.App;
 import com.ddu.icore.aidl.GodIntent;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.common.IObserver;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.logic.Actions;
@@ -130,7 +130,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         public void invoke(String jsonString) {
 
             final String json = jsonString;
-            App.getMainHandler().post(new Runnable() {
+            BaseApp.Companion.post(new Runnable() {
                 @Override
                 public void run() {
                     try {

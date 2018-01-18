@@ -21,7 +21,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.bumptech.glide.request.transition.Transition
 import com.ddu.R
-import com.ddu.app.App
+import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.PopupUtils
 import com.ddu.icore.util.UrlUtils
@@ -117,12 +117,12 @@ class WebFragment : DefaultFragment() {
         mWebSettings!!.layoutAlgorithm = WebSettings.LayoutAlgorithm.NARROW_COLUMNS
         mWebSettings!!.useWideViewPort = true
 
-        wv_web!!.webViewClient = webViewClient
-        wv_web!!.webChromeClient = webChromeClient
+        wv_web.webViewClient = webViewClient
+        wv_web.webChromeClient = webChromeClient
 
-        //        reload("protocol.html");
-        wv_web!!.addJavascriptInterface(WebAppInterface(mContext), "SBridge")
-        wv_web!!.addJavascriptInterface(this, "SBridge")
+        //      reload("protocol.html");
+        wv_web.addJavascriptInterface(WebAppInterface(mContext), "SBridge")
+        wv_web.addJavascriptInterface(this, "SBridge")
         initTitle()
         btn_reload!!.setOnClickListener { post1() }
 
@@ -223,7 +223,7 @@ class WebFragment : DefaultFragment() {
     }
 
     fun excute(method: String, json: String) {
-        App.post { wv_web!!.loadUrl("javascript:$method($json)") }
+        BaseApp.post(Runnable { wv_web!!.loadUrl("javascript:$method($json)") })
     }
 
 

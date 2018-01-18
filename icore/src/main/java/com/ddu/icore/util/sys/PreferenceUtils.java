@@ -18,7 +18,7 @@ public class PreferenceUtils {
     private Context mContext;
 
     private PreferenceUtils() {
-        mContext = BaseApp.getContext();
+        mContext = BaseApp.Companion.getContext();
         mSharedPreferences = mContext.getSharedPreferences(mContext.getPackageName(), Context.MODE_PRIVATE);
     }
 

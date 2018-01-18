@@ -34,7 +34,7 @@ public class DnsConfig {
     }
 
     public static String getBuildType() {
-        return getMetaData(BaseApp.getContext()).getString("BUILD_TYPE", "debug");
+        return getMetaData(BaseApp.Companion.getContext()).getString("BUILD_TYPE", "debug");
     }
 
 

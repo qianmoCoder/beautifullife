@@ -11,8 +11,8 @@ import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import com.ddu.R
-import com.ddu.app.App
 import com.ddu.icore.aidl.GodIntent
+import com.ddu.icore.app.BaseApp
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.help.BottomNavigationViewHelper
@@ -87,7 +87,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         if (!isExit) {
             isExit = true
             ToastUtils.showToast(R.string.main_exit_msg)
-            App.postDelayed(Runnable { isExit = false }, 2000)
+            BaseApp.postDelayed(Runnable { isExit = false }, 2000)
         } else {
             finish()
         }

@@ -22,7 +22,7 @@ public class ToastUtils {
     private TextView mTextView;
 
     private ToastUtils() {
-        mContext = BaseApp.getContext();
+        mContext = BaseApp.Companion.getContext();
         mLayoutInflater = LayoutInflater.from(mContext);
         initToast();
         initView();
@@ -58,7 +58,7 @@ public class ToastUtils {
     }
 
     public static <T> void showToast(final T text, final int duration) {
-        BaseApp.post(new Runnable() {
+        BaseApp.Companion.post(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -70,9 +70,9 @@ public class ToastUtils {
                 } catch (Exception e) {
                     e.printStackTrace();
                     if (text instanceof String) {
-                        Toast.makeText(BaseApp.getContext(), (String) text, duration).show();
+                        Toast.makeText(BaseApp.Companion.getContext(), (String) text, duration).show();
                     } else if (text instanceof Integer) {
-                        Toast.makeText(BaseApp.getContext(), (Integer) text, duration).show();
+                        Toast.makeText(BaseApp.Companion.getContext(), (Integer) text, duration).show();
                     }
 
                 }

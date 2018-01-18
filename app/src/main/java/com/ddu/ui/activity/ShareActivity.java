@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ddu.R;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.dialog.ShareAdapter;
 import com.ddu.icore.entity.ShareEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
@@ -22,8 +23,6 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.ddu.icore.app.BaseApp.getContext;
 
 /**
  * Created by yzbzz on 2017/4/6.
@@ -85,10 +84,10 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         mRecyclerView = ViewUtils.findViewById(this, R.id.rv_share);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(BaseApp.Companion.getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
-        shareAdapter = new ShareAdapter(getContext(), shareEntities);
+        shareAdapter = new ShareAdapter(BaseApp.Companion.getContext(), shareEntities);
         mRecyclerView.setAdapter(shareAdapter);
 
         shareAdapter.setOnItemClickListener(new ShareAdapter.OnClickListener<ShareEntity>() {

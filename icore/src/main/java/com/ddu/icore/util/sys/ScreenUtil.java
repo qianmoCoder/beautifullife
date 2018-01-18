@@ -32,7 +32,7 @@ public class ScreenUtil {
     public static int navbarheight;
 
     static {
-        init(BaseApp.getContext());
+        init(BaseApp.Companion.getContext());
     }
 
     public static int dip2px(float dipValue) {
