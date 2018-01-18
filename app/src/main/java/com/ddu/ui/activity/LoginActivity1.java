@@ -37,7 +37,7 @@ public class LoginActivity1 extends BaseActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, LoginActivity2.class));
+                startActivity(new Intent(getMContext(), LoginActivity2.class));
             }
         });
         setDefaultTitle("one");

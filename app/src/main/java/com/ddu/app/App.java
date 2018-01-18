@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,10 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.ddu.R;
+import com.ddu.db.entity.MyObjectBox;
 import com.ddu.db.entity.StudyContent;
-import com.ddu.db.gen.DaoMaster;
-import com.ddu.db.gen.DaoSession;
-import com.ddu.db.gen.StudyContentDao;
 import com.ddu.icore.app.BaseApp;
 import com.ddu.receiver.NetInfoBroadcastReceiver;
 import com.ddu.util.SystemUtils;
@@ -33,6 +30,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
 import io.reactivex.Observable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
@@ -43,7 +42,7 @@ import io.reactivex.functions.Consumer;
  */
 public class App extends BaseApp {
 
-    private static DaoSession daoSession;
+    private static BoxStore sBoxStore;
 
     @Override
     public void onCreate() {
@@ -54,6 +53,10 @@ public class App extends BaseApp {
         UMShareAPI.get(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.addLogAdapter(new DiskLogAdapter());
+    }
+
+    public static BoxStore getBoxStore() {
+        return sBoxStore;
     }
 
     private void init() {
@@ -78,19 +81,28 @@ public class App extends BaseApp {
     }
 
     private void initData() {
-        final StudyContentDao studyContentDao = daoSession.getStudyContentDao();
-        long count = studyContentDao.count();
 
+        Box<StudyContent> studyContentBox = sBoxStore.boxFor(StudyContent.class);
+        long count = studyContentBox.count();
         if (count <= 0) {
             try {
-                loadFile(studyContentDao);
+                loadFile(studyContentBox);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void loadStringArray(final StudyContentDao studyContentDao) {
+    private void loadFile(final Box<StudyContent> studyContentBox) {
+        try {
+            List<StudyContent> studyContents = PullParserUtils.getStudyContent(mContext.getAssets().open("config_tag.xml"));
+            studyContentBox.put(studyContents);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadStringArray(final Box<StudyContent> studyContentBox) {
         String[] titleList = getResources().getStringArray(R.array.study_ui_title);
         String[] descList = getResources().getStringArray(R.array.study_ui_description);
         Observable<String> observableTitle = Observable.fromArray(titleList);
@@ -108,36 +120,16 @@ public class App extends BaseApp {
         }).subscribe(new Consumer<StudyContent>() {
             @Override
             public void accept(@io.reactivex.annotations.NonNull StudyContent studyContent) throws Exception {
-                studyContentDao.insertOrReplace(studyContent);
+                studyContentBox.put(studyContent);
             }
         });
     }
 
-    private void loadFile(final StudyContentDao studyContentDao) {
-//        Properties props = new Properties();
-//        try {
-//            props.load(mContext.getAssets().open(""));
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        try {
-            List<StudyContent> studyContents = PullParserUtils.getStudyContent(mContext.getAssets().open("config_tag.xml"));
-            studyContentDao.insertOrReplaceInTx(studyContents);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private void setupDatabase() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "ddu", null);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        daoSession = daoMaster.newSession();
+        sBoxStore = MyObjectBox.builder().androidContext(this).build();
     }
 
-    public static DaoSession getDaoSession() {
-        return daoSession;
-    }
 
     /**
      * 向缓存中添加Activity

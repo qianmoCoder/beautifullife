@@ -43,7 +43,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     @NonNull
     public static ShapeAdvancedFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARGUMENT_TASK_ID, taskId);
+        arguments.putString(Companion.getARGUMENT_TASK_ID(), taskId);
         ShapeAdvancedFragment fragment = new ShapeAdvancedFragment();
         fragment.setArguments(arguments);
         return fragment;
@@ -65,9 +65,9 @@ public class ShapeAdvancedFragment extends DefaultFragment {
 
     private void checkIsAndroidO() {
         if (Build.VERSION.SDK_INT >= 26) {
-            boolean b = mContext.getPackageManager().canRequestPackageInstalls();
+            boolean b = getMContext().getPackageManager().canRequestPackageInstalls();
 //            if (b) {
-            DownloadManagerUtils.startInstall(mContext, "icore.apk");
+            DownloadManagerUtils.startInstall(getMContext(), "icore.apk");
 //            } else {
             //请求安装未知应用来源的权限
 //                requestPermissions(new String[]{Manifest.permission.WRITE_SETTINGS}, INSTALL_PACKAGES_REQUESTCODE);
@@ -75,7 +75,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
 //                requestPermissions(new String[]{Manifest.permission.CAMERA}, 0);
 //            }
         } else {
-            DownloadManagerUtils.startInstall(mContext, "icore.apk");
+            DownloadManagerUtils.startInstall(getMContext(), "icore.apk");
         }
 
     }
@@ -86,7 +86,7 @@ public class ShapeAdvancedFragment extends DefaultFragment {
         switch (requestCode) {
             case INSTALL_PACKAGES_REQUESTCODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    DownloadManagerUtils.startInstall(mContext, downLoadId);
+                    DownloadManagerUtils.startInstall(getMContext(), downLoadId);
                 } else {
                     gotoSetting();
                 }
@@ -98,12 +98,12 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     }
 
     private void gotoSetting() {
-        boolean b = ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED;
+        boolean b = ContextCompat.checkSelfPermission(getMContext(), Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED;
         if (b) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
             startActivityForResult(intent, GET_UNKNOWN_APP_SOURCES);
         } else {
-            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.WRITE_SETTINGS}, ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+            ActivityCompat.requestPermissions(getMActivity(), new String[]{Manifest.permission.WRITE_SETTINGS}, ACTION_MANAGE_UNKNOWN_APP_SOURCES);
         }
     }
 

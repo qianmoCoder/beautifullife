@@ -57,7 +57,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        rxPermissions = new RxPermissions(mActivity);
+        rxPermissions = new RxPermissions(getMActivity());
     }
 
 
@@ -93,8 +93,8 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     }
 
     private void getPhoto() {
-        RxActivityResult.Companion.with(mActivity)
-                .startActivityForResult(startCamera(mActivity), CAMERA_REQUEST_CODE)
+        RxActivityResult.Companion.with(getMActivity())
+                .startActivityForResult(startCamera(getMActivity()), CAMERA_REQUEST_CODE)
                 .subscribe(new Consumer<ActivityResultInfo>() {
                     @Override
                     public void accept(ActivityResultInfo activityResultInfo) throws Exception {
@@ -136,7 +136,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     private Uri doSomething() {
         Uri inputUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            inputUri = FileProvider.getUriForFile(mContext, mContext.getPackageName() + ".provider", mFile);//通过FileProvider创建一个content类型的Uri
+            inputUri = FileProvider.getUriForFile(getMContext(), getMContext().getPackageName() + ".provider", mFile);//通过FileProvider创建一个content类型的Uri
         } else {
             inputUri = Uri.fromFile(mFile);
         }

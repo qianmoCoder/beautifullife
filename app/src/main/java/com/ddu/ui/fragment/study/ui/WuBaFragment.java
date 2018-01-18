@@ -46,7 +46,7 @@ public class WuBaFragment extends DefaultFragment {
         recyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.fragment_home_item, parent, false));
+                return new ViewHolder(LayoutInflater.from(getMContext()).inflate(R.layout.fragment_home_item, parent, false));
             }
 
             @Override
@@ -73,7 +73,7 @@ public class WuBaFragment extends DefaultFragment {
             }
         });
 
-        final WuBaBehavior myBehavior = new WuBaBehavior(mContext);
+        final WuBaBehavior myBehavior = new WuBaBehavior(getMContext());
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) recyclerView.getLayoutParams();
         params.setBehavior(myBehavior);
 

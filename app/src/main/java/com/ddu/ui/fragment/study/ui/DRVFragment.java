@@ -29,7 +29,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public DefaultRecycleViewAdapter getAdapter() {
-        return new DefaultRecycleViewAdapter<String>(mContext, mDatas) {
+        return new DefaultRecycleViewAdapter<String>(getMContext(), mDatas) {
 
             @Override
             public int getLayoutId(int viewType) {

@@ -46,9 +46,9 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
 
         frameLayout = findViewById(R.id.fl_refresh_content);
         customerScrollView = findViewById(R.id.csv_activity_base);
-        rotateLoadingLayout = new RotateLoadingLayout(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView.getPullToRefreshScrollDirection());
+        rotateLoadingLayout = new RotateLoadingLayout(getMContext(), PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView.getPullToRefreshScrollDirection());
 
-        customerView = new CustomerView(mContext, PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView);
+        customerView = new CustomerView(getMContext(), PullToRefreshBase.Mode.PULL_FROM_START, customerScrollView);
         customerView.setCarImageView(mIvCar);
         customerView.setIvG(mIvG);
 
@@ -110,7 +110,7 @@ public class ScrollViewFragment extends DefaultFragment implements CustomerScrol
     }
 
     private Drawable getDrawable() {
-        return mContext.getResources().getDrawable(R.drawable.ptf_g);
+        return getMContext().getResources().getDrawable(R.drawable.ptf_g);
     }
 
     @Override

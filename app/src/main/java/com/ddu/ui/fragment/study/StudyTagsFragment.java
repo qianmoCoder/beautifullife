@@ -40,18 +40,18 @@ public class StudyTagsFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        studyContents = DbManager.getStudyContentDao().loadAll();
+        studyContents = DbManager.getStudyContentBox().getAll();
 
         for (StudyContent studyContent : studyContents) {
-            if (studyContent.getIsOld()) {
+            if (studyContent.isOld()) {
                 studyContentOld.add(studyContent);
             } else {
                 studyContentNew.add(studyContent);
             }
         }
 
-        mOldGridLayoutManager = new GridLayoutManager(mContext, SPAN_COUNT);
-        mNewGridLayoutManager = new GridLayoutManager(mContext, SPAN_COUNT);
+        mOldGridLayoutManager = new GridLayoutManager(getMContext(), SPAN_COUNT);
+        mNewGridLayoutManager = new GridLayoutManager(getMContext(), SPAN_COUNT);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class StudyTagsFragment extends DefaultFragment {
         mRvOld.setLayoutManager(mOldGridLayoutManager);
         mRvNew.setLayoutManager(mNewGridLayoutManager);
 
-        mRvOld.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(mContext, studyContentOld) {
+        mRvOld.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentOld) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;
@@ -75,11 +75,11 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.getTitle());
+                viewHolder.setText(R.id.tv_tag, data.title);
             }
         });
 
-        mRvNew.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(mContext, studyContentNew) {
+        mRvNew.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentNew) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;
@@ -87,7 +87,7 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.getTitle());
+                viewHolder.setText(R.id.tv_tag, data.title);
             }
         });
 

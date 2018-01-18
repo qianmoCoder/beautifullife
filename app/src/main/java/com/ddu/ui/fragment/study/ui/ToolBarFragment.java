@@ -23,7 +23,7 @@ public class ToolBarFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        Toolbar toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) getMView().findViewById(R.id.toolbar);
         toolbar.getBackground().setAlpha(0);
     }
 

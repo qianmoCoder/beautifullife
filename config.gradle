@@ -1,5 +1,7 @@
 ext {
 
+    anko_version = '0.10.4'
+
     projectConfig = [
             minSdkVersion   : 19,
             targetSdkVersion: 27,

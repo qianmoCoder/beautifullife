@@ -29,7 +29,7 @@ public class RenderScriptFragment extends DefaultFragment {
     @NonNull
     public static RenderScriptFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARGUMENT_TASK_ID, taskId);
+        arguments.putString(Companion.getARGUMENT_TASK_ID(), taskId);
         RenderScriptFragment fragment = new RenderScriptFragment();
         fragment.setArguments(arguments);
         return fragment;
@@ -37,7 +37,7 @@ public class RenderScriptFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        blur = new RenderScriptGaussianBlur(mContext);
+        blur = new RenderScriptGaussianBlur(getMContext());
     }
 
     @Override
@@ -47,9 +47,9 @@ public class RenderScriptFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        imageView = ViewUtils.findViewById(mView, R.id.container);
-        linearLayout = ViewUtils.findViewById(mView, R.id.layout);
-        btnShow = ViewUtils.findViewById(mView, R.id.btn_show);
+        imageView = ViewUtils.findViewById(getMView(), R.id.container);
+        linearLayout = ViewUtils.findViewById(getMView(), R.id.layout);
+        btnShow = ViewUtils.findViewById(getMView(), R.id.btn_show);
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,7 @@ public class RenderScriptFragment extends DefaultFragment {
 
                 linearLayout.setVisibility(View.INVISIBLE);
 
-                DialogUtils.showDialog(mContext, R.drawable.icon_add, "Hello", "OK", new DialogUtils.ITwoButtonListener() {
+                DialogUtils.showDialog(getMContext(), R.drawable.icon_add, "Hello", "OK", new DialogUtils.ITwoButtonListener() {
                     @Override
                     public void onBtnCancelClickListener(@NonNull Dialog dialog) {
                         dialog.dismiss();

@@ -26,7 +26,7 @@ public class LoginActivity2 extends BaseActivity {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, LoginActivity1.class);
+                Intent intent = new Intent(getMContext(), LoginActivity1.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

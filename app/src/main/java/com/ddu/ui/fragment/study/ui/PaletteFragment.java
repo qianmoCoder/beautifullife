@@ -47,7 +47,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         btnNext.setOnClickListener(this);
 
         rvSwatch = findViewById(R.id.rv_swatch);
-        rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(mContext, swatchList) {
+        rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(getMContext(), swatchList) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.recyclerview_item_default;
@@ -59,8 +59,8 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
                 viewHolder.setBackgroud(R.id.tv_detail, data.getRgb());
             }
         });
-        rvSwatch.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        rvSwatch.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
+        rvSwatch.setLayoutManager(new LinearLayoutManager(getMContext(),LinearLayoutManager.VERTICAL,false));
+        rvSwatch.addItemDecoration(new DividerItemDecoration(getMContext(), DividerItemDecoration.HORIZONTAL));
     }
 
     @Override

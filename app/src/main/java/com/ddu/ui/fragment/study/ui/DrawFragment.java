@@ -11,15 +11,11 @@ import com.ddu.icore.ui.help.ShapeInjectHelper;
 import com.ddu.icore.ui.view.ShapeButton;
 import com.ddu.icore.util.sys.ViewUtils;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * Created by lhz on 16/5/6.
  */
 public class DrawFragment extends DefaultFragment {
 
-    private Unbinder unbinder;
     private ShapeButton shapeTextView;
     private LinearLayout linearLayout;
 
@@ -43,8 +39,7 @@ public class DrawFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        unbinder = ButterKnife.bind(this, mView);
-        shapeTextView = ViewUtils.findViewById(mView, R.id.different_radius_test);
+        shapeTextView = ViewUtils.findViewById(getMView(), R.id.different_radius_test);
 //        shapeTextView.setRadius(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
         int height = shapeTextView.getHeight();
 //        shapeTextView.getShapeInject().setSegmented(true);
@@ -66,6 +61,5 @@ public class DrawFragment extends DefaultFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
     }
 }

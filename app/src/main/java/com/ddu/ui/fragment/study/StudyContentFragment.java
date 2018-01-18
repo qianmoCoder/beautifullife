@@ -124,7 +124,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
 
     @Override
     public StudyRecycleViewAdapter getAdapter() {
-        return new StudyRecycleViewAdapter(mContext, mDataEntities);
+        return new StudyRecycleViewAdapter(getMContext(), mDataEntities);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class WifiFragment extends DefaultFragment {
     @Override
     public void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) getMContext().getSystemService(Context.WIFI_SERVICE);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class PullParserUtils {
                         String isOld = pullParser.getAttributeValue(1);
                         String description = pullParser.nextText();
                         studyContent.setTitle(title);
-                        studyContent.setIsOld(isOld.equalsIgnoreCase("0"));
+                        studyContent.setOld(isOld.equalsIgnoreCase("0"));
                         studyContent.setDescription(description);
                         studyContents.add(studyContent);
                     }

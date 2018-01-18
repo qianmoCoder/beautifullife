@@ -53,7 +53,7 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
 //            textView.setBackgroundDrawable(gd);
 //            flexboxLayout.addView(textView, layoutParams);
 //        }
-//        viewHolder.setText(R.id.tv_title, data.getTitle());
+//        viewHolder.setText(R.id.tv_title, data.getMTitle());
 //        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

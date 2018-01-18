@@ -24,7 +24,7 @@ public class SnackBarFragment extends DefaultFragment {
     @NonNull
     public static SnackBarFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARGUMENT_TASK_ID, taskId);
+        arguments.putString(Companion.getARGUMENT_TASK_ID(), taskId);
         SnackBarFragment fragment = new SnackBarFragment();
         fragment.setArguments(arguments);
         return fragment;

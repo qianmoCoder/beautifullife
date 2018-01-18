@@ -3,10 +3,11 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.meituan.judasplugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.objectbox'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -63,11 +64,7 @@ android {
     }
     productFlavors {
     }
-    greendao {
-        schemaVersion 1
-        daoPackage 'com.ddu.db.gen'
-        targetGenDir 'src/main/java'
-    }
+
     dataBinding {
         enabled = true
     }
@@ -83,13 +80,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':icore')
 
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-
-    implementation 'org.greenrobot:greendao:3.2.2'
 
     implementation 'com.facebook.rebound:rebound:0.3.8'
 
@@ -102,10 +94,14 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.google.zxing:android-core:3.3.0'
 
+    compile "io.objectbox:objectbox-android:$objectboxVersion"
+    compile "io.objectbox:objectbox-kotlin:$objectboxVersion"
+    kapt "io.objectbox:objectbox-processor:$objectboxVersion"
+    annotationProcessor "io.objectbox:objectbox-processor:$objectboxVersion"
 
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     implementation 'com.github.bumptech.glide:compiler:4.1.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    kapt 'com.github.bumptech.glide:compiler:4.5.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
@@ -121,7 +117,9 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.orhanobut:logger:2.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.anko:anko:$anko_version"
 }
 
 final def log = project.logger

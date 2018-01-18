@@ -142,13 +142,13 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         public void onResult(SHARE_MEDIA platform) {
             Log.d("plat", "platform" + platform);
 
-            Toast.makeText(mContext, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(mContext, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
             if (t != null) {
                 Log.d("throw", "throw:" + t.getMessage());
             }
@@ -156,7 +156,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(mContext, platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
         }
     };
 }

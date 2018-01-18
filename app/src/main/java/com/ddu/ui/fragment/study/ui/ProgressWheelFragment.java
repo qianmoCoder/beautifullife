@@ -37,7 +37,7 @@ public class ProgressWheelFragment extends DefaultFragment {
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity)
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getMActivity())
                         .setTitle(R.string.about)
                         .setMessage(R.string.about_text)
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

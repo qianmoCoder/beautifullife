@@ -46,14 +46,14 @@ public class RecyclerViewFragment extends DefaultFragment {
         btnSingle = findViewById(R.id.btn_single);
         btnMulti = findViewById(R.id.btn_multi);
 
-        linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(getMContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         for (int position = 0; position < 7; position++) {
             localImages.add(getResId("ic_test_" + position, R.drawable.class));
         }
 
-        recyclerView.setAdapter(studyUIRecycleViewAdapter = new StudyUIRecycleViewAdapter(mContext, localImages));
+        recyclerView.setAdapter(studyUIRecycleViewAdapter = new StudyUIRecycleViewAdapter(getMContext(), localImages));
 
         recyclerView.setHasFixedSize(true);
 //        recyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));

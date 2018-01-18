@@ -50,7 +50,7 @@ public class WorkFragment extends DefaultFragment {
     public void initView() {
         mTvMoney = findViewById(R.id.tv_money);
         mTvModel = findViewById(R.id.tv_model);
-        mOptionItemView = ViewUtils.findViewById(mView, R.id.oiv_fragment);
+        mOptionItemView = ViewUtils.findViewById(getMView(), R.id.oiv_fragment);
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,9 +118,9 @@ public class WorkFragment extends DefaultFragment {
         setTitle(R.string.main_tab_work);
         mTvMoney.setText(DnsConfig.getBuildType());
         //+ com.ddu.util.SystemUtils.getDeviceId()
-        boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
+        boolean isGranted = ContextCompat.checkSelfPermission(getMContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
         if (!isGranted) {
-            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
+            ActivityCompat.requestPermissions(getMActivity(), new String[]{Manifest.permission.READ_PHONE_STATE}, 0);
         } else {
             Context context = App.getContext();
             TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);

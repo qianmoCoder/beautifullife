@@ -1,22 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from : "config.gradle"
+apply from: "config.gradle"
 
 buildscript {
+    ext.objectboxVersion = '1.4.0'
     ext.kotlin_version = '1.2.20'
-    ext.kotlin_version = '1.2.10'
     repositories {
         google()
         jcenter()
         mavenCentral()
+        maven { url "http://objectbox.net/beta-repo/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         classpath 'org.aspectj:aspectjtools:1.8.10'
         classpath 'org.aspectj:aspectjweaver:1.8.10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -27,7 +28,12 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven { url 'https://maven.google.com' }
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven {
+            url 'http://objectbox.net/beta-repo/'
+        }
     }
 }
 
