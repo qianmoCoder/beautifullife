@@ -1,13 +1,9 @@
 package com.ddu.app
 
-import android.app.Activity
 import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
-import android.os.Build
-import android.os.Bundle
-import android.util.Log
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
@@ -24,8 +20,6 @@ import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
-import java.lang.ref.WeakReference
-import java.util.*
 
 
 /**
@@ -105,77 +99,6 @@ class App : BaseApp() {
         boxStore = MyObjectBox.builder().androidContext(this).build()
     }
 
-
-    /**
-     * 向缓存中添加Activity
-     *
-     * @param activity
-     */
-    override fun addActivity(activity: Activity) {
-        currentActivity = WeakReference(activity)
-        if (sCacheActivities != null) {
-            val hashCode = activity.hashCode()
-            if (sCacheActivities.containsKey(hashCode)) {
-                sCacheActivities.remove(hashCode)
-            }
-            sCacheActivities.put(hashCode, WeakReference(activity))
-        }
-    }
-
-    /**
-     * 从缓存中移除Activity
-     *
-     * @param activity
-     */
-    override fun removeActivity(activity: Activity) {
-        val hashCode = activity.hashCode()
-        if (sCacheActivities != null && sCacheActivities.containsKey(hashCode)) {
-            sCacheActivities.remove(hashCode)
-        }
-    }
-
-    /**
-     * 获取缓存中的Activity
-     *
-     * @param hashCode
-     * @return
-     */
-    override fun getCacheActivity(hashCode: Int): Activity? {
-        val weakReference = sCacheActivities[hashCode] ?: return null
-        return weakReference.get()
-    }
-
-    /**
-     * 关闭所有Activity
-     *
-     * @return
-     */
-    override fun finishAllActivity(): Int {
-        var finishCount = 0
-        if (sCacheActivities != null && !sCacheActivities.isEmpty()) {
-            val activities = ArrayList(sCacheActivities.values)
-            for (activity in activities) {
-                val tempActivity = activity.get() ?: continue
-                sCacheActivities.remove(tempActivity.hashCode())
-                if (tempActivity !== currentActivity.get()) {
-                    if (tempActivity != null && !tempActivity.isFinishing) {
-                        tempActivity.finish()
-                        finishCount++
-                    }
-                }
-            }
-        }
-        return finishCount
-    }
-
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
-        addActivity(activity)
-    }
-
-    override fun onActivityDestroyed(activity: Activity) {
-        removeActivity(activity)
-    }
-
     // 强制字体不随着系统改变而改变
     override fun onConfigurationChanged(newConfig: Configuration) {
         if (newConfig.fontScale != 1f) {
@@ -193,7 +116,6 @@ class App : BaseApp() {
             //            res.updateConfiguration(newConfig, res.getDisplayMetrics());
             val context = createConfigurationContext(newConfig)
             res = context.resources
-            Log.v("lhz", "version: " + Build.VERSION.SDK_INT)
         }
         return res
     }

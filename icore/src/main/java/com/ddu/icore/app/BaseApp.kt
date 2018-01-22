@@ -19,8 +19,6 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
     val cacheActivities: Map<Int, WeakReference<Activity>>?
         get() = sCacheActivities
 
-
-
     override fun onCreate() {
         super.onCreate()
         mApp = this
@@ -65,7 +63,7 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
         return finishCount
     }
 
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
         addActivity(activity)
     }
 
