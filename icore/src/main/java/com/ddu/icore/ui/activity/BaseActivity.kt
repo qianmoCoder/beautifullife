@@ -1,6 +1,5 @@
 package com.ddu.icore.ui.activity
 
-import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.support.annotation.LayoutRes
@@ -8,20 +7,21 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
 import android.util.Log
-import android.view.*
+import android.view.KeyEvent
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.view.TitleBar
-import com.ddu.icore.util.sys.ViewUtils
+import org.jetbrains.anko.find
 
 abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
 
     lateinit var mContext: Context
-    lateinit var mApplication: Application
-    lateinit var mApplicationContext: Context
 
     lateinit var mViewGroup: ViewGroup
 
@@ -29,8 +29,6 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         protected set
 
     var fragmentCallback: OnFragmentCallback? = null
-
-    lateinit var mLayoutInflater: LayoutInflater
 
     protected var mCustomerTitleBar: View? = null
 
@@ -42,18 +40,14 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawable(null)
         mContext = this
-        mApplication = application
-        mApplicationContext = applicationContext
-        mLayoutInflater = LayoutInflater.from(mContext)
         registerObserver()
-        //        Log.v("lhz", getClass().getName() + " onCreate");
     }
 
     override fun setContentView(@LayoutRes layoutResID: Int) {
         if (isShowTitleBar()) {
             super.setContentView(R.layout.activity_base)
-            mViewGroup = findView(R.id.ll_activity_base)
-            titleBar = mViewGroup.findViewById<View>(R.id.ll_title_bar) as TitleBar
+            mViewGroup = find(R.id.ll_activity_base)
+            titleBar = find(R.id.ll_title_bar)
             layoutInflater.inflate(layoutResID, mViewGroup)
         } else {
             super.setContentView(layoutResID)
@@ -73,9 +67,6 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         Navigator.startShowDetailActivity(this, fragment, bundle)
     }
 
-    fun <T : View> findView(resId: Int): T {
-        return ViewUtils.findViewById(this, resId)
-    }
 
     override fun registerObserver() {
     }
@@ -90,8 +81,8 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
     }
 
     fun setDefaultTitle(resId: Int) {
-        if (null != titleBar) {
-            titleBar!!.setMiddleText(resId)
+        titleBar?.let {
+            it.setMiddleText(resId)
             setDefaultLeftImg()
         }
     }
