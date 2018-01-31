@@ -206,6 +206,7 @@ public class WebFragment extends DefaultFragment {
 //                Log.v("lhz", "onLoadCleared");
             }
         });
+        mWebView.loadUrl("http://parking.qa.etcp.cn/service/thirdParty/oAuth?userId=6425506&token=664c807e-d35a-4cb4-ac1d-9f8869719ecb&version=5.3.4&platform=1&channel=ETCPOrg&_c_c=6425506&_model=MHA-AL00&_serial=3HX0217325004901");
 
 //        GlideApp.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").listener(new RequestListener<Drawable>() {
 //            @Override

@@ -2,6 +2,7 @@ package com.ddu.ui.fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
 import com.ddu.icore.util.sys.ViewUtils;
+import com.ddu.ui.activity.WebActivity;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -55,6 +57,7 @@ public class WorkFragment extends DefaultFragment {
         mOptionItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(mContext, WebActivity.class));
                 Logger.i("workFramenti");
 //                NotificationUtils.notification(mContext);
 

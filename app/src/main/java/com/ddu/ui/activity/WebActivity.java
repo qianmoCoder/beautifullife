@@ -5,15 +5,19 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.ddu.R;
 import com.ddu.app.App;
@@ -22,12 +26,11 @@ import com.ddu.icore.common.IObserver;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.logic.Actions;
 import com.ddu.icore.util.UrlUtils;
+import com.ddu.util.SystemUtils;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 
@@ -53,10 +56,14 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         webView = findViewById(R.id.webview);
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
-        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        settings.setSupportZoom(true);
-        settings.setBuiltInZoomControls(true);
+        settings.setDomStorageEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
+        settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
 //        webView.setWebChromeClient(new WebChromeClient() {
 //
 //            @Override
@@ -74,36 +81,52 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
 //                return super.onJsPrompt(view, url, message, defaultValue, result);
 //            }
 //        });
-//        webView.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                boolean ret = startActivityForUrl(url);
-//                return ret;
-//            }
-//
-//            @Override
-//            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-//                super.onPageStarted(view, url, favicon);
-//            }
-//
-//            @Override
-//            public void onPageFinished(WebView view, String url) {
-//                super.onPageFinished(view, url);
-//            }
-//
-//        });
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                boolean ret = startActivityForUrl(url);
+                return ret;
+            }
 
-        AssetManager am = getAssets();
-        try {
-            InputStream is = am.open("protocol.html");
-            byte[] buffer = new byte[10000];
-            is.read(buffer);
-            String data = new String(buffer, "utf-8");
-            webView.loadData(data, "text/html; charset=UTF-8", null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+            }
+
+        });
+
+//        AssetManager am = getAssets();
+//        try {
+//            InputStream is = am.open("protocol.html");
+//            byte[] buffer = new byte[10000];
+//            is.read(buffer);
+//            String data = new String(buffer, "utf-8");
+//            webView.loadData(data, "text/html; charset=UTF-8", null);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        setEtcpUserAgent(settings);
+
+        webView.loadUrl("http://parking.qa.etcp.cn/service/thirdParty/oAuth?userId=6425506&token=664c807e-d35a-4cb4-ac1d-9f8869719ecb&version=5.3.4&platform=1&channel=ETCPOrg&_c_c=6425506&_model=MHA-AL00&_serial=3HX0217325004901");
     }
+
+    private void setEtcpUserAgent(WebSettings webSettings) {
+        String ua = webSettings.getDefaultUserAgent(this);
+        webSettings.setUserAgentString(ua + " etcp/" + SystemUtils.getVersionName());
+    }
+
+
 
     public void getUserStatusInfo(JSONObject jsonString) {
         try {
