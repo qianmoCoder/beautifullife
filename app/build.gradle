@@ -2,19 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.meituan.judasplugin'
 
-def executeCommand() {
+def executeCommand(path) {
     def jarName = "ijiamiencryption.jar"
     def url = "http://10.103.23.140:10055/api"
     def user = "ceshi"
-    def filePath = ""
+    def filePath = path
     def encfilepath = ""
     def soPath = ""
     def signAlias = "etcp"
     def isApi = "1"
     def planId = "2"
     def command = "java -jar ${jarName} ${url} ${user} ${filePath} ${encfilepath} ${soPath} ${signAlias} ${isApi} ${planId}"
-//    commandline 'java', '-jar', user,
     println("command: ${command}")
+    def process = "python build_android.py ${filePath}".execute()
+    int exitValue = process.waitFor()
+    println("执行结束: ${exitValue}")
 }
 
 android {
@@ -74,14 +76,14 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.all {
+        variant.outputs.all { output ->
             def buildName = variant.buildType.name
             def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
-            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}"
-            println("fileName ${outputFileName}")
+            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}.apk"
             if (buildName.equalsIgnoreCase("debug")) {
+                def path = output.outputFile.absolutePath
                 variant.assemble.doLast {
-                    executeCommand()
+                    executeCommand(path)
                 }
             }
         }
