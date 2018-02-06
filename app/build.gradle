@@ -2,6 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.meituan.judasplugin'
 
+def executeCommand() {
+    def jarName = "ijiamiencryption.jar"
+    def url = "http://10.103.23.140:10055/api"
+    def user = "ceshi"
+    def filePath = ""
+    def encfilepath = ""
+    def soPath = ""
+    def signAlias = "etcp"
+    def isApi = "1"
+    def planId = "2"
+    def command = "java -jar ${jarName} ${url} ${user} ${filePath} ${encfilepath} ${soPath} ${signAlias} ${isApi} ${planId}"
+//    commandline 'java', '-jar', user,
+    println("command: ${command}")
+}
+
 android {
 
     signingConfigs {
@@ -37,6 +52,7 @@ android {
             versionNameSuffix "测试"
 //            applicationIdSuffix ".debug"
         }
+
         release {
             //是否进行混淆
             minifyEnabled false
@@ -48,8 +64,8 @@ android {
             manifestPlaceholders = [BUILD_TYPE_VALUE: "release", UMENG_CHANNEL: "releaseChannel"]
         }
 
-        QA.initWith(buildTypes.release)
-        QA {
+        qa.initWith(buildTypes.release)
+        qa {
             // 指定在子模块中没找到对应的构建类型时要加载哪个类型，从前往后依次寻找
             matchingFallbacks = ['debug', 'release']
             manifestPlaceholders.replace("UMENG_CHANNEL", "qaChannel")
@@ -59,8 +75,15 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
+            def buildName = variant.buildType.name
             def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
-            outputFileName = "app-${variant.buildType.name}-${defaultConfig.versionName}-${formattedDate}"
+            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}"
+            println("fileName ${outputFileName}")
+            if (buildName.equalsIgnoreCase("debug")) {
+                variant.assemble.doLast {
+                    executeCommand()
+                }
+            }
         }
     }
 
@@ -125,6 +148,7 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    qaImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.squareup.okio:okio:1.13.0'
