@@ -57,13 +57,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <data android:scheme="etcp" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
 
             <!-- <intent-filter> -->
             <!-- <data android:scheme="Icore" /> -->
@@ -102,6 +95,21 @@
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
+
+
+        <activity
+            android:name=".ui.activity.SchemeFilterActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <data android:scheme="etcp" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+        </activity>
 
         <!-- <activity -->
         <!-- android:name=".ui.activity.ScrollingActivity" -->

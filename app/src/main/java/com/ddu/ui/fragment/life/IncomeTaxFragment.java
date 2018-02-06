@@ -66,9 +66,11 @@ public class IncomeTaxFragment extends DefaultFragment {
     private Unbinder unbinder;
 
     private double average = 7706;
+//    private double average = 9980;
+
 
     private double ceiling = average * 3;
-    //    private double ceiling = 6463.0 * 3;
+
     private double calculatorMoney;
 
     @Override

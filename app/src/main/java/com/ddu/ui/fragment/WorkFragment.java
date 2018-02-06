@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.app.App;
+import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.DnsConfig;
@@ -58,6 +60,11 @@ public class WorkFragment extends DefaultFragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, WebActivity.class));
+
+                Intent intent = new Intent();
+                intent.setData(Uri.parse("etcp://5?index=1"));
+                startActivity(intent);
+
                 Logger.i("workFramenti");
 //                NotificationUtils.notification(mContext);
 
@@ -114,7 +121,7 @@ public class WorkFragment extends DefaultFragment {
             }
         });
         setTitle(R.string.main_tab_work);
-        mTvMoney.setText(DnsConfig.getBuildType());
+        mTvMoney.setText(DnsConfig.getBuildType() + " " + DnsConfig.getMetaData(BaseApp.getContext()).getString("UMENG_CHANNEL"));
         //+ com.ddu.util.SystemUtils.getDeviceId()
         boolean isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
         if (!isGranted) {

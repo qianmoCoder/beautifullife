@@ -23,7 +23,9 @@ import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.icore.util.AnimatorUtils;
+import com.ddu.util.SystemUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -133,6 +135,8 @@ public class MeFragment extends DefaultFragment {
 //
 //            }
 //        });
+
+        ((OptionItemView)findViewById(R.id.oit_version)).setRightText(SystemUtils.getVersionName());
 
         llSetting.setOnClickListener(new View.OnClickListener() {
 

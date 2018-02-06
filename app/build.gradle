@@ -17,10 +17,10 @@ android {
         //app package name
         applicationId "com.ddu"
 
-        minSdkVersion    19
+        minSdkVersion 19
         targetSdkVersion 27
-        versionCode      1
-        versionName      "1.0"
+        versionCode 1
+        versionName "1.0"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -34,7 +34,8 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
-
+            versionNameSuffix "测试"
+//            applicationIdSuffix ".debug"
         }
         release {
             //是否进行混淆
@@ -44,10 +45,25 @@ android {
             //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-            manifestPlaceholders = [BUILD_TYPE_VALUE: "release"]
+            manifestPlaceholders = [BUILD_TYPE_VALUE: "release", UMENG_CHANNEL: "releaseChannel"]
+        }
+
+        QA.initWith(buildTypes.release)
+        QA {
+            // 指定在子模块中没找到对应的构建类型时要加载哪个类型，从前往后依次寻找
+            matchingFallbacks = ['debug', 'release']
+            manifestPlaceholders.replace("UMENG_CHANNEL", "qaChannel")
         }
 
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
+            outputFileName = "app-${variant.buildType.name}-${defaultConfig.versionName}-${formattedDate}"
+        }
+    }
+
     //移除lint检查的error
     lintOptions {
         abortOnError false
@@ -64,6 +80,12 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+        }
     }
 
 //    configurations.all {

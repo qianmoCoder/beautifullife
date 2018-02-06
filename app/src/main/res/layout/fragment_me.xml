@@ -90,13 +90,19 @@
                 android:id="@+id/ll_guide"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.ddu.icore.ui.view.OptionItemView
                     style="@style/DefaultRelativeLayout"
                     mm:carrowImage="@drawable/right_arrow_gray"
                     mm:leftText="Hello"
                     mm:rightText="World" />
+
+                <com.ddu.icore.ui.view.OptionItemView
+                    android:id="@+id/oit_version"
+                    style="@style/DefaultRelativeLayout"
+                    mm:carrowImage="@drawable/right_arrow_gray"
+                    mm:leftText="当前版本号" />
 
             </LinearLayout>
 
@@ -160,8 +166,8 @@
             android:id="@+id/et_text1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_150"
-            android:text=""
-            android:keyboardNavigationCluster="true"/>
+            android:keyboardNavigationCluster="true"
+            android:text="" />
 
         <!--<com.ddu.icore.ui.drop.DropCover-->
         <!--android:id="@+id/unread_cover"-->

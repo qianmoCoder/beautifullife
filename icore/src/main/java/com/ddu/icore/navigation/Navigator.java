@@ -16,6 +16,10 @@ import com.ddu.icore.ui.activity.ShowDetailActivity;
 
 public class Navigator {
 
+    public static void navigation() {
+
+    }
+
     public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<? extends Fragment> fragment, Bundle bundle) {
         startShowDetailActivity(context, fragment.getName(), bundle);
     }
