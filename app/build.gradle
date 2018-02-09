@@ -24,8 +24,8 @@ android {
         //app package name
         applicationId "com.ddu"
 
-        minSdkVersion    19
-        targetSdkVersion 27
+        minSdkVersion    projectConfig.minSdkVersion
+        targetSdkVersion projectConfig.targetSdkVersion
         versionCode      1
         versionName      "1.0"
 
