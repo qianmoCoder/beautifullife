@@ -1,4 +1,4 @@
-package com.ddu.acitvityresult;
+package com.ddu.icore.rx.activityresult;
 
 
 import android.app.Fragment;

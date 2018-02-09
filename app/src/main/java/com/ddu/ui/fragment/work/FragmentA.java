@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
-import com.ddu.icore.ui.activity.ShowDetailActivity;
+import com.ddu.icore.aidl.GodIntent;
+import com.ddu.icore.rx.bus.RxBus;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.CustomerTimeLineMarker;
-import com.ddu.icore.util.FragmentUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.OnClick;
@@ -52,18 +52,32 @@ public class FragmentA extends DefaultFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                RxBus<String>.getInstance().action(3).subscribe(new Consumer<T>() {
+//                    @Override
+//                    public void accept(T godIntent) throws Exception {
+//                        Log.v("lhz", "godIntent: " + godIntent.toString());
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable throwable) throws Exception {
+//                        Log.v("lhz", throwable.getMessage());
+//                    }
+//                });
 //                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
 //                bottomSheetDialogFragment.show(getFragmentManager(), "");
 //                replaceFragment(FragmentB.newInstance());
-                ((ShowDetailActivity) mActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK);
+//                ((ShowDetailActivity) mActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK);
             }
         });
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentB f = FragmentB.newInstance();
+                GodIntent godIntent = new GodIntent();
+                godIntent.putString("abc", "bcd");
+                RxBus.getInstance().post(3, godIntent);
+//                FragmentB f = FragmentB.newInstance();
 //                replaceFragment(f);
-                item_time_line_mark.setCount(2);
+//                item_time_line_mark.setCount(2);
 
             }
         });

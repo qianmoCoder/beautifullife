@@ -1,4 +1,4 @@
-package com.ddu.icore.rx;
+package com.ddu.icore.rx.activityresult;
 
 import android.app.Activity;
 import android.app.FragmentManager;
