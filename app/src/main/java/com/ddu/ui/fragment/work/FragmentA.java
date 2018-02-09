@@ -2,17 +2,18 @@ package com.ddu.ui.fragment.work;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
-import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.rx.bus.RxBus;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.CustomerTimeLineMarker;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by lhz on 16/4/6.
@@ -52,17 +53,17 @@ public class FragmentA extends DefaultFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                RxBus<String>.getInstance().action(3).subscribe(new Consumer<T>() {
-//                    @Override
-//                    public void accept(T godIntent) throws Exception {
-//                        Log.v("lhz", "godIntent: " + godIntent.toString());
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(Throwable throwable) throws Exception {
-//                        Log.v("lhz", throwable.getMessage());
-//                    }
-//                });
+                RxBus.action("3").subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer o) throws Exception {
+                        Log.v("lhz", "hello: " + o);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.v("lhz", "e: " + throwable.getMessage());
+                    }
+                });
 //                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
 //                bottomSheetDialogFragment.show(getFragmentManager(), "");
 //                replaceFragment(FragmentB.newInstance());
@@ -72,9 +73,7 @@ public class FragmentA extends DefaultFragment {
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GodIntent godIntent = new GodIntent();
-                godIntent.putString("abc", "bcd");
-                RxBus.getInstance().post(3, godIntent);
+                RxBus.post("3", 1);
 //                FragmentB f = FragmentB.newInstance();
 //                replaceFragment(f);
 //                item_time_line_mark.setCount(2);

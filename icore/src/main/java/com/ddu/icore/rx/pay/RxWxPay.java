@@ -1,14 +1,9 @@
 package com.ddu.icore.rx.pay;
 
-import android.content.Context;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.ddu.icore.rx.bus.ActionCallBack;
+import com.ddu.icore.rx.bus.RxBus;
 
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.subjects.PublishSubject;
 
 
 /**
@@ -17,31 +12,17 @@ import io.reactivex.subjects.PublishSubject;
 
 public class RxWxPay {
 
-    private static Map<String, PublishSubject<RxPayResultInfo>> mSubjects = new HashMap<>();
-    private Context mContext;
-
-    private RxWxPay(Context context) {
-        mContext = context;
-    }
-
     public Observable<RxPayResultInfo> sendReq(String prepayId) {
-        PublishSubject<RxPayResultInfo> payRespPublishSubject = PublishSubject.create();
-        mSubjects.put(prepayId, payRespPublishSubject);
-        return payRespPublishSubject.doOnSubscribe(new Consumer<Disposable>() {
+        return RxBus.action(prepayId, new ActionCallBack() {
             @Override
-            public void accept(Disposable disposable) throws Exception {
-                //
+            public void execute(Object o) {
+                // doSomething
             }
-
         });
     }
 
-    public static RxWxPay with(Context context) {
-        return new RxWxPay(context);
-    }
-
-    public static PublishSubject getPublishSubject(String prepayid) {
-        return mSubjects.remove(prepayid);
+    public void post(String prepayId) {
+        RxBus.post(prepayId, "");
     }
 
 }

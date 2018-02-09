@@ -14,9 +14,9 @@ import io.reactivex.subjects.PublishSubject;
  * Created by yzbzz on 2018/2/9.
  */
 
-public class RxBus<T> {
+public class RxBus {
 
-    private Map<Integer, PublishSubject<T>> mSubjects = new HashMap<>();
+    private Map<String, PublishSubject> mSubjects = new HashMap<>();
 
     @NonNull
     public static RxBus getInstance() {
@@ -28,26 +28,53 @@ public class RxBus<T> {
         private static RxBus instance = new RxBus();
     }
 
-//    public static <T> Observable<T> action(int action) {
-//        return Observable.just(3);
-//    }
+    public static Observable action(String action) {
+        return action(action, null);
+    }
 
-    private Observable<T> putAction(int action) {
-        PublishSubject<T> publishSubject = PublishSubject.create();
+    public static Observable action(String action, ActionCallBack actionCallBack) {
+        return getInstance().setAction(action, actionCallBack);
+    }
+
+    private Observable setAction(final String action, final ActionCallBack callBack) {
+        PublishSubject publishSubject = PublishSubject.create();
         mSubjects.put(action, publishSubject);
         return publishSubject.doOnSubscribe(new Consumer<Disposable>() {
             @Override
             public void accept(Disposable disposable) throws Exception {
+                if (null != callBack) {
+                    callBack.execute(action);
+                }
             }
         });
     }
 
+    public static <T> void post(String action, T data) {
+        getInstance().sendPost(action, data);
+    }
 
-    public void post(int action, T t) {
-        PublishSubject publishSubject = mSubjects.get(action);
+    private <T> void sendPost(String action, T data) {
+        PublishSubject<T> publishSubject = mSubjects.get(action);
         if (null != publishSubject) {
-            publishSubject.onNext(t);
+            publishSubject.onNext(data);
             publishSubject.onComplete();
         }
     }
+
+//    public enum RxBusSingleton implements RxBusInterface<Object> {
+//
+//        INSTANCE;
+//
+//        public static <T> RxBusInterface<T> getListener() {
+//            return (RxBusInterface<T>) INSTANCE;
+//        }
+//
+//        public void handleEvent(Object event) {
+//
+//        }
+//    }
+//
+//    private interface RxBusInterface<T> {
+//        void handleEvent(T event);
+//    }
 }
