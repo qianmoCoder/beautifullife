@@ -240,12 +240,12 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
         // Make sure webkit can handle it internally before checking for specialized
         // handlers. If webkit can't handle it internally, we need to call
         // startActivityIfNeeded
-        Matcher m = UrlUtils.ACCEPTED_URI_SCHEMA.matcher(url);
+        Matcher m = UrlUtils.INSTANCE.getACCEPTED_URI_SCHEMA().matcher(url);
         if (m.matches()) { //&& !isSpecializedHandlerAvailable(intent)) {
             return false;
         }
         try {
-            intent.putExtra(UrlUtils.EXTRA_DISABLE_URL_OVERRIDE, true);
+            intent.putExtra(UrlUtils.INSTANCE.getEXTRA_DISABLE_URL_OVERRIDE(), true);
             if (startActivityIfNeeded(intent, -1)) {
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this

@@ -1,7 +1,8 @@
 package com.ddu.icore.rx.pay
 
+import com.ddu.icore.rx.bus.ActionCallBack
 import com.ddu.icore.rx.bus.RxBus
-import com.ddu.icore.rx.bus.RxBus.action
+import com.ddu.icore.rx.bus.RxBus.Companion.action
 import io.reactivex.Observable
 
 
@@ -12,9 +13,12 @@ import io.reactivex.Observable
 class RxWxPay {
 
     fun sendReq(prepayId: String): Observable<Any> {
-        return action(prepayId) {
+        return action(prepayId, object : ActionCallBack<Any> {
+            override fun execute(t: Any) {
+            }
+        })
 
-        }
+
     }
 
     fun post(prepayId: String) {

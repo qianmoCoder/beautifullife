@@ -5,9 +5,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import com.ddu.R
+import com.ddu.icore.common.formatMoney
+import com.ddu.icore.common.parseDecimals
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.NumberUtils
-import com.ddu.icore.util.StringUtils
 import kotlinx.android.synthetic.main.fragment_life_income_tax.*
 
 /**
@@ -22,7 +22,7 @@ class IncomeTaxFragment : DefaultFragment() {
     private var calculatorMoney: Double = 0.toDouble()
 
     override fun initData(savedInstanceState: Bundle?) {
-        activity!!.window.setBackgroundDrawable(null)
+        activity?.window?.setBackgroundDrawable(null)
     }
 
     override fun getLayoutId(): Int {
@@ -52,14 +52,14 @@ class IncomeTaxFragment : DefaultFragment() {
     }
 
     private fun calculator() {
-        val averageMoney = et_income_average!!.text.toString().trim { it <= ' ' }
+        val averageMoney = et_income_average.text.toString().trim { it <= ' ' }
         if (!TextUtils.isEmpty(averageMoney)) {
             val money = java.lang.Double.parseDouble(averageMoney)
             if (money > 0) {
                 ceiling = money * 3
             }
         }
-        val moneyText = et_income_tax!!.text.toString()
+        val moneyText = et_income_tax.text.toString()
         if (TextUtils.isEmpty(moneyText)) {
             //            ToastUtil.showTextToast("请输入金额!");
             return
@@ -70,21 +70,21 @@ class IncomeTaxFragment : DefaultFragment() {
             calculatorMoney = ceiling
         }
         val insurance = calculatorMoney * 8 / 100 + (calculatorMoney * 2 / 100 + 3)
-        val providentFund = NumberUtils.parseDecimals(0, calculatorMoney * 12 / 100)
+        val providentFund = (calculatorMoney * 12 / 100).parseDecimals()
         val tax = getCalculatorTax(money - insurance - providentFund)
 
-        tv_total_money!!.text = StringUtils.formatMoney(money)
-        tv_insurance!!.text = StringUtils.formatMoney(insurance)
-        tv_providentFund!!.text = StringUtils.formatMoney(providentFund)
-        tv_total_tax_before_deduction!!.text = StringUtils.formatMoney(insurance + providentFund)
-        tv_tax!!.text = StringUtils.formatMoney(tax)
-        tv_total_deduction!!.text = StringUtils.formatMoney(insurance + providentFund + tax)
-        tv_money!!.text = StringUtils.formatMoney(money - insurance - providentFund - tax)
+        tv_total_money.text = money.formatMoney()
+        tv_insurance.text = insurance.formatMoney()
+        tv_providentFund.text = providentFund.formatMoney()
+        tv_total_tax_before_deduction.text = (insurance + providentFund).formatMoney()
+        tv_tax.text = tax.formatMoney()
+        tv_total_deduction.text = (insurance + providentFund + tax).formatMoney()
+        tv_money.text = (money - insurance - providentFund - tax).formatMoney()
 
-        val ageText = et_income_age!!.text.toString().trim { it <= ' ' }
-        val age = NumberUtils.parseDecimals(0, ageText)
-        val healthInsuranceMoney = StringUtils.formatMoney(getCalculatorHealthInsuranceMoney(calculatorMoney, age))
-        tv_health_insurance_money!!.text = healthInsuranceMoney
+        val ageText = et_income_age.text.toString().trim { it <= ' ' }
+        val age = ageText.toDouble()
+        val healthInsuranceMoney = getCalculatorHealthInsuranceMoney(calculatorMoney, age).formatMoney()
+        tv_health_insurance_money.text = healthInsuranceMoney
     }
 
     /**
@@ -95,8 +95,7 @@ class IncomeTaxFragment : DefaultFragment() {
      * 70岁以下退休人员个人账户按每人每月100元划入。
      */
     private fun getCalculatorHealthInsuranceMoney(money: Double, age: Double): Double {
-        var age = age
-        age = NumberUtils.parseDecimals(0, age)
+        var age = age.parseDecimals()
         val proportionality: Double
         if (age < 35) {
             proportionality = money * 2 / 100 + money * 0.8 / 100
@@ -124,8 +123,7 @@ class IncomeTaxFragment : DefaultFragment() {
      * @param money
      */
     private fun getCalculatorTax(money: Double): Double {
-        var money = money
-        money = money - 3500.0
+        var money = money - 3500.0
         val result: Double
         if (money < 1500.0) {
             result = money * 3 / 100 - 0

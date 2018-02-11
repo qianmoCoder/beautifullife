@@ -17,7 +17,7 @@ class RxBus private constructor() {
             get() = SingletonHolder.instance
 
         @JvmOverloads
-        fun action(action: String, actionCallBack: ActionCallBack<Any>? = null): Observable<*> {
+        fun action(action: String, actionCallBack: ActionCallBack<Any>): Observable<Any> {
             return instance.setAction(action, actionCallBack)
         }
 
@@ -34,7 +34,7 @@ class RxBus private constructor() {
     private val mSubjects = HashMap<String, PublishSubject<Any>>()
 
 
-    private fun setAction(action: String, callBack: ActionCallBack<Any>?): Observable<*> {
+    private fun setAction(action: String, callBack: ActionCallBack<Any>?): Observable<Any> {
         val publishSubject = PublishSubject.create<Any>()
         mSubjects[action] = publishSubject
         return publishSubject.doOnSubscribe {

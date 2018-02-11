@@ -6,7 +6,6 @@ import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate
-import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -123,7 +122,6 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        Log.v("lhz", "dispatchTouchEvent: " + ev.x + " " + ev.y)
         return super.dispatchTouchEvent(ev)
     }
 }
