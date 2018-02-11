@@ -38,10 +38,6 @@ import java.util.List;
  */
 public class AndroidUtils {
 
-    public static boolean isScreenOn(@NonNull Context context) {
-        return ((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isScreenOn();
-    }
-
     public static String getImsi(@NonNull Context context) {
         return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
     }
@@ -78,10 +74,6 @@ public class AndroidUtils {
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    public static boolean isNetworkConnected(@NonNull Context context) {
-        NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
-    }
 
     @NonNull
     public static String getNetState(@NonNull Context context) {
@@ -133,24 +125,6 @@ public class AndroidUtils {
         return Settings.System.getInt(context.getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) != 0;
     }
 
-    // 获取当前屏幕亮度，范围0-255
-    public static int getScreenBrightness(@NonNull Context context) {
-        int rightnessValue = 0;
-        try {
-            rightnessValue = Settings.System.getInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
-        return rightnessValue;
-    }
-
-    // 设置屏幕亮度（0-255）
-    public static void setScreenBrightness(@NonNull Activity activity, float screenBrightness) {
-        WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
-        lp.screenBrightness = screenBrightness / 255f;
-        activity.getWindow().setAttributes(lp);
-    }
-
     // sdcard是否可读写
     public static boolean isSdcardReady() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
@@ -192,13 +166,6 @@ public class AndroidUtils {
         ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(text);
     }
 
-
-    /**
-     * 显示软键盘（根据焦点所在的控件）
-     */
-    public static void showSoftInput(@NonNull Context context) {
-        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-    }
 
     /**
      * 通过string的字符串名获取R.string中对应属性的值
