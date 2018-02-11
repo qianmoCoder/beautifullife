@@ -245,7 +245,7 @@ public class WebActivity extends Activity implements IObserver<GodIntent> {
             return false;
         }
         try {
-            intent.putExtra(UrlUtils.INSTANCE.getEXTRA_DISABLE_URL_OVERRIDE(), true);
+            intent.putExtra(UrlUtils.INSTANCE.EXTRA_DISABLE_URL_OVERRIDE, true);
             if (startActivityIfNeeded(intent, -1)) {
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this
