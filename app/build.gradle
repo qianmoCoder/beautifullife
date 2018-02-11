@@ -41,7 +41,8 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
-
+            versionNameSuffix "测试"
+//            applicationIdSuffix ".debug"
         }
         release {
             //是否进行混淆
@@ -55,6 +56,22 @@ android {
         }
 
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def buildName = variant.buildType.name
+            println("buildName: ${buildName}")
+            def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
+            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}.apk"
+            if (buildName.equalsIgnoreCase("debug")) {
+                def path = output.outputFile.absolutePath
+                variant.assemble.doLast {
+                    println(path)
+                }
+            }
+        }
+    }
+
     //移除lint检查的error
     lintOptions {
         abortOnError false

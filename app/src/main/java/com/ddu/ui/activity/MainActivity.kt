@@ -59,20 +59,19 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {
-        fragment?.filter {
-            it?.isHidden ?: false
-        }.map {
-            transaction.hide(it)
-        }
-
-
-//        for (f in fragment) {
-//            if (f != null) {
-//                if (!f.isHidden) {
-//                    transaction.hide(f)
-//                }
-//            }
+//        fragment?.filter {
+//            it?.isHidden ?: false
+//        }.map {
+//            transaction.hide(it)
 //        }
+
+        for (f in fragment) {
+            if (f != null) {
+                if (!f.isHidden) {
+                    transaction.hide(f)
+                }
+            }
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
