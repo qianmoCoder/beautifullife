@@ -25,7 +25,7 @@ public class ShowDetailActivity extends BaseActivity {
     @Nullable
     private String fragmentName;
     private Fragment fragment;
-    private int type = FragmentUtils.FRAGMENT_REPLACE;
+    private int type = FragmentUtils.INSTANCE.getFRAGMENT_REPLACE();
 
     private FragmentManager mFragmentManager;
 
@@ -90,7 +90,7 @@ public class ShowDetailActivity extends BaseActivity {
     public void replaceFragment(@Nullable Fragment fragment, int type) {
         if (null != fragment) {
             FragmentTransaction ft = mFragmentManager.beginTransaction();
-            FragmentUtils.attachFragment(type, ft, fragment, R.id.container);
+            FragmentUtils.INSTANCE.attachFragment(type, ft, fragment, R.id.container);
         }
     }
 
@@ -99,10 +99,10 @@ public class ShowDetailActivity extends BaseActivity {
             FragmentTransaction ft = mFragmentManager.beginTransaction();
 
             if (null != bundle) {
-                type = bundle.getInt(KEY_TYPE, FragmentUtils.FRAGMENT_REPLACE);
+                type = bundle.getInt(KEY_TYPE, FragmentUtils.INSTANCE.getFRAGMENT_REPLACE());
             }
 //            ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
-            FragmentUtils.attachFragment(type, ft, fragment, R.id.container);
+            FragmentUtils.INSTANCE.attachFragment(type, ft, fragment, R.id.container);
         }
     }
 

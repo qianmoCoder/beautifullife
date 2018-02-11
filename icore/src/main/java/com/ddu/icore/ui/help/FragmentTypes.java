@@ -12,7 +12,7 @@ import static com.ddu.icore.util.FragmentUtils.FRAGMENT_REPLACE;
 /**
  * Created by yzbzz on 2016/12/27.
  */
-@IntDef({FRAGMENT_ADD, FRAGMENT_REPLACE, FRAGMENT_ADD_TO_BACK_STACK})
+@IntDef({INSTANCE.getFRAGMENT_ADD(), INSTANCE.getFRAGMENT_REPLACE(), INSTANCE.getFRAGMENT_ADD_TO_BACK_STACK()})
 @Retention(RetentionPolicy.SOURCE)
 public @interface FragmentTypes {
 }

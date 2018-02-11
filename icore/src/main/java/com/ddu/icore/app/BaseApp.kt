@@ -2,6 +2,7 @@ package com.ddu.icore.app
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,9 +11,28 @@ import java.util.*
 
 open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
-    lateinit var currentActivity: WeakReference<Activity>
+    companion object {
 
-    val sCacheActivities: MutableMap<Int, WeakReference<Activity>> by lazy {
+        lateinit var mApp: Application
+        lateinit var mContext: Context
+
+        var mainHandler = Handler(Looper.getMainLooper())
+
+        fun post(r: Runnable) {
+            mainHandler.post(r)
+        }
+
+        fun postDelayed(r: Runnable, delayMillis: Long) {
+            mainHandler.postDelayed(r, delayMillis)
+        }
+
+        fun getContext(): Application {
+            return mApp
+        }
+    }
+
+    lateinit var currentActivity: WeakReference<Activity>
+    private val sCacheActivities: MutableMap<Int, WeakReference<Activity>> by lazy {
         mutableMapOf<Int, WeakReference<Activity>>()
     }
 
@@ -22,6 +42,7 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
     override fun onCreate() {
         super.onCreate()
         mApp = this
+        mContext = applicationContext
     }
 
     open fun addActivity(activity: Activity) {
@@ -91,22 +112,4 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
         removeActivity(activity)
     }
 
-    companion object {
-
-        lateinit var mApp: Application
-
-        private var mainHandler = Handler(Looper.getMainLooper())
-
-        fun post(r: Runnable) {
-            mainHandler.post(r)
-        }
-
-        fun postDelayed(r: Runnable, delayMillis: Long) {
-            mainHandler.postDelayed(r, delayMillis)
-        }
-
-        fun getContext(): Application {
-            return mApp
-        }
-    }
 }
