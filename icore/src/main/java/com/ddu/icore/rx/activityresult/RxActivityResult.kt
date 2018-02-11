@@ -1,18 +1,14 @@
-package com.ddu.acitvityresult
+package com.ddu.icore.rx.activityresult
 
 import android.app.Activity
 import android.content.Intent
 import io.reactivex.Observable
 
 /**
- * Created by yzbzz on 2018/1/17.
+ * Created by yzbzz on 2018/1/5.
  */
-class RxActivityResult(var activity: Activity) {
 
-    companion object {
-        val TAG = "RxActivityResult"
-        fun with(activity: Activity): RxActivityResult = RxActivityResult(activity)
-    }
+class RxActivityResult private constructor(activity: Activity) {
 
     var mRxActivityResultFragment: RxActivityResultFragment
 
@@ -21,7 +17,7 @@ class RxActivityResult(var activity: Activity) {
     }
 
     private fun getRxActivityResultFragment(activity: Activity): RxActivityResultFragment {
-        var rxActivityResultFragmentFragment: RxActivityResultFragment? = findRxPermissionsFragment(activity)
+        var rxActivityResultFragmentFragment: RxActivityResultFragment = findRxPermissionsFragment(activity)
         val isNewInstance = rxActivityResultFragmentFragment == null
         if (isNewInstance) {
             rxActivityResultFragmentFragment = RxActivityResultFragment()
@@ -32,19 +28,29 @@ class RxActivityResult(var activity: Activity) {
                     .commitAllowingStateLoss()
             fragmentManager.executePendingTransactions()
         }
-        return rxActivityResultFragmentFragment!!
+        return rxActivityResultFragmentFragment
     }
 
-    fun findRxPermissionsFragment(activity: Activity): RxActivityResultFragment? {
+    private fun findRxPermissionsFragment(activity: Activity): RxActivityResultFragment {
         return activity.fragmentManager.findFragmentByTag(TAG) as RxActivityResultFragment
     }
 
-    fun startActivityForResult(intent: Intent, requestCode: Int): Observable<ActivityResultInfo>? {
+    fun startActivityForResult(intent: Intent, requestCode: Int): Observable<ActivityResultInfo> {
         return mRxActivityResultFragment.startForResult(intent, requestCode)
     }
 
     fun startActivityForResult(cls: Class<*>, requestCode: Int) {
-        var intent = Intent(mRxActivityResultFragment.activity, cls)
+        val intent = Intent(mRxActivityResultFragment.activity, cls)
         startActivityForResult(intent, requestCode)
     }
+
+    companion object {
+
+        internal val TAG = "RxActivityResult"
+
+        fun with(activity: Activity): RxActivityResult {
+            return RxActivityResult(activity)
+        }
+    }
+
 }

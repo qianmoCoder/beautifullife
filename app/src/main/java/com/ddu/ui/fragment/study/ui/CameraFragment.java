@@ -18,8 +18,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.ddu.R;
-import com.ddu.acitvityresult.ActivityResultInfo;
-import com.ddu.acitvityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.ToastUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
