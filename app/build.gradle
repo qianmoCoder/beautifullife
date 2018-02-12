@@ -180,4 +180,5 @@ variants.all { variant ->
 }
 repositories {
     mavenCentral()
+    google()
 }

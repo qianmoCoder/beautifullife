@@ -24,6 +24,11 @@ val Context.screenWidth
 val Context.screenHeight
     get() = resources.displayMetrics.heightPixels
 
+val Context.versionName
+    get() = packageManager.getPackageInfo(packageName,0).versionName
+val Context.versionCode
+    get() = packageManager.getPackageInfo(packageName,0).versionCode
+
 var Activity.screenBrightness
     get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
     set(value) {

@@ -29,6 +29,8 @@ ext {
             "org.jetbrains.anko:anko:$anko_version",
 
             'io.reactivex.rxjava2:rxjava:2.1.7',
-            'io.reactivex.rxjava2:rxandroid:2.0.1'
+            'io.reactivex.rxjava2:rxandroid:2.0.1',
+
+            'androidx.core:core-ktx:0.1'
     ]
 }

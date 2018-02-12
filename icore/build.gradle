@@ -78,4 +78,5 @@ android.libraryVariants.all { variant ->
 }
 repositories {
     mavenCentral()
+    google()
 }

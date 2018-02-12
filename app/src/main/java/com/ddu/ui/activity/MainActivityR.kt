@@ -22,8 +22,6 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
     private lateinit var mLifeFragment: LifeFragment
     private lateinit var mMeFragment: MeFragment
 
-    private var mFragmentManager = supportFragmentManager
-
     private var isExit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,10 +30,10 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
         setContentView(R.layout.activity_main)
 
         savedInstanceState?.let {
-            mStudyFragment = mFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
-            mWorkFragment = mFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
-            mLifeFragment = mFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
-            mMeFragment = mFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
+            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
+            mWorkFragment = supportFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
+            mLifeFragment = supportFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
+            mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
         }
 
         rg_main.setOnCheckedChangeListener(this)
@@ -47,7 +45,7 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
     }
 
     private fun add(checkedId: Int) {
-        val transaction = mFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         hideAll(transaction, mStudyFragment, mWorkFragment, mLifeFragment, mMeFragment)
         when (checkedId) {
             R.id.rb_main_study -> if (null == mStudyFragment) {

@@ -38,26 +38,6 @@ import java.util.List;
  */
 public class AndroidUtils {
 
-    public static String getImsi(@NonNull Context context) {
-        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
-    }
-
-    public static String getDeviceId(@NonNull Context context) {
-        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-    }
-
-    @Nullable
-    public static String getMacAddress(@NonNull Context context) {
-        String macAddress = null;
-        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = (null == wifiMgr ? null : wifiMgr.getConnectionInfo());
-        if (null != info) {
-            macAddress = info.getMacAddress();
-
-        }
-        return macAddress;
-    }
-
     // 设置组件（activity, receiver, service, provider）的启用状态
     public static void setComponentEnabledSetting(@NonNull Context context, Class<?> cls, boolean enabled) {
         context.getPackageManager().setComponentEnabledSetting(new ComponentName(context, cls),
