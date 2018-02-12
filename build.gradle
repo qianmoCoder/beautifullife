@@ -3,7 +3,7 @@ apply from: "config.gradle"
 
 buildscript {
     ext.objectboxVersion = '1.4.0'
-    ext.kotlin_version = '1.2.20'
+    ext.kotlin_version = '1.2.21'
     repositories {
         google()
         jcenter()

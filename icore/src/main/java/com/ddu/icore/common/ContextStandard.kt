@@ -26,8 +26,12 @@ val Context.screenHeight
 
 val Context.versionName
     get() = packageManager.getPackageInfo(packageName,0).versionName
+
 val Context.versionCode
     get() = packageManager.getPackageInfo(packageName,0).versionCode
+
+val Context.mateData
+    get() = applicationInfo.metaData
 
 var Activity.screenBrightness
     get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)

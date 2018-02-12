@@ -88,7 +88,7 @@ class WorkFragment : DefaultFragment() {
             //                }, 1500);
         }
         setTitle(R.string.main_tab_work)
-        tv_money.text = DnsConfig.getBuildType()
+        tv_money.text = DnsConfig.buildType
         //+ com.ddu.util.SystemUtils.getDeviceId()
         val isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
         if (!isGranted) {
