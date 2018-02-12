@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.provider.Settings
 import android.support.annotation.RequiresPermission
 import android.view.View
@@ -43,6 +45,19 @@ fun Context.isScreenOn(): Boolean? {
 //    val intent = Intent(this,T::class.java)
 //    startActivity(intent)
 //}
+
+fun Context.getMarketIntent(): Intent {
+    val uri = Uri.parse("market://details?id=" + packageName)
+    val intent = Intent(Intent.ACTION_VIEW, uri)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    return intent
+}
+
+fun Context.launchApp(packageName: String): Intent {
+    var intent = packageManager.getLaunchIntentForPackage(packageName) ?: getMarketIntent()
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    return intent
+}
 
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
