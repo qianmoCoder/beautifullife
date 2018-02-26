@@ -98,7 +98,6 @@ dependencies {
     implementation project(':icore')
 
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
     implementation 'com.facebook.rebound:rebound:0.3.8'
 
@@ -134,6 +133,8 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.orhanobut:logger:2.1.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.3'
 }
 
 final def log = project.logger

@@ -10,7 +10,7 @@ import java.util.*
  * Created by yzbzz on 2017/5/9.
  */
 
-class StudyContentFragmentPagerAdapter(fm: FragmentManager, titleList: List<String>?) : FragmentPagerAdapter(fm) {
+class StudyContentFragmentPagerAdapter(fm: FragmentManager?, titleList: List<String>?) : FragmentPagerAdapter(fm) {
 
     private var mTitleList: List<String> = ArrayList()
 

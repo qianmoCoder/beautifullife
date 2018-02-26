@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.*
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ImageViewTarget
@@ -39,8 +38,7 @@ import java.net.URISyntaxException
  */
 class WebFragment : DefaultFragment() {
 
-    var flWeb: FrameLayout? = null
-    var mWebSettings: WebSettings? = null
+    lateinit var mWebSettings: WebSettings
     lateinit var mTitle: String
     var url: String? = null
 
@@ -73,7 +71,7 @@ class WebFragment : DefaultFragment() {
             if (!TextUtils.isEmpty(title)) {
                 setDefaultTitle(title)
             }
-            wv_web!!.visibility = View.VISIBLE
+            wv_web.visibility = View.VISIBLE
         }
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -97,25 +95,25 @@ class WebFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        mWebSettings = wv_web!!.settings
-        mWebSettings!!.javaScriptEnabled = true
-        mWebSettings!!.cacheMode = WebSettings.LOAD_NO_CACHE
-        mWebSettings!!.setSupportZoom(true)
-        mWebSettings!!.useWideViewPort = true
-        mWebSettings!!.loadWithOverviewMode = true
+        mWebSettings = wv_web.settings
+        mWebSettings.javaScriptEnabled = true
+        mWebSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+        mWebSettings.setSupportZoom(true)
+        mWebSettings.useWideViewPort = true
+        mWebSettings.loadWithOverviewMode = true
 
-        mWebSettings!!.javaScriptEnabled = true
-        mWebSettings!!.javaScriptCanOpenWindowsAutomatically = true
-        mWebSettings!!.cacheMode = WebSettings.LOAD_NO_CACHE
-        mWebSettings!!.domStorageEnabled = true
-        mWebSettings!!.databaseEnabled = true
-        mWebSettings!!.setAppCacheEnabled(true)
-        mWebSettings!!.allowFileAccess = true
-        mWebSettings!!.savePassword = true
-        mWebSettings!!.setSupportZoom(true)
-        mWebSettings!!.builtInZoomControls = true
-        mWebSettings!!.layoutAlgorithm = WebSettings.LayoutAlgorithm.NARROW_COLUMNS
-        mWebSettings!!.useWideViewPort = true
+        mWebSettings.javaScriptEnabled = true
+        mWebSettings.javaScriptCanOpenWindowsAutomatically = true
+        mWebSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+        mWebSettings.domStorageEnabled = true
+        mWebSettings.databaseEnabled = true
+        mWebSettings.setAppCacheEnabled(true)
+        mWebSettings.allowFileAccess = true
+        mWebSettings.savePassword = true
+        mWebSettings.setSupportZoom(true)
+        mWebSettings.builtInZoomControls = true
+        mWebSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NARROW_COLUMNS
+        mWebSettings.useWideViewPort = true
 
         wv_web.webViewClient = webViewClient
         wv_web.webChromeClient = webChromeClient
@@ -124,7 +122,7 @@ class WebFragment : DefaultFragment() {
         wv_web.addJavascriptInterface(WebAppInterface(mContext), "SBridge")
         wv_web.addJavascriptInterface(this, "SBridge")
         initTitle()
-        btn_reload!!.setOnClickListener { post1() }
+        btn_reload.setOnClickListener { post1() }
 
         //        final ObjectAnimator anim = ObjectAnimator.ofInt(iv_place, "ImageLevel", 0, 10000);
         //        anim.setDuration(800);
@@ -133,7 +131,7 @@ class WebFragment : DefaultFragment() {
         //
         //        iv_progress.setImageResource(R.drawable.glide_rotate);
         //        iv_place.setImageResource(R.drawable.glide_rotate);
-        Glide.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").into<ImageViewTarget<Drawable>>(object : ImageViewTarget<Drawable>(iv_place!!) {
+        Glide.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").into<ImageViewTarget<Drawable>>(object : ImageViewTarget<Drawable>(iv_place) {
             override fun setResource(resource: Drawable?) {
                 Log.v("lhz", "setResource")
             }
@@ -141,7 +139,7 @@ class WebFragment : DefaultFragment() {
             override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                 super.onResourceReady(resource, transition)
                 //                Log.v("lhz", "onResourceReady");
-                iv_place!!.setImageDrawable(resource)
+                iv_place.setImageDrawable(resource)
                 //                pb_loading.setVisibility(View.GONE);
             }
 
@@ -214,16 +212,16 @@ class WebFragment : DefaultFragment() {
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()
+                val responseBody = response.body()!!
 
-                saveAdData(responseBody!!.byteStream())
+                saveAdData(responseBody.byteStream())
                 //                Log.v("lhz", "string: " + string);
             }
         })
     }
 
     fun excute(method: String, json: String) {
-        BaseApp.post(Runnable { wv_web!!.loadUrl("javascript:$method($json)") })
+        BaseApp.post(Runnable { wv_web.loadUrl("javascript:$method($json)") })
     }
 
 
@@ -269,10 +267,10 @@ class WebFragment : DefaultFragment() {
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()
+                val responseBody = response.body()!!
 
                 //                String string = responseBody.string();
-                saveAdData(responseBody!!.byteStream())
+                saveAdData(responseBody.byteStream())
                 //                Log.v("lhz", "string: " + string);
             }
         })
@@ -283,7 +281,7 @@ class WebFragment : DefaultFragment() {
         val getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&"
         val okHttpClient = OkHttpClient().newBuilder().build()
         val builder = Request.Builder()
-        builder.url(url!!)
+        builder.url(url)
         val request = builder.build()
 
         val call = okHttpClient.newCall(request)
@@ -294,9 +292,9 @@ class WebFragment : DefaultFragment() {
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()
+                val responseBody = response.body()!!
 
-                val string = responseBody!!.string()
+                val string = responseBody.string()
                 //                saveAdData(responseBody.byteStream());
                 Log.v("lhz", "string: " + string)
             }
@@ -318,16 +316,16 @@ class WebFragment : DefaultFragment() {
 
 
     private fun reload(xml: String) {
-        wv_web!!.clearView()
-        wv_web!!.measure(10, 10)
+        wv_web.clearView()
+        wv_web.measure(10, 10)
         val am = mContext.assets
         try {
             val `is` = am.open(xml)
             val buffer = ByteArray(10000)
             `is`.read(buffer)
             val data = String(buffer)
-            wv_web!!.loadData(data, "text/html; charset=UTF-8", null)
-            wv_web!!.requestLayout()
+            wv_web.loadData(data, "text/html; charset=UTF-8", null)
+            wv_web.requestLayout()
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -337,14 +335,14 @@ class WebFragment : DefaultFragment() {
     @JavascriptInterface
     fun resize(json: String) {
         Log.v("lhz", "json: " + json)
-        wv_web!!.post {
+        wv_web.post {
             try {
                 val jsonObject = JSONObject(json)
                 val type = jsonObject.getString("type")
                 val height = jsonObject.getDouble("height")
-                Log.v("lhz", "height: " + height + " " + wv_web!!.height)
+                Log.v("lhz", "height: " + height + " " + wv_web.height)
                 val heightT = (height * resources.displayMetrics.density).toInt()
-                wv_web!!.layoutParams = LinearLayout.LayoutParams(resources.displayMetrics.widthPixels, heightT)
+                wv_web.layoutParams = LinearLayout.LayoutParams(resources.displayMetrics.widthPixels, heightT)
             } catch (e: Exception) {
 
             }
@@ -355,7 +353,7 @@ class WebFragment : DefaultFragment() {
         setDefaultTitle(mTitle)
         setRightImg(R.drawable.ic_more_add_selector, object : View.OnClickListener {
             override fun onClick(v: View?) {
-                wv_web!!.pageUp(true)
+                wv_web.pageUp(true)
             }
         })
         setRightImg(R.drawable.ic_more_add_selector, object : View.OnClickListener {
@@ -366,7 +364,7 @@ class WebFragment : DefaultFragment() {
 
         setTitleBarOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                wv_web!!.pageUp(true)
+                wv_web.pageUp(true)
             }
         })
     }
@@ -459,8 +457,8 @@ class WebFragment : DefaultFragment() {
         }
         for (resolveInfo in handlers) {
             val filter = resolveInfo.filter ?: // No intent filter matches this intent?
-                    // Error on the side of staying in the browser, ignore
-                    continue
+            // Error on the side of staying in the browser, ignore
+            continue
             if (filter.countDataAuthorities() == 0 && filter.countDataPaths() == 0) {
                 // Generic handler, skip
                 continue
@@ -473,11 +471,8 @@ class WebFragment : DefaultFragment() {
     override fun onDestroy() {
         super.onDestroy()
         if (null != wv_web) {
-            if (null != flWeb) {
-                flWeb!!.removeView(wv_web)
-            }
-            wv_web!!.removeAllViews()
-            wv_web!!.destroy()
+            wv_web.removeAllViews()
+            wv_web.destroy()
         }
     }
 

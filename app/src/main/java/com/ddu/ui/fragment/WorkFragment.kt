@@ -9,6 +9,7 @@ import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.DnsConfig
+import com.ddu.ui.fragment.work.FragmentA
 import kotlinx.android.synthetic.main.fragment_work.*
 import org.jetbrains.anko.telephonyManager
 
@@ -27,6 +28,7 @@ class WorkFragment : DefaultFragment() {
 
     override fun initView() {
         oiv_fragment.setOnClickListener {
+            startFragment(FragmentA::class.java)
             //                Log.v("lhz", "v: " + v.getX() + " " + v.getX());
             //                Log.v("lhz", "v p: " + v.getPivotX() + " " + v.getPivotY());
             //                Log.v("lhz", "v r: " + v.getRotationX() + " " + v.getRotationY());
