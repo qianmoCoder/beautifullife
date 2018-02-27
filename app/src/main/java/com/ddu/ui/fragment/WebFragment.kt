@@ -24,13 +24,14 @@ import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.PopupUtils
 import com.ddu.icore.util.UrlUtils
+import com.ddu.sdk.network.OkHttpUtils
 import com.ddu.ui.helper.WebAppInterface
 import com.ddu.util.HttpUtils
 import kotlinx.android.synthetic.main.fragment_web.*
-import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import okhttp3.*
+import org.jetbrains.anko.coroutines.experimental.bg
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
@@ -125,7 +126,7 @@ class WebFragment : DefaultFragment() {
         wv_web.addJavascriptInterface(WebAppInterface(mContext), "SBridge")
         wv_web.addJavascriptInterface(this, "SBridge")
         initTitle()
-        btn_reload.setOnClickListener { post1() }
+        btn_reload.setOnClickListener { post() }
 
         //        final ObjectAnimator anim = ObjectAnimator.ofInt(iv_place, "ImageLevel", 0, 10000);
         //        anim.setDuration(800);
@@ -178,49 +179,28 @@ class WebFragment : DefaultFragment() {
         //        });
     }
 
-    private fun post1() {
-        val accessToken = "5_zPg-cJK5RFmWzPZWKpInEz4wGe6urxzzIDTOVKGuzhHWNow4VrWpEW0LU6960n6BGcntk0IkYjG5si21c3PALDfXmgZTsHyQ-zKGfIyebP6iR4JSEFLQ6QF9S6nsEvH_bo9tGhbn0-faavG5WSKcAFACYQ"
-        post(accessToken)
-    }
+    private fun post1(appId: String, appSecret: String) {
+        val token = async(UI) {
+            val urlParams = hashMapOf<String, String>()
+            urlParams.put("grant_type", "client_credential")
+            urlParams.put("appid", appId)
+            urlParams.put("secret", appSecret)
 
-    private fun qrCode(accessToken: String) {
-        val JSON = MediaType.parse("application/json;charset=utf-8")
-        val url = "https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=" + accessToken
-        Log.v("lhz", "url: " + url)
-        val okHttpClient = OkHttpClient().newBuilder().build()
-        val builder = Request.Builder()
+            val getUrl = OkHttpUtils.appendUrl("https://api.weixin.qq.com/cgi-bin/token", urlParams)
+            val okHttpClient = OkHttpClient().newBuilder().build()
+            val builder = Request.Builder()
+            builder.url(getUrl)
 
-        val jsonObject = JSONObject()
-        try {
-            jsonObject.put("path", "pages/index")
-            jsonObject.put("width", 430)
-
-        } catch (e: Exception) {
-
+            val request = builder.build()
+            val call = okHttpClient.newCall(request)
+            val response = bg {
+                call.execute()
+            }
+            val data = response.await().body()?.string()
+            val jsonObject = JSONObject(data)
+            val tokenString = jsonObject["access_token"] as String
+            return@async tokenString
         }
-
-        val line_color = jsonObject.toString()
-        Log.v("lhz", "line_color: " + line_color)
-        val requestBody = RequestBody.create(JSON, line_color)
-        builder.addHeader("content-type", "application/json;charset:utf-8")
-        builder.post(requestBody)
-        builder.url(url)
-        val request = builder.build()
-
-        val call = okHttpClient.newCall(request)
-        call.enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.v("lhz", "e: " + e.toString())
-            }
-
-            @Throws(IOException::class)
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()!!
-
-                saveAdData(responseBody.byteStream())
-                //                Log.v("lhz", "string: " + string);
-            }
-        })
     }
 
     fun excute(method: String, json: String) {
@@ -228,9 +208,8 @@ class WebFragment : DefaultFragment() {
     }
 
 
-    private fun post(accessToken: String) {
-        val url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken
-        Log.v("lhz", "url: " + url)
+    private fun post() {
+
         val okHttpClient = OkHttpClient().newBuilder().build()
         val builder = Request.Builder()
 
@@ -257,85 +236,48 @@ class WebFragment : DefaultFragment() {
 
         val requestBody = RequestBody.create(JSON, line_color)
         builder.addHeader("content-type", "application/json;charset:utf-8")
-        builder.url(url)
-        builder.post(requestBody)
 
-        val request = builder.build()
+        val appId = ""
+        val appSecret = ""
+        val token = getToken(appId, appSecret)
+        async {
+            val accessToken = token.await() as String
+            val url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken
+            builder.url(url)
+            builder.post(requestBody)
+            val request = builder.build()
 
-        val call = okHttpClient.newCall(request)
-        call.enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.v("lhz", "e: " + e.toString())
+            val call = okHttpClient.newCall(request)
+            val response = bg {
+                call.execute()
             }
-
-            @Throws(IOException::class)
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()!!
-
-                //                String string = responseBody.string();
-                saveAdData(responseBody.byteStream())
-                //                Log.v("lhz", "string: " + string);
-            }
-        })
-
+            val responseBody = response.await().body()
+            saveAdData(responseBody?.byteStream()!!)
+        }
     }
 
+    inline fun getToken(appId: String, appSecret: String) = async {
+        val urlParams = hashMapOf<String, String>()
+        urlParams.put("grant_type", "client_credential")
+        urlParams.put("appid", appId)
+        urlParams.put("secret", appSecret)
 
-    inline fun <T> bg1(crossinline block: () -> T): Deferred<T> = async(UI) {
-        block()
-    }
-
-
-//    inline fun <T> getToken(appId: String, appSecret: String): Deferred<T> = async(UI) {
-//        val urlParams = hashMapOf<String, String>()
-//        urlParams.put("grant_type", "client_credential")
-//        urlParams.put("appid", appId)
-//        urlParams.put("secret", appSecret)
-//
-//        val getUrl = OkHttpUtils.appendUrl("https://api.weixin.qq.com/cgi-bin/token", urlParams)
-//        val okHttpClient = OkHttpClient().newBuilder().build()
-//        val builder = Request.Builder()
-//        builder.url(getUrl)
-//
-//        val request = builder.build()
-//        val call = okHttpClient.newCall(request)
-//        val response = bg {
-//            call.execute()
-//        }
-//        val data = response.await().body()?.string()
-//        val jsonObject = JSONObject(data)
-//        val token = jsonObject["access_token"]
-//    }
-//
-//    private fun post() {
-//        val token = getToken("", "")
-//    }
-
-
-    private fun get() {
-
-        val getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&"
+        val getUrl = OkHttpUtils.appendUrl("https://api.weixin.qq.com/cgi-bin/token", urlParams)
         val okHttpClient = OkHttpClient().newBuilder().build()
         val builder = Request.Builder()
-        builder.url(url)
+        builder.url(getUrl)
+
         val request = builder.build()
-
         val call = okHttpClient.newCall(request)
-        call.enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.v("lhz", "e: " + e.toString())
-            }
-
-            @Throws(IOException::class)
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body()!!
-
-                val string = responseBody.string()
-                //                saveAdData(responseBody.byteStream());
-                Log.v("lhz", "string: " + string)
-            }
-        })
+        val response = bg {
+            call.execute()
+        }
+        val data = response.await().body()?.string()
+        val jsonObject = JSONObject(data)
+        val token = jsonObject["access_token"]
+        return@async token
     }
+
 
     private fun saveAdData(inputStream: InputStream) {
         val isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
