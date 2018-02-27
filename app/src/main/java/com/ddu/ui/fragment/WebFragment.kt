@@ -27,6 +27,9 @@ import com.ddu.icore.util.UrlUtils
 import com.ddu.ui.helper.WebAppInterface
 import com.ddu.util.HttpUtils
 import kotlinx.android.synthetic.main.fragment_web.*
+import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -277,7 +280,40 @@ class WebFragment : DefaultFragment() {
 
     }
 
+
+    inline fun <T> bg1(crossinline block: () -> T): Deferred<T> = async(UI) {
+        block()
+    }
+
+
+//    inline fun <T> getToken(appId: String, appSecret: String): Deferred<T> = async(UI) {
+//        val urlParams = hashMapOf<String, String>()
+//        urlParams.put("grant_type", "client_credential")
+//        urlParams.put("appid", appId)
+//        urlParams.put("secret", appSecret)
+//
+//        val getUrl = OkHttpUtils.appendUrl("https://api.weixin.qq.com/cgi-bin/token", urlParams)
+//        val okHttpClient = OkHttpClient().newBuilder().build()
+//        val builder = Request.Builder()
+//        builder.url(getUrl)
+//
+//        val request = builder.build()
+//        val call = okHttpClient.newCall(request)
+//        val response = bg {
+//            call.execute()
+//        }
+//        val data = response.await().body()?.string()
+//        val jsonObject = JSONObject(data)
+//        val token = jsonObject["access_token"]
+//    }
+//
+//    private fun post() {
+//        val token = getToken("", "")
+//    }
+
+
     private fun get() {
+
         val getUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&"
         val okHttpClient = OkHttpClient().newBuilder().build()
         val builder = Request.Builder()
