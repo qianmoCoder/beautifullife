@@ -1,8 +1,8 @@
 package com.ddu.ui.fragment.study.ui
 
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import com.ddu.R
+import com.ddu.icore.common.gradientDrawable
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_study_view.*
 import org.jetbrains.anko.horizontalPadding
@@ -19,17 +19,21 @@ class ViewFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        var gradientDrawable = GradientDrawable()
-        gradientDrawable.cornerRadius = 4f
-        val color = resources.getColor(R.color.c_252525)
-        gradientDrawable.setStroke(4, color)
 
         btn_show.setOnClickListener {
-            tv_show.background = if (show) {
-                gradientDrawable
-            } else {
-                null
+
+            tv_show.run {
+                if (show) {
+                    gradientDrawable {
+                        val color = resources.getColor(R.color.c_252525)
+                        cornerRadius = 4f
+                        setStroke(4, color)
+                    }
+                } else {
+                    background = null
+                }
             }
+
             tv_show.horizontalPadding = if (show) {
                 8
             } else {

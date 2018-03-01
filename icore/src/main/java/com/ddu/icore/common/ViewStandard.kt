@@ -1,6 +1,8 @@
 package com.ddu.icore.common
+
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.support.annotation.ColorInt
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -18,3 +20,10 @@ fun View.shapeRender(@ColorInt color: Int = Color.WHITE, radius: Float = 0f): Sh
     shapeInjectHelper.setBackground()
     return shapeInjectHelper
 }
+
+fun View.gradientDrawable(block: GradientDrawable.() -> Unit) {
+    val gradientDrawable = GradientDrawable()
+    block(gradientDrawable)
+    background = gradientDrawable
+}
+
