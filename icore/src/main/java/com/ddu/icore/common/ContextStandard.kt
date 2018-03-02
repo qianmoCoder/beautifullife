@@ -9,6 +9,8 @@ import android.net.Uri
 import android.provider.Settings
 import android.support.annotation.RequiresPermission
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import org.jetbrains.anko.connectivityManager
 import org.jetbrains.anko.inputMethodManager
@@ -18,6 +20,9 @@ import org.jetbrains.anko.powerManager
  * Created by yzbzz on 2018/1/18.
  */
 
+val Context.mateData
+    get() = applicationInfo.metaData
+
 val Context.screenWidth
     get() = resources.displayMetrics.widthPixels
 
@@ -25,13 +30,11 @@ val Context.screenHeight
     get() = resources.displayMetrics.heightPixels
 
 val Context.versionName
-    get() = packageManager.getPackageInfo(packageName,0).versionName
+    get() = packageManager.getPackageInfo(packageName, 0).versionName
 
 val Context.versionCode
-    get() = packageManager.getPackageInfo(packageName,0).versionCode
+    get() = packageManager.getPackageInfo(packageName, 0).versionCode
 
-val Context.mateData
-    get() = applicationInfo.metaData
 
 var Activity.screenBrightness
     get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
@@ -41,19 +44,14 @@ var Activity.screenBrightness
         window.attributes = lp
     }
 
-@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
-fun Context.isNetworkConnected(): Boolean? {
-    return connectivityManager.activeNetworkInfo?.isConnected
-}
 
-fun Context.isScreenOn(): Boolean? {
-    return powerManager?.isScreenOn
+fun Activity.hideKeyboard(view: View?): Boolean? {
+    val currentView = currentFocus ?: view
+    currentView?.let {
+        return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+    return false
 }
-
-//inline fun <T> Activity.startAcitvity() {
-//    val intent = Intent(this,T::class.java)
-//    startActivity(intent)
-//}
 
 fun Context.getMarketIntent(): Intent {
     val uri = Uri.parse("market://details?id=" + packageName)
@@ -62,10 +60,13 @@ fun Context.getMarketIntent(): Intent {
     return intent
 }
 
-fun Context.launchApp(packageName: String): Intent {
-    var intent = packageManager.getLaunchIntentForPackage(packageName) ?: getMarketIntent()
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    return intent
+@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
+fun Context.isNetworkConnected(): Boolean? {
+    return connectivityManager.activeNetworkInfo?.isConnected
+}
+
+fun Context.isScreenOn(): Boolean? {
+    return powerManager?.isScreenOn
 }
 
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
@@ -81,12 +82,24 @@ fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     return false
 }
 
-fun Activity.hideKeyboard(view: View?): Boolean? {
-    val currentView = currentFocus ?: view
-    currentView?.let {
-        return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
-    return false
+//inline fun <T> Activity.startAcitvity() {
+//    val intent = Intent(this,T::class.java)
+//    startActivity(intent)
+//}
+
+
+fun Context.launchApp(packageName: String): Intent {
+    var intent = packageManager.getLaunchIntentForPackage(packageName) ?: getMarketIntent()
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    return intent
+}
+
+fun Context.toggleSoftInput() {
+    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+}
+
+fun Context.loadAnimation(id: Int): Animation {
+    return AnimationUtils.loadAnimation(this, id)
 }
 
 fun Activity.showKeyboard(view: View?): Boolean? {
@@ -97,7 +110,4 @@ fun Activity.showKeyboard(view: View?): Boolean? {
     return false
 }
 
-fun Context.toggleSoftInput() {
-    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-}
 

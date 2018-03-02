@@ -1,5 +1,6 @@
 package com.ddu.icore.common
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -7,6 +8,12 @@ import android.support.annotation.ColorInt
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.ddu.icore.ui.help.ShapeInjectHelper
+
+fun View.alphaA(duration: Long, vararg values: Float): ObjectAnimator {
+    val objectAnimator = ObjectAnimator.ofFloat(this, View.ALPHA, *values)
+    objectAnimator.duration = duration
+    return objectAnimator
+}
 
 fun View.hideKeyboard(): Boolean? {
     val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager

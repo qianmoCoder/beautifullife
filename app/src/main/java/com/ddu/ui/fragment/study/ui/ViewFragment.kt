@@ -33,13 +33,18 @@ class ViewFragment : DefaultFragment() {
                     background = null
                 }
             }
-
             tv_show.horizontalPadding = if (show) {
                 8
             } else {
                 0
             }
             show = !show
+
+            tv_show.gradientDrawable {
+                cornerRadius = 8f
+                setColor(-0)
+                setStroke(4,0)
+            }
         }
 
     }
