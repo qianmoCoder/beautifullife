@@ -18,7 +18,7 @@ class PersonalInfoFragment : DefaultFragment() {
 
     override fun initView() {
         initInstances()
-        appbar!!.addOnOffsetChangedListener { _, verticalOffset ->
+        appbar.addOnOffsetChangedListener { _, verticalOffset ->
             mVerticalOffset = verticalOffset
             if (mVerticalOffset == 0) {
                 ptf!!.setCanScroll(true)

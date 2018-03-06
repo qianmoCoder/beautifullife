@@ -24,9 +24,6 @@ import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
-import org.jetbrains.anko.coroutines.experimental.bg
 
 /**
  * Created by yzbzz on 2018/1/17.
@@ -59,9 +56,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         BottomNavigationViewHelper.disableShiftMode(navigation)
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
-        async(UI) {
-            bg {  }
-        }
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {

@@ -135,6 +135,8 @@ dependencies {
     implementation 'com.orhanobut:logger:2.1.1'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.3'
+
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 }
 
 final def log = project.logger
