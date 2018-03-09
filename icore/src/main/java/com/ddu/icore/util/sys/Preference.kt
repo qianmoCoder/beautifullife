@@ -1,6 +1,7 @@
 package com.ddu.icore.util.sys
 
 import android.content.Context
+import org.jetbrains.anko.defaultSharedPreferences
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -10,7 +11,7 @@ import kotlin.reflect.KProperty
 class Preference<T>(val context: Context, val name: String, val default: T) : ReadWriteProperty<Any?, T> {
 
     private val prefs by lazy {
-        context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
+        context.defaultSharedPreferences
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {

@@ -13,8 +13,7 @@ class RxBus private constructor() {
     companion object {
 
         fun get() = SingletonHolder.instance
-        val instance: RxBus
-            get() = SingletonHolder.instance
+        val instance = SingletonHolder.instance
 
         @JvmOverloads
         fun action(action: String, actionCallBack: ActionCallBack<Any>): Observable<Any> {

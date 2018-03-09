@@ -21,6 +21,7 @@ import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
 import com.ddu.ui.fragment.study.ui.InnerScrollViewFragment;
+import com.ddu.ui.fragment.study.ui.KotlinFragment;
 import com.ddu.ui.fragment.study.ui.PaletteFragment;
 import com.ddu.ui.fragment.study.ui.PathMeasureFragment;
 import com.ddu.ui.fragment.study.ui.ProgressWheelFragment;
@@ -86,6 +87,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, TextViewFragment.class);
         mMaps.put(0, ToolBarFragment.class);
         mMaps.put(0, BottomSheetFragment.class);
+        mMaps.put(0, KotlinFragment.class);
     }
 
     private int index;

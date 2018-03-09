@@ -56,6 +56,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         BottomNavigationViewHelper.disableShiftMode(navigation)
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
+//        startActivity<MainActivityT>("id" to 5)
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {

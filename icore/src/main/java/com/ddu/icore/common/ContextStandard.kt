@@ -53,6 +53,7 @@ fun Activity.hideKeyboard(view: View?): Boolean? {
     return false
 }
 
+
 fun Context.getMarketIntent(): Intent {
     val uri = Uri.parse("market://details?id=" + packageName)
     val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -76,8 +77,8 @@ fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
         appProcessed.filter {
             it.processName == packageName && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == it.importance
         }.map {
-                    return true
-                }
+            return true
+        }
     }
     return false
 }
