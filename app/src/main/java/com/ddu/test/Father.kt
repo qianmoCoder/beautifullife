@@ -1,5 +1,6 @@
 package com.ddu.test
 
+import kotlinx.coroutines.experimental.Unconfined
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
@@ -11,21 +12,25 @@ open class Father(val _nickname: String = "", val isSubscribed: Boolean = true) 
 
     var t = hashMapOf<String, String>()
     fun main() {
+        val list = listOf(1, 2, 3, 4, 5, 6)
        val job1 =  launch(UI) {
 
         }
         Sun::class.java
         async {  }
+        launch(Unconfined) {  }
     }
 
     inner class Sun {
         fun temp() = this@Father.main()
     }
 
-    companion object {
-        fun bar() {
+    fun bar() {
 
-        }
+    }
+
+    companion object {
+
     }
 
 }

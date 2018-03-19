@@ -8,10 +8,13 @@ import android.os.Handler
 import android.os.Looper
 import java.lang.ref.WeakReference
 import java.util.*
+import kotlin.properties.Delegates
 
 open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
     companion object {
+        var instance by Delegates.notNull<BaseApp>()
+//        var instance: BaseApp by Delegates.notNull()
 
         lateinit var mApp: Application
         lateinit var mContext: Context

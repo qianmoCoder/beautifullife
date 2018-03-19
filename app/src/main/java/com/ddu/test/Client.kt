@@ -21,7 +21,8 @@ class Client {
         t?.run {
             temp()
         }
-        Father.bar()
+        val m = Father::bar
+        m.invoke(Father())
         val temp = listOf(1, 2, 3)
         temp.maxBy { it }
         val temp1 = Client(1)

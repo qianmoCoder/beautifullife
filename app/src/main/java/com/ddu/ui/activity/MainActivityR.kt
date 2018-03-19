@@ -14,6 +14,7 @@ import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import kotlinx.android.synthetic.main.activity_mainr.*
+import org.jetbrains.anko.startActivity
 
 class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
 
@@ -38,6 +39,7 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
 
         rg_main.setOnCheckedChangeListener(this)
         rg_main.check(R.id.rb_main_study)
+        startActivity<MainActivityT>()
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {

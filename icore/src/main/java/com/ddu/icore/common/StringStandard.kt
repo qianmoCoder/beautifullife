@@ -1,8 +1,18 @@
 package com.ddu.icore.common
 
+import com.google.gson.Gson
 import java.math.BigDecimal
 import java.security.MessageDigest
 import java.util.regex.Pattern
+
+inline fun <reified T> String.toJson(): T {
+    return Gson().fromJson(this, T::class.java)
+}
+
+//inline fun <reified T> String.toJso1n(): T {
+//    JSON.parseObject<T::class.java>()
+//    return JSON.parseObject(this, T::class.java)
+//}
 
 fun String.md5(): String {
     val digestInstance = MessageDigest.getInstance("MD5")

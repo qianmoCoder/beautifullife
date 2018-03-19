@@ -4,10 +4,11 @@ import org.aspectj.tools.ajc.Main
 
 apply plugin: 'com.android.application'
 //apply plugin: 'com.meituan.judasplugin'
+apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-kapt'
+
 
 android {
 
@@ -103,10 +104,8 @@ dependencies {
 
     implementation 'org.quanqi:mpandroidchart:1.7.5'
 
-    implementation 'com.alibaba:fastjson:1.1.67.android'
-
     implementation 'com.google.android:flexbox:0.3.2'
-    implementation 'com.google.code.gson:gson:2.8.2'
+
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.google.zxing:android-core:3.3.0'
 
