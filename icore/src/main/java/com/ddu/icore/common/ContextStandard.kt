@@ -12,7 +12,9 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import androidx.content.edit
 import org.jetbrains.anko.connectivityManager
+import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.inputMethodManager
 import org.jetbrains.anko.powerManager
 
@@ -51,6 +53,30 @@ fun Activity.hideKeyboard(view: View?): Boolean? {
         return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
     return false
+}
+
+fun <T> Context.putPreference(key: String, value: T) {
+    defaultSharedPreferences.edit {
+        when (value) {
+            is Boolean -> putBoolean(key, value)
+            is Float -> putFloat(key, value)
+            is Int -> putInt(key, value)
+            is Long -> putLong(key, value)
+            is String -> putString(key, value)
+        }
+    }
+}
+
+fun <T> Context.getPreference(key: String, default: T): T? = with(defaultSharedPreferences) {
+    val res = when (default) {
+        is Boolean -> getBoolean(key, default)
+        is Float -> getFloat(key, default)
+        is Int -> getInt(key, default)
+        is Long -> getLong(key, default)
+        is String -> getString(key, default)
+        else -> null
+    }
+    res as? T
 }
 
 

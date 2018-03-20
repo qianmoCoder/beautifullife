@@ -28,6 +28,8 @@ ext {
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "org.jetbrains.anko:anko:$anko_version",
 
+            'com.google.code.gson:gson:2.8.2',
+            'com.alibaba:fastjson:1.1.67.android',
 
             'io.reactivex.rxjava2:rxjava:2.1.7',
             'io.reactivex.rxjava2:rxandroid:2.0.1',

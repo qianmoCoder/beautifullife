@@ -6,7 +6,7 @@ import com.google.gson.Gson
 /**
  * Created by yzbzz on 2018/3/12.
  */
-infix fun <A, B,C> A.other(that: B): Unit {
+infix fun <A, B, C> A.other(that: B): Unit {
 
 }
 

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.widget.RadioGroup
+import androidx.content.edit
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.activity.BaseActivity
@@ -14,6 +15,7 @@ import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import kotlinx.android.synthetic.main.activity_mainr.*
+import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.startActivity
 
 class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
@@ -40,6 +42,9 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
         rg_main.setOnCheckedChangeListener(this)
         rg_main.check(R.id.rb_main_study)
         startActivity<MainActivityT>()
+        defaultSharedPreferences.edit {
+
+        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
