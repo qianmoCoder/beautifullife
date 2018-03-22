@@ -4,24 +4,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.content.Context;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
-import com.ddu.icore.R;
 
 /**
  * Created by yzbzz on 2016/10/27.
  */
 
 public class AnimatorUtils {
-
-    public static Animation shake(Context context) {
-        Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
-        return shake;
-    }
 
     public static ObjectAnimator rotationX(View target, long duration, float... values) {
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(target, View.ROTATION_X, values);

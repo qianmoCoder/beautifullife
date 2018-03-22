@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
-import com.ddu.icore.common.alphaA
+import com.ddu.icore.common.alphaAnimator
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.ToastUtils
 import com.umeng.socialize.utils.ContextUtil.getPackageName
@@ -46,7 +46,7 @@ class VideoFragment : DefaultFragment() {
 
         BaseApp.postDelayed(Runnable {
             ll_other.visibility = View.VISIBLE
-            ll_other.alphaA(1000, 0f, 1f).start()
+            ll_other.alphaAnimator(1000, 0f, 1f).start()
         }, 5000)
 
     }

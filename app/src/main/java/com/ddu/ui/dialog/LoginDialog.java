@@ -136,7 +136,7 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
             VerificationCodeDialog verificationCodeDialog = VerificationCodeDialog.Companion.newInstance(mPhoneNum);
             verificationCodeDialog.show(getFragmentManager(), "verificationCodeDialog");
         } else {
-            QRCodeDialog qrCodeDialog = QRCodeDialog.newInstance(mPhoneNum);
+            QRCodeDialog qrCodeDialog = QRCodeDialog.Companion.newInstance(mPhoneNum);
             qrCodeDialog.show(getFragmentManager(), "qrCodeDialog");
         }
     }

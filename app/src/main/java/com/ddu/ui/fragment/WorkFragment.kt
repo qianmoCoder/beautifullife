@@ -7,10 +7,10 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
+import com.ddu.icore.dialog.DefaultDialogFragment
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.DnsConfig
-import com.ddu.ui.fragment.work.FragmentA
 import kotlinx.android.synthetic.main.fragment_work.*
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.telephonyManager
 
 /**
@@ -28,7 +28,22 @@ class WorkFragment : DefaultFragment() {
 
     override fun initView() {
         oiv_fragment.setOnClickListener {
-            startFragment(FragmentA::class.java)
+            val d = DefaultDialogFragment().apply {
+                title = "Hello"
+                msg = "World"
+                leftText = "cancel"
+                rightText = "ok"
+                mLeftClickListener = { _, _ ->
+                    toast("left")
+                    dismissAllowingStateLoss()
+                }
+                mRightClickListener = { _, _ ->
+                    toast("right")
+                    dismissAllowingStateLoss()
+                }
+            }
+//            d.show(fragmentManager, "")
+//            startFragment(FragmentA::class.java)
             //                Log.v("lhz", "v: " + v.getX() + " " + v.getX());
             //                Log.v("lhz", "v p: " + v.getPivotX() + " " + v.getPivotY());
             //                Log.v("lhz", "v r: " + v.getRotationX() + " " + v.getRotationY());
@@ -90,7 +105,7 @@ class WorkFragment : DefaultFragment() {
             //                }, 1500);
         }
         setTitle(R.string.main_tab_work)
-        tv_money.text = DnsConfig.buildType
+//        tv_money.text = DnsConfig.buildType
         //+ com.ddu.util.SystemUtils.getDeviceId()
         val isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
         if (!isGranted) {

@@ -38,35 +38,6 @@ val Context.versionCode
     get() = packageManager.getPackageInfo(packageName, 0).versionCode
 
 
-var Activity.screenBrightness
-    get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
-    set(value) {
-        val lp = window.attributes
-        lp.screenBrightness = value / 255f
-        window.attributes = lp
-    }
-
-
-fun Activity.hideKeyboard(view: View?): Boolean? {
-    val currentView = currentFocus ?: view
-    currentView?.let {
-        return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
-    return false
-}
-
-fun <T> Context.putPreference(key: String, value: T) {
-    defaultSharedPreferences.edit {
-        when (value) {
-            is Boolean -> putBoolean(key, value)
-            is Float -> putFloat(key, value)
-            is Int -> putInt(key, value)
-            is Long -> putLong(key, value)
-            is String -> putString(key, value)
-        }
-    }
-}
-
 fun <T> Context.getPreference(key: String, default: T): T? = with(defaultSharedPreferences) {
     val res = when (default) {
         is Boolean -> getBoolean(key, default)
@@ -109,11 +80,6 @@ fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     return false
 }
 
-//inline fun <T> Activity.startAcitvity() {
-//    val intent = Intent(this,T::class.java)
-//    startActivity(intent)
-//}
-
 
 fun Context.launchApp(packageName: String): Intent {
     var intent = packageManager.getLaunchIntentForPackage(packageName) ?: getMarketIntent()
@@ -121,13 +87,43 @@ fun Context.launchApp(packageName: String): Intent {
     return intent
 }
 
+fun Context.loadAnimation(id: Int): Animation {
+    return AnimationUtils.loadAnimation(this, id)
+}
+
+fun <T> Context.putPreference(key: String, value: T) {
+    defaultSharedPreferences.edit {
+        when (value) {
+            is Boolean -> putBoolean(key, value)
+            is Float -> putFloat(key, value)
+            is Int -> putInt(key, value)
+            is Long -> putLong(key, value)
+            is String -> putString(key, value)
+        }
+    }
+}
+
 fun Context.toggleSoftInput() {
     inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 }
 
-fun Context.loadAnimation(id: Int): Animation {
-    return AnimationUtils.loadAnimation(this, id)
+var Activity.screenBrightness
+    get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
+    set(value) {
+        val lp = window.attributes
+        lp.screenBrightness = value / 255f
+        window.attributes = lp
+    }
+
+
+fun Activity.hideKeyboard(view: View?): Boolean? {
+    val currentView = currentFocus ?: view
+    currentView?.let {
+        return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+    return false
 }
+
 
 fun Activity.showKeyboard(view: View?): Boolean? {
     val currentView = currentFocus ?: view

@@ -13,10 +13,11 @@ import android.widget.TextView
 import com.ddu.R
 import com.ddu.R.id.tv_error_msg
 import com.ddu.R.id.tv_phone_number
+import com.ddu.icore.common.loadAnimation
 import com.ddu.icore.common.showKeyboard
 import com.ddu.icore.ui.view.NumberInputView
-import com.ddu.icore.util.AnimatorUtils
 import com.ddu.icore.util.sys.ViewUtils
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2017/5/26.
@@ -68,7 +69,7 @@ class VerificationCodeDialog : DialogFragment(), View.OnClickListener {
         }, 300)
         mEtPhoneNumber!!.setOnInputCallback {
             mTvErrorMsg!!.visibility = View.VISIBLE
-            mLlLogin.startAnimation(AnimatorUtils.shake(mContext))
+            mLlLogin.startAnimation(ctx.loadAnimation(R.anim.shake))
         }
         mTvCountDown = ViewUtils.findViewById(mLlLogin, R.id.tv_count_down)
         mTvResend = ViewUtils.findViewById(mLlLogin, R.id.btn_resend)

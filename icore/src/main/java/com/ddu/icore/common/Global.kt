@@ -17,3 +17,9 @@ inline fun <reified T : Any> Gson.fromJson(json: String): T {
 inline fun <reified T : Any> JSON.fromJson(json: String): T {
     return JSON.parseObject(json, T::class.java)
 }
+
+fun <T1, T2> ifNotNull(value1: T1?, value2: T2?, bothNotNull: (T1, T2) -> (Unit)) {
+    if (value1 != null && value2 != null) {
+        bothNotNull(value1, value2)
+    }
+}

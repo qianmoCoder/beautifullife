@@ -1,10 +1,7 @@
 package com.ddu.ui.adapter;
 
 import android.content.Context;
-import android.support.v4.app.DialogFragment;
-import android.view.View;
 
-import com.ddu.icore.dialog.DefaultDialogFragment;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
@@ -27,21 +24,21 @@ public class RVAdapterJ extends DefaultRecycleViewAdapter {
 
     @Override
     public void bindView(ViewHolder viewHolder, Object data, int position) {
-      DefaultDialogFragment.Builder builder = new DefaultDialogFragment.Builder();
-      builder.setTitle("");
-      builder.setMessage("");
-      builder.setLeftText("", new DefaultDialogFragment.IButtonClickListener() {
-          @Override
-          public void onClick(View v, DialogFragment dialogFragment) {
-
-          }
-      });
-      builder.setRightText("", new DefaultDialogFragment.IButtonClickListener() {
-          @Override
-          public void onClick(View v, DialogFragment dialogFragment) {
-
-          }
-      });
+//      DefaultDialogFragment.Builder builder = new DefaultDialogFragment.Builder();
+//      builder.setTitle("");
+//      builder.setMessage("");
+//      builder.setLeftText("", new DefaultDialogFragment.IButtonClickListener() {
+//          @Override
+//          public void onClick(View v, DialogFragment dialogFragment) {
+//
+//          }
+//      });
+//      builder.setRightText("", new DefaultDialogFragment.IButtonClickListener() {
+//          @Override
+//          public void onClick(View v, DialogFragment dialogFragment) {
+//
+//          }
+//      });
         
     }
 }
