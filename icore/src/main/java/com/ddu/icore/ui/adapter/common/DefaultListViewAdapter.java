@@ -20,7 +20,7 @@ public abstract class DefaultListViewAdapter<T> extends AbsListViewAdapter<T, Vi
     @Override
     public View newView(ViewGroup parent) {
         int layoutId = getLayoutId();
-        return LayoutInflater.from(mContext).inflate(layoutId, parent, false);
+        return LayoutInflater.from(getMContext()).inflate(layoutId, parent, false);
     }
 
     @NonNull
