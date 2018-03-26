@@ -1,17 +1,11 @@
 package com.ddu.icore.util;
 
-import android.annotation.TargetApi;
-import android.app.Fragment;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
 
 import java.util.Stack;
 
@@ -38,130 +32,30 @@ public class TextPhrase {
      */
     private char curChar;
 
-    private String firstSeparator;
-    private String secondSeparator;
-
     private int curCharIndex;
 
-    private int outerColor;
+    public String firstSeparator = "{}";
+    public  String secondSeparator = "[]";
 
-    private int innerFirstColor;
-    private int innerFirstSize;
+    public int outerColor = 0xFF666666;
+    public int innerFirstColor = 0xFF333333;
+    public int innerFirstSize = 25;
+    public int innerSecondColor = 0xFF333333;
+    public int innerSecondSize = 25;
+    public char firstLeftSeparator;
+    public char secondLeftSeparator;
+    public char firstRightSeparator;
+    public char secondRightSeparator;
 
-    private int innerSecondColor;
-    private int innerSecondSize;
-
-    private char firstLeftSeparator;
-    private char secondLeftSeparator;
-    private char firstRightSeparator;
-    private char secondRightSeparator;
-
-    /**
-     * Indicates parsing is complete.
-     */
     private static final int EOF = 0;
 
-    /**
-     * Entry point into this API.
-     *
-     * @throws IllegalArgumentException if pattern contains any syntax errors.
-     */
-    @NonNull
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static TextPhrase from(@NonNull Fragment f, int patternResourceId) {
-        return from(f.getResources(), patternResourceId);
-    }
 
-    /**
-     * Entry point into this API.
-     *
-     * @throws IllegalArgumentException if pattern contains any syntax errors.
-     */
-    @NonNull
-    public static TextPhrase from(@NonNull View v, int patternResourceId) {
-        return from(v.getResources(), patternResourceId);
-    }
+    public TextPhrase(@NonNull CharSequence pattern) {
+        curChar = (pattern.length() > 0) ? pattern.charAt(0) : EOF;
 
-    /**
-     * Entry point into this API.
-     *
-     * @throws IllegalArgumentException if pattern contains any syntax errors.
-     */
-    @NonNull
-    public static TextPhrase from(@NonNull Context c, int patternResourceId) {
-        return from(c.getResources(), patternResourceId);
-    }
-
-    /**
-     * Entry point into this API.
-     *
-     * @throws IllegalArgumentException if pattern contains any syntax errors.
-     */
-    @NonNull
-    public static TextPhrase from(@NonNull Resources r, int patternResourceId) {
-        return from(r.getText(patternResourceId));
-    }
-
-    /**
-     * Entry point into this API; pattern must be non-null.
-     *
-     * @throws IllegalArgumentException if pattern contains any syntax errors.
-     */
-    @NonNull
-    public static TextPhrase from(@NonNull CharSequence pattern) {
-        return new Builder(pattern).build();
-    }
-
-    private TextPhrase(@NonNull Builder builder) {
-        curChar = (builder.pattern.length() > 0) ? builder.pattern.charAt(0) : EOF;
-
-        this.pattern = builder.pattern;
+        this.pattern = pattern;
 
         formatted = null;
-
-        firstSeparator = builder.firstSeparator;// initialize the default separator
-        secondSeparator = builder.secondSeparator;
-        outerColor = builder.outerColor;// initialize the default value
-        innerFirstColor = builder.innerFirstColor;// initialize the default value
-        innerSecondColor = builder.innerSecondColor;
-
-        innerFirstSize = builder.innerFirstSize;
-        innerSecondSize = builder.innerSecondSize;
-    }
-
-    public TextPhrase firstSeparator(String firstSeparator) {
-        this.firstSeparator = firstSeparator;
-        return this;
-    }
-
-    public TextPhrase secondSeparator(String secondSeparator) {
-        this.secondSeparator = secondSeparator;
-        return this;
-    }
-
-
-    @NonNull
-    public TextPhrase innerFirstColor(int innerColor) {
-        this.innerFirstColor = innerColor;
-        return this;
-    }
-
-    @NonNull
-    public TextPhrase innerSecondColor(int innerColor) {
-        this.innerSecondColor = innerColor;
-        return this;
-    }
-
-    @NonNull
-    public TextPhrase innerFirstSize(int innerSize) {
-        this.innerFirstSize = innerSize;
-        return this;
-    }
-
-    @NonNull
-    public TextPhrase innerSecondSize(int innerSize) {
-        this.innerSecondSize = innerSize;
-        return this;
     }
 
     /**
@@ -205,27 +99,17 @@ public class TextPhrase {
         return outer(prev);
     }
 
-    private char getFirstLeftSeparator() {
-        return firstSeparator.charAt(0);
+    private char getLeftSeparator(String separator) {
+        return separator.charAt(0);
     }
 
-    private char getFirstRightSeparator() {
-        if (firstSeparator.length() == 2) {
-            return firstSeparator.charAt(1);
+    private char getRightSeparator(String separator) {
+        if (separator.length() == 2) {
+            return separator.charAt(1);
         }
-        return firstSeparator.charAt(0);
+        return separator.charAt(0);
     }
 
-    private char getSecondLeftSeparator() {
-        return secondSeparator.charAt(0);
-    }
-
-    private char getSecondRightSeparator() {
-        if (secondSeparator.length() == 2) {
-            return secondSeparator.charAt(1);
-        }
-        return secondSeparator.charAt(0);
-    }
 
     /**
      * Returns the text after replacing all keys with values.
@@ -235,11 +119,11 @@ public class TextPhrase {
     @Nullable
     public CharSequence format() {
         if (formatted == null) {
-            firstLeftSeparator = getFirstLeftSeparator();
-            secondLeftSeparator = getSecondLeftSeparator();
+            firstLeftSeparator = getLeftSeparator(firstSeparator);
+            secondLeftSeparator = getLeftSeparator(secondSeparator);
 
-            firstRightSeparator = getFirstRightSeparator();
-            secondRightSeparator = getSecondRightSeparator();
+            firstRightSeparator = getRightSeparator(firstSeparator);
+            secondRightSeparator = getRightSeparator(secondSeparator);
 
             if (!checkPattern()) {
                 throw new IllegalStateException("the separators don't match in the pattern!");
@@ -500,61 +384,4 @@ public class TextPhrase {
         }
     }
 
-    public static class Builder {
-
-        private CharSequence pattern;
-
-        private String firstSeparator = "{}";
-        private String secondSeparator = "[]";
-
-        private int outerColor = 0xFF666666;
-        private int innerFirstColor = 0xFF333333;
-        private int innerSecondColor = 0xFF333333;
-
-        private int innerFirstSize = 25;
-        private int innerSecondSize = 25;
-
-        public Builder(CharSequence pattern) {
-            this.pattern = pattern;
-        }
-
-        public Builder setFirstSeparator(String firstSeparator) {
-            this.firstSeparator = firstSeparator;
-            return this;
-        }
-
-        public Builder setSecondSeparator(String secondSeparator) {
-            this.secondSeparator = secondSeparator;
-            return this;
-        }
-
-        public Builder setOuterColor(int outerColor) {
-            this.outerColor = outerColor;
-            return this;
-        }
-
-        public Builder setInnerFirstColor(int innerFirstColor) {
-            this.innerFirstColor = innerFirstColor;
-            return this;
-        }
-
-        public Builder setInnerSecondColor(int innerSecondColor) {
-            this.innerSecondColor = innerSecondColor;
-            return this;
-        }
-
-        public Builder setInnerFirstSize(int innerFirstSize) {
-            this.innerFirstSize = innerFirstSize;
-            return this;
-        }
-
-        public Builder setInnerSecondSize(int innerSecondSize) {
-            this.innerSecondSize = innerSecondSize;
-            return this;
-        }
-
-        public TextPhrase build() {
-            return new TextPhrase(this);
-        }
-    }
 }

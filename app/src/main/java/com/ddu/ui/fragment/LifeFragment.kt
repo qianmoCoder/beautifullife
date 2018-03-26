@@ -73,15 +73,16 @@ class LifeFragment : DefaultFragment(), View.OnClickListener {
     //        tvHelp.setText(Html.fromHtml(html));
 
     private fun initText() {
-        val textPhrase1 = TextPhrase.from(mContext, R.string.parse1)
+
+        val textPhrase1 = TextPhrase(mContext.getString(R.string.parse1))
         parse(textPhrase1)
 
-        val textPhrase2 = TextPhrase.from(mContext, R.string.parse2)
-        textPhrase2.firstSeparator("()")
+        val textPhrase2 = TextPhrase(mContext.getString(R.string.parse2))
+        textPhrase2.firstSeparator = "()"
         parse(textPhrase2)
 
-        val textPhrase3 = TextPhrase.from(mContext, R.string.parse3)
-        textPhrase3.secondSeparator("^^")
+        val textPhrase3 = TextPhrase(mContext.getString(R.string.parse3))
+        textPhrase3.secondSeparator = "^"
         parse(textPhrase3)
 
         tvHelp1.text = textPhrase1.format()
@@ -91,11 +92,11 @@ class LifeFragment : DefaultFragment(), View.OnClickListener {
     }
 
     private fun parse(textPhrase: TextPhrase) {
-        textPhrase.innerFirstColor(-0x10000)
-        textPhrase.innerFirstSize(15)
+        textPhrase.innerFirstColor = -0x10000
+        textPhrase.innerFirstSize = 20
 
-        textPhrase.innerSecondColor(-0xb76806)
-        textPhrase.innerSecondSize(20)
+        textPhrase.innerSecondColor = -0xb76806
+        textPhrase.innerSecondSize = 30
     }
 
     override fun onClick(view: View) {
