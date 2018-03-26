@@ -25,7 +25,7 @@ abstract class AbsListViewAdapter<T, VH>(protected var mContext: Context, list: 
         return mList?.size ?: 0
     }
 
-    override fun getItem(position: Int): Any {
+    override fun getItem(position: Int): Any? {
         return mList?.get(position) ?: position
     }
 

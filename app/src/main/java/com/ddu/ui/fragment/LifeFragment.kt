@@ -93,10 +93,10 @@ class LifeFragment : DefaultFragment(), View.OnClickListener {
 
     private fun parse(textPhrase: TextPhrase) {
         textPhrase.innerFirstColor = -0x10000
-        textPhrase.innerFirstSize = 20
+        textPhrase.innerFirstSize = 35
 
         textPhrase.innerSecondColor = -0xb76806
-        textPhrase.innerSecondSize = 30
+        textPhrase.innerSecondSize = 45
     }
 
     override fun onClick(view: View) {

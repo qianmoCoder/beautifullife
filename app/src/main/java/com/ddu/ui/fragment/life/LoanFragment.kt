@@ -120,10 +120,10 @@ class LoanFragment : DefaultFragment(), View.OnClickListener {
 
             override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {
                 viewHolder.setText(R.id.tv_detail, data)
-                viewHolder.setOnClickListener(R.id.ll_detail) {
+                viewHolder.setOnClickListener(R.id.ll_detail, View.OnClickListener {
                     dialog.dismissBottomView()
-                    tv_loan!!.text = data
-                }
+                    tv_loan.text = data
+                })
             }
         }
         recyclerView.adapter = defaultRecycleViewAdapter
