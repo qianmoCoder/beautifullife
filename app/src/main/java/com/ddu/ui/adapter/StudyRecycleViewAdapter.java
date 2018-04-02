@@ -63,14 +63,14 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(mItems, fromPosition, toPosition);
+        Collections.swap(getMItems(), fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return true;
     }
 
     @Override
     public void onItemDismiss(int position) {
-        mItems.remove(position);
+        getMItems().remove(position);
         notifyItemRemoved(position);
     }
 

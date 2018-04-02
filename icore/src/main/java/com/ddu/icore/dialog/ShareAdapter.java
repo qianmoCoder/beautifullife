@@ -35,16 +35,16 @@ public class ShareAdapter extends DefaultRecycleViewAdapter<ShareEntity> {
 
         ImageView imageView = viewHolder.getView(R.id.iv_share);
 
-        int size = mItems.size();
+        int size = getMItems().size();
         int height;
 
         int imgHeight;
         if (size < 4) {
-            height = (int) mContext.getResources().getDimension(R.dimen.dp_150);
-            imgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_70);
+            height = (int) getMContext().getResources().getDimension(R.dimen.dp_150);
+            imgHeight = (int) getMContext().getResources().getDimension(R.dimen.dp_70);
         } else {
-            height = (int) mContext.getResources().getDimension(R.dimen.dp_120);
-            imgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_60);
+            height = (int) getMContext().getResources().getDimension(R.dimen.dp_120);
+            imgHeight = (int) getMContext().getResources().getDimension(R.dimen.dp_60);
         }
         viewHolder.itemView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
 

@@ -33,7 +33,7 @@ public abstract class DefaultRecycleViewAdapter<T> extends CommonRecycleViewAdap
     @Override
     public View getView(ViewGroup parent, int viewType) {
         int layoutId = getLayoutId(viewType);
-        return mLayoutInflater.inflate(layoutId, parent, false);
+        return getMLayoutInflater().inflate(layoutId, parent, false);
     }
 
     @NonNull
