@@ -10,6 +10,10 @@ infix fun <A, B, C> A.other(that: B): Unit {
 
 }
 
+@Suppress("REIFIED_TYPE_PARAMETER_NO_INLINE")
+fun <reified T : Any> Set<*>.isSetOf(): Boolean =
+        T::class.java.isAssignableFrom(this::class.java.componentType)
+
 inline fun <reified T : Any> Gson.fromJson(json: String): T {
     return Gson().fromJson(json, T::class.java)
 }

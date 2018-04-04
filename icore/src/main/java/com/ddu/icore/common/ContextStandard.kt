@@ -3,15 +3,18 @@ package com.ddu.icore.common
 import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
+import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.provider.Settings
 import android.support.annotation.RequiresPermission
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import com.ddu.icore.ui.activity.ShowDetailActivity
 import com.ddu.icore.util.sys.PreferenceUtils
 import org.jetbrains.anko.connectivityManager
 import org.jetbrains.anko.inputMethodManager
@@ -75,6 +78,14 @@ fun Context.loadAnimation(id: Int): Animation = AnimationUtils.loadAnimation(thi
 fun <T> Context.putPreference(key: String, value: T) = PreferenceUtils.apply(key, value)
 
 fun Context.toggleSoftInput() = inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+
+inline fun <reified T : Fragment> Context.startFragment(bundle: Bundle = Bundle()) {
+    startFragment(T::class.java.name, bundle)
+}
+
+fun Context.startFragment(fragmentName: String, bundle: Bundle = Bundle()) {
+    startActivity(ShowDetailActivity.getShowDetailIntent(this, fragmentName, bundle))
+}
 
 var Activity.screenBrightness
     get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
