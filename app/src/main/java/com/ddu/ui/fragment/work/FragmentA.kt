@@ -1,24 +1,17 @@
 package com.ddu.ui.fragment.work
 
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import com.ddu.R
-import com.ddu.icore.ui.activity.ShowDetailActivity
+import com.ddu.icore.common.putPreference
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.ui.view.CustomerTimeLineMarker
-import com.ddu.icore.util.FragmentUtils
-import com.ddu.icore.util.sys.ViewUtils
-import kotlinx.android.synthetic.main.fragment_me.*
+import kotlinx.android.synthetic.main.fragment_work_state.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by lhz on 16/4/6.
  */
 class FragmentA : DefaultFragment() {
-
-    private var mBtnOk: Button? = null
-    private var button: Button? = null
-
-    private var item_time_line_mark: CustomerTimeLineMarker? = null
 
     override fun initData(savedInstanceState: Bundle?) {
 
@@ -30,24 +23,28 @@ class FragmentA : DefaultFragment() {
     }
 
     override fun initView() {
-        mBtnOk = ViewUtils.findViewById(mView, R.id.btn_ok)
-        button = ViewUtils.findViewById(mView, R.id.button)
-        item_time_line_mark = ViewUtils.findViewById(mView, R.id.item_time_line_mark)
-        button!!.setOnClickListener {
+        button.setOnClickListener {
             //                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
             //                bottomSheetDialogFragment.show(getFragmentManager(), "");
             //                replaceFragment(FragmentB.newInstance());
-            (mActivity as ShowDetailActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
+//            (mActivity as ShowDetailActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
+            ctx.putPreference("defaultValue", "hello")
         }
-        mBtnOk!!.setOnClickListener {
-            val f = FragmentB.newInstance()
+        btn_ok.setOnClickListener {
+            //            val f = FragmentB.newInstance()
             //                replaceFragment(f);
-            item_time_line_mark!!.count = 2
+//            item_time_line_mark.count = 2
+            val uri = Uri.parse("etcp://")
+            val sb = StringBuilder()
+            sb.append(uri.toString() + " - ")
+            sb.append(uri.path + "path:  " + " - ")
+            sb.append(uri.scheme + " ")
+            sb.append(uri.query + " ")
+            sb.append(uri.getQueryParameter("isFeedBack") + " ")
+            sb.append(uri.getQueryParameter("synId") + " ")
+            tv_show.text = sb.toString()
         }
         setDefaultTitle("FragmentA")
-        rl_person_info.setOnClickListener({
-
-        })
     }
 
     companion object {

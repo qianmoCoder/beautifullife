@@ -47,13 +47,9 @@ fun Context.getMarketIntent(): Intent {
 }
 
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
-fun Context.isNetworkConnected(): Boolean? {
-    return connectivityManager.activeNetworkInfo?.isConnected
-}
+fun Context.isNetworkConnected() = connectivityManager.activeNetworkInfo?.isConnected ?: false
 
-fun Context.isScreenOn(): Boolean? {
-    return powerManager.isScreenOn
-}
+fun Context.isScreenOn(): Boolean? = powerManager.isScreenOn
 
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
@@ -74,15 +70,11 @@ fun Context.launchApp(packageName: String): Intent {
     return intent
 }
 
-fun Context.loadAnimation(id: Int): Animation {
-    return AnimationUtils.loadAnimation(this, id)
-}
+fun Context.loadAnimation(id: Int): Animation = AnimationUtils.loadAnimation(this, id)
 
 fun <T> Context.putPreference(key: String, value: T) = PreferenceUtils.apply(key, value)
 
-fun Context.toggleSoftInput() {
-    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-}
+fun Context.toggleSoftInput() = inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
 var Activity.screenBrightness
     get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)

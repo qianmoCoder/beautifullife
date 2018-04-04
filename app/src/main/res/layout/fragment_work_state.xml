@@ -7,6 +7,7 @@
 
 
     <EditText
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入" />
@@ -23,6 +24,11 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.ddu.icore.ui.view.CustomerTimeLineMarker
         android:id="@+id/item_time_line_mark"

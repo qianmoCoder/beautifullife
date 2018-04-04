@@ -1,12 +1,9 @@
 package com.ddu.ui.fragment
 
 import android.Manifest
-import android.app.Notification
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -15,6 +12,7 @@ import android.support.v4.content.ContextCompat
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.ui.fragment.work.FragmentA
 import kotlinx.android.synthetic.main.fragment_work.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.telephonyManager
@@ -37,27 +35,28 @@ class WorkFragment : DefaultFragment() {
         var count = 1
         val mNManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         oiv_fragment.setOnClickListener {
-//            NotificationUtils.sendNotification(ctx, "hello", "world", "123", 1, null)
+            //            NotificationUtils.sendNotification(ctx, "hello", "world", "123", 1, null)
 
-            val builder = Notification.Builder(context)
-                    .setTicker("Hello")
-                    .setContentTitle("world")
-                    .setContentText("bbc")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setWhen(System.currentTimeMillis())
-                    .setDefaults(Notification.DEFAULT_SOUND)
-                    .setLargeIcon(BitmapFactory.decodeResource(ctx.resources, R.mipmap.ic_launcher))
-                    .setAutoCancel(true)
-
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channel = NotificationChannel("1", "name", NotificationManager.IMPORTANCE_HIGH)
-                builder.setChannelId("1")
-                mNManager.createNotificationChannel(channel)
-            }
-
-            val notification = builder.notification
-            mNManager.notify("123", ++count, notification)
+//            val builder = Notification.Builder(context)
+//                    .setTicker("Hello")
+//                    .setContentTitle("world")
+//                    .setContentText("bbc")
+//                    .setSmallIcon(R.mipmap.ic_launcher)
+//                    .setWhen(System.currentTimeMillis())
+//                    .setDefaults(Notification.DEFAULT_SOUND)
+//                    .setLargeIcon(BitmapFactory.decodeResource(ctx.resources, R.mipmap.ic_launcher))
+//                    .setAutoCancel(true)
+//
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                val channel = NotificationChannel("1", "name", NotificationManager.IMPORTANCE_HIGH)
+//                builder.setChannelId("1")
+//                mNManager.createNotificationChannel(channel)
+//            }
+//
+//            val notification = builder.notification
+//            mNManager.notify("123", ++count, notification)
+            startFragment(FragmentA::class.java)
         }
         setTitle(R.string.main_tab_work)
 //        tv_money.text = DnsConfig.buildType
