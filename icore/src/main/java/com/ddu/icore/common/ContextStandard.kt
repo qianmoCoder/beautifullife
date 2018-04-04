@@ -12,9 +12,8 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
-import androidx.content.edit
+import com.ddu.icore.util.sys.PreferenceUtils
 import org.jetbrains.anko.connectivityManager
-import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.inputMethodManager
 import org.jetbrains.anko.powerManager
 
@@ -38,18 +37,7 @@ val Context.versionCode
     get() = packageManager.getPackageInfo(packageName, 0).versionCode
 
 
-fun <T> Context.getPreference(key: String, default: T): T? = with(defaultSharedPreferences) {
-    val res = when (default) {
-        is Boolean -> getBoolean(key, default)
-        is Float -> getFloat(key, default)
-        is Int -> getInt(key, default)
-        is Long -> getLong(key, default)
-        is String -> getString(key, default)
-        else -> null
-    }
-    res as? T
-}
-
+inline fun <reified T> Context.findPreference(key: String, default: T): T? = PreferenceUtils.findPreference(key, default)
 
 fun Context.getMarketIntent(): Intent {
     val uri = Uri.parse("market://details?id=" + packageName)
@@ -64,7 +52,7 @@ fun Context.isNetworkConnected(): Boolean? {
 }
 
 fun Context.isScreenOn(): Boolean? {
-    return powerManager?.isScreenOn
+    return powerManager.isScreenOn
 }
 
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
@@ -80,7 +68,6 @@ fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     return false
 }
 
-
 fun Context.launchApp(packageName: String): Intent {
     var intent = packageManager.getLaunchIntentForPackage(packageName) ?: getMarketIntent()
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -91,17 +78,7 @@ fun Context.loadAnimation(id: Int): Animation {
     return AnimationUtils.loadAnimation(this, id)
 }
 
-fun <T> Context.putPreference(key: String, value: T) {
-    defaultSharedPreferences.edit {
-        when (value) {
-            is Boolean -> putBoolean(key, value)
-            is Float -> putFloat(key, value)
-            is Int -> putInt(key, value)
-            is Long -> putLong(key, value)
-            is String -> putString(key, value)
-        }
-    }
-}
+fun <T> Context.putPreference(key: String, value: T) = PreferenceUtils.apply(key, value)
 
 fun Context.toggleSoftInput() {
     inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
@@ -115,7 +92,6 @@ var Activity.screenBrightness
         window.attributes = lp
     }
 
-
 fun Activity.hideKeyboard(view: View?): Boolean? {
     val currentView = currentFocus ?: view
     currentView?.let {
@@ -123,7 +99,6 @@ fun Activity.hideKeyboard(view: View?): Boolean? {
     }
     return false
 }
-
 
 fun Activity.showKeyboard(view: View?): Boolean? {
     val currentView = currentFocus ?: view

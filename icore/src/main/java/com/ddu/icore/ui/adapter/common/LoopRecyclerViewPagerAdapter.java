@@ -51,7 +51,7 @@ public class LoopRecyclerViewPagerAdapter<VH extends RecyclerView.ViewHolder>
         super.onBindViewHolder(holder, getActualPosition(position));
         // because of getCurrentPosition may return ViewHolder‘s position,
         // so we must reset mPosition if exists.
-        ViewHolderDelegate.setPosition(holder, position);
+        ViewHolderDelegate.Companion.setPosition(holder, position);
     }
 
     public int getActualPosition(int position) {

@@ -8,7 +8,7 @@ import org.jetbrains.anko.defaultSharedPreferences
  */
 object PreferenceUtils {
 
-    private val prefs by lazy {
+    val prefs by lazy {
         BaseApp.mContext.defaultSharedPreferences
     }
 
@@ -17,7 +17,7 @@ object PreferenceUtils {
 
     fun <V> commit(name: String, value: V) = putPreference(name, value).commit()
 
-    fun <T> findPreference(name: String, default: T): T = with(prefs) {
+    inline fun <reified T> findPreference(name: String, default: T): T? = with(prefs) {
         val res = when (default) {
             is Boolean -> getBoolean(name, default)
             is Float -> getFloat(name, default)
@@ -29,7 +29,7 @@ object PreferenceUtils {
                     "This type can be saved into Preferences"
             )
         }
-        res as T
+        res as? T
     }
 
     private fun <V> putPreference(name: String, value: V) = with(prefs.edit()) {
