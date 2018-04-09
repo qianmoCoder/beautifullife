@@ -17,6 +17,7 @@ import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
 import com.ddu.ui.fragment.study.ui.DialogFragment;
 import com.ddu.ui.fragment.study.ui.DrawFragment;
+import com.ddu.ui.fragment.study.ui.DrawViewFragment;
 import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
 import com.ddu.ui.fragment.study.ui.ImageFragment;
@@ -77,6 +78,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, DialogFragment.class);
         mMaps.put(0, DesignFragment.class);
         mMaps.put(0, DrawFragment.class);
+        mMaps.put(0, DrawViewFragment.class);
         mMaps.put(0, DRVFragment.class);
         mMaps.put(0, FlexboxFragment.class);
         mMaps.put(0, ImageFragment.class);
