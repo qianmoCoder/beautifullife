@@ -9,7 +9,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
  * Created by yzbzz on 2017/5/19.
  */
 
-public class UIFragment extends DefaultFragment {
+public class UITestFragment extends DefaultFragment {
     @Override
     public void initData(Bundle savedInstanceState) {
 

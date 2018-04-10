@@ -15,9 +15,9 @@ class DrawView1 : View {
 
     init {
         // 使用 path 对图形进行描述（这段描述代码不必看懂）
-        path.addArc(RectF(100f, 100f, 300f, 300f), -225f, 225f)
-        path.arcTo(RectF(200f, 100f, 500f, 300f), -180f, 225f, false)
-        path.lineTo(400f, 542f)
+        path.addArc(RectF(200f, 50f, 400f, 250f), -225f, 225f)
+        path.arcTo(RectF(400f, 50f, 600f, 250f), -180f, 225f, false)
+        path.lineTo(400f, 392f)
     }
 
 

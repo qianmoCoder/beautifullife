@@ -10,6 +10,7 @@ import com.ddu.icore.util.MultiHashMap;
 import com.ddu.ui.adapter.StudyRecycleViewAdapter;
 import com.ddu.ui.fragment.WebFragment;
 import com.ddu.ui.fragment.person.PersonalInfoFragment;
+import com.ddu.ui.fragment.study.imitate.UIFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.CameraFragment;
 import com.ddu.ui.fragment.study.ui.ConstraintFragment;
@@ -37,7 +38,7 @@ import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TabPageIndicatorFragment;
 import com.ddu.ui.fragment.study.ui.TextViewFragment;
 import com.ddu.ui.fragment.study.ui.ToolBarFragment;
-import com.ddu.ui.fragment.study.ui.UIFragment;
+import com.ddu.ui.fragment.study.ui.UITestFragment;
 import com.ddu.ui.fragment.study.ui.ViewFragment;
 import com.ddu.ui.fragment.study.ui.WifiFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
@@ -90,6 +91,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, ToolBarFragment.class);
         mMaps.put(0, BottomSheetFragment.class);
         mMaps.put(0, KotlinFragment.class);
+        mMaps.put(0, UITestFragment.class);
     }
 
     private int index;

@@ -15,16 +15,19 @@ import kotlinx.android.synthetic.main.fragment_ui_shape.*
  */
 class ShapeFragment : DefaultFragment(), View.OnClickListener {
 
-    var beginColor: Int = resources.getColor(R.color.c_252525)
-    var middleColor: Int = resources.getColor(R.color.c_3e7492)
-    var endColor: Int = resources.getColor(R.color.c_a6c0cd)
-    var strokeColor: Int = resources.getColor(R.color.c_2e3135)
+    private var beginColor: Int = 0
+    private var middleColor: Int = 0
+    private var endColor: Int = 0
+    private var strokeColor: Int = 0
 
     private var strokeWidth: Int = 0
     private var roundRadius: Int = 0
 
     override fun initData(savedInstanceState: Bundle?) {
-
+        beginColor = resources.getColor(R.color.c_252525)
+        middleColor = resources.getColor(R.color.c_3e7492)
+        endColor = resources.getColor(R.color.c_a6c0cd)
+        strokeColor = resources.getColor(R.color.c_2e3135)
 
     }
 
