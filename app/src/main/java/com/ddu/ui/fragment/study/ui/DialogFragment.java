@@ -68,6 +68,7 @@ public class DialogFragment extends DefaultFragment {
                 mIvG.setPivotX(mIvG.getWidth());
                 mIvG.setPivotY(mIvG.getHeight() / 2);
                 animatorSet.start();
+
                 rotationY.start();
             }
         });
@@ -78,6 +79,7 @@ public class DialogFragment extends DefaultFragment {
 
                 mHeaderImageMatrix.setRotate(60, mRotationPivotX, mRotationPivotY);
                 mIvRotate.setImageMatrix(mHeaderImageMatrix);
+
 //                mIvCar.setVisibility(View.INVISIBLE);
 //                scaleByObjectAnimator.cancel();
 //                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
@@ -113,6 +115,8 @@ public class DialogFragment extends DefaultFragment {
         rotationY.setStartDelay(300);
         animatorSet = new AnimatorSet();
         animatorSet.playSequentially(scaleByObjectAnimator, objectAnimator);
+
+
     }
 
     @Override
