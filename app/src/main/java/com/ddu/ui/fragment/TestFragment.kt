@@ -27,7 +27,7 @@ import com.ddu.icore.util.UrlUtils
 import com.ddu.sdk.network.OkHttpUtils
 import com.ddu.ui.helper.WebAppInterface
 import com.ddu.util.HttpUtils
-import kotlinx.android.synthetic.main.fragment_web.*
+import kotlinx.android.synthetic.main.fragment_test_web.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import okhttp3.*
@@ -95,7 +95,7 @@ class TestFragment : DefaultFragment() {
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_web
+        return R.layout.fragment_test_web
     }
 
     override fun initView() {

@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 
-import com.ddu.ui.fragment.WebFragment;
+import com.ddu.ui.fragment.TestFragment;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -14,14 +14,14 @@ import org.json.JSONObject;
 public class WebAppInterface {
 
     Context mContext;
-    WebFragment mFagment;
+    TestFragment mFagment;
 
 
     public WebAppInterface(Context context) {
         mContext = context;
     }
 
-    public WebAppInterface(WebFragment context) {
+    public WebAppInterface(TestFragment context) {
         mFagment = context;
     }
 

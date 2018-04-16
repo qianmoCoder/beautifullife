@@ -57,6 +57,8 @@ class WebFragment : DefaultFragment() {
         wv_web.webChromeClient = webChromeClient
 
         initTitle()
+
+        wv_web.loadUrl(url)
     }
 
     private fun initTitle() {

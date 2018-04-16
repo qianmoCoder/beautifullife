@@ -13,6 +13,7 @@ class ShareDialogFragment : BottomDialogFragment(), View.OnClickListener {
 
     private var shareEntities: List<ShareEntity>? = null
     private var shareAdapter: ShareAdapter? = null
+    private var callBack: ((ShareEntity?, Int, ShareDialogFragment) -> Unit)? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_share, container, false)
@@ -38,10 +39,7 @@ class ShareDialogFragment : BottomDialogFragment(), View.OnClickListener {
 
         shareAdapter?.setOnItemClickListener(object : ShareAdapter.OnClickListener<ShareEntity> {
             override fun onClick(data: ShareEntity?, position: Int) {
-                val url = data?.url
-                if (!url.isNullOrEmpty()) {
-//                    Navigator.startShowDetailActivity(ctx, WebViewFragment::class.java, bundle)
-                }
+                callBack?.invoke(data, position, this@ShareDialogFragment)
             }
         })
     }
@@ -57,9 +55,10 @@ class ShareDialogFragment : BottomDialogFragment(), View.OnClickListener {
 
         private const val SPAN_COUNT = 3
 
-        fun newInstance(list: List<ShareEntity>): ShareDialogFragment {
+        fun newInstance(list: List<ShareEntity>, cb: (ShareEntity?, Int, ShareDialogFragment) -> Unit): ShareDialogFragment {
             return ShareDialogFragment().apply {
                 shareEntities = list
+                callBack = cb
             }
         }
     }

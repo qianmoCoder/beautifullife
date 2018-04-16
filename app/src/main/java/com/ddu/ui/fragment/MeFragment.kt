@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.os.SystemClock
 import com.ddu.R
 import com.ddu.icore.dialog.DefaultDialogFragment
+import com.ddu.icore.dialog.ShareDialogFragment
+import com.ddu.icore.entity.ShareEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -44,7 +46,6 @@ class MeFragment : DefaultFragment() {
         oiv_eggs.setOnClickListener {
             System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
             mHits[mHits.size - 1] = SystemClock.uptimeMillis()
-
             if (mHits[0] >= SystemClock.uptimeMillis() - DURATION) {
                 dialog?.let {
                     if (!it.isVisible) {
@@ -56,11 +57,15 @@ class MeFragment : DefaultFragment() {
         oiv_setting.setOnClickListener {
             startFragment(SettingFragment::class.java)
         }
+
+        oiv_friend_link.setOnClickListener {
+            showShareDialog()
+        }
     }
 
     companion object {
 
-        internal const val COUNTS = 5//点击次数
+        internal const val COUNTS = 10//点击次数
         internal const val DURATION = (3 * 1000).toLong()//规定有效时间
 
         fun newInstance(): MeFragment {
@@ -69,5 +74,47 @@ class MeFragment : DefaultFragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    private fun showShareDialog() {
+        var shareEntities = mutableListOf<ShareEntity>()
+
+        val github = ShareEntity()
+        github.name = "GitHub"
+        github.resId = R.drawable.me_friend_link_github
+        github.url = "https://github.com/yzbzz"
+
+        val blog = ShareEntity()
+        blog.name = "Blog"
+        blog.resId = R.drawable.me_friend_link_blog
+        blog.url = "http://yzbzz.github.io"
+
+        shareEntities.add(github)
+        shareEntities.add(blog)
+
+        val shareDialog = ShareDialogFragment.newInstance(shareEntities, { data, _, shareDialog ->
+            data?.apply {
+                shareDialog.dismissAllowingStateLoss()
+                val dialog = DefaultDialogFragment().apply {
+                    title = "即将前往"
+                    msg = "${data.url}"
+                    leftText = "取消"
+                    rightText = "确定"
+                    mLeftClickListener = { _, _ ->
+                        dismissAllowingStateLoss()
+                    }
+                    mRightClickListener = { _, _ ->
+                        dismissAllowingStateLoss()
+                        val args = Bundle()
+                        args.putString("mTitle", name)
+                        args.putString("url", url)
+                        startFragment(WebFragment::class.java, args)
+                    }
+                }
+                dialog.show(fragmentManager, "")
+
+            }
+        })
+        shareDialog.show(fragmentManager, "")
     }
 }
