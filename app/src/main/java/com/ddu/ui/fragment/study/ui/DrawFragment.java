@@ -10,10 +10,12 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.help.ShapeInjectHelper;
 import com.ddu.icore.ui.view.ShapeButton;
 import com.ddu.icore.util.sys.ViewUtils;
+import com.iannotation.ContentType;
 
 /**
  * Created by lhz on 16/5/6.
  */
+@ContentType("UI")
 public class DrawFragment extends DefaultFragment {
 
     private ShapeButton shapeTextView;

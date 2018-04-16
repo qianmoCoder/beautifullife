@@ -10,11 +10,12 @@ import android.widget.ScrollView;
 import com.ddu.R;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.ContentType;
 
 /**
  * Created by yzbzz on 2017/5/25.
  */
-
+@ContentType("UI")
 public class InnerScrollViewFragment extends DefaultFragment {
 
     private ScrollView scrollView1;

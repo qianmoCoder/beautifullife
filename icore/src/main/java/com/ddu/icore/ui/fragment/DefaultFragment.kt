@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.ddu.icore.R
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.activity.ShowDetailActivity

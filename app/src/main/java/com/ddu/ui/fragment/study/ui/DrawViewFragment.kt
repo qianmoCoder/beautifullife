@@ -4,10 +4,12 @@ import android.os.Bundle
 
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.iannotation.ContentType
 
 /**
  * Created by lhz on 16/5/6.
  */
+@ContentType("UI")
 class DrawViewFragment : DefaultFragment() {
 
 

@@ -5,6 +5,7 @@ import android.os.SystemClock
 import com.ddu.R
 import com.ddu.icore.dialog.DefaultDialogFragment
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.ui.fragment.person.SettingFragment
 import kotlinx.android.synthetic.main.fragment_me.*
 
 /**
@@ -35,6 +36,11 @@ class MeFragment : DefaultFragment() {
     }
 
     override fun initView() {
+        setTitle(R.string.main_tab_me)
+
+        tv_usr_name.text = "yzbzz"
+        tv_usr_number.text = "186-xxxx-xxx"
+
         oiv_eggs.setOnClickListener {
             System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
             mHits[mHits.size - 1] = SystemClock.uptimeMillis()
@@ -47,8 +53,9 @@ class MeFragment : DefaultFragment() {
                 }
             }
         }
-
-        setTitle(R.string.main_tab_me)
+        oiv_setting.setOnClickListener {
+            startFragment(SettingFragment::class.java)
+        }
     }
 
     companion object {

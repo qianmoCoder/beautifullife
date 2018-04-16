@@ -11,12 +11,14 @@ import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.HeaderOrFooterRecycleViewAdapter
+import com.iannotation.ContentType
 import kotlinx.android.synthetic.main.fragment_swipe_refresh.*
 import java.util.*
 
 /**
  * Created by yzbzz on 16/5/6.
  */
+@ContentType("UI")
 class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val mDatas = ArrayList<String>()

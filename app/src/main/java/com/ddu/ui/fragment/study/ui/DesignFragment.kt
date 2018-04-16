@@ -13,11 +13,13 @@ import android.view.animation.AnimationUtils
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.AnimatorUtils
+import com.iannotation.ContentType
 import kotlinx.android.synthetic.main.fragment_design.*
 
 /**
  * Created by lhz on 16/5/6.
  */
+@ContentType("UI")
 class DesignFragment : DefaultFragment() {
 
     private var mDrawFragment: DrawFragment? = null

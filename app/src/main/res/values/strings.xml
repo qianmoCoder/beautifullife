@@ -24,6 +24,13 @@
     <string name="life_calculator">计算器</string>
     <string name="life_calculator_house">房贷计算器</string>
     <string name="life_calculator_income">个税计算器</string>
+
+    <string name="life_food">饮食</string>
+    <string name="life_sleep">作息时间</string>
+
+    <string name="life_food_detail">【健康小课堂】\n❤️红色入心：\n\t西红柿、红萝卜、枸杞、红枣、红肉椒。\n💚绿色入肝：\n\t芹菜、波菜，空心菜，西兰花等绿色蔬菜。\n💛黄色入脾：\n\t小米，玉米粒、红薯、南瓜，土豆。\n⚫️黑色入肾：黑木耳、紫菜、黑芝麻，黑米。\n⚪️白色入肺：\n\t银耳、百合、山药、杏仁、白萝卜。
+\n每天，五色蔬菜都用，5种颜色各一种。功效：有利于身体平衡哦[耶][耶][耶]</string>
+
     <string name="life_joke">笑话</string>
     <string name="life_sentiment">感悟</string>
     <string name="help"><a href="http://www.baidu.com">打开app</a></string>

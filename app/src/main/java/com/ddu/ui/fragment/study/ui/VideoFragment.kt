@@ -9,13 +9,14 @@ import com.ddu.icore.app.BaseApp
 import com.ddu.icore.common.alphaAnimator
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.ToastUtils
+import com.iannotation.ContentType
 import com.umeng.socialize.utils.ContextUtil.getPackageName
 import kotlinx.android.synthetic.main.fragment_ui_video.*
 
 /**
  * Created by yzbzz on 2017/6/22.
  */
-
+@ContentType("UI")
 class VideoFragment : DefaultFragment() {
 
 

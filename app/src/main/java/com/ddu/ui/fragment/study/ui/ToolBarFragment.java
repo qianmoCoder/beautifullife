@@ -3,12 +3,14 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.R;
+import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.ContentType;
 
 /**
  * Created by yzbzz on 16/5/6.
  */
+@ContentType("UI")
 public class ToolBarFragment extends DefaultFragment {
 
     @Override

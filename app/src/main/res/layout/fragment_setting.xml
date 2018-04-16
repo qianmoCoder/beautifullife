@@ -1,0 +1,54 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_change_skin"
+                style="@style/DefaultRelativeLayout"
+                app:arrowImage="@drawable/right_arrow_gray"
+                app:leftText="换肤" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_global"
+                style="@style/DefaultRelativeLayout"
+                app:arrowImage="@drawable/right_arrow_gray"
+                app:leftText="通用" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_version"
+                style="@style/DefaultRelativeLayout"
+                app:arrowImage="@drawable/right_arrow_gray"
+                app:leftText="当前版本" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_about_me"
+                style="@style/DefaultRelativeLayout"
+                app:arrowImage="@drawable/right_arrow_gray"
+                app:leftText="关于我" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

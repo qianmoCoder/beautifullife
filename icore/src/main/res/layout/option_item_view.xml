@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="@dimen/dp_32"
-        android:layout_height="@dimen/dp_32"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/dp_10"
         android:scaleType="fitXY" />
@@ -35,6 +35,7 @@
             android:id="@+id/tv_right_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_5"
             android:textColor="@color/c_666666"
             android:textSize="@dimen/sp_15"
             tools:text="right" />

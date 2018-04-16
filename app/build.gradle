@@ -42,7 +42,7 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
-            versionNameSuffix "测试"
+            versionNameSuffix "(debug)"
 //            applicationIdSuffix ".debug"
         }
         release {

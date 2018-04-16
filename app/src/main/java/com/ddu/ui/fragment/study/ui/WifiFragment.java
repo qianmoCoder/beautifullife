@@ -9,11 +9,12 @@ import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.ContentType;
 
 /**
  * Created by yzbzz on 2017/9/1.
  */
-
+@ContentType("UI")
 public class WifiFragment extends DefaultFragment {
 
     private Button btnConnect;
