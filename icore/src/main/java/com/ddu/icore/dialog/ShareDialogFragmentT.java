@@ -19,7 +19,7 @@ import com.ddu.icore.util.sys.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShareDialogFragment extends BottomDialogFragment implements View.OnClickListener {
+public class ShareDialogFragmentT extends BottomDialogFragment implements View.OnClickListener {
 
     private static int SPAN_COUNT = 3;
 
@@ -62,8 +62,8 @@ public class ShareDialogFragment extends BottomDialogFragment implements View.On
 
     }
 
-    public static ShareDialogFragment newInstance() {
-        ShareDialogFragment dialog = new ShareDialogFragment();
+    public static ShareDialogFragmentT newInstance() {
+        ShareDialogFragmentT dialog = new ShareDialogFragmentT();
         return dialog;
     }
 

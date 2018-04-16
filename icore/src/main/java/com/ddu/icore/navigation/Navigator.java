@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.ddu.icore.dialog.ShareDialogFragment;
+import com.ddu.icore.dialog.ShareDialogFragmentT;
 import com.ddu.icore.ui.activity.ShowDetailActivity;
 
 /**
@@ -42,7 +42,7 @@ public class Navigator {
     }
 
     public static void startShareFragmentDialog(@NonNull FragmentActivity activity) {
-        ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
+        ShareDialogFragmentT shareDialogFragment = ShareDialogFragmentT.newInstance();
         shareDialogFragment.show(activity.getSupportFragmentManager(), "shareDialogFragment");
     }
 

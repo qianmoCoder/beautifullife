@@ -8,6 +8,7 @@ public class ShareEntity {
 
     private String name;
     private int resId;
+    private String url;
 
     public String getName() {
         return name;
@@ -23,5 +24,13 @@ public class ShareEntity {
 
     public void setResId(int resId) {
         this.resId = resId;
+    }
+
+    public String getUrl() {
+        return url == null ? "" : url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

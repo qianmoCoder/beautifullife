@@ -30,7 +30,7 @@ class FragmentA : DefaultFragment() {
     override fun initView() {
         tv_show.text = schemeUrl
         button.setOnClickListener {
-            //                ShareDialogFragment bottomSheetDialogFragment = new ShareDialogFragment();
+            //                ShareDialogFragmentT bottomSheetDialogFragment = new ShareDialogFragmentT();
             //                bottomSheetDialogFragment.show(getFragmentManager(), "");
             //                replaceFragment(FragmentB.newInstance());
 //            (mActivity as ShowDetailActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
