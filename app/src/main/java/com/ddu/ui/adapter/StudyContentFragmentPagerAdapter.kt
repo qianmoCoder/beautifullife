@@ -21,7 +21,7 @@ class StudyContentFragmentPagerAdapter(fm: FragmentManager?, titleList: List<Str
     }
 
     override fun getItem(position: Int): Fragment {
-        return StudyContentFragment.newInstance(0)
+        return StudyContentFragment.newInstance("UI")
     }
 
     override fun getCount(): Int {

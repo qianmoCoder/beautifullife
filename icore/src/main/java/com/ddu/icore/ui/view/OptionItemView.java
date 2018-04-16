@@ -36,54 +36,54 @@ public class OptionItemView extends RelativeLayout {
 
         init();
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomItemView);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OptionItemViewStyle);
 
-        int resId = a.getResourceId(R.styleable.CustomItemView_image, -1);
+        int resId = a.getResourceId(R.styleable.OptionItemViewStyle_image, -1);
         if (resId > 0) {
             ivIcon.setImageResource(resId);
         } else {
             ivIcon.setVisibility(GONE);
         }
 
-        int mImageScale = a.getInt(R.styleable.CustomItemView_imageScaleType, -1);
+        int mImageScale = a.getInt(R.styleable.OptionItemViewStyle_imageScaleType, -1);
         if (mImageScale > 0) {
             ivIcon.setScaleType(sScaleTypeArray[mImageScale]);
         }
 
-        String title = a.getString(R.styleable.CustomItemView_leftText);
+        String title = a.getString(R.styleable.OptionItemViewStyle_leftText);
         if (!TextUtils.isEmpty(title)) {
             tvLeftText.setText(title);
         } else {
             tvLeftText.setVisibility(GONE);
         }
 
-        int color = a.getColor(R.styleable.CustomItemView_leftTextColor, Color.BLACK);
+        int color = a.getColor(R.styleable.OptionItemViewStyle_leftTextColor, Color.BLACK);
         tvLeftText.setTextColor(color);
 
-        int size = a.getDimensionPixelSize(R.styleable.CustomItemView_leftTextSize, 16);
+        int size = a.getDimensionPixelSize(R.styleable.OptionItemViewStyle_leftTextSize, 16);
         tvLeftText.setTextSize(size);
 
-        String content = a.getString(R.styleable.CustomItemView_rightText);
+        String content = a.getString(R.styleable.OptionItemViewStyle_rightText);
         if (!TextUtils.isEmpty(content)) {
             tvRightText.setText(content);
         } else {
             tvRightText.setVisibility(GONE);
         }
 
-        int contentColor = a.getColor(R.styleable.CustomItemView_rightTextColor, 0xff666666);
+        int contentColor = a.getColor(R.styleable.OptionItemViewStyle_rightTextColor, 0xff666666);
         tvRightText.setTextColor(contentColor);
 
-        int contentSize = a.getDimensionPixelSize(R.styleable.CustomItemView_rightTextSize, 14);
+        int contentSize = a.getDimensionPixelSize(R.styleable.OptionItemViewStyle_rightTextSize, 14);
         tvRightText.setTextSize(contentSize);
 
-        int arrowResId = a.getResourceId(R.styleable.CustomItemView_carrowImage, -1);
+        int arrowResId = a.getResourceId(R.styleable.OptionItemViewStyle_arrowImage, -1);
         if (arrowResId > 0) {
             ivArrow.setImageResource(arrowResId);
         } else {
             ivArrow.setVisibility(GONE);
         }
 
-        int arrowScale = a.getInt(R.styleable.CustomItemView_carrowImageScaleType, -1);
+        int arrowScale = a.getInt(R.styleable.OptionItemViewStyle_arrowImageScaleType, -1);
         if (arrowScale > 0) {
             ivArrow.setScaleType(sScaleTypeArray[arrowScale]);
         }

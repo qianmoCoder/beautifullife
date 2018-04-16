@@ -97,6 +97,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':icore')
+    implementation project(':iannotation')
+    kapt project(':iprocessors')
 
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 

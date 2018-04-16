@@ -27,7 +27,7 @@
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="CustomItemView">
+    <declare-styleable name="OptionItemViewStyle">
         <attr name="leftText" />
         <attr name="leftTextSize" />
         <attr name="leftTextColor" />
@@ -36,8 +36,8 @@
         <attr name="rightTextColor" />
         <attr name="image" />
         <attr name="imageScaleType" />
-        <attr name="carrowImage" />
-        <attr name="carrowImageScaleType" />
+        <attr name="arrowImage" />
+        <attr name="arrowImageScaleType" />
     </declare-styleable>
 
     <declare-styleable name="common_title">

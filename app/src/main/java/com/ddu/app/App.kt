@@ -7,6 +7,7 @@ import android.net.wifi.WifiManager
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
+import com.ddu.help.MyProviderProvider
 import com.ddu.icore.app.BaseApp
 import com.ddu.receiver.NetInfoBroadcastReceiver
 import com.ddu.util.SystemUtils
@@ -124,5 +125,7 @@ class App : BaseApp() {
 
         var boxStore: BoxStore? = null
             private set
+
+        var mp = MyProviderProvider()
     }
 }
