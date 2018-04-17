@@ -3,6 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <WebView
+        android:id="@+id/wv_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layerType="software" />
+
     <ProgressBar
         android:id="@+id/pb_web"
         style="?android:attr/progressBarStyleHorizontal"
@@ -11,12 +17,6 @@
         android:background="@null"
         android:progressDrawable="@drawable/progress_bar_layer"
         android:visibility="gone" />
-
-    <WebView
-        android:id="@+id/wv_web"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layerType="software" />
 
 </FrameLayout>
 
