@@ -5,7 +5,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.ddu.icore.R
 import com.ddu.icore.entity.BottomItemEntity
-import kotlinx.android.synthetic.main.fragment_share.*
+import kotlinx.android.synthetic.main.dialog_bottom_content.*
 
 class RvBottomDialogFragment : AbsBottomDialogFragment() {
 
@@ -45,7 +45,7 @@ class RvBottomDialogFragment : AbsBottomDialogFragment() {
         tv_title.text = mTitle
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_share
+    override fun getLayoutId(): Int = R.layout.dialog_bottom_content
 
     companion object {
 

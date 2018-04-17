@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.dialog_font_setting.*
 class FontSettingDialog : AbsBottomDialogFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.dialog_font_setting
+        return R.layout.dialog_bottom_content
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,6 +32,16 @@ class FontSettingDialog : AbsBottomDialogFragment() {
 //            }
 //
         doSomething()
+//        object : DefaultRecycleViewAdapter<String>(mContext, mDatas) {
+//
+//            override fun getLayoutId(viewType: Int): Int {
+//                return R.layout.recyclerview_item_default
+//            }
+//
+//            override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {
+//                viewHolder.setText(R.id.tv_detail, data)
+//            }
+//        };
 //        })
     }
 

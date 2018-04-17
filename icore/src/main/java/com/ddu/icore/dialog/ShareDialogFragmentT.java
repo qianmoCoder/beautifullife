@@ -70,7 +70,7 @@
 //    @Nullable
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_share, container, false);
+//        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.dialog_fragment_bottom_content, container, false);
 //
 //        mTvCancel = ViewUtils.findViewById(linearLayout, R.id.tv_cancel);
 //        mTvCancel.setOnClickListener(this);

@@ -2,10 +2,11 @@ package com.ddu.icore.dialog
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.ddu.icore.R
 import com.ddu.icore.entity.BottomItemEntity
-import kotlinx.android.synthetic.main.fragment_share.*
+import kotlinx.android.synthetic.main.dialog_bottom_content.*
 
 class DefaultBottomDialogFragment : AbsBottomDialogFragment() {
 
@@ -26,7 +27,7 @@ class DefaultBottomDialogFragment : AbsBottomDialogFragment() {
         }
 
         val gridLayoutManager = GridLayoutManager(context, spanCount)
-        rv_share.layoutManager = gridLayoutManager
+        rv_share.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         mShareAdapter = DefaultBottomAdapter(context, mShareEntities)
         rv_share.adapter = mShareAdapter
@@ -45,7 +46,7 @@ class DefaultBottomDialogFragment : AbsBottomDialogFragment() {
         tv_title.text = mTitle
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_share
+    override fun getLayoutId(): Int = R.layout.dialog_bottom_content
 
     companion object {
 

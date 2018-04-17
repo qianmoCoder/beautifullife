@@ -39,7 +39,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_share);
+        setContentView(R.layout.dialog_bottom_content);
 
         Window win = this.getWindow();
         WindowManager.LayoutParams lp = win.getAttributes();
