@@ -3,9 +3,9 @@ package com.ddu.ui.fragment
 import android.os.Bundle
 import android.os.SystemClock
 import com.ddu.R
+import com.ddu.icore.dialog.DefaultBottomDialogFragment
 import com.ddu.icore.dialog.DefaultDialogFragment
-import com.ddu.icore.dialog.ShareDialogFragment
-import com.ddu.icore.entity.ShareEntity
+import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -77,14 +77,14 @@ class MeFragment : DefaultFragment() {
     }
 
     private fun showShareDialog() {
-        var shareEntities = mutableListOf<ShareEntity>()
+        var shareEntities = mutableListOf<BottomItemEntity>()
 
-        val github = ShareEntity()
+        val github = BottomItemEntity()
         github.name = "GitHub"
         github.resId = R.drawable.me_friend_link_github
         github.url = "https://github.com/yzbzz"
 
-        val blog = ShareEntity()
+        val blog = BottomItemEntity()
         blog.name = "Blog"
         blog.resId = R.drawable.me_friend_link_blog
         blog.url = "http://yzbzz.github.io"
@@ -92,7 +92,7 @@ class MeFragment : DefaultFragment() {
         shareEntities.add(github)
         shareEntities.add(blog)
 
-        val shareDialog = ShareDialogFragment.newInstance(shareEntities, { data, _, shareDialog ->
+        val shareDialog = DefaultBottomDialogFragment.newInstance(list = shareEntities, cb = { data, _, shareDialog ->
             data?.apply {
                 shareDialog.dismissAllowingStateLoss()
                 val dialog = DefaultDialogFragment().apply {

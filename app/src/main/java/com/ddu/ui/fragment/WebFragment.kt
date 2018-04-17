@@ -7,8 +7,15 @@ import android.text.TextUtils
 import android.view.View
 import android.webkit.*
 import com.ddu.R
+import com.ddu.icore.common.clipText
+import com.ddu.icore.common.startBrowser
+import com.ddu.icore.dialog.DefaultBottomDialogFragment
+import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.icore.util.ToastUtils
+import com.ddu.ui.dialog.FontSettingDialog
 import kotlinx.android.synthetic.main.fragment_web.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -17,12 +24,12 @@ class WebFragment : DefaultFragment() {
 
     private var mWebSettings: WebSettings? = null
     private var mTitle = ""
-    private var url = ""
+    private var mUrl = ""
 
     override fun initData(savedInstanceState: Bundle?) {
         arguments?.apply {
             mTitle = getString("mTitle", "")
-            url = getString("url", "")
+            mUrl = getString("url", "")
         }
     }
 
@@ -58,14 +65,14 @@ class WebFragment : DefaultFragment() {
 
         initTitle()
 
-        wv_web.loadUrl(url)
+        wv_web.loadUrl(mUrl)
     }
 
     private fun initTitle() {
         setDefaultTitle(mTitle)
         setRightImg(R.drawable.ic_more_add_selector, object : View.OnClickListener {
             override fun onClick(v: View?) {
-                wv_web.pageUp(true)
+                showBottomDialog()
             }
         })
 
@@ -75,6 +82,64 @@ class WebFragment : DefaultFragment() {
             }
         })
     }
+
+    private fun showBottomDialog() {
+        val entity = getEntity()
+        val dialog = DefaultBottomDialogFragment.newInstance("操作", entity, { _, _, _ ->
+        })
+        dialog.show(fragmentManager, "")
+    }
+
+    private fun getEntity(): List<BottomItemEntity> {
+        val entities = mutableListOf<BottomItemEntity>()
+
+        val sendEntity = BottomItemEntity("发送给朋友", R.drawable.bottom_icon_send) {
+
+        }
+        entities.add(sendEntity)
+
+        val favoriteEntity = BottomItemEntity("收藏", R.drawable.bottom_icon_favorite)
+        entities.add(favoriteEntity)
+
+        val searchEntity = BottomItemEntity("搜索页面内容", R.drawable.bottom_icon_search)
+        entities.add(searchEntity)
+
+        val linkEntity = BottomItemEntity("复制链接", R.drawable.bottom_icon_link) {
+            ctx.clipText(mUrl)
+            ToastUtils.showToast("已复制到剪贴板")
+        }
+        entities.add(linkEntity)
+
+        val browserEntity = BottomItemEntity("在浏览器打开", R.drawable.bottom_icon_browser) {
+            ctx.startBrowser(mUrl)
+        }
+        entities.add(browserEntity)
+
+        val fontEntity = BottomItemEntity("字体", R.drawable.bottom_icon_font) {
+            // SMALLEST(50),
+//            SMALLER(75),
+//            NORMAL(100),
+//            LARGER(150),
+//            LARGEST(200);
+//            mWebSettings?.textZoom = 50
+            val dialog = FontSettingDialog()
+            dialog.show(fragmentManager, "")
+        }
+        entities.add(fontEntity)
+
+        val refreshEntity = BottomItemEntity("刷新", R.drawable.bottom_icon_refresh) {
+            wv_web.reload()
+        }
+        entities.add(refreshEntity)
+
+        val warningEntity = BottomItemEntity("投诉", R.drawable.bottom_icon_warning) {
+
+        }
+        entities.add(warningEntity)
+
+        return entities
+    }
+
 
     private val webChromeClient = object : WebChromeClient() {
 

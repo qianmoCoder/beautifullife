@@ -4,8 +4,10 @@ import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
 import android.app.Fragment
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -15,7 +17,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import com.ddu.icore.ui.activity.ShowDetailActivity
+import com.ddu.icore.util.ToastUtils
 import com.ddu.icore.util.sys.PreferenceUtils
+import org.jetbrains.anko.clipboardManager
 import org.jetbrains.anko.connectivityManager
 import org.jetbrains.anko.inputMethodManager
 import org.jetbrains.anko.powerManager
@@ -41,6 +45,10 @@ val Context.versionCode
 
 
 inline fun <reified T> Context.findPreference(key: String, default: T): T? = PreferenceUtils.findPreference(key, default)
+
+fun Context.clipText(text: String = "") {
+    clipboardManager.primaryClip = ClipData.newPlainText("clipText", text)
+}
 
 fun Context.getMarketIntent(): Intent {
     val uri = Uri.parse("market://details?id=" + packageName)
@@ -85,6 +93,16 @@ inline fun <reified T : Fragment> Context.startFragment(bundle: Bundle = Bundle(
 
 fun Context.startFragment(fragmentName: String, bundle: Bundle = Bundle()) {
     startActivity(ShowDetailActivity.getShowDetailIntent(this, fragmentName, bundle))
+}
+
+fun Context.startBrowser(url: String = "") {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    val handlers = packageManager.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)
+    if (handlers == null || handlers!!.size == 0) {
+        ToastUtils.showToast("browser not found")
+    } else {
+        startActivity(intent)
+    }
 }
 
 var Activity.screenBrightness

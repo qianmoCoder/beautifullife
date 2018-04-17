@@ -4,13 +4,16 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import android.view.Gravity
-import android.view.WindowManager
+import android.view.*
 import com.ddu.icore.R
 import org.jetbrains.anko.support.v4.act
 
 
-open class BottomDialogFragment : DialogFragment() {
+abstract class AbsBottomDialogFragment : DialogFragment() {
+
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(getLayoutId(), container, false)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -30,5 +33,7 @@ open class BottomDialogFragment : DialogFragment() {
 
         return dialog
     }
+
+    abstract fun getLayoutId(): Int
 
 }

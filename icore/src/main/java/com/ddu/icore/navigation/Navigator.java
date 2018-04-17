@@ -6,9 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 
-import com.ddu.icore.dialog.ShareDialogFragmentT;
 import com.ddu.icore.ui.activity.ShowDetailActivity;
 
 /**
@@ -41,9 +39,9 @@ public class Navigator {
         context.startActivity(intent);
     }
 
-    public static void startShareFragmentDialog(@NonNull FragmentActivity activity) {
-        ShareDialogFragmentT shareDialogFragment = ShareDialogFragmentT.newInstance();
-        shareDialogFragment.show(activity.getSupportFragmentManager(), "shareDialogFragment");
-    }
+//    public static void startShareFragmentDialog(@NonNull FragmentActivity activity) {
+//        ShareDialogFragmentT shareDialogFragment = ShareDialogFragmentT.newInstance();
+//        shareDialogFragment.show(activity.getSupportFragmentManager(), "shareDialogFragment");
+//    }
 
 }

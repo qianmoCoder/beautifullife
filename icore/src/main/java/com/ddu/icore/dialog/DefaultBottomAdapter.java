@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ddu.icore.R;
-import com.ddu.icore.entity.ShareEntity;
+import com.ddu.icore.entity.BottomItemEntity;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
@@ -17,12 +17,23 @@ import java.util.List;
  * Created by yzbzz on 2017/3/31.
  */
 
-public class ShareAdapter extends DefaultRecycleViewAdapter<ShareEntity> {
+public class DefaultBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEntity> {
 
     private OnClickListener onClickListener;
 
-    public ShareAdapter(Context context, List<ShareEntity> items) {
+    private int mHeight;
+    private int mImgHeight;
+
+    private int mSmallHeight;
+    private int mSmallImgHeight;
+
+    public DefaultBottomAdapter(Context context, List<BottomItemEntity> items) {
         super(context, items);
+        mHeight = (int) mContext.getResources().getDimension(R.dimen.dp_120);
+        mImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_40);
+
+        mSmallHeight = (int) mContext.getResources().getDimension(R.dimen.dp_90);
+        mSmallImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_30);
     }
 
     @Override
@@ -31,20 +42,21 @@ public class ShareAdapter extends DefaultRecycleViewAdapter<ShareEntity> {
     }
 
     @Override
-    public void bindView(ViewHolder viewHolder, final ShareEntity data, final int position) {
+    public void bindView(ViewHolder viewHolder, final BottomItemEntity data, final int position) {
 
         ImageView imageView = viewHolder.getView(R.id.iv_share);
 
         int size = mItems.size();
-        int height;
 
+        int height;
         int imgHeight;
+
         if (size < 4) {
-            height = (int) mContext.getResources().getDimension(R.dimen.dp_150);
-            imgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_70);
+            height = mHeight;
+            imgHeight = mImgHeight;
         } else {
-            height = (int) mContext.getResources().getDimension(R.dimen.dp_120);
-            imgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_60);
+            height = mSmallHeight;
+            imgHeight = mSmallImgHeight;
         }
         viewHolder.itemView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
 
