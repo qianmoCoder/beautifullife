@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.DefaultBottomAdapter;
+import com.ddu.icore.dialog.DefaultGridBottomAdapter;
 import com.ddu.icore.entity.BottomItemEntity;
 import com.ddu.icore.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
@@ -31,7 +31,7 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
     private RecyclerView mRecyclerView;
 
     private List<BottomItemEntity> shareEntities;
-    private DefaultBottomAdapter shareAdapter;
+    private DefaultGridBottomAdapter shareAdapter;
 
     private Context mContext;
 
@@ -95,10 +95,10 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        shareAdapter = new DefaultBottomAdapter(getContext(), shareEntities);
+        shareAdapter = new DefaultGridBottomAdapter(getContext(), shareEntities);
         mRecyclerView.setAdapter(shareAdapter);
 
-        shareAdapter.setOnItemClickListener(new DefaultBottomAdapter.OnClickListener<BottomItemEntity>() {
+        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
             @Override
             public void onClick(BottomItemEntity data, int position) {
                 ToastUtils.showToast(data.getName() + " " + position);

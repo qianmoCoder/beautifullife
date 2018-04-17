@@ -115,7 +115,7 @@ class LoanFragment : DefaultFragment(), View.OnClickListener {
 
         val defaultRecycleViewAdapter = object : DefaultRecycleViewAdapter<String>(baseActivity, mList) {
             override fun getLayoutId(viewType: Int): Int {
-                return R.layout.recyclerview_item_default
+                return R.layout.rv_item_linear
             }
 
             override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {

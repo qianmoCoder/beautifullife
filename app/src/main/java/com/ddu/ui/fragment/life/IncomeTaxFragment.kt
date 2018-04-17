@@ -34,8 +34,8 @@ class IncomeTaxFragment : DefaultFragment() {
         btn_income_tax.setOnClickListener {
             calculator()
             try {
-                //            URL url = new URL("http://behappy.Icore.com/app/");
-                //            intentToSms("18610289732", url.toString());
+                //            URL data = new URL("http://behappy.Icore.com/app/");
+                //            intentToSms("18610289732", data.toString());
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -20,7 +20,7 @@ class FragmentA : DefaultFragment() {
 
     override fun initData(savedInstanceState: Bundle?) {
         url = URLEncoder.encode("https://www.baidu.com", "utf-8")
-        schemeUrl = "etcp://1?url=$url&type=1"
+        schemeUrl = "etcp://1?data=$url&type=1"
     }
 
     override fun getLayoutId(): Int {

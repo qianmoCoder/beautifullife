@@ -51,7 +51,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(getMContext(), swatchList) {
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.recyclerview_item_default;
+                return R.layout.rv_item_linear;
             }
 
             @Override

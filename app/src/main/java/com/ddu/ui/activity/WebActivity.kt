@@ -40,7 +40,7 @@ class WebActivity : Activity(), IObserver<GodIntent> {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun init() {
-        // html url
+        // html data
         context = this
         webView = findViewById(R.id.webview)
         val settings = webView!!.settings
@@ -60,27 +60,27 @@ class WebActivity : Activity(), IObserver<GodIntent> {
         //            }
         //
         //            @Override
-        //            public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+        //            public boolean onJsPrompt(WebView view, String data, String message, String defaultValue, JsPromptResult result) {
         //                Log.v("lhz", "messge: " + message);
         //                Log.v("lhz", "defaultValue: " + defaultValue);
-        //                return super.onJsPrompt(view, url, message, defaultValue, result);
+        //                return super.onJsPrompt(view, data, message, defaultValue, result);
         //            }
         //        });
         //        webView.setWebViewClient(new WebViewClient() {
         //            @Override
-        //            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        //                boolean ret = startActivityForUrl(url);
+        //            public boolean shouldOverrideUrlLoading(WebView view, String data) {
+        //                boolean ret = startActivityForUrl(data);
         //                return ret;
         //            }
         //
         //            @Override
-        //            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        //                super.onPageStarted(view, url, favicon);
+        //            public void onPageStarted(WebView view, String data, Bitmap favicon) {
+        //                super.onPageStarted(view, data, favicon);
         //            }
         //
         //            @Override
-        //            public void onPageFinished(WebView view, String url) {
-        //                super.onPageFinished(view, url);
+        //            public void onPageFinished(WebView view, String data) {
+        //                super.onPageFinished(view, data);
         //            }
         //
         //        });
@@ -206,7 +206,7 @@ class WebActivity : Activity(), IObserver<GodIntent> {
 
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this
-                // url, we would like to close it as we will load this url in a
+                // data, we would like to close it as we will load this data in a
                 // different Activity.
                 // mController.closeEmptyTab();
                 return true
@@ -238,7 +238,7 @@ class WebActivity : Activity(), IObserver<GodIntent> {
             if (startActivityIfNeeded(intent, -1)) {
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this
-                // url, we would like to close it as we will load this url in a
+                // data, we would like to close it as we will load this data in a
                 // different Activity.
                 // mController.closeEmptyTab();
                 return true

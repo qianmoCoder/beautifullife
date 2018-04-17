@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.ddu.R;
 import com.ddu.icore.app.BaseApp;
-import com.ddu.icore.dialog.DefaultBottomAdapter;
+import com.ddu.icore.dialog.DefaultGridBottomAdapter;
 import com.ddu.icore.entity.BottomItemEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.util.sys.ViewUtils;
@@ -34,7 +34,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     private RecyclerView mRecyclerView;
 
     private List<BottomItemEntity> shareEntities;
-    private DefaultBottomAdapter shareAdapter;
+    private DefaultGridBottomAdapter shareAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +87,10 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(BaseApp.Companion.getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
-        shareAdapter = new DefaultBottomAdapter(BaseApp.Companion.getContext(), shareEntities);
+        shareAdapter = new DefaultGridBottomAdapter(BaseApp.Companion.getContext(), shareEntities);
         mRecyclerView.setAdapter(shareAdapter);
 
-        shareAdapter.setOnItemClickListener(new DefaultBottomAdapter.OnClickListener<BottomItemEntity>() {
+        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
             @Override
             public void onClick(BottomItemEntity data, int position) {
 

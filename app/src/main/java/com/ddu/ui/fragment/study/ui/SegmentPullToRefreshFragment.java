@@ -24,7 +24,7 @@ public class SegmentPullToRefreshFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        View view = LayoutInflater.from(getMContext()).inflate(R.layout.recyclerview_item_default, null, false);
+        View view = LayoutInflater.from(getMContext()).inflate(R.layout.rv_item_linear, null, false);
         pullToRefreshScrollView = findViewById(R.id.psv_segment);
 //        pullToRefreshScrollView.addView(view, 0);
     }

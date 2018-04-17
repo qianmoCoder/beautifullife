@@ -47,7 +47,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
         rv_swipe_refresh.itemAnimator = DefaultItemAnimator()
         mAdapter = object : DefaultRecycleViewAdapter<String>(mContext, mDatas) {
             override fun getLayoutId(viewType: Int): Int {
-                return R.layout.recyclerview_item_default
+                return R.layout.rv_item_linear
             }
 
             override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {

@@ -7,11 +7,11 @@ import com.ddu.icore.R
 import com.ddu.icore.entity.BottomItemEntity
 import kotlinx.android.synthetic.main.dialog_bottom_content.*
 
-class RvBottomDialogFragment : AbsBottomDialogFragment() {
+class DefaultGridBottomDialogFragment : AbsBottomDialogFragment() {
 
     private var mShareEntities: List<BottomItemEntity>? = null
-    private var mShareAdapter: DefaultBottomAdapter? = null
-    private var mCallBack: ((BottomItemEntity?, Int, RvBottomDialogFragment) -> Unit)? = null
+    private var mShareAdapter: DefaultGridBottomAdapter? = null
+    private var mCallBack: ((BottomItemEntity?, Int, DefaultGridBottomDialogFragment) -> Unit)? = null
     private var mTitle = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,20 +25,15 @@ class RvBottomDialogFragment : AbsBottomDialogFragment() {
             }
         }
 
-        val gridLayoutManager = GridLayoutManager(context, spanCount)
-        rv_share.layoutManager = gridLayoutManager
+        rv_share.layoutManager = GridLayoutManager(context, spanCount)
 
-        mShareAdapter = DefaultBottomAdapter(context, mShareEntities)
+        mShareAdapter = DefaultGridBottomAdapter(context, mShareEntities, SPAN_COUNT)
         rv_share.adapter = mShareAdapter
 
-        mShareAdapter?.setOnItemClickListener(object : DefaultBottomAdapter.OnClickListener<BottomItemEntity> {
+        mShareAdapter?.setOnItemClickListener(object : DefaultGridBottomAdapter.OnClickListener<BottomItemEntity> {
             override fun onClick(data: BottomItemEntity?, position: Int) {
-                val callBack = data?.cb
-                if (null != callBack) {
-                    callBack.invoke(data)
-                } else {
-                    mCallBack?.invoke(data, position, this@RvBottomDialogFragment)
-                }
+                mCallBack?.invoke(data, position, this@DefaultGridBottomDialogFragment)
+                data?.cb?.invoke(data)
             }
         })
 
@@ -51,8 +46,8 @@ class RvBottomDialogFragment : AbsBottomDialogFragment() {
 
         private const val SPAN_COUNT = 4
 
-        fun newInstance(title: String = "打开", list: List<BottomItemEntity>, cb: (BottomItemEntity?, Int, RvBottomDialogFragment) -> Unit): RvBottomDialogFragment {
-            return RvBottomDialogFragment().apply {
+        fun newInstance(title: String = "操作", list: List<BottomItemEntity>, cb: ((BottomItemEntity?, Int, DefaultGridBottomDialogFragment) -> Unit)?): DefaultGridBottomDialogFragment {
+            return DefaultGridBottomDialogFragment().apply {
                 mTitle = title
                 mShareEntities = list
                 mCallBack = cb

@@ -3,8 +3,8 @@ package com.ddu.ui.fragment
 import android.os.Bundle
 import android.os.SystemClock
 import com.ddu.R
-import com.ddu.icore.dialog.DefaultBottomDialogFragment
 import com.ddu.icore.dialog.DefaultDialogFragment
+import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.person.SettingFragment
@@ -82,22 +82,22 @@ class MeFragment : DefaultFragment() {
         val github = BottomItemEntity()
         github.name = "GitHub"
         github.resId = R.drawable.me_friend_link_github
-        github.url = "https://github.com/yzbzz"
+        github.data = "https://github.com/yzbzz"
 
         val blog = BottomItemEntity()
         blog.name = "Blog"
         blog.resId = R.drawable.me_friend_link_blog
-        blog.url = "http://yzbzz.github.io"
+        blog.data = "http://yzbzz.github.io"
 
         shareEntities.add(github)
         shareEntities.add(blog)
 
-        val shareDialog = DefaultBottomDialogFragment.newInstance(list = shareEntities, cb = { data, _, shareDialog ->
+        val shareDialog = DefaultGridBottomDialogFragment.newInstance(list = shareEntities, cb = { data, _, shareDialog ->
             data?.apply {
                 shareDialog.dismissAllowingStateLoss()
                 val dialog = DefaultDialogFragment().apply {
                     title = "即将前往"
-                    msg = "${data.url}"
+                    msg = "${data.data}"
                     leftText = "取消"
                     rightText = "确定"
                     mLeftClickListener = { _, _ ->
@@ -106,8 +106,8 @@ class MeFragment : DefaultFragment() {
                     mRightClickListener = { _, _ ->
                         dismissAllowingStateLoss()
                         val args = Bundle()
-                        args.putString("mTitle", name)
-                        args.putString("url", url)
+                        args.putString("title", name)
+                        args.putString("url", data.data)
                         startFragment(WebFragment::class.java, args)
                     }
                 }

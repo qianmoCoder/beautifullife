@@ -17,7 +17,7 @@ import java.util.List;
  * Created by yzbzz on 2017/3/31.
  */
 
-public class DefaultBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEntity> {
+public class DefaultGridBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEntity> {
 
     private OnClickListener onClickListener;
 
@@ -27,7 +27,9 @@ public class DefaultBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEn
     private int mSmallHeight;
     private int mSmallImgHeight;
 
-    public DefaultBottomAdapter(Context context, List<BottomItemEntity> items) {
+    private int mColumnCount = 4;
+
+    public DefaultGridBottomAdapter(Context context, List<BottomItemEntity> items) {
         super(context, items);
         mHeight = (int) mContext.getResources().getDimension(R.dimen.dp_120);
         mImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_40);
@@ -36,9 +38,20 @@ public class DefaultBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEn
         mSmallImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_30);
     }
 
+    public DefaultGridBottomAdapter(Context context, List<BottomItemEntity> items, int columnCount) {
+        super(context, items);
+        mHeight = (int) mContext.getResources().getDimension(R.dimen.dp_120);
+        mImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_40);
+
+        mSmallHeight = (int) mContext.getResources().getDimension(R.dimen.dp_90);
+        mSmallImgHeight = (int) mContext.getResources().getDimension(R.dimen.dp_30);
+
+        mColumnCount = columnCount;
+    }
+
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.fragment_share_item;
+        return R.layout.rv_item_grid;
     }
 
     @Override
@@ -51,7 +64,7 @@ public class DefaultBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEn
         int height;
         int imgHeight;
 
-        if (size < 4) {
+        if (size < mColumnCount) {
             height = mHeight;
             imgHeight = mImgHeight;
         } else {

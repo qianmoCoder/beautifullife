@@ -27,7 +27,7 @@
 //    private RecyclerView mRecyclerView;
 //
 //    private List<BottomItemEntity> shareEntities;
-//    private DefaultBottomAdapter shareAdapter;
+//    private DefaultGridBottomAdapter shareAdapter;
 //
 //    @Override
 //    public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,10 +81,10 @@
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), spanCount);
 //        mRecyclerView.setLayoutManager(gridLayoutManager);
 //
-//        shareAdapter = new DefaultBottomAdapter(getContext(), shareEntities);
+//        shareAdapter = new DefaultGridBottomAdapter(getContext(), shareEntities);
 //        mRecyclerView.setAdapter(shareAdapter);
 //
-//        shareAdapter.setOnItemClickListener(new DefaultBottomAdapter.OnClickListener<BottomItemEntity>() {
+//        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
 //            @Override
 //            public void onClick(BottomItemEntity data, int position) {
 //                ToastUtils.showToast(data.getName() + " " + position);

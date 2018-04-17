@@ -81,7 +81,7 @@ class TestFragment : DefaultFragment() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             view.loadUrl(url)
             return true
-            //            return super.shouldOverrideUrlLoading(view, url);
+            //            return super.shouldOverrideUrlLoading(view, data);
         }
 
     }
@@ -90,7 +90,7 @@ class TestFragment : DefaultFragment() {
         val bundle = arguments
         if (null != bundle) {
             mTitle = bundle.getString("mTitle")
-            url = bundle.getString("url")
+            url = bundle.getString("data")
         }
     }
 
@@ -382,7 +382,7 @@ class TestFragment : DefaultFragment() {
 
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this
-                // url, we would like to close it as we will load this url in a
+                // data, we would like to close it as we will load this data in a
                 // different Activity.
                 // mController.closeEmptyTab();
                 return true
@@ -414,7 +414,7 @@ class TestFragment : DefaultFragment() {
             if (baseActivity.startActivityIfNeeded(intent, -1)) {
                 // before leaving BrowserActivity, close the empty child tab.
                 // If a new tab is created through JavaScript open to load this
-                // url, we would like to close it as we will load this url in a
+                // data, we would like to close it as we will load this data in a
                 // different Activity.
                 // mController.closeEmptyTab();
                 return true
@@ -461,7 +461,7 @@ class TestFragment : DefaultFragment() {
             val fragment = TestFragment()
             val args = Bundle()
             args.putString("mTitle", title)
-            args.putString("url", url)
+            args.putString("data", url)
             fragment.arguments = args
             return fragment
         }

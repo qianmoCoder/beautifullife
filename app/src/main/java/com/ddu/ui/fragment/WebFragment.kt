@@ -9,11 +9,11 @@ import android.webkit.*
 import com.ddu.R
 import com.ddu.icore.common.clipText
 import com.ddu.icore.common.startBrowser
-import com.ddu.icore.dialog.DefaultBottomDialogFragment
+import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
+import com.ddu.icore.dialog.DefaultLinearBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.ToastUtils
-import com.ddu.ui.dialog.FontSettingDialog
 import kotlinx.android.synthetic.main.fragment_web.*
 import org.jetbrains.anko.support.v4.ctx
 
@@ -28,7 +28,7 @@ class WebFragment : DefaultFragment() {
 
     override fun initData(savedInstanceState: Bundle?) {
         arguments?.apply {
-            mTitle = getString("mTitle", "")
+            mTitle = getString("title", "")
             mUrl = getString("url", "")
         }
     }
@@ -62,6 +62,9 @@ class WebFragment : DefaultFragment() {
 
         wv_web.webViewClient = webViewClient
         wv_web.webChromeClient = webChromeClient
+//        wv_web.setFindListener { activeMatchOrdinal, numberOfMatches, isDoneCounting ->
+//            Log.v("lhz", "$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
+//        }
 
         initTitle()
 
@@ -85,7 +88,8 @@ class WebFragment : DefaultFragment() {
 
     private fun showBottomDialog() {
         val entity = getEntity()
-        val dialog = DefaultBottomDialogFragment.newInstance("操作", entity, { _, _, _ ->
+        val dialog = DefaultGridBottomDialogFragment.newInstance(list = entity, cb = { _, _, dialog ->
+            dialog.dismissAllowingStateLoss()
         })
         dialog.show(fragmentManager, "")
     }
@@ -101,7 +105,14 @@ class WebFragment : DefaultFragment() {
         val favoriteEntity = BottomItemEntity("收藏", R.drawable.bottom_icon_favorite)
         entities.add(favoriteEntity)
 
-        val searchEntity = BottomItemEntity("搜索页面内容", R.drawable.bottom_icon_search)
+        val searchEntity = BottomItemEntity("搜索页面内容", R.drawable.bottom_icon_search) {
+            wv_web.showFindDialog("一", true)
+            wv_web.findAllAsync("一")
+//            wv_web.setFindListener { activeMatchOrdinal, numberOfMatches, isDoneCounting ->
+//                ToastUtils.showToast("$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
+//                Log.v("lhz", "$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
+//            }
+        }
         entities.add(searchEntity)
 
         val linkEntity = BottomItemEntity("复制链接", R.drawable.bottom_icon_link) {
@@ -116,13 +127,22 @@ class WebFragment : DefaultFragment() {
         entities.add(browserEntity)
 
         val fontEntity = BottomItemEntity("字体", R.drawable.bottom_icon_font) {
-            // SMALLEST(50),
-//            SMALLER(75),
-//            NORMAL(100),
-//            LARGER(150),
-//            LARGEST(200);
-//            mWebSettings?.textZoom = 50
-            val dialog = FontSettingDialog()
+            val entities = mutableListOf<BottomItemEntity>()
+            val smallestEntity = BottomItemEntity("小", data = "50")
+            val smallerEntity = BottomItemEntity("较小", data = "75")
+            val normalEntity = BottomItemEntity("标准", data = "100")
+            val largerEntity = BottomItemEntity("大", data = "150")
+            val largestEntity = BottomItemEntity("较大", data = "200")
+            entities.add(smallestEntity)
+            entities.add(smallerEntity)
+            entities.add(normalEntity)
+            entities.add(largerEntity)
+            entities.add(largestEntity)
+
+            val dialog = DefaultLinearBottomDialogFragment.newInstance(list = entities, cb = { entity, _, dialog ->
+                dialog.dismissAllowingStateLoss()
+                mWebSettings?.textZoom = entity?.data?.toInt() ?: 100
+            })
             dialog.show(fragmentManager, "")
         }
         entities.add(fontEntity)
@@ -197,7 +217,7 @@ class WebFragment : DefaultFragment() {
         fun newInstance(title: String, url: String): WebFragment {
             val fragment = WebFragment()
             val args = Bundle()
-            args.putString("mTitle", title)
+            args.putString("title", title)
             args.putString("url", url)
             fragment.arguments = args
             return fragment

@@ -34,7 +34,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.recyclerview_item_default;
+                return R.layout.rv_item_linear;
             }
 
             @Override
