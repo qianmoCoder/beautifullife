@@ -14,13 +14,13 @@ import java.net.URLEncoder
  */
 class FragmentA : DefaultFragment() {
 
-    var schemeUrl: String? = null
+    private var schemeUrl: String? = null
     var url: String? = null
 
 
     override fun initData(savedInstanceState: Bundle?) {
-        url = URLEncoder.encode("https://www.baidu.com", "utf-8")
-        schemeUrl = "etcp://1?data=$url&type=1"
+        url = URLEncoder.encode("etcp://100?userId=3&phone=186xxx&t=张三", "utf-8")
+        schemeUrl = "etcp://首页?url=$url&type=1"
     }
 
     override fun getLayoutId(): Int {
@@ -28,7 +28,19 @@ class FragmentA : DefaultFragment() {
     }
 
     override fun initView() {
+        val scheme = "etcp://100"
+        val url = URLEncoder.encode("etcp://3?userId=5", "utf-8")
+        val param1 = "param1"
+        val param2 = "param2"
+
+        val sb = StringBuilder()
+        sb.append("scheme: $scheme \n")
+        sb.append("url: $url \n")
+        sb.append("param1: $param1 \n")
+        sb.append("param2: $param2 \n")
+
         tv_show.text = schemeUrl
+
         button.setOnClickListener {
             //                ShareDialogFragmentT bottomSheetDialogFragment = new ShareDialogFragmentT();
             //                bottomSheetDialogFragment.show(getFragmentManager(), "");
@@ -44,11 +56,15 @@ class FragmentA : DefaultFragment() {
             val sb = StringBuilder()
 //            sb.append(uri.toString() + " - ")
 //            sb.append(uri.path + "path:  " + " - ")
-            sb.append(uri.scheme + " ")
+            sb.append(uri.scheme + " \n")
+            sb.append(uri.host + " \n")
             val names = uri.queryParameterNames
+            val bbc = uri.getQueryParameter("bbc")
+            sb.append("bbc: $bbc")
             for (name in names) {
                 val p = uri.getQueryParameter(name)
                 sb.append("$name - $p")
+                sb.append("\n")
             }
 //            sb.append(uri.query + " ")
 //            sb.append(uri.getQueryParameter("isFeedBack") + " ")

@@ -13,6 +13,7 @@ import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.dialog.DefaultLinearBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.icore.ui.widget.CustomerBottomBar
 import com.ddu.icore.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_web.*
 import org.jetbrains.anko.support.v4.ctx
@@ -106,12 +107,13 @@ class WebFragment : DefaultFragment() {
         entities.add(favoriteEntity)
 
         val searchEntity = BottomItemEntity("搜索页面内容", R.drawable.bottom_icon_search) {
-            wv_web.showFindDialog("一", true)
-            wv_web.findAllAsync("一")
+            //            wv_web.showFindDialog("一", true)
+//            wv_web.findAllAsync("一")
 //            wv_web.setFindListener { activeMatchOrdinal, numberOfMatches, isDoneCounting ->
 //                ToastUtils.showToast("$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
 //                Log.v("lhz", "$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
 //            }
+            CustomerBottomBar.make(wv_web).show()
         }
         entities.add(searchEntity)
 
