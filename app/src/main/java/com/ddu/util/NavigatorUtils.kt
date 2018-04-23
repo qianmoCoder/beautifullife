@@ -36,11 +36,13 @@ object NavigatorUtils {
                         isSuccess = if (tempUrl.toString().isNullOrEmpty()) {
                             false
                         } else {
-                            navigator(act, isNeedLogin(uri), tempUrl, defaultData)
+                            val isNeedLogin = isNeedLogin(uri)
+                            navigatorTO(act, isNeedLogin, tempUrl, defaultData)
                         }
                     }
                     else -> {
-                        isSuccess = navigator(act, isNeedLogin(uri), uri, defaultData)
+                        val isNeedLogin = isNeedLogin(uri)
+                        isSuccess = navigatorTO(act, isNeedLogin, uri, defaultData)
                     }
                 }
 
@@ -57,9 +59,9 @@ object NavigatorUtils {
 
     }
 
-    private fun navigator(act: FragmentActivity, isNeedLogin: Boolean, uri: Uri?, urlString: String): Boolean {
+    private fun navigatorTO(act: FragmentActivity, isNeedLogin: Boolean, uri: Uri?, urlString: String?): Boolean {
         var isSuccess = false
-        val intent = getIntent(act, uri)
+        val intent = getIntentByUri(act, uri)
         if (null != intent) {
             isSuccess = doOnNext(act, isNeedLogin, intent)
         } else {
@@ -69,7 +71,7 @@ object NavigatorUtils {
             } else {
                 try {
                     val tempUri = Uri.parse(urlString)
-                    val tempIntent = NavigatorUtils.getIntent(act, tempUri)
+                    val tempIntent = NavigatorUtils.getIntentByUri(act, tempUri)
                     if (tempIntent != null) {
                         isShowDialog = false
                         isSuccess = doOnNext(act, isNeedLogin, tempIntent)
@@ -96,7 +98,7 @@ object NavigatorUtils {
     private fun doOnNext(act: FragmentActivity, isNeedLogin: Boolean, intent: Intent): Boolean {
         var isNavigatorSuccess = false
         if (isNeedLogin) {
-            ToastUtils.showToast("登录成功，跳转成功")
+            ToastUtils.showToast("登录成功，跳转成功 ${intent.component.className}")
         } else {
             isNavigatorSuccess = true
 
@@ -106,8 +108,11 @@ object NavigatorUtils {
     }
 
 
-    fun getIntent(ctx: Context, uri: Uri?): Intent? = uri?.run {
-        when (scheme) {
+    fun getIntentByUri(ctx: Context, uri: Uri?): Intent? {
+        val tempUri = uri!!
+        val scheme = uri!!.scheme
+        val host = uri!!.host
+        return when (scheme) {
             "etcp" -> when (host) {
                 "0" -> Intent(ctx, LoginActivity::class.java)
                 "1" -> Intent(ctx, LoginActivity1::class.java)
@@ -116,8 +121,8 @@ object NavigatorUtils {
                 "4" -> Intent(ctx, MainActivityR::class.java)
                 "5" -> Intent(ctx, MainActivityT::class.java)
                 "6" -> {
-                    val isFeedBack = getQueryParameter("isFeedBack") ?: ""
-                    val synId = getQueryParameter("synId") ?: ""
+                    val isFeedBack = tempUri.getQueryParameter("isFeedBack") ?: ""
+                    val synId = tempUri.getQueryParameter("synId") ?: ""
                     if (isFeedBack.equals("0", ignoreCase = true)) {
                         Intent(ctx, ScrollingActivity::class.java)
                     } else if (isFeedBack.equals("1", ignoreCase = true)) {
