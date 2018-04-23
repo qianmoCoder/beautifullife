@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.icore.util.ToastUtils
 import com.ddu.ui.activity.TestActivity
 import kotlinx.android.synthetic.main.fragment_work_state.*
 import okhttp3.HttpUrl
@@ -17,12 +18,17 @@ import java.net.URLEncoder
 class FragmentA : DefaultFragment() {
 
     private var schemeUrl: String? = null
-    var url: String? = null
-    val defaultData = "etcp://3"
+        set(value) {
+            startTo(value)
+        }
+    var etcpUrl: String? = null
+    var httpUrl: String? = null
+    var defaultData = "etcp://5"
+    var login = "1"
 
     override fun initData(savedInstanceState: Bundle?) {
-        url = URLEncoder.encode("etcp://5?userId=3&phone=186xxx&t=张三", "utf-8")
-        schemeUrl = "etcp://100?url=$url&login=1"
+        etcpUrl = URLEncoder.encode("etcp://5?userId=3&phone=186xxx&t=张三", "utf-8")
+        httpUrl = URLEncoder.encode("http://www.baidu.com?userId=3&phone=186xxx&t=张三", "utf-8")
     }
 
     override fun getLayoutId(): Int {
@@ -30,51 +36,53 @@ class FragmentA : DefaultFragment() {
     }
 
     override fun initView() {
-
-        button.setOnClickListener {
-            //                ShareDialogFragmentT bottomSheetDialogFragment = new ShareDialogFragmentT();
-            //                bottomSheetDialogFragment.show(getFragmentManager(), "");
-            //                replaceFragment(FragmentB.newInstance());
-//            (mActivity as ShowDetailActivity).replaceFragment(FragmentB.newInstance(), FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
-//            ctx.putPreference("defaultValue", "hello")
-            val intent = Intent(ctx, TestActivity::class.java)
-            val uri = Uri.parse(schemeUrl)
-            intent.data = uri
-            intent.putExtra("defaultData", defaultData)
-            startActivity(intent)
-        }
         btn_ok.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("bbc://hello"))
-            startActivity(intent)
-            //            val f = FragmentB.newInstance()
-            //                replaceFragment(f);
-//            item_time_line_mark.count = 2
-//            val uri = Uri.parse(schemeUrl)
-//            val sb = StringBuilder()
-////            sb.append(uri.toString() + " - ")
-////            sb.append(uri.path + "path:  " + " - ")
-//            sb.append(uri.scheme + " \n")
-//            sb.append(uri.host + " \n")
-//            val names = uri.queryParameterNames
-//            val bbc = uri.getQueryParameter("bbc")
-//            sb.append("bbc: $bbc")
-//            for (name in names) {
-//                val p = uri.getQueryParameter(name)
-//                sb.append("$name - $p")
-//                sb.append("\n")
-//            }
-//            sb.append(uri.query + " ")
-//            sb.append(uri.getQueryParameter("isFeedBack") + " ")
-//            sb.append(uri.getQueryParameter("synId") + " ")
-
-//            setDefaultTitle("FragmentA")
-//            val set = setOf("1", "2", "3")
-//            val type = set::class.java.genericSuperclass as? ParameterizedType
-//            sb.append(type?.actualTypeArguments!![0]::class.java.name)
-//            GenericTypeResolver
-//            tv_show.text = sb.toString()
+            if (login.equals("1", ignoreCase = true)) {
+                login = "0"
+                ToastUtils.showToast("登录关闭")
+            } else {
+                login = "1"
+                ToastUtils.showToast("登录开启")
+            }
+        }
+        btn_etcp.setOnClickListener {
+            schemeUrl = "etcp://3?login=$login"
+        }
+        btn_http.setOnClickListener {
+            schemeUrl = "http://www.baidu.com"
+        }
+        btn_etcp_s_e.setOnClickListener {
+            schemeUrl = "etcp://100?url=$etcpUrl&login=$login"
+        }
+        btn_etcp_s_h.setOnClickListener {
+            schemeUrl = "etcp://100?url=$httpUrl&login=$login"
+        }
+        btn_etcp_s_d_e.setOnClickListener {
+            defaultData = "etcp://2"
+            schemeUrl = "etcp://101?login=$login"
+        }
+        btn_etcp_s_d_h.setOnClickListener {
+            defaultData = "http://www.163.com"
+            schemeUrl = "etcp://101?login=$login"
+        }
+        btn_etcp_s_d_error.setOnClickListener {
+            defaultData = "etcp://102"
+            schemeUrl = "etcp://101?login=$login"
         }
 
+        btn_etcp_s_d_error_o.setOnClickListener {
+            defaultData = "abc**102"
+            schemeUrl = "etcp://101?login=$login"
+        }
+
+    }
+
+    fun startTo(url: String?) {
+        val intent = Intent(ctx, TestActivity::class.java)
+        val uri = Uri.parse(url)
+        intent.data = uri
+        intent.putExtra("defaultData", defaultData)
+        startActivity(intent)
     }
 
     companion object {

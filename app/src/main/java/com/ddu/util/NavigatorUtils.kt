@@ -18,45 +18,40 @@ object NavigatorUtils {
 
     fun navigatorToNative(act: FragmentActivity, intent: Intent?): Boolean {
         var isSuccess = false
-        val uri = intent?.data!!
-        val scheme = uri.scheme
-        val host = uri.host
-//        return uri?.run {
-//        with(uri) {
-        when (scheme) {
-            "etcp" -> {
-                val defaultData = uri.getQueryParameter(DEFAULT_DATA)
-                when (host) {
-                    DEFAULT_HOST -> {
-                        val tempUrl = try {
-                            Uri.parse(uri.getQueryParameter(DEFAULT_URL))
-                        } catch (e: Exception) {
-                            Uri.parse("")
+        val uri = intent?.data
+        return uri?.let {
+            when (it.scheme) {
+                "etcp" -> {
+                    val defaultData = intent.getStringExtra(DEFAULT_DATA)
+                    when (it.host) {
+                        DEFAULT_HOST -> {
+                            val tempUrl = try {
+                                Uri.parse(it.getQueryParameter(DEFAULT_URL))
+                            } catch (e: Exception) {
+                                Uri.parse("")
+                            }
+                            isSuccess = if (tempUrl.toString().isNullOrEmpty()) {
+                                false
+                            } else {
+                                val isNeedLogin = isNeedLogin(uri)
+                                navigatorTO(act, isNeedLogin, tempUrl, defaultData)
+                            }
                         }
-                        isSuccess = if (tempUrl.toString().isNullOrEmpty()) {
-                            false
-                        } else {
+                        else -> {
                             val isNeedLogin = isNeedLogin(uri)
-                            navigatorTO(act, isNeedLogin, tempUrl, defaultData)
+                            isSuccess = navigatorTO(act, isNeedLogin, uri, defaultData)
                         }
                     }
-                    else -> {
-                        val isNeedLogin = isNeedLogin(uri)
-                        isSuccess = navigatorTO(act, isNeedLogin, uri, defaultData)
-                    }
+
                 }
-
+                "http", "https" -> {
+                    ToastUtils.showToast("跳转http成功: ${it.toString()}")
+                    isSuccess = true
+                }
+                else -> isSuccess = false
             }
-            "http", "https" -> {
-                act.startActivity(getWebIntent(act, toString()))
-                isSuccess = true
-            }
-            else -> isSuccess = false
-        }
-        return isSuccess
-//        }
-//    }
-
+            return isSuccess
+        } ?: false
     }
 
     private fun navigatorTO(act: FragmentActivity, isNeedLogin: Boolean, uri: Uri?, urlString: String?): Boolean {
@@ -108,11 +103,8 @@ object NavigatorUtils {
     }
 
 
-    fun getIntentByUri(ctx: Context, uri: Uri?): Intent? {
-        val tempUri = uri!!
-        val scheme = uri!!.scheme
-        val host = uri!!.host
-        return when (scheme) {
+    fun getIntentByUri(ctx: Context, uri: Uri?): Intent? = uri?.run {
+        when (scheme) {
             "etcp" -> when (host) {
                 "0" -> Intent(ctx, LoginActivity::class.java)
                 "1" -> Intent(ctx, LoginActivity1::class.java)
@@ -121,8 +113,8 @@ object NavigatorUtils {
                 "4" -> Intent(ctx, MainActivityR::class.java)
                 "5" -> Intent(ctx, MainActivityT::class.java)
                 "6" -> {
-                    val isFeedBack = tempUri.getQueryParameter("isFeedBack") ?: ""
-                    val synId = tempUri.getQueryParameter("synId") ?: ""
+                    val isFeedBack = getQueryParameter("isFeedBack") ?: ""
+                    val synId = getQueryParameter("synId") ?: ""
                     if (isFeedBack.equals("0", ignoreCase = true)) {
                         Intent(ctx, ScrollingActivity::class.java)
                     } else if (isFeedBack.equals("1", ignoreCase = true)) {
