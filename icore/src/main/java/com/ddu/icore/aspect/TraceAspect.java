@@ -1,6 +1,6 @@
 package com.ddu.icore.aspect;
 
-import android.util.Log;
+import com.ddu.icore.annotation.AspectJ;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,6 +21,8 @@ public class TraceAspect {
 
     private static final String BEFORE_ACTIVITY_ONCREATE = "execution(* android.app.Activity.onCreate(..))";
     private static final String BEFORE_FRAGMENT_ONCREATE = "execution(* android.support.v4.app.Fragment.onCreate(..))";
+
+    private static final String BEFORE_ASPECTJ = "execution(@com.ddu.icore.annotation.AspectJ * *(..))";
 
 //    @Before(BEFORE_DISPATCH_TOUCH_VIEWGROUP)
 //    public boolean onActivityMethodDispatchTouchEventBefore(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -52,12 +54,19 @@ public class TraceAspect {
     @Before(BEFORE_ONCLICK)
     public void onActivityMethodOnClickBefore(JoinPoint joinPoint) throws Throwable {
         try {
-            Log.v("lhz", "onClick");
             AspectHelper.sendEventForData(joinPoint);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @Before(BEFORE_ASPECTJ)
+    public void onAspectjBefore(JoinPoint joinPoint, AspectJ aspectJ) throws Throwable {
+        try {
+            AspectHelper.sendEventForData(joinPoint, aspectJ);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Before(BEFORE_FRAGMENT_ONCREATE)
