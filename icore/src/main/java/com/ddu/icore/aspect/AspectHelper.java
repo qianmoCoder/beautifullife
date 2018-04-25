@@ -22,7 +22,7 @@ public class AspectHelper {
 
     public static void sendEventForData(JoinPoint joinPoint, AspectJ aspectJ) {
 
-        int sid = aspectJ.id();
+        int[] sid = aspectJ.id();
         String value = aspectJ.value();
         Log.v("lhz", "aspectJ id: " + sid + " value:" + value);
         String fileName = joinPoint.getSourceLocation().getFileName();

@@ -46,16 +46,19 @@ public class NotificationUtils {
                     .setWhen(System.currentTimeMillis())
                     .setDefaults(Notification.DEFAULT_SOUND)
                     .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+                    .setNumber(5)
                     .setAutoCancel(true);
 
 
             if (Build.VERSION.SDK_INT >= 26) {
                 NotificationChannel channel = new NotificationChannel("1", "name", NotificationManager.IMPORTANCE_HIGH);
+                channel.setShowBadge(true);
+
                 builder.setChannelId("1");
                 mNManager.createNotificationChannel(channel);
             }
 
-            Notification notification = builder.getNotification();
+            Notification notification = builder.build();
             mNManager.notify(pushTag, pushId, notification);
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.ui.fragment.work.FragmentA
+import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_work.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.telephonyManager
@@ -35,7 +35,7 @@ class WorkFragment : DefaultFragment() {
         var count = 1
         val mNManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         oiv_fragment.setOnClickListener {
-            //            NotificationUtils.sendNotification(ctx, "hello", "world", "123", 1, null)
+            NotificationUtils.sendNotification(ctx, "hello", "world", "123", 1, null)
 
 //            val builder = Notification.Builder(context)
 //                    .setTicker("Hello")
@@ -56,7 +56,7 @@ class WorkFragment : DefaultFragment() {
 //
 //            val notification = builder.notification
 //            mNManager.notify("123", ++count, notification)
-            startFragment(FragmentA::class.java)
+//            startFragment(FragmentA::class.java)
         }
         setTitle(R.string.main_tab_work)
 //        tv_money.text = DnsConfig.buildType

@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="android:listDivider">@drawable/divider_bg</item>
+        <!--<item name="clockBackground">@android:color/white</item>-->
+        <!--<item name="clockTextColor">@android:color/black</item>-->
     </style>
 
     <style name="AnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">

@@ -4,11 +4,13 @@ import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
+import android.support.v7.app.AppCompatDelegate
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
 import com.ddu.help.MyProviderProvider
 import com.ddu.icore.app.BaseApp
+import com.ddu.icore.common.findPreference
 import com.ddu.receiver.NetInfoBroadcastReceiver
 import com.ddu.util.SystemUtils
 import com.ddu.util.xml.PullParserUtils
@@ -48,6 +50,18 @@ class App : BaseApp() {
                 LeakCanary.install(this)
             }
             registorNetInfoBroadcastReceiver()
+        }
+    }
+
+    private fun initNightMode() {
+        val isAutoNight = findPreference("isAutoNight", false) ?: false
+        if (isAutoNight) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
+        } else {
+            val isNightMode = findPreference("isNightMode", false) ?: false
+            if (isNightMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
         }
     }
 
