@@ -35,7 +35,10 @@ class WorkFragment : DefaultFragment() {
         var count = 1
         val mNManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         oiv_fragment.setOnClickListener {
-            NotificationUtils.sendNotification(ctx, "hello", "world", "123", 1, null)
+            val builder = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+            val builder1 = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
+            NotificationUtils.getInstance().notify(1, builder)
+            NotificationUtils.getInstance().notify(2, builder1)
 
 //            val builder = Notification.Builder(context)
 //                    .setTicker("Hello")
