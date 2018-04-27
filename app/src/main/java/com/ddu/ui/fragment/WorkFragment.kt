@@ -1,8 +1,6 @@
 package com.ddu.ui.fragment
 
 import android.Manifest
-import android.app.NotificationManager
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -32,13 +30,15 @@ class WorkFragment : DefaultFragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
-        var count = 1
-        val mNManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         oiv_fragment.setOnClickListener {
             val builder = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
             val builder1 = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
             NotificationUtils.getInstance().notify(1, builder)
             NotificationUtils.getInstance().notify(2, builder1)
+            BaseApp.postDelayed(Runnable {
+                val builder3 = NotificationUtils.getInstance().getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+                NotificationUtils.getInstance().notify(2, builder3)
+            }, 1500)
 
 //            val builder = Notification.Builder(context)
 //                    .setTicker("Hello")

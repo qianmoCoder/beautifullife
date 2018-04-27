@@ -4,14 +4,13 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.provider.Settings;
 
 import com.ddu.R;
 import com.ddu.app.App;
 import com.ddu.icore.util.ToastUtils;
+import com.ddu.icore.util.sys.SystemUtils;
 
 /**
  * Created by yzbzz on 2017/4/27.
@@ -51,10 +50,7 @@ public class NotificationUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = mNotificationManager.getNotificationChannel(channelId);
             if (channel.getImportance() == NotificationManager.IMPORTANCE_NONE) {
-                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
-                intent.putExtra(Settings.EXTRA_CHANNEL_ID, channel.getId());
-                context.startActivity(intent);
+                SystemUtils.openChannelSetting(context, channel.getId());
                 ToastUtils.showToast("请先打开通知");
             }
             builder = new Notification.Builder(context, PRIMARY_CHANNEL_ID);
@@ -68,6 +64,7 @@ public class NotificationUtils {
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_SOUND)
                 .setNumber(number)
+                .setAutoCancel(true)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher));
         return builder;
     }
