@@ -81,5 +81,4 @@ public class NotificationUtils {
         private static NotificationUtils instance = new NotificationUtils();
     }
 
-    private static NotificationManager mNManager;
 }
