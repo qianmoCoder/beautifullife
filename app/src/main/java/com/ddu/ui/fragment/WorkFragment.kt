@@ -31,13 +31,13 @@ class WorkFragment : DefaultFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         oiv_fragment.setOnClickListener {
-            val builder = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
-            val builder1 = NotificationUtils.getInstance().getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
-            NotificationUtils.getInstance().notify(1, builder)
-            NotificationUtils.getInstance().notify(2, builder1)
+            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
+            NotificationUtils.instance.notify(1, builder)
+            NotificationUtils.instance.notify(2, builder1)
             BaseApp.postDelayed(Runnable {
-                val builder3 = NotificationUtils.getInstance().getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
-                NotificationUtils.getInstance().notify(2, builder3)
+                val builder3 = NotificationUtils.instance.getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+                NotificationUtils.instance.notify(2, builder3)
             }, 1500)
 
 //            val builder = Notification.Builder(context)
