@@ -1,6 +1,6 @@
 ext {
 
-    kotlin_version = '1.2.21'
+    kotlin_version = '1.2.41'
     anko_version = '0.10.4'
 
     projectConfig = [
@@ -28,12 +28,12 @@ ext {
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "org.jetbrains.anko:anko:$anko_version",
 
-            'com.google.code.gson:gson:2.8.2',
-            'com.alibaba:fastjson:1.1.67.android',
+            'com.google.code.gson:gson:2.8.3',
+            'com.alibaba:fastjson:1.1.68.android',
 
-            'io.reactivex.rxjava2:rxjava:2.1.7',
-            'io.reactivex.rxjava2:rxandroid:2.0.1',
+            'io.reactivex.rxjava2:rxjava:2.1.13',
+            'io.reactivex.rxjava2:rxandroid:2.0.2',
 
-            'androidx.core:core-ktx:0.1'
+            'androidx.core:core-ktx:0.3'
     ]
 }

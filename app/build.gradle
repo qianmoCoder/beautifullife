@@ -1,14 +1,9 @@
-import org.aspectj.bridge.IMessage
-import org.aspectj.bridge.MessageHandler
-import org.aspectj.tools.ajc.Main
-
 apply plugin: 'com.android.application'
-//apply plugin: 'com.meituan.judasplugin'
 apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'android-aspectjx'
 
 android {
 
@@ -117,71 +112,29 @@ dependencies {
     annotationProcessor "io.objectbox:objectbox-processor:$objectboxVersion"
 
     implementation 'com.github.bumptech.glide:glide:4.5.0'
-    implementation 'com.github.bumptech.glide:compiler:4.1.1'
+    implementation 'com.github.bumptech.glide:compiler:4.5.0'
     kapt 'com.github.bumptech.glide:compiler:4.5.0'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation 'com.squareup.okio:okio:1.13.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
 
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
 
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.orhanobut:logger:2.1.1'
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5'
 
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
 }
 
-final def log = project.logger
-final def variants = project.android.applicationVariants
-//在构建工程时，执行编织
-variants.all { variant ->
-    if (!variant.buildType.isDebuggable()) {
-        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
-        return;
-    }
-
-    JavaCompile javaCompile = variant.javaCompile
-    javaCompile.doLast {
-        String[] args = ["-showWeaveInfo",
-                         "-1.5",
-                         "-inpath", javaCompile.destinationDir.toString(),
-                         "-aspectpath", javaCompile.classpath.asPath,
-                         "-d", javaCompile.destinationDir.toString(),
-                         "-classpath", javaCompile.classpath.asPath,
-                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-        log.debug "ajc args: " + Arrays.toString(args)
-
-        MessageHandler handler = new MessageHandler(true);
-        new Main().run(args, handler);
-        for (IMessage message : handler.getMessages(null, true)) {
-            switch (message.getKind()) {
-                case IMessage.ABORT:
-                case IMessage.ERROR:
-                case IMessage.FAIL:
-                    log.error message.message, message.thrown
-                    break;
-                case IMessage.WARNING:
-                    log.warn message.message, message.thrown
-                    break;
-                case IMessage.INFO:
-                    log.info message.message, message.thrown
-                    break;
-                case IMessage.DEBUG:
-                    log.debug message.message, message.thrown
-                    break;
-            }
-        }
-    }
-}
 repositories {
     mavenCentral()
     google()
