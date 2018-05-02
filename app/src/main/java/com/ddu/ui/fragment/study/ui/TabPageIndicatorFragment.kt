@@ -46,10 +46,6 @@ class TabPageIndicatorFragment : DefaultFragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     override fun isShowTitleBar(): Boolean {
         return false
     }

@@ -22,7 +22,7 @@ public class MeiTuanView extends LoadingView {
 
     public MeiTuanView(Context context, PullToRefreshBase pullToRefreshBase) {
         super(context, pullToRefreshBase.getMode(), pullToRefreshBase.getPullToRefreshScrollDirection());
-        loading = (ImageView) mRootView.findViewById(R.id.loading);
+        loading = mRootView.findViewById(R.id.loading);
         measureView(mRootView);
         viewHeight = mRootView.getMeasuredHeight();
     }

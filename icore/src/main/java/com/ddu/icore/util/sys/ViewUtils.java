@@ -144,9 +144,7 @@ public class ViewUtils {
         int middleX = lvLocationOnScreen[0] + recyclerView.getWidth() / 2;
         if (childCount > 0) {
             view.getLocationOnScreen(vLocationOnScreen);
-            if (vLocationOnScreen[0] <= middleX && vLocationOnScreen[0] + view.getWidth() >= middleX) {
-                return true;
-            }
+            return vLocationOnScreen[0] <= middleX && vLocationOnScreen[0] + view.getWidth() >= middleX;
         }
         return false;
     }
@@ -159,9 +157,7 @@ public class ViewUtils {
         int middleY = lvLocationOnScreen[1] + recyclerView.getHeight() / 2;
         if (childCount > 0) {
             view.getLocationOnScreen(vLocationOnScreen);
-            if (vLocationOnScreen[1] <= middleY && vLocationOnScreen[1] + view.getHeight() >= middleY) {
-                return true;
-            }
+            return vLocationOnScreen[1] <= middleY && vLocationOnScreen[1] + view.getHeight() >= middleY;
         }
         return false;
     }

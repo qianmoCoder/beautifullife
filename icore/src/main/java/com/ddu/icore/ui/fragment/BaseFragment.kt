@@ -67,7 +67,7 @@ abstract class BaseFragment : Fragment(), IObserver<GodIntent> {
     override fun onDestroyView() {
         super.onDestroyView()
         val parent = mRootView!!.parent as ViewGroup
-        parent?.removeView(mRootView)
+        parent.removeView(mRootView)
     }
 
     override fun onDestroy() {

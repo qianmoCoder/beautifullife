@@ -95,7 +95,7 @@ class DrawView1 : View {
         canvas.drawArc(rect, -110f, 100f, true, paint) //绘制扇形
 
         canvas.drawArc(rect, 20f, 140f, false, paint) // 绘制弧形
-        paint.setStyle(Paint.Style.STROKE); // 画线模式
+        paint.style = Paint.Style.STROKE // 画线模式
         canvas.drawArc(rect, 180f, 60f, false, paint) // 绘制不封口的弧形
 
     }

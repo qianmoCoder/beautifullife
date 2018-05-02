@@ -81,7 +81,7 @@ public class DialogUtils {
         }
 
 
-        Button btnOk = (Button) layout.findViewById(R.id.btn_right);
+        Button btnOk = layout.findViewById(R.id.btn_right);
         btnOk.setText(btnOkTitle);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override

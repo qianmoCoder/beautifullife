@@ -106,7 +106,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
                 if (null == mStudyFragment) {
                     mStudyFragment = StudyFragment.newInstance()
 
-                    transaction.add(fl_home_content!!.getId(), mStudyFragment, TAG_STUDY)
+                    transaction.add(fl_home_content!!.id, mStudyFragment, TAG_STUDY)
                 } else {
                     transaction.show(mStudyFragment)
                 }
@@ -116,7 +116,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_work -> {
                 if (null == mWorkFragment) {
                     mWorkFragment = WorkFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mWorkFragment, TAG_WORK)
+                    transaction.add(fl_home_content!!.id, mWorkFragment, TAG_WORK)
                 } else {
                     transaction.show(mWorkFragment)
                 }
@@ -126,7 +126,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_life -> {
                 if (null == mLifeFragment) {
                     mLifeFragment = LifeFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mLifeFragment, TAG_LIFE)
+                    transaction.add(fl_home_content!!.id, mLifeFragment, TAG_LIFE)
                 } else {
                     transaction.show(mLifeFragment)
                 }
@@ -136,7 +136,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_me -> {
                 if (null == mMeFragment) {
                     mMeFragment = MeFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mMeFragment, TAG_ME)
+                    transaction.add(fl_home_content!!.id, mMeFragment, TAG_ME)
                 } else {
                     transaction.show(mMeFragment)
                 }
@@ -153,7 +153,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
-        val action = godIntent.getAction()
+        val action = godIntent.action
         if (action == LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION) {
             navigation!!.visibility = View.GONE
             //            doAnimator(navigation, true);

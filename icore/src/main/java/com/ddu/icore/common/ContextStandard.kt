@@ -98,7 +98,7 @@ fun Context.startFragment(fragmentName: String, bundle: Bundle = Bundle()) {
 fun Context.startBrowser(url: String = "") {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     val handlers = packageManager.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)
-    if (handlers == null || handlers!!.size == 0) {
+    if (handlers == null || handlers.size == 0) {
         ToastUtils.showToast("browser not found")
     } else {
         startActivity(intent)

@@ -18,7 +18,7 @@ class Client {
     }
     fun main() {
         val t = Father("").Sun()
-        t?.run {
+        t.run {
             temp()
         }
         val m = Father::bar

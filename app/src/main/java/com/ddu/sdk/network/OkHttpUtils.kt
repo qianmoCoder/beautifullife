@@ -18,7 +18,7 @@ object OkHttpUtils {
         if (null == httpUrl) {
             return url
         }
-        val urlBuilder = httpUrl?.newBuilder()
+        val urlBuilder = httpUrl.newBuilder()
         for ((key, value) in urlParams.entries) {
             urlBuilder.addQueryParameter(key, value)
         }

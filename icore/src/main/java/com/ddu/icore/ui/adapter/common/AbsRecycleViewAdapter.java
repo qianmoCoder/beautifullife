@@ -87,7 +87,7 @@ public abstract class AbsRecycleViewAdapter<T> extends RecyclerView.Adapter<Recy
         if (isShowEmptyView()) {
             return 1;
         }
-        return mItems == null ? 0 : mItems.size();
+        return mItems.size();
     }
 
     @Override
@@ -116,10 +116,7 @@ public abstract class AbsRecycleViewAdapter<T> extends RecyclerView.Adapter<Recy
         if (null == mEmptyView) {
             return false;
         }
-        if (mItems.size() != 0) {
-            return false;
-        }
-        return true;
+        return mItems.size() == 0;
     }
 
     public void clearChoices() {

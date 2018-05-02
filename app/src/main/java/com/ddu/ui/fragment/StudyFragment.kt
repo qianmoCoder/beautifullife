@@ -62,7 +62,7 @@ class StudyFragment : DefaultFragment() {
 
     override fun initView() {
         mStudyContentFragmentPagerAdapter = StudyContentFragmentPagerAdapter(fragmentManager, mTitles)
-        vp_study.setAdapter(mStudyContentFragmentPagerAdapter)
+        vp_study.adapter = mStudyContentFragmentPagerAdapter
         tl_study.setupWithViewPager(vp_study)
         iv_add_item.setOnClickListener(View.OnClickListener {
             if (!isShow) {

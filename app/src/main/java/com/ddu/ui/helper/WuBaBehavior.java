@@ -33,11 +33,11 @@ public class WuBaBehavior extends CoordinatorLayout.Behavior<View>{
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
         if (dependency != null && dependency.getId() == R.id.dependency) {
             this.dependency = parent.findViewById(R.id.dependency);
-            mFrameLayout = (FrameLayout) parent.findViewById(R.id.frameLayout);
-            ll_search = (LinearLayout) parent.findViewById(R.id.ll_search);
-            mRecyclerView = (RecyclerView) parent.findViewById(R.id.recyclerView);
+            mFrameLayout = parent.findViewById(R.id.frameLayout);
+            ll_search = parent.findViewById(R.id.ll_search);
+            mRecyclerView = parent.findViewById(R.id.recyclerView);
 
-            ll_weather = (LinearLayout) parent.findViewById(R.id.ll_weather);
+            ll_weather = parent.findViewById(R.id.ll_weather);
 
             act = (Activity) dependency.getContext();
             return true;

@@ -121,7 +121,4 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         fun onFragmentBackPress(): Boolean
     }
 
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        return super.dispatchTouchEvent(ev)
-    }
 }

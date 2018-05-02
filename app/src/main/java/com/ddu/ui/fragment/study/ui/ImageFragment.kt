@@ -42,10 +42,6 @@ class ImageFragment : DefaultFragment() {
         iv_common.setImageResource(resId)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     companion object {
 
         fun newInstance(taskId: String): ImageFragment {

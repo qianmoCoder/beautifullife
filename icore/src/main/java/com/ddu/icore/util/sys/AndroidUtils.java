@@ -118,11 +118,7 @@ public class AndroidUtils {
             long blockSize = sf.getBlockSize();
             long availSize = availCount * blockSize / 1024;
 
-            if (availSize >= 3072) {
-                return true;
-            } else {
-                return false;
-            }
+            return availSize >= 3072;
         }
 
         return false;

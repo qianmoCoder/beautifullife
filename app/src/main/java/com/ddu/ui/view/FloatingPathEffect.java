@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 public interface FloatingPathEffect {
 
     @NonNull
-    abstract FloatingPath getFloatingPath(FloatingTextView floatingTextView);
+    FloatingPath getFloatingPath(FloatingTextView floatingTextView);
 
 
 }
