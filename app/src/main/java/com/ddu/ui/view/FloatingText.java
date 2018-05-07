@@ -32,10 +32,10 @@ public class FloatingText {
 
     public FloatingTextView attach2Window() {
 
-        ViewGroup rootView = mFloatingTextBuilder.getActivity().findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup rootView = (ViewGroup) mFloatingTextBuilder.getActivity().findViewById(Window.ID_ANDROID_CONTENT);
 
         // get wrapper from activity
-        floatingTextWrapper = mFloatingTextBuilder.getActivity().findViewById(R.id.FloatingText_wrapper);
+        floatingTextWrapper = (FrameLayout) mFloatingTextBuilder.getActivity().findViewById(R.id.FloatingText_wrapper);
 
         // if activity does not yet have a floatingText wrapper, we add one
         if(floatingTextWrapper == null){
@@ -57,7 +57,7 @@ public class FloatingText {
 
     public void dettachFromWidow() {
         if (mFloatingTextView == null || mFloatingTextBuilder == null) return;
-        ViewGroup rootView = mFloatingTextBuilder.getActivity().findViewById(Window.ID_ANDROID_CONTENT);
+        ViewGroup rootView = (ViewGroup) mFloatingTextBuilder.getActivity().findViewById(Window.ID_ANDROID_CONTENT);
         rootView.removeView(mFloatingTextView);
     }
 

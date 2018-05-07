@@ -32,11 +32,11 @@ public class ScrollingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
         offsetY = getResources().getDimensionPixelOffset(R.dimen.dp_10);
-        coordinatorLayout = findViewById(R.id.home_main);
-        nestedScrollView = findViewById(R.id.scroll_view);
-        appBarLayout = findViewById(R.id.app_bar);
-        collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
-        ll_search = findViewById(R.id.ll_search);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.home_main);
+        nestedScrollView = (NestedScrollView) findViewById(R.id.scroll_view);
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        ll_search = (LinearLayout) findViewById(R.id.ll_search);
         ll_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,8 +44,8 @@ public class ScrollingActivity extends AppCompatActivity {
                 collapsingToolbarLayout.setScrimsShown(false);
             }
         });
-        rl_title_bar = findViewById(R.id.rl_title_bar);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        rl_title_bar = (RelativeLayout) findViewById(R.id.rl_title_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

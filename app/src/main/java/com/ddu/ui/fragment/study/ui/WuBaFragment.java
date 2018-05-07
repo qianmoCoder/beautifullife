@@ -69,7 +69,7 @@ public class WuBaFragment extends DefaultFragment {
                 public ViewHolder(View itemView) {
                     super(itemView);
 
-                    text = itemView.findViewById(R.id.tv_name);
+                    text = (TextView) itemView.findViewById(R.id.tv_name);
                 }
 
             }

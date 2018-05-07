@@ -83,6 +83,10 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
         return false
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun onRefresh() {
         BaseApp.postDelayed(Runnable{
             val size = mDatas.size

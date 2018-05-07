@@ -34,7 +34,7 @@ public class ProgressWheelFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        Button buttonAbout = findViewById(R.id.button_about);
+        Button buttonAbout = (Button) findViewById(R.id.button_about);
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,14 +52,14 @@ public class ProgressWheelFragment extends DefaultFragment {
             }
         });
 
-        progressWheel = findViewById(R.id.progress_wheel);
-        progressWheelInterpolated = findViewById(R.id.interpolated);
-        progressWheelLinear = findViewById(R.id.linear);
+        progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
+        progressWheelInterpolated = (ProgressWheel) findViewById(R.id.interpolated);
+        progressWheelLinear = (ProgressWheel) findViewById(R.id.linear);
 
-        interpolatedValue = findViewById(R.id.interpolatedValue);
-        linearValue = findViewById(R.id.linearValue);
+        interpolatedValue = (TextView) findViewById(R.id.interpolatedValue);
+        linearValue = (TextView) findViewById(R.id.linearValue);
 
-        Spinner spinnerOptions = findViewById(R.id.spinner_options);
+        Spinner spinnerOptions = (Spinner) findViewById(R.id.spinner_options);
         spinnerOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -124,7 +124,7 @@ public class ProgressWheelFragment extends DefaultFragment {
         final int defaultBarColor = progressWheel.getBarColor();
         final int defaultWheelColor = progressWheel.getRimColor();
 
-        Spinner colorOptions = findViewById(R.id.spinner_options_color);
+        Spinner colorOptions = (Spinner) findViewById(R.id.spinner_options_color);
         colorOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -153,7 +153,7 @@ public class ProgressWheelFragment extends DefaultFragment {
             }
         });
 
-        Spinner wheelColorOptions = findViewById(R.id.spinner_options_rim_color);
+        Spinner wheelColorOptions = (Spinner) findViewById(R.id.spinner_options_rim_color);
         wheelColorOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

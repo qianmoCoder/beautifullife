@@ -82,8 +82,8 @@ public class Banner<T> extends LinearLayout {
     private void init(Context context) {
         View hView = LayoutInflater.from(context).inflate(
                 R.layout.include_viewpager, this, true);
-        viewPager = hView.findViewById(R.id.cbLoopViewPager);
-        loPageTurningPoint = hView
+        viewPager = (LoopViewPager) hView.findViewById(R.id.cbLoopViewPager);
+        loPageTurningPoint = (ViewGroup) hView
                 .findViewById(R.id.loPageTurningPoint);
         initViewPagerScroll();
 
@@ -128,9 +128,9 @@ public class Banner<T> extends LinearLayout {
             this.mDatas = datas;
             pageAdapter = new ICorePageAdapter(holderCreator, mDatas, isCustomer);
 
-            viewPager.setAdapter(pageAdapter, size > 1);
+            viewPager.setAdapter(pageAdapter, size > 1 ? true : false);
 
-            setPointViewVisible(size > 1);
+            setPointViewVisible(size > 1 ? true : false);
 
             if (page_indicatorId != null)
                 setPageIndicator(page_indicatorId);
@@ -147,8 +147,8 @@ public class Banner<T> extends LinearLayout {
         try {
             viewPager.getAdapter().notifyDataSetChanged();
             int size = getRealCount();
-            setCanLoop(size > 1);
-            setPointViewVisible(size > 1);
+            setCanLoop(size > 1 ? true : false);
+            setPointViewVisible(size > 1 ? true : false);
             if (page_indicatorId != null)
                 setPageIndicator(page_indicatorId);
         } catch (Throwable e) {

@@ -24,9 +24,9 @@ public class ScrollingActivity1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling1);
-        mAppBarLayout = findViewById(R.id.app_bar);
-        ptrFrameLayout = findViewById(R.id.ptf);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        ptrFrameLayout = (PtrClassicFrameLayout) findViewById(R.id.ptf);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

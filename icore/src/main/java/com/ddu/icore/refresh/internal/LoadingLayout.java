@@ -58,11 +58,11 @@ public abstract class LoadingLayout extends LoadingView implements ILoadingLayou
                 break;
         }
 
-        mInnerLayout = findViewById(R.id.fl_inner);
-        mHeaderText = mInnerLayout.findViewById(R.id.pull_to_refresh_text);
-        mHeaderProgress = mInnerLayout.findViewById(R.id.pull_to_refresh_progress);
-        mSubHeaderText = mInnerLayout.findViewById(R.id.pull_to_refresh_sub_text);
-        mHeaderImage = mInnerLayout.findViewById(R.id.pull_to_refresh_image);
+        mInnerLayout = (FrameLayout) findViewById(R.id.fl_inner);
+        mHeaderText = (TextView) mInnerLayout.findViewById(R.id.pull_to_refresh_text);
+        mHeaderProgress = (ProgressBar) mInnerLayout.findViewById(R.id.pull_to_refresh_progress);
+        mSubHeaderText = (TextView) mInnerLayout.findViewById(R.id.pull_to_refresh_sub_text);
+        mHeaderImage = (ImageView) mInnerLayout.findViewById(R.id.pull_to_refresh_image);
 
         LayoutParams lp = (LayoutParams) mInnerLayout.getLayoutParams();
 

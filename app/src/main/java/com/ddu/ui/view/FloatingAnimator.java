@@ -6,6 +6,6 @@ package com.ddu.ui.view;
  */
 public interface FloatingAnimator {
 
-    void applyFloatingAnimation(FloatingTextView view);
+    public void applyFloatingAnimation(FloatingTextView view);
 
 }

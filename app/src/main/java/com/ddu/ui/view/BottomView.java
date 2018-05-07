@@ -106,7 +106,11 @@ public class BottomView {
      */
     public boolean isViewShow() {
         if (this.bv != null) {
-            return this.bv.isShowing();
+            if (this.bv.isShowing()) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

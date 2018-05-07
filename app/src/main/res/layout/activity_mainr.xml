@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@+id/fl_home_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/view_line" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/rg_main"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:background="@color/c_999999" />
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_main_study"
+            style="@style/MainTab.Study"
+            android:text="@string/main_tab_study" />
+
+        <RadioButton
+            android:id="@+id/rb_main_work"
+            style="@style/MainTab.Work"
+            android:text="@string/main_tab_work" />
+
+        <RadioButton
+            android:id="@+id/rb_main_life"
+            style="@style/MainTab.Life"
+            android:text="@string/main_tab_life" />
+
+        <RadioButton
+            android:id="@+id/rb_main_me"
+            style="@style/MainTab.Me"
+            android:text="@string/main_tab_me" />
+
+    </RadioGroup>
+
+</RelativeLayout>

@@ -212,7 +212,7 @@ public class LockPatternView extends View {
     /**
      * The call back interface for detecting patterns entered by the user.
      */
-    public interface OnPatternListener {
+    public static interface OnPatternListener {
 
         /**
          * A new pattern has begun.

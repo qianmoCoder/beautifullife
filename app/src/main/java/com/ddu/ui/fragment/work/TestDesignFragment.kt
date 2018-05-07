@@ -37,9 +37,9 @@ class TestDesignFragment : DefaultFragment() {
 
     override fun initView() {
         val adapter = SampleFragmentPagerAdapter(fragmentManager!!, baseActivity)
-        vp_design.adapter = adapter
+        vp_design.setAdapter(adapter)
         tl_design.setupWithViewPager(vp_design)
-        tl_design.tabMode = TabLayout.MODE_FIXED
+        tl_design.setTabMode(TabLayout.MODE_FIXED)
     }
 
     inner class SampleFragmentPagerAdapter(fm: FragmentManager, private val context: Context) : FragmentPagerAdapter(fm) {

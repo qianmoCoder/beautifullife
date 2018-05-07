@@ -701,7 +701,7 @@ public class ProgressWheel extends View {
          *
          * @param progress a double value between 0.00 and 1.00 both included
          */
-        void onProgressUpdate(float progress);
+        public void onProgressUpdate(float progress);
     }
 
     static class WheelSavedState extends BaseSavedState {

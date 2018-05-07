@@ -70,7 +70,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
                 if (!rxPermissions.isGranted(Manifest.permission.CAMERA)) {
                     rxPermissions.request(Manifest.permission.CAMERA).subscribe(new Consumer<Boolean>() {
                         @Override
-                        public void accept(Boolean aBoolean) {
+                        public void accept(Boolean aBoolean) throws Exception {
                             if (aBoolean) {
                                 getPhoto();
                             } else {
@@ -98,14 +98,14 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
                 .startActivityForResult(startCamera(getMActivity()), CAMERA_REQUEST_CODE)
                 .subscribe(new Consumer<ActivityResultInfo>() {
                     @Override
-                    public void accept(ActivityResultInfo activityResultInfo) {
+                    public void accept(ActivityResultInfo activityResultInfo) throws Exception {
 //                        String path = GetImagePath.getPath(mContext, doSomething());
                         showPhoto();
                         ToastUtils.showToast("拍照成功");
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) {
+                    public void accept(Throwable throwable) throws Exception {
                         ToastUtils.showToast("拍照失败: " + throwable.getMessage());
                     }
                 });

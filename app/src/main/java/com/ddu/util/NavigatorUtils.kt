@@ -45,7 +45,7 @@ object NavigatorUtils {
 
                 }
                 "http", "https" -> {
-                    ToastUtils.showToast("跳转http成功: $it")
+                    ToastUtils.showToast("跳转http成功: ${it.toString()}")
                     isSuccess = true
                 }
                 else -> isSuccess = false

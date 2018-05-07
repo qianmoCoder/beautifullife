@@ -3,9 +3,15 @@
 
     <string name="share_to">分享到</string>
     <string name="weixin_friend">微信好友</string>
+    <string name="weixin_circle_friend">朋友圈</string>
 
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
+
+    <string name="no_data">暂无数据</string>
+
+    <string name="parse_data_error">解析数据失败!</string>
+    <string name="request_error_msg">获取数据失败!（%d）</string>
 
     <string name="pull_to_refresh_pull_label">下拉刷新...</string>
     <string name="pull_to_refresh_release_label">松开立即刷新...</string>
@@ -15,4 +21,5 @@
     <string name="pull_to_refresh_from_bottom_release_label">松开立即加载...</string>
     <string name="pull_to_refresh_from_bottom_refreshing_label">正在加载...</string>
 
+    <string name="no_install_app_store">未发现应用商店</string>
 </resources>

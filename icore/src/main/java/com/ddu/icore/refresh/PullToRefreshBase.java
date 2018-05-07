@@ -113,7 +113,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        contentView = findViewById(R.id.refresh_content_view);
+        contentView = (ViewGroup) findViewById(R.id.refresh_content_view);
 //        if (null != contentView) {
 //            LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, 150);
 //            contentView.addView(new RotateLoadingLayout(mContext, Mode.PULL_FROM_START, getPullToRefreshScrollDirection()), 0, layoutParams);
@@ -1197,7 +1197,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         });
     }
 
-    public enum AnimationStyle {
+    public static enum AnimationStyle {
         /**
          * This is the default for Android-PullToRefresh. Allows you to use any
          * drawable, which is automatically rotated and used as a Progress Bar.
@@ -1243,7 +1243,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         }
     }
 
-    public enum Mode {
+    public static enum Mode {
 
         /**
          * Disable all Pull-to-Refresh gesture and Refreshing handling
@@ -1343,16 +1343,16 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     }
 
-    public interface OnLastItemVisibleListener {
+    public static interface OnLastItemVisibleListener {
 
         /**
          * Called when the user has scrolled to the end of the list
          */
-        void onLastItemVisible();
+        public void onLastItemVisible();
 
     }
 
-    public interface OnPullEventListener<V extends View> {
+    public static interface OnPullEventListener<V extends View> {
 
         /**
          * Called when the internal state has been changed, usually by the user
@@ -1366,7 +1366,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
          *                    {@link State#PULL_TO_REFRESH} or
          *                    {@link State#RELEASE_TO_REFRESH}.
          */
-        void onPullEvent(final PullToRefreshBase<V> refreshView, State state, Mode direction);
+        public void onPullEvent(final PullToRefreshBase<V> refreshView, State state, Mode direction);
 
     }
 
@@ -1375,13 +1375,13 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      *
      * @author Chris Banes
      */
-    public interface OnRefreshListener<V extends View> {
+    public static interface OnRefreshListener<V extends View> {
 
         /**
          * onRefresh will be called for both a Pull from start, and Pull from
          * end
          */
-        void onRefresh(final PullToRefreshBase<V> refreshView);
+        public void onRefresh(final PullToRefreshBase<V> refreshView);
 
     }
 
@@ -1392,28 +1392,28 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      *
      * @author Chris Banes
      */
-    public interface OnRefreshListener2<V extends View> {
+    public static interface OnRefreshListener2<V extends View> {
         // TODO These methods need renaming to START/END rather than DOWN/UP
 
         /**
          * onPullDownToRefresh will be called only when the user has Pulled from
          * the start, and released.
          */
-        void onPullDownToRefresh(final PullToRefreshBase<V> refreshView);
+        public void onPullDownToRefresh(final PullToRefreshBase<V> refreshView);
 
         /**
          * onPullUpToRefresh will be called only when the user has Pulled from
          * the end, and released.
          */
-        void onPullUpToRefresh(final PullToRefreshBase<V> refreshView);
+        public void onPullUpToRefresh(final PullToRefreshBase<V> refreshView);
 
     }
 
-    public enum Orientation {
-        VERTICAL, HORIZONTAL
+    public static enum Orientation {
+        VERTICAL, HORIZONTAL;
     }
 
-    public enum State {
+    public static enum State {
 
         /**
          * When the UI is in a state which means that user is not interacting
@@ -1538,7 +1538,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         }
     }
 
-    interface OnSmoothScrollFinishedListener {
+    static interface OnSmoothScrollFinishedListener {
         void onSmoothScrollFinished();
     }
 

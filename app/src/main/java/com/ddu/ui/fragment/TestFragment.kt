@@ -147,6 +147,15 @@ class TestFragment : DefaultFragment() {
                 //                pb_loading.setVisibility(View.GONE);
             }
 
+            override fun onLoadFailed(errorDrawable: Drawable?) {
+                super.onLoadFailed(errorDrawable)
+                //                Log.v("lhz", "onLoadFailed");
+            }
+
+            override fun onLoadCleared(placeholder: Drawable?) {
+                super.onLoadCleared(placeholder)
+                //                Log.v("lhz", "onLoadCleared");
+            }
         })
 
         //        GlideApp.with(this).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2760457749,4161462131&fm=27&gp=0.jpg").listener(new RequestListener<Drawable>() {

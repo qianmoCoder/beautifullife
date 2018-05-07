@@ -103,7 +103,10 @@ public abstract class CommonRecycleViewAdapter<T> extends RecyclerView.Adapter<R
         if (null == mEmptyView) {
             return false;
         }
-        return mItems.size() == 0;
+        if (mItems.size() != 0) {
+            return false;
+        }
+        return true;
     }
 
     public abstract View getView(ViewGroup parent, int viewType);

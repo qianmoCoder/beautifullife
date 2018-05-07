@@ -46,15 +46,15 @@ abstract class DefaultFragment : BaseFragment() {
     abstract fun initView()
 
     fun startFragment(className: Class<out Fragment>) {
-        baseActivity.startFragment(className)
+        baseActivity?.startFragment(className)
     }
 
     fun startFragment(className: String) {
-        baseActivity.startFragment(className)
+        baseActivity?.startFragment(className)
     }
 
     fun startFragment(className: Class<out Fragment>, bundle: Bundle) {
-        baseActivity.startFragment(className, bundle)
+        baseActivity?.startFragment(className, bundle)
     }
 
     fun replaceFragment(fragment: Fragment) {
@@ -77,13 +77,13 @@ abstract class DefaultFragment : BaseFragment() {
 
     fun setDefaultTitle(resId: Int) {
         if (null != titleBar) {
-            titleBar!!.setDefaultTitle(resId) { baseActivity.onBackPressed() }
+            titleBar!!.setDefaultTitle(resId) { baseActivity?.onBackPressed() }
         }
     }
 
     fun setDefaultTitle(title: String) {
         if (null != titleBar) {
-            titleBar!!.setDefaultTitle(title) { baseActivity.onBackPressed() }
+            titleBar!!.setDefaultTitle(title) { baseActivity?.onBackPressed() }
         }
     }
 

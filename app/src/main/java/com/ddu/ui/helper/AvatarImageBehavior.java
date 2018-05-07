@@ -104,8 +104,8 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
             child.setY(mStartYPosition - distanceYToSubtract);
 
             CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) child.getLayoutParams();
-            lp.width = mStartHeight;
-            lp.height = mStartHeight;
+            lp.width = (int) (mStartHeight);
+            lp.height = (int) (mStartHeight);
             child.setLayoutParams(lp);
         }
         return true;

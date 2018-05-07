@@ -52,7 +52,7 @@ public class TraceAspect {
 //    }
 
     @Before(BEFORE_ONCLICK)
-    public void onActivityMethodOnClickBefore(JoinPoint joinPoint) {
+    public void onActivityMethodOnClickBefore(JoinPoint joinPoint) throws Throwable {
         try {
             AspectHelper.sendEventForData(joinPoint);
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class TraceAspect {
     }
 
     @Before(BEFORE_ASPECTJ)
-    public void onAspectjBefore(JoinPoint joinPoint, AspectJ aspectJ) {
+    public void onAspectjBefore(JoinPoint joinPoint, AspectJ aspectJ) throws Throwable {
         try {
             AspectHelper.sendEventForData(joinPoint, aspectJ);
         } catch (Exception e) {
@@ -70,11 +70,11 @@ public class TraceAspect {
     }
 
     @Before(BEFORE_FRAGMENT_ONCREATE)
-    public void onFragmentMethodOnCreateBefore(JoinPoint joinPoint) {
+    public void onFragmentMethodOnCreateBefore(JoinPoint joinPoint) throws Throwable {
     }
 
     @Before(BEFORE_ACTIVITY_ONCREATE)
-    public void onActivityMethodOnCreateBefore(JoinPoint joinPoint) {
+    public void onActivityMethodOnCreateBefore(JoinPoint joinPoint) throws Throwable {
     }
 
 }

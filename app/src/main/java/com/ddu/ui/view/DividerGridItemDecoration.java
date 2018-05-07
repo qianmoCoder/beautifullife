@@ -87,15 +87,22 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
                                 int childCount) {
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-            return (pos + 1) % spanCount == 0;
+            if ((pos + 1) % spanCount == 0)// 如果是最后一列，则不需要绘制右边
+            {
+                return true;
+            }
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager)
                     .getOrientation();
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
-                return (pos + 1) % spanCount == 0;
+                if ((pos + 1) % spanCount == 0)// 如果是最后一列，则不需要绘制右边
+                {
+                    return true;
+                }
             } else {
                 childCount = childCount - childCount % spanCount;
-                return pos >= childCount;
+                if (pos >= childCount)// 如果是最后一列，则不需要绘制右边
+                    return true;
             }
         }
         return false;
@@ -106,7 +113,8 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             childCount = childCount - childCount % spanCount;
-            return pos >= childCount;
+            if (pos >= childCount)// 如果是最后一行，则不需要绘制底部
+                return true;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager)
                     .getOrientation();
@@ -114,12 +122,15 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
                 childCount = childCount - childCount % spanCount;
                 // 如果是最后一行，则不需要绘制底部
-                return pos >= childCount;
+                if (pos >= childCount)
+                    return true;
             } else
             // StaggeredGridLayoutManager 且横向滚动
             {
                 // 如果是最后一行，则不需要绘制底部
-                return (pos + 1) % spanCount == 0;
+                if ((pos + 1) % spanCount == 0) {
+                    return true;
+                }
             }
         }
         return false;

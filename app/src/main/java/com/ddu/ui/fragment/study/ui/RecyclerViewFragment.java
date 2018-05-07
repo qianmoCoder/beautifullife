@@ -84,7 +84,10 @@ public class RecyclerViewFragment extends DefaultFragment {
 
     public boolean canScrollPullLeft() {
         int lastChild = findLastItemPosition();
-        return lastChild + 1 >= recyclerView.getAdapter().getItemCount();
+        if (lastChild + 1 >= recyclerView.getAdapter().getItemCount()) {
+            return true;
+        }
+        return false;
     }
 
     public static int getResId(String variableName, @NonNull Class<?> c) {

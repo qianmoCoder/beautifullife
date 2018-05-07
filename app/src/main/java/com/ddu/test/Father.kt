@@ -29,6 +29,8 @@ open class Father(val _nickname: String = "", val isSubscribed: Boolean = true) 
 
     }
 
-    companion object
+    companion object {
+
+    }
 
 }
