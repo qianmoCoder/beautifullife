@@ -41,9 +41,6 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
         rg_main.setOnCheckedChangeListener(this)
         rg_main.check(R.id.rb_main_study)
         startActivity<MainActivityT>()
-        defaultSharedPreferences.edit {
-
-        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {

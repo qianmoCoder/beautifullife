@@ -15,6 +15,8 @@ ext {
 
     supportLibraryVersion = '27.0.2'
 
+    lifecycleVersion = '1.1.1'
+
     icoreDependencies = [
             fileTree(include: ['*.jar'], dir: 'libs'),
             "com.android.support:support-v4:$supportLibraryVersion",
@@ -23,6 +25,8 @@ ext {
             "com.android.support:design:$supportLibraryVersion",
             "com.android.support:cardview-v7:$supportLibraryVersion",
             "com.android.support:palette-v7:$supportLibraryVersion",
+
+            "android.arch.lifecycle:extensions:$lifecycleVersion",
 
             'org.aspectj:aspectjrt:1.8.10',
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",

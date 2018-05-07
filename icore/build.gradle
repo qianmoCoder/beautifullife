@@ -31,12 +31,17 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     icoreDependencies.each {
         k -> api k
     }
+    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
 }
 
 repositories {

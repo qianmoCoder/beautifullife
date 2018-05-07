@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.dialog.AbsBottomDialogFragment
-import kotlinx.android.synthetic.main.dialog_font_setting.*
 
 
 /**
@@ -51,10 +50,10 @@ class FontSettingDialog : AbsBottomDialogFragment() {
         volumeSections.add("低")
         volumeSections.add("中")
         volumeSections.add("高")
-        csk_font.initData(volumeSections)
-        csk_font.setProgress(0)
-        csk_font.setResponseOnTouch {
-
-        }
+//        csk_font.initData(volumeSections)
+//        csk_font.setProgress(0)
+//        csk_font.setResponseOnTouch {
+//
+//        }
     }
 }

@@ -10,7 +10,7 @@ import android.support.v4.content.ContextCompat
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.util.NotificationUtils
+import com.ddu.icore.util.sys.SystemUtils.getAppDetailSettingIntent
 import kotlinx.android.synthetic.main.fragment_work.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.telephonyManager
@@ -31,14 +31,15 @@ class WorkFragment : DefaultFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         oiv_fragment.setOnClickListener {
-            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
-            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
-            NotificationUtils.instance.notify(1, builder)
-            NotificationUtils.instance.notify(2, builder1)
-            BaseApp.postDelayed(Runnable {
-                val builder3 = NotificationUtils.instance.getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
-                NotificationUtils.instance.notify(2, builder3)
-            }, 1500)
+            getAppDetailSettingIntent(ctx)
+//            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+//            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
+//            NotificationUtils.instance.notify(1, builder)
+//            NotificationUtils.instance.notify(2, builder1)
+//            BaseApp.postDelayed(Runnable {
+//                val builder3 = NotificationUtils.instance.getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+//                NotificationUtils.instance.notify(2, builder3)
+//            }, 1500)
 
 //            val builder = Notification.Builder(context)
 //                    .setTicker("Hello")

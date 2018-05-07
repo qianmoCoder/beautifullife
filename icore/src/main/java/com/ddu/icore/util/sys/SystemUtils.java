@@ -27,6 +27,14 @@ public class SystemUtils {
         }
     }
 
+    public static void getAppDetailSettingIntent(Context context) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        localIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        localIntent.setData(Uri.fromParts("package", context.getPackageName(), null));
+        context.startActivity(localIntent);
+    }
+
     public void openNotificationSetting(Context context) {
         Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
         intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
