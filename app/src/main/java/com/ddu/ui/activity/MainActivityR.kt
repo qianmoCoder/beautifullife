@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.widget.RadioGroup
-import androidx.content.edit
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.activity.BaseActivity
@@ -15,7 +14,6 @@ import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import kotlinx.android.synthetic.main.activity_mainr.*
-import org.jetbrains.anko.defaultSharedPreferences
 import org.jetbrains.anko.startActivity
 
 class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
@@ -30,7 +28,7 @@ class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawable(null)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_mainr)
 
         savedInstanceState?.let {
             mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
