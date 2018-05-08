@@ -13,7 +13,7 @@ ext {
     compileSdkVersion = 27
     buildToolsVersion = '27.0.2'
 
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '27.1.0'
 
     lifecycleVersion = '1.1.1'
 
@@ -26,7 +26,7 @@ ext {
             "com.android.support:cardview-v7:$supportLibraryVersion",
             "com.android.support:palette-v7:$supportLibraryVersion",
 
-            "android.arch.lifecycle:extensions:$lifecycleVersion",
+//            "android.arch.lifecycle:extensions:$lifecycleVersion",
 
             'org.aspectj:aspectjrt:1.8.10',
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",

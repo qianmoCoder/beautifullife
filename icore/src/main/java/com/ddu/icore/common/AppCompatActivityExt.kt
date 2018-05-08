@@ -1,7 +1,5 @@
 package com.ddu.icore.common
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
@@ -19,8 +17,8 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
     }
 }
 
-inline fun <reified T : ViewModel> AppCompatActivity.obtainViewModel() =
-        ViewModelProviders.of(this).get(T::class.java)
+//inline fun <reified T : ViewModel> AppCompatActivity.obtainViewModel() =
+//        ViewModelProviders.of(this).get(T::class.java)
 
 private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Unit) {
     beginTransaction().apply {
