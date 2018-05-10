@@ -16,13 +16,11 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.edit
 import com.ddu.icore.ui.activity.ShowDetailActivity
 import com.ddu.icore.util.ToastUtils
 import com.ddu.icore.util.sys.PreferenceUtils
-import org.jetbrains.anko.clipboardManager
-import org.jetbrains.anko.connectivityManager
-import org.jetbrains.anko.inputMethodManager
-import org.jetbrains.anko.powerManager
+import org.jetbrains.anko.*
 
 /**
  * Created by yzbzz on 2018/1/18.
@@ -45,6 +43,26 @@ val Context.versionCode
 
 
 inline fun <reified T> Context.findPreference(key: String, default: T): T? = PreferenceUtils.findPreference(key, default)
+
+inline fun <reified T> Context.pPreference(key: String, value: T) {
+    defaultSharedPreferences.edit {
+        when (value) {
+            is Boolean -> putBoolean(key, value)
+            is Float -> putFloat(key, value)
+            is Int -> putInt(key, value)
+            is Long -> putLong(key, value)
+            is String -> putString(key, value)
+//            is Set<*> -> when {
+//                value.isSetOf<String>() -> putStringSet(key, value)
+//                else -> {
+//                }
+//            }
+            else -> throw IllegalArgumentException(
+                    "This type can be saved into Preferences"
+            )
+        }
+    }
+}
 
 fun Context.clipText(text: String = "") {
     clipboardManager.primaryClip = ClipData.newPlainText("clipText", text)

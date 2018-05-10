@@ -1,6 +1,7 @@
 package com.ddu.icore.common
 
 import android.graphics.Color
+import android.support.annotation.ColorInt
 import com.alibaba.fastjson.JSON
 import com.ddu.icore.util.TextPhrase
 import com.google.gson.Gson
@@ -50,15 +51,11 @@ fun String.md5(): String {
     return sb.toString().toUpperCase()
 }
 
-fun String?.parseColor(): Int? {
-    return if (isNullOrEmpty()) {
-        null
-    } else {
-        try {
-            Color.parseColor(this)
-        } catch (e: Exception) {
-            null
-        }
+fun String?.parseColor(@ColorInt defaultColor: Int = Color.BLUE): Int {
+    return try {
+        Color.parseColor(this)
+    } catch (e: Exception) {
+        defaultColor
     }
 }
 

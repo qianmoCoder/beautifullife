@@ -2,8 +2,10 @@ package com.ddu.icore.common
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.support.annotation.Size
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 
 fun View.alphaAnimator(duration: Long, vararg values: Float): ObjectAnimator {
     val objectAnimator = ObjectAnimator.ofFloat(this, View.ALPHA, *values)
@@ -26,6 +28,10 @@ fun View.rotationY(duration: Long, vararg values: Float): ObjectAnimator {
 fun View.hideKeyboard(): Boolean? {
     val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
     return inputMethodManager?.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+}
+
+fun TextView.setTextColor(@Size(min = 1) colorString: String) {
+    setTextColor(colorString.parseColor())
 }
 
 
