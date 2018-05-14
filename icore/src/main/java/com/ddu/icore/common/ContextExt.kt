@@ -35,6 +35,12 @@ val Context.screenWidth
 val Context.screenHeight
     get() = resources.displayMetrics.heightPixels
 
+val Context.density
+    get() = displayMetrics.density
+
+val Context.scaledDensity
+    get() = displayMetrics.scaledDensity
+
 val Context.versionName
     get() = packageManager.getPackageInfo(packageName, 0).versionName
 
@@ -52,14 +58,11 @@ inline fun <reified T> Context.pPreference(key: String, value: T) {
             is Int -> putInt(key, value)
             is Long -> putLong(key, value)
             is String -> putString(key, value)
-//            is Set<*> -> when {
-//                value.isSetOf<String>() -> putStringSet(key, value)
-//                else -> {
-//                }
-//            }
-            else -> throw IllegalArgumentException(
-                    "This type can be saved into Preferences"
-            )
+            is Set<*> -> when {
+                value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
+                else -> throw IllegalArgumentException("Unsupported type")
+            }
+            else -> throw IllegalArgumentException("This type can be saved into Preferences")
         }
     }
 }

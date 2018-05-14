@@ -1,6 +1,7 @@
 package com.ddu.icore.util.sys
 
 import com.ddu.icore.app.BaseApp
+import com.ddu.icore.common.isSetOf
 import org.jetbrains.anko.defaultSharedPreferences
 
 /**
@@ -24,32 +25,27 @@ object PreferenceUtils {
             is Int -> getInt(name, default)
             is Long -> getLong(name, default)
             is String -> getString(name, default)
-//            is Set<*> -> when {
-//                default.isSetOf<String>() -> getStringSet(name, default)
-//                else -> setOf()
-//            }
-            else -> throw IllegalArgumentException(
-                    "This type can be saved into Preferences"
-            )
+            is Set<*> -> when {
+                default.isSetOf<String>() -> getStringSet(name, default as Set<out String>)
+                else -> setOf()
+            }
+            else -> throw IllegalArgumentException("Unsupported type")
         }
         res as? T
     }
 
-    private fun <V> putPreference(name: String, value: V) = with(prefs.edit()) {
+    private fun <V> putPreference(key: String, value: V) = with(prefs.edit()) {
         when (value) {
-            is Boolean -> putBoolean(name, value)
-            is Float -> putFloat(name, value)
-            is Int -> putInt(name, value)
-            is Long -> putLong(name, value)
-            is String -> putString(name, value)
-//            is Set<*> -> when {
-//                value.isSetOf<String>() -> putStringSet(name, value)
-//                else -> {
-//                }
-//            }
-            else -> throw IllegalArgumentException(
-                    "This type can be saved into Preferences"
-            )
+            is Boolean -> putBoolean(key, value)
+            is Float -> putFloat(key, value)
+            is Int -> putInt(key, value)
+            is Long -> putLong(key, value)
+            is String -> putString(key, value)
+            is Set<*> -> when {
+                value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
+                else -> throw IllegalArgumentException("Unsupported type")
+            }
+            else -> throw IllegalArgumentException("This type can be saved into Preferences")
         }
     }
 
