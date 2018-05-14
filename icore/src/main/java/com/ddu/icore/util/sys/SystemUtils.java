@@ -18,6 +18,7 @@ import android.text.TextUtils;
  */
 public class SystemUtils {
 
+    // 跳转到通知渠道设置
     public static void openChannelSetting(Context context, String channelId) {
         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
         intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
@@ -26,6 +27,16 @@ public class SystemUtils {
             context.startActivity(intent);
         }
     }
+
+    // 跳转到应用市场
+    public static void gotoMarket(Context context) {
+        String appPkg = context.getPackageName();
+        Uri uri = Uri.parse("market://details?id=" + appPkg);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
 
     public static void getAppDetailSettingIntent(Context context) {
         Intent localIntent = new Intent();
