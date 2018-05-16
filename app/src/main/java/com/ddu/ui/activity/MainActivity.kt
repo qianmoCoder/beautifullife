@@ -5,7 +5,6 @@ import android.animation.AnimatorSet
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.view.MenuItem
@@ -35,8 +34,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     private var mLifeFragment: LifeFragment? = null
     private var mMeFragment: MeFragment? = null
 
-    private lateinit var mFragmentManager: FragmentManager
-
     private var isExit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +41,11 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         window.setBackgroundDrawable(null)
         setContentView(R.layout.activity_main)
 
-        mFragmentManager = supportFragmentManager
-
         savedInstanceState?.let {
-            mStudyFragment = mFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
-            mWorkFragment = mFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
-            mLifeFragment = mFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
-            mMeFragment = mFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
+            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
+            mWorkFragment = supportFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
+            mLifeFragment = supportFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
+            mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
         }
 
         BottomNavigationViewHelper.disableShiftMode(navigation)
@@ -99,7 +94,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val transaction = mFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         hideAll(transaction, mStudyFragment, mWorkFragment, mLifeFragment, mMeFragment)
         when (item.itemId) {
             R.id.navigation_study -> {

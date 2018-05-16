@@ -9,7 +9,7 @@ import java.math.BigDecimal
 import java.security.MessageDigest
 import java.util.regex.Pattern
 
-fun CharSequence.phrase(block: (TextPhrase) -> Unit): CharSequence? {
+inline fun CharSequence.phrase(block: (TextPhrase) -> Unit): CharSequence? {
     val textPhrase = TextPhrase(this)
     block(textPhrase)
     return textPhrase.format()
