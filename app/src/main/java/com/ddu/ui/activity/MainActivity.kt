@@ -42,7 +42,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         setContentView(R.layout.activity_main)
 
         savedInstanceState?.let {
-            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY) as StudyFragment
+            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY)?.let { it as StudyFragment }
             mWorkFragment = supportFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
             mLifeFragment = supportFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
             mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
@@ -100,7 +100,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_study -> {
                 if (null == mStudyFragment) {
                     mStudyFragment = StudyFragment.newInstance()
-
                     transaction.add(fl_home_content!!.getId(), mStudyFragment, TAG_STUDY)
                 } else {
                     transaction.show(mStudyFragment)
