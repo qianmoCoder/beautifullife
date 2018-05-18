@@ -42,6 +42,10 @@ dependencies {
         k -> api k
     }
     kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
+
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    implementation 'com.github.bumptech.glide:compiler:4.5.0'
+    kapt 'com.github.bumptech.glide:compiler:4.5.0'
 }
 
 repositories {

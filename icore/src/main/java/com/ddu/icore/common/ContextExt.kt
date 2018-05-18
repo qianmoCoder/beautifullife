@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Process
 import android.provider.Settings
 import android.support.annotation.RequiresPermission
 import android.view.View
@@ -42,10 +43,15 @@ val Context.scaledDensity
     get() = displayMetrics.scaledDensity
 
 val Context.versionName
-    get() = packageManager.getPackageInfo(packageName, 0).versionName
+    get() = packageManager?.getPackageInfo(packageName, 0)?.versionName
+
 
 val Context.versionCode
-    get() = packageManager.getPackageInfo(packageName, 0).versionCode
+    get() = packageManager.getPackageInfo(packageName, 0)?.versionCode
+
+val Context.getDeviceId
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    get() = telephonyManager.deviceId
 
 
 inline fun <reified T> Context.findPreference(key: String, default: T): T? = PreferenceUtils.findPreference(key, default)
@@ -76,6 +82,17 @@ fun Context.getMarketIntent(): Intent {
     val intent = Intent(Intent.ACTION_VIEW, uri)
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     return intent
+}
+
+fun Context.getProcessName(): String {
+    val pid = Process.myPid()
+    var processName = ""
+    activityManager.runningAppProcesses.forEach {
+        if (it.pid == pid) {
+            processName = it.processName
+        }
+    }
+    return processName
 }
 
 @RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
@@ -119,7 +136,7 @@ fun Context.startFragment(fragmentName: String, bundle: Bundle = Bundle()) {
 fun Context.startBrowser(url: String = "") {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     val handlers = packageManager.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)
-    if (handlers == null || handlers!!.size == 0) {
+    if (handlers == null || handlers.size == 0) {
         ToastUtils.showToast("browser not found")
     } else {
         startActivity(intent)

@@ -111,12 +111,12 @@ dependencies {
     kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     annotationProcessor "io.objectbox:objectbox-processor:$objectboxVersion"
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     implementation 'com.github.bumptech.glide:compiler:4.5.0'
     kapt 'com.github.bumptech.glide:compiler:4.5.0'
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'

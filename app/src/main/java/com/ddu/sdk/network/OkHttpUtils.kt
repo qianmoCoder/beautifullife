@@ -8,10 +8,7 @@ import okhttp3.HttpUrl
 object OkHttpUtils {
 
     fun appendUrl(url: String, urlParams: HashMap<String, String>): String {
-        if (null == url) {
-            return ""
-        }
-        if (urlParams == null || urlParams.size <= 0) {
+        if (urlParams.size <= 0) {
             return url
         }
         val httpUrl: HttpUrl? = HttpUrl.parse(url)
