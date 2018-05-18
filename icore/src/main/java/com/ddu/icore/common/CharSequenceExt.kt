@@ -94,6 +94,26 @@ fun String.isInteger(): Boolean {
     return p.matcher(this).matches()
 }
 
+fun String.queryStringToKeysAndValues(): Map<String, String> {
+    val result = LinkedHashMap<String, String>()
+    var i = 0
+    while (i < length) {
+        var ampersandOffset: Int = indexOf('&', i)
+        if (ampersandOffset == -1) {
+            ampersandOffset = length
+        }
+        var equalsOffset = indexOf("=", i)
+        if (equalsOffset == -1 || equalsOffset > ampersandOffset) {
+            result[substring(i, ampersandOffset)] = ""
+        } else {
+            result[substring(i, equalsOffset)] = substring(equalsOffset + 1, ampersandOffset)
+        }
+        i = ampersandOffset + 1
+    }
+    return result
+}
+
+
 inline fun <reified T> String.toJson(): T {
     return JSON.parseObject(this, T::class.java)
 }
