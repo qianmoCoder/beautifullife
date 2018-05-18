@@ -17,7 +17,10 @@ class TestActivity : BaseActivity() {
         window.setFormat(PixelFormat.TRANSLUCENT)
 
         Log.v("lhz", "TestActivity onCreate: " + intent.action)
-        NavigatorUtils.navigatorToNative(this, intent)
+        if (NavigatorUtils.navigatorToNative(this, intent)) {
+            finish()
+        }
+
     }
 
     override fun onNewIntent(intent: Intent?) {

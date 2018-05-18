@@ -1,28 +1,32 @@
 package com.ddu.util
 
+import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.support.v4.app.FragmentActivity
+import com.ddu.icore.common.findPreference
+import com.ddu.icore.common.isNetworkConnected
+import com.ddu.icore.dialog.DefaultDialogFragment
 import com.ddu.icore.util.ToastUtils
 import com.ddu.ui.activity.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/7/12.
  */
 object NavigatorUtils {
-
     const val DEFAULT_HOST = "100"
     const val DEFAULT_URL = "url"
     const val DEFAULT_DATA = "defaultData"
 
     fun navigatorToNative(act: FragmentActivity, intent: Intent?): Boolean {
-        var isSuccess = false
+        var isSuccess: Boolean
         val uri = intent?.data
         return uri?.let {
             when (it.scheme) {
                 "etcp" -> {
-                    val defaultData = intent.getStringExtra(DEFAULT_DATA)
+                    val defaultData = it.getQueryParameter(DEFAULT_DATA)
                     when (it.host) {
                         DEFAULT_HOST -> {
                             val tempUrl = try {
@@ -33,32 +37,32 @@ object NavigatorUtils {
                             isSuccess = if (tempUrl.toString().isNullOrEmpty()) {
                                 false
                             } else {
-                                val isNeedLogin = isNeedLogin(uri)
-                                navigatorTO(act, isNeedLogin, tempUrl, defaultData)
+                                navigator(act, tempUrl, defaultData)
                             }
                         }
                         else -> {
-                            val isNeedLogin = isNeedLogin(uri)
-                            isSuccess = navigatorTO(act, isNeedLogin, uri, defaultData)
+                            isSuccess = navigator(act, it, defaultData)
                         }
                     }
 
                 }
                 "http", "https" -> {
-                    ToastUtils.showToast("跳转http成功: ${it.toString()}")
+                    startActivity(act, getWebIntent(act, it.toString()))
                     isSuccess = true
                 }
                 else -> isSuccess = false
             }
             return isSuccess
         } ?: false
+
     }
 
-    private fun navigatorTO(act: FragmentActivity, isNeedLogin: Boolean, uri: Uri?, urlString: String?): Boolean {
+
+    private fun navigator(act: FragmentActivity, uri: Uri?, urlString: String?): Boolean {
         var isSuccess = false
-        val intent = getIntentByUri(act, uri)
+        val intent = getIntent(act, uri)
         if (null != intent) {
-            isSuccess = doOnNext(act, isNeedLogin, intent)
+            isSuccess = startActivity(act, intent)
         } else {
             var isShowDialog = false
             if (urlString.isNullOrEmpty()) {
@@ -66,44 +70,68 @@ object NavigatorUtils {
             } else {
                 try {
                     val tempUri = Uri.parse(urlString)
-                    val tempIntent = NavigatorUtils.getIntentByUri(act, tempUri)
+                    val tempIntent = getIntent(act, tempUri)
                     if (tempIntent != null) {
                         isShowDialog = false
-                        isSuccess = doOnNext(act, isNeedLogin, tempIntent)
+                        isSuccess = startActivity(act, tempIntent)
                     } else {
                         isShowDialog = true
                     }
                 } catch (e: Exception) {
                     ToastUtils.showToast("不支持的defaultData格式!")
+                    act.finish()
                 }
             }
             if (isShowDialog) {
-                ToastUtils.showToast("您的版本太低，请更新至新版本")
+                val builder = DefaultDialogFragment().apply {
+                    msg = "您的版本太低，请更新至新版本"
+                    leftText = "稍后"
+                    mLeftClickListener = { _, dialogFragment ->
+                        dialogFragment.dismissAllowingStateLoss()
+                        act.finish()
+                    }
+                    rightText = "更新"
+                    mRightClickListener = { _, dialogFragment ->
+                        dialogFragment.dismissAllowingStateLoss()
+                        if (ctx.isNetworkConnected()) {
+                            ToastUtils.showToast("no_network")
+                        } else {
+                            ToastUtils.showToast("download")
+                        }
+                        act.finish()
+                    }
+                }
+                val transaction = act.supportFragmentManager.beginTransaction()
+                transaction.add(builder, "dialog")
+                transaction.commitAllowingStateLoss()
             }
         }
         return isSuccess
     }
 
-    private fun isNeedLogin(uri: Uri?): Boolean {
+    fun isNeedLogin(uri: Uri?): Boolean {
         val login = uri?.getQueryParameter("login") ?: ""
         return login.equals("1", ignoreCase = true)
     }
 
-
-    private fun doOnNext(act: FragmentActivity, isNeedLogin: Boolean, intent: Intent): Boolean {
+    private fun startActivity(act: FragmentActivity, intent: Intent): Boolean {
         var isNavigatorSuccess = false
-        if (isNeedLogin) {
-            ToastUtils.showToast("登录成功，跳转成功 ${intent.component.className}")
-        } else {
+        val isLoad = act.findPreference("MAIN_LOADED_KEY", false) ?: false
+        if (isLoad) {
+            val nextIntent = Intent(act, MainActivity::class.java)
+            val stackBuilder = TaskStackBuilder.create(act)
+            stackBuilder.addNextIntent(nextIntent)
+            stackBuilder.addNextIntent(intent)
+            stackBuilder.startActivities()
             isNavigatorSuccess = true
-
-            ToastUtils.showToast("跳转成功 ${intent.component.className}")
+        } else {
+            act.startActivity(intent)
+            isNavigatorSuccess = true
         }
         return isNavigatorSuccess
     }
 
-
-    fun getIntentByUri(ctx: Context, uri: Uri?): Intent? = uri?.run {
+    fun getIntent(ctx: Context, uri: Uri?): Intent? = uri?.run {
         when (scheme) {
             "etcp" -> when (host) {
                 "0" -> Intent(ctx, LoginActivity::class.java)
