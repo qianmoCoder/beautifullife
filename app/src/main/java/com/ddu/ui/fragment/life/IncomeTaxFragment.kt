@@ -123,7 +123,7 @@ class IncomeTaxFragment : DefaultFragment() {
      * @param money
      */
     private fun getCalculatorTax(money: Double): Double {
-        var money = money - 10000.0
+        var money = money - 3500.0
         val result: Double
         if (money < 1500.0) {
             result = money * 3 / 100 - 0
