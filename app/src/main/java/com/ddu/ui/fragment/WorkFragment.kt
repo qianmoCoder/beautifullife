@@ -10,8 +10,9 @@ import android.support.v4.content.ContextCompat
 import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.ui.fragment.work.FragmentA
+import com.ddu.ui.activity.ScrollingActivity2
 import kotlinx.android.synthetic.main.fragment_work.*
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.telephonyManager
 
 /**
@@ -59,7 +60,8 @@ class WorkFragment : DefaultFragment() {
 //
 //            val notification = builder.notification
 //            mNManager.notify("123", ++count, notification)
-            startFragment(FragmentA::class.java)
+//            startFragment(FragmentA::class.java)
+            startActivity<ScrollingActivity2>()
         }
         setTitle(R.string.main_tab_work)
 //        tv_money.text = DnsConfig.buildType

@@ -62,6 +62,7 @@ object BitmapUtils {
         return BitmapFactory.decodeFile(filePath, options)
     }
 
+    // 用这个
     fun decodeSampledBitmapFromResource(filePath: String, reqWidth: Int, reqHeight: Int): Bitmap {
 
         // First decode with inJustDecodeBounds=true to check dimensions
@@ -77,6 +78,7 @@ object BitmapUtils {
         return BitmapFactory.decodeFile(filePath, options)
     }
 
+    // 用这个
     fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
         // Raw height and width of image
         val height = options.outHeight

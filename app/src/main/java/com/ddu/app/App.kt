@@ -39,16 +39,16 @@ class App : BaseApp() {
     }
 
     private fun init() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
         val processName = SystemUtils.getProcessName()
         val currentPackageName = packageName
         if (processName == currentPackageName) {// 防止多进程重复实始化
             setupDatabase()
             registerActivityLifecycleCallbacks(this)
             initData()
-
-            if (!LeakCanary.isInAnalyzerProcess(this)) {
-                LeakCanary.install(this)
-            }
             registorNetInfoBroadcastReceiver()
         }
     }

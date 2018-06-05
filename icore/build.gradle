@@ -9,14 +9,14 @@ group = 'com.github.yzbzz'
 
 android {
 
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion projectConfig.minSdkVersion
-        targetSdkVersion projectConfig.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
     }
 
     buildTypes {
@@ -38,11 +38,13 @@ android {
 }
 
 dependencies {
-    icoreDependencies.each {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    CommonDependencies.api_dependencies.forEach {
         k -> api k
     }
-    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
-
+    CommonDependencies.kapt_dependencies.forEach {
+        k -> kapt k
+    }
 }
 
 repositories {

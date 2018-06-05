@@ -114,7 +114,7 @@ fun String.queryStringToKeysAndValues(): Map<String, String> {
 }
 
 
-inline fun <reified T> String.toJson(): T {
+inline fun <reified T> String.toJsonFromFastJson(): T {
     return JSON.parseObject(this, T::class.java)
 }
 

@@ -151,4 +151,5 @@
     <string name="main_text">Options:</string>
     <string name="about_text">This app is for demonstrate the Material-ish progress wheel library, which provides a Material-style progress wheel compatible back to API 9. You can have indeterminate and determinate versions of the progress wheel, the later with a linear animation or a interpolated one like in the guidelines.\n\nRefer to the Github project page for more info at https://github.com/pnikosis/materialish-progress. </string>
     <string name="about">About</string>
+    <string name="title_activity_scrolling2">ScrollingActivity2</string>
 </resources>
