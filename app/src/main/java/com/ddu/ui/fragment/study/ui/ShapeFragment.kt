@@ -8,13 +8,13 @@ import android.widget.EditText
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.dialog.ColorPickerDialog
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_shape.*
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@ContentType("UI")
+@Element("UI")
 class ShapeFragment : DefaultFragment(), View.OnClickListener {
 
     private var beginColor: Int = 0

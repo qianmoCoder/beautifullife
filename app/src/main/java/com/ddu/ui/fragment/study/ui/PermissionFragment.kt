@@ -10,7 +10,7 @@ import android.view.View
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.ToastUtils
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_permission.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
@@ -22,7 +22,7 @@ import pub.devrel.easypermissions.PermissionRequest
 /**
  * Created by yzbzz on 2017/11/14.
  */
-@ContentType("UI")
+@Element("UI")
 class PermissionFragment : DefaultFragment(), View.OnClickListener, EasyPermissions.PermissionCallbacks {
 
 

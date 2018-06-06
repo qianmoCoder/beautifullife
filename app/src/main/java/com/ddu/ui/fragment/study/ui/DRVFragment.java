@@ -8,7 +8,7 @@ import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 2017/5/5.
  */
-@ContentType("UI")
+@Element("UI")
 public class DRVFragment extends AbstractRecycleViewFragment implements PullToRefreshBase.OnRefreshListener2 {
 
     private List<String> mDatas = new ArrayList<>();

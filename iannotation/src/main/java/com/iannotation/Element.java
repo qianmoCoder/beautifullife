@@ -10,6 +10,9 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
-public @interface ContentType {
-    String value();
+public @interface Element {
+
+    String value() default "";
+
+    String description() default "";
 }

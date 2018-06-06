@@ -12,12 +12,12 @@ import android.widget.ImageView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 /**
  * Created by yzbzz on 2017/5/25.
  */
-@ContentType("UI")
+@Element("UI")
 public class DialogFragment extends DefaultFragment {
 
     private Button btnUI;

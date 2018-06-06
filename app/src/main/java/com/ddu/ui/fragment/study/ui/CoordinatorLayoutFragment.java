@@ -3,12 +3,12 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 /**
  * Created by yzbzz on 2017/10/10.
  */
-@ContentType("UI")
+@Element("UI")
 public class CoordinatorLayoutFragment extends DefaultFragment {
 
     @Override

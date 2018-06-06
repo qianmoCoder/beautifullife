@@ -44,6 +44,7 @@ import com.ddu.ui.fragment.study.ui.UITestFragment;
 import com.ddu.ui.fragment.study.ui.ViewFragment;
 import com.ddu.ui.fragment.study.ui.WifiFragment;
 import com.ddu.ui.fragment.study.ui.WuBaFragment;
+import com.iannotation.Tuple;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -125,16 +126,21 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
             tag = getArguments().getString(TAG_S, "");
         }
 
-        ArrayList<Class<?>> keys;
-        if (TextUtils.isEmpty(tag)) {
-            keys = mMaps.get(index);
-        } else {
-            keys = App.Companion.getMp().provide(tag);
-        }
-        for (Class key : keys) {
+        ArrayList<Tuple<String, Class<?>>> keys;
+//        if (TextUtils.isEmpty(tag)) {
+//            keys = mMaps.get(index);
+//        } else {
+        keys = App.Companion.getMp().provide(tag);
+//        }
+        for (Tuple<String, Class<?>> key : keys) {
             ItemEntity itemEntity = new ItemEntity();
-            itemEntity.setTitle(key.getSimpleName());
-            itemEntity.setClassName(key.getName());
+
+            String first = key.first;
+            Class<?> second = key.second;
+
+            String title = TextUtils.isEmpty(first) ? second.getSimpleName() : first;
+            itemEntity.setTitle(title);
+            itemEntity.setClassName(second.getName());
             mDataEntities.add(itemEntity);
         }
         Collections.sort(mDataEntities);

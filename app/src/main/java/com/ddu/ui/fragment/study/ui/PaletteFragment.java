@@ -17,7 +17,7 @@ import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.ui.view.DividerItemDecoration;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 2017/9/11.
  */
-@ContentType("UI")
+@Element("UI")
 public class PaletteFragment extends DefaultFragment implements View.OnClickListener {
 
     private ImageView ivBg;

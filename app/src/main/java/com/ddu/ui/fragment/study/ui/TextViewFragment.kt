@@ -9,13 +9,13 @@ import com.ddu.ui.effect.CurveFloatingPathEffect
 import com.ddu.ui.effect.CurvePathFloatingAnimator
 import com.ddu.ui.effect.ScaleFloatingAnimator
 import com.ddu.ui.view.FloatingText
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_textview.*
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@ContentType("UI")
+@Element("UI")
 class TextViewFragment : DefaultFragment(), View.OnClickListener {
 
     override fun initData(savedInstanceState: Bundle?) {

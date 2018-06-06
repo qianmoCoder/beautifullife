@@ -3,5 +3,5 @@ package com.iannotation;
 import java.util.List;
 
 public interface Provider {
-    List<Class<?>> provide(String url);
+    List<Tuple<String, Class<?>>> provide(String url);
 }

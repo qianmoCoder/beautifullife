@@ -7,13 +7,13 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_tpi.*
 
 /**
  * Created by lhz on 16/5/6.
  */
-@ContentType("UI")
+@Element("UI")
 class TabPageIndicatorFragment : DefaultFragment() {
 
 

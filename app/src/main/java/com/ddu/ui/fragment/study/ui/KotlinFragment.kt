@@ -4,7 +4,7 @@ import android.util.Log
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_study_kotlin.*
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.android.UI
@@ -16,7 +16,7 @@ import kotlin.concurrent.thread
 /**
  * Created by yzbzz on 2018/3/8.
  */
-@ContentType("UI")
+@Element("UI")
 class KotlinFragment : DefaultFragment(), View.OnClickListener {
 
     private var sb = StringBuilder()

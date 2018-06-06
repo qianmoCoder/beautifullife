@@ -22,12 +22,12 @@ import com.ddu.icore.logic.Actions;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.help.ShapeInjectHelper;
 import com.ddu.icore.util.sys.DownloadManagerUtils;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@ContentType("UI")
+@Element("UI")
 public class ShapeAdvancedFragment extends DefaultFragment {
 
     public static final int INSTALL_PACKAGES_REQUESTCODE = 0x0010;

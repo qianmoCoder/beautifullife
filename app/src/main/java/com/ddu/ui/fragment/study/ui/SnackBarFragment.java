@@ -11,12 +11,12 @@ import android.widget.LinearLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@ContentType("UI")
+@Element("UI")
 public class SnackBarFragment extends DefaultFragment {
 
     private LinearLayout mLlSnackBar;

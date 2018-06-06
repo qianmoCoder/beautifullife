@@ -6,13 +6,13 @@ import android.widget.ImageView
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.sys.ViewUtils
-import com.iannotation.ContentType
+import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_image.*
 
 /**
  * Created by lhz on 16/5/6.
  */
-@ContentType("UI")
+@Element("UI")
 class ImageFragment : DefaultFragment() {
 
     private var isBigModel = true

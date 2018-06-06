@@ -1,10 +1,11 @@
 package com.processors;
 
 import com.google.auto.service.AutoService;
-import com.iannotation.ContentType;
+import com.iannotation.Element;
 import com.iannotation.MultiHashMap;
 import com.iannotation.Provider;
 import com.iannotation.Router;
+import com.iannotation.Tuple;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.CodeBlock;
@@ -28,7 +29,6 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
@@ -57,7 +57,7 @@ public class IProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
-        types.add(ContentType.class.getCanonicalName());
+        types.add(Element.class.getCanonicalName());
         return types;
     }
 
@@ -70,11 +70,11 @@ public class IProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
 
-        Set<? extends Element> urlAnnotations = roundEnvironment.getElementsAnnotatedWith(ContentType.class);
-        Set<? extends Element> moduleAnnotations = roundEnvironment.getElementsAnnotatedWith(Router.class);
+        Set<? extends javax.lang.model.element.Element> urlAnnotations = roundEnvironment.getElementsAnnotatedWith(Element.class);
+        Set<? extends javax.lang.model.element.Element> moduleAnnotations = roundEnvironment.getElementsAnnotatedWith(Router.class);
         moduleAnnotationSize += moduleAnnotations.size();
 
-        for (Element element : moduleAnnotations) {
+        for (javax.lang.model.element.Element element : moduleAnnotations) {
             String packageName = elementUtils.getPackageOf(element).getQualifiedName().toString();
             try {
                 generateRoutingTable(packageName, element.getSimpleName().toString(), urlAnnotations);
@@ -92,39 +92,45 @@ public class IProcessor extends AbstractProcessor {
         return true;
     }
 
-    private void generateRoutingTable(String packageName, String className, Set<? extends Element> urlAnnotations) throws IOException {
-
+    private void generateRoutingTable(String packageName, String className, Set<? extends javax.lang.model.element.Element> urlAnnotations) throws IOException {
 
         TypeName classWithWildcard = ParameterizedTypeName.get(ClassName.get(Class.class),
                 WildcardTypeName.subtypeOf(Object.class));
 
-        TypeName listClass = ParameterizedTypeName.get(ClassName.get(ArrayList.class), classWithWildcard);
+        TypeName tupleWithWildcard = ParameterizedTypeName.get(ClassName.get(Tuple.class),
+                ParameterizedTypeName.get(String.class), classWithWildcard);
 
         TypeName hashMap = ParameterizedTypeName.get(
                 ClassName.get(MultiHashMap.class),
                 ParameterizedTypeName.get(String.class),
-                classWithWildcard);
+                tupleWithWildcard);
 
         FieldSpec routerTable = FieldSpec
-                .builder(hashMap, "table", PUBLIC, FINAL, STATIC)
+                .builder(hashMap, "elements", PUBLIC, FINAL, STATIC)
                 .initializer(CodeBlock.builder().add("new $T<>()", ClassName.get(MultiHashMap.class)).build())
                 .build();
 
         CodeBlock.Builder staticBlock = CodeBlock.builder();
 
-        for (Element element : urlAnnotations) {
+        for (javax.lang.model.element.Element element : urlAnnotations) {
             TypeElement typeElement = (TypeElement) element;
             ClassName activity = ClassName.get(typeElement);
-            String url = element.getAnnotation(ContentType.class).value();
-            staticBlock.add("table.put($S,$T.class);\n", url, activity);
+            Element elementAnnotation = element.getAnnotation(Element.class);
+            String value = elementAnnotation.value();
+            String description = elementAnnotation.description();
+
+            staticBlock.add("elements.put($S,new $T($S, $T.class));\n", value, ClassName.get(Tuple.class), description, activity);
         }
+
+
+        TypeName listClass = ParameterizedTypeName.get(ClassName.get(ArrayList.class), tupleWithWildcard);
 
         MethodSpec provideMethod = MethodSpec.methodBuilder("provide")
                 .addModifiers(Modifier.PUBLIC)
                 .addAnnotation(AnnotationSpec.builder(Override.class).build())
                 .addParameter(String.class, "url")
                 .returns(listClass)
-                .addStatement("return table.get(url)")
+                .addStatement("return elements.get(url)")
                 .build();
 
         TypeSpec routerTableProvider = TypeSpec.classBuilder(className + "Provider")
