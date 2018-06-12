@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_life_income_tax.*
  */
 class IncomeTaxFragment : DefaultFragment() {
 
-    private val average = 7706.0
+    private val average = 8467.0
 
     private var ceiling = average * 3
     //    private double ceiling = 6463.0 * 3;
