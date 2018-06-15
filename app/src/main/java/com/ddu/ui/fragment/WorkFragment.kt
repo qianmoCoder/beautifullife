@@ -32,10 +32,6 @@ class WorkFragment : DefaultFragment() {
     override fun initView() {
         oiv_fragment.setOnClickListener {
 //            getAppDetailSettingIntent(ctx)
-//            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
-//            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
-//            NotificationUtils.instance.notify(1, builder)
-//            NotificationUtils.instance.notify(2, builder1)
 //            BaseApp.postDelayed(Runnable {
 //                val builder3 = NotificationUtils.instance.getNotification(ctx, "bbc", "abc", "abcdef", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
 //                NotificationUtils.instance.notify(2, builder3)

@@ -38,7 +38,7 @@ object Dependencies {
 
     val flexbox = "com.google.android:flexbox:0.3.2"
 
-    val zxing_core = "com.google.zxing:core:3.3.0"
+    val zxing_core = "com.google.zxing:core:3.3.3"
     val zxing_android_core = "com.google.zxing:android-core:3.3.0"
 
 

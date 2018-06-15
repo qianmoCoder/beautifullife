@@ -115,5 +115,19 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_notification"
+                style="@style/DefaultRelativeLayout"
+                mm:arrowImage="@drawable/right_arrow_gray"
+                mm:leftText="发送通知" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

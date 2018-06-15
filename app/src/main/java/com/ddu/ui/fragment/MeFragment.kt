@@ -8,7 +8,9 @@ import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.person.SettingFragment
+import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2018/1/17.
@@ -60,6 +62,13 @@ class MeFragment : DefaultFragment() {
 
         oiv_friend_link.setOnClickListener {
             showShareDialog()
+        }
+
+        oiv_notification.setOnClickListener {
+            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
+            NotificationUtils.instance.notify(1, builder)
+//            NotificationUtils.instance.notify(2, builder1)
         }
     }
 
