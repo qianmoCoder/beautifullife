@@ -3,6 +3,7 @@ package com.ddu.util
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.os.Build
@@ -10,6 +11,7 @@ import com.ddu.R
 import com.ddu.icore.app.BaseApp
 import com.ddu.icore.util.ToastUtils
 import com.ddu.icore.util.sys.SystemUtils
+import org.jetbrains.anko.notificationManager
 
 /**
  * Created by yzbzz on 2017/4/27.
@@ -17,9 +19,8 @@ import com.ddu.icore.util.sys.SystemUtils
 
 class NotificationUtils private constructor() {
 
-    private val mContext: Context = BaseApp.mContext
     private val mNotificationManager: NotificationManager by lazy {
-        mContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        BaseApp.mContext.notificationManager
     }
 
     init {
@@ -38,7 +39,7 @@ class NotificationUtils private constructor() {
         }
     }
 
-    fun getNotification(context: Context, ticker: String, contentTitle: String, contentText: String, number: Int, channelId: String): Notification.Builder {
+    fun getNotification(context: Context, ticker: String, contentTitle: String, contentText: String, number: Int, channelId: String, intent: PendingIntent? = null): Notification.Builder {
         val builder: Notification.Builder
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = mNotificationManager.getNotificationChannel(channelId)
@@ -59,6 +60,9 @@ class NotificationUtils private constructor() {
                 .setNumber(number)
                 .setAutoCancel(true)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
+        if (intent != null) {
+            builder.setContentIntent(intent)
+        }
         return builder
     }
 

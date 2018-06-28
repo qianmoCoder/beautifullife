@@ -2,7 +2,6 @@ package com.ddu.ui.fragment.study.ui
 
 import android.graphics.BitmapFactory
 import com.ddu.R
-import com.ddu.R.id.*
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ZXingUtils
 import com.iannotation.Element
@@ -19,10 +18,11 @@ class QRFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        val url = "weixin://wxpay/bizpayurl?pr=miuBAtm"
+//        val url = "weixin://wxpay/bizpayurl?pr=miuBAtm"
+        val url = "\$0COHpuOML/zHLLmsCctBAjDcAdPgFLMwjIptE58y0NhovU0esSw6QdqH/At9siwMXTDsvORoKo/Hv25+KnTlERrvFWo8h+m+r4s2mVs6NGc=\$2"
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.refreshing_image_frame_01)
         btn_create_1.setOnClickListener {
-            iv_qr_code.setImageBitmap(ZXingUtils.encodeBitmap(url, bitmap))
+            iv_qr_code.setImageBitmap(ZXingUtils.encodeBitmap(url, null))
         }
 
         btn_create_2.setOnClickListener {

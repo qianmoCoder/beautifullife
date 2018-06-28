@@ -115,7 +115,8 @@ class IncomeTaxFragment : DefaultFragment() {
      * 1500 3% 0
      * 1500~4500 10% 105
      * 4500~9000 20% 555
-     * 9000~35000 25% 1005
+     * 9000~35000 25% 1005 20
+     *
      * 35000~55000 30% 2755
      * 55000~80000 35% 5505
      * 80000 45% 13505
@@ -123,7 +124,7 @@ class IncomeTaxFragment : DefaultFragment() {
      * @param money
      */
     private fun getCalculatorTax(money: Double): Double {
-        var money = money - 3500.0
+        var money = money - 5000.0
         val result: Double
         if (money < 1500.0) {
             result = money * 3 / 100 - 0

@@ -13,7 +13,7 @@ object Versions {
     val anko_version = "0.10.4"
 
     val compileSdkVersion = 27
-    val buildToolsVersion = "27.0.2"
+    val buildToolsVersion = "27.0.3"
     val supportLibraryVersion = "27.1.0"
 
     val minSdkVersion = 19

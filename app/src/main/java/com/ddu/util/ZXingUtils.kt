@@ -54,7 +54,7 @@ object ZXingUtils {
             val hints = Hashtable<EncodeHintType, Any>()
             hints[EncodeHintType.CHARACTER_SET] = "UTF-8" //字符集
             hints[EncodeHintType.ERROR_CORRECTION] = ErrorCorrectionLevel.H //容错率
-            hints[EncodeHintType.MARGIN] = "2" //白边宽度
+            hints[EncodeHintType.MARGIN] = 0 //白边宽度
             val bitmap = encodeBitmap(str, hints = hints)
             if (bitmap != null && logoBitmap != null) {
                 encodeLogoBitmap(bitmap, logoBitmap)

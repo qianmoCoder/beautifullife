@@ -1,5 +1,6 @@
 package com.ddu.icore.util.sys;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -7,10 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 /**
@@ -19,6 +23,7 @@ import android.text.TextUtils;
 public class SystemUtils {
 
     // 跳转到通知渠道设置
+    @TargetApi(Build.VERSION_CODES.O)
     public static void openChannelSetting(Context context, String channelId) {
         Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
         intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
@@ -148,6 +153,18 @@ public class SystemUtils {
             }
         }
         return false;
+    }
+
+    public static String getDeviceId(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String deviceId = tm.getDeviceId();
+        return deviceId;
+    }
+
+    public static String getMacAddress(Context context) {
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        String macAddress = wm.getConnectionInfo().getMacAddress();
+        return macAddress;
     }
 
     // 应用是否已经安装

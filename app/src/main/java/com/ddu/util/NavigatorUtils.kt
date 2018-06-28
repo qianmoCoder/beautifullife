@@ -23,10 +23,10 @@ object NavigatorUtils {
     fun navigatorToNative(act: FragmentActivity, intent: Intent?): Boolean {
         var isSuccess: Boolean
         val uri = intent?.data
+        val defaultData = intent?.getStringExtra(DEFAULT_DATA)
         return uri?.let {
             when (it.scheme) {
                 "etcp" -> {
-                    val defaultData = it.getQueryParameter(DEFAULT_DATA)
                     when (it.host) {
                         DEFAULT_HOST -> {
                             val tempUrl = try {

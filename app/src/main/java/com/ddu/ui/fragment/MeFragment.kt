@@ -1,5 +1,7 @@
 package com.ddu.ui.fragment
 
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import com.ddu.R
@@ -19,6 +21,7 @@ class MeFragment : DefaultFragment() {
 
     var mHits = LongArray(COUNTS)
     var dialog: DefaultDialogFragment? = null
+    var nid = 0
 
     override fun initData(savedInstanceState: Bundle?) {
         dialog = DefaultDialogFragment().apply {
@@ -38,6 +41,7 @@ class MeFragment : DefaultFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_me
     }
+
 
     override fun initView() {
         setTitle(R.string.main_tab_me)
@@ -65,14 +69,17 @@ class MeFragment : DefaultFragment() {
         }
 
         oiv_notification.setOnClickListener {
-            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID)
+            val intent = Intent("cn.android.intent.user.click")
+            val pIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID, pIntent)
             val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
-            NotificationUtils.instance.notify(1, builder)
+            NotificationUtils.instance.notify(nid++, builder)
 //            NotificationUtils.instance.notify(2, builder1)
         }
     }
 
     companion object {
+
 
         internal const val COUNTS = 10//点击次数
         internal const val DURATION = (3 * 1000).toLong()//规定有效时间
