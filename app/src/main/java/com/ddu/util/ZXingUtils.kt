@@ -49,13 +49,13 @@ object ZXingUtils {
         return bitmap
     }
 
-    fun encodeBitmap(str: String, logoBitmap: Bitmap?): Bitmap? {
+    fun encodeBitmap(str: String, width: Int = QR_WIDTH, height: Int = QR_HEIGHT, logoBitmap: Bitmap?): Bitmap? {
         return try {
             val hints = Hashtable<EncodeHintType, Any>()
             hints[EncodeHintType.CHARACTER_SET] = "UTF-8" //字符集
             hints[EncodeHintType.ERROR_CORRECTION] = ErrorCorrectionLevel.H //容错率
             hints[EncodeHintType.MARGIN] = 0 //白边宽度
-            val bitmap = encodeBitmap(str, hints = hints)
+            val bitmap = encodeBitmap(str, width, height, hints = hints)
             if (bitmap != null && logoBitmap != null) {
                 encodeLogoBitmap(bitmap, logoBitmap)
             } else {

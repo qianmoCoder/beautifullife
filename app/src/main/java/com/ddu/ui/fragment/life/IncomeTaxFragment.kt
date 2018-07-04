@@ -133,7 +133,7 @@ class IncomeTaxFragment : DefaultFragment() {
         } else if (money >= 4500 && money < 9000) {
             result = money * 20 / 100 - 555
         } else if (money >= 9000 && money < 35000) {
-            result = money * 25 / 100 - 1005
+            result = money * 20 / 100 - 1005
         } else if (money >= 35000 && money < 55000) {
             result = money * 30 / 100 - 2755
         } else if (money >= 55000 && money < 80000) {

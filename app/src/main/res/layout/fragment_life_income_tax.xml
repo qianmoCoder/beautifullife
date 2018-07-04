@@ -48,7 +48,7 @@
             <EditText
                 android:id="@+id/et_income_tax"
                 style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
-                android:hint="个税起征点为3500元"
+                android:hint="个税起征点为5000元"
                 android:inputType="numberDecimal" />
 
             <TextView

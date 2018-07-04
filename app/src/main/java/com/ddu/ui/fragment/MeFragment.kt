@@ -9,6 +9,7 @@ import com.ddu.icore.dialog.DefaultDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -75,6 +76,10 @@ class MeFragment : DefaultFragment() {
             val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
             NotificationUtils.instance.notify(nid++, builder)
 //            NotificationUtils.instance.notify(2, builder1)
+        }
+
+        oiv_phone_info.setOnClickListener {
+            startFragment(PhoneInfoFragment::class.java)
         }
     }
 

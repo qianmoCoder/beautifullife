@@ -22,7 +22,10 @@ class QRFragment : DefaultFragment() {
         val url = "\$0COHpuOML/zHLLmsCctBAjDcAdPgFLMwjIptE58y0NhovU0esSw6QdqH/At9siwMXTDsvORoKo/Hv25+KnTlERrvFWo8h+m+r4s2mVs6NGc=\$2"
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.refreshing_image_frame_01)
         btn_create_1.setOnClickListener {
-            iv_qr_code.setImageBitmap(ZXingUtils.encodeBitmap(url, null))
+            iv_qr_code.post {
+                val bitmap = ZXingUtils.encodeBitmap(url, iv_qr_code.width, iv_qr_code.height, logoBitmap = null)
+                iv_qr_code.setImageBitmap(bitmap)
+            }
         }
 
         btn_create_2.setOnClickListener {
