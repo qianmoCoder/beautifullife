@@ -6,6 +6,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ZXingUtils
 import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_qr_code.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2018/6/13.
@@ -23,7 +24,8 @@ class QRFragment : DefaultFragment() {
         val bitmap = BitmapFactory.decodeResource(resources, R.drawable.refreshing_image_frame_01)
         btn_create_1.setOnClickListener {
             iv_qr_code.post {
-                val bitmap = ZXingUtils.encodeBitmap(url, iv_qr_code.width, iv_qr_code.height, logoBitmap = null)
+                //                val bitmap = ZXingUtils.encodeBitmap(url, iv_qr_code.width, iv_qr_code.height, logoBitmap = null)
+                val bitmap = ZXingUtils.createQRImage(ctx, url)
                 iv_qr_code.setImageBitmap(bitmap)
             }
         }

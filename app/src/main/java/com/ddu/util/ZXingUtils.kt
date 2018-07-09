@@ -208,4 +208,39 @@ object ZXingUtils {
         matrix.postScale(scaleFactor, scaleFactor)
         return Bitmap.createBitmap(logo, 0, 0, logo.width, logo.height, matrix, true)
     }
+
+    fun createQRImage(context: Context, url: String?): Bitmap? {
+        try {
+            if (url == null || "" == url || url.length < 1) {
+                return null
+            }
+            val hints = Hashtable<EncodeHintType, Any>()
+            hints[EncodeHintType.CHARACTER_SET] = "utf-8"
+            hints[EncodeHintType.ERROR_CORRECTION] = ErrorCorrectionLevel.H //容错率
+            hints[EncodeHintType.MARGIN] = 0 //白边宽度
+            val bitMatrix = QRCodeWriter().encode(url,
+                    BarcodeFormat.QR_CODE, QR_WIDTH, QR_HEIGHT, hints)
+            val width = bitMatrix.width //矩阵高度
+            val height = bitMatrix.height//矩阵宽度
+            val pixels = IntArray(width * height)
+            for (y in 0 until height) {
+                for (x in 0 until width) {
+                    if (bitMatrix.get(x, y)) {
+                        pixels[y * width + x] = -0x1000000
+                    } else {
+                        pixels[y * width + x] = -0x1
+                    }
+                }
+            }
+
+            val bitmap = Bitmap.createBitmap(width, height,
+                    Bitmap.Config.ARGB_8888)
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
+            return bitmap
+        } catch (e: WriterException) {
+            e.printStackTrace()
+        }
+
+        return null
+    }
 }
