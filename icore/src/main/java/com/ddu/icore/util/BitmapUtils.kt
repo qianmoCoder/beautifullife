@@ -1,5 +1,6 @@
 package com.ddu.icore.util
 
+import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -68,6 +69,7 @@ object BitmapUtils {
         // First decode with inJustDecodeBounds=true to check dimensions
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
+
         BitmapFactory.decodeFile(filePath, options)
 
         // Calculate inSampleSize
@@ -76,6 +78,17 @@ object BitmapUtils {
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false
         return BitmapFactory.decodeFile(filePath, options)
+    }
+
+    fun decodeSampledBitmapFromResource(res: Resources, resId: Int, reqWidth: Int, reqHeight: Int): Bitmap {
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+
+        BitmapFactory.decodeResource(res, resId, options)
+
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight)
+        options.inJustDecodeBounds = false
+        return BitmapFactory.decodeResource(res, resId, options)
     }
 
     // 用这个

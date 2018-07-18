@@ -9,15 +9,15 @@ import Versions.supportLibraryVersion
  * Created by yzbzz on 2018/6/4.
  */
 object Versions {
-    val kotlin_version = "1.2.41"
-    val anko_version = "0.10.4"
+    val kotlin_version = "1.2.51"
+    val anko_version = "0.10.5"
 
-    val compileSdkVersion = 27
+    val compileSdkVersion = 28
     val buildToolsVersion = "27.0.3"
     val supportLibraryVersion = "27.1.0"
 
     val minSdkVersion = 19
-    val targetSdkVersion = 27
+    val targetSdkVersion = 28
     val versionCode = 1
     val versionName = "1.0"
 

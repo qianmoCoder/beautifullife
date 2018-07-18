@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import com.ddu.R
@@ -29,17 +30,26 @@ class NotificationUtils private constructor() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(PRIMARY_CHANNEL_ID, PRIMARY_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
-            channel.setShowBadge(true)
-            mNotificationManager.createNotificationChannel(channel)
 
-            val channelSecond = NotificationChannel(PRIMARY_CHANNEL_SECOND_ID, PRIMARY_CHANNEL_SECOND_NAME, NotificationManager.IMPORTANCE_HIGH)
+            val channelPrimary = NotificationChannel(PRIMARY_CHANNEL, PRIMARY_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
+            channelPrimary.setShowBadge(true)
+            mNotificationManager.createNotificationChannel(channelPrimary)
+
+            val channelSecond = NotificationChannel(SECONDARY_CHANNEL, SECONDARY_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
             channelSecond.setShowBadge(true)
             mNotificationManager.createNotificationChannel(channelSecond)
         }
     }
 
-    fun getNotification(context: Context, ticker: String, contentTitle: String, contentText: String, number: Int, channelId: String, intent: PendingIntent? = null): Notification.Builder {
+    fun getPrimaryNotification(ctx: Context, title: String, body: String): Notification.Builder {
+        return getNotification(ctx, title, title, body, 1, PRIMARY_CHANNEL, null, null)
+    }
+
+    fun getSecondNotification(ctx: Context, title: String, body: String): Notification.Builder {
+        return getNotification(ctx, title, title, body, 1, SECONDARY_CHANNEL, null, null)
+    }
+
+    fun getNotification(context: Context, ticker: String, contentTitle: String, contentText: String, number: Int, channelId: String, largeIcon: Bitmap? = null, intent: PendingIntent? = null): Notification.Builder {
         val builder: Notification.Builder
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = mNotificationManager.getNotificationChannel(channelId)
@@ -47,19 +57,22 @@ class NotificationUtils private constructor() {
                 SystemUtils.openChannelSetting(context, channel.id)
                 ToastUtils.showToast("请先打开通知")
             }
-            builder = Notification.Builder(context, PRIMARY_CHANNEL_ID)
+            builder = Notification.Builder(context, channelId)
         } else {
             builder = Notification.Builder(context)
         }
+        // setDefaults(Notification.DEFAULT_SOUND)
         builder.setTicker(ticker)
                 .setContentTitle(contentTitle)
                 .setContentText(contentText)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(smallIcon)
                 .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_SOUND)
                 .setNumber(number)
                 .setAutoCancel(true)
-                .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
+        if (largeIcon != null) {
+            // BitmapFactory.decodeResource(context.resources, smallIcon)
+            builder.setLargeIcon(largeIcon)
+        }
         if (intent != null) {
             builder.setContentIntent(intent)
         }
@@ -74,13 +87,16 @@ class NotificationUtils private constructor() {
         val instance = NotificationUtils()
     }
 
+    private val smallIcon: Int
+        get() = android.R.drawable.stat_notify_chat
+
     companion object {
 
-        const val PRIMARY_CHANNEL_ID = "default"
+        const val PRIMARY_CHANNEL = "default"
         const val PRIMARY_CHANNEL_NAME = "Primary Channel"
 
-        const val PRIMARY_CHANNEL_SECOND_ID = "second"
-        const val PRIMARY_CHANNEL_SECOND_NAME = "Second Channel"
+        const val SECONDARY_CHANNEL = "second"
+        const val SECONDARY_CHANNEL_NAME = "Second Channel"
 
         val instance: NotificationUtils
             get() = SingletonHolder.instance

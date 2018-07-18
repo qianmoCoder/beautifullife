@@ -133,6 +133,12 @@
                 mm:arrowImage="@drawable/right_arrow_gray"
                 mm:leftText="发送通知" />
 
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_show_dialog"
+                style="@style/DefaultRelativeLayout"
+                mm:arrowImage="@drawable/right_arrow_gray"
+                mm:leftText="显示弹框" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -4,7 +4,9 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import com.ddu.R
+import com.ddu.icore.app.BaseApp
 import com.ddu.icore.dialog.DefaultDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
@@ -72,14 +74,40 @@ class MeFragment : DefaultFragment() {
         oiv_notification.setOnClickListener {
             val intent = Intent("cn.android.intent.user.click")
             val pIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            val builder = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_ID, pIntent)
-            val builder1 = NotificationUtils.instance.getNotification(ctx, "hello", "world", "hello world", 1, NotificationUtils.PRIMARY_CHANNEL_SECOND_ID)
-            NotificationUtils.instance.notify(nid++, builder)
+            val builder = NotificationUtils.instance.getPrimaryNotification(ctx, "hello", "hello world")
+            val builder1 = NotificationUtils.instance.getSecondNotification(ctx, "hello", "hello world")
+            NotificationUtils.instance.notify(nid++, builder1)
 //            NotificationUtils.instance.notify(2, builder1)
         }
 
         oiv_phone_info.setOnClickListener {
             startFragment(PhoneInfoFragment::class.java)
+        }
+
+        oiv_show_dialog.setOnClickListener {
+            val dialog = DefaultDialogFragment().apply {
+                title = "彩蛋"
+                msg = "逗你玩"
+                leftText = "取消"
+                rightText = "确定"
+                mLeftClickListener = { _, _ ->
+                    dismissAllowingStateLoss()
+                }
+                mRightClickListener = { _, _ ->
+                    dismissAllowingStateLoss()
+                }
+            }
+            dialog.show(fragmentManager, "")
+            BaseApp.postDelayed(Runnable {
+                val sb = StringBuilder()
+                sb.append("isadd: ${dialog.isAdded} ")
+                sb.append("isDetached: ${dialog.isDetached} ")
+                sb.append("isHidden: ${dialog.isHidden} ")
+                sb.append("isRemoving: ${dialog.isRemoving} ")
+                sb.append("isVisible: ${dialog.isVisible} ")
+                Log.v("lhz", sb.toString())
+                dialog.dismissAllowingStateLoss()
+            }, 2000)
         }
     }
 

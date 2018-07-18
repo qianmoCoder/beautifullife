@@ -1,9 +1,11 @@
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
 apply plugin: 'com.android.application'
 apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'android-aspectjx'
 
 android {
 
@@ -139,7 +141,23 @@ dependencies {
 
 }
 
-repositories {
-    mavenCentral()
-    google()
+final def variants = project.android.applicationVariants
+//在构建工程时，执行编织
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        return
+    }
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.7",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(args, handler)
+    }
 }

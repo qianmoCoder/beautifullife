@@ -18,9 +18,9 @@ public class Navigator {
 
     public static void navigation(Uri uri) {
         String scheme = uri.getScheme();
-        if (scheme.equalsIgnoreCase(ICORE_SCHEME)) {
+        if (ICORE_SCHEME.equalsIgnoreCase(scheme)) {
             String host = uri.getHost();
-            if (host.equalsIgnoreCase("6")) {
+            if ("6".equalsIgnoreCase(host)) {
 
             }
         }
