@@ -8,7 +8,7 @@ import com.iannotation.Element;
  * Created by yzbzz on 2017/5/19.
  */
 @Element("UI")
-public class ConstraintFragment extends DefaultFragment {
+public class ConstraintLayoutFragment extends DefaultFragment {
 
     @Override
     public int getLayoutId() {
@@ -17,5 +17,6 @@ public class ConstraintFragment extends DefaultFragment {
 
     @Override
     public void initView() {
+
     }
 }

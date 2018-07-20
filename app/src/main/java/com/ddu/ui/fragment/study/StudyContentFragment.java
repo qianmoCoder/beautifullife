@@ -15,7 +15,7 @@ import com.ddu.ui.fragment.person.PersonalInfoFragment;
 import com.ddu.ui.fragment.study.imitate.UIFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.CameraFragment;
-import com.ddu.ui.fragment.study.ui.ConstraintFragment;
+import com.ddu.ui.fragment.study.ui.ConstraintLayoutFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
 import com.ddu.ui.fragment.study.ui.DialogFragment;
@@ -67,7 +67,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, SnackBarFragment.class);
         mMaps.put(0, ShapeAdvancedFragment.class);
         mMaps.put(0, UIFragment.class);
-        mMaps.put(0, ConstraintFragment.class);
+        mMaps.put(0, ConstraintLayoutFragment.class);
         mMaps.put(0, CameraFragment.class);
         mMaps.put(0, PaletteFragment.class);
         mMaps.put(0, ViewFragment.class);
