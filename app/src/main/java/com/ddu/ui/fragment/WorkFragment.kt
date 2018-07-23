@@ -1,5 +1,7 @@
 package com.ddu.ui.fragment
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -68,6 +70,10 @@ class WorkFragment : DefaultFragment() {
 //            //            tv_model.setText(Build.MODEL + Build.BRAND + " " + Build.DEVICE + " " + Build.PRODUCT + Build.DISPLAY + Build.USER + "-" + Build.SERIAL + " " + SystemUtils.getDeviceId());
 //        }
 
+        val g = GradientDrawable()
+        g.setColor(Color.BLUE)
+        g.cornerRadius = 20f
+        tv_money.background = g
     }
 
     companion object {

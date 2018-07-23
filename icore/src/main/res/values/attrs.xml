@@ -108,6 +108,12 @@
 
     <declare-styleable name="ShapeView">
 
+        <attr name="normalBackgroundColor" format="color|reference" />
+        <attr name="pressedBackgroundColor" format="color|reference" />
+        <attr name="disableBackgroundColor" format="color|reference" />
+
+        <attr name="radius" format="dimension|reference" />
+
         <attr name="normalTextColor" format="color|reference" />
         <attr name="pressedTextColor" format="color|reference" />
         <attr name="disableTextColor" format="color|reference" />
@@ -123,12 +129,6 @@
         <attr name="pressedStrokeColor" format="color|reference" />
         <attr name="disableStrokeColor" format="color|reference" />
 
-        <attr name="normalBackgroundColor" format="color|reference" />
-        <attr name="pressedBackgroundColor" format="color|reference" />
-        <attr name="disableBackgroundColor" format="color|reference" />
-
-        <attr name="radius" format="dimension|reference" />
-
         <attr name="animationDuration" format="integer|reference" />
 
         <attr name="shapeType">
@@ -141,6 +141,8 @@
         <attr name="direction">
             <enum name="left" value="0x0010" />
             <enum name="right" value="0x0020" />
+            <enum name="top" value="0x0040" />
+            <enum name="bottom" value="0x0080" />
         </attr>
 
     </declare-styleable>
@@ -202,8 +204,10 @@
         <attr name="ptrDrawableTop" format="reference" />
         <attr name="ptrDrawableBottom" format="reference" />
     </declare-styleable>
-    <declare-styleable name="ICoreBanner"><attr format="boolean" name="canLoop"/></declare-styleable>
-    <eat-comment/>
+    <declare-styleable name="ICoreBanner">
+        <attr name="canLoop" format="boolean" />
+    </declare-styleable>
+    <eat-comment />
 
     <declare-styleable name="ProgressWheel">
         <attr name="matProg_progressIndeterminate" format="boolean" />

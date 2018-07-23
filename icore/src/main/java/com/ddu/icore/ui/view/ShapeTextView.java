@@ -24,31 +24,13 @@ public class ShapeTextView extends AppCompatTextView {
     }
 
     private void setup(AttributeSet attrs) {
-        mShapeInject = new ShapeInject(this);
-        mShapeInject.init(attrs, true);
+        mShapeInject = ShapeInject.inject(this, true);
+        mShapeInject.parseAttributeSet(attrs);
     }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int type = mShapeInject.getShapeType();
-        if (type == ShapeInject.ROUND) {
-            mShapeInject.setRound();
-        } else if (type == ShapeInject.ROUND_RECT) {
-            mShapeInject.setRoundRect();
-        } else if (type == ShapeInject.SEGMENT) {
-            mShapeInject.setSegmented();
-        } else if (type == ShapeInject.OVAL) {
-            mShapeInject.setOval();
-        }
-    }
-
-    public ShapeInject getShapeInject() {
-        return mShapeInject;
-    }
-
-    public void setShapeInject(ShapeInject shapeInject) {
-        this.mShapeInject = shapeInject;
+        mShapeInject.background();
     }
 }

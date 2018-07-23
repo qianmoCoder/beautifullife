@@ -42,7 +42,7 @@ public class DrawFragment extends DefaultFragment {
     @Override
     public void initView() {
         shapeTextView = ViewUtils.findViewById(getMView(), R.id.different_radius_test);
-//        shapeTextView.setRadius(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
+//        shapeTextView.setRadii(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
         int height = shapeTextView.getHeight();
 //        shapeTextView.getShapeInject().setSegmented(true);
 
