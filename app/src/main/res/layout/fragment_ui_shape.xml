@@ -1,6 +1,7 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <LinearLayout
@@ -36,9 +37,12 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:hintAnimationEnabled="true"
+                app:counterEnabled="true"
+                app:counterMaxLength="11">
 
-                <EditText
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/et_round_radius"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,7 +53,8 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:hintEnabled="false">
 
                 <EditText
                     android:id="@+id/et_angle"

@@ -68,14 +68,14 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     private void checkIsAndroidO() {
         if (Build.VERSION.SDK_INT >= 26) {
             boolean b = getMContext().getPackageManager().canRequestPackageInstalls();
-//            if (b) {
-            DownloadManagerUtils.startInstall(getMContext(), "icore.apk");
-//            } else {
-            //请求安装未知应用来源的权限
+            if (b) {
+                DownloadManagerUtils.startInstall(getMContext(), "icore.apk");
+            } else {
+                //请求安装未知应用来源的权限
 //                requestPermissions(new String[]{Manifest.permission.WRITE_SETTINGS}, INSTALL_PACKAGES_REQUESTCODE);
-//                requestPermissions(new String[]{Manifest.permission.REQUEST_INSTALL_PACKAGES}, INSTALL_PACKAGES_REQUESTCODE);
+                requestPermissions(new String[]{Manifest.permission.REQUEST_INSTALL_PACKAGES}, INSTALL_PACKAGES_REQUESTCODE);
 //                requestPermissions(new String[]{Manifest.permission.CAMERA}, 0);
-//            }
+            }
         } else {
             DownloadManagerUtils.startInstall(getMContext(), "icore.apk");
         }

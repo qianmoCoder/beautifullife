@@ -35,9 +35,11 @@ public class TextPhrase {
     private int curCharIndex;
 
     public String firstSeparator = "{}";
-    public  String secondSeparator = "[]";
+    public String secondSeparator = "[]";
 
     public int outerColor = 0xFF666666;
+
+
     public int innerFirstColor = 0xFF333333;
     public int innerFirstSize = 25;
     public int innerSecondColor = 0xFF333333;

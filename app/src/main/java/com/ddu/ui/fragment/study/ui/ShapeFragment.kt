@@ -26,10 +26,10 @@ class ShapeFragment : DefaultFragment(), View.OnClickListener {
     private var roundRadius: Int = 0
 
     override fun initData(savedInstanceState: Bundle?) {
+        strokeColor = resources.getColor(R.color.c_2e3135)
         beginColor = resources.getColor(R.color.c_252525)
         middleColor = resources.getColor(R.color.c_3e7492)
         endColor = resources.getColor(R.color.c_a6c0cd)
-        strokeColor = resources.getColor(R.color.c_2e3135)
 
     }
 
