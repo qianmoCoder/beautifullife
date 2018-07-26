@@ -28,7 +28,7 @@ import com.iannotation.Element;
  * Created by yzbzz on 16/4/14.
  */
 @Element("UI")
-public class ShapeAdvancedFragment extends DefaultFragment {
+public class PermissionTestFragment extends DefaultFragment {
 
     public static final int INSTALL_PACKAGES_REQUESTCODE = 0x0010;
     public static final int ACTION_MANAGE_UNKNOWN_APP_SOURCES = 0x0020;
@@ -43,10 +43,10 @@ public class ShapeAdvancedFragment extends DefaultFragment {
     private LinearLayout mLLItems;
 
     @NonNull
-    public static ShapeAdvancedFragment newInstance(String taskId) {
+    public static PermissionTestFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
         arguments.putString(Companion.getARGUMENT_TASK_ID(), taskId);
-        ShapeAdvancedFragment fragment = new ShapeAdvancedFragment();
+        PermissionTestFragment fragment = new PermissionTestFragment();
         fragment.setArguments(arguments);
         return fragment;
     }

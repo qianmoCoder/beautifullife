@@ -3,7 +3,6 @@ package com.ddu.ui.fragment.study.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.graphics.Palette;
 import android.support.v7.graphics.Target;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,10 +15,10 @@ import com.ddu.R;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.ui.view.DividerItemDecoration;
 import com.iannotation.Element;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +84,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         if (index > 6) {
             index = 0;
         }
-        int resId = getResId("ic_test_" + index, R.drawable.class);
+        int resId = ViewUtils.getResId("ic_test_" + index, R.drawable.class);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resId);
         Palette.Builder builder = Palette.from(bitmap);
         Palette palette = builder.generate();
@@ -96,13 +95,5 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         ivBg.setImageResource(resId);
     }
 
-    public static int getResId(String variableName, @NonNull Class<?> c) {
-        try {
-            Field idField = c.getDeclaredField(variableName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
+
 }

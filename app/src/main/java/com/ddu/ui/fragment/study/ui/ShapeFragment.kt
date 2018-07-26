@@ -5,58 +5,48 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.RadioGroup
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.icore.util.sys.ViewUtils
 import com.ddu.ui.dialog.ColorPickerDialog
 import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_shape.*
+import org.jetbrains.anko.backgroundResource
 
 /**
  * Created by yzbzz on 16/4/14.
  */
 @Element("UI")
-class ShapeFragment : DefaultFragment(), View.OnClickListener {
+class ShapeFragment : DefaultFragment(), RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+
 
     private var beginColor: Int = 0
     private var middleColor: Int = 0
     private var endColor: Int = 0
-    private var strokeColor: Int = 0
 
     private var strokeWidth: Int = 0
+    private var strokeColor: Int = 0
+
     private var roundRadius: Int = 0
+    private var angleRadius: Float = 0f
 
     override fun initData(savedInstanceState: Bundle?) {
         strokeColor = resources.getColor(R.color.c_2e3135)
         beginColor = resources.getColor(R.color.c_252525)
         middleColor = resources.getColor(R.color.c_3e7492)
         endColor = resources.getColor(R.color.c_a6c0cd)
-
     }
-
-    //    private void shape() {
-    //        int strokeWidth = 5; // 3dp 边框宽度
-    //        int roundRadius = 15; // 8dp 圆角半径
-    //        int strokeColor = Color.parseColor("#2E3135");//边框颜色
-    //        int fillColor = Color.parseColor("#DFDFE0");//内部填充颜色
-    //
-    //        GradientDrawable gd = new GradientDrawable();//创建drawable
-    //        gd.setColor(fillColor);
-    //        gd.setCornerRadius(roundRadius);
-    //        gd.set_stroke(strokeWidth, strokeColor);
-    //        btnShow.setBackground(gd);
-    //
-    //        int colors[] = {0xff255779, 0xff3e7492, 0xffa6c0cd};//分别为开始颜色，中间夜色，结束颜色
-    //
-    //        GradientDrawable gd1 = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
-    //
-    //    }
-
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_ui_shape
     }
 
     override fun initView() {
+        setDefaultTitle("Shape")
+        rg_xml_shape.setOnCheckedChangeListener(this)
+        rg_xml_shape.check(R.id.rb_blue)
+
         btn_stroke_color.setOnClickListener(this)
         btn_begin_color.setOnClickListener(this)
         btn_middle_color.setOnClickListener(this)
@@ -64,8 +54,20 @@ class ShapeFragment : DefaultFragment(), View.OnClickListener {
         btn_style.setOnClickListener(this)
     }
 
-    override fun isShowTitleBar(): Boolean {
-        return false
+    override fun onCheckedChanged(p0: RadioGroup?, checkedId: Int) {
+        when (checkedId) {
+            R.id.rb_blue -> setBtnBackground("blue")
+            R.id.rb_green -> setBtnBackground("green")
+            R.id.rb_red -> setBtnBackground("red")
+            R.id.rb_yellow -> setBtnBackground("yellow")
+        }
+    }
+
+    fun setBtnBackground(colorText: String) {
+        val resId = ViewUtils.getResId("shape_view_$colorText", R.drawable::class.java)
+        val hollowResId = ViewUtils.getResId("shape_view_${colorText}_hollow", R.drawable::class.java)
+        btn_xml_shape.backgroundResource = resId
+        btn_xml_hollow_shape.backgroundResource = hollowResId
     }
 
     override fun onClick(view: View) {
@@ -78,14 +80,17 @@ class ShapeFragment : DefaultFragment(), View.OnClickListener {
     }
 
     private fun setBackground() {
-        roundRadius = getValueFromEditText(et_round_radius!!)
-        strokeWidth = getValueFromEditText(et_stroke!!)
+        strokeWidth = getValueFromEditText(et_stroke)
+
+        roundRadius = getValueFromEditText(et_round_radius)
+        angleRadius = getValueFromEditText(et_angle).toFloat()
+
         val colors = intArrayOf(beginColor, middleColor, endColor)
         val gd = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors)//创建drawable
         gd.cornerRadius = roundRadius.toFloat()
         gd.setStroke(strokeWidth, strokeColor)
-        gd.gradientRadius = 3f
-        btn_style!!.background = gd
+        gd.gradientRadius = angleRadius
+        btn_style.background = gd
     }
 
     private fun showColorDialog(view: View) {
@@ -116,6 +121,7 @@ class ShapeFragment : DefaultFragment(), View.OnClickListener {
 
         return result
     }
+
 
     companion object {
 

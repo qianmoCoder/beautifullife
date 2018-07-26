@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by yzbzz on 16/3/1.
  */
@@ -164,6 +166,31 @@ public class ViewUtils {
             }
         }
         return false;
+    }
+
+    public static String getResourceEntryName(View view) {
+        String entryName;
+        int id = view.getId();
+        try {
+            if (id != -1) {
+                entryName = view.getResources().getResourceEntryName(view.getId());
+            } else {
+                entryName = view.getClass().getName();
+            }
+        } catch (Exception e) {
+            entryName = view.getClass().getName();
+        }
+        return entryName;
+    }
+
+    public static int getResId(String variableName, @NonNull Class<?> c) {
+        try {
+            Field idField = c.getDeclaredField(variableName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
 }

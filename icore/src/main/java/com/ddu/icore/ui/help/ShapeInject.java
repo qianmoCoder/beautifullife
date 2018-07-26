@@ -291,7 +291,8 @@ public class ShapeInject {
                     background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
                     background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
                     background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
-                    mView.setBackground(mStateBackground);
+//                    mView.setBackground(mStateBackground);
+                    mView.setBackgroundResource(R.drawable.shape_view_blue);
                 }
             });
         }

@@ -1,46 +1,66 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/et_count"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="绘制" />
-
-    <Button
-        android:id="@+id/btn_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="绘制" />
-
-
-    <android.support.v7.widget.CardView
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_20"
-        app:cardCornerRadius="@dimen/dp_5"
-        app:cardElevation="@dimen/dp_5">
-
-        <LinearLayout
-            android:id="@+id/ll_items"
+        <EditText
+            android:id="@+id/et_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绘制" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绘制" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            app:cardCornerRadius="@dimen/dp_5"
+            app:cardElevation="@dimen/dp_5">
+
+            <LinearLayout
+                android:id="@+id/ll_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_linear_layout"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:showDividers="middle"
-            android:divider="@drawable/divider_linear_layout">
+            android:padding="@dimen/dp_5">
+
+            <TextView
+                style="@style/UIShapeHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CODE" />
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
 
-</LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
