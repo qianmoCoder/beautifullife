@@ -3,38 +3,37 @@ package com.ddu.icore.common
 import android.graphics.Color
 import android.support.annotation.ColorInt
 import com.alibaba.fastjson.JSON
-import com.ddu.icore.util.TextPhrase
 import com.google.gson.Gson
 import java.math.BigDecimal
 import java.security.MessageDigest
 import java.util.regex.Pattern
 
-inline fun CharSequence.phrase(block: (TextPhrase) -> Unit): CharSequence? {
-    val textPhrase = TextPhrase(this)
-    block(textPhrase)
-    return textPhrase.format()
-}
-
-
-fun CharSequence.phrase(vararg pair: Pair<String, Int>) {
-    for ((index, p) in pair.withIndex()) {
-        val textPhrase = TextPhrase(this)
-        p.first.parseColor()?.let {
-            if (index == 0) {
-                textPhrase.innerFirstColor = it
-            } else if (index == 1) {
-                textPhrase.innerSecondColor = it
-            }
-        }
-
-        if (index == 0) {
-            textPhrase.innerFirstSize = p.second
-        } else if (index == 1) {
-            textPhrase.innerSecondSize = p.second
-        }
-    }
-
-}
+//inline fun CharSequence.phrase(block: (TextPhrase) -> Unit): CharSequence? {
+//    val textPhrase = TextPhrase(this)
+//    block(textPhrase)
+//    return textPhrase.format()
+//}
+//
+//
+//fun CharSequence.phrase(vararg pair: Pair<String, Int>) {
+//    for ((index, p) in pair.withIndex()) {
+//        val textPhrase = TextPhrase(this)
+//        p.first.parseColor()?.let {
+//            if (index == 0) {
+//                textPhrase.innerFirstColor = it
+//            } else if (index == 1) {
+//                textPhrase.innerSecondColor = it
+//            }
+//        }
+//
+//        if (index == 0) {
+//            textPhrase.innerFirstSize = p.second
+//        } else if (index == 1) {
+//            textPhrase.innerSecondSize = p.second
+//        }
+//    }
+//
+//}
 
 
 fun String.md5(): String {

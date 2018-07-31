@@ -228,7 +228,9 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
 
     @Override
     public void onItemClick(ItemEntity data) {
-        startFragment(data.getClassName());
+        Bundle bundle = new Bundle();
+        bundle.putString("title", data.getTitle());
+        startFragment(data.getClassName(), bundle);
     }
 
     @Override

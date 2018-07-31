@@ -1,12 +1,19 @@
 package com.ddu.icore.util;
 
+import android.support.annotation.ColorInt;
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
+import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class TextPhrase {
@@ -34,30 +41,88 @@ public class TextPhrase {
 
     private int curCharIndex;
 
-    public String firstSeparator = "{}";
-    public String secondSeparator = "[]";
-
-    public int outerColor = 0xFF666666;
-
-
-    public int innerFirstColor = 0xFF333333;
-    public int innerFirstSize = 25;
-    public int innerSecondColor = 0xFF333333;
-    public int innerSecondSize = 25;
-    public char firstLeftSeparator;
-    public char secondLeftSeparator;
-    public char firstRightSeparator;
-    public char secondRightSeparator;
-
     private static final int EOF = 0;
 
+    private Builder mFirstBuilder;
+    private Builder mSecondBuilder;
+    private Builder mOutBuilder;
+
+    private List<Builder> mBuilders;
 
     public TextPhrase(@NonNull CharSequence pattern) {
         curChar = (pattern.length() > 0) ? pattern.charAt(0) : EOF;
-
         this.pattern = pattern;
 
+        mBuilders = new ArrayList<>();
+
+        mFirstBuilder = new Builder();
+        mFirstBuilder.setSeparator("{}");
+        mSecondBuilder = new Builder();
+        mSecondBuilder.setSeparator("[]");
+
+        mOutBuilder = new Builder();
+
+        mBuilders.add(mFirstBuilder);
+        mBuilders.add(mSecondBuilder);
+
         formatted = null;
+    }
+
+    public TextPhrase setFirstSeparator(String separator) {
+        mFirstBuilder.setSeparator(separator);
+        return this;
+    }
+
+    public TextPhrase setInnerFirstColor(@ColorInt int innerFirstColor) {
+        mFirstBuilder.setColor(innerFirstColor);
+        return this;
+    }
+
+    public TextPhrase setInnerFirstSize(int innerFirstSize) {
+        mFirstBuilder.setSize(innerFirstSize);
+        return this;
+    }
+
+    public TextPhrase setSecondSeparator(String separator) {
+        mSecondBuilder.setSeparator(separator);
+        return this;
+    }
+
+    public TextPhrase setInnerSecondColor(@ColorInt int innerSecondColor) {
+        mSecondBuilder.setColor(innerSecondColor);
+        return this;
+    }
+
+    public TextPhrase setInnerSecondSize(int innerSecondSize) {
+        mSecondBuilder.setSize(innerSecondSize);
+        return this;
+    }
+
+    public TextPhrase setOuterColor(@ColorInt int outerColor) {
+        mOutBuilder.setColor(outerColor);
+        return this;
+    }
+
+    public TextPhrase setOuterSize(int outerSize) {
+        mOutBuilder.setSize(outerSize);
+        return this;
+    }
+
+    public Builder getFirstBuilder() {
+        return mFirstBuilder;
+    }
+
+    public Builder getSecondBuilder() {
+        return mSecondBuilder;
+    }
+
+    public Builder getOutBuilder() {
+        return mOutBuilder;
+    }
+
+    public TextPhrase addBuilder(Builder builder) {
+        mBuilders.add(builder);
+        return this;
     }
 
     /**
@@ -83,35 +148,23 @@ public class TextPhrase {
         if (curChar == EOF) {
             return null;
         }
-        if (curChar == firstLeftSeparator) {
-            char nextChar = lookahead();
-            if (nextChar == firstLeftSeparator) {
-                return leftSeparator(prev, nextChar);
-            } else {
-                return innerFirst(prev);
-            }
-        } else if (curChar == secondLeftSeparator) {
-            char nextChar = lookahead();
-            if (nextChar == secondLeftSeparator) {
-                return leftSeparator(prev, nextChar);
-            } else {
-                return innerSecond(prev);
+        Log.v("lhz", "curChar: " + curChar);
+
+        if (null != mBuilders) {
+            for (Builder builder : mBuilders) {
+                if (curChar == builder.getLeftSeparator()) {
+                    char nextChar = lookahead();
+                    Log.v("lhz", "nextChar: " + nextChar);
+                    if (nextChar == builder.getLeftSeparator()) {
+                        return leftSeparator(prev, nextChar);
+                    } else {
+                        return inner(prev, builder.getRightSeparator(), builder.getCharacterStyles());
+                    }
+                }
             }
         }
         return outer(prev);
     }
-
-    private char getLeftSeparator(String separator) {
-        return separator.charAt(0);
-    }
-
-    private char getRightSeparator(String separator) {
-        if (separator.length() == 2) {
-            return separator.charAt(1);
-        }
-        return separator.charAt(0);
-    }
-
 
     /**
      * Returns the text after replacing all keys with values.
@@ -121,12 +174,6 @@ public class TextPhrase {
     @Nullable
     public CharSequence format() {
         if (formatted == null) {
-            firstLeftSeparator = getLeftSeparator(firstSeparator);
-            secondLeftSeparator = getLeftSeparator(secondSeparator);
-
-            firstRightSeparator = getRightSeparator(firstSeparator);
-            secondRightSeparator = getRightSeparator(secondSeparator);
-
             if (!checkPattern()) {
                 throw new IllegalStateException("the separators don't match in the pattern!");
             }
@@ -158,12 +205,12 @@ public class TextPhrase {
         Stack<Character> separatorStack = new Stack<Character>();
         for (int i = 0; i < pattern.length(); i++) {
             char cur = pattern.charAt(i);
-            if (cur == firstLeftSeparator || cur == secondLeftSeparator) {
+            if (cur == mFirstBuilder.getLeftSeparator() || cur == mSecondBuilder.getLeftSeparator()) {
                 separatorStack.push(cur);
-            } else if (cur == firstRightSeparator || cur == secondRightSeparator) {
+            } else if (cur == mFirstBuilder.getRightSeparator() || cur == mSecondBuilder.getRightSeparator()) {
                 if (!separatorStack.isEmpty()) {
                     char separator = separatorStack.pop();
-                    if ((separator == firstLeftSeparator || separator == secondLeftSeparator)) {
+                    if ((separator == mFirstBuilder.getLeftSeparator() || separator == mSecondBuilder.getLeftSeparator())) {
                         continue;
                     } else {
                         return false;
@@ -177,19 +224,7 @@ public class TextPhrase {
     }
 
     @NonNull
-    private InnerToken innerFirst(Token prev) {
-        String key = inner(prev, firstRightSeparator);
-        return new InnerToken(prev, key, innerFirstColor, innerFirstSize);
-    }
-
-    @NonNull
-    private InnerToken innerSecond(Token prev) {
-        String key = inner(prev, secondRightSeparator);
-        return new InnerToken(prev, key, innerSecondColor, innerSecondSize);
-    }
-
-    @NonNull
-    private String inner(Token prev, char separator) {
+    private InnerToken inner(Token prev, char separator, List<CharacterStyle> characterStyles) {
 
         // Store keys as normal Strings; we don't want keys to contain spans.
         StringBuilder sb = new StringBuilder();
@@ -211,8 +246,7 @@ public class TextPhrase {
             throw new IllegalStateException("Disallow empty content between separators,for example {}");
         }
 
-        String key = sb.toString();
-        return key;
+        return new InnerToken(prev, sb.toString(), characterStyles);
     }
 
     /**
@@ -222,10 +256,20 @@ public class TextPhrase {
     private OuterToken outer(Token prev) {
         int startIndex = curCharIndex;
 
-        while (curChar != firstLeftSeparator && curChar != secondLeftSeparator && curChar != EOF) {
+        while (isConsume() && curChar != EOF) {
             consume();
         }
-        return new OuterToken(prev, curCharIndex - startIndex, outerColor);
+        return new OuterToken(prev, curCharIndex - startIndex, mOutBuilder.getCharacterStyles());
+    }
+
+    private boolean isConsume() {
+        int size = 0;
+        for (Builder builder : mBuilders) {
+            if (curChar != builder.getLeftSeparator()) {
+                ++size;
+            }
+        }
+        return size >= mBuilders.size();
     }
 
     /**
@@ -305,20 +349,44 @@ public class TextPhrase {
      * Ordinary text between tokens.
      */
     private static class OuterToken extends Token {
+
         private final int textLength;
+
+        private final List<CharacterStyle> mCharacterStyles;
+        private final int mFlags;
+
         private int color;
 
-        OuterToken(Token prev, int textLength, int _color) {
+        OuterToken(Token prev, int textLength, List<CharacterStyle> characterStyles) {
+            this(prev, textLength, characterStyles, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        OuterToken(Token prev, int textLength, List<CharacterStyle> characterStyles, int flags) {
             super(prev);
             this.textLength = textLength;
-            this.color = _color;
+            this.mCharacterStyles = characterStyles;
+            this.mFlags = flags;
         }
+
+
+//        OuterToken(Token prev, int textLength, int _color) {
+//            super(prev);
+//            this.textLength = textLength;
+//            this.color = _color;
+//        }
 
         @Override
         void expand(@NonNull SpannableStringBuilder target) {
 
             int startPoint = getFormattedStart();
             int endPoint = startPoint + textLength;
+
+            if (null != mCharacterStyles) {
+                for (CharacterStyle characterStyle : mCharacterStyles) {
+                    target.setSpan(CharacterStyle.wrap(characterStyle), startPoint, endPoint, mFlags);
+                }
+            }
+
             target.setSpan(new ForegroundColorSpan(color), startPoint, endPoint, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
@@ -356,33 +424,123 @@ public class TextPhrase {
         /**
          * The InnerText without separators,like '{' and '}'.
          */
-        private final String innerText;
+        private final String mInnerText;
+        private final List<CharacterStyle> mCharacterStyles;
+        private final int mFlags;
 
-        private int color;
-        private int size;
-
-        InnerToken(Token prev, String inner, int color, int size) {
-            super(prev);
-            this.innerText = inner;
-            this.color = color;
-            this.size = size;
+        InnerToken(Token prev, String inner, List<CharacterStyle> characterStyles) {
+            this(prev, inner, characterStyles, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
+
+        InnerToken(Token prev, String inner, List<CharacterStyle> parcelableSpans, int flags) {
+            super(prev);
+            this.mInnerText = inner;
+            this.mCharacterStyles = parcelableSpans;
+            this.mFlags = flags;
+        }
+
+//        InnerToken(Token prev, String inner, int color, int size) {
+//            super(prev);
+//            this.mInnerText = inner;
+//            this.color = color;
+//            this.size = size;
+//        }
 
         @Override
         void expand(@NonNull SpannableStringBuilder target) {
 
             int replaceFrom = getFormattedStart();
             // Add 2 to account for the separators.
-            int replaceTo = replaceFrom + innerText.length() + 2;
-            target.replace(replaceFrom, replaceTo, innerText);
-            target.setSpan(new ForegroundColorSpan(color), replaceFrom, replaceTo - 2,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            target.setSpan(new AbsoluteSizeSpan(size), replaceFrom, replaceTo - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            int replaceTo = replaceFrom + mInnerText.length() + 2;
+            Log.v("lhz", "innerToken: " + replaceFrom + " " + replaceTo + " " + mInnerText);
+            target.replace(replaceFrom, replaceTo, mInnerText);
+
+
+            if (null != mCharacterStyles) {
+                for (CharacterStyle span : mCharacterStyles) {
+                    target.setSpan(CharacterStyle.wrap(span), replaceFrom, replaceTo - 2, mFlags);
+                }
+            }
+//
+//            target.setSpan(new ForegroundColorSpan(color), replaceFrom, replaceTo - 2,
+//                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//            target.setSpan(new AbsoluteSizeSpan(size), replaceFrom, replaceTo - 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         @Override
         int getFormattedLength() {
-            return innerText.length();
+            return mInnerText.length();
+        }
+    }
+
+    public static class Builder {
+
+        private ForegroundColorSpan foregroundColorSpan;
+        private AbsoluteSizeSpan absoluteSizeSpan;
+
+        private String separator;
+        private char leftSeparator;
+        private char rightSeparator;
+
+        private List<CharacterStyle> mCharacterStyles;
+
+        public Builder() {
+            mCharacterStyles = new ArrayList<>();
+        }
+
+        public Builder setSize(@IntRange(from = 0) int size) {
+            absoluteSizeSpan = new AbsoluteSizeSpan(size, true);
+            return this;
+        }
+
+        public Builder setColor(@ColorInt int color) {
+            foregroundColorSpan = new ForegroundColorSpan(color);
+            return this;
+        }
+
+        public Builder setSeparator(String separator) {
+            if (TextUtils.isEmpty(separator)) {
+                throw new IllegalArgumentException("separator must not be empty!");
+            }
+            if (separator.length() > 2) {
+                throw new IllegalArgumentException("separator‘s length must not be more than 3 charactors!");
+            }
+            this.separator = separator;
+            leftSeparator = separator.charAt(0);
+            if (separator.length() == 2) {
+                rightSeparator = separator.charAt(1);
+            } else {
+                rightSeparator = separator.charAt(0);
+            }
+            return this;
+        }
+
+        public Builder addParcelableSpan(CharacterStyle characterStyle) {
+            if (null != characterStyle && !mCharacterStyles.contains(characterStyle)) {
+                mCharacterStyles.add(characterStyle);
+            }
+            return this;
+        }
+
+        public List<CharacterStyle> getCharacterStyles() {
+            if (mCharacterStyles == null) {
+                return new ArrayList<>();
+            }
+            addParcelableSpan(foregroundColorSpan);
+            addParcelableSpan(absoluteSizeSpan);
+            return mCharacterStyles;
+        }
+
+        public String getSeparator() {
+            return separator == null ? "" : separator;
+        }
+
+        public char getLeftSeparator() {
+            return leftSeparator;
+        }
+
+        public char getRightSeparator() {
+            return rightSeparator;
         }
     }
 

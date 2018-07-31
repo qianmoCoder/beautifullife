@@ -40,8 +40,16 @@ abstract class DefaultFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (userDefaultTitle()) {
+            val title = arguments?.getString("title", "")
+            if (!title.isNullOrEmpty()) {
+                setDefaultTitle(title!!)
+            }
+        }
         initView()
     }
+
+    open fun userDefaultTitle() = true
 
     abstract fun initView()
 
@@ -51,6 +59,10 @@ abstract class DefaultFragment : BaseFragment() {
 
     fun startFragment(className: String) {
         baseActivity?.startFragment(className)
+    }
+
+    fun startFragment(className: String, bundle: Bundle) {
+        baseActivity?.startFragment(className, bundle)
     }
 
     fun startFragment(className: Class<out Fragment>, bundle: Bundle) {
@@ -113,5 +125,4 @@ abstract class DefaultFragment : BaseFragment() {
 
         val ARGUMENT_TASK_ID = "ARGUMENT_TASK_ID"
     }
-
 }

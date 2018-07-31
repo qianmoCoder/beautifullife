@@ -62,6 +62,10 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         Navigator.startShowDetailActivity(this, fragmentName, null)
     }
 
+    fun startFragment(fragmentName: String, bundle: Bundle?) {
+        Navigator.startShowDetailActivity(this, fragmentName, bundle)
+    }
+
     fun startFragment(fragment: Class<out Fragment>, bundle: Bundle?) {
         Navigator.startShowDetailActivity(this, fragment, bundle)
     }

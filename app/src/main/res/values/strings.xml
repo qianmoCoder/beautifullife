@@ -152,4 +152,8 @@
     <string name="about_text">This app is for demonstrate the Material-ish progress wheel library, which provides a Material-style progress wheel compatible back to API 9. You can have indeterminate and determinate versions of the progress wheel, the later with a linear animation or a interpolated one like in the guidelines.\n\nRefer to the Github project page for more info at https://github.com/pnikosis/materialish-progress. </string>
     <string name="about">About</string>
     <string name="title_activity_scrolling2">ScrollingActivity2</string>
+
+    <string name="text_phrase_one">永生不过是场{幻梦}，唯吾{所爱}不朽</string>
+    <string name="text_phrase_two">何以{缘起}?何以[缘灭]?当以剑歌问之</string>
+    <string name="text_phrase_three">凤兮{凤兮}归[故乡],遨游四海(求其凰)</string>
 </resources>

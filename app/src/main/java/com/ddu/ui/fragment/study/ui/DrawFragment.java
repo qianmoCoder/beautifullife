@@ -1,15 +1,12 @@
 package com.ddu.ui.fragment.study.ui;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.ui.help.ShapeInjectHelper;
-import com.ddu.icore.ui.view.ShapeButton;
-import com.ddu.icore.util.sys.ViewUtils;
+import com.ddu.icore.ui.help.ShapeInject;
 import com.iannotation.Element;
 
 /**
@@ -17,9 +14,6 @@ import com.iannotation.Element;
  */
 @Element("UI")
 public class DrawFragment extends DefaultFragment {
-
-    private ShapeButton shapeTextView;
-    private LinearLayout linearLayout;
 
     @NonNull
     public static DrawFragment newInstance(String id) {
@@ -30,38 +24,19 @@ public class DrawFragment extends DefaultFragment {
     }
 
     @Override
-    public void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
     public int getLayoutId() {
         return R.layout.fragment_shape_view;
     }
 
     @Override
     public void initView() {
-        shapeTextView = ViewUtils.findViewById(getMView(), R.id.different_radius_test);
-//        shapeTextView.setRadii(new float[]{0, 0, 20, 20, 40, 40, 60, 60});
-        int height = shapeTextView.getHeight();
-//        shapeTextView.getShapeInject().setSegmented(true);
+        TextView tvOvalCode = findViewById(R.id.tv_oval_code);
+        int color = mContext.getResources().getColor(R.color.c_ff4141);
+        ShapeInject.inject(tvOvalCode).setShapeType(ShapeInject.TYPE_OVAL).setStroke(2, color).background();
 
-        linearLayout = findViewById(R.id.ll_customer);
-        final ShapeInjectHelper shapeInjectHelper = new ShapeInjectHelper(linearLayout);
-        shapeInjectHelper.backgroundColor(Color.BLUE);
-//        shapeInjectHelper.strokeWidth(2, Color.RED, 5, 5);
-        shapeInjectHelper.shapeType(ShapeInjectHelper.ROUND_RECT);
-        linearLayout.post(new Runnable() {
-            @Override
-            public void run() {
-
-                shapeInjectHelper.setBackground();
-            }
-        });
+        TextView tvRoundRectCode = findViewById(R.id.tv_round_rect_code);
+        int roundRectColor = mContext.getResources().getColor(R.color.c_4897fa);
+        ShapeInject.inject(tvRoundRectCode).setShapeType(ShapeInject.TYPE_ROUND_RECT).setStroke(2, roundRectColor).background();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 }

@@ -46,8 +46,10 @@ class VideoFragment : DefaultFragment() {
         }
 
         BaseApp.postDelayed(Runnable {
-            ll_other.visibility = View.VISIBLE
-            ll_other.alphaAnimator(1000, 0f, 1f).start()
+            if (!isDetached) {
+                ll_other.visibility = View.VISIBLE
+                ll_other.alphaAnimator(1000, 0f, 1f).start()
+            }
         }, 5000)
 
     }

@@ -146,7 +146,7 @@ public class ShapeInject {
                 mColorDrawable = (ColorDrawable) mBackground;
             }
 
-            int defValue = Color.BLACK;
+            int defValue = Color.TRANSPARENT;
             if (null != mColorDrawable) {
                 defValue = mColorDrawable.getColor();
             }
@@ -278,7 +278,7 @@ public class ShapeInject {
 
     public void background() {
         if (null != mTextView) {
-            int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mDisableTextColor, mNormalTextColor};
+            int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
             mColorStateList = new ColorStateList(mStates, colors);
             mTextView.setTextColor(mColorStateList);
         }
@@ -291,8 +291,7 @@ public class ShapeInject {
                     background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
                     background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
                     background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
-//                    mView.setBackground(mStateBackground);
-                    mView.setBackgroundResource(R.drawable.shape_view_blue);
+                    mView.setBackground(mStateBackground);
                 }
             });
         }
