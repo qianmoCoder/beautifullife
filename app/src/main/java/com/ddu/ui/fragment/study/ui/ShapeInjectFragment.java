@@ -15,12 +15,12 @@ import com.iannotation.Element;
  * Created by lhz on 16/5/6.
  */
 @Element("UI")
-public class DrawFragment extends DefaultFragment {
+public class ShapeInjectFragment extends DefaultFragment {
 
     @NonNull
-    public static DrawFragment newInstance(String id) {
+    public static ShapeInjectFragment newInstance(String id) {
         Bundle arguments = new Bundle();
-        DrawFragment fragment = new DrawFragment();
+        ShapeInjectFragment fragment = new ShapeInjectFragment();
         fragment.setArguments(arguments);
         return fragment;
     }

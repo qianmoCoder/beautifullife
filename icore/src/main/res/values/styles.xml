@@ -28,7 +28,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/dp_18</item>
+        <item name="android:textSize">@dimen/dp_16</item>
     </style>
 
     <style name="TitleBarText.Left">

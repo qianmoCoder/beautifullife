@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_design.*
 @Element("UI")
 class DesignFragment : DefaultFragment() {
 
-    private var mDrawFragment: DrawFragment? = null
+    private var mDrawFragment: ShapeInjectFragment? = null
 
     private var animEnter: Animation? = null
     private var animExit: Animation? = null
@@ -30,7 +30,7 @@ class DesignFragment : DefaultFragment() {
     private var isShow: Boolean = false
 
     override fun initData(savedInstanceState: Bundle?) {
-        mDrawFragment = DrawFragment.newInstance("1")
+        mDrawFragment = ShapeInjectFragment.newInstance("1")
         animEnter = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_to_bottom)
         animEnter!!.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {
