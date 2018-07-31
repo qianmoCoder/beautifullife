@@ -21,14 +21,15 @@
             android:id="@+id/tv_oval_xml"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
             android:gravity="center"
             android:padding="@dimen/dp_5"
-            android:text="XML"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:text="XML_OVAL"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/tv_oval_code"
             app:layout_constraintTop_toBottomOf="@id/tv_oval"
+            app:normalBackgroundColor="@color/c_4897fa"
             app:normalStrokeColor="@color/c_ff4141"
             app:normalStrokeWidth="0.5dp"
             app:shapeType="oval" />
@@ -39,27 +40,57 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/dp_5"
-            android:text="CODE"
+            android:text="CODE_OVAL"
             app:layout_constraintBottom_toBottomOf="@id/tv_oval_xml"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@id/tv_oval_xml"
             app:layout_constraintRight_toRightOf="parent" />
 
         <com.ddu.icore.ui.view.ShapeTextView
-            android:id="@+id/tv_round_rect_xml"
+            android:id="@+id/tv_round_xml"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
             android:gravity="center"
             android:padding="@dimen/dp_5"
-            android:text="XML"
-            app:layout_constraintHorizontal_chainStyle="spread"
+            android:text="XML_ROUND"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/tv_oval_code"
             app:layout_constraintTop_toBottomOf="@id/tv_oval_xml"
             app:normalStrokeColor="@color/c_4897fa"
             app:normalStrokeWidth="0.5dp"
+            app:shapeType="round" />
+
+        <Button
+            android:id="@+id/tv_round_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="CODE_ROUND"
+            app:layout_constraintBottom_toBottomOf="@id/tv_round_xml"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/tv_round_xml"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/tv_round_rect_xml"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="XML_ROUND_RECT"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_round_rect_code"
+            app:layout_constraintTop_toBottomOf="@id/tv_round_xml"
+            app:normalBackgroundColor="@color/c_46b942"
+            app:normalStrokeColor="@color/c_4897fa"
+            app:normalStrokeWidth="0.5dp"
+            app:pressedBackgroundColor="@color/c_9934c749"
             app:shapeType="round_rect" />
 
         <TextView
@@ -68,11 +99,41 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/dp_5"
-            android:text="CODE"
+            android:text="CODE_ROUND_RECT"
             app:layout_constraintBottom_toBottomOf="@id/tv_round_rect_xml"
-            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintLeft_toRightOf="@id/tv_oval_xml"
+            app:layout_constraintLeft_toRightOf="@id/tv_round_rect_xml"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/tv_segment_xml"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="XML_SEGMENT"
+            app:direction="right"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_segment_code"
+            app:layout_constraintTop_toBottomOf="@id/tv_round_rect_xml"
+            app:normalStrokeColor="@color/c_f7b218"
+            app:normalStrokeWidth="0.5dp"
+            app:pressedStrokeColor="@color/c_ef163f"
+            app:shapeType="segment" />
+
+        <TextView
+            android:id="@+id/tv_segment_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="CODE_SEGMENT"
+            app:layout_constraintBottom_toBottomOf="@id/tv_segment_xml"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/tv_segment_xml"
             app:layout_constraintRight_toRightOf="parent" />
 
 

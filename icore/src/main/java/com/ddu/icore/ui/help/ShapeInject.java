@@ -160,11 +160,11 @@ public class ShapeInject {
             mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
             mStrokeDashGap = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashGap, 0);
             mNormalStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_normalStrokeWidth, 0);
-            mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_pressedStrokeWidth, 0);
-            mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_disableStrokeWidth, 0);
+            mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_pressedStrokeWidth, mNormalStrokeWidth);
+            mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_disableStrokeWidth, mNormalStrokeWidth);
             mNormalStrokeColor = a.getColor(R.styleable.ShapeView_normalStrokeColor, 0);
-            mPressedStrokeColor = a.getColor(R.styleable.ShapeView_pressedStrokeColor, 0);
-            mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, 0);
+            mPressedStrokeColor = a.getColor(R.styleable.ShapeView_pressedStrokeColor, mNormalStrokeColor);
+            mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, mNormalStrokeColor);
 
             // radius
             mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
@@ -277,6 +277,27 @@ public class ShapeInject {
     }
 
     public void background() {
+        if (null != mTextView) {
+            int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
+            mColorStateList = new ColorStateList(mStates, colors);
+            mTextView.setTextColor(mColorStateList);
+        }
+
+        if (null != mView) {
+            mView.post(new Runnable() {
+                @Override
+                public void run() {
+                    setShape();
+                    background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
+                    background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
+                    background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
+                    mView.setBackground(mStateBackground);
+                }
+            });
+        }
+    }
+
+    public void background1() {
         if (null != mTextView) {
             int[] colors = new int[]{mPressedTextColor, mPressedTextColor, mNormalTextColor, mDisableTextColor};
             mColorStateList = new ColorStateList(mStates, colors);
