@@ -189,14 +189,23 @@ public class ShapeInject {
         }
     }
 
-    public void setTextColor(@ColorInt int textColor) {
+    public ShapeInject setTextColor(@ColorInt int textColor) {
         setTextColor(textColor, textColor, textColor);
+        return this;
     }
 
-    public void setTextColor(@ColorInt int pressedTextColor, @ColorInt int disableTextColor, @ColorInt int normalTextColor) {
+    public ShapeInject setTextColor(@ColorInt int pressedTextColor, @ColorInt int disableTextColor, @ColorInt int normalTextColor) {
         mPressedTextColor = pressedTextColor;
         mDisableTextColor = disableTextColor;
         mNormalTextColor = normalTextColor;
+        return this;
+    }
+
+    public ShapeInject setTextColor(@ColorInt int pressedTextColor, @ColorInt int disableTextColor, @ColorInt int normalTextColor, TextView textView) {
+        int[] colors = new int[]{pressedTextColor, pressedTextColor, normalTextColor, disableTextColor};
+        mColorStateList = new ColorStateList(mStates, colors);
+        textView.setTextColor(mColorStateList);
+        return this;
     }
 
     public ShapeInject setBackgroundColor(@ColorInt int color) {
@@ -217,8 +226,22 @@ public class ShapeInject {
         return this;
     }
 
+    public ShapeInject setStroke(@IntRange(from = 0) int width, @ColorInt int pressedColor, int normalColor) {
+        mPressedStrokeWidth = mDisableStrokeWidth = mNormalStrokeWidth = width;
+        mPressedStrokeColor = mDisableStrokeColor = pressedColor;
+        mNormalStrokeColor = normalColor;
+        return this;
+    }
+
     public ShapeInject setStroke(@IntRange(from = 0) int width, @ColorInt int color, float dashWidth, float dashGap) {
         setStroke(width, color);
+        mStrokeDashWidth = dashWidth;
+        mStrokeDashGap = dashGap;
+        return this;
+    }
+
+    public ShapeInject setStroke(@IntRange(from = 0) int width, @ColorInt int pressedColor, int normalColor, float dashWidth, float dashGap) {
+        setStroke(width, pressedColor, normalColor);
         mStrokeDashWidth = dashWidth;
         mStrokeDashGap = dashGap;
         return this;

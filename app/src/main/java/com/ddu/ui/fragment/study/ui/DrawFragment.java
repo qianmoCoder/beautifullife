@@ -3,6 +3,7 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
@@ -49,7 +50,39 @@ public class DrawFragment extends DefaultFragment {
 
         TextView tvSegmentCode = findViewById(R.id.tv_segment_code);
         int segmentColor = mContext.getResources().getColor(R.color.c_ff4141);
-        ShapeInject.inject(tvSegmentCode).setShapeType(ShapeInject.TYPE_SEGMENT).setStroke(2, segmentColor).background1();
+        ShapeInject.inject(tvSegmentCode).setShapeType(ShapeInject.TYPE_SEGMENT).setStroke(2, segmentColor).background();
+
+        TextView tvRadiusCode = findViewById(R.id.tv_radius_code);
+        int radiusColor = mContext.getResources().getColor(R.color.c_ff00ff);
+        int radius = (int) mContext.getResources().getDimension(R.dimen.dp_10);
+        ShapeInject.inject(tvRadiusCode).setRadius(radius).setStroke(2, radiusColor).background();
+
+        TextView tvDashGapCode = findViewById(R.id.tv_dash_gap_code);
+        int dashGapPressedColor = mContext.getResources().getColor(R.color.c_f7b218);
+        int dashGapNormalColor = mContext.getResources().getColor(R.color.c_00ffff);
+        int dashGapSize = (int) mContext.getResources().getDimension(R.dimen.dp_5);
+        ShapeInject.inject(tvDashGapCode).setRadius(dashGapSize)
+                .setStroke(2, dashGapPressedColor, dashGapNormalColor, dashGapSize, dashGapSize)
+                .background();
+
+        LinearLayout llAllCode = findViewById(R.id.ll_all_code);
+        TextView tvAllCode = findViewById(R.id.tv_all_code);
+
+        int llNormalBgColor = getColor(R.color.c_4897fa);
+        int llPressedBgColor = getColor(R.color.c_ff4141);
+        int llNormalTextColor = getColor(R.color.c_fdbc40);
+        int llPressedTextColor = getColor(R.color.c_34c749);
+        int llStrokeNormalColor = getColor(R.color.c_ff4141);
+        int llStrokePressColor = getColor(R.color.c_4897fa);
+        int llSize = (int) mContext.getResources().getDimension(R.dimen.dp_10);
+        int llStrokeWidth = (int) mContext.getResources().getDimension(R.dimen.dp_2);
+        float[] radii = new float[]{llSize, llSize, 0, 0, llSize, llSize, 0, 0};
+        ShapeInject.inject(llAllCode)
+                .setBackgroundColor(llPressedBgColor, llPressedBgColor, llNormalBgColor)
+                .setStroke(llStrokeWidth, llStrokePressColor, llStrokeNormalColor)
+                .setTextColor(llPressedTextColor, llPressedTextColor, llNormalTextColor, tvAllCode)
+                .setRadii(radii)
+                .background1();
     }
 
     private int getColor(int colorRes) {
