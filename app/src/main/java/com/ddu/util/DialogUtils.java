@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.icore.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 

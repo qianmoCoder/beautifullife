@@ -3,6 +3,7 @@
 //
 //import android.os.Bundle;
 //import android.support.annotation.Nullable;
+//import android.support.design.widget.BottomSheetDialogFragment;
 //import android.support.v7.widget.GridLayoutManager;
 //import android.support.v7.widget.RecyclerView;
 //import android.view.LayoutInflater;
@@ -13,13 +14,12 @@
 //
 //import com.ddu.icore.R;
 //import com.ddu.icore.entity.BottomItemEntity;
-//import com.ddu.icore.util.ToastUtils;
 //import com.ddu.icore.util.sys.ViewUtils;
 //
 //import java.util.ArrayList;
 //import java.util.List;
 //
-//public class ShareDialogFragmentT extends AbsBottomDialogFragment implements View.OnClickListener {
+//public class ShareDialogFragmentT extends BottomSheetDialogFragment implements View.OnClickListener {
 //
 //    private static int SPAN_COUNT = 3;
 //
@@ -87,7 +87,7 @@
 //        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
 //            @Override
 //            public void onClick(BottomItemEntity data, int position) {
-//                ToastUtils.showToast(data.getName() + " " + position);
+////                ToastUtils.showToast(data.getName() + " " + position);
 //            }
 //        });
 //

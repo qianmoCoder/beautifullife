@@ -24,18 +24,18 @@ public class RVAdapterJ extends DefaultRecycleViewAdapter {
 
     @Override
     public void bindView(ViewHolder viewHolder, Object data, int position) {
-//      DefaultDialogFragment.Builder builder = new DefaultDialogFragment.Builder();
+//      AlertDialogFragment.Builder builder = new AlertDialogFragment.Builder();
 //      builder.setTitle("");
 //      builder.setMessage("");
-//      builder.setLeftText("", new DefaultDialogFragment.IButtonClickListener() {
+//      builder.setLeftText("", new AlertDialogFragment.IButtonClickListener() {
 //          @Override
-//          public void onClick(View v, DialogFragment dialogFragment) {
+//          public void onClick(View v, ShowDialogFragment dialogFragment) {
 //
 //          }
 //      });
-//      builder.setRightText("", new DefaultDialogFragment.IButtonClickListener() {
+//      builder.setRightText("", new AlertDialogFragment.IButtonClickListener() {
 //          @Override
-//          public void onClick(View v, DialogFragment dialogFragment) {
+//          public void onClick(View v, ShowDialogFragment dialogFragment) {
 //
 //          }
 //      });

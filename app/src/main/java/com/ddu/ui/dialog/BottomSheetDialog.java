@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.dialog.DefaultGridBottomAdapter;
 import com.ddu.icore.entity.BottomItemEntity;
-import com.ddu.icore.util.ToastUtils;
+import com.ddu.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import java.util.ArrayList;

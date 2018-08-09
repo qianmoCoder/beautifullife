@@ -14,7 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.ddu.icore.app.BaseApp;
+import com.ddu.app.BaseApp;
 
 import java.util.List;
 

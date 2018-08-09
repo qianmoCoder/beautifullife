@@ -9,7 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.ToastUtils
+import com.ddu.util.ToastUtils
 import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_permission.*
 import org.jetbrains.anko.support.v4.act

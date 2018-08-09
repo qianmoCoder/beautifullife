@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.bumptech.glide.request.transition.Transition
 import com.ddu.R
-import com.ddu.icore.app.BaseApp
+import com.ddu.app.BaseApp
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.PopupUtils
 import com.ddu.icore.util.UrlUtils

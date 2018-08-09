@@ -139,6 +139,11 @@
                 mm:arrowImage="@drawable/right_arrow_gray"
                 mm:leftText="显示弹框" />
 
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_show_bottom_dialog"
+                style="@style/DefaultRelativeLayout"
+                mm:arrowImage="@drawable/right_arrow_gray"
+                mm:leftText="底部弹框" />
         </LinearLayout>
 
     </LinearLayout>

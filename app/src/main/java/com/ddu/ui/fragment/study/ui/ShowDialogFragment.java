@@ -18,7 +18,7 @@ import com.iannotation.Element;
  * Created by yzbzz on 2017/5/25.
  */
 @Element("UI")
-public class DialogFragment extends DefaultFragment {
+public class ShowDialogFragment extends DefaultFragment {
 
     private Button btnUI;
     private Button btnBottomDialog;

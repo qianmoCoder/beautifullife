@@ -10,13 +10,13 @@ import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
 import com.ddu.R
+import com.ddu.app.BaseApp
 import com.ddu.icore.aidl.GodIntent
-import com.ddu.icore.app.BaseApp
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.help.BottomNavigationViewHelper
 import com.ddu.icore.util.AnimatorUtils
-import com.ddu.icore.util.ToastUtils
+import com.ddu.util.ToastUtils
 import com.ddu.logic.LogicActions
 import com.ddu.ui.fragment.LifeFragment
 import com.ddu.ui.fragment.MeFragment

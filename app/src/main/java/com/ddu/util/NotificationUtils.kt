@@ -6,11 +6,8 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Build
-import com.ddu.R
-import com.ddu.icore.app.BaseApp
-import com.ddu.icore.util.ToastUtils
+import com.ddu.app.BaseApp
 import com.ddu.icore.util.sys.SystemUtils
 import org.jetbrains.anko.notificationManager
 

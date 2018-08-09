@@ -31,7 +31,7 @@ public class DefaultLinearBottomAdapter extends DefaultRecycleViewAdapter<Bottom
 
     @Override
     public void bindView(ViewHolder viewHolder, final BottomItemEntity data, final int position) {
-        viewHolder.setText(R.id.tv_detail, data.getName());
+        viewHolder.setText(R.id.tv_title, data.getName());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

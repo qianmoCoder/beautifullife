@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ddu.R;
-import com.ddu.icore.app.BaseApp;
+import com.ddu.app.BaseApp;
 import com.ddu.icore.dialog.DefaultGridBottomAdapter;
 import com.ddu.icore.entity.BottomItemEntity;
 import com.ddu.icore.ui.activity.BaseActivity;

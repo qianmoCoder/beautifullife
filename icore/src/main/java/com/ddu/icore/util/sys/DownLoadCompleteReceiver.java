@@ -16,7 +16,6 @@ import android.database.Cursor;
 import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.common.ObserverManager;
 import com.ddu.icore.logic.Actions;
-import com.ddu.icore.util.ToastUtils;
 
 
 /**
@@ -55,7 +54,7 @@ public class DownLoadCompleteReceiver extends BroadcastReceiver {
                             break;
                         //下载失败
                         case DownloadManager.STATUS_FAILED:
-                            ToastUtils.showToast("下载失败");
+//                            ToastUtils.showToast("下载失败");
                             break;
                     }
                 }

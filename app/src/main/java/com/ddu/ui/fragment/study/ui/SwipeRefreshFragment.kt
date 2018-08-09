@@ -6,7 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
 import com.ddu.R
-import com.ddu.icore.app.BaseApp
+import com.ddu.app.BaseApp
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
@@ -51,7 +51,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
             }
 
             override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {
-                viewHolder.setText(R.id.tv_detail, data)
+                viewHolder.setText(R.id.tv_title, data)
             }
         }
 

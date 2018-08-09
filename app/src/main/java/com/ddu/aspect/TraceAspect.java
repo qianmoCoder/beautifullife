@@ -20,7 +20,7 @@ public class TraceAspect {
     private static final String BEFORE_ACTIVITY_ONCREATE = "execution(* android.app.Activity.onCreate(..))";
     private static final String BEFORE_FRAGMENT_ONCREATE = "execution(* android.support.v4.app.Fragment.onCreate(..))";
 
-    private static final String BEFORE_ASPECTJ = "execution(@com.ddu.icore.annotation.AspectJ * *(..))";
+    private static final String BEFORE_ASPECTJ = "execution(@com.ddu.annotation.AspectJ * *(..))";
 
 //    @Before(BEFORE_DISPATCH_TOUCH_VIEWGROUP)
 //    public boolean onActivityMethodDispatchTouchEventBefore(ProceedingJoinPoint joinPoint) throws Throwable {

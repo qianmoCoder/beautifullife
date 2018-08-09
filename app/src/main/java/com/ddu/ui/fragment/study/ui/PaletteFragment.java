@@ -55,8 +55,8 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
 
             @Override
             public void bindView(ViewHolder viewHolder, Palette.Swatch data, int position) {
-                viewHolder.setText(R.id.tv_detail, "hello, swatch");
-                viewHolder.setBackgroud(R.id.tv_detail, data.getRgb());
+                viewHolder.setText(R.id.tv_title, "hello, swatch");
+                viewHolder.setBackgroud(R.id.tv_title, data.getRgb());
             }
         });
         rvSwatch.setLayoutManager(new LinearLayoutManager(getMContext(),LinearLayoutManager.VERTICAL,false));

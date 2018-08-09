@@ -1,4 +1,4 @@
-package com.ddu.icore.util;
+package com.ddu.util;
 
 import android.content.Context;
 import android.support.annotation.StringRes;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ddu.app.BaseApp;
 import com.ddu.icore.R;
-import com.ddu.icore.app.BaseApp;
 import com.ddu.icore.util.sys.ViewUtils;
 
 

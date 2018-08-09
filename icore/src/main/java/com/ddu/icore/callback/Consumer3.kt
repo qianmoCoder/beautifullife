@@ -4,7 +4,7 @@ package com.ddu.icore.callback
  * Created by yzbzz on 2018/2/9.
  */
 
-interface SingleCallBack<in T> {
+interface Consumer3<in A, in D, in P> {
 
-    fun execute(t: T)
+    fun accept(a: A, d: D, p: P)
 }

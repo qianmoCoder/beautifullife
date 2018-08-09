@@ -6,13 +6,13 @@ import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.widget.RadioGroup
 import com.ddu.R
-import com.ddu.icore.app.BaseApp
+import com.ddu.app.BaseApp
 import com.ddu.icore.ui.activity.BaseActivity
-import com.ddu.icore.util.ToastUtils
 import com.ddu.ui.fragment.LifeFragment
 import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
+import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_mainr.*
 import org.jetbrains.anko.startActivity
 

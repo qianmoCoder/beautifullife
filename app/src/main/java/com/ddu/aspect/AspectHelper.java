@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ddu.icore.annotation.AspectJ;
+import com.ddu.annotation.AspectJ;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;

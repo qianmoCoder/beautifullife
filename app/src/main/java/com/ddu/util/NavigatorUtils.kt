@@ -7,8 +7,7 @@ import android.net.Uri
 import android.support.v4.app.FragmentActivity
 import com.ddu.icore.common.findPreference
 import com.ddu.icore.common.isNetworkConnected
-import com.ddu.icore.dialog.DefaultDialogFragment
-import com.ddu.icore.util.ToastUtils
+import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.ui.activity.*
 import org.jetbrains.anko.support.v4.ctx
 
@@ -83,7 +82,7 @@ object NavigatorUtils {
                 }
             }
             if (isShowDialog) {
-                val builder = DefaultDialogFragment().apply {
+                val builder = AlertDialogFragment().apply {
                     msg = "您的版本太低，请更新至新版本"
                     leftText = "稍后"
                     mLeftClickListener = { _, dialogFragment ->

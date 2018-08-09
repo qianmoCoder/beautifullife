@@ -4,17 +4,22 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.support.v4.app.DialogFragment
 import android.util.Log
 import com.ddu.R
-import com.ddu.icore.app.BaseApp
-import com.ddu.icore.dialog.DefaultDialogFragment
+import com.ddu.app.BaseApp
+import com.ddu.icore.callback.Consumer3
+import com.ddu.icore.dialog.AlertDialogFragment
+import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
+import com.ddu.icore.entity.BottomItem
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
 
 /**
@@ -23,11 +28,11 @@ import org.jetbrains.anko.support.v4.ctx
 class MeFragment : DefaultFragment() {
 
     var mHits = LongArray(COUNTS)
-    var dialog: DefaultDialogFragment? = null
+    var dialog: AlertDialogFragment? = null
     var nid = 0
 
     override fun initData(savedInstanceState: Bundle?) {
-        dialog = DefaultDialogFragment().apply {
+        dialog = AlertDialogFragment().apply {
             title = "彩蛋"
             msg = "逗你玩"
             leftText = "取消"
@@ -85,7 +90,7 @@ class MeFragment : DefaultFragment() {
         }
 
         oiv_show_dialog.setOnClickListener {
-            val dialog = DefaultDialogFragment().apply {
+            val dialog = AlertDialogFragment().apply {
                 title = "彩蛋"
                 msg = "逗你玩"
                 leftText = "取消"
@@ -109,6 +114,10 @@ class MeFragment : DefaultFragment() {
                 dialog.dismissAllowingStateLoss()
             }, 2000)
         }
+
+        oiv_show_bottom_dialog.setOnClickListener {
+            showBottomDialog()
+        }
     }
 
     companion object {
@@ -123,6 +132,53 @@ class MeFragment : DefaultFragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    private fun showBottomDialog() {
+        var shareEntities = mutableListOf<BottomItem>()
+
+        val github = BottomItem()
+        github.id = 0
+        github.icon = resources.getDrawable(R.drawable.me_friend_link_github)
+        github.title = "GitHub"
+
+        val blog = BottomItem()
+        blog.id = 1
+        blog.icon = resources.getDrawable(R.drawable.me_friend_link_blog)
+        blog.title = "Blog"
+
+        val blog1 = BottomItem()
+        blog1.id = 1
+        blog1.icon = resources.getDrawable(R.drawable.me_friend_link_blog)
+        blog1.title = "Blog"
+
+        val blog2 = BottomItem()
+        blog2.id = 1
+        blog2.icon = resources.getDrawable(R.drawable.me_friend_link_blog)
+        blog2.title = "Blog"
+
+        val blog3 = BottomItem()
+        blog3.id = 1
+        blog3.icon = resources.getDrawable(R.drawable.me_friend_link_blog)
+        blog3.title = "Blog"
+
+        shareEntities.add(github)
+        shareEntities.add(blog)
+        shareEntities.add(blog1)
+        shareEntities.add(blog2)
+        shareEntities.add(blog3)
+
+        val dialogFragment = BottomDialogFragment.Builder()
+                .setItems(shareEntities)
+                .setTitle("分享")
+                .gridLayout()
+                .setItemClickListener(object : Consumer3<DialogFragment, BottomItem, Int> {
+                    override fun accept(a: DialogFragment, d: BottomItem, p: Int) {
+                        a.dismissAllowingStateLoss()
+                        Log.v("lhz", "d: " + d.title + " p: " + p)
+                    }
+                }).create()
+        dialogFragment.showDialog(act)
     }
 
     private fun showShareDialog() {
@@ -144,7 +200,7 @@ class MeFragment : DefaultFragment() {
         val shareDialog = DefaultGridBottomDialogFragment.newInstance(list = shareEntities, cb = { data, _, shareDialog ->
             data?.apply {
                 shareDialog.dismissAllowingStateLoss()
-                val dialog = DefaultDialogFragment().apply {
+                val dialog = AlertDialogFragment().apply {
                     title = "即将前往"
                     msg = "${data.data}"
                     leftText = "取消"

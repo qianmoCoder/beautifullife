@@ -19,8 +19,6 @@ import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.edit
 import com.ddu.icore.ui.activity.ShowDetailActivity
-import com.ddu.icore.util.ToastUtils
-import com.ddu.icore.util.sys.PreferenceUtils
 import org.jetbrains.anko.*
 
 /**
@@ -54,7 +52,21 @@ val Context.getDeviceId
     get() = telephonyManager.deviceId
 
 
-inline fun <reified T> Context.findPreference(key: String, default: T): T? = PreferenceUtils.findPreference(key, default)
+inline fun <reified T> Context.findPreference(key: String, default: T): T? = with(defaultSharedPreferences) {
+    val res: Any? = when (default) {
+        is Boolean -> getBoolean(key, default)
+        is Float -> getFloat(key, default)
+        is Int -> getInt(key, default)
+        is Long -> getLong(key, default)
+        is String -> getString(key, default)
+        is Set<*> -> when {
+            default.isSetOf<String>() -> getStringSet(key, default as Set<out String>)
+            else -> setOf()
+        }
+        else -> throw IllegalArgumentException("Unsupported type")
+    }
+    res as? T
+}
 
 inline fun <reified T> Context.pPreference(key: String, value: T) {
     defaultSharedPreferences.edit {
@@ -121,7 +133,20 @@ fun Context.launchApp(packageName: String): Intent {
 
 fun Context.loadAnimation(id: Int): Animation = AnimationUtils.loadAnimation(this, id)
 
-fun <T> Context.putPreference(key: String, value: T) = PreferenceUtils.apply(key, value)
+fun <T> Context.putPreference(key: String, value: T) = with(defaultSharedPreferences.edit()) {
+    when (value) {
+        is Boolean -> putBoolean(key, value)
+        is Float -> putFloat(key, value)
+        is Int -> putInt(key, value)
+        is Long -> putLong(key, value)
+        is String -> putString(key, value)
+        is Set<*> -> when {
+            value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
+            else -> throw IllegalArgumentException("Unsupported type")
+        }
+        else -> throw IllegalArgumentException("This type can be saved into Preferences")
+    }
+}
 
 fun Context.toggleSoftInput() = inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
@@ -137,7 +162,7 @@ fun Context.startBrowser(url: String = "") {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     val handlers = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
     if (handlers == null || handlers.size == 0) {
-        ToastUtils.showToast("browser not found")
+//        com.ddu.util.ToastUtils.showToast("browser not found")
     } else {
         startActivity(intent)
     }

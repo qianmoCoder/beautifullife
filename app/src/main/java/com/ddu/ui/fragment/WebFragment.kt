@@ -14,7 +14,7 @@ import com.ddu.icore.dialog.DefaultLinearBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.CustomerBottomBar
-import com.ddu.icore.util.ToastUtils
+import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_web.*
 import org.jetbrains.anko.support.v4.ctx
 

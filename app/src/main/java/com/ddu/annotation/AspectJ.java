@@ -1,4 +1,4 @@
-package com.ddu.icore.annotation;
+package com.ddu.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

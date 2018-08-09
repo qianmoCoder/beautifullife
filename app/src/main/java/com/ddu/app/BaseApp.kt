@@ -1,4 +1,4 @@
-package com.ddu.icore.app
+package com.ddu.app
 
 import android.app.Activity
 import android.app.Application
@@ -14,7 +14,6 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
     companion object {
         var instance by Delegates.notNull<BaseApp>()
-//        var instance: BaseApp by Delegates.notNull()
 
         lateinit var mApp: Application
         lateinit var mContext: Context

@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.ddu.icore.app.BaseApp;
-
 import java.lang.reflect.Field;
 
 public class ScreenUtil {
@@ -30,10 +28,6 @@ public class ScreenUtil {
     public static int dialogWidth;
     public static int statusbarheight;
     public static int navbarheight;
-
-    static {
-        init(BaseApp.Companion.getContext());
-    }
 
     public static int dip2px(float dipValue) {
         return (int) (dipValue * density + 0.5f);

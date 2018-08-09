@@ -5,7 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.ToastUtils
+import com.ddu.util.ToastUtils
 import com.ddu.ui.activity.TestActivity
 import kotlinx.android.synthetic.main.fragment_work_state.*
 import okhttp3.HttpUrl

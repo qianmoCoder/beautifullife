@@ -7,7 +7,7 @@ import com.ddu.icore.R
 import kotlinx.android.synthetic.main.fragment_dialog_default.*
 
 
-class DefaultDialogFragment : DialogFragment(), View.OnClickListener {
+class AlertDialogFragment : DialogFragment(), View.OnClickListener {
 
     var title = ""
     var msg = ""

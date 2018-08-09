@@ -18,7 +18,7 @@ import com.ddu.ui.fragment.study.ui.CameraFragment;
 import com.ddu.ui.fragment.study.ui.ConstraintLayoutFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
-import com.ddu.ui.fragment.study.ui.DialogFragment;
+import com.ddu.ui.fragment.study.ui.ShowDialogFragment;
 import com.ddu.ui.fragment.study.ui.ShapeInjectFragment;
 import com.ddu.ui.fragment.study.ui.DrawViewFragment;
 import com.ddu.ui.fragment.study.ui.FlexboxFragment;
@@ -80,7 +80,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, PersonalInfoFragment.class);
         mMaps.put(0, SegmentPullToRefreshFragment.class);
         mMaps.put(0, InnerScrollViewFragment.class);
-        mMaps.put(0, DialogFragment.class);
+        mMaps.put(0, ShowDialogFragment.class);
         mMaps.put(0, DesignFragment.class);
         mMaps.put(0, ShapeInjectFragment.class);
         mMaps.put(0, DrawViewFragment.class);

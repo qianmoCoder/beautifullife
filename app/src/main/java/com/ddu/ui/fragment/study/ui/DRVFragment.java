@@ -3,7 +3,7 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 
 import com.ddu.R;
-import com.ddu.icore.app.BaseApp;
+import com.ddu.app.BaseApp;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
@@ -39,7 +39,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
             @Override
             public void bindView(final ViewHolder viewHolder, String data, int position) {
-                viewHolder.setText(R.id.tv_detail, data);
+                viewHolder.setText(R.id.tv_title, data);
             }
         };
     }

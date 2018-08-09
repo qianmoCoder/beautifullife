@@ -7,7 +7,7 @@ import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.TextPhrase
+import com.ddu.icore.util.StylePhrase
 import com.iannotation.Element
 import kotlinx.android.synthetic.main.fragment_ui_textphrase.*
 
@@ -34,13 +34,13 @@ class TextPhraseFragment : DefaultFragment() {
         tv_two_hint.text = "原文：$twoString"
         tv_three_hint.text = "原文：$threeString"
 
-        val oneText = TextPhrase(oneString)
+        val oneText = StylePhrase(oneString)
                 .setInnerFirstColor(Color.BLUE)
                 .setInnerFirstSize(20)
                 .format()
         tv_one.text = oneText
 
-        val twoText = TextPhrase(twoString)
+        val twoText = StylePhrase(twoString)
                 .setInnerFirstColor(Color.BLUE)
                 .setInnerFirstSize(20)
                 .setInnerSecondColor(Color.GREEN)
@@ -48,7 +48,7 @@ class TextPhraseFragment : DefaultFragment() {
                 .format()
         tv_two.text = twoText
 
-        val builder = TextPhrase.Builder()
+        val builder = StylePhrase.Builder()
         builder.separator = "()"
         builder.setColor(Color.GREEN)
         builder.setSize(15)
@@ -60,7 +60,7 @@ class TextPhraseFragment : DefaultFragment() {
 //        })
         builder.addParcelableSpan(StrikethroughSpan())
         builder.addParcelableSpan(StyleSpan(Typeface.BOLD_ITALIC))
-        val threeText = TextPhrase(threeString)
+        val threeText = StylePhrase(threeString)
                 .setInnerFirstColor(Color.BLUE)
                 .setInnerFirstSize(20)
                 .setInnerSecondColor(Color.RED)

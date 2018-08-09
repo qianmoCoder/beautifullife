@@ -21,7 +21,7 @@ import com.ddu.R;
 import com.ddu.icore.rx.activityresult.ActivityResultInfo;
 import com.ddu.icore.rx.activityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.ddu.icore.util.ToastUtils;
+import com.ddu.util.ToastUtils;
 import com.iannotation.Element;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

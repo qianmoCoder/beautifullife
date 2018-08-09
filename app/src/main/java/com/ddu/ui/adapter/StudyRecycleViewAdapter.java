@@ -28,7 +28,7 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
     @Override
     public void bindView(ViewHolder viewHolder, final ItemEntity data, final int position) {
         final ItemEntity studyContent = data;
-        viewHolder.setText(R.id.tv_detail, data.getTitle());
+        viewHolder.setText(R.id.tv_title, data.getTitle());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
