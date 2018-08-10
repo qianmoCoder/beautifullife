@@ -9,13 +9,14 @@ import android.webkit.*
 import com.ddu.R
 import com.ddu.icore.common.clipText
 import com.ddu.icore.common.startBrowser
+import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
-import com.ddu.icore.dialog.DefaultLinearBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.CustomerBottomBar
 import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_web.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx
 
 /**
@@ -141,11 +142,15 @@ class WebFragment : DefaultFragment() {
             entities.add(largerEntity)
             entities.add(largestEntity)
 
-            val dialog = DefaultLinearBottomDialogFragment.newInstance(list = entities, cb = { entity, _, dialog ->
-                dialog.dismissAllowingStateLoss()
-                mWebSettings?.textZoom = entity?.data?.toInt() ?: 100
-            })
-            dialog.show(fragmentManager, "")
+//            val dialog = DefaultLinearBottomDialogFragment.newInstance(list = entities, cb = { entity, _, dialog ->
+//                dialog.dismissAllowingStateLoss()
+//                mWebSettings?.textZoom = entity?.data?.toInt() ?: 100
+//            })
+//            dialog.show(fragmentManager, "")
+
+            val dialog = BottomDialogFragment.Builder()
+                    .create()
+            dialog.showDialog(act)
         }
         entities.add(fontEntity)
 
