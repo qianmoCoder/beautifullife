@@ -129,6 +129,11 @@
             android:name=".ui.activity.ScrollingActivity2"
             android:label="@string/title_activity_scrolling2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ui.activity.phrase.OneSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity"/>
     </application>
 
 </manifest>
