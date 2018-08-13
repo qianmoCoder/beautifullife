@@ -3,6 +3,7 @@ package com.ddu.icore.ui.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -12,116 +13,201 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
-import com.ddu.icore.util.sys.ViewUtils;
 
 
 public class OptionItemView extends RelativeLayout {
 
     private Context mContext;
 
-    private TextView tvLeftText;
+    private ImageView ivLeftIcon;
+
+    private TextView tvTitle;
+    private TextView tvSubTitle;
+
+    private TextView tvContent;
+
     private TextView tvRightText;
-    private ImageView ivIcon;
-
-    private ImageView ivArrow;
-
+    private ImageView ivRightIcon;
 
     public OptionItemView(Context context) {
         this(context, null);
     }
 
     public OptionItemView(@NonNull Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, -1);
+    }
+
+    public OptionItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         mContext = context;
 
         init();
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OptionItemViewStyle);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.IOptionItemViewStyle);
 
-        int resId = a.getResourceId(R.styleable.OptionItemViewStyle_image, -1);
-        if (resId > 0) {
-            ivIcon.setImageResource(resId);
-        } else {
-            ivIcon.setVisibility(GONE);
-        }
+        setImageData(a, ivLeftIcon,
+                R.styleable.IOptionItemViewStyle_i_leftIcon,
+                R.styleable.IOptionItemViewStyle_i_leftIconScaleType,
+                R.styleable.IOptionItemViewStyle_i_leftIconWidth,
+                R.styleable.IOptionItemViewStyle_i_leftIconHeight);
 
-        int mImageScale = a.getInt(R.styleable.OptionItemViewStyle_imageScaleType, -1);
-        if (mImageScale > 0) {
-            ivIcon.setScaleType(sScaleTypeArray[mImageScale]);
-        }
+        setTextData(a, tvTitle,
+                R.styleable.IOptionItemViewStyle_i_title,
+                R.styleable.IOptionItemViewStyle_i_titleColor,
+                R.styleable.IOptionItemViewStyle_i_titleSize);
 
-        String title = a.getString(R.styleable.OptionItemViewStyle_leftText);
-        if (!TextUtils.isEmpty(title)) {
-            tvLeftText.setText(title);
-        } else {
-            tvLeftText.setVisibility(GONE);
-        }
+        setTextData(a, tvSubTitle,
+                R.styleable.IOptionItemViewStyle_i_subTitle,
+                R.styleable.IOptionItemViewStyle_i_subTitleColor,
+                R.styleable.IOptionItemViewStyle_i_subTitleSize);
 
-        int color = a.getColor(R.styleable.OptionItemViewStyle_leftTextColor, Color.BLACK);
-        tvLeftText.setTextColor(color);
+        setTextData(a, tvContent,
+                R.styleable.IOptionItemViewStyle_i_content,
+                R.styleable.IOptionItemViewStyle_i_contentColor,
+                R.styleable.IOptionItemViewStyle_i_contentSize);
 
-        int size = a.getDimensionPixelSize(R.styleable.OptionItemViewStyle_leftTextSize, 16);
-        tvLeftText.setTextSize(size);
+        setTextData(a, tvRightText,
+                R.styleable.IOptionItemViewStyle_i_rightText,
+                R.styleable.IOptionItemViewStyle_i_rightTextColor,
+                R.styleable.IOptionItemViewStyle_i_rightTextSize);
 
-        String content = a.getString(R.styleable.OptionItemViewStyle_rightText);
-        if (!TextUtils.isEmpty(content)) {
-            tvRightText.setText(content);
-        } else {
-            tvRightText.setVisibility(GONE);
-        }
-
-        int contentColor = a.getColor(R.styleable.OptionItemViewStyle_rightTextColor, 0xff666666);
-        tvRightText.setTextColor(contentColor);
-
-        int contentSize = a.getDimensionPixelSize(R.styleable.OptionItemViewStyle_rightTextSize, 14);
-        tvRightText.setTextSize(contentSize);
-
-        int arrowResId = a.getResourceId(R.styleable.OptionItemViewStyle_arrowImage, -1);
-        if (arrowResId > 0) {
-            ivArrow.setImageResource(arrowResId);
-        } else {
-            ivArrow.setVisibility(GONE);
-        }
-
-        int arrowScale = a.getInt(R.styleable.OptionItemViewStyle_arrowImageScaleType, -1);
-        if (arrowScale > 0) {
-            ivArrow.setScaleType(sScaleTypeArray[arrowScale]);
-        }
+        setImageData(a, ivRightIcon,
+                R.styleable.IOptionItemViewStyle_i_rightIcon,
+                R.styleable.IOptionItemViewStyle_i_rightIconScaleType,
+                R.styleable.IOptionItemViewStyle_i_rightIconWidth,
+                R.styleable.IOptionItemViewStyle_i_rightIconHeight);
 
         a.recycle();
+    }
 
+    private void setImageData(TypedArray a, ImageView imageView, int resIndex, int scaleTypeIndex, int widthIndex, int heightIndex) {
+        int leftResId = a.getResourceId(resIndex, -1);
+        if (leftResId > 0) {
+            imageView.setVisibility(VISIBLE);
+            imageView.setImageResource(leftResId);
+        } else {
+            imageView.setVisibility(GONE);
+        }
+        int leftImageScale = a.getInt(scaleTypeIndex, -1);
+        if (leftImageScale > 0) {
+            imageView.setScaleType(sScaleTypeArray[leftImageScale]);
+        }
+        int leftIconWidth = a.getInt(widthIndex, 0);
+        int leftIconHeight = a.getInt(heightIndex, 0);
+        if (leftIconWidth > 0 && leftIconHeight > 0) {
+            imageView.setLayoutParams(new RelativeLayout.LayoutParams(leftIconWidth, leftIconHeight));
+        }
+    }
+
+    private void setTextData(TypedArray a, TextView textView, int textIndex, int colorIndex, int sizeIndex) {
+        String title = a.getString(textIndex);
+        if (!TextUtils.isEmpty(title)) {
+            textView.setVisibility(VISIBLE);
+            textView.setText(title);
+        } else {
+            textView.setVisibility(GONE);
+        }
+
+        int color = a.getColor(colorIndex, Color.BLACK);
+        textView.setTextColor(color);
+
+        int size = a.getDimensionPixelSize(sizeIndex, 16);
+        textView.setTextSize(size);
     }
 
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         inflater.inflate(R.layout.option_item_view, this);
-        ivIcon = ViewUtils.findViewById(this, R.id.iv_icon);
-        tvLeftText = ViewUtils.findViewById(this, R.id.tv_left_text);
-        tvRightText = ViewUtils.findViewById(this, R.id.tv_right_text);
-        ivArrow = ViewUtils.findViewById(this, R.id.iv_arrow);
+        ivLeftIcon = findViewById(R.id.iv_left_icon);
+        tvTitle = findViewById(R.id.tv_title);
+        tvSubTitle = findViewById(R.id.tv_sub_title);
+        tvContent = findViewById(R.id.tv_content);
+        tvRightText = findViewById(R.id.tv_right_text);
+        ivRightIcon = findViewById(R.id.iv_right_icon);
     }
 
-
-    public void setLeftText(String str) {
-        tvLeftText.setText(str);
+    public void setLeftIcon(Drawable drawable) {
+        setImage(ivLeftIcon, drawable);
     }
 
-    public void setLeftText(int id) {
-        tvLeftText.setText(id);
+    public void setLeftIcon(int resId) {
+        setImage(ivLeftIcon, resId);
     }
 
-    public void setIcon(int id) {
-        ivIcon.setVisibility(VISIBLE);
-        ivIcon.setImageResource(id);
+    public void setTitle(CharSequence text) {
+        setText(tvTitle, text);
     }
 
-    public void setRightText(String content) {
-        tvRightText.setText(content);
-        tvRightText.setVisibility(VISIBLE);
+    public void setTitle(int resId) {
+        setText(tvTitle, resId);
     }
 
-    public void setArrowVisibility(int visibility) {
-        ivArrow.setVisibility(visibility);
+    public void setSubTitle(CharSequence text) {
+        setText(tvSubTitle, text);
+    }
+
+    public void setSubTitle(int resId) {
+        setText(tvSubTitle, resId);
+    }
+
+    public void setContent(CharSequence text) {
+        setText(tvContent, text);
+    }
+
+    public void setContent(int resId) {
+        setText(tvContent, resId);
+    }
+
+    public void setRightText(CharSequence text) {
+        setText(tvRightText, text);
+    }
+
+    public void setRightText(int resId) {
+        setText(tvRightText, resId);
+    }
+
+    public void setRightIcon(Drawable drawable) {
+        setImage(ivRightIcon, drawable);
+    }
+
+    public void setRightIcon(int resId) {
+        setImage(ivRightIcon, resId);
+    }
+
+    private void setText(TextView textView, CharSequence text) {
+        if (TextUtils.isEmpty(text)) {
+            textView.setVisibility(GONE);
+        } else {
+            textView.setVisibility(VISIBLE);
+            textView.setText(text);
+        }
+    }
+
+    private void setText(TextView textView, int resId) {
+        if (resId < 0) {
+            textView.setVisibility(GONE);
+        } else {
+            textView.setVisibility(VISIBLE);
+            textView.setText(resId);
+        }
+    }
+
+    private void setImage(ImageView imageView, Drawable drawable) {
+        if (null == drawable) {
+            imageView.setVisibility(GONE);
+        } else {
+            imageView.setVisibility(VISIBLE);
+            imageView.setImageDrawable(drawable);
+        }
+    }
+
+    private void setImage(ImageView imageView, int resId) {
+        if (resId < 0) {
+            imageView.setVisibility(GONE);
+        } else {
+            imageView.setVisibility(VISIBLE);
+            imageView.setImageResource(resId);
+        }
     }
 
     private static final ImageView.ScaleType[] sScaleTypeArray = {

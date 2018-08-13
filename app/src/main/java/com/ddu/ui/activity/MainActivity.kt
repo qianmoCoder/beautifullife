@@ -16,12 +16,12 @@ import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.help.BottomNavigationViewHelper
 import com.ddu.icore.util.AnimatorUtils
-import com.ddu.util.ToastUtils
 import com.ddu.logic.LogicActions
 import com.ddu.ui.fragment.LifeFragment
 import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
+import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -42,16 +42,28 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         setContentView(R.layout.activity_main)
 
         savedInstanceState?.let {
-            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY)?.let { it as StudyFragment }
-            mWorkFragment = supportFragmentManager.findFragmentByTag(TAG_WORK) as WorkFragment
-            mLifeFragment = supportFragmentManager.findFragmentByTag(TAG_LIFE) as LifeFragment
-            mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as MeFragment
+            mStudyFragment = supportFragmentManager.findFragmentByTag(TAG_STUDY) as? StudyFragment
+            mWorkFragment = supportFragmentManager.findFragmentByTag(TAG_WORK) as? WorkFragment
+            mLifeFragment = supportFragmentManager.findFragmentByTag(TAG_LIFE) as? LifeFragment
+            mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as? MeFragment
         }
 
         BottomNavigationViewHelper.disableShiftMode(navigation)
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
 //        startActivity<MainActivityT>("id" to 5)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt("itemId", navigation.selectedItemId)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val index = savedInstanceState?.getInt("itemId", R.id.navigation_study)
+                ?: R.id.navigation_study
+        navigation.selectedItemId = index
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {

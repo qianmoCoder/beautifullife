@@ -7,7 +7,7 @@
     android:padding="@dimen/dp_10">
 
     <ImageView
-        android:id="@+id/iv_icon"
+        android:id="@+id/iv_left_icon"
         android:layout_width="@dimen/dp_25"
         android:layout_height="@dimen/dp_25"
         android:layout_gravity="center_horizontal"

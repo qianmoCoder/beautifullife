@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="leftText" format="string" />
-    <attr name="leftTextSize" format="dimension" />
-    <attr name="leftTextColor" format="color" />
-    <attr name="rightText" format="string" />
-    <attr name="rightTextSize" format="dimension" />
-    <attr name="rightTextColor" format="color" />
-    <attr name="image" format="reference" />
-    <attr name="imageScaleType">
-        <enum name="fillXY" value="1" />
-        <enum name="center" value="5" />
-    </attr>
-    <attr name="carrowImage" format="reference" />
-    <attr name="carrowImageScaleType">
-        <enum name="fillXY" value="1" />
-        <enum name="center" value="5" />
-    </attr>
+    <!--<attr name="optionItemText" format="string|reference" />-->
+    <!--<attr name="optionTextSize" format="dimension|reference" />-->
+    <!--<attr name="optionTextColor" format="color|reference" />-->
+    <!--<attr name="rightText" format="string" />-->
+    <!--<attr name="rightTextSize" format="dimension" />-->
+    <!--<attr name="rightTextColor" format="color" />-->
+    <!--<attr name="image" format="reference" />-->
+    <!--<attr name="imageScaleType">-->
+    <!--<enum name="matrix" value="0" />-->
+    <!--<enum name="fit_xy" value="1" />-->
+    <!--<enum name="fit_start" value="2" />-->
+    <!--<enum name="fit_center" value="3" />-->
+    <!--<enum name="fit_end" value="4" />-->
+    <!--<enum name="center" value="5" />-->
+    <!--<enum name="center_crop" value="6" />-->
+    <!--<enum name="center_inside" value="7" />-->
+    <!--</attr>-->
+    <!--<attr name="carrowImage" format="reference" />-->
+    <!--<attr name="carrowImageScaleType">-->
+    <!--<enum name="fillXY" value="1" />-->
+    <!--<enum name="center" value="5" />-->
+    <!--</attr>-->
 
     <declare-styleable name="CircleImageView">
         <attr name="civ_border_width" format="dimension" />
@@ -27,17 +33,50 @@
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="OptionItemViewStyle">
-        <attr name="leftText" />
-        <attr name="leftTextSize" />
-        <attr name="leftTextColor" />
-        <attr name="rightText" />
-        <attr name="rightTextSize" />
-        <attr name="rightTextColor" />
-        <attr name="image" />
-        <attr name="imageScaleType" />
-        <attr name="arrowImage" />
-        <attr name="arrowImageScaleType" />
+    <declare-styleable name="IOptionItemViewStyle">
+        <attr name="i_leftIcon" format="reference" />
+        <attr name="i_leftIconWidth" format="dimension|reference" />
+        <attr name="i_leftIconHeight" format="dimension|reference" />
+        <attr name="i_leftIconScaleType" format="enum">
+            <enum name="matrix" value="0" />
+            <enum name="fit_xy" value="1" />
+            <enum name="fit_start" value="2" />
+            <enum name="fit_center" value="3" />
+            <enum name="fit_end" value="4" />
+            <enum name="center" value="5" />
+            <enum name="center_crop" value="6" />
+            <enum name="center_inside" value="7" />
+        </attr>
+
+        <attr name="i_title" format="string|reference" />
+        <attr name="i_titleSize" format="dimension|reference" />
+        <attr name="i_titleColor" format="color|reference" />
+
+        <attr name="i_subTitle" format="string|reference" />
+        <attr name="i_subTitleSize" format="dimension|reference" />
+        <attr name="i_subTitleColor" format="color|reference" />
+
+        <attr name="i_content" format="string|reference" />
+        <attr name="i_contentSize" format="dimension|reference" />
+        <attr name="i_contentColor" format="color|reference" />
+
+        <attr name="i_rightText" format="string|reference" />
+        <attr name="i_rightTextSize" format="dimension|reference" />
+        <attr name="i_rightTextColor" format="color|reference" />
+
+        <attr name="i_rightIcon" format="reference" />
+        <attr name="i_rightIconWidth" format="dimension|reference" />
+        <attr name="i_rightIconHeight" format="dimension|reference" />
+        <attr name="i_rightIconScaleType" format="enum">
+            <enum name="matrix" value="0" />
+            <enum name="fit_xy" value="1" />
+            <enum name="fit_start" value="2" />
+            <enum name="fit_center" value="3" />
+            <enum name="fit_end" value="4" />
+            <enum name="center" value="5" />
+            <enum name="center_crop" value="6" />
+            <enum name="center_inside" value="7" />
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="common_title">
@@ -75,11 +114,11 @@
         <attr name="punctuationConvert" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="icore_dividerLinearLayout">
-        <attr name="icore_divider" format="reference" />
-        <attr name="icore_divider_height" format="dimension" />
-        <attr name="icore_divider_margin_left" format="dimension" />
-        <attr name="icore_divider_margin_right" format="dimension" />
+    <declare-styleable name="dividerLinearLayout">
+        <attr name="divider" format="reference" />
+        <attr name="divider_height" format="dimension" />
+        <attr name="divider_margin_left" format="dimension" />
+        <attr name="divider_margin_right" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="icore_strike_thru">

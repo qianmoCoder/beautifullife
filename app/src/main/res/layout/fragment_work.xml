@@ -18,8 +18,8 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_fragment"
                 style="@style/DefaultRelativeLayout"
-                mm:carrowImage="@drawable/right_arrow_gray"
-                mm:leftText="FragmentState" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="FragmentState" />
         </LinearLayout>
 
         <TextView

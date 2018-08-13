@@ -57,7 +57,7 @@ public class DefaultGridBottomAdapter extends DefaultRecycleViewAdapter<BottomIt
     @Override
     public void bindView(ViewHolder viewHolder, final BottomItemEntity data, final int position) {
 
-        ImageView imageView = viewHolder.getView(R.id.iv_icon);
+        ImageView imageView = viewHolder.getView(R.id.iv_left_icon);
 
         int size = mItems.size();
 

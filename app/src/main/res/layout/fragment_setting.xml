@@ -19,20 +19,20 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_language"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:leftText="语言环境" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="语言环境" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_change_skin"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:leftText="个性换肤" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="个性换肤" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_global"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:leftText="通用" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="通用" />
 
         </LinearLayout>
 
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_toRightOf="@+id/iv_left_icon"
                     android:text="夜间模式"
                     android:textColor="@color/c_272727"
                     android:textSize="@dimen/sp_17" />
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_toRightOf="@+id/iv_left_icon"
                     android:text="自动设置夜间模式"
                     android:textColor="@color/c_272727"
                     android:textSize="@dimen/sp_17" />
@@ -120,14 +120,14 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_version"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:leftText="当前版本" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="当前版本" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_about_me"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:leftText="关于我" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="关于我" />
 
         </LinearLayout>
     </LinearLayout>

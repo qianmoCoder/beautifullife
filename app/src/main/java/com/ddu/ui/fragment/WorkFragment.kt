@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.sys.SystemUtils
 import com.ddu.ui.fragment.work.FragmentA
 import kotlinx.android.synthetic.main.fragment_work.*
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -59,7 +57,7 @@ class WorkFragment : DefaultFragment() {
         setTitle(R.string.main_tab_work)
 //        tv_money.text = DnsConfig.buildType
         //+ com.ddu.util.SystemUtils.getDeviceId()
-        tv_model.text = SystemUtils.getDeviceId(ctx) + " - " + SystemUtils.getMacAddress(ctx)
+//        tv_model.text = SystemUtils.getDeviceId(ctx) + " - " + SystemUtils.getMacAddress(ctx)
 //        val isGranted = ContextCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
 //        if (!isGranted) {
 //            ActivityCompat.requestPermissions(mActivity, arrayOf(Manifest.permission.READ_PHONE_STATE), 0)

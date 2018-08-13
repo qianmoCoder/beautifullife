@@ -15,23 +15,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingTop="@dimen/dp_5"
                 android:paddingBottom="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
                 android:text="金融理财" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_calculator_house"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_home_icon"
-                app:leftText="房贷计算器" />
+                app:i_leftIcon="@drawable/life_home_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="房贷计算器" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_calculator_income"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_person_icon"
-                app:leftText="@string/life_calculator_income" />
+                app:i_leftIcon="@drawable/life_person_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/life_calculator_income" />
 
         </LinearLayout>
 
@@ -41,23 +41,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingTop="@dimen/dp_5"
                 android:paddingBottom="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
                 android:text="健康" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_food"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_food_icon"
-                app:leftText="@string/life_food" />
+                app:i_leftIcon="@drawable/life_food_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/life_food" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_sleep"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_sleep_icon"
-                app:leftText="@string/life_sleep" />
+                app:i_leftIcon="@drawable/life_sleep_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/life_sleep" />
 
         </LinearLayout>
 
@@ -67,23 +67,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingTop="@dimen/dp_5"
                 android:paddingBottom="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
                 android:text="生活感悟" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_joke"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_joke_icon"
-                app:leftText="@string/life_joke" />
+                app:i_leftIcon="@drawable/life_joke_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/life_joke" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_life_sentiment"
                 style="@style/DefaultRelativeLayout"
-                app:arrowImage="@drawable/right_arrow_gray"
-                app:image="@drawable/life_sentiment_icon"
-                app:leftText="@string/life_sentiment" />
+                app:i_leftIcon="@drawable/life_sentiment_icon"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/life_sentiment" />
 
         </LinearLayout>
 

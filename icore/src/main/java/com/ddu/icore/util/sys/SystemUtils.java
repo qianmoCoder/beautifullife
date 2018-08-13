@@ -1,5 +1,6 @@
 package com.ddu.icore.util.sys;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresPermission;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -155,6 +157,7 @@ public class SystemUtils {
         return false;
     }
 
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
     public static String getDeviceId(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String deviceId = tm.getDeviceId();

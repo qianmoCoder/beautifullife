@@ -2,26 +2,38 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    style="@style/OptionItemView">
 
     <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="@dimen/dp_25"
-        android:layout_height="@dimen/dp_25"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/dp_10"
-        android:scaleType="fitXY" />
+        android:id="@+id/iv_left_icon"
+        style="@style/OptionItemLeftIcon" />
 
-    <TextView
-        android:id="@+id/tv_left_text"
+    <LinearLayout
+        android:id="@+id/ll_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/iv_icon"
-        android:textColor="@color/c_272727"
-        android:textSize="@dimen/sp_17"
-        tools:text="left" />
+        android:layout_toRightOf="@id/iv_left_icon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/OptionItemTitle"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/tv_sub_title"
+            style="@style/OptionItemSubTitle"
+            tools:text="SubTitle" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/OptionItemContent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/ll_title"
+        tools:text="102.00元" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,17 +45,12 @@
 
         <TextView
             android:id="@+id/tv_right_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_5"
-            android:textColor="@color/c_666666"
-            android:textSize="@dimen/sp_15"
+            style="@style/OptionItemRightText"
             tools:text="right" />
 
         <ImageView
-            android:id="@+id/iv_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/iv_right_icon"
+            style="@style/OptionItemRightIcon" />
 
     </LinearLayout>
 

@@ -72,26 +72,26 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_address"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="佛说" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="佛说" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_friend_link"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="友链" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="友链" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_plan"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="计划" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="计划" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_fav"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="收藏" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="收藏" />
 
         </LinearLayout>
 
@@ -104,14 +104,14 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_eggs"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="彩蛋" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="彩蛋" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_setting"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="设置" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="设置" />
 
         </LinearLayout>
 
@@ -124,26 +124,26 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_phone_info"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="手机信息" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="手机信息" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_notification"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="发送通知" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="发送通知" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_show_dialog"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="显示弹框" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="显示弹框" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_show_bottom_dialog"
                 style="@style/DefaultRelativeLayout"
-                mm:arrowImage="@drawable/right_arrow_gray"
-                mm:leftText="底部弹框" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="底部弹框" />
         </LinearLayout>
 
     </LinearLayout>

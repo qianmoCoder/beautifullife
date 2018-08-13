@@ -74,7 +74,7 @@ public class BottomAdapter extends DefaultRecycleViewAdapter<BottomItem> {
         TextView tvTitle = viewHolder.getView(R.id.tv_title);
         tvTitle.setText(data.getTitle());
 
-        ImageView ivIcon = viewHolder.getView(R.id.iv_icon);
+        ImageView ivIcon = viewHolder.getView(R.id.iv_left_icon);
         Drawable drawable = data.getIcon();
         if (null != drawable) {
             ivIcon.setVisibility(View.VISIBLE);

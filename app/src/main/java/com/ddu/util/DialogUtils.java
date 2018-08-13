@@ -57,7 +57,7 @@ public class DialogUtils {
         LayoutInflater inflater = LayoutInflater.from(context);
         View layout = inflater.inflate(R.layout.dialog_default, null);
 
-        ImageView ivIcon = ViewUtils.findViewById(layout, R.id.iv_icon);
+        ImageView ivIcon = ViewUtils.findViewById(layout, R.id.iv_left_icon);
         ivIcon.setImageResource(ImgRes);
 
         TextView tx = ViewUtils.findViewById(layout, R.id.tv_message);
