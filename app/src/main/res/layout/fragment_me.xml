@@ -66,19 +66,8 @@
         <LinearLayout
             style="@style/DefaultLinearLayout"
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:id="@+id/ll_guide"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-=======
             android:layout_height="wrap_content"
             android:gravity="center">
->>>>>>> kotlin
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_address"
@@ -86,21 +75,12 @@
                 mm:i_rightIcon="@drawable/right_arrow_gray"
                 mm:i_title="佛说" />
 
-<<<<<<< HEAD
-                <com.ddu.icore.ui.view.OptionItemView
-                    android:id="@+id/oit_version"
-                    style="@style/DefaultRelativeLayout"
-                    mm:carrowImage="@drawable/right_arrow_gray"
-                    mm:leftText="当前版本号" />
 
-            </LinearLayout>
-=======
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_friend_link"
                 style="@style/DefaultRelativeLayout"
                 mm:i_rightIcon="@drawable/right_arrow_gray"
                 mm:i_title="友链" />
->>>>>>> kotlin
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_plan"
@@ -139,14 +119,8 @@
         <LinearLayout
             style="@style/DefaultLinearLayout"
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="@dimen/dp_150"
-            android:keyboardNavigationCluster="true"
-            android:text="" />
-=======
             android:layout_height="wrap_content"
             android:gravity="center">
->>>>>>> kotlin
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_phone_info"

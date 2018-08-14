@@ -29,17 +29,10 @@ android {
         //app package name
         applicationId "com.ddu"
 
-<<<<<<< HEAD
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-=======
         minSdkVersion Versions.minSdkVersion
         targetSdkVersion Versions.targetSdkVersion
         versionCode Versions.versionCode
         versionName Versions.versionName
->>>>>>> kotlin
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -53,11 +46,8 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
-<<<<<<< HEAD
-            versionNameSuffix "测试"
-=======
+
             versionNameSuffix "(debug)"
->>>>>>> kotlin
 //            applicationIdSuffix ".debug"
         }
 
@@ -96,8 +86,7 @@ android {
         }
     }
 
-<<<<<<< HEAD
-=======
+
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def buildName = variant.buildType.name
@@ -113,7 +102,6 @@ android {
         }
     }
 
->>>>>>> kotlin
     //移除lint检查的error
     lintOptions {
         abortOnError false
@@ -160,7 +148,7 @@ dependencies {
 
     implementation Dependencies.objectbox_android
     implementation Dependencies.objectbox_kotlin
-    kapt  Dependencies.objectbox_processor
+    kapt Dependencies.objectbox_processor
     annotationProcessor Dependencies.objectbox_processor
 
     debugImplementation Dependencies.leakcanary_android
@@ -170,23 +158,11 @@ dependencies {
     implementation Dependencies.glide_compiler
     kapt Dependencies.glide_compiler
 
-<<<<<<< HEAD
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    qaImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation 'com.squareup.okio:okio:1.13.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-=======
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okio:okio:1.14.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
->>>>>>> kotlin
     implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
 
     implementation 'in.srain.cube:ultra-ptr:1.0.11'

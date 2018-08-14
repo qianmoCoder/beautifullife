@@ -1,13 +1,16 @@
 package com.ddu.ui.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.ui.activity.BaseActivity;
+import com.ddu.icore.util.sys.ViewUtils;
 
 /**
  * Created by liuhongzhe on 16/5/13.
@@ -23,26 +26,6 @@ public class LoginActivity1 extends BaseActivity {
         setContentView(R.layout.fragment_work_state);
         Intent intent = getIntent();
 
-<<<<<<< HEAD
-//        Uri uri = getIntent().getData();
-//        String scheme = uri.getScheme();
-//        String host = uri.getHost();
-//        String path = uri.getPath();
-//        Log.v("lhz", "toString: " + uri.toString());
-//        Log.v("lhz", "getUserInfo: " + uri.getUserInfo());
-//        Log.v("lhz", "scheme: " + scheme + " host: " + host + " path: " + path + " " + uri.getPort());
-//
-//        mBtnOk = ViewUtils.findViewById(this, R.id.btn_ok);
-//        mBtnOk.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(mContext, LoginActivity2.class));
-//            }
-//        });
-//        setDefaultTitle("one");
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-=======
         Uri uri = getIntent().getData();
         String scheme = uri.getScheme();
         String host = uri.getHost();
@@ -59,7 +42,6 @@ public class LoginActivity1 extends BaseActivity {
             }
         });
         setDefaultTitle("one");
->>>>>>> kotlin
     }
 
     @Override

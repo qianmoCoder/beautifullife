@@ -284,7 +284,7 @@ class TestFragment : DefaultFragment() {
         if (!isGranted) {
             ActivityCompat.requestPermissions(mActivity, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
         } else {
-            HttpUtils.saveAd(inputStream)
+            HttpUtils.saveAd(inputStream,"")
         }
     }
 
