@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -33,7 +32,11 @@
             android:configChanges="orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".icore.ui.activity.ShowDetailActivity"
@@ -41,17 +44,14 @@
         <activity
             android:name=".ui.activity.ShareActivity"
             android:theme="@style/ShareStyle" />
+        <activity android:name=".ui.activity.WebActivity" />
         <activity
             android:name=".ui.activity.LoginActivity"
             android:theme="@style/ShareStyle" />
         <activity
             android:name=".ui.activity.LoginActivity1"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <!-- <intent-filter> -->
             <!-- <data android:scheme="Icore" /> -->
@@ -64,9 +64,7 @@
         </activity>
         <activity
             android:name=".ui.activity.LoginActivity2"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -91,7 +89,6 @@
             </intent-filter>
         </receiver>
 
-
         <activity
             android:name=".ui.activity.TestActivity"
             android:launchMode="singleTask"
@@ -104,7 +101,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-
         </activity>
 
         <receiver
@@ -125,7 +121,6 @@
         <!-- android:name=".ui.activity.ScrollingActivity1" -->
         <!-- android:label="@string/title_activity_scrolling1" -->
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
-
         <activity
             android:name=".ui.activity.ScrollingActivity3"
             android:label="@string/title_activity_scrolling3"

@@ -35,26 +35,6 @@ allprojects {
     }
 }
 
-//applicationVariants.all { variant ->
-//    variant.outputs.all {
-//        def buildName = variant.buildType.name
-//        def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
-//        outputFileName = "app-${buildName}-${project.defaultConfig.versionName}-${formattedDate}"
-//        if (!buildName.equalsIgnoreCase("debug")) {
-//            variant.assemble.doLast {
-//                commandLine ""
-//                println("buildName -b finish")
-//            }
-//        }
-//    }
-//}
-//
-//project.task('assembleDebug').doLast {
-//    print("task -b ${path}")
-//    print("assembleDebug -a ${assembleDebug.path}")
-//}
-//
-
 
 
 

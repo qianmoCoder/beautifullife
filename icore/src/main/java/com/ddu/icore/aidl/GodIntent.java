@@ -94,5 +94,4 @@ public class GodIntent implements Parcelable {
         sb.append(bundle.toString());
         return sb.toString();
     }
-
 }

@@ -30,10 +30,6 @@ public class Navigator {
         Uri uri = Uri.parse(url);
     }
 
-    public static void navigation() {
-
-    }
-
     public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<? extends Fragment> fragment, Bundle bundle) {
         startShowDetailActivity(context, fragment.getName(), bundle);
     }

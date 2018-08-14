@@ -7,13 +7,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def executeCommand(path) {
-    def processMsg = "python build_android.py ${path}"
-    println("process: ${processMsg}")
-    int exitValue = processMsg.execute().waitFor()
-    println("execute down: ${exitValue}")
-}
-
 android {
 
     signingConfigs {
@@ -46,11 +39,9 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
-
             versionNameSuffix "(debug)"
 //            applicationIdSuffix ".debug"
         }
-
         release {
             //是否进行混淆
             minifyEnabled false
@@ -59,33 +50,10 @@ android {
             //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-            manifestPlaceholders = [BUILD_TYPE_VALUE: "release", UMENG_CHANNEL: "releaseChannel"]
-        }
-
-        qa.initWith(buildTypes.release)
-        qa {
-            // 指定在子模块中没找到对应的构建类型时要加载哪个类型，从前往后依次寻找
-            matchingFallbacks = ['debug', 'release']
-            manifestPlaceholders.replace("UMENG_CHANNEL", "qaChannel")
+            manifestPlaceholders = [BUILD_TYPE_VALUE: "release"]
         }
 
     }
-
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def buildName = variant.buildType.name
-            println("buildName: ${buildName}")
-            def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
-            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}.apk"
-            if (buildName.equalsIgnoreCase("debug")) {
-                def path = output.outputFile.absolutePath
-                variant.assemble.doLast {
-//                    executeCommand(path)
-                }
-            }
-        }
-    }
-
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
@@ -116,12 +84,6 @@ android {
         enabled = true
     }
 
-    configurations.all {
-        resolutionStrategy {
-            force 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-        }
-    }
-
 //    configurations.all {
 //        resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
 //        resolutionStrategy.force "com.android.support:support-compat:$rootProject.supportLibraryVersion"
@@ -148,7 +110,7 @@ dependencies {
 
     implementation Dependencies.objectbox_android
     implementation Dependencies.objectbox_kotlin
-    kapt Dependencies.objectbox_processor
+    kapt  Dependencies.objectbox_processor
     annotationProcessor Dependencies.objectbox_processor
 
     debugImplementation Dependencies.leakcanary_android

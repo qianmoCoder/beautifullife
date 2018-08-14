@@ -75,7 +75,6 @@
                 mm:i_rightIcon="@drawable/right_arrow_gray"
                 mm:i_title="佛说" />
 
-
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_friend_link"
                 style="@style/DefaultRelativeLayout"

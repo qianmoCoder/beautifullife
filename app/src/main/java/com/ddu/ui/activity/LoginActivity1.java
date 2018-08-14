@@ -24,7 +24,6 @@ public class LoginActivity1 extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.v("lhz", "onCreate");
         setContentView(R.layout.fragment_work_state);
-        Intent intent = getIntent();
 
         Uri uri = getIntent().getData();
         String scheme = uri.getScheme();
