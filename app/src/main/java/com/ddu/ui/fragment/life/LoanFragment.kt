@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import com.ddu.R
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.work.FragmentA
@@ -113,7 +113,7 @@ class LoanFragment : DefaultFragment(), View.OnClickListener {
         val recyclerView = view.findViewById<View>(R.id.rv_bottom) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(baseActivity)
 
-        val defaultRecycleViewAdapter = object : DefaultRecycleViewAdapter<String>(baseActivity, mList) {
+        val defaultRecycleViewAdapter = object : DefaultRVAdapter<String>(baseActivity, mList) {
             override fun getLayoutId(viewType: Int): Int {
                 return R.layout.rv_item_linear
             }

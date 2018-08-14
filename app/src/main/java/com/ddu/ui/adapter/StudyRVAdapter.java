@@ -6,21 +6,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.db.entity.ItemEntity;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.callback.Consumer1;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.help.ShapeInject;
 import com.ddu.ui.helper.ItemTouchHelperAdapter;
+import com.iannotation.model.RouteMeta;
 
 import java.util.Collections;
 import java.util.List;
 
-public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntity> implements ItemTouchHelperAdapter {
+public class StudyRVAdapter extends DefaultRVAdapter<RouteMeta> implements ItemTouchHelperAdapter {
 
-    private ItemClickListener itemClickListener;
+    private Consumer1<RouteMeta> consumer1;
     private int radius;
 
-    public StudyRecycleViewAdapter(Context context, List<ItemEntity> items) {
+    public StudyRVAdapter(Context context, List<RouteMeta> items) {
         super(context, items);
         radius = context.getResources().getDimensionPixelSize(R.dimen.dp_5);
     }
@@ -31,23 +32,22 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
     }
 
     @Override
-    public void bindView(ViewHolder viewHolder, final ItemEntity data, final int position) {
+    public void bindView(ViewHolder viewHolder, final RouteMeta data, final int position) {
         TextView tvTitle = viewHolder.getView(R.id.tv_title);
-        tvTitle.setText(data.getTitle());
+        tvTitle.setText(data.getText());
 
         ShapeInject.inject(tvTitle)
                 .setRadius(radius)
                 .setBackgroundColor(getColor(data.getColor()))
                 .background();
 
-        viewHolder.setText(R.id.tv_title, data.getTitle());
         viewHolder.setText(R.id.tv_description, data.getDescription());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (null != itemClickListener) {
-                    itemClickListener.onItemClick(data);
+                if (null != consumer1) {
+                    consumer1.accept(data);
                 }
             }
         });
@@ -76,15 +76,8 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
         notifyItemRemoved(position);
     }
 
-    public interface ItemClickListener {
-        void onItemClick(ItemEntity data);
-    }
 
-    public ItemClickListener getItemClickListener() {
-        return itemClickListener;
-    }
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public void setItemClickListener(Consumer1<RouteMeta> consumer1) {
+        this.consumer1 = consumer1;
     }
 }

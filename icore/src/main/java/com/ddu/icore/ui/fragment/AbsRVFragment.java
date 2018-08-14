@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.ddu.icore.R;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by yzbzz on 2017/4/19.
  */
 
-public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleViewAdapter> extends DefaultFragment {
+public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends DefaultFragment {
 
     protected PullToRefreshScrollView mPullToRefreshScrollView;
 

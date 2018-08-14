@@ -3,8 +3,8 @@ package com.ddu.ui.fragment;
 import com.alibaba.fastjson.JSONObject;
 import com.ddu.icore.R;
 import com.ddu.icore.entity.BaseEntity;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
-import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
+import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.ddu.util.ToastUtils;
 
 import java.lang.reflect.ParameterizedType;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by yzbzz on 2017/4/19.
  */
 
-public abstract class DefaultRecycleViewFragment<E extends BaseEntity, D, A extends DefaultRecycleViewAdapter> extends AbstractRecycleViewFragment<D, A> {
+public abstract class DefaultRecycleViewFragment<E extends BaseEntity, D, A extends DefaultRVAdapter> extends AbsRVFragment<D, A> {
 
     protected E mEntity;
 

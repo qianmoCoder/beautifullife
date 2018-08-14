@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.ddu.R;
 import com.ddu.db.entity.ItemEntity;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.view.OptionItemView;
 import com.ddu.ui.helper.ItemTouchHelperAdapter;
@@ -13,7 +13,7 @@ import com.ddu.ui.helper.ItemTouchHelperAdapter;
 import java.util.Collections;
 import java.util.List;
 
-public class UIRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntity> implements ItemTouchHelperAdapter {
+public class UIRecycleViewAdapter extends DefaultRVAdapter<ItemEntity> implements ItemTouchHelperAdapter {
 
     private ItemClickListener itemClickListener;
 

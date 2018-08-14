@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui;
+package com.ddu.ui.fragment.study.material;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by yzbzz on 2017/3/31.
  */
-@IElement("UI")
+@IElement("MD")
 public class RecyclerViewFragment extends DefaultFragment {
 
     private RecyclerView recyclerView;

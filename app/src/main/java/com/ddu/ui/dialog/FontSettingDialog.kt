@@ -31,7 +31,7 @@ class FontSettingDialog : AbsBottomDialogFragment() {
 //            }
 //
         doSomething()
-//        object : DefaultRecycleViewAdapter<String>(mContext, mDatas) {
+//        object : DefaultRVAdapter<String>(mContext, mDatas) {
 //
 //            override fun getLayoutId(viewType: Int): Int {
 //                return R.layout.rv_item_linear

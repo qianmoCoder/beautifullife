@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study;
+package com.ddu.ui.fragment.study.imitate;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import com.ddu.R;
 import com.ddu.db.DbManager;
 import com.ddu.db.entity.StudyContent;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.ShapeTextView;
+import com.iannotation.IElement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +24,7 @@ import java.util.List;
  * Created by yzbzz on 2017/5/16.
  */
 
+@IElement("HI")
 public class StudyTagsFragment extends DefaultFragment {
 
     private static final int SPAN_COUNT = 4;
@@ -72,7 +74,7 @@ public class StudyTagsFragment extends DefaultFragment {
         mRvOld.setLayoutManager(mOldGridLayoutManager);
         mRvNew.setLayoutManager(mNewGridLayoutManager);
 
-        mRvOld.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentOld) {
+        mRvOld.setAdapter(new DefaultRVAdapter<StudyContent>(getMContext(), studyContentOld) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;
@@ -84,7 +86,7 @@ public class StudyTagsFragment extends DefaultFragment {
             }
         });
 
-        mRvNew.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentNew) {
+        mRvNew.setAdapter(new DefaultRVAdapter<StudyContent>(getMContext(), studyContentNew) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;

@@ -3,7 +3,7 @@ package com.iannotation.model;
 /**
  * Created by yzbzz on 2018/8/14.
  */
-public class RouteMeta {
+public class RouteMeta implements Comparable<RouteMeta> {
 
     private String path;
     private String text;
@@ -15,12 +15,25 @@ public class RouteMeta {
 
     }
 
+    public RouteMeta(RouteMeta meta) {
+        this.path = meta.path;
+        this.text = meta.text;
+        this.color = meta.color;
+        this.description = meta.description;
+        this.cls = meta.cls;
+    }
+
+
     public RouteMeta(String path, String text, String color, String description, Class<?> cls) {
         this.path = path;
         this.text = text;
         this.color = color;
         this.description = description;
         this.cls = cls;
+    }
+
+    public static RouteMeta build(RouteMeta routeMeta) {
+        return new RouteMeta(routeMeta);
     }
 
     public static RouteMeta build(String path, String text, String color, String description, Class<?> cls) {
@@ -65,5 +78,10 @@ public class RouteMeta {
 
     public void setCls(Class<?> cls) {
         this.cls = cls;
+    }
+
+    @Override
+    public int compareTo(RouteMeta old) {
+        return text.compareTo(old.text);
     }
 }

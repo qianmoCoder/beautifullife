@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:padding="@dimen/dp_6"
-            android:text="已完成支付记录"
+            android:text="标题"
             android:textColor="@color/c_666666"
             android:textSize="@dimen/dp_16"
             android:visibility="gone" />

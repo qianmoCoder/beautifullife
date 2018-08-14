@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.ddu.R;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.sys.ViewUtils;
@@ -47,7 +47,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         btnNext.setOnClickListener(this);
 
         rvSwatch = findViewById(R.id.rv_swatch);
-        rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(getMContext(), swatchList) {
+        rvSwatch.setAdapter(new DefaultRVAdapter<Palette.Swatch>(getMContext(), swatchList) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.rv_item_linear;

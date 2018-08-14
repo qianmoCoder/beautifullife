@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 import com.ddu.icore.R;
 import com.ddu.icore.entity.BottomItemEntity;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by yzbzz on 2017/3/31.
  */
 
-public class DefaultGridBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEntity> {
+public class DefaultGridBottomAdapter extends DefaultRVAdapter<BottomItemEntity> {
 
     private OnClickListener onClickListener;
 

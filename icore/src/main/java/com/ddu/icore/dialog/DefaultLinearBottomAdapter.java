@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.ddu.icore.R;
 import com.ddu.icore.entity.BottomItemEntity;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by yzbzz on 2017/3/31.
  */
 
-public class DefaultLinearBottomAdapter extends DefaultRecycleViewAdapter<BottomItemEntity> {
+public class DefaultLinearBottomAdapter extends DefaultRVAdapter<BottomItemEntity> {
 
     private OnClickListener onClickListener;
 
