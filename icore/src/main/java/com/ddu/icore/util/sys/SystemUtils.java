@@ -1,5 +1,7 @@
 package com.ddu.icore.util.sys;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -7,16 +9,57 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresPermission;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 /**
  * Created by yzbzz on 16/7/25.
  */
 public class SystemUtils {
+
+    // 跳转到通知渠道设置
+    @TargetApi(Build.VERSION_CODES.O)
+    public static void openChannelSetting(Context context, String channelId) {
+        Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId);
+        if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+            context.startActivity(intent);
+        }
+    }
+
+    // 跳转到应用市场
+    public static void gotoMarket(Context context) {
+        String appPkg = context.getPackageName();
+        Uri uri = Uri.parse("market://details?id=" + appPkg);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+
+    public static void getAppDetailSettingIntent(Context context) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        localIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        localIntent.setData(Uri.fromParts("package", context.getPackageName(), null));
+        context.startActivity(localIntent);
+    }
+
+    public void openNotificationSetting(Context context) {
+        Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
+        if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
+            context.startActivity(intent);
+        }
+    }
 
     public static void openSetting(Activity activity) {
         Intent intent = new Intent("/");
@@ -112,6 +155,19 @@ public class SystemUtils {
             }
         }
         return false;
+    }
+
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    public static String getDeviceId(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String deviceId = tm.getDeviceId();
+        return deviceId;
+    }
+
+    public static String getMacAddress(Context context) {
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        String macAddress = wm.getConnectionInfo().getMacAddress();
+        return macAddress;
     }
 
     // 应用是否已经安装

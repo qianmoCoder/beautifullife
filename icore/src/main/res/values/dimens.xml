@@ -1,7 +1,8 @@
 <resources>
 
     <!-- dp begin -->
-    <dimen name="dp_30_">-30dp</dimen>
+    <dimen name="_dp_30">-30dp</dimen>
+
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_2">2dp</dimen>
@@ -553,7 +554,114 @@
     <dimen name="dp_499">499dp</dimen>
 
     <dimen name="dp_500">500dp</dimen>
+    <dimen name="dp_501">501dp</dimen>
+    <dimen name="dp_502">502dp</dimen>
+    <dimen name="dp_503">503dp</dimen>
+    <dimen name="dp_504">504dp</dimen>
+    <dimen name="dp_505">505dp</dimen>
+    <dimen name="dp_506">506dp</dimen>
+    <dimen name="dp_507">507dp</dimen>
+    <dimen name="dp_508">508dp</dimen>
+    <dimen name="dp_509">509dp</dimen>
+
+    <dimen name="dp_510">510dp</dimen>
+    <dimen name="dp_511">511dp</dimen>
+    <dimen name="dp_512">512dp</dimen>
+    <dimen name="dp_513">513dp</dimen>
+    <dimen name="dp_514">514dp</dimen>
+    <dimen name="dp_515">515dp</dimen>
+    <dimen name="dp_516">516dp</dimen>
+    <dimen name="dp_517">517dp</dimen>
+    <dimen name="dp_518">518dp</dimen>
+    <dimen name="dp_519">519dp</dimen>
+
+    <dimen name="dp_520">520dp</dimen>
+    <dimen name="dp_521">521dp</dimen>
+    <dimen name="dp_522">522dp</dimen>
+    <dimen name="dp_523">523dp</dimen>
+    <dimen name="dp_524">524dp</dimen>
+    <dimen name="dp_525">525dp</dimen>
+    <dimen name="dp_526">526dp</dimen>
+    <dimen name="dp_527">527dp</dimen>
+    <dimen name="dp_528">528dp</dimen>
+    <dimen name="dp_529">529dp</dimen>
+
+    <dimen name="dp_530">530dp</dimen>
+    <dimen name="dp_531">531dp</dimen>
+    <dimen name="dp_532">532dp</dimen>
+    <dimen name="dp_533">533dp</dimen>
+    <dimen name="dp_534">534dp</dimen>
+    <dimen name="dp_535">535dp</dimen>
+    <dimen name="dp_536">536dp</dimen>
+    <dimen name="dp_537">537dp</dimen>
+    <dimen name="dp_538">538dp</dimen>
+    <dimen name="dp_539">539dp</dimen>
+
+    <dimen name="dp_540">540dp</dimen>
+    <dimen name="dp_541">541dp</dimen>
+    <dimen name="dp_542">542dp</dimen>
+    <dimen name="dp_543">543dp</dimen>
+    <dimen name="dp_544">544dp</dimen>
+    <dimen name="dp_545">545dp</dimen>
+    <dimen name="dp_546">546dp</dimen>
+    <dimen name="dp_547">547dp</dimen>
+    <dimen name="dp_548">548dp</dimen>
+    <dimen name="dp_549">549dp</dimen>
+
     <dimen name="dp_550">550dp</dimen>
+    <dimen name="dp_551">551dp</dimen>
+    <dimen name="dp_552">552dp</dimen>
+    <dimen name="dp_553">553dp</dimen>
+    <dimen name="dp_554">554dp</dimen>
+    <dimen name="dp_555">555dp</dimen>
+    <dimen name="dp_556">556dp</dimen>
+    <dimen name="dp_557">557dp</dimen>
+    <dimen name="dp_558">558dp</dimen>
+    <dimen name="dp_559">559dp</dimen>
+
+    <dimen name="dp_560">560dp</dimen>
+    <dimen name="dp_561">561dp</dimen>
+    <dimen name="dp_562">562dp</dimen>
+    <dimen name="dp_563">563dp</dimen>
+    <dimen name="dp_564">564dp</dimen>
+    <dimen name="dp_565">565dp</dimen>
+    <dimen name="dp_566">566dp</dimen>
+    <dimen name="dp_567">567dp</dimen>
+    <dimen name="dp_568">568dp</dimen>
+    <dimen name="dp_569">569dp</dimen>
+
+    <dimen name="dp_570">570dp</dimen>
+    <dimen name="dp_571">571dp</dimen>
+    <dimen name="dp_572">572dp</dimen>
+    <dimen name="dp_573">573dp</dimen>
+    <dimen name="dp_574">574dp</dimen>
+    <dimen name="dp_575">575dp</dimen>
+    <dimen name="dp_576">576dp</dimen>
+    <dimen name="dp_577">577dp</dimen>
+    <dimen name="dp_578">578dp</dimen>
+    <dimen name="dp_579">579dp</dimen>
+
+    <dimen name="dp_580">580dp</dimen>
+    <dimen name="dp_581">581dp</dimen>
+    <dimen name="dp_582">582dp</dimen>
+    <dimen name="dp_583">583dp</dimen>
+    <dimen name="dp_584">584dp</dimen>
+    <dimen name="dp_585">585dp</dimen>
+    <dimen name="dp_586">586dp</dimen>
+    <dimen name="dp_587">587dp</dimen>
+    <dimen name="dp_588">588dp</dimen>
+    <dimen name="dp_589">589dp</dimen>
+
+    <dimen name="dp_590">590dp</dimen>
+    <dimen name="dp_591">591dp</dimen>
+    <dimen name="dp_592">592dp</dimen>
+    <dimen name="dp_593">593dp</dimen>
+    <dimen name="dp_594">594dp</dimen>
+    <dimen name="dp_595">595dp</dimen>
+    <dimen name="dp_596">596dp</dimen>
+    <dimen name="dp_597">597dp</dimen>
+    <dimen name="dp_598">598dp</dimen>
+    <dimen name="dp_599">599dp</dimen>
 
     <dimen name="dp_600">600dp</dimen>
     <dimen name="dp_650">650dp</dimen>
@@ -626,5 +734,27 @@
     <dimen name="sp_57">57sp</dimen>
     <dimen name="sp_58">58sp</dimen>
     <dimen name="sp_59">59sp</dimen>
+
+    <dimen name="sp_60">60sp</dimen>
+    <dimen name="sp_61">61sp</dimen>
+    <dimen name="sp_62">62sp</dimen>
+    <dimen name="sp_63">63sp</dimen>
+    <dimen name="sp_64">64sp</dimen>
+    <dimen name="sp_65">65sp</dimen>
+    <dimen name="sp_66">66sp</dimen>
+    <dimen name="sp_67">67sp</dimen>
+    <dimen name="sp_68">68sp</dimen>
+    <dimen name="sp_69">69sp</dimen>
+
+    <dimen name="sp_70">70sp</dimen>
+    <dimen name="sp_71">71sp</dimen>
+    <dimen name="sp_72">72sp</dimen>
+    <dimen name="sp_73">73sp</dimen>
+    <dimen name="sp_74">74sp</dimen>
+    <dimen name="sp_75">75sp</dimen>
+    <dimen name="sp_76">76sp</dimen>
+    <dimen name="sp_77">77sp</dimen>
+    <dimen name="sp_78">78sp</dimen>
+    <dimen name="sp_79">79sp</dimen>
     <!-- sp end -->
 </resources>

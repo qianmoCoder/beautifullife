@@ -3,7 +3,6 @@ package com.ddu.ui.fragment.study.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.graphics.Palette;
 import android.support.v7.graphics.Target;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,16 +15,17 @@ import com.ddu.R;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.ui.view.DividerItemDecoration;
+import com.iannotation.IElement;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by yzbzz on 2017/9/11.
  */
-
+@IElement("UI")
 public class PaletteFragment extends DefaultFragment implements View.OnClickListener {
 
     private ImageView ivBg;
@@ -47,20 +47,20 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         btnNext.setOnClickListener(this);
 
         rvSwatch = findViewById(R.id.rv_swatch);
-        rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(mContext, swatchList) {
+        rvSwatch.setAdapter(new DefaultRecycleViewAdapter<Palette.Swatch>(getMContext(), swatchList) {
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.recyclerview_item_default;
+                return R.layout.rv_item_linear;
             }
 
             @Override
             public void bindView(ViewHolder viewHolder, Palette.Swatch data, int position) {
-                viewHolder.setText(R.id.tv_detail, "hello, swatch");
-                viewHolder.setBackgroud(R.id.tv_detail, data.getRgb());
+                viewHolder.setText(R.id.tv_title, "hello, swatch");
+                viewHolder.setBackgroud(R.id.tv_title, data.getRgb());
             }
         });
-        rvSwatch.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
-        rvSwatch.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
+        rvSwatch.setLayoutManager(new LinearLayoutManager(getMContext(),LinearLayoutManager.VERTICAL,false));
+        rvSwatch.addItemDecoration(new DividerItemDecoration(getMContext(), DividerItemDecoration.HORIZONTAL));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         if (index > 6) {
             index = 0;
         }
-        int resId = getResId("ic_test_" + index, R.drawable.class);
+        int resId = ViewUtils.getResId("ic_test_" + index, R.drawable.class);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resId);
         Palette.Builder builder = Palette.from(bitmap);
         Palette palette = builder.generate();
@@ -95,13 +95,5 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         ivBg.setImageResource(resId);
     }
 
-    public static int getResId(String variableName, @NonNull Class<?> c) {
-        try {
-            Field idField = c.getDeclaredField(variableName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
+
 }

@@ -23,6 +23,7 @@ public class LoginActivity1 extends BaseActivity {
         setContentView(R.layout.fragment_work_state);
         Intent intent = getIntent();
 
+<<<<<<< HEAD
 //        Uri uri = getIntent().getData();
 //        String scheme = uri.getScheme();
 //        String host = uri.getHost();
@@ -41,6 +42,24 @@ public class LoginActivity1 extends BaseActivity {
 //        setDefaultTitle("one");
         startActivity(new Intent(this, MainActivity.class));
         finish();
+=======
+        Uri uri = getIntent().getData();
+        String scheme = uri.getScheme();
+        String host = uri.getHost();
+        String path = uri.getPath();
+        Log.v("lhz", "toString: " + uri.toString());
+        Log.v("lhz", "getUserInfo: " + uri.getUserInfo());
+        Log.v("lhz", "scheme: " + scheme + " host: " + host + " path: " + path + " " + uri.getPort());
+
+        mBtnOk = ViewUtils.findViewById(this, R.id.btn_ok);
+        mBtnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getMContext(), LoginActivity2.class));
+            }
+        });
+        setDefaultTitle("one");
+>>>>>>> kotlin
     }
 
     @Override

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.telephony.TelephonyManager;
@@ -15,7 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.ddu.app.App;
+import com.ddu.app.BaseApp;
 
 import java.util.List;
 
@@ -47,7 +46,7 @@ public class SystemUtils {
         }
 
         if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) App.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethod = (InputMethodManager) BaseApp.Companion.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethod.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
@@ -64,20 +63,20 @@ public class SystemUtils {
         }
 
         if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) App.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethod = (InputMethodManager) BaseApp.Companion.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethod.showSoftInput(view, 0);
         }
     }
 
     public static String getDeviceId() {
-        Context context = App.getContext();
+        Context context = BaseApp.Companion.getContext();
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String deviceId = tm.getDeviceId();
         return deviceId;
     }
 
     public static String getMacAddress() {
-        Context context = App.getContext();
+        Context context = BaseApp.Companion.getContext();
         WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         String macAddress = wm.getConnectionInfo().getMacAddress();
         return macAddress;
@@ -85,7 +84,7 @@ public class SystemUtils {
 
     public static String getProcessName() {
         int pid = android.os.Process.myPid();
-        Context context = App.getContext();
+        Context context = BaseApp.Companion.getContext();
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
         for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
@@ -99,7 +98,7 @@ public class SystemUtils {
     public static int getVersionCode() {
         try {
             if (VERSION_CODE < 0) {
-                Context context = App.getContext();
+                Context context = BaseApp.Companion.getContext();
                 PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
                 VERSION_CODE = info.versionCode;
             }
@@ -113,7 +112,7 @@ public class SystemUtils {
     public static String getVersionName() {
         try {
             if (TextUtils.isEmpty(VERSION_NAME)) {
-                Context context = App.getContext();
+                Context context = BaseApp.Companion.getContext();
                 PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
                 VERSION_NAME = info.versionName;
             }

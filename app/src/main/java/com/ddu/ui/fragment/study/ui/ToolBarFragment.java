@@ -3,12 +3,14 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.R;
+import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 16/5/6.
  */
+@IElement("UI")
 public class ToolBarFragment extends DefaultFragment {
 
     @Override
@@ -23,7 +25,7 @@ public class ToolBarFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        Toolbar toolbar = (Toolbar) mView.findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) getMView().findViewById(R.id.toolbar);
         toolbar.getBackground().setAlpha(0);
     }
 

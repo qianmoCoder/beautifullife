@@ -90,7 +90,7 @@
 	<div class="ui-tooltips ui-tooltips-guide">
 		<div class="ui-tooltips-cnt ui-border-b">
 			设置页面标题
-			<button class="ui-btn" id="setTitle">执行</button>
+			<button class="ui-btn" id="setMTitle">执行</button>
 		</div>
 	</div>
 
@@ -162,7 +162,7 @@ if(!IcoreSBridge){
 //     type:'sharewx',
 //     url: 'http://Icore.cn', // 页面地址
 //     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
-//     title: 'Icore title', // 标题
+//     mTitle: 'Icore mTitle', // 标题
 //     content: '摘要'
 // },function(){
 //     alert(1234)
@@ -173,7 +173,7 @@ if(!IcoreSBridge){
 //     type:'sharewx',
 //     url: 'http://Icore.cn', // 页面地址
 //     imgurl:'http://mat1.gtimg.com/www/mb/webapp/weishi/image/medal/1002_detail.png', // 图片地址
-//     title: 'Icore title', // 标题
+//     mTitle: 'Icore mTitle', // 标题
 //     content: '摘要',// 摘要,
 //     callback:'IcoreSBridgeCallback'
 // })
@@ -221,10 +221,10 @@ function IcoreSBridgeCloseWebview(data){
         //
         alert('IcoreSBridgeCloseWebview')
     }
-$("#setTitle").tap(function(){
+$("#setMTitle").tap(function(){
     IcoreSBridge.invoke({
-        type:'setTitle',
-        title:'新标题',
+        type:'setMTitle',
+        mTitle:'新标题',
         callback:'IcoreSBridgeSetTitle'
     })
 
@@ -239,7 +239,7 @@ $("#shareToFriend").tap(function(){
         type:'shareToFriend',
         url: 'http://Icore.cn', // 页面地址
         imgurl:'http://Icore.cn/static/images/01.png', // 图片地址
-        title: 'IcoreApp', // 标题
+        mTitle: 'IcoreApp', // 标题
         content: 'Icore分享', // 摘要
         callback:'IcoreSBridgeShareToFriend'
     }))
@@ -260,7 +260,7 @@ $("#shareToPyq").tap(function(){
         type:'shareToPyq',
         url: 'http://Icore.cn', // 页面地址
         imgurl:'http://Icore.cn/static/images/01.png', // 图片地址
-        title: 'IcoreApp', // 标题
+        mTitle: 'IcoreApp', // 标题
         content: 'Icore分享', // 摘要
         callback:'IcoreSBridgeShareToPyq'
     })

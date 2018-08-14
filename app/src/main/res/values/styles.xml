@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="android:listDivider">@drawable/divider_bg</item>
+        <!--<item name="clockBackground">@android:color/white</item>-->
+        <!--<item name="clockTextColor">@android:color/black</item>-->
     </style>
 
     <style name="AnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
@@ -95,8 +97,8 @@
     <style name="UIShapeHeader">
         <item name="android:paddingBottom">2dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">1dp</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:background">@drawable/debug_drawer_header_bg</item>
@@ -175,7 +177,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">@dimen/dp_13</item>
+        <!--<item name="android:padding">@dimen/dp_13</item>-->
     </style>
 
     <style name="DefaultRelativeLayoutText">
@@ -468,6 +470,40 @@
         <item name="pressedStrokeColor">@color/c_1a82e2</item>
         <item name="disableStrokeColor">@color/c_4c1a82e2</item>
         <item name="android:textColor">@color/c_1a82e2</item>
+    </style>
+
+    <style name="ShapeButtonStyle">
+        <item name="radius">@dimen/dp_10</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/c_000000</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:text">ShapeButton</item>
+    </style>
+
+    <style name="ShapeRadioButtonStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/shape_view_blue</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
 

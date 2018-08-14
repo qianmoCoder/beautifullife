@@ -49,7 +49,7 @@ public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleVie
         mPullToRefreshScrollView = findViewById(R.id.default_refresh_view);
         mTvDescription = findViewById(R.id.tv_description);
 
-        mLinearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        mLinearLayoutManager = new LinearLayoutManager(getMContext(), LinearLayoutManager.VERTICAL, false);
         mRvDefault = findViewById(R.id.rl_default);
         mRvDefault.setLayoutManager(mLinearLayoutManager);
         mRvDefault.setHasFixedSize(true);
@@ -73,7 +73,7 @@ public abstract class AbstractRecycleViewFragment<D, A extends DefaultRecycleVie
 
 
     public RecyclerView.ItemDecoration getItemDecoration() {
-        return new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
+        return new DividerItemDecoration(getMContext(), DividerItemDecoration.VERTICAL);
     }
 
     public TextView getTvDescription() {

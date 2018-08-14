@@ -6,22 +6,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5Utils {
 
-    public static String compute(String content) throws Exception {
-        if (content.isEmpty())
-            return null;
-        MessageDigest digestInstance = MessageDigest.getInstance("MD5");
-        digestInstance.update(content.getBytes("utf-8"));
-        byte[] md = digestInstance.digest();
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < md.length; i++) {
-            int val = (md[i]) & 0xff;
-            if (val < 16)
-                sb.append("0");
-            sb.append(Integer.toHexString(val));
-        }
-        return sb.toString().toUpperCase();
-    }
-
     public static String hashKeyForDisk(String key) {
         String cacheKey;
         try {

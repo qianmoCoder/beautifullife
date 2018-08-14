@@ -8,6 +8,6 @@
     <!-- 描边 -->
     <stroke
         android:width="0.5dp"
-        android:color="@color/c_cccccc"></stroke>
+        android:color="@color/c_cccccc" />
 
 </shape>

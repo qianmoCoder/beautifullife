@@ -22,6 +22,7 @@ public class CustomTextView extends AppCompatTextView {
     private int offset;
 
     private Paint paint;
+    private Rect bounds;
 
     public CustomTextView(@NonNull Context context) {
         this(context, null);
@@ -41,13 +42,15 @@ public class CustomTextView extends AppCompatTextView {
         offset = a.getDimensionPixelOffset(R.styleable.icore_strike_thru_strike_thru_offset, 0);
         a.recycle();
 
-        initPaint();
+        init();
     }
 
-    private void initPaint() {
+    private void init() {
         paint = new Paint();
         paint.setColor(color);
         paint.setStrokeWidth(width);
+
+        bounds = new Rect();
     }
 
     @Override
@@ -59,7 +62,7 @@ public class CustomTextView extends AppCompatTextView {
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
         if (null == paint) {
-            initPaint();
+            init();
         }
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
@@ -77,7 +80,7 @@ public class CustomTextView extends AppCompatTextView {
         int lineY = height / 2;
 
         Paint textPaint = getPaint();
-        Rect bounds = new Rect();
+
         textPaint.getTextBounds(text, 0, text.length(), bounds);
 
         int lineWidth = (width - bounds.width()) / 2 - offset;

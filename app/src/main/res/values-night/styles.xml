@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/c_3f3f3f</item>
+        <item name="colorPrimaryDark">@color/c_3a3a3a</item>
+        <item name="colorAccent">@color/c_868686</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:listDivider">@drawable/divider_bg</item>
+        <!--<item name="clockBackground">@color/c_3f3f3f</item>-->
+        <!--<item name="clockTextColor">@color/c_8a9599</item>-->
+    </style>
+
+</resources>

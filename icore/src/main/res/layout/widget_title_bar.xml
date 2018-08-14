@@ -44,7 +44,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:textSize="@dimen/dp_22"
+            android:textSize="@dimen/dp_18"
             tools:text="Title"
             tools:visibility="visible" />
 

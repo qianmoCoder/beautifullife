@@ -3,11 +3,12 @@ package com.ddu.ui.fragment.study.ui;
 import android.os.Bundle;
 
 import com.ddu.R;
-import com.ddu.app.App;
+import com.ddu.app.BaseApp;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
+import com.iannotation.IElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 2017/5/5.
  */
-
+@IElement("UI")
 public class DRVFragment extends AbstractRecycleViewFragment implements PullToRefreshBase.OnRefreshListener2 {
 
     private List<String> mDatas = new ArrayList<>();
@@ -29,16 +30,16 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public DefaultRecycleViewAdapter getAdapter() {
-        return new DefaultRecycleViewAdapter<String>(mContext, mDatas) {
+        return new DefaultRecycleViewAdapter<String>(getMContext(), mDatas) {
 
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.recyclerview_item_default;
+                return R.layout.rv_item_linear;
             }
 
             @Override
             public void bindView(final ViewHolder viewHolder, String data, int position) {
-                viewHolder.setText(R.id.tv_detail, data);
+                viewHolder.setText(R.id.tv_title, data);
             }
         };
     }
@@ -55,7 +56,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        App.postDelayed(new Runnable() {
+        BaseApp.Companion.postDelayed(new Runnable() {
             @Override
             public void run() {
                 int size = mDatas.size();
@@ -70,7 +71,7 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        App.postDelayed(new Runnable() {
+        BaseApp.Companion.postDelayed(new Runnable() {
             @Override
             public void run() {
                 int size = mDatas.size();

@@ -1,30 +1,24 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mm="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/c_ecedf1"
         android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/et_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
 
         <RelativeLayout
             android:id="@+id/rl_person_info"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_73"
-            android:layout_marginBottom="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
             android:background="@color/c_ffffff">
 
             <ImageView
-                android:id="@+id/ic_usrIv"
+                android:id="@+id/ic_usr"
                 android:layout_width="@dimen/dp_57"
                 android:layout_height="@dimen/dp_57"
                 android:layout_alignParentLeft="true"
@@ -33,12 +27,12 @@
                 android:src="@drawable/more_user_icon" />
 
             <TextView
-                android:id="@+id/usrNameTv"
+                android:id="@+id/tv_usr_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_8"
-                android:layout_toRightOf="@+id/ic_usrIv"
+                android:layout_toRightOf="@+id/ic_usr"
                 android:ellipsize="end"
                 android:ems="16"
                 android:singleLine="true"
@@ -47,11 +41,11 @@
                 android:textSize="@dimen/sp_21" />
 
             <TextView
-                android:id="@+id/dutyTimeTv"
+                android:id="@+id/tv_usr_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/usrNameTv"
-                android:layout_below="@id/usrNameTv"
+                android:layout_below="@id/tv_usr_name"
+                android:layout_alignLeft="@id/tv_usr_name"
                 android:layout_marginRight="10dp"
                 android:ellipsize="end"
                 android:singleLine="true"
@@ -63,26 +57,16 @@
                 android:id="@+id/tv_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_usr_name"
                 android:layout_alignParentRight="true"
-                android:layout_alignTop="@id/usrNameTv"
                 android:layout_marginRight="@dimen/dp_10" />
-
-            <!--<com.ddu.icore.ui.drop.DropFake-->
-            <!--android:id="@+id/unread_number_tip"-->
-            <!--android:layout_width="28dip"-->
-            <!--android:layout_height="28dip"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_below="@id/tv_detail"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="3"-->
-            <!--android:textColor="@color/c_4897fa"-->
-            <!--android:textSize="12sp" />-->
 
         </RelativeLayout>
 
-        <FrameLayout
+        <LinearLayout
             style="@style/DefaultLinearLayout"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="wrap_content">
 
 
@@ -91,13 +75,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+=======
+            android:layout_height="wrap_content"
+            android:gravity="center">
+>>>>>>> kotlin
 
-                <com.ddu.icore.ui.view.OptionItemView
-                    style="@style/DefaultRelativeLayout"
-                    mm:carrowImage="@drawable/right_arrow_gray"
-                    mm:leftText="Hello"
-                    mm:rightText="World" />
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_address"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="佛说" />
 
+<<<<<<< HEAD
                 <com.ddu.icore.ui.view.OptionItemView
                     android:id="@+id/oit_version"
                     style="@style/DefaultRelativeLayout"
@@ -105,76 +94,84 @@
                     mm:leftText="当前版本号" />
 
             </LinearLayout>
+=======
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_friend_link"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="友链" />
+>>>>>>> kotlin
 
-            <ImageView
-                android:id="@+id/iv_guide_hand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/guide_hand" />
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_plan"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="计划" />
 
-            <ImageView
-                android:id="@+id/iv_guide_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|right"
-                android:src="@drawable/left_delete"
-                android:visibility="gone" />
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_fav"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="收藏" />
 
-        </FrameLayout>
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_setting"
             style="@style/DefaultLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
 
             <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_eggs"
                 style="@style/DefaultRelativeLayout"
-                mm:carrowImage="@drawable/right_arrow_gray"
-                mm:leftText="设置" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="彩蛋" />
 
-            <TextView
-                android:id="@+id/tvU"
-                android:layout_width="@dimen/dp_100"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dp_5"
-                android:text="200元hhelooksdjfsdjkfjsdkjfsfjkdsfkieww"
-                android:textSize="@dimen/dp_20" />
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_setting"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="设置" />
 
-            <!--<com.ddu.ui.view.CustomTextView-->
-            <!--android:layout_width="@dimen/dp_100"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="@dimen/dp_5"-->
-            <!--android:text="200元dddhhelooksdjfsdjkfjabacesdkjfwerwerwesfjkdsfkieww"-->
-            <!--android:textSize="@dimen/dp_20"-->
-            <!--mm:strike_thru_color="@color/c_ff0000"-->
-            <!--mm:strike_thru_width="3dp" />-->
-            <com.ddu.ui.view.CustomTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/dp_5"
-                android:text="200元"
-                android:textSize="@dimen/dp_20"
-                mm:strike_thru_color="@color/c_ff0000"
-                mm:strike_thru_width="3dp" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/et_text1"
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="@dimen/dp_150"
             android:keyboardNavigationCluster="true"
             android:text="" />
+=======
+            android:layout_height="wrap_content"
+            android:gravity="center">
+>>>>>>> kotlin
 
-        <!--<com.ddu.icore.ui.drop.DropCover-->
-        <!--android:id="@+id/unread_cover"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="invisible" />-->
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_phone_info"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="手机信息" />
 
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_notification"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="发送通知" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_show_dialog"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="显示弹框" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_show_bottom_dialog"
+                style="@style/DefaultRelativeLayout"
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="底部弹框" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

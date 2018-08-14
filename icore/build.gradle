@@ -1,18 +1,22 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.yzbzz'
 
 android {
 
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
     }
 
     buildTypes {
@@ -30,10 +34,18 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-    icoreDependencies.each {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    CommonDependencies.api_dependencies.forEach {
         k -> api k
+    }
+    CommonDependencies.kapt_dependencies.forEach {
+        k -> kapt k
     }
 }

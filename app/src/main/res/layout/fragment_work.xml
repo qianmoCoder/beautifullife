@@ -18,8 +18,8 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_fragment"
                 style="@style/DefaultRelativeLayout"
-                mm:carrowImage="@drawable/right_arrow_gray"
-                mm:leftText="FragmentState" />
+                mm:i_rightIcon="@drawable/right_arrow_gray"
+                mm:i_title="FragmentState" />
         </LinearLayout>
 
         <TextView
@@ -50,7 +50,9 @@
         <TextView
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="ShapeView"
+            android:background="@color/c_4897fa"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

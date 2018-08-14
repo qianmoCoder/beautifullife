@@ -24,6 +24,13 @@
     <string name="life_calculator">计算器</string>
     <string name="life_calculator_house">房贷计算器</string>
     <string name="life_calculator_income">个税计算器</string>
+
+    <string name="life_food">饮食</string>
+    <string name="life_sleep">作息时间</string>
+
+    <string name="life_food_detail">【健康小课堂】\n❤️红色入心：\n\t西红柿、红萝卜、枸杞、红枣、红肉椒。\n💚绿色入肝：\n\t芹菜、波菜，空心菜，西兰花等绿色蔬菜。\n💛黄色入脾：\n\t小米，玉米粒、红薯、南瓜，土豆。\n⚫️黑色入肾：\n\t黑木耳、紫菜、黑芝麻，黑米。\n⚪️白色入肺：\n\t银耳、百合、山药、杏仁、白萝卜。
+\n每天，五色蔬菜都用，5种颜色各一种。功效：有利于身体平衡哦[耶][耶][耶]</string>
+
     <string name="life_joke">笑话</string>
     <string name="life_sentiment">感悟</string>
     <string name="help"><a href="http://www.baidu.com">打开app</a></string>
@@ -144,4 +151,18 @@
     <string name="main_text">Options:</string>
     <string name="about_text">This app is for demonstrate the Material-ish progress wheel library, which provides a Material-style progress wheel compatible back to API 9. You can have indeterminate and determinate versions of the progress wheel, the later with a linear animation or a interpolated one like in the guidelines.\n\nRefer to the Github project page for more info at https://github.com/pnikosis/materialish-progress. </string>
     <string name="about">About</string>
+    <string name="title_activity_scrolling2">ScrollingActivity2</string>
+
+    <string name="one_separator">一种分割符</string>
+    <string name="two_separator">二种分割符</string>
+    <string name="multi_separator">多种分割符</string>
+    <string name="custom_separator">自定义分割符</string>
+
+    <string name="text_phrase_one">永生不过是场{幻梦}，唯吾{所爱}不朽</string>
+    <string name="text_phrase_two">何以{缘起}?何以[缘灭]?当以{剑歌}问之</string>
+    <string name="text_phrase_three">凤兮{凤兮}归[故乡],遨(游)四海(求其凰)</string>
+
+    <string name="text_phrase_custom">邂逅你，是(生生世世)的宿命</string>
+    <string name="text_phrase_multi_click">众里寻他千{百度}，蓦然回首，那人却在[网易]</string>
+
 </resources>

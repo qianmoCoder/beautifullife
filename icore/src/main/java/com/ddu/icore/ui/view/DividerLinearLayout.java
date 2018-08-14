@@ -36,11 +36,11 @@ public class DividerLinearLayout extends LinearLayout {
 
     public DividerLinearLayout(@NonNull Context context, AttributeSet attrs) {
         super(context, attrs);
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.icore_dividerLinearLayout);
-        final Drawable d = a.getDrawable(R.styleable.icore_dividerLinearLayout_icore_divider);
-        marginLeft = a.getDimensionPixelSize(R.styleable.icore_dividerLinearLayout_icore_divider_margin_left, 0);
-        marginRight = a.getDimensionPixelSize(R.styleable.icore_dividerLinearLayout_icore_divider_margin_right, 0);
-        mDividerHeight = a.getDimensionPixelSize(R.styleable.icore_dividerLinearLayout_icore_divider_height, 0);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.dividerLinearLayout);
+        final Drawable d = a.getDrawable(R.styleable.dividerLinearLayout_divider);
+        marginLeft = a.getDimensionPixelSize(R.styleable.dividerLinearLayout_divider_margin_left, 0);
+        marginRight = a.getDimensionPixelSize(R.styleable.dividerLinearLayout_divider_margin_right, 0);
+        mDividerHeight = a.getDimensionPixelSize(R.styleable.dividerLinearLayout_divider_height, 0);
         if (d != null) {
             setDivider(d);
         }

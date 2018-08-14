@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ddu">
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,11 +12,17 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
+=======
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+>>>>>>> kotlin
 
     <application
         android:name=".app.App"
@@ -34,7 +37,11 @@
 
         <activity
             android:name=".ui.activity.MainActivity"
+<<<<<<< HEAD
             android:launchMode="singleTask"
+=======
+            android:configChanges="orientation"
+>>>>>>> kotlin
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
 
@@ -96,6 +103,7 @@
             </intent-filter>
         </receiver>
 
+<<<<<<< HEAD
 
         <activity
             android:name=".ui.activity.SchemeFilterActivity"
@@ -103,14 +111,38 @@
 
             <intent-filter>
                 <data android:scheme="etcp" />
+=======
+        <activity
+            android:name=".ui.activity.TestActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <data android:scheme="bbc" />
+
+>>>>>>> kotlin
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
+<<<<<<< HEAD
 
         </activity>
 
+=======
+        </activity>
+
+        <receiver
+            android:name=".receiver.UserClickReceiver"
+            android:enabled="true"
+
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.android.intent.user.click" />
+            </intent-filter>
+        </receiver>
+
+>>>>>>> kotlin
         <!-- <activity -->
         <!-- android:name=".ui.activity.ScrollingActivity" -->
         <!-- android:label="@string/title_activity_scrolling" -->
@@ -119,10 +151,26 @@
         <!-- android:name=".ui.activity.ScrollingActivity1" -->
         <!-- android:label="@string/title_activity_scrolling1" -->
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
+<<<<<<< HEAD
         <!--<activity-->
         <!--android:name=".ui.activity.ScrollingActivity3"-->
         <!--android:label="@string/title_activity_scrolling3"-->
         <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
+=======
+        <activity
+            android:name=".ui.activity.ScrollingActivity3"
+            android:label="@string/title_activity_scrolling3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ScrollingActivity2"
+            android:label="@string/title_activity_scrolling2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ui.activity.phrase.OneSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity"/>
+>>>>>>> kotlin
     </application>
 
 </manifest>

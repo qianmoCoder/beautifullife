@@ -9,8 +9,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.FileProvider;
 
-import com.ddu.icore.util.ToastUtils;
-
 import java.io.File;
 
 /**
@@ -26,7 +24,7 @@ public class DownloadManagerUtils {
 
     public static void downLoad(Context context, String apkName, String url) {
         if (DOWNLOAD_ID != -1) {
-            ToastUtils.showToast("应用正在下载,请稍候");
+//            ToastUtils.showToast("应用正在下载,请稍候");
         } else {
             DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
             long id = downloadManager.enqueue(getRequest(apkName, url));

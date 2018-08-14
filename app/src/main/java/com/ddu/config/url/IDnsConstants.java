@@ -13,6 +13,4 @@ public interface IDnsConstants {
     String KEY_ALI_PAY_URL = "aliPayUrl";
     String KEY_BD_ADMIN_URL = "bdAmdin";
 
-
-
 }

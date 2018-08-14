@@ -12,10 +12,12 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.ui.helper.WuBaBehavior;
+import com.iannotation.IElement;
 
 /**
  * Created by lhz on 16/5/6.
  */
+@IElement("UI")
 public class WuBaFragment extends DefaultFragment {
 
     private RecyclerView recyclerView;
@@ -46,7 +48,7 @@ public class WuBaFragment extends DefaultFragment {
         recyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.fragment_home_item, parent, false));
+                return new ViewHolder(LayoutInflater.from(getMContext()).inflate(R.layout.fragment_home_item, parent, false));
             }
 
             @Override
@@ -73,7 +75,7 @@ public class WuBaFragment extends DefaultFragment {
             }
         });
 
-        final WuBaBehavior myBehavior = new WuBaBehavior(mContext);
+        final WuBaBehavior myBehavior = new WuBaBehavior(getMContext());
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) recyclerView.getLayoutParams();
         params.setBehavior(myBehavior);
 

@@ -22,7 +22,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * across different configurations or circumstances.
  */
 public class TabPageIndicator extends HorizontalScrollView implements PageIndicator {
-    /** Title text used when no title is provided by the adapter. */
+    /** Title text used when no mTitle is provided by the adapter. */
     private static final CharSequence EMPTY_TITLE = "";
 
     /**

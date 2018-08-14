@@ -1,22 +1,20 @@
 package com.ddu.ui.view;
 
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.ddu.R;
 
-public final class RevealTextView extends TextView implements Runnable, ValueAnimator.AnimatorUpdateListener {
+public final class RevealTextView extends AppCompatTextView implements Runnable, ValueAnimator.AnimatorUpdateListener {
     private int animationDuration = 300;
     @Nullable
     private String text;
@@ -26,25 +24,18 @@ public final class RevealTextView extends TextView implements Runnable, ValueAni
     private double[] alphas;
 
     public RevealTextView(Context context) {
-        super(context);
-        init(null);
+        this(context, null);
     }
 
     public RevealTextView(@NonNull Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context.getTheme().obtainStyledAttributes(attrs, R.styleable.RevealTextView, 0, 0));
+        this(context, attrs, 0);
     }
 
     public RevealTextView(@NonNull Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context.getTheme().obtainStyledAttributes(attrs, R.styleable.RevealTextView, 0, 0));
+        init(context.obtainStyledAttributes(attrs, R.styleable.RevealTextView, 0, 0));
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public RevealTextView(@NonNull Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context.getTheme().obtainStyledAttributes(attrs, R.styleable.RevealTextView, 0, 0));
-    }
 
     protected void init(@NonNull TypedArray attrs) {
         try {

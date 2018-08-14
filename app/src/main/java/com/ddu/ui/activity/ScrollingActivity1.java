@@ -36,7 +36,7 @@ public class ScrollingActivity1 extends AppCompatActivity {
                 Log.v("lhz", "verticalOffset " + verticalOffset);
             }
         });
-
+        
         PtrHandler ptrHandler = new PtrHandler() {
 
             @Override

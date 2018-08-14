@@ -1,6 +1,11 @@
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
-//apply plugin: 'com.meituan.judasplugin'
+apply plugin: 'io.objectbox'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def executeCommand(path) {
     def processMsg = "python build_android.py ${path}"
@@ -17,17 +22,24 @@ android {
         }
     }
 
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
         //app package name
         applicationId "com.ddu"
 
+<<<<<<< HEAD
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+=======
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+>>>>>>> kotlin
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -41,7 +53,11 @@ android {
             //debug模式
             manifestPlaceholders = [BUILD_TYPE_VALUE: "test"]
             signingConfig signingConfigs.debug
+<<<<<<< HEAD
             versionNameSuffix "测试"
+=======
+            versionNameSuffix "(debug)"
+>>>>>>> kotlin
 //            applicationIdSuffix ".debug"
         }
 
@@ -80,6 +96,24 @@ android {
         }
     }
 
+<<<<<<< HEAD
+=======
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def buildName = variant.buildType.name
+            println("buildName: ${buildName}")
+            def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
+            outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}.apk"
+            if (buildName.equalsIgnoreCase("debug")) {
+                def path = output.outputFile.absolutePath
+                variant.assemble.doLast {
+                    println(path)
+                }
+            }
+        }
+    }
+
+>>>>>>> kotlin
     //移除lint检查的error
     lintOptions {
         abortOnError false
@@ -89,11 +123,7 @@ android {
     }
     productFlavors {
     }
-    greendao {
-        schemaVersion 1
-        daoPackage 'com.ddu.db.gen'
-        targetGenDir 'src/main/java'
-    }
+
     dataBinding {
         enabled = true
     }
@@ -114,31 +144,33 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':icore')
+    implementation project(':iannotation')
+    kapt project(':iprocessors')
 
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation Dependencies.rxpermissions
 
-    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    implementation Dependencies.rebound
 
-    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation Dependencies.mpandroidchart
 
-    implementation 'com.facebook.rebound:rebound:0.3.8'
+    implementation Dependencies.flexbox
 
-    implementation 'org.quanqi:mpandroidchart:1.7.5'
+    implementation Dependencies.zxing_core
+    implementation Dependencies.zxing_android_core
 
-    implementation 'com.alibaba:fastjson:1.1.67.android'
+    implementation Dependencies.objectbox_android
+    implementation Dependencies.objectbox_kotlin
+    kapt  Dependencies.objectbox_processor
+    annotationProcessor Dependencies.objectbox_processor
 
-    implementation 'com.google.android:flexbox:0.3.2'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.google.zxing:core:3.3.0'
-    implementation 'com.google.zxing:android-core:3.3.0'
+    debugImplementation Dependencies.leakcanary_android
+    releaseImplementation Dependencies.leakcanary_android_no_op
 
+    implementation Dependencies.glide
+    implementation Dependencies.glide_compiler
+    kapt Dependencies.glide_compiler
 
-    implementation 'com.github.bumptech.glide:glide:4.5.0'
-    implementation 'com.github.bumptech.glide:compiler:4.1.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
-
+<<<<<<< HEAD
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     qaImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
@@ -148,10 +180,46 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+=======
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+>>>>>>> kotlin
     implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
 
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
 
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.orhanobut:logger:2.1.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5'
+
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+
+    implementation 'pub.devrel:easypermissions:1.2.0'
+
+
+}
+
+final def variants = project.android.applicationVariants
+//在构建工程时，执行编织
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        return
+    }
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.7",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(args, handler)
+    }
 }

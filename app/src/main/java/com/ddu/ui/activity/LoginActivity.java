@@ -5,7 +5,7 @@ import android.widget.RelativeLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.activity.BaseActivity;
-import com.ddu.icore.ui.help.ShapeInjectHelper;
+import com.ddu.icore.ui.help.ShapeInject;
 import com.ddu.icore.util.sys.ViewUtils;
 
 /**
@@ -20,10 +20,10 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         mRlLogin = ViewUtils.findViewById(this, R.id.rl_login);
-        ShapeInjectHelper shapeInjectHelper = new ShapeInjectHelper(mRlLogin);
-        shapeInjectHelper.backgroundColor(0xffffff);
-        shapeInjectHelper.radius(5);
-        shapeInjectHelper.setBackground();
+        ShapeInject shapeInjectHelper = ShapeInject.inject(mRlLogin);
+        shapeInjectHelper.setBackgroundColor(0xffffff);
+        shapeInjectHelper.setRadius(5);
+        shapeInjectHelper.background();
     }
 
     @Override

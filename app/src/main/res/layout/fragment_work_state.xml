@@ -7,6 +7,7 @@
 
 
     <EditText
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入" />
@@ -15,14 +16,68 @@
         android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="点我" />
+        android:text="是/否要登录" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_etcp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="scheme为etcp://"
         android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_http"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="scheme为http://"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_e"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="scheme为etcp:// url=etcp"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="scheme为etcp:// url=http"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_d_e"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用defaultData, scheme为etcp"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_d_h"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用defaultData,scheme为http"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_d_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="错误的defaultData"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_etcp_s_d_error_o"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="错误的defaultData"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.ddu.icore.ui.view.CustomerTimeLineMarker
         android:id="@+id/item_time_line_mark"

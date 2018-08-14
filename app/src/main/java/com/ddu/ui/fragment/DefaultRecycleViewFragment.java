@@ -5,7 +5,7 @@ import com.ddu.icore.R;
 import com.ddu.icore.entity.BaseEntity;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
-import com.ddu.icore.util.ToastUtils;
+import com.ddu.util.ToastUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;

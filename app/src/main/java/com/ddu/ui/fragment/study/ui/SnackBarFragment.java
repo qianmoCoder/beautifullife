@@ -11,10 +11,12 @@ import android.widget.LinearLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 16/4/14.
  */
+@IElement("UI")
 public class SnackBarFragment extends DefaultFragment {
 
     private LinearLayout mLlSnackBar;
@@ -24,7 +26,7 @@ public class SnackBarFragment extends DefaultFragment {
     @NonNull
     public static SnackBarFragment newInstance(String taskId) {
         Bundle arguments = new Bundle();
-        arguments.putString(ARGUMENT_TASK_ID, taskId);
+        arguments.putString(Companion.getARGUMENT_TASK_ID(), taskId);
         SnackBarFragment fragment = new SnackBarFragment();
         fragment.setArguments(arguments);
         return fragment;

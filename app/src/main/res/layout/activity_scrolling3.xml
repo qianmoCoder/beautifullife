@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:fitsSystemWindows="true"
+        android:background="@color/c_ffffff"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -19,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar

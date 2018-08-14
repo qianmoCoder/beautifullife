@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp_10">
+
+    <ImageView
+        android:id="@+id/iv_left_icon"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="@dimen/dp_10"
+        android:visibility="gone"
+        tools:src="@drawable/weixin_friend_share" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/c_000000"
+        android:textSize="@dimen/sp_16"
+        tools:text="分享" />
+
+</LinearLayout>
+

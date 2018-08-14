@@ -1,14 +1,9 @@
 package com.ddu.ui.dialog;
 
-import android.os.Bundle;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.BottomDialogFragment;
+import com.ddu.icore.dialog.AbsBottomDialogFragment;
 
 import java.lang.ref.WeakReference;
 
@@ -16,7 +11,7 @@ import java.lang.ref.WeakReference;
  * Created by yzbzz on 2017/10/31.
  */
 
-public class SelectDialog extends BottomDialogFragment {
+public class SelectDialog extends AbsBottomDialogFragment {
 
     private WeakRefHandler weakRefHandler;
 
@@ -25,10 +20,9 @@ public class SelectDialog extends BottomDialogFragment {
     }
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+    public int getLayoutId() {
+        return R.layout.fragment_login;
     }
 
     private static class WeakRefHandler extends android.os.Handler {

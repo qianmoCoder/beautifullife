@@ -7,11 +7,12 @@ import android.view.View;
 import com.ddu.R;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/5/25.
  */
-
+@IElement("UI")
 public class SegmentPullToRefreshFragment extends DefaultFragment {
 
     private PullToRefreshScrollView pullToRefreshScrollView;
@@ -23,7 +24,7 @@ public class SegmentPullToRefreshFragment extends DefaultFragment {
 
     @Override
     public void initView() {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recyclerview_item_default, null, false);
+        View view = LayoutInflater.from(getMContext()).inflate(R.layout.rv_item_linear, null, false);
         pullToRefreshScrollView = findViewById(R.id.psv_segment);
 //        pullToRefreshScrollView.addView(view, 0);
     }

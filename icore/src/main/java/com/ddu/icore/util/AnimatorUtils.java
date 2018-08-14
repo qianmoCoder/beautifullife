@@ -4,13 +4,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.content.Context;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
-import com.ddu.icore.R;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
 /**
  * Created by yzbzz on 2016/10/27.
@@ -18,9 +19,21 @@ import com.ddu.icore.R;
 
 public class AnimatorUtils {
 
-    public static Animation shake(Context context) {
-        Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
-        return shake;
+    static final Interpolator LINEAR_INTERPOLATOR = new LinearInterpolator();
+    static final Interpolator FAST_OUT_SLOW_IN_INTERPOLATOR = new FastOutSlowInInterpolator();
+    static final Interpolator FAST_OUT_LINEAR_IN_INTERPOLATOR = new FastOutLinearInInterpolator();
+    static final Interpolator LINEAR_OUT_SLOW_IN_INTERPOLATOR = new LinearOutSlowInInterpolator();
+    static final Interpolator DECELERATE_INTERPOLATOR = new DecelerateInterpolator();
+
+    /**
+     * Linear interpolation between {@code startValue} and {@code endValue} by {@code fraction}.
+     */
+    static float lerp(float startValue, float endValue, float fraction) {
+        return startValue + (fraction * (endValue - startValue));
+    }
+
+    static int lerp(int startValue, int endValue, float fraction) {
+        return startValue + Math.round(fraction * (endValue - startValue));
     }
 
     public static ObjectAnimator rotationX(View target, long duration, float... values) {

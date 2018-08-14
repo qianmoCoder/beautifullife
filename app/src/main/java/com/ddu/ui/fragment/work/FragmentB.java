@@ -9,8 +9,6 @@ import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.sys.ViewUtils;
 
-import butterknife.OnClick;
-
 /**
  * Created by lhz on 16/4/6.
  */
@@ -40,7 +38,7 @@ public class FragmentB extends DefaultFragment {
 
     @Override
     public void initView() {
-        mBtnOk = ViewUtils.findViewById(mView, R.id.btn_ok);
+        mBtnOk = ViewUtils.findViewById(getMView(), R.id.btn_ok);
         mBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +49,4 @@ public class FragmentB extends DefaultFragment {
         setDefaultTitle("FragmentB");
     }
 
-    @OnClick(R.id.rl_person_info)
-    public void onClick() {
-
-    }
 }

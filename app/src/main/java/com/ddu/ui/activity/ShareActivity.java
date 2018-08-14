@@ -12,8 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.ShareAdapter;
-import com.ddu.icore.entity.ShareEntity;
+import com.ddu.app.BaseApp;
+import com.ddu.icore.dialog.DefaultGridBottomAdapter;
+import com.ddu.icore.entity.BottomItemEntity;
 import com.ddu.icore.ui.activity.BaseActivity;
 import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.ui.dialog.LoginDialog;
@@ -22,8 +23,6 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.ddu.icore.app.BaseApp.getContext;
 
 /**
  * Created by yzbzz on 2017/4/6.
@@ -34,13 +33,13 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     private TextView mTvCancel;
     private RecyclerView mRecyclerView;
 
-    private List<ShareEntity> shareEntities;
-    private ShareAdapter shareAdapter;
+    private List<BottomItemEntity> shareEntities;
+    private DefaultGridBottomAdapter shareAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_share);
+        setContentView(R.layout.dialog_bottom_content);
 
         Window win = this.getWindow();
         WindowManager.LayoutParams lp = win.getAttributes();
@@ -56,23 +55,23 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         shareEntities = new ArrayList<>();
 
-        ShareEntity shareEntity = new ShareEntity();
+        BottomItemEntity shareEntity = new BottomItemEntity();
         shareEntity.setName("QQ");
         shareEntity.setResId(R.drawable.weixin_friend_share);
 
-        ShareEntity shareEntity1 = new ShareEntity();
+        BottomItemEntity shareEntity1 = new BottomItemEntity();
         shareEntity1.setName("weixin");
         shareEntity1.setResId(R.drawable.weixin_circle_friend_share);
 
-        ShareEntity shareEntity2 = new ShareEntity();
+        BottomItemEntity shareEntity2 = new BottomItemEntity();
         shareEntity2.setName("feixin");
         shareEntity2.setResId(R.drawable.weixin_friend_share);
 
-        ShareEntity shareEntity3 = new ShareEntity();
+        BottomItemEntity shareEntity3 = new BottomItemEntity();
         shareEntity3.setName("yixin");
         shareEntity3.setResId(R.drawable.weixin_circle_friend_share);
 
-        ShareEntity shareEntity4 = new ShareEntity();
+        BottomItemEntity shareEntity4 = new BottomItemEntity();
         shareEntity4.setName("weibo");
         shareEntity4.setResId(R.drawable.weixin_friend_share);
 
@@ -85,15 +84,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         mRecyclerView = ViewUtils.findViewById(this, R.id.rv_share);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(BaseApp.Companion.getContext(), shareEntities.size() < 4 ? shareEntities.size() % 4 : 4);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
-        shareAdapter = new ShareAdapter(getContext(), shareEntities);
+        shareAdapter = new DefaultGridBottomAdapter(BaseApp.Companion.getContext(), shareEntities);
         mRecyclerView.setAdapter(shareAdapter);
 
-        shareAdapter.setOnItemClickListener(new ShareAdapter.OnClickListener<ShareEntity>() {
+        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
             @Override
-            public void onClick(ShareEntity data, int position) {
+            public void onClick(BottomItemEntity data, int position) {
 
 //                UMWeb web = new UMWeb("http://www.baidu.com");
 //                web.setTitle("this is music title");
@@ -142,13 +141,13 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         public void onResult(SHARE_MEDIA platform) {
             Log.d("plat", "platform" + platform);
 
-            Toast.makeText(mContext, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
 
         }
 
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(mContext, platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
             if (t != null) {
                 Log.d("throw", "throw:" + t.getMessage());
             }
@@ -156,7 +155,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(mContext, platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getMContext(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
         }
     };
 }

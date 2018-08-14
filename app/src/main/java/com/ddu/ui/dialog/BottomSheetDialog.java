@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.icore.dialog.ShareAdapter;
-import com.ddu.icore.entity.ShareEntity;
-import com.ddu.icore.util.ToastUtils;
+import com.ddu.icore.dialog.DefaultGridBottomAdapter;
+import com.ddu.icore.entity.BottomItemEntity;
+import com.ddu.util.ToastUtils;
 import com.ddu.icore.util.sys.ViewUtils;
 
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
     private TextView mTvCancel;
     private RecyclerView mRecyclerView;
 
-    private List<ShareEntity> shareEntities;
-    private ShareAdapter shareAdapter;
+    private List<BottomItemEntity> shareEntities;
+    private DefaultGridBottomAdapter shareAdapter;
 
     private Context mContext;
 
@@ -40,23 +40,23 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
         super.onCreate(savedInstanceState);
         shareEntities = new ArrayList<>();
 
-        ShareEntity shareEntity = new ShareEntity();
+        BottomItemEntity shareEntity = new BottomItemEntity();
         shareEntity.setName("QQ");
         shareEntity.setResId(R.drawable.weixin_friend_share);
 
-        ShareEntity shareEntity1 = new ShareEntity();
+        BottomItemEntity shareEntity1 = new BottomItemEntity();
         shareEntity1.setName("weixin");
         shareEntity1.setResId(R.drawable.weixin_circle_friend_share);
 
-        ShareEntity shareEntity2 = new ShareEntity();
+        BottomItemEntity shareEntity2 = new BottomItemEntity();
         shareEntity2.setName("feixin");
         shareEntity2.setResId(R.drawable.weixin_friend_share);
 
-        ShareEntity shareEntity3 = new ShareEntity();
+        BottomItemEntity shareEntity3 = new BottomItemEntity();
         shareEntity3.setName("yixin");
         shareEntity3.setResId(R.drawable.weixin_circle_friend_share);
 
-        ShareEntity shareEntity4 = new ShareEntity();
+        BottomItemEntity shareEntity4 = new BottomItemEntity();
         shareEntity4.setName("weibo");
         shareEntity4.setResId(R.drawable.weixin_friend_share);
 
@@ -95,12 +95,12 @@ public class BottomSheetDialog extends BottomSheetDialogFragment implements View
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        shareAdapter = new ShareAdapter(getContext(), shareEntities);
+        shareAdapter = new DefaultGridBottomAdapter(getContext(), shareEntities);
         mRecyclerView.setAdapter(shareAdapter);
 
-        shareAdapter.setOnItemClickListener(new ShareAdapter.OnClickListener<ShareEntity>() {
+        shareAdapter.setOnItemClickListener(new DefaultGridBottomAdapter.OnClickListener<BottomItemEntity>() {
             @Override
-            public void onClick(ShareEntity data, int position) {
+            public void onClick(BottomItemEntity data, int position) {
                 ToastUtils.showToast(data.getName() + " " + position);
             }
         });

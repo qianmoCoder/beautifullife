@@ -21,6 +21,7 @@ import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.Selection;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,37 +31,16 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebStorage;
 import android.widget.EditText;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by yzbzz on 16/7/22.
  */
 public class AndroidUtils {
-
-    public static boolean isScreenOn(@NonNull Context context) {
-        return ((PowerManager) context.getSystemService(Context.POWER_SERVICE)).isScreenOn();
-    }
-
-    public static String getImsi(@NonNull Context context) {
-        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
-    }
-
-    public static String getDeviceId(@NonNull Context context) {
-        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-    }
-
-    @Nullable
-    public static String getMacAddress(@NonNull Context context) {
-        String macAddress = null;
-        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = (null == wifiMgr ? null : wifiMgr.getConnectionInfo());
-        if (null != info) {
-            macAddress = info.getMacAddress();
-
-        }
-        return macAddress;
-    }
 
     // 设置组件（activity, receiver, service, provider）的启用状态
     public static void setComponentEnabledSetting(@NonNull Context context, Class<?> cls, boolean enabled) {
@@ -78,10 +58,6 @@ public class AndroidUtils {
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    public static boolean isNetworkConnected(@NonNull Context context) {
-        NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
-    }
 
     @NonNull
     public static String getNetState(@NonNull Context context) {
@@ -133,24 +109,6 @@ public class AndroidUtils {
         return Settings.System.getInt(context.getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) != 0;
     }
 
-    // 获取当前屏幕亮度，范围0-255
-    public static int getScreenBrightness(@NonNull Context context) {
-        int rightnessValue = 0;
-        try {
-            rightnessValue = Settings.System.getInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
-        return rightnessValue;
-    }
-
-    // 设置屏幕亮度（0-255）
-    public static void setScreenBrightness(@NonNull Activity activity, float screenBrightness) {
-        WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
-        lp.screenBrightness = screenBrightness / 255f;
-        activity.getWindow().setAttributes(lp);
-    }
-
     // sdcard是否可读写
     public static boolean isSdcardReady() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
@@ -192,44 +150,6 @@ public class AndroidUtils {
         ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE)).setText(text);
     }
 
-    // 隐藏输入法（根据activity当前焦点所在控件的WindowToken）
-    public static void hideSoftInput(@NonNull Activity activity, @Nullable View editText) {
-        View view;
-        if (editText == null) {
-            view = activity.getCurrentFocus();
-        } else {
-            view = editText;
-        }
-
-        if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethod.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
-
-    /**
-     * 显示软键盘（根据焦点所在的控件）
-     */
-    public static void showSoftInput(@NonNull Context context) {
-        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-    }
-
-    /**
-     * 显示输入法（根据activity当前焦点所在控件的WindowToken）
-     */
-    public static void showSoftInput(@NonNull Activity activity, @Nullable View editText) {
-        View view;
-        if (editText == null) {
-            view = activity.getCurrentFocus();
-        } else {
-            view = editText;
-        }
-
-        if (view != null) {
-            InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethod.showSoftInput(view, 0);
-        }
-    }
 
     /**
      * 通过string的字符串名获取R.string中对应属性的值
@@ -346,40 +266,6 @@ public class AndroidUtils {
     }
 
     /**
-     * 应用是否在前台运行
-     *
-     * @param context
-     * @return
-     */
-    public static boolean isAppOnForeground(@NonNull Context context) {
-        return isAppOnForeground(context, context.getPackageName());
-    }
-
-    /**
-     * 根据包名判断应用是否在前台运行
-     *
-     * @param context
-     * @param packageName
-     * @return
-     */
-    public static boolean isAppOnForeground(@NonNull Context context, @Nullable String packageName) {
-        if (packageName != null) {
-            // Returns a list of application processes that are running on the device
-            ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
-            if (appProcesses != null) {
-                for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
-                    // The name of the process that this object is associated with.
-                    if (appProcess.processName.equals(packageName) && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == appProcess.importance) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
      * 获取Context所在进程的名称
      *
      * @param context
@@ -391,6 +277,29 @@ public class AndroidUtils {
         for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager.getRunningAppProcesses()) {
             if (appProcess.pid == pid) {
                 return appProcess.processName;
+            }
+        }
+        return null;
+    }
+
+    private static String getProcessName(int pid) {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("/proc/" + pid + "/cmdline"));
+            String processName = reader.readLine();
+            if (!TextUtils.isEmpty(processName)) {
+                processName = processName.trim();
+            }
+            return processName;
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException exception) {
+                exception.printStackTrace();
             }
         }
         return null;

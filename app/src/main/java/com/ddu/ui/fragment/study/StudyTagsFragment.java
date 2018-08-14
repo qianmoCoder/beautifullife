@@ -1,8 +1,11 @@
 package com.ddu.ui.fragment.study;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.ddu.R;
 import com.ddu.db.DbManager;
@@ -10,8 +13,10 @@ import com.ddu.db.entity.StudyContent;
 import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.ddu.icore.ui.view.ShapeTextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -40,18 +45,18 @@ public class StudyTagsFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        studyContents = DbManager.getStudyContentDao().loadAll();
+        studyContents = DbManager.getStudyContentBox().getAll();
 
         for (StudyContent studyContent : studyContents) {
-            if (studyContent.getIsOld()) {
+            if (studyContent.isOld()) {
                 studyContentOld.add(studyContent);
             } else {
                 studyContentNew.add(studyContent);
             }
         }
 
-        mOldGridLayoutManager = new GridLayoutManager(mContext, SPAN_COUNT);
-        mNewGridLayoutManager = new GridLayoutManager(mContext, SPAN_COUNT);
+        mOldGridLayoutManager = new GridLayoutManager(getMContext(), SPAN_COUNT);
+        mNewGridLayoutManager = new GridLayoutManager(getMContext(), SPAN_COUNT);
     }
 
     @Override
@@ -67,7 +72,7 @@ public class StudyTagsFragment extends DefaultFragment {
         mRvOld.setLayoutManager(mOldGridLayoutManager);
         mRvNew.setLayoutManager(mNewGridLayoutManager);
 
-        mRvOld.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(mContext, studyContentOld) {
+        mRvOld.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentOld) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;
@@ -75,11 +80,11 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.getTitle());
+                viewHolder.setText(R.id.tv_tag, data.title);
             }
         });
 
-        mRvNew.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(mContext, studyContentNew) {
+        mRvNew.setAdapter(new DefaultRecycleViewAdapter<StudyContent>(getMContext(), studyContentNew) {
             @Override
             public int getLayoutId(int viewType) {
                 return R.layout.fragment_tag_view;
@@ -87,11 +92,72 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.getTitle());
+                viewHolder.setText(R.id.tv_tag, data.title);
             }
         });
+
+        final ItemTouchHelper helper = new ItemTouchHelper(callback);
+        //将ItemTouchHelper和RecyclerView建立关联
+        helper.attachToRecyclerView(mRvOld);
 
     }
+
+    //    @NonNull
+    private ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
+        @Override
+        public int getMovementFlags(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+//            Vibrator vibrator = (Vibrator) mContext.getSystemService(Service.VIBRATOR_SERVICE);
+//            vibrator.vibrate(70);
+            RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+            int dragFlags;
+            int swipeFlags;
+            if (layoutManager instanceof GridLayoutManager) {
+                dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+            } else {
+                dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+            }
+            swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+            return makeMovementFlags(dragFlags, swipeFlags);
+        }
+
+        @Override
+        public boolean onMove(RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+            if (fromPosition < toPosition) {
+                for (int i = fromPosition; i < toPosition; i++) {
+                    Collections.swap(studyContentOld, i, i + 1);
+                }
+            } else {
+                for (int i = fromPosition; i > toPosition; i--) {
+                    Collections.swap(studyContentOld, i, i - 1);
+                }
+            }
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+            return false;
+        }
+
+        @Override
+        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+
+        @Override
+        public void onSelectedChanged(@NonNull RecyclerView.ViewHolder viewHolder, int actionState) {
+            if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
+                ShapeTextView cardView = (ShapeTextView) viewHolder.itemView;
+                cardView.setBackgroundColor(Color.LTGRAY);
+            }
+            super.onSelectedChanged(viewHolder, actionState);
+        }
+
+        @Override
+        public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+            super.clearView(recyclerView, viewHolder);
+            ShapeTextView cardView = (ShapeTextView) viewHolder.itemView;
+            cardView.setBackgroundColor(Color.WHITE);
+        }
+    };
 
     @Override
     public boolean isShowTitleBar() {

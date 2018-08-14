@@ -22,14 +22,15 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.recyclerview_item_default;
+        return R.layout.rv_item_linear;
     }
 
     @Override
-    public void bindView(ViewHolder viewHolder, final ItemEntity data, int position) {
+    public void bindView(ViewHolder viewHolder, final ItemEntity data, final int position) {
         final ItemEntity studyContent = data;
-        viewHolder.setText(R.id.tv_detail, data.getTitle());
+        viewHolder.setText(R.id.tv_title, data.getTitle());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 if (null != itemClickListener) {
@@ -53,7 +54,7 @@ public class StudyRecycleViewAdapter extends DefaultRecycleViewAdapter<ItemEntit
 //            textView.setBackgroundDrawable(gd);
 //            flexboxLayout.addView(textView, layoutParams);
 //        }
-//        viewHolder.setText(R.id.tv_title, data.getTitle());
+//        viewHolder.setText(R.id.tv_title, data.getMTitle());
 //        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

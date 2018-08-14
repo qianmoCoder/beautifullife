@@ -2,12 +2,11 @@ package com.ddu.icore.navigation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 
-import com.ddu.icore.dialog.ShareDialogFragment;
 import com.ddu.icore.ui.activity.ShowDetailActivity;
 
 /**
@@ -15,6 +14,21 @@ import com.ddu.icore.ui.activity.ShowDetailActivity;
  */
 
 public class Navigator {
+    private static final String ICORE_SCHEME = "icore";
+
+    public static void navigation(Uri uri) {
+        String scheme = uri.getScheme();
+        if (ICORE_SCHEME.equalsIgnoreCase(scheme)) {
+            String host = uri.getHost();
+            if ("6".equalsIgnoreCase(host)) {
+
+            }
+        }
+    }
+
+    public static void navigation(String url) {
+        Uri uri = Uri.parse(url);
+    }
 
     public static void navigation() {
 
@@ -29,9 +43,9 @@ public class Navigator {
         context.startActivity(intent);
     }
 
-    public static void startShareFragmentDialog(@NonNull FragmentActivity activity) {
-        ShareDialogFragment shareDialogFragment = ShareDialogFragment.newInstance();
-        shareDialogFragment.show(activity.getSupportFragmentManager(),"shareDialogFragment");
-    }
+//    public static void startShareFragmentDialog(@NonNull FragmentActivity activity) {
+//        ShareDialogFragmentT shareDialogFragment = ShareDialogFragmentT.newInstance();
+//        shareDialogFragment.show(activity.getSupportFragmentManager(), "shareDialogFragment");
+//    }
 
 }

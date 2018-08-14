@@ -1,0 +1,135 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_language"
+                style="@style/DefaultRelativeLayout"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="语言环境" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_change_skin"
+                style="@style/DefaultRelativeLayout"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="个性换肤" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_global"
+                style="@style/DefaultRelativeLayout"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="通用" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <RelativeLayout
+                style="@style/DefaultRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_left_icon"
+                    android:text="夜间模式"
+                    android:textColor="@color/c_272727"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Switch
+                        android:id="@+id/st_night"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/DefaultRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_night_auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_left_icon"
+                    android:text="自动设置夜间模式"
+                    android:textColor="@color/c_272727"
+                    android:textSize="@dimen/sp_17" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Switch
+                        android:id="@+id/st_night_auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/DefaultLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_version"
+                style="@style/DefaultRelativeLayout"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="当前版本" />
+
+            <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_about_me"
+                style="@style/DefaultRelativeLayout"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="关于我" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

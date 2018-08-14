@@ -12,11 +12,12 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.ProgressWheel;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/12/14.
  */
-
+@IElement("UI")
 public class ProgressWheelFragment extends DefaultFragment {
 
     private ProgressWheel progressWheel;
@@ -37,7 +38,7 @@ public class ProgressWheelFragment extends DefaultFragment {
         buttonAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity)
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getMActivity())
                         .setTitle(R.string.about)
                         .setMessage(R.string.about_text)
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

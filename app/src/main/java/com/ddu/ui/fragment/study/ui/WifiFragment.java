@@ -9,11 +9,12 @@ import android.widget.Button;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/9/1.
  */
-
+@IElement("UI")
 public class WifiFragment extends DefaultFragment {
 
     private Button btnConnect;
@@ -25,7 +26,7 @@ public class WifiFragment extends DefaultFragment {
     @Override
     public void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) getMContext().getSystemService(Context.WIFI_SERVICE);
     }
 
     @Override
