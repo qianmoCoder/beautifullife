@@ -2,13 +2,13 @@ package com.ddu.ui.fragment.person
 
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_person_info.*
 
 /**
  * Created by yzbzz on 16/4/11.
  */
-@Element("UI")
+@IElement("UI")
 class PersonalInfoFragment : DefaultFragment() {
 
 

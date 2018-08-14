@@ -1,9 +1,9 @@
 package com.ddu.help
 
-import com.iannotation.Router
+import com.iannotation.IRouter
 
 /**
  * Created by yzbzz on 2018/4/11.
  */
-@Router
+@IRouter
 class MyProvider

@@ -22,7 +22,7 @@ import com.ddu.icore.rx.activityresult.ActivityResultInfo;
 import com.ddu.icore.rx.activityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.util.ToastUtils;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
@@ -32,7 +32,7 @@ import io.reactivex.functions.Consumer;
 /**
  * Created by yzbzz on 2017/11/14.
  */
-@Element(value = "UI", description = "照相")
+@IElement(value = "UI", description = "照相")
 public class CameraFragment extends DefaultFragment implements View.OnClickListener {
 
     final private static int CAMERA_REQUEST_CODE = 1;

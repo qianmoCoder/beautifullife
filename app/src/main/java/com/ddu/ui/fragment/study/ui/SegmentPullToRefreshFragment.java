@@ -7,12 +7,12 @@ import android.view.View;
 import com.ddu.R;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/5/25.
  */
-@Element("UI")
+@IElement("UI")
 public class SegmentPullToRefreshFragment extends DefaultFragment {
 
     private PullToRefreshScrollView pullToRefreshScrollView;

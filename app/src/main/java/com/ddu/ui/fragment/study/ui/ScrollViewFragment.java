@@ -16,12 +16,12 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.AnimatorUtils;
 import com.ddu.ui.view.CustomerScrollView;
 import com.ddu.ui.view.CustomerView;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/5/26.
  */
-@Element("UI")
+@IElement("UI")
 public class ScrollViewFragment extends DefaultFragment implements CustomerScrollView.ScrollViewListener {
 
     private PullToRefreshScrollView customerScrollView;

@@ -14,12 +14,12 @@ import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.RenderScriptGaussianBlur;
 import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.util.DialogUtils;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by lhz on 16/5/6.
  */
-@Element("UI")
+@IElement("UI")
 public class RenderScriptFragment extends DefaultFragment {
 
     private Button btnShow;

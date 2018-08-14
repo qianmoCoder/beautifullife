@@ -4,12 +4,12 @@ import android.os.Bundle;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/8/4.
  */
-@Element("UI")
+@IElement("UI")
 public class DataBindingFragment extends DefaultFragment {
     @Override
     public int getLayoutId() {

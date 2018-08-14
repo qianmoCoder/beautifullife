@@ -70,7 +70,6 @@ class App : BaseApp() {
     }
 
     private fun initData() {
-
         val studyContentBox = boxStore!!.boxFor(StudyContent::class.java)
         val count = studyContentBox.count()
         if (count <= 0) {

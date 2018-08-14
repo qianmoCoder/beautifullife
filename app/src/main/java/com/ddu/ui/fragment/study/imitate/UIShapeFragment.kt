@@ -12,14 +12,14 @@ import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.FragmentUtils
 import com.ddu.ui.fragment.study.ui.DrawViewFragment
 import com.ddu.ui.fragment.study.ui.ShapeFragment
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui.*
 
 /**
  * Created by yzbzz on 16/4/8.
  */
-@Element("UI")
-class UIFragment : DefaultFragment(), AdapterView.OnItemClickListener {
+@IElement("UI")
+class UIShapeFragment : DefaultFragment(), AdapterView.OnItemClickListener {
 
     private val mLayoutManager: RecyclerView.LayoutManager? = null
 

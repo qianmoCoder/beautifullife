@@ -4,14 +4,14 @@ import android.graphics.BitmapFactory
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ZXingUtils
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_qr_code.*
 import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2018/6/13.
  */
-@Element("UI")
+@IElement("UI")
 class QRFragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {

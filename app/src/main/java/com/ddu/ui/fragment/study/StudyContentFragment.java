@@ -12,14 +12,12 @@ import com.ddu.icore.util.MultiHashMap;
 import com.ddu.ui.adapter.StudyRecycleViewAdapter;
 import com.ddu.ui.fragment.WebFragment;
 import com.ddu.ui.fragment.person.PersonalInfoFragment;
-import com.ddu.ui.fragment.study.imitate.UIFragment;
+import com.ddu.ui.fragment.study.imitate.UIShapeFragment;
 import com.ddu.ui.fragment.study.ui.BottomSheetFragment;
 import com.ddu.ui.fragment.study.ui.CameraFragment;
 import com.ddu.ui.fragment.study.ui.ConstraintLayoutFragment;
 import com.ddu.ui.fragment.study.ui.DRVFragment;
 import com.ddu.ui.fragment.study.ui.DesignFragment;
-import com.ddu.ui.fragment.study.ui.ShowDialogFragment;
-import com.ddu.ui.fragment.study.ui.ShapeInjectFragment;
 import com.ddu.ui.fragment.study.ui.DrawViewFragment;
 import com.ddu.ui.fragment.study.ui.FlexboxFragment;
 import com.ddu.ui.fragment.study.ui.FrameLayoutFragment;
@@ -35,6 +33,8 @@ import com.ddu.ui.fragment.study.ui.ScrollViewFragment;
 import com.ddu.ui.fragment.study.ui.SegmentPullToRefreshFragment;
 import com.ddu.ui.fragment.study.ui.ShapeAdvancedFragment;
 import com.ddu.ui.fragment.study.ui.ShapeFragment;
+import com.ddu.ui.fragment.study.ui.ShapeInjectFragment;
+import com.ddu.ui.fragment.study.ui.ShowDialogFragment;
 import com.ddu.ui.fragment.study.ui.SnackBarFragment;
 import com.ddu.ui.fragment.study.ui.SwipeRefreshFragment;
 import com.ddu.ui.fragment.study.ui.TabPageIndicatorFragment;
@@ -66,7 +66,7 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
         mMaps.put(0, ProgressWheelFragment.class);
         mMaps.put(0, SnackBarFragment.class);
         mMaps.put(0, ShapeAdvancedFragment.class);
-        mMaps.put(0, UIFragment.class);
+        mMaps.put(0, UIShapeFragment.class);
         mMaps.put(0, ConstraintLayoutFragment.class);
         mMaps.put(0, CameraFragment.class);
         mMaps.put(0, PaletteFragment.class);
@@ -163,63 +163,6 @@ public class StudyContentFragment extends AbstractRecycleViewFragment<ItemEntity
     public void initRefreshView() {
         mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.DISABLED);
     }
-
-    //    @NonNull
-//    private ItemTouchHelper.Callback callback = new ItemTouchHelper.Callback() {
-//        @Override
-//        public int getMovementFlags(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-////            Vibrator vibrator = (Vibrator) mContext.getSystemService(Service.VIBRATOR_SERVICE);
-////            vibrator.vibrate(70);
-//            RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-//            int dragFlags;
-//            int swipeFlags;
-//            if (layoutManager instanceof GridLayoutManager) {
-//                dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
-//            } else {
-//                dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-//            }
-//            swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
-//            return makeMovementFlags(dragFlags, swipeFlags);
-//        }
-//
-//        @Override
-//        public boolean onMove(RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//            int fromPosition = viewHolder.getAdapterPosition();
-//            int toPosition = target.getAdapterPosition();
-//            if (fromPosition < toPosition) {
-//                for (int i = fromPosition; i < toPosition; i++) {
-//                    Collections.swap(mItems, i, i + 1);
-//                }
-//            } else {
-//                for (int i = fromPosition; i > toPosition; i--) {
-//                    Collections.swap(mItems, i, i - 1);
-//                }
-//            }
-//            mStudyRecycleViewAdapter.notifyItemMoved(fromPosition, toPosition);
-//            return false;
-//        }
-//
-//        @Override
-//        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-//
-//        }
-//
-//        @Override
-//        public void onSelectedChanged(@NonNull RecyclerView.ViewHolder viewHolder, int actionState) {
-//            if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-//                CardView cardView = (CardView) viewHolder.itemView;
-//                cardView.setCardBackgroundColor(Color.LTGRAY);
-//            }
-//            super.onSelectedChanged(viewHolder, actionState);
-//        }
-//
-//        @Override
-//        public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-//            super.clearView(recyclerView, viewHolder);
-//            CardView cardView = (CardView) viewHolder.itemView;
-//            cardView.setCardBackgroundColor(Color.WHITE);
-//        }
-//    };
 
     @Override
     public void onDestroy() {

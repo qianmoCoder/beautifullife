@@ -23,7 +23,7 @@ import java.util.List;
  * Created by yzbzz on 2017/5/16.
  */
 
-public class StudyTagsFragment extends DefaultFragment {
+public class UIFragment extends DefaultFragment {
 
     private static final int SPAN_COUNT = 4;
 
@@ -36,9 +36,9 @@ public class StudyTagsFragment extends DefaultFragment {
     private RecyclerView mRvOld;
     private RecyclerView mRvNew;
 
-    public static StudyTagsFragment newInstance() {
+    public static UIFragment newInstance() {
         Bundle args = new Bundle();
-        StudyTagsFragment fragment = new StudyTagsFragment();
+        UIFragment fragment = new UIFragment();
         fragment.setArguments(args);
         return fragment;
     }

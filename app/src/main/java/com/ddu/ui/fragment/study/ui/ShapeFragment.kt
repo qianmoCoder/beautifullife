@@ -10,14 +10,14 @@ import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.sys.ViewUtils
 import com.ddu.ui.dialog.ColorPickerDialog
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_shape.*
 import org.jetbrains.anko.backgroundResource
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@Element("UI")
+@IElement("UI")
 class ShapeFragment : DefaultFragment(), RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
 

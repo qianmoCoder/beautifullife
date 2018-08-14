@@ -17,7 +17,7 @@ import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.util.sys.ViewUtils;
 import com.ddu.ui.view.DividerItemDecoration;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by yzbzz on 2017/9/11.
  */
-@Element("UI")
+@IElement("UI")
 public class PaletteFragment extends DefaultFragment implements View.OnClickListener {
 
     private ImageView ivBg;

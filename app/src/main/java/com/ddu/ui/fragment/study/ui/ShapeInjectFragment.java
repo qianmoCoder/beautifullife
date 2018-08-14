@@ -9,12 +9,12 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.help.ShapeInject;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by lhz on 16/5/6.
  */
-@Element("UI")
+@IElement("UI")
 public class ShapeInjectFragment extends DefaultFragment {
 
     @NonNull

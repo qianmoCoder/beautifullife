@@ -5,12 +5,12 @@ import android.support.v7.widget.Toolbar;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 16/5/6.
  */
-@Element("UI")
+@IElement("UI")
 public class ToolBarFragment extends DefaultFragment {
 
     @Override

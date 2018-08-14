@@ -1,10 +1,10 @@
 package com.processors;
 
 import com.google.auto.service.AutoService;
-import com.iannotation.Element;
+import com.iannotation.IElement;
+import com.iannotation.IRouter;
 import com.iannotation.MultiHashMap;
 import com.iannotation.Provider;
-import com.iannotation.Router;
 import com.iannotation.Tuple;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
@@ -57,7 +57,7 @@ public class IProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> types = new LinkedHashSet<>();
-        types.add(Element.class.getCanonicalName());
+        types.add(IElement.class.getCanonicalName());
         return types;
     }
 
@@ -70,8 +70,8 @@ public class IProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
 
-        Set<? extends javax.lang.model.element.Element> urlAnnotations = roundEnvironment.getElementsAnnotatedWith(Element.class);
-        Set<? extends javax.lang.model.element.Element> moduleAnnotations = roundEnvironment.getElementsAnnotatedWith(Router.class);
+        Set<? extends javax.lang.model.element.Element> urlAnnotations = roundEnvironment.getElementsAnnotatedWith(IElement.class);
+        Set<? extends javax.lang.model.element.Element> moduleAnnotations = roundEnvironment.getElementsAnnotatedWith(IRouter.class);
         moduleAnnotationSize += moduleAnnotations.size();
 
         for (javax.lang.model.element.Element element : moduleAnnotations) {
@@ -85,7 +85,7 @@ public class IProcessor extends AbstractProcessor {
 
         if (roundEnvironment.processingOver()) {
             if (moduleAnnotationSize == 0) {
-                printError("You need to add a class that is annotated by @Router to your module!");
+                printError("You need to add a class that is annotated by @IRouter to your module!");
             }
         }
 
@@ -115,7 +115,7 @@ public class IProcessor extends AbstractProcessor {
         for (javax.lang.model.element.Element element : urlAnnotations) {
             TypeElement typeElement = (TypeElement) element;
             ClassName activity = ClassName.get(typeElement);
-            Element elementAnnotation = element.getAnnotation(Element.class);
+            IElement elementAnnotation = element.getAnnotation(IElement.class);
             String value = elementAnnotation.value();
             String description = elementAnnotation.description();
 

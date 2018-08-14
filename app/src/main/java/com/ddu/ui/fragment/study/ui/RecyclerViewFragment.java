@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.ui.adapter.StudyUIRecycleViewAdapter;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by yzbzz on 2017/3/31.
  */
-@Element("UI")
+@IElement("UI")
 public class RecyclerViewFragment extends DefaultFragment {
 
     private RecyclerView recyclerView;

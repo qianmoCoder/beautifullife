@@ -10,5 +10,11 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
-public @interface Router {
+public @interface IRouter {
+
+    String path() default "";
+
+    String text() default "";
+
+    String description() default "";
 }

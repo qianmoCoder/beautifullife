@@ -6,7 +6,7 @@ import android.support.design.widget.AppBarLayout
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_alipay.*
 import kotlinx.android.synthetic.main.include_open.*
 import kotlinx.android.synthetic.main.include_toolbar_close.*
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.include_toolbar_open.*
 /**
  * Created by lhz on 16/5/6.
  */
-@Element("UI")
+@IElement("UI")
 class AliPayFragment : DefaultFragment(), AppBarLayout.OnOffsetChangedListener {
 
     override fun initData(savedInstanceState: Bundle?) {

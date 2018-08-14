@@ -7,13 +7,13 @@ import android.widget.TextView
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.help.ShapeInjectHelper
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_shape_advanced.*
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@Element("UI")
+@IElement("UI")
 class ShapeAdvancedFragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {

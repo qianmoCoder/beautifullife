@@ -12,12 +12,12 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.ui.helper.WuBaBehavior;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by lhz on 16/5/6.
  */
-@Element("UI")
+@IElement("UI")
 public class WuBaFragment extends DefaultFragment {
 
     private RecyclerView recyclerView;

@@ -9,14 +9,14 @@ import com.ddu.ui.activity.phrase.CustomSeparatorActivity
 import com.ddu.ui.activity.phrase.MultiSeparatorActivity
 import com.ddu.ui.activity.phrase.OneSeparatorActivity
 import com.ddu.ui.activity.phrase.TwoSeparatorActivity
-import com.iannotation.Element
+import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_style_phrase.*
 import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@Element("UI")
+@IElement("UI")
 class StylePhraseFragment : DefaultFragment(), View.OnClickListener {
 
 

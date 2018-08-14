@@ -2,12 +2,12 @@ package com.ddu.ui.fragment.study.ui;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/5/19.
  */
-@Element("UI")
+@IElement("UI")
 public class ConstraintLayoutFragment extends DefaultFragment {
 
     @Override

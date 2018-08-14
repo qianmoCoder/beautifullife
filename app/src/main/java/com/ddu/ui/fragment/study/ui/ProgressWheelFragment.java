@@ -12,12 +12,12 @@ import android.widget.TextView;
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.view.ProgressWheel;
-import com.iannotation.Element;
+import com.iannotation.IElement;
 
 /**
  * Created by yzbzz on 2017/12/14.
  */
-@Element("UI")
+@IElement("UI")
 public class ProgressWheelFragment extends DefaultFragment {
 
     private ProgressWheel progressWheel;
