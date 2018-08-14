@@ -2,9 +2,8 @@ package com.processors;
 
 import com.google.auto.service.AutoService;
 import com.iannotation.IElement;
-import com.iannotation.IRouter;
 import com.iannotation.MultiHashMap;
-import com.iannotation.Provider;
+import com.iannotation.IElementProvider;
 import com.iannotation.Tuple;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
@@ -29,6 +28,7 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
@@ -37,14 +37,14 @@ import javax.tools.Diagnostic;
 import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
+import static utils.Consts.NAME_OF_ELEMENT;
+import static utils.Consts.PACKAGE_OF_GENERATE_FILE;
 
 @AutoService(Processor.class)
-public class IProcessor extends AbstractProcessor {
+public class IElementProcessor extends AbstractProcessor {
     private Messager messager;
     private Elements elementUtils;
     private Filer filer;
-
-    private int moduleAnnotationSize = 0;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
@@ -69,31 +69,19 @@ public class IProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-
-        Set<? extends javax.lang.model.element.Element> urlAnnotations = roundEnvironment.getElementsAnnotatedWith(IElement.class);
-        Set<? extends javax.lang.model.element.Element> moduleAnnotations = roundEnvironment.getElementsAnnotatedWith(IRouter.class);
-        moduleAnnotationSize += moduleAnnotations.size();
-
-        for (javax.lang.model.element.Element element : moduleAnnotations) {
-            String packageName = elementUtils.getPackageOf(element).getQualifiedName().toString();
-            try {
-                generateRoutingTable(packageName, element.getSimpleName().toString(), urlAnnotations);
-            } catch (IOException e) {
-                printError(e.getMessage());
+        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(IElement.class);
+        try {
+            if (null != elements && !elements.isEmpty()) {
+                parseRoutes(elements);
             }
-        }
-
-        if (roundEnvironment.processingOver()) {
-            if (moduleAnnotationSize == 0) {
-                printError("You need to add a class that is annotated by @IRouter to your module!");
-            }
+        } catch (IOException e) {
+            printError(e.getMessage());
         }
 
         return true;
     }
 
-    private void generateRoutingTable(String packageName, String className, Set<? extends javax.lang.model.element.Element> urlAnnotations) throws IOException {
-
+    private void parseRoutes(Set<? extends Element> elements) throws IOException {
         TypeName classWithWildcard = ParameterizedTypeName.get(ClassName.get(Class.class),
                 WildcardTypeName.subtypeOf(Object.class));
 
@@ -112,7 +100,7 @@ public class IProcessor extends AbstractProcessor {
 
         CodeBlock.Builder staticBlock = CodeBlock.builder();
 
-        for (javax.lang.model.element.Element element : urlAnnotations) {
+        for (Element element : elements) {
             TypeElement typeElement = (TypeElement) element;
             ClassName activity = ClassName.get(typeElement);
             IElement elementAnnotation = element.getAnnotation(IElement.class);
@@ -133,24 +121,20 @@ public class IProcessor extends AbstractProcessor {
                 .addStatement("return elements.get(url)")
                 .build();
 
-        TypeSpec routerTableProvider = TypeSpec.classBuilder(className + "Provider")
+        TypeSpec routerTableProvider = TypeSpec.classBuilder(NAME_OF_ELEMENT)
                 .addModifiers(PUBLIC, FINAL)
-                .addSuperinterface(ClassName.get(Provider.class))
+                .addSuperinterface(ClassName.get(IElementProvider.class))
                 .addField(routerTable)
                 .addStaticBlock(staticBlock.build())
                 .addMethod(provideMethod)
                 .build();
 
-        JavaFile.builder(packageName, routerTableProvider)
+        JavaFile.builder(PACKAGE_OF_GENERATE_FILE, routerTableProvider)
                 .build()
                 .writeTo(filer);
     }
 
     private void printError(String message) {
         messager.printMessage(Diagnostic.Kind.ERROR, message);
-    }
-
-    private void printWaring(String waring) {
-        messager.printMessage(Diagnostic.Kind.WARNING, waring);
     }
 }

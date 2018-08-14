@@ -8,8 +8,27 @@ import android.support.annotation.NonNull;
 
 public class ItemEntity implements Comparable<ItemEntity> {
 
+    private String path;
+    private String color;
     private String title;
+    private String description;
     private String className;
+
+    public String getPath() {
+        return path == null ? "" : path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getColor() {
+        return color == null ? "" : color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getTitle() {
         return title;
@@ -17,6 +36,14 @@ public class ItemEntity implements Comparable<ItemEntity> {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description == null ? "" : description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getClassName() {

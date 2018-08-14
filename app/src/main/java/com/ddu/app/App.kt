@@ -8,9 +8,10 @@ import android.support.v7.app.AppCompatDelegate
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
-import com.ddu.help.MyProviderProvider
 import com.ddu.icore.common.findPreference
 import com.ddu.receiver.NetInfoBroadcastReceiver
+import com.ddu.routes.ElementProvider
+import com.ddu.routes.RouterProvider
 import com.ddu.util.SystemUtils
 import com.ddu.util.xml.PullParserUtils
 import com.orhanobut.logger.AndroidLogAdapter
@@ -138,6 +139,8 @@ class App : BaseApp() {
         var boxStore: BoxStore? = null
             private set
 
-        var mp = MyProviderProvider()
+        var routerProvider = RouterProvider()
+
+        var elementProvider = ElementProvider()
     }
 }

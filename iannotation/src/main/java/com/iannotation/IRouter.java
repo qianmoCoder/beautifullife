@@ -16,5 +16,7 @@ public @interface IRouter {
 
     String text() default "";
 
+    String color() default "";
+
     String description() default "";
 }
