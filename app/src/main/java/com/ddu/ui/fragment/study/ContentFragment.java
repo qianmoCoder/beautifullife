@@ -1,13 +1,14 @@
 package com.ddu.ui.fragment.study;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import com.ddu.app.App;
 import com.ddu.db.entity.ItemEntity;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.fragment.AbsRVFragment;
-import com.ddu.ui.adapter.UIRecycleViewAdapter;
+import com.ddu.ui.adapter.ContentRVAdapter;
 import com.iannotation.Tuple;
 
 import java.util.ArrayList;
@@ -16,10 +17,12 @@ import java.util.Collections;
 /**
  * Created by yzbzz on 2017/5/16.
  */
-public abstract class ContentFragment extends AbsRVFragment<ItemEntity, UIRecycleViewAdapter> implements UIRecycleViewAdapter.ItemClickListener {
+public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentRVAdapter> implements ContentRVAdapter.ItemClickListener {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+
+        String color = getArguments().getString("bgColor", "");
 
         ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(getUrl());
         for (Tuple<String, Class<?>> key : keys) {
@@ -30,6 +33,7 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, UIRecycl
 
             String title = TextUtils.isEmpty(first) ? second.getSimpleName() : first;
             itemEntity.setTitle(title);
+            itemEntity.setColor(color);
             itemEntity.setClassName(second.getName());
             mDataEntities.add(itemEntity);
         }
@@ -45,8 +49,8 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, UIRecycl
 
 
     @Override
-    public UIRecycleViewAdapter getAdapter() {
-        return new UIRecycleViewAdapter(getMContext(), mDataEntities);
+    public ContentRVAdapter getAdapter() {
+        return new ContentRVAdapter(getMContext(), mDataEntities);
     }
 
     @Override
@@ -64,6 +68,11 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, UIRecycl
         Bundle bundle = new Bundle();
         bundle.putString("title", data.getTitle());
         startFragment(data.getClassName(), bundle);
+    }
+
+    @Override
+    public RecyclerView.ItemDecoration getItemDecoration() {
+        return null;
     }
 
     public abstract String getUrl();

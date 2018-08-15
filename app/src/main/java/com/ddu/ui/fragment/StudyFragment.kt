@@ -29,10 +29,11 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
         super.initView()
         setTitle("学习")
         mAdapter.setItemClickListener(object : Consumer1<RouteMeta> {
-            override fun accept(data: RouteMeta) {
+            override fun accept(t: RouteMeta) {
                 val bundle = Bundle()
-                bundle.putString("title", data.text)
-                startFragment(data.cls.name, bundle)
+                bundle.putString("title", t.text)
+                bundle.putString("bgColor", t.color)
+                startFragment(t.cls.name, bundle)
             }
         })
     }

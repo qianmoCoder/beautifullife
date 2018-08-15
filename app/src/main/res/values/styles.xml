@@ -170,7 +170,7 @@
         <item name="android:divider">@drawable/divider_horizontal_padding_left</item>
         <item name="android:orientation">vertical</item>
         <item name="android:showDividers">middle</item>
-        <item name="android:background">@drawable/default_linear_layout_shape_bg</item>
+        <item name="android:background">@drawable/default_layout_shape_bg</item>
     </style>
 
     <style name="DefaultRelativeLayout">
