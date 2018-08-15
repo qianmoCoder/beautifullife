@@ -65,13 +65,13 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         return this
     }
 
-    fun setBackgroud(viewId: Int, background: Drawable): ViewHolder {
+    fun setBackground(viewId: Int, background: Drawable): ViewHolder {
         val view = getView<View>(viewId)
         view?.background = background
         return this
     }
 
-    fun setBackgroud(viewId: Int, color: Int): ViewHolder {
+    fun setBackground(viewId: Int, color: Int): ViewHolder {
         val view = getView<View>(viewId)
         view?.setBackgroundColor(color)
         return this
