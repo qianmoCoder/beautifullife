@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public abstract class DefaultRVAdapter<T> extends CommonRecycleViewAdapter<T> {
+public abstract class DefaultRVAdapter<T> extends AbsRVAdapter<T> {
 
     public DefaultRVAdapter(Context context, List<T> items) {
         super(context, items);
