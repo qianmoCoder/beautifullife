@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui;
+package com.ddu.ui.fragment.study.customer;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,7 +14,7 @@ import com.iannotation.IElement;
 /**
  * Created by lhz on 16/5/6.
  */
-@IElement("UI")
+@IElement("customer")
 public class ShapeInjectFragment extends DefaultFragment {
 
     @NonNull

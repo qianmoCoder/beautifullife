@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.AnimatorUtils
+import com.ddu.ui.fragment.study.customer.ShapeInjectFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_design.*
 
