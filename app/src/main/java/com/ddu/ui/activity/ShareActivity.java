@@ -128,7 +128,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.frament_alpha_in, R.anim.frament_alpha_out);
+        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
     }
 
     private UMShareListener umShareListener = new UMShareListener() {

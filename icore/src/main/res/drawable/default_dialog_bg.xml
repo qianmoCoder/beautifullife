@@ -4,9 +4,7 @@
     <!-- 填充色 -->
     <solid android:color="@color/c_ffffff" />
 
-    <!-- 描边 -->
-    <stroke
-        android:width="0.5dp"
-        android:color="@color/c_cccccc"/>
+    <!-- 角度 -->
+    <corners android:radius="@dimen/dp_2" />
 
 </shape>

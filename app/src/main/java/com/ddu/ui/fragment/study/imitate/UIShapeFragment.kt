@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_ui.*
 /**
  * Created by yzbzz on 16/4/8.
  */
-@IElement("UI")
+@IElement("HI")
 class UIShapeFragment : DefaultFragment(), AdapterView.OnItemClickListener {
 
     private val mLayoutManager: RecyclerView.LayoutManager? = null

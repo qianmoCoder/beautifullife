@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/pop_floor_more2_1"
-    android:divider="@drawable/divider_default"
+    android:divider="@drawable/default_divider_horizontal"
     android:dividerPadding="@dimen/dp_5"
     android:orientation="vertical"
     android:showDividers="middle">

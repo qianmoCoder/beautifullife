@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui
+package com.ddu.ui.fragment.study.imitate
 
 import android.graphics.Color
 import android.os.Bundle
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.include_toolbar_open.*
 /**
  * Created by lhz on 16/5/6.
  */
-@IElement("UI")
+@IElement("HI")
 class AliPayFragment : DefaultFragment(), AppBarLayout.OnOffsetChangedListener {
 
     override fun initData(savedInstanceState: Bundle?) {

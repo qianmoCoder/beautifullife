@@ -3,7 +3,7 @@
     android:id="@+id/rl_login"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_corners_white_bg"
+    android:background="@drawable/default_dialog_bg"
     android:minHeight="@dimen/dp_202"
     android:minWidth="@dimen/dp_300"
     android:orientation="vertical">

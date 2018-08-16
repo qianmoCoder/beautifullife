@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-        <item name="android:listDivider">@drawable/divider_bg</item>
+        <item name="android:listDivider">@drawable/default_divider_horizontal</item>
         <!--<item name="clockBackground">@android:color/white</item>-->
         <!--<item name="clockTextColor">@android:color/black</item>-->
     </style>
@@ -167,11 +167,11 @@
         <item name="android:layout_marginTop">@dimen/dp_20</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:divider">@drawable/divider_horizontal_padding_left</item>
+        <item name="android:divider">@drawable/default_divider_horizontal</item>
         <item name="android:dividerPadding">@dimen/dp_5</item>
         <item name="android:orientation">vertical</item>
         <item name="android:showDividers">middle</item>
-        <item name="android:background">@drawable/default_layout_shape_bg</item>
+        <item name="android:background">@drawable/default_layout_bg</item>
     </style>
 
     <style name="DefaultRelativeLayout">
