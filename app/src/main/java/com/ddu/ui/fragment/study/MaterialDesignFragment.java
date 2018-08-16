@@ -8,8 +8,4 @@ import com.iannotation.IRouter;
 @IRouter(path = "MD", text = "MD", color = "#34c749", description = "MaterialDesign")
 public class MaterialDesignFragment extends ContentFragment {
 
-    @Override
-    public String getUrl() {
-        return "MD";
-    }
 }

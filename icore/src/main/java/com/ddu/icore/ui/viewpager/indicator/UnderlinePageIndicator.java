@@ -16,7 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.ETCPOwner.yc.R;
+import com.ddu.icore.R;
 
 
 /**

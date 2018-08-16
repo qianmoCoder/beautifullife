@@ -18,7 +18,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-
+import com.ddu.icore.R;
 
 import java.util.ArrayList;
 

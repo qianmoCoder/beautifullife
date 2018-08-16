@@ -167,7 +167,7 @@ public class ShapeInject {
             mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, mNormalStrokeColor);
 
             // radius
-            mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
+            mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_shapeRadius, 0);
 
             mShapeType = a.getInt(R.styleable.ShapeView_shapeType, TYPE_NULL);
             mDirection = a.getInt(R.styleable.ShapeView_direction, DIRECTION_LEFT);

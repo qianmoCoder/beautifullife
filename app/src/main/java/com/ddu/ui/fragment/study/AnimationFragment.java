@@ -8,8 +8,4 @@ import com.iannotation.IRouter;
 @IRouter(path = "AN", text = "动画", color = "#ccff4141", description = "动画学习")
 public class AnimationFragment extends ContentFragment {
 
-    @Override
-    public String getUrl() {
-        return "AN";
-    }
 }

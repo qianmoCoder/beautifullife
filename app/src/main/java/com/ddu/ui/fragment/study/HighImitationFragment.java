@@ -8,8 +8,4 @@ import com.iannotation.IRouter;
 @IRouter(path = "HI", text = "高仿", color = "#e1e8ee",description = "高仿其它应用")
 public class HighImitationFragment extends ContentFragment {
 
-    @Override
-    public String getUrl() {
-        return "HI";
-    }
 }

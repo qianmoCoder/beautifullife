@@ -33,6 +33,7 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
                 val bundle = Bundle()
                 bundle.putString("title", t.text)
                 bundle.putString("bgColor", t.color)
+                bundle.putString("url", t.path)
                 startFragment(t.cls.name, bundle)
             }
         })

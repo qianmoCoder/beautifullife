@@ -151,7 +151,7 @@
         <attr name="pressedBackgroundColor" format="color|reference" />
         <attr name="disableBackgroundColor" format="color|reference" />
 
-        <attr name="radius" format="dimension|reference" />
+        <attr name="shapeRadius" format="dimension|reference" />
 
         <attr name="normalTextColor" format="color|reference" />
         <attr name="pressedTextColor" format="color|reference" />

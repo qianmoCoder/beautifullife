@@ -23,8 +23,12 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentR
     public void initData(Bundle savedInstanceState) {
 
         String color = getArguments().getString("bgColor", "");
+        String url = getArguments().getString("url", "");
+        if (TextUtils.isEmpty(url)) {
+            url = getUrl();
+        }
 
-        ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(getUrl());
+        ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(url);
         for (Tuple<String, Class<?>> key : keys) {
             ItemEntity itemEntity = new ItemEntity();
 
@@ -75,6 +79,8 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentR
         return null;
     }
 
-    public abstract String getUrl();
+    public String getUrl() {
+        return "";
+    }
 
 }

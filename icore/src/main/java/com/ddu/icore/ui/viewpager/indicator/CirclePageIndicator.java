@@ -1,10 +1,3 @@
-/*
- * @项目名称: ETCP停车
- * @文件名称: CirclePageIndicator.java
- * @Copyright: 2016 悦畅科技有限公司. All rights reserved.
- * 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
- */
-
 package com.ddu.icore.ui.viewpager.indicator;
 
 import android.content.Context;
@@ -24,7 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.ETCPOwner.yc.R;
+import com.ddu.icore.R;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.widget.LinearLayout.HORIZONTAL;
