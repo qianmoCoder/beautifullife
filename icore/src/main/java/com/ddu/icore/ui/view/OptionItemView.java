@@ -43,39 +43,39 @@ public class OptionItemView extends RelativeLayout {
 
         init();
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.IOptionItemViewStyle);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OptionItemView);
 
         setImageData(a, ivLeftIcon,
-                R.styleable.IOptionItemViewStyle_i_leftIcon,
-                R.styleable.IOptionItemViewStyle_i_leftIconScaleType,
-                R.styleable.IOptionItemViewStyle_i_leftIconWidth,
-                R.styleable.IOptionItemViewStyle_i_leftIconHeight);
+                R.styleable.OptionItemView_i_leftIcon,
+                R.styleable.OptionItemView_i_leftIconScaleType,
+                R.styleable.OptionItemView_i_leftIconWidth,
+                R.styleable.OptionItemView_i_leftIconHeight);
 
         setTextData(a, tvTitle,
-                R.styleable.IOptionItemViewStyle_i_title,
-                R.styleable.IOptionItemViewStyle_i_titleColor,
-                R.styleable.IOptionItemViewStyle_i_titleSize);
+                R.styleable.OptionItemView_i_title,
+                R.styleable.OptionItemView_i_titleColor,
+                R.styleable.OptionItemView_i_titleSize);
 
         setTextData(a, tvSubTitle,
-                R.styleable.IOptionItemViewStyle_i_subTitle,
-                R.styleable.IOptionItemViewStyle_i_subTitleColor,
-                R.styleable.IOptionItemViewStyle_i_subTitleSize);
+                R.styleable.OptionItemView_i_subTitle,
+                R.styleable.OptionItemView_i_subTitleColor,
+                R.styleable.OptionItemView_i_subTitleSize);
 
         setTextData(a, tvContent,
-                R.styleable.IOptionItemViewStyle_i_content,
-                R.styleable.IOptionItemViewStyle_i_contentColor,
-                R.styleable.IOptionItemViewStyle_i_contentSize);
+                R.styleable.OptionItemView_i_content,
+                R.styleable.OptionItemView_i_contentColor,
+                R.styleable.OptionItemView_i_contentSize);
 
         setTextData(a, tvRightText,
-                R.styleable.IOptionItemViewStyle_i_rightText,
-                R.styleable.IOptionItemViewStyle_i_rightTextColor,
-                R.styleable.IOptionItemViewStyle_i_rightTextSize);
+                R.styleable.OptionItemView_i_rightText,
+                R.styleable.OptionItemView_i_rightTextColor,
+                R.styleable.OptionItemView_i_rightTextSize);
 
         setImageData(a, ivRightIcon,
-                R.styleable.IOptionItemViewStyle_i_rightIcon,
-                R.styleable.IOptionItemViewStyle_i_rightIconScaleType,
-                R.styleable.IOptionItemViewStyle_i_rightIconWidth,
-                R.styleable.IOptionItemViewStyle_i_rightIconHeight);
+                R.styleable.OptionItemView_i_rightIcon,
+                R.styleable.OptionItemView_i_rightIconScaleType,
+                R.styleable.OptionItemView_i_rightIconWidth,
+                R.styleable.OptionItemView_i_rightIconHeight);
 
         a.recycle();
     }

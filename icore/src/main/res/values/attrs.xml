@@ -33,7 +33,7 @@
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="IOptionItemViewStyle">
+    <declare-styleable name="OptionItemView">
         <attr name="i_leftIcon" format="reference" />
         <attr name="i_leftIconWidth" format="dimension|reference" />
         <attr name="i_leftIconHeight" format="dimension|reference" />

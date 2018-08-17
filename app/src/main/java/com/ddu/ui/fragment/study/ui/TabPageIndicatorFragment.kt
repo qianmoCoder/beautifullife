@@ -9,6 +9,7 @@ import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_tpi.*
+import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by lhz on 16/5/6.
@@ -26,8 +27,9 @@ class TabPageIndicatorFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        vp_tpi.adapter = SampleFragmentPagerAdapter(fragmentManager, mContext)
-        tpi.setViewPager(vp_tpi)
+        vp_tpi.adapter = SampleFragmentPagerAdapter(fragmentManager, ctx)
+//        lpi_home_card_view.setViewPager(vp_tpi)
+        linepage.setViewPager(vp_tpi)
     }
 
     inner class SampleFragmentPagerAdapter(fm: FragmentManager?, private val context: Context) : FragmentPagerAdapter(fm) {
