@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui;
+package com.ddu.ui.fragment.study.material;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +16,7 @@ import com.iannotation.IElement;
 /**
  * Created by yzbzz on 16/4/14.
  */
-@IElement("UI")
+@IElement("MD")
 public class SnackBarFragment extends DefaultFragment {
 
     private LinearLayout mLlSnackBar;

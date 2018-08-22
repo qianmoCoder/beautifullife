@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.ddu.icore.R
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.activity.ShowDetailActivity
-import com.ddu.icore.ui.view.TitleBar
+import com.ddu.icore.ui.widget.TitleBar
 import com.ddu.icore.util.FragmentUtils
 
 abstract class DefaultFragment : BaseFragment() {

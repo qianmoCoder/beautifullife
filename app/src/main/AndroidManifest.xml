@@ -28,9 +28,9 @@
             android:value="${BUILD_TYPE_VALUE}" />
 
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.LogoActivity"
             android:configChanges="orientation"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".icore.ui.activity.ShowDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -130,10 +134,10 @@
             android:label="@string/title_activity_scrolling2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".ui.activity.phrase.OneSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.OneSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity" />
     </application>
 
 </manifest>

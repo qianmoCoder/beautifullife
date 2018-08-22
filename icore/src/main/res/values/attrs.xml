@@ -145,7 +145,7 @@
         <attr name="spaceOffset" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="ShapeView">
+    <declare-styleable name="ShapeInject">
 
         <attr name="normalBackgroundColor" format="color|reference" />
         <attr name="pressedBackgroundColor" format="color|reference" />

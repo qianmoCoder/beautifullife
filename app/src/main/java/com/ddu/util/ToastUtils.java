@@ -22,7 +22,7 @@ public class ToastUtils {
     private TextView mTextView;
 
     private ToastUtils() {
-        mContext = BaseApp.Companion.getContext();
+        mContext = BaseApp.Companion.getContext().getApplicationContext();
         mLayoutInflater = LayoutInflater.from(mContext);
         initToast();
         initView();

@@ -1,4 +1,4 @@
-package com.ddu.icore.ui.view;
+package com.ddu.icore.ui.widget;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;

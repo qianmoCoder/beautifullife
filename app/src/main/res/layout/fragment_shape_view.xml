@@ -153,7 +153,7 @@
             app:normalStrokeColor="@color/c_ff00ff"
             app:normalStrokeWidth="0.5dp"
             app:pressedStrokeColor="@color/c_00ff00"
-            app:radius="@dimen/dp_10" />
+            app:shapeRadius="@dimen/dp_10" />
 
         <TextView
             android:id="@+id/tv_radius_code"
@@ -183,7 +183,7 @@
             app:normalStrokeColor="@color/c_000000"
             app:normalStrokeWidth="0.5dp"
             app:pressedStrokeColor="@color/c_00ffff"
-            app:radius="@dimen/dp_5"
+            app:shapeRadius="@dimen/dp_5"
             app:strokeDashGap="5dp"
             app:strokeDashWidth="5dp" />
 
@@ -220,7 +220,7 @@
             app:pressedBackgroundColor="@color/c_4897fa"
             app:pressedStrokeColor="@color/c_ff4141"
             app:pressedTextColor="@color/c_fdbc40"
-            app:radius="@dimen/dp_5" />
+            app:shapeRadius="@dimen/dp_5" />
 
         <LinearLayout
             android:id="@+id/ll_all_code"

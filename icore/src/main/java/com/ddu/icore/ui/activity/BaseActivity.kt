@@ -15,7 +15,7 @@ import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.navigation.Navigator
-import com.ddu.icore.ui.view.TitleBar
+import com.ddu.icore.ui.widget.TitleBar
 import org.jetbrains.anko.find
 
 abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
