@@ -20,7 +20,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             view = itemView.find(viewId)
             mViews.append(viewId, view)
         }
-        return view as T?
+        return view as? T
     }
 
     fun setText(viewId: Int, text: String): ViewHolder {

@@ -9,10 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.net.Uri;
 import android.os.Environment;
-import android.os.PowerManager;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -22,10 +20,8 @@ import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextUtils;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebStorage;
@@ -379,5 +375,13 @@ public class AndroidUtils {
         winParams.rotationAnimation = rotationAnimation;
         win.setAttributes(winParams);
     }
+
+
+//    private fun intentToSms(tel: String, msg: String) {
+//        val uri = Uri.parse("smsto:" + tel)
+//        val intent = Intent(Intent.ACTION_SENDTO, uri)
+//        intent.putExtra("sms_body", msg)
+//        startActivity(intent)
+//    }
 
 }

@@ -23,7 +23,7 @@ object Versions {
 
     val lifecycleVersion = "1.1.1"
 
-    val objectboxVersion = "1.4.0"
+    val objectboxVersion = "2.1.0"
 
     val retrofit2Version = "2.4.0"
 }

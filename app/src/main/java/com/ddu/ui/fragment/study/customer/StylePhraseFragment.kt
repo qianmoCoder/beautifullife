@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui
+package com.ddu.ui.fragment.study.customer
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,11 +12,12 @@ import com.ddu.ui.activity.phrase.TwoSeparatorActivity
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_style_phrase.*
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Created by yzbzz on 16/4/14.
  */
-@IElement("UI")
+@IElement("customer")
 class StylePhraseFragment : DefaultFragment(), View.OnClickListener {
 
 
@@ -38,7 +39,7 @@ class StylePhraseFragment : DefaultFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_one -> {
-                startActivity(Intent(ctx, OneSeparatorActivity::class.java))
+                startActivity<OneSeparatorActivity>()
             }
             R.id.btn_two -> {
                 startActivity(Intent(ctx, TwoSeparatorActivity::class.java))
