@@ -58,12 +58,13 @@ class IncomeTaxFragment : DefaultFragment() {
         val insurance = calculatorMoney * 8 / 100 + (calculatorMoney * 2 / 100 + 3)
         val providentFund = (calculatorMoney * 12 / 100).parseDecimals()
         val tax = getCalculatorTax(money - insurance - providentFund)
+        val tax1 = getOldCalculatorTax(money - insurance - providentFund)
 
         tv_total_money.text = money.formatMoney()
         tv_insurance.text = insurance.formatMoney()
         tv_providentFund.text = providentFund.formatMoney()
         tv_total_tax_before_deduction.text = (insurance + providentFund).formatMoney()
-        tv_tax.text = tax.formatMoney()
+        tv_tax.text = "${tax.formatMoney()}(old${tax1.formatMoney()})"
         tv_total_deduction.text = (insurance + providentFund + tax).formatMoney()
         tv_money.text = (money - insurance - providentFund - tax).formatMoney()
 
@@ -94,12 +95,12 @@ class IncomeTaxFragment : DefaultFragment() {
 
     /**
      * 3000 3% 0
-     * 3000~12000 10% 105
-     * 12000~25000 20% 555
-     * 25000~35000 25% 1005 20
-     * 35000~55000 30% 2755
-     * 55000~80000 35% 5505
-     * 80000 45% 13505
+     * 3000~12000 10% 210
+     * 12000~25000 20% 1410
+     * 25000~35000 25% 2660
+     * 35000~55000 30% 4410
+     * 55000~80000 35% 7160
+     * 80000 45% 15160
      *
      * @param money
      */
@@ -107,13 +108,38 @@ class IncomeTaxFragment : DefaultFragment() {
         val result = money - lineMoney
         return when {
             result < 3000 -> result * 3 / 100 - 0
-            result < 12000 -> result * 10 / 100 - 105
-            result < 25000 -> result * 20 / 100 - 555
+            result < 12000 -> result * 10 / 100 - 210
+            result < 25000 -> result * 20 / 100 - 1410
+            result < 35000 -> result * 25 / 100 - 2660
+            result < 55000 -> result * 30 / 100 - 4410
+            result < 80000 -> result * 35 / 100 - 7160
+            else -> money * 45 / 100 - 15160
+        }
+    }
+
+    /**
+     * 1500 3% 0
+     * 1500~4500 10% 105
+     * 4500~9000 20% 555
+     * 9000~35000 25% 1005
+     * 35000~55000 30% 2755
+     * 55000~80000 35% 5505
+     * 80000 45% 13505
+     *
+     * @param money
+     */
+    private fun getOldCalculatorTax(money: Double): Double {
+        val result = money - 3500
+        return when {
+            result < 1500 -> result * 3 / 100 - 0
+            result < 4500 -> result * 10 / 100 - 105
+            result < 9000 -> result * 20 / 100 - 555
             result < 35000 -> result * 25 / 100 - 1005
             result < 55000 -> result * 30 / 100 - 2755
             result < 80000 -> result * 35 / 100 - 5505
             else -> money * 45 / 100 - 13505
         }
     }
+
 
 }
