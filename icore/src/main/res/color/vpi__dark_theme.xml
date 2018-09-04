@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ @项目名称: ETCP停车
-  ~ @文件名称: vpi__dark_theme.xml
-  ~ @Copyright: 2016 悦畅科技有限公司. All rights reserved.
-  ~ 注意：本内容仅限于悦畅科技有限公司内部传阅，禁止外泄以及用于其他的商业目的
-  -->
-
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false" android:color="@color/vpi__bright_foreground_disabled_holo_dark"/>
     <item android:state_window_focused="false" android:color="@color/vpi__bright_foreground_holo_dark"/>

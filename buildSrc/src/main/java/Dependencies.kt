@@ -52,8 +52,9 @@ object Dependencies {
     val glide = "com.github.bumptech.glide:glide:4.5.0"
     val glide_compiler = "com.github.bumptech.glide:compiler:4.5.0"
 
-    val okhttp3 = "com.squareup.okhttp3:okhttp:3.10.0"
-    val okio = "com.squareup.okio:okio:1.14.0"
+    val okhttp3 = "com.squareup.okhttp3:okhttp:3.11.0"
+    val okhttp3Logging = "com.squareup.okhttp3:logging-interceptor:3.11.0"
+    val okio = "com.squareup.okio:okio:2.0.0"
 
     val retrofit2 = "com.squareup.retrofit2:retrofit:$retrofit2Version"
     val retrofit2_converter_gson = "com.squareup.retrofit2:converter-gson:$retrofit2Version"
@@ -89,8 +90,8 @@ object CommonDependencies {
     val gson = "com.google.code.gson:gson:2.8.3"
     val fastjson_android = "com.alibaba:fastjson:1.1.68.android"
 
-    val rxJava = "io.reactivex.rxjava2:rxjava:2.1.13"
-    val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.0.2"
+    val rxJava = "io.reactivex.rxjava2:rxjava:2.2.1"
+    val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
     val androidKtx = "androidx.core:core-ktx:0.3"
 
     val lifecycle = "android.arch.lifecycle:compiler:$lifecycleVersion"
