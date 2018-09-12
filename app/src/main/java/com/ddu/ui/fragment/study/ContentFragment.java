@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import com.ddu.app.App;
 import com.ddu.db.entity.ItemEntity;
-import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.ddu.ui.adapter.ContentRVAdapter;
 import com.iannotation.Tuple;
@@ -55,11 +54,6 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentR
     @Override
     public ContentRVAdapter getAdapter() {
         return new ContentRVAdapter(getMContext(), mDataEntities);
-    }
-
-    @Override
-    public void initRefreshView() {
-        mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.DISABLED);
     }
 
     @Override

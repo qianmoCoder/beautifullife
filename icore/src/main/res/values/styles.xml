@@ -138,6 +138,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:layout_marginLeft">@dimen/dp_5</item>
     </style>
+
     <!-- OptionItemView End -->
 
 </resources>

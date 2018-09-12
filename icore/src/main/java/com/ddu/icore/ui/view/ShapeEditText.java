@@ -15,7 +15,7 @@ public class ShapeEditText extends AppCompatEditText {
     }
 
     public ShapeEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.editTextStyle);
+        this(context, attrs, android.R.attr.editTextStyle);
     }
 
     public ShapeEditText(Context context, AttributeSet attrs, int defStyleAttr) {

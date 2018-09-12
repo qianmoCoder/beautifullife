@@ -518,5 +518,10 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/c_ffffff</item>
+        <item name="android:maxHeight">@dimen/dp_3</item>
+        <item name="android:maxWidth">@dimen/dp_3</item>
+    </style>
 
 </resources>

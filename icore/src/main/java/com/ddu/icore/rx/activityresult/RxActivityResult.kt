@@ -17,7 +17,7 @@ class RxActivityResult private constructor(activity: Activity) {
     }
 
     private fun getRxActivityResultFragment(activity: Activity): RxActivityResultFragment {
-        var rxActivityResultFragmentFragment: RxActivityResultFragment = findRxPermissionsFragment(activity)
+        var rxActivityResultFragmentFragment: RxActivityResultFragment = findRxFragment(activity)
         val isNewInstance = rxActivityResultFragmentFragment == null
         if (isNewInstance) {
             rxActivityResultFragmentFragment = RxActivityResultFragment()
@@ -31,7 +31,7 @@ class RxActivityResult private constructor(activity: Activity) {
         return rxActivityResultFragmentFragment
     }
 
-    private fun findRxPermissionsFragment(activity: Activity): RxActivityResultFragment {
+    private fun findRxFragment(activity: Activity): RxActivityResultFragment {
         return activity.fragmentManager.findFragmentByTag(TAG) as RxActivityResultFragment
     }
 

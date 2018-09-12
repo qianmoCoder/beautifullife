@@ -1,5 +1,6 @@
 package com.processors;
 
+import com.google.auto.common.SuperficialValidation;
 import com.google.auto.service.AutoService;
 import com.iannotation.IRouter;
 import com.iannotation.IRouterProvider;
@@ -94,7 +95,10 @@ public class IRouterProcessor extends AbstractProcessor {
 
         CodeBlock.Builder staticBlock = CodeBlock.builder();
 
-        for (javax.lang.model.element.Element element : routerElements) {
+        for (Element element : routerElements) {
+            if (!SuperficialValidation.validateElement(element)) {
+                continue;
+            }
             TypeElement typeElement = (TypeElement) element;
             ClassName activity = ClassName.get(typeElement);
             IRouter elementAnnotation = element.getAnnotation(IRouter.class);

@@ -124,6 +124,15 @@ dependencies {
     implementation Dependencies.okhttp3Logging
     implementation Dependencies.okio
 
+    implementation Dependencies.aspectjrt
+
+    implementation Dependencies.support_cardview
+    implementation Dependencies.support_palette
+
+    CommonDependencies.commonDependencies.forEach {
+        k -> implementation k
+    }
+
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'

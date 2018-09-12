@@ -58,7 +58,7 @@ public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends Defau
         mItemDecoration = getItemDecoration();
 
         if (null != mItemDecoration) {
-            mRvDefault.addItemDecoration(getItemDecoration());
+            mRvDefault.addItemDecoration(mItemDecoration);
         }
 
         mAdapter = getAdapter();
@@ -69,6 +69,7 @@ public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends Defau
     }
 
     public void initRefreshView() {
+        mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.DISABLED);
     }
 
 

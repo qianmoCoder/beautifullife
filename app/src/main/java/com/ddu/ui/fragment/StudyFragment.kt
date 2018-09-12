@@ -2,7 +2,6 @@ package com.ddu.ui.fragment
 
 import android.os.Bundle
 import com.ddu.icore.callback.Consumer1
-import com.ddu.icore.refresh.PullToRefreshBase
 import com.ddu.icore.ui.fragment.AbsRVFragment
 import com.ddu.routes.RouterProvider
 import com.ddu.ui.adapter.StudyRVAdapter
@@ -50,10 +49,5 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
     override fun getAdapter(): StudyRVAdapter {
         return StudyRVAdapter(ctx, mDataEntities)
     }
-
-    override fun initRefreshView() {
-        mPullToRefreshScrollView.mode = PullToRefreshBase.Mode.DISABLED
-    }
-
 
 }

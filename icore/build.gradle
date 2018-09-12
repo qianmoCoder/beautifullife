@@ -39,10 +39,7 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    CommonDependencies.api_dependencies.forEach {
-        k -> api k
-    }
-    CommonDependencies.kapt_dependencies.forEach {
-        k -> kapt k
+    CommonDependencies.commonDependencies.forEach {
+        k -> compileOnly k
     }
 }

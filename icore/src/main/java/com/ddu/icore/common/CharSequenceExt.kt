@@ -22,7 +22,7 @@ fun String.md5(): String {
     return sb.toString().toUpperCase()
 }
 
-fun String?.parseColor(@ColorInt defaultColor: Int = Color.BLUE): Int {
+fun String.parseColor(@ColorInt defaultColor: Int = Color.BLUE): Int {
     return try {
         Color.parseColor(this)
     } catch (e: Exception) {
