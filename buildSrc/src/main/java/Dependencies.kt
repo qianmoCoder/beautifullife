@@ -8,6 +8,7 @@ import Versions.supportLibraryVersion
  * Created by yzbzz on 2018/6/4.
  */
 object Versions {
+    var gradle_version = "3.2.0-beta02"
     val kotlin_version = "1.2.50"
     val anko_version = "0.10.5"
 

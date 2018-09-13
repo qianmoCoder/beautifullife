@@ -42,4 +42,5 @@ dependencies {
     CommonDependencies.commonDependencies.forEach {
         k -> compileOnly k
     }
+//    kapt "com.android.databinding:compiler:$Versions.gradle_version"
 }
