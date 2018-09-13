@@ -6,21 +6,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.ddu.R;
-import com.ddu.db.entity.ItemEntity;
+import com.ddu.icore.callback.Consumer1;
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.help.ShapeInject;
 import com.ddu.ui.helper.ItemTouchHelperAdapter;
+import com.iannotation.model.RouteMeta;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ContentRVAdapter extends DefaultRVAdapter<ItemEntity> implements ItemTouchHelperAdapter {
+public class ContentRVAdapter extends DefaultRVAdapter<RouteMeta> implements ItemTouchHelperAdapter {
 
-    private ItemClickListener itemClickListener;
+    private Consumer1<RouteMeta> itemClickListener;
     private int radius;
 
-    public ContentRVAdapter(Context context, List<ItemEntity> items) {
+    public ContentRVAdapter(Context context, List<RouteMeta> items) {
         super(context, items);
         radius = context.getResources().getDimensionPixelSize(R.dimen.dp_5);
     }
@@ -31,7 +32,7 @@ public class ContentRVAdapter extends DefaultRVAdapter<ItemEntity> implements It
     }
 
     @Override
-    public void bindView(ViewHolder viewHolder, final ItemEntity data, final int position) {
+    public void bindView(ViewHolder viewHolder, final RouteMeta data, final int position) {
         LinearLayout llContent = (LinearLayout) viewHolder.itemView;
 
         ShapeInject.inject(llContent)
@@ -39,13 +40,13 @@ public class ContentRVAdapter extends DefaultRVAdapter<ItemEntity> implements It
                 .setBackgroundColor(getColor(data.getColor()))
                 .background();
 
-        viewHolder.setText(R.id.tv_title, data.getTitle());
+        viewHolder.setText(R.id.tv_title, data.getText());
         llContent.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (null != itemClickListener) {
-                    itemClickListener.onItemClick(data);
+                    itemClickListener.accept(data);
                 }
             }
         });
@@ -74,15 +75,8 @@ public class ContentRVAdapter extends DefaultRVAdapter<ItemEntity> implements It
         notifyItemRemoved(position);
     }
 
-    public interface ItemClickListener {
-        void onItemClick(ItemEntity data);
-    }
 
-    public ItemClickListener getItemClickListener() {
-        return itemClickListener;
-    }
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener(Consumer1<RouteMeta> itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 }

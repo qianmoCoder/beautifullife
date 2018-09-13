@@ -5,10 +5,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import com.ddu.app.App;
-import com.ddu.db.entity.ItemEntity;
+import com.ddu.icore.callback.Consumer1;
 import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.ddu.ui.adapter.ContentRVAdapter;
 import com.iannotation.Tuple;
+import com.iannotation.model.RouteMeta;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +17,7 @@ import java.util.Collections;
 /**
  * Created by yzbzz on 2017/5/16.
  */
-public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentRVAdapter> implements ContentRVAdapter.ItemClickListener {
+public abstract class ContentFragment extends AbsRVFragment<RouteMeta, ContentRVAdapter> implements Consumer1<RouteMeta> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -29,16 +30,13 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentR
 
         ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(url);
         for (Tuple<String, Class<?>> key : keys) {
-            ItemEntity itemEntity = new ItemEntity();
-
             String first = key.first;
             Class<?> second = key.second;
 
             String title = TextUtils.isEmpty(first) ? second.getSimpleName() : first;
-            itemEntity.setTitle(title);
-            itemEntity.setColor(color);
-            itemEntity.setClassName(second.getName());
-            mDataEntities.add(itemEntity);
+
+            RouteMeta routeMeta = RouteMeta.build("", title, color, "", second);
+            mDataEntities.add(routeMeta);
         }
         Collections.sort(mDataEntities);
     }
@@ -62,9 +60,9 @@ public abstract class ContentFragment extends AbsRVFragment<ItemEntity, ContentR
     }
 
     @Override
-    public void onItemClick(ItemEntity data) {
+    public void accept(RouteMeta data) {
         Bundle bundle = new Bundle();
-        bundle.putString("title", data.getTitle());
+        bundle.putString("title", data.getText());
         startFragment(data.getClassName(), bundle);
     }
 

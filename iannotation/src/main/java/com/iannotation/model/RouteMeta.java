@@ -6,30 +6,32 @@ package com.iannotation.model;
 public class RouteMeta implements Comparable<RouteMeta> {
 
     private String path;
+
     private String text;
     private String color;
+
     private String description;
+
     private Class<?> cls;
+    private String className;
 
-    public RouteMeta() {
-
-    }
-
-    public RouteMeta(RouteMeta meta) {
+    private RouteMeta(RouteMeta meta) {
         this.path = meta.path;
         this.text = meta.text;
         this.color = meta.color;
         this.description = meta.description;
         this.cls = meta.cls;
+        this.className = cls.getName();
     }
 
 
-    public RouteMeta(String path, String text, String color, String description, Class<?> cls) {
+    private RouteMeta(String path, String text, String color, String description, Class<?> cls) {
         this.path = path;
         this.text = text;
         this.color = color;
         this.description = description;
         this.cls = cls;
+        this.className = cls.getName();
     }
 
     public static RouteMeta build(RouteMeta routeMeta) {
@@ -78,6 +80,14 @@ public class RouteMeta implements Comparable<RouteMeta> {
 
     public void setCls(Class<?> cls) {
         this.cls = cls;
+    }
+
+    public String getClassName() {
+        return className == null ? "" : className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     @Override
