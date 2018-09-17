@@ -1,5 +1,5 @@
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:mm="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/c_ecedf1">
@@ -72,28 +72,32 @@
             android:gravity="center">
 
             <com.ddu.icore.ui.view.OptionItemView
-                android:id="@+id/oiv_address"
+                android:id="@+id/oiv_buddha"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="佛说" />
+                app:i_leftText="佛"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="佛说" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_friend_link"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="友链" />
+                app:i_leftText="友"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="友链" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_plan"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="计划" />
+                app:i_leftText="计"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="计划" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_fav"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="收藏" />
+                app:i_leftText="收"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="收藏" />
 
         </LinearLayout>
 
@@ -106,14 +110,16 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_eggs"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="彩蛋" />
+                app:i_leftText="彩"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="彩蛋" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_setting"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="设置" />
+                app:i_leftText="设"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="设置" />
 
         </LinearLayout>
 
@@ -126,26 +132,26 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_phone_info"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="手机信息" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="手机信息" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_notification"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="发送通知" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="发送通知" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_show_dialog"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="显示弹框" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="显示弹框" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_show_bottom_dialog"
                 style="@style/DefaultRelativeLayout"
-                mm:i_rightIcon="@drawable/right_arrow_gray"
-                mm:i_title="底部弹框" />
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="底部弹框" />
         </LinearLayout>
 
         <Space

@@ -34,7 +34,12 @@
     </declare-styleable>
 
     <declare-styleable name="OptionItemView">
+        <attr name="i_leftText" format="string|reference" />
+        <attr name="i_leftTextSize" format="dimension|reference" />
+        <attr name="i_leftTextColor" format="color|reference" />
+
         <attr name="i_leftIcon" format="reference" />
+        <attr name="i_leftIcon_tint" format="color|reference" />
         <attr name="i_leftIconWidth" format="dimension|reference" />
         <attr name="i_leftIconHeight" format="dimension|reference" />
         <attr name="i_leftIconScaleType" format="enum">
@@ -65,6 +70,7 @@
         <attr name="i_rightTextColor" format="color|reference" />
 
         <attr name="i_rightIcon" format="reference" />
+        <attr name="i_rightIcon_tint" format="color|reference" />
         <attr name="i_rightIconWidth" format="dimension|reference" />
         <attr name="i_rightIconHeight" format="dimension|reference" />
         <attr name="i_rightIconScaleType" format="enum">

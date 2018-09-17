@@ -179,7 +179,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:divider">@drawable/default_divider_horizontal</item>
-        <item name="android:dividerPadding">@dimen/dp_5</item>
+        <item name="android:dividerPadding">@dimen/dp_15</item>
         <item name="android:orientation">vertical</item>
         <item name="android:showDividers">middle</item>
         <item name="android:background">@drawable/default_layout_bg</item>

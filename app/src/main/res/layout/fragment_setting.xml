@@ -46,7 +46,8 @@
             <RelativeLayout
                 style="@style/DefaultRelativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10">
 
                 <TextView
                     android:id="@+id/tv_night"
@@ -79,7 +80,8 @@
             <RelativeLayout
                 style="@style/DefaultRelativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10">
 
                 <TextView
                     android:id="@+id/tv_night_auto"

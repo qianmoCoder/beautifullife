@@ -8,9 +8,7 @@ import com.iannotation.model.RouteMeta
  */
 class ContentItem(itemEntity: RouteMeta) : DBRVAdapter.IItem {
 
-    init {
-        var colorString = itemEntity.color
-    }
+    var colorString = itemEntity.color
 
     override fun getType(): Int = -1
 

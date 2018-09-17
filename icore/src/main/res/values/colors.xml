@@ -6,18 +6,28 @@
 
     <color name="c_000000">#000000</color>
     <color name="c_a0000000">#a0000000</color>
+    <color name="c_b2000000">#b2000000</color>
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
     <color name="c_e0000000">#e0000000</color>
 
     <color name="c_ff0000">#ff0000</color>
+    <color name="c_b2ff0000">#b2ff0000</color>
+
     <color name="c_00ff00">#00ff00</color>
+    <color name="c_b200ff00">#b200ff00</color>
+
     <color name="c_0000ff">#0000ff</color>
+    <color name="c_b20000ff">#b20000ff</color>
 
     <color name="c_ffff00">#ffff00</color>
+    <color name="c_b2ffff00">#b2ffff00</color>
+
     <color name="c_ff00ff">#ff00ff</color>
+    <color name="c_b2ff00ff">#b2ff00ff</color>
 
     <color name="c_00ffff">#00ffff</color>
+    <color name="c_b200ffff">#b200ffff</color>
 
     <color name="c_17a6f4">#17a6f4</color>
     <color name="c_272727">#272727</color>
