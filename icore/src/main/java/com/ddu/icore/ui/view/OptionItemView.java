@@ -155,6 +155,10 @@ public class OptionItemView extends RelativeLayout {
         enableLeftText(ShapeInject.TYPE_ROUND, color, 0);
     }
 
+    public void enableLeftText(int shapeType, @ColorInt int color) {
+        enableLeftText(shapeType, color, 0);
+    }
+
     public void enableLeftText(int shapeType, @ColorInt int color, int index) {
         CharSequence titleText = tvTitle.getText();
         if (titleText.length() > index) {
@@ -167,14 +171,6 @@ public class OptionItemView extends RelativeLayout {
         }
     }
 
-    public void setLeftText(int resId) {
-        setText(tvLeftText, resId);
-    }
-
-    public void setLeftText(CharSequence text) {
-        setText(tvLeftText, text);
-    }
-
     public void setLefText(int shapeType, @ColorInt int color) {
         CharSequence leftText = tvLeftText.getText();
         if (leftText.length() > 0) {
@@ -183,6 +179,29 @@ public class OptionItemView extends RelativeLayout {
                     .setBackgroundColor(color)
                     .background();
         }
+    }
+
+//    public void setLefText(int shapeType, @ColorInt int color, CharSequence text) {
+//        if (!TextUtils.isEmpty(text)) {
+//            setText(tvTitle, text);
+//        }
+//        CharSequence titleText = tvTitle.getText();
+//        if (titleText.length() > index) {
+//            char firstText = titleText.charAt(index);
+//            setLeftText(String.valueOf(firstText));
+//            ShapeInject.inject(tvLeftText)
+//                    .setShapeType(shapeType)
+//                    .setBackgroundColor(color)
+//                    .background();
+//        }
+//    }
+
+    public void setLeftText(int resId) {
+        setText(tvLeftText, resId);
+    }
+
+    public void setLeftText(CharSequence text) {
+        setText(tvLeftText, text);
     }
 
     public void setLeftIcon(Drawable drawable) {

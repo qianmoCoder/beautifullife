@@ -33,7 +33,18 @@ public class SystemUtils {
         if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
             context.startActivity(intent);
         }
+
+
     }
+
+    private static void checkActivity(Context context, Class<?> cls) {
+        Intent sendIntent = new Intent(context, cls);
+        // 这种方式判断是否存在
+        if (sendIntent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(sendIntent);
+        }
+    }
+
 
     // 跳转到应用市场
     public static void gotoMarket(Context context) {
