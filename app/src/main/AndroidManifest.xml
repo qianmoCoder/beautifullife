@@ -127,11 +127,9 @@
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
         <activity
             android:name=".ui.activity.ScrollingActivity3"
-            android:label="@string/title_activity_scrolling3"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.ScrollingActivity2"
-            android:label="@string/title_activity_scrolling2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".ui.activity.phrase.OneSeparatorActivity" />

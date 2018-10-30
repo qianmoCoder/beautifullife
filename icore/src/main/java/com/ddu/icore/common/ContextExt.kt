@@ -17,7 +17,6 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.edit
 import com.ddu.icore.ui.activity.ShowDetailActivity
 import org.jetbrains.anko.*
 
@@ -69,20 +68,20 @@ inline fun <reified T> Context.findPreference(key: String, default: T): T? = wit
 }
 
 inline fun <reified T> Context.pPreference(key: String, value: T) {
-    defaultSharedPreferences.edit {
-        when (value) {
-            is Boolean -> putBoolean(key, value)
-            is Float -> putFloat(key, value)
-            is Int -> putInt(key, value)
-            is Long -> putLong(key, value)
-            is String -> putString(key, value)
-            is Set<*> -> when {
-                value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
-                else -> throw IllegalArgumentException("Unsupported type")
-            }
-            else -> throw IllegalArgumentException("This type can be saved into Preferences")
-        }
-    }
+//    defaultSharedPreferences.edit {
+//        when (value) {
+//            is Boolean -> putBoolean(key, value)
+//            is Float -> putFloat(key, value)
+//            is Int -> putInt(key, value)
+//            is Long -> putLong(key, value)
+//            is String -> putString(key, value)
+//            is Set<*> -> when {
+//                value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
+//                else -> throw IllegalArgumentException("Unsupported type")
+//            }
+//            else -> throw IllegalArgumentException("This type can be saved into Preferences")
+//        }
+//    }
 }
 
 fun Context.clipText(text: String = "") {

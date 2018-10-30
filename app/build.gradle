@@ -15,17 +15,17 @@ android {
         }
     }
 
-    compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion 27
 
     defaultConfig {
         //app package name
         applicationId "com.ddu"
 
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
-        versionCode Versions.versionCode
-        versionName Versions.versionName
+        minSdkVersion 19
+        targetSdkVersion 27
+
+        versionCode 1
+        versionName "1.0"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -89,6 +89,7 @@ android {
 //        resolutionStrategy.force "com.android.support:support-compat:$rootProject.supportLibraryVersion"
 //        resolutionStrategy.force "com.android.support:support-core-utils:$rootProject.supportLibraryVersion"
 //    }
+
 }
 
 dependencies {
@@ -97,41 +98,39 @@ dependencies {
     implementation project(':iannotation')
     kapt project(':iprocessors')
 
-    implementation Dependencies.rxpermissions
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar"
 
-    implementation Dependencies.rebound
+    implementation "com.facebook.rebound:rebound:0.3.8"
 
-    implementation Dependencies.mpandroidchart
+    implementation "org.quanqi:mpandroidchart:1.7.5"
 
-    implementation Dependencies.flexbox
+    implementation "com.google.android:flexbox:0.3.2"
 
-    implementation Dependencies.zxing_core
-    implementation Dependencies.zxing_android_core
+    implementation "com.google.zxing:core:3.3.3"
+    implementation "com.google.zxing:android-core:3.3.0"
 
-    implementation Dependencies.objectbox_android
-    implementation Dependencies.objectbox_kotlin
-    kapt  Dependencies.objectbox_processor
-    annotationProcessor Dependencies.objectbox_processor
+    implementation "io.objectbox:objectbox-android:2.2.0"
+    implementation "io.objectbox:objectbox-kotlin:2.2.0"
+    kapt  "io.objectbox:objectbox-processor:2.2.0"
+    annotationProcessor "io.objectbox:objectbox-processor:2.2.0"
 
-    debugImplementation Dependencies.leakcanary_android
-    releaseImplementation Dependencies.leakcanary_android_no_op
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.1"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1"
 
-    implementation Dependencies.glide
-    implementation Dependencies.glide_compiler
-    kapt Dependencies.glide_compiler
+    implementation "com.github.bumptech.glide:glide:4.8.0"
+    implementation "com.github.bumptech.glide:compiler:4.8.0"
+    kapt "com.github.bumptech.glide:compiler:4.8.0"
 
-    implementation Dependencies.okhttp3
-    implementation Dependencies.okhttp3Logging
-    implementation Dependencies.okio
+    implementation "com.squareup.okhttp3:okhttp:3.11.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
+    implementation "com.squareup.okio:okio:2.0.0"
 
-    implementation Dependencies.aspectjrt
+    implementation "org.aspectj:aspectjrt:1.9.1"
 
-    implementation Dependencies.support_cardview
-    implementation Dependencies.support_palette
-
-    CommonDependencies.commonDependencies.forEach {
-        k -> implementation k
-    }
+    implementation "com.android.support:design:27.1.0"
+    implementation "com.android.support:recyclerview-v7:27.1.0"
+    implementation "com.android.support:cardview-v7:27.1.0"
+    implementation "com.android.support:palette-v7:27.1.0"
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
@@ -148,6 +147,7 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
 
     implementation 'pub.devrel:easypermissions:1.2.0'
+    implementation "org.jetbrains.anko:anko:0.10.5"
 //    kapt "com.android.databinding:compiler:$Versions.gradle_version"
 
 }

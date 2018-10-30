@@ -1,19 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: "config.gradle"
+//apply from: "config.gradle"
 
 buildscript {
     repositories {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         google()
-        jcenter()
+        jcenter{url "http://jcenter.bintray.com/"}
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$Versions.gradle_version"
+        classpath "com.android.tools.build:gradle:3.2.1"
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Versions.kotlin_version"
-        classpath "io.objectbox:objectbox-gradle-plugin:$Versions.objectboxVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.71"
+        classpath "io.objectbox:objectbox-gradle-plugin:2.2.0"
         classpath 'org.aspectj:aspectjtools:1.9.1'
         classpath 'org.aspectj:aspectjweaver:1.9.1'
         // NOTE: Do not place your application dependencies here; they belong
@@ -25,8 +25,9 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
         google()
-        jcenter()
+        jcenter{url "http://jcenter.bintray.com/"}
     }
 }
 

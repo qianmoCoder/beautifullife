@@ -9,14 +9,13 @@ group = 'com.github.yzbzz'
 
 android {
 
-    compileSdkVersion Versions.compileSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
-        versionCode Versions.versionCode
-        versionName Versions.versionName
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -39,8 +38,20 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    CommonDependencies.commonDependencies.forEach {
-        k -> compileOnly k
-    }
-//    kapt "com.android.databinding:compiler:$Versions.gradle_version"
+    implementation "com.android.support:support-v4:27.1.0"
+    implementation "com.android.support:appcompat-v7:27.1.0"
+
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.0"
+
+    implementation "com.android.support:recyclerview-v7:27.1.0"
+    implementation "com.android.support:design:27.1.0"
+
+//    implementation "androidx.core:core-ktx:1.0.0"
+
+    implementation "org.jetbrains.anko:anko:0.10.5"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.60"
+
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.alibaba:fastjson:1.1.68.android"
 }
