@@ -24,8 +24,17 @@
 
         <TextView
             android:id="@+id/tv_model"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20" />
+
+        <com.ddu.widget.RoundView
+            android:id="@+id/rv_item"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10" />
+
+        <com.ddu.widget.RoundView
+            android:layout_width="@dimen/dp_8"
+            android:layout_height="@dimen/dp_8" />
 
         <com.ddu.ui.view.AlignTextView
             android:layout_width="wrap_content"
@@ -51,8 +60,8 @@
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ShapeView"
-            android:background="@color/c_4897fa"/>
+            android:background="@color/c_4897fa"
+            android:text="ShapeView" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -100,7 +109,6 @@
                     android:textColor="@color/c_999999"
                     android:textSize="@dimen/dp_12" />
             </RelativeLayout>
-
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

@@ -72,6 +72,7 @@ class WorkFragment : DefaultFragment() {
         g.setColor(Color.BLUE)
         g.cornerRadius = 20f
         tv_money.background = g
+        rv_item.setBackground("#4897fa")
     }
 
     companion object {
