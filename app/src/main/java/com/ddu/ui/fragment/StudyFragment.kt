@@ -6,7 +6,6 @@ import com.ddu.icore.ui.fragment.AbsRVFragment
 import com.ddu.routes.RouterProvider
 import com.ddu.ui.adapter.StudyRVAdapter
 import com.iannotation.model.RouteMeta
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2018/1/17.
@@ -47,7 +46,7 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
     }
 
     override fun getAdapter(): StudyRVAdapter {
-        return StudyRVAdapter(ctx, mDataEntities)
+        return StudyRVAdapter(context, mDataEntities)
     }
 
 }
