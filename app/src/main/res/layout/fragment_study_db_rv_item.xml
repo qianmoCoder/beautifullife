@@ -4,6 +4,10 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
             name="viewModel"
             type="com.ddu.viewmodels.StudyViewModel" />
     </data>
@@ -13,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_10">
+        android:padding="@dimen/dp_10"
+        android:onClick="@{clickListener}">
 
         <TextView
             android:id="@+id/tv_title"
