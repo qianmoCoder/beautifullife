@@ -19,7 +19,7 @@ fun bindIsGone(view: View, isGone: Boolean) {
 }
 
 @BindingAdapter(value = ["bg_radius", "bg_color", "bg_color_s"], requireAll = false)
-fun bindBackgroud(v: View, radius: Int, @ColorInt color: Int?, colorString: String?) {
+fun bindBackground(v: View, radius: Int, @ColorInt color: Int?, colorString: String?) {
     val gd = GradientDrawable()
     if (null != colorString) {
         gd.setColor(colorString.parseColor())

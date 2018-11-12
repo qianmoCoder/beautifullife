@@ -50,16 +50,7 @@ public class StudyDBRVAdapter extends ListAdapter<RouteMeta, StudyDBRVAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final RouteMeta routeMeta = getItem(position);
         holder.itemView.setTag(routeMeta);
-
         holder.bind(createOnClickListener(routeMeta), routeMeta);
-        if (consumer1 != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    consumer1.accept(routeMeta);
-                }
-            });
-        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -73,6 +64,7 @@ public class StudyDBRVAdapter extends ListAdapter<RouteMeta, StudyDBRVAdapter.Vi
 
         public void bind(View.OnClickListener clickListener, RouteMeta routeMeta) {
             StudyViewModel studyViewModel = new StudyViewModel(itemView.getContext(), routeMeta);
+            binding.setClickListener(clickListener);
             binding.setViewModel(studyViewModel);
             binding.executePendingBindings();
         }
