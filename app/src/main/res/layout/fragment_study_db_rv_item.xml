@@ -16,9 +16,9 @@
         android:id="@+id/ll_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{clickListener}"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_10"
-        android:onClick="@{clickListener}">
+        android:padding="@dimen/dp_10">
 
         <TextView
             android:id="@+id/tv_title"
@@ -27,8 +27,7 @@
             android:layout_marginRight="@dimen/dp_10"
             android:gravity="center"
             android:text="@{viewModel.getRoueMeta().getText()}"
-            app:bg_color_s="@{viewModel.getRoueMeta().getColor()}"
-            />
+            app:bg_color_s="@{viewModel.getRoueMeta().getColor()}" />
 
         <TextView
             android:id="@+id/tv_description"
