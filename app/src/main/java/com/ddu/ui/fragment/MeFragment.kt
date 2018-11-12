@@ -8,7 +8,6 @@ import android.os.SystemClock
 import android.support.v4.app.DialogFragment
 import android.util.Log
 import com.ddu.R
-import com.ddu.R.id.*
 import com.ddu.app.BaseApp
 import com.ddu.icore.callback.Consumer3
 import com.ddu.icore.dialog.AlertDialogFragment
@@ -21,7 +20,6 @@ import com.ddu.icore.ui.help.ShapeInject
 import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
-import com.umeng.socialize.utils.DeviceConfig.context
 import kotlinx.android.synthetic.main.fragment_me.*
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.ctx

@@ -150,7 +150,6 @@ object NavigatorUtils {
                         Intent(ctx, ScrollingActivity3::class.java)
                     }
                 }
-                "7" -> Intent(ctx, ShareActivity::class.java)
                 "8" -> Intent(ctx, TestActivity::class.java)
                 "9" -> Intent(ctx, WebActivity::class.java)
                 else -> null

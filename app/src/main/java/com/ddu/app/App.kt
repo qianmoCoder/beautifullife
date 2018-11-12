@@ -17,13 +17,10 @@ import com.ddu.util.xml.PullParserUtils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.DiskLogAdapter
 import com.orhanobut.logger.Logger
-import com.squareup.leakcanary.LeakCanary
-import com.umeng.socialize.UMShareAPI
 import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
-
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -33,16 +30,15 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         init()
-        UMShareAPI.get(this)
         Logger.addLogAdapter(AndroidLogAdapter())
         Logger.addLogAdapter(DiskLogAdapter())
     }
 
     private fun init() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return
-        }
-        LeakCanary.install(this)
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return
+//        }
+//        LeakCanary.install(this)
         val processName = SystemUtils.getProcessName()
         val currentPackageName = packageName
         if (processName == currentPackageName) {// 防止多进程重复实始化
