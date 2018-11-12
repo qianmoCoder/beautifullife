@@ -2,15 +2,15 @@ package com.ddu.ui.fragment
 
 import android.os.Bundle
 import com.ddu.icore.callback.Consumer1
-import com.ddu.icore.ui.fragment.AbsRVFragment
+import com.ddu.icore.ui.fragment.AbsDBRVFragment
 import com.ddu.routes.RouterProvider
-import com.ddu.ui.adapter.StudyRVAdapter
+import com.ddu.ui.adapter.StudyDBRVAdapter
 import com.iannotation.model.RouteMeta
 
 /**
  * Created by yzbzz on 2018/1/17.
  */
-class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
+class StudyFragment : AbsDBRVFragment<RouteMeta, StudyDBRVAdapter>() {
 
     companion object {
         fun newInstance(): StudyFragment {
@@ -26,6 +26,7 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
     override fun initView() {
         super.initView()
         setTitle("学习")
+        mAdapter.submitList(mDataEntities)
         mAdapter.setItemClickListener(object : Consumer1<RouteMeta> {
             override fun accept(t: RouteMeta) {
                 val bundle = Bundle()
@@ -45,8 +46,8 @@ class StudyFragment : AbsRVFragment<RouteMeta, StudyRVAdapter>() {
         mDataEntities.sort()
     }
 
-    override fun getAdapter(): StudyRVAdapter {
-        return StudyRVAdapter(context, mDataEntities)
+    override fun getAdapter(): StudyDBRVAdapter {
+        return StudyDBRVAdapter()
     }
 
 }

@@ -1,11 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-            name="routeMeta"
-            type="com.iannotation.model.RouteMeta" />
+            name="viewModel"
+            type="com.ddu.viewmodels.StudyViewModel" />
     </data>
 
     <LinearLayout
@@ -21,15 +21,17 @@
             android:layout_height="@dimen/dp_50"
             android:layout_marginRight="@dimen/dp_10"
             android:gravity="center"
-            tools:text="UI" />
+            android:text="@{viewModel.getRoueMeta().getText()}"
+            app:bg_color_s="@{viewModel.getRoueMeta().getColor()}"
+            />
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.getRoueMeta().getDescription()}"
             android:textColor="@color/c_000000"
-            android:textSize="@dimen/dp_16"
-            tools:text="分享" />
+            android:textSize="@dimen/dp_16" />
 
     </LinearLayout>
 
