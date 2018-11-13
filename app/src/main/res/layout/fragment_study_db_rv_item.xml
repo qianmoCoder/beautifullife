@@ -4,6 +4,10 @@
     <data>
 
         <variable
+            name="dr"
+            type="com.ddu.R" />
+
+        <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
 
@@ -26,14 +30,15 @@
             android:layout_height="@dimen/dp_50"
             android:layout_marginRight="@dimen/dp_10"
             android:gravity="center"
-            android:text="@{viewModel.getRoueMeta().getText()}"
-            app:bg_color_s="@{viewModel.getRoueMeta().getColor()}" />
+            android:text="@{viewModel.roueMeta.text}"
+            app:bg_color_s="@{viewModel.roueMeta.color}"
+            app:bg_radius="@{viewModel.radius}" />
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.getRoueMeta().getDescription()}"
+            android:text="@{viewModel.roueMeta.description}"
             android:textColor="@color/c_000000"
             android:textSize="@dimen/dp_16" />
 
