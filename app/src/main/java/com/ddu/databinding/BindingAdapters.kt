@@ -34,8 +34,3 @@ fun bindBackground(v: View, radius: Float, @ColorInt color: Int?, colorString: S
 
     v.background = gd
 }
-
-//@BindingMethods(
-//        BindingMethod(type = android.widget.ImageView::class, attribute = "android:tint", method = "setImageTintList"),
-//        BindingMethod(type = android.widget.ImageView::class, attribute = "android:tintMode", method = "setImageTintMode"))
-//class ImageViewBindingAdapter
