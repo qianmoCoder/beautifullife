@@ -22,14 +22,6 @@
             android:textStyle="bold"
             tools:text="12" />
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/fbl_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title"
-            app:flexWrap="wrap">
-
-        </com.google.android.flexbox.FlexboxLayout>
 
     </RelativeLayout>
 
