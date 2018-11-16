@@ -17,15 +17,15 @@ public abstract class DefaultListViewAdapter<T> extends AbsListViewAdapter<T, Vi
         super(context, list);
     }
 
+    @NonNull
     @Override
-    public View newView(ViewGroup parent) {
-        int layoutId = getLayoutId();
-        return LayoutInflater.from(getMContext()).inflate(layoutId, parent, false);
+    public View newView(@NonNull ViewGroup parent) {
+        return LayoutInflater.from(getMContext()).inflate(getLayoutId(), parent, false);
     }
 
     @NonNull
     @Override
-    public ViewHolder getViewHolder(@NonNull View convertView) {
+    public ViewHolder getViewHolder(View convertView) {
         return new ViewHolder(convertView);
     }
 

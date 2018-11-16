@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--<attr name="optionItemText" format="string|reference" />-->
-    <!--<attr name="optionTextSize" format="dimension|reference" />-->
-    <!--<attr name="optionTextColor" format="color|reference" />-->
-    <!--<attr name="rightText" format="string" />-->
-    <!--<attr name="rightTextSize" format="dimension" />-->
-    <!--<attr name="rightTextColor" format="color" />-->
-    <!--<attr name="image" format="reference" />-->
-    <!--<attr name="imageScaleType">-->
-    <!--<enum name="matrix" value="0" />-->
-    <!--<enum name="fit_xy" value="1" />-->
-    <!--<enum name="fit_start" value="2" />-->
-    <!--<enum name="fit_center" value="3" />-->
-    <!--<enum name="fit_end" value="4" />-->
-    <!--<enum name="center" value="5" />-->
-    <!--<enum name="center_crop" value="6" />-->
-    <!--<enum name="center_inside" value="7" />-->
-    <!--</attr>-->
-    <!--<attr name="carrowImage" format="reference" />-->
-    <!--<attr name="carrowImageScaleType">-->
-    <!--<enum name="fillXY" value="1" />-->
-    <!--<enum name="center" value="5" />-->
-    <!--</attr>-->
-
     <declare-styleable name="CircleImageView">
         <attr name="civ_border_width" format="dimension" />
         <attr name="civ_border_color" format="color" />
         <attr name="civ_border_overlay" format="boolean" />
-        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
         <attr name="civ_fill_color" format="color" />
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>

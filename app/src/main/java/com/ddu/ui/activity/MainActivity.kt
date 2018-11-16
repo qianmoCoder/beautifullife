@@ -24,6 +24,8 @@ import com.ddu.ui.fragment.WorkFragment
 import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+
 /**
  * Created by yzbzz on 2018/1/17.
  */
@@ -52,6 +54,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
 //        startActivity<MainActivityT>("id" to 5)
+
+//        val menuView = navigation.getChildAt(0) as BottomNavigationMenuView
+//        menuView.setLabelVisibilityMode()
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
