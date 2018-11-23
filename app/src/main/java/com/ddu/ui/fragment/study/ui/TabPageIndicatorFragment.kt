@@ -6,10 +6,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.ddu.R
+import com.ddu.icore.common.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_tpi.*
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by lhz on 16/5/6.

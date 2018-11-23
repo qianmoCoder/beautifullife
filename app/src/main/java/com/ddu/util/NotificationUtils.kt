@@ -8,8 +8,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
 import com.ddu.app.BaseApp
+import com.ddu.icore.common.notificationManager
 import com.ddu.icore.util.sys.SystemUtils
-import org.jetbrains.anko.notificationManager
 
 /**
  * Created by yzbzz on 2017/4/27.

@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ddu.icore.R
+import com.ddu.icore.common.act
 import com.ddu.icore.ui.fragment.BaseBindingFragment
 import com.ddu.icore.ui.widget.TitleBar
-import org.jetbrains.anko.support.v4.act
 
 abstract class DefaultBindingFragment<T : ViewDataBinding> : BaseBindingFragment() {
 

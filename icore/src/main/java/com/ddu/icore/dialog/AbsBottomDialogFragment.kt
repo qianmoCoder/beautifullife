@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.*
 import com.ddu.icore.R
-import org.jetbrains.anko.support.v4.act
+import com.ddu.icore.common.act
 
 
 abstract class AbsBottomDialogFragment : DialogFragment() {

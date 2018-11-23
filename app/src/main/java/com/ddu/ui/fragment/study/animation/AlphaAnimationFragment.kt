@@ -2,10 +2,10 @@ package com.ddu.ui.fragment.study.animation
 
 import android.view.animation.AnimationUtils
 import com.ddu.R
+import com.ddu.icore.common.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_animation_alpha.*
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/4/8.

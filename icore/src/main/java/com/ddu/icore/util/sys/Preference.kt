@@ -1,7 +1,7 @@
 package com.ddu.icore.util.sys
 
 import android.content.Context
-import org.jetbrains.anko.defaultSharedPreferences
+import com.ddu.icore.common.defaultSharedPreferences
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

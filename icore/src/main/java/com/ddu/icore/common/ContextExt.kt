@@ -18,7 +18,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import com.ddu.icore.ui.activity.ShowDetailActivity
-import org.jetbrains.anko.*
 
 /**
  * Created by yzbzz on 2018/1/18.

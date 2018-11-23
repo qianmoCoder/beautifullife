@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
-import org.jetbrains.anko.find
+import com.ddu.icore.common.find
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.ddu.R
+import com.ddu.icore.common.ctx
+import com.ddu.icore.common.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.activity.phrase.CustomSeparatorActivity
 import com.ddu.ui.activity.phrase.MultiSeparatorActivity
@@ -11,8 +13,6 @@ import com.ddu.ui.activity.phrase.OneSeparatorActivity
 import com.ddu.ui.activity.phrase.TwoSeparatorActivity
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_style_phrase.*
-import org.jetbrains.anko.support.v4.ctx
-import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * Created by yzbzz on 16/4/14.

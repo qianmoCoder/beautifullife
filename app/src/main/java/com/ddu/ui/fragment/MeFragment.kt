@@ -10,6 +10,8 @@ import android.util.Log
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.callback.Consumer3
+import com.ddu.icore.common.act
+import com.ddu.icore.common.ctx
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
@@ -21,8 +23,7 @@ import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
-import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
+
 
 /**
  * Created by yzbzz on 2018/1/17.

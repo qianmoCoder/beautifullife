@@ -1,13 +1,18 @@
 package com.ddu.ui.fragment
 
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.net.http.SslError
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.webkit.*
 import com.ddu.R
+import com.ddu.icore.common.act
 import com.ddu.icore.common.clipText
+import com.ddu.icore.common.ctx
 import com.ddu.icore.common.startBrowser
 import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
@@ -16,8 +21,6 @@ import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.CustomerBottomBar
 import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_web.*
-import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -71,6 +74,16 @@ class WebFragment : DefaultFragment() {
         initTitle()
 
         wv_web.loadUrl(mUrl)
+        wv_web.setDownloadListener(object : DownloadListener{
+            override fun onDownloadStart(url: String?, userAgent: String?, contentDisposition: String?, mimetype: String?, contentLength: Long) {
+                Log.v("lhz","download url: " + url)
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.addCategory(Intent.CATEGORY_BROWSABLE)
+                intent.setData(Uri.parse(url))
+                startActivity(intent);
+            }
+
+        })
     }
 
     private fun initTitle() {
@@ -205,6 +218,7 @@ class WebFragment : DefaultFragment() {
         }
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+            Log.v("lhz","shouldOverrideUrlLoading: " + url)
             view.loadUrl(url)
             return true
         }

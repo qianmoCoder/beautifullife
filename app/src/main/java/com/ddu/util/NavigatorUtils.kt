@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.support.v4.app.FragmentActivity
+import com.ddu.icore.common.ctx
 import com.ddu.icore.common.findPreference
 import com.ddu.icore.common.isNetworkConnected
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.ui.activity.*
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 16/7/12.

@@ -10,7 +10,7 @@ import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
-import org.jetbrains.anko.support.v4.ctx
+import com.ddu.icore.common.ctx
 
 
 abstract class BaseBindingFragment : Fragment(), IObserver<GodIntent> {
