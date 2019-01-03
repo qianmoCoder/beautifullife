@@ -85,5 +85,9 @@
             android:id="@+id/tv_content_multi_click"
             style="@style/TextViewStyle" />
 
+        <CheckBox
+            android:id="@+id/tv_content_multi_click_1"
+            style="@style/TextViewStyle" />
+
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

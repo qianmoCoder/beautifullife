@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextPaint
-import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
@@ -13,6 +12,8 @@ import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Toast
 import com.ddu.R
+import com.ddu.icore.help.ClickableMovementMethod
+import com.ddu.icore.help.UserLinkMovementMethod
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_custom_separator.*
 
@@ -58,12 +59,14 @@ class CustomSeparatorActivity : AppCompatActivity() {
         val multiClickPhrase = StylePhrase(multiClickText)
         multiClickPhrase.firstBuilder.setSize(20).addParcelableSpan(object : ClickableSpan() {
             override fun onClick(widget: View?) {
+//                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
                 showToast("跳转百度")
             }
         })
         multiClickPhrase.secondBuilder.setSize(15).addParcelableSpan(object : ClickableSpan() {
             override fun onClick(widget: View?) {
                 showToast("跳转网易")
+//                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
             }
 
             override fun updateDrawState(ds: TextPaint?) {
@@ -71,8 +74,18 @@ class CustomSeparatorActivity : AppCompatActivity() {
                 ds?.isUnderlineText = false
             }
         })
+
+
         tv_content_multi_click.text = multiClickPhrase.format()
-        tv_content_multi_click.movementMethod = LinkMovementMethod.getInstance()
+        tv_content_multi_click.setOnClickListener {
+            showToast("点击了文本")
+        }
+        tv_content_multi_click.movementMethod = ClickableMovementMethod.getInstance()
+//        tv_content_multi_click.setClickable(false);
+//        tv_content_multi_click.setLongClickable(false);
+
+        tv_content_multi_click_1.text = multiClickPhrase.format()
+        tv_content_multi_click_1.movementMethod = UserLinkMovementMethod.getInstance()
 
 
         tv_separator.text = colorAndSize.firstBuilder.separator
