@@ -1,7 +1,7 @@
 package com.ddu.icore.common;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ddu.icore.aidl.GodIntent;
 import com.ddu.icore.util.MultiHashMap;

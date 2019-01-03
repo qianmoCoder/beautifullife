@@ -2,7 +2,7 @@ package com.ddu.ui.effect;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ddu.ui.view.FloatingTextView;
 import com.facebook.rebound.SimpleSpringListener;

@@ -42,7 +42,7 @@
             android:foregroundTint="@color/c_ff0000"
             />
 
-        <android.support.v4.widget.Space
+        <androidx.core.widget.Space
             android:id="@+id/space"
             android:layout_width="@dimen/dp_10"
             android:layout_height="wrap_content" />

@@ -1,13 +1,12 @@
 package com.ddu.icore.dialog
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.*
 import com.ddu.icore.R
 import kotlinx.android.synthetic.main.fragment_dialog_default.*
 
 
-class AlertDialogFragment : DialogFragment(), View.OnClickListener {
+class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClickListener {
 
     var title = ""
     var msg = ""
@@ -19,8 +18,8 @@ class AlertDialogFragment : DialogFragment(), View.OnClickListener {
     var leftColor = R.color.c_4897fa
     var rightColor = R.color.c_272727
 
-    var mLeftClickListener: ((View, DialogFragment) -> Unit)? = null
-    var mRightClickListener: ((View, DialogFragment) -> Unit)? = null
+    var mLeftClickListener: ((View, androidx.fragment.app.DialogFragment) -> Unit)? = null
+    var mRightClickListener: ((View, androidx.fragment.app.DialogFragment) -> Unit)? = null
 
     var size = 17f
 

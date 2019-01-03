@@ -4,7 +4,7 @@ import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent

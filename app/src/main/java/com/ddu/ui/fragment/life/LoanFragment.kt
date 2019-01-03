@@ -2,10 +2,10 @@ package com.ddu.ui.fragment.life
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ddu.R
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder

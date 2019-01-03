@@ -2,7 +2,7 @@ package com.ddu.icore.common
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.support.annotation.Size
+import androidx.annotation.Size
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView

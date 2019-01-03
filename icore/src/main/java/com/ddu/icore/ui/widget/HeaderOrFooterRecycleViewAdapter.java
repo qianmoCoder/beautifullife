@@ -1,6 +1,5 @@
 package com.ddu.icore.ui.widget;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,6 +7,8 @@ import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements WrapperRecyclerViewAdapter {
 

@@ -3,17 +3,18 @@ package com.ddu.ui.fragment.study.ui
 import android.animation.Animator
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.util.AnimatorUtils
 import com.ddu.ui.fragment.study.customer.ShapeInjectFragment
+import com.google.android.material.tabs.TabLayout
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_design.*
 
@@ -70,9 +71,10 @@ class DesignFragment : DefaultFragment() {
 
     override fun initView() {
         val adapter = SampleFragmentPagerAdapter(baseActivity.supportFragmentManager, baseActivity)
-        vp_design!!.adapter = adapter
-        tl_design!!.setupWithViewPager(vp_design)
-        tl_design!!.tabMode = TabLayout.MODE_SCROLLABLE
+        findViewById<ViewPager>(R.id.vp_design).adapter = adapter
+
+        findViewById<TabLayout>(R.id.tl_design).setupWithViewPager(findViewById(R.id.vp_design))
+        findViewById<TabLayout>(R.id.tl_design).tabMode = TabLayout.MODE_SCROLLABLE
 
         add_channel_iv!!.setOnClickListener {
             //                performAnimateOn();
@@ -109,7 +111,7 @@ class DesignFragment : DefaultFragment() {
         val ft = fragmentManager!!.beginTransaction()
 
         if (!mDrawFragment!!.isAdded) {
-            ft.replace(R.id.fl_content, mDrawFragment)
+            ft.replace(R.id.fl_content, mDrawFragment!!)
         }
         ft.commitAllowingStateLoss()
 

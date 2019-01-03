@@ -3,7 +3,7 @@ package com.ddu.ui.view;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;

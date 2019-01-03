@@ -2,14 +2,13 @@ package com.ddu.icore.ui.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
@@ -54,7 +53,7 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
 
     }
 
-    fun startFragment(fragment: Class<out Fragment>) {
+    fun startFragment(fragment: Class<out androidx.fragment.app.Fragment>) {
         startFragment(fragment, null)
     }
 
@@ -66,7 +65,7 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         Navigator.startShowDetailActivity(this, fragmentName, bundle)
     }
 
-    fun startFragment(fragment: Class<out Fragment>, bundle: Bundle?) {
+    fun startFragment(fragment: Class<out androidx.fragment.app.Fragment>, bundle: Bundle?) {
         Navigator.startShowDetailActivity(this, fragment, bundle)
     }
 

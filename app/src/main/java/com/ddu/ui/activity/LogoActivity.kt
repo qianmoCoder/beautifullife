@@ -1,7 +1,7 @@
 package com.ddu.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.common.startActivity

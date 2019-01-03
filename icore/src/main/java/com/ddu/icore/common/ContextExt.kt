@@ -12,7 +12,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Process
 import android.provider.Settings
-import android.support.annotation.RequiresPermission
+import androidx.annotation.RequiresPermission
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils

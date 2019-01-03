@@ -1,8 +1,6 @@
 package com.ddu.ui.fragment.study.material;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +9,10 @@ import android.widget.LinearLayout;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
+import com.google.android.material.snackbar.Snackbar;
 import com.iannotation.IElement;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by yzbzz on 16/4/14.

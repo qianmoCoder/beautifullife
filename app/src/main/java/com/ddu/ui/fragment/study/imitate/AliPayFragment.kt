@@ -2,10 +2,10 @@ package com.ddu.ui.fragment.study.imitate
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
 import android.view.View
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.google.android.material.appbar.AppBarLayout
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_alipay.*
 import kotlinx.android.synthetic.main.include_open.*

@@ -1,7 +1,6 @@
 package com.ddu.ui.fragment.study;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import com.ddu.app.App;
@@ -13,6 +12,8 @@ import com.iannotation.model.RouteMeta;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/5/16.

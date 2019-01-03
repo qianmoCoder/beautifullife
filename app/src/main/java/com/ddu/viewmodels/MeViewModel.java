@@ -1,6 +1,6 @@
 package com.ddu.viewmodels;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 /**
  * Created by yzbzz on 2018/11/7.

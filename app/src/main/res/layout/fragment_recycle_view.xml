@@ -23,7 +23,7 @@
             android:text="多选" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.appcompat.widget.RecyclerView
         android:id="@+id/rv_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_card_view"
     android:layout_width="match_parent"
@@ -17,4 +17,4 @@
         android:text="World" />
 
 
-</android.support.v7.widget.CardView>
+</androidx.appcompat.widget.CardView>

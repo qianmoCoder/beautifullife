@@ -1,7 +1,7 @@
 package com.ddu.icore.ui.widget
 
 import android.graphics.Color
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.widget.Toast
 import com.ddu.icore.ICore
 

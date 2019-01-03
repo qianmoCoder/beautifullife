@@ -3,7 +3,7 @@ package com.ddu.ui.fragment.study.ui;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
+import androidx.core.widget.NestedScrollView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;

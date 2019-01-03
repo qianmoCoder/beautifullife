@@ -38,10 +38,10 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:support-v4:$Versions.supportLibraryVersion"
-    implementation "com.android.support:appcompat-v7:$Versions.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$Versions.supportLibraryVersion"
-    implementation "com.android.support:design:$Versions.supportLibraryVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     implementation "io.reactivex.rxjava2:rxjava:2.2.2"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"

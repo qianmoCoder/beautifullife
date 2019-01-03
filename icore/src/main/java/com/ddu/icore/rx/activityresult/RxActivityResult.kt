@@ -1,14 +1,14 @@
 package com.ddu.icore.rx.activityresult
 
 import android.content.Intent
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import io.reactivex.Observable
 
 /**
  * Created by yzbzz on 2018/1/5.
  */
 
-class RxActivityResult private constructor(activity: FragmentActivity) {
+class RxActivityResult private constructor(activity: androidx.fragment.app.FragmentActivity) {
 
     private var mRxActivityResultFragment: RxActivityResultFragment
 
@@ -16,7 +16,7 @@ class RxActivityResult private constructor(activity: FragmentActivity) {
         mRxActivityResultFragment = getRxActivityResultFragment(activity)
     }
 
-    private fun getRxActivityResultFragment(activity: FragmentActivity): RxActivityResultFragment {
+    private fun getRxActivityResultFragment(activity: androidx.fragment.app.FragmentActivity): RxActivityResultFragment {
         var rxActivityResultFragmentFragment: RxActivityResultFragment? = findRxFragment(activity)
         val isNewInstance = rxActivityResultFragmentFragment == null
         if (isNewInstance) {
@@ -31,7 +31,7 @@ class RxActivityResult private constructor(activity: FragmentActivity) {
         return rxActivityResultFragmentFragment!!
     }
 
-    private fun findRxFragment(activity: FragmentActivity): RxActivityResultFragment? {
+    private fun findRxFragment(activity: androidx.fragment.app.FragmentActivity): RxActivityResultFragment? {
         return activity.supportFragmentManager.findFragmentByTag(TAG) as? RxActivityResultFragment
     }
 
@@ -48,7 +48,7 @@ class RxActivityResult private constructor(activity: FragmentActivity) {
 
         internal const val TAG = "RxActivityResult"
 
-        fun with(activity: FragmentActivity): RxActivityResult {
+        fun with(activity: androidx.fragment.app.FragmentActivity): RxActivityResult {
             return RxActivityResult(activity)
         }
     }

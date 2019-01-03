@@ -1,7 +1,7 @@
 package com.ddu.icore.common
 
 import android.graphics.Color
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import com.alibaba.fastjson.JSON
 import com.google.gson.Gson
 import java.math.BigDecimal

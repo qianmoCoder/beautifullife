@@ -1,7 +1,7 @@
 package com.ddu.ui.effect;
 
 import android.graphics.Path;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ddu.ui.view.FloatingPath;
 import com.ddu.ui.view.FloatingPathEffect;

@@ -3,7 +3,6 @@ package com.ddu.ui.activity.phrase
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.text.style.StrikethroughSpan
@@ -11,6 +10,7 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
 import com.ddu.icore.help.ClickableMovementMethod
 import com.ddu.icore.help.UserLinkMovementMethod

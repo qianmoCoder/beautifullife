@@ -1,9 +1,6 @@
 package com.ddu.icore.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
@@ -13,6 +10,10 @@ import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/4/19.

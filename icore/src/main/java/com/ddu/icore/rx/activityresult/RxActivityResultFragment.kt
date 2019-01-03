@@ -3,7 +3,7 @@ package com.ddu.icore.rx.activityresult
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.*
@@ -12,7 +12,7 @@ import java.util.*
  * Created by yzbzz on 2018/1/5.
  */
 
-class RxActivityResultFragment : Fragment() {
+class RxActivityResultFragment : androidx.fragment.app.Fragment() {
 
     private val mSubjects = HashMap<Int, PublishSubject<ActivityResultInfo>>()
 

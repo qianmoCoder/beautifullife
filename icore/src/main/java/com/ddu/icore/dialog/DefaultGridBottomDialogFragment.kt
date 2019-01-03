@@ -1,8 +1,9 @@
 package com.ddu.icore.dialog
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ddu.icore.R
 import com.ddu.icore.entity.BottomItemEntity
 import kotlinx.android.synthetic.main.dialog_bottom_content.*
@@ -25,10 +26,11 @@ class DefaultGridBottomDialogFragment : AbsBottomDialogFragment() {
             }
         }
 
-        rv_share.layoutManager = GridLayoutManager(context, spanCount)
+
+        view.findViewById<RecyclerView>(R.id.rv_share).layoutManager = GridLayoutManager(context, spanCount)
 
         mShareAdapter = DefaultGridBottomAdapter(context, mShareEntities, SPAN_COUNT)
-        rv_share.adapter = mShareAdapter
+        view.findViewById<RecyclerView>(R.id.rv_share).adapter = mShareAdapter
 
         mShareAdapter?.setOnItemClickListener(object : DefaultGridBottomAdapter.OnClickListener<BottomItemEntity> {
             override fun onClick(data: BottomItemEntity?, position: Int) {

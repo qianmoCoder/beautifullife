@@ -1,7 +1,7 @@
 package com.ddu.ui.view;
 
 import android.graphics.PathMeasure;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ddu.ui.effect.ReboundFloatingAnimator;
 

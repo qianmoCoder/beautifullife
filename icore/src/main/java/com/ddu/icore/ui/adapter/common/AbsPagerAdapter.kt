@@ -2,7 +2,7 @@ package com.ddu.icore.ui.adapter.common
 
 import android.content.ClipData
 import android.content.Context
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 /**
  * Created by yzbzz on 2018/2/12.
  */
-abstract class AbsPagerAdapter(context: Context, data: ClipData) : PagerAdapter() {
+abstract class AbsPagerAdapter(context: Context, data: ClipData) : androidx.viewpager.widget.PagerAdapter() {
 
     private val mLayoutInflater = LayoutInflater.from(context)
     private val mData = data

@@ -1,8 +1,8 @@
 package com.ddu.databinding
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.graphics.drawable.GradientDrawable
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.view.View
 import com.ddu.icore.common.parseColor
 

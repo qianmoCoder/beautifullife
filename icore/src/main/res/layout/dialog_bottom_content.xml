@@ -23,12 +23,12 @@
         android:layout_height="1dp"
         android:background="@color/c_cccccc" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.appcompat.widget.RecyclerView
         android:id="@+id/rv_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.appcompat.widget.RecyclerView>
 
 
 </com.ddu.icore.ui.view.BottomLinearLayout>

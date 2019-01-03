@@ -216,7 +216,7 @@
 
                     </FrameLayout>
 
-                    <android.support.v4.widget.Space
+                    <androidx.core.widget.Space
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_10"
                         android:background="@color/c_4897fa" />

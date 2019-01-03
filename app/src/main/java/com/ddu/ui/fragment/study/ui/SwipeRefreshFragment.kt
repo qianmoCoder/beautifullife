@@ -1,10 +1,10 @@
 package com.ddu.ui.fragment.study.ui
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter

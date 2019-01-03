@@ -5,8 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
-import android.support.v4.app.DialogFragment
 import android.util.Log
+import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.callback.Consumer3

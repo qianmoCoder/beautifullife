@@ -2,8 +2,6 @@ package com.ddu.icore.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +12,11 @@ import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
 
 
-abstract class BaseFragment : Fragment(), IObserver<GodIntent> {
+abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodIntent> {
 
     private var mRootView: View? = null
 
-    lateinit var mActivity: FragmentActivity
+    lateinit var mActivity: androidx.fragment.app.FragmentActivity
     protected lateinit var mContext: Context
     private var layout: FrameLayout? = null
 

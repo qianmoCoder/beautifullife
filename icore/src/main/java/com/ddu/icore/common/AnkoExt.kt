@@ -9,7 +9,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.PowerManager
 import android.preference.PreferenceManager
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.telephony.TelephonyManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -50,15 +50,15 @@ val Context.displayMetrics
 val Activity.act
     get() = this
 
-val Fragment.ctx
+val androidx.fragment.app.Fragment.ctx
     get() = context!!
 
-val Fragment.act
+val androidx.fragment.app.Fragment.act
     get() = activity!!
 
 inline fun <reified T : Activity> Context.startActivity() = startActivity(Intent(this, T::class.java))
 
-inline fun <reified T : Activity> Fragment.startActivity() = startActivity(Intent(ctx, T::class.java))
+inline fun <reified T : Activity> androidx.fragment.app.Fragment.startActivity() = startActivity(Intent(ctx, T::class.java))
 
 inline fun <reified T : View> Activity.find(id: Int): T = findViewById(id)
 

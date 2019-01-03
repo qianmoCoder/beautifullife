@@ -1,9 +1,5 @@
 package com.ddu.ui.adapter;
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.v7.recyclerview.extensions.ListAdapter;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +9,11 @@ import com.ddu.databinding.FragmentStudyDbRvItemBinding;
 import com.ddu.icore.callback.Consumer1;
 import com.ddu.viewmodels.StudyViewModel;
 import com.iannotation.model.RouteMeta;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class StudyDBRVAdapter extends ListAdapter<RouteMeta, StudyDBRVAdapter.ViewHolder> {
 

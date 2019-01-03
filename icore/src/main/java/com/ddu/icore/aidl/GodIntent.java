@@ -3,7 +3,7 @@ package com.ddu.icore.aidl;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by yzbzz on 16/5/13.

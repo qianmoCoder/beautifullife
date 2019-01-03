@@ -2,9 +2,10 @@ package com.ddu.ui.fragment.life
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_life_mortgage.*
@@ -25,9 +26,9 @@ class MortgageFragment : DefaultFragment() {
 
     override fun initView() {
         val adapter = SampleFragmentPagerAdapter(baseActivity.supportFragmentManager, baseActivity)
-        vp_life_mortgage.adapter = adapter
-        tl_life_mortgage.setupWithViewPager(vp_life_mortgage)
-        vp_life_mortgage.currentItem = 0
+        findViewById<ViewPager>(R.id.vp_life_mortgage).adapter = adapter
+        tl_life_mortgage.setupWithViewPager(findViewById(R.id.vp_life_mortgage))
+        findViewById<ViewPager>(R.id.vp_life_mortgage).currentItem = 0
         setDefaultTitle("房贷计算器")
     }
 

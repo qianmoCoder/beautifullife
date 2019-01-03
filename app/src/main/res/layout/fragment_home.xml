@@ -19,7 +19,7 @@
 
         <LinearLayout style="@style/HomeLinearLayout">
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -33,9 +33,9 @@
                     android:layout_gravity="center"
                     android:text="智能照明" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -49,9 +49,9 @@
                     android:layout_gravity="center"
                     android:text="设备管理" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -65,13 +65,13 @@
                     android:layout_gravity="center"
                     android:text="成本分析" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
         </LinearLayout>
 
         <LinearLayout style="@style/HomeLinearLayout">
 
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -85,9 +85,9 @@
                     android:layout_gravity="center"
                     android:text="生产分析" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -101,9 +101,9 @@
                     android:layout_gravity="center"
                     android:text="安全保障" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.appcompat.widget.CardView
                 style="@style/HomeCardView"
                 app:cardBackgroundColor="@color/c_4897fa"
                 app:cardCornerRadius="@dimen/dp_5"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="重要记录" />
-            </android.support.v7.widget.CardView>
+            </androidx.appcompat.widget.CardView>
 
         </LinearLayout>
 

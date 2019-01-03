@@ -1,7 +1,6 @@
 package com.ddu.icore.ui.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +51,7 @@ abstract class DefaultFragment : BaseFragment() {
 
     abstract fun initView()
 
-    fun startFragment(className: Class<out Fragment>) {
+    fun startFragment(className: Class<out androidx.fragment.app.Fragment>) {
         baseActivity?.startFragment(className)
     }
 
@@ -64,11 +63,11 @@ abstract class DefaultFragment : BaseFragment() {
         baseActivity?.startFragment(className, bundle)
     }
 
-    fun startFragment(className: Class<out Fragment>, bundle: Bundle) {
+    fun startFragment(className: Class<out androidx.fragment.app.Fragment>, bundle: Bundle) {
         baseActivity?.startFragment(className, bundle)
     }
 
-    fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: androidx.fragment.app.Fragment) {
         if (mActivity is ShowDetailActivity) {
             (mActivity as ShowDetailActivity).replaceFragment(fragment, FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
         }

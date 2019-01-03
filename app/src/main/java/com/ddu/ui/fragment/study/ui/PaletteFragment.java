@@ -3,10 +3,6 @@ package com.ddu.ui.fragment.study.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
-import android.support.v7.graphics.Target;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +17,11 @@ import com.iannotation.IElement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.palette.graphics.Palette;
+import androidx.palette.graphics.Target;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/9/11.
@@ -59,7 +60,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
                 viewHolder.setBackground(R.id.tv_title, data.getRgb());
             }
         });
-        rvSwatch.setLayoutManager(new LinearLayoutManager(getMContext(),LinearLayoutManager.VERTICAL,false));
+        rvSwatch.setLayoutManager(new LinearLayoutManager(getMContext(),RecyclerView.VERTICAL,false));
         rvSwatch.addItemDecoration(new DividerItemDecoration(getMContext(), DividerItemDecoration.HORIZONTAL));
     }
 

@@ -1,7 +1,7 @@
 package com.ddu.ui.fragment.study.ui;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
