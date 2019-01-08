@@ -1,6 +1,8 @@
 package com.ddu.icore.dialog
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import com.ddu.icore.R
 import kotlinx.android.synthetic.main.fragment_dialog_default.*
@@ -63,5 +65,10 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
         } else if (id == R.id.tv_dialog_btn_right && null != mRightClickListener) {
             mRightClickListener?.invoke(v, this)
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        super.onDismiss(dialog)
+        Log.v("lhz", "onDismiss")
     }
 }

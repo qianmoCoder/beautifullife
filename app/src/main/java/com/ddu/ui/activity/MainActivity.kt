@@ -48,13 +48,8 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as? MeFragment
         }
 
-//        BottomNavigationViewHelper.disableShiftMode(navigation)
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
-//        startActivity<MainActivityT>("id" to 5)
-
-//        val menuView = navigation.getChildAt(0) as BottomNavigationMenuView
-//        menuView.setLabelVisibilityMode()
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -70,12 +65,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {
-//        fragment?.filter {
-//            it?.isHidden ?: false
-//        }.map {
-//            transaction.hide(it)
-//        }
-
         for (f in fragment) {
             if (f != null) {
                 if (!f.isHidden) {

@@ -79,12 +79,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.core.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_design"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </androidx.core.view.ViewPager>
+        </androidx.viewpager.widget.ViewPager>
 
         <FrameLayout
             android:id="@+id/fl_content"

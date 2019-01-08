@@ -7,13 +7,14 @@ import com.ddu.icore.common.formatMoney
 import com.ddu.icore.common.parseDecimals
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_life_income_tax.*
+import java.math.BigDecimal
 
 /**
  * Created by liuhongzhe on 16/6/7.
  */
 class IncomeTaxFragment : DefaultFragment() {
 
-    private val lineMoney = 5000
+    private var lineMoney = 5000.0
 
     private val average = 8467.0
 
@@ -30,6 +31,7 @@ class IncomeTaxFragment : DefaultFragment() {
     }
 
     override fun initView() {
+        et_line_money.setText(lineMoney.toString())
         et_income_average.setText(average.toString())
         btn_income_tax.setOnClickListener {
             calculator()
@@ -39,6 +41,7 @@ class IncomeTaxFragment : DefaultFragment() {
 
 
     private fun calculator() {
+        lineMoney = java.lang.Double.parseDouble(et_line_money.text.toString().trim { it <= ' '})
         val averageMoney = et_income_average.text.toString().trim { it <= ' ' }
         if (!TextUtils.isEmpty(averageMoney)) {
             val money = java.lang.Double.parseDouble(averageMoney)
@@ -56,15 +59,14 @@ class IncomeTaxFragment : DefaultFragment() {
             calculatorMoney = ceiling
         }
         val insurance = calculatorMoney * 8 / 100 + (calculatorMoney * 2 / 100 + 3)
-        val providentFund = (calculatorMoney * 12 / 100).parseDecimals()
+        val providentFund = (calculatorMoney * 12 / 100).parseDecimals().toInt()
         val tax = getCalculatorTax(money - insurance - providentFund)
-        val tax1 = getOldCalculatorTax(money - insurance - providentFund)
 
         tv_total_money.text = money.formatMoney()
         tv_insurance.text = insurance.formatMoney()
-        tv_providentFund.text = providentFund.formatMoney()
+        tv_providentFund.text = providentFund.toString()
         tv_total_tax_before_deduction.text = (insurance + providentFund).formatMoney()
-        tv_tax.text = "${tax.formatMoney()}(old${tax1.formatMoney()})"
+        tv_tax.text = "${BigDecimal(tax).setScale(2, BigDecimal.ROUND_HALF_UP)}"
         tv_total_deduction.text = (insurance + providentFund + tax).formatMoney()
         tv_money.text = (money - insurance - providentFund - tax).formatMoney()
 
@@ -116,30 +118,5 @@ class IncomeTaxFragment : DefaultFragment() {
             else -> money * 45 / 100 - 15160
         }
     }
-
-    /**
-     * 1500 3% 0
-     * 1500~4500 10% 105
-     * 4500~9000 20% 555
-     * 9000~35000 25% 1005
-     * 35000~55000 30% 2755
-     * 55000~80000 35% 5505
-     * 80000 45% 13505
-     *
-     * @param money
-     */
-    private fun getOldCalculatorTax(money: Double): Double {
-        val result = money - 3500
-        return when {
-            result < 1500 -> result * 3 / 100 - 0
-            result < 4500 -> result * 10 / 100 - 105
-            result < 9000 -> result * 20 / 100 - 555
-            result < 35000 -> result * 25 / 100 - 1005
-            result < 55000 -> result * 30 / 100 - 2755
-            result < 80000 -> result * 35 / 100 - 5505
-            else -> money * 45 / 100 - 13505
-        }
-    }
-
 
 }

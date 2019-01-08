@@ -1,4 +1,4 @@
-<androidx.appcompat.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_study_content"
@@ -25,4 +25,4 @@
 
     </RelativeLayout>
 
-</androidx.appcompat.widget.CardView>
+</androidx.cardview.widget.CardView>

@@ -12,14 +12,14 @@ android {
         }
     }
 
-    compileSdkVersion 28
+    compileSdkVersion Versions.compileSdkVersion
 
     defaultConfig {
         //app package name
         applicationId "com.ddu"
 
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
 
         versionCode 1
         versionName "1.0"
@@ -86,6 +86,15 @@ android {
         resolutionStrategy.force "androidx.appcompat:appcompat:1.0.2"
     }
 
+//    // 1
+//    configurations.all {
+//        // 2
+//        resolutionStrategy {
+//            // 3 显示版本冲突
+//            failOnVersionConflict()
+//        }
+//    }
+
 }
 
 dependencies {
@@ -127,12 +136,13 @@ dependencies {
 
     implementation 'in.srain.cube:ultra-ptr:1.0.11'
 
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation Libs.constraintlayout
     implementation 'com.orhanobut:logger:2.1.1'
-
-//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0'
 
     implementation 'pub.devrel:easypermissions:2.0.0'
 //    kapt "com.android.databinding:compiler:$Versions.gradle_version"
+
+    implementation Libs.coroutinesCore
+    implementation Libs.coroutinesAndroid
 
 }
