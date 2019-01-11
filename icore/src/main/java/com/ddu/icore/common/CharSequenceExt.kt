@@ -85,10 +85,14 @@ fun String.queryStringToKeysAndValues(): Map<String, String> {
 }
 
 
-inline fun <reified T> String.toJsonFromFastJson(): T {
-    return JSON.parseObject(this, T::class.java)
+inline fun <reified T> String?.fromFastJson(): T? = try {
+    JSON.parseObject(this, T::class.java)
+} catch (e: Exception) {
+    null
 }
 
-inline fun <reified T> String.toJsonFromGson(): T {
-    return Gson().fromJson(this, T::class.java)
+inline fun <reified T> String?.fromJson(): T? = try {
+    Gson().fromJson(this, T::class.java)
+} catch (e: Exception) {
+    null
 }

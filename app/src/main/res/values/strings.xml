@@ -20,6 +20,14 @@
     <string name="common_please_wait">请稍候...</string>
     <string name="no_install_app_store">未发现应用商店</string>
 
+    <!-- Work Begin -->
+    <string name="work_program_jet_pack">JetPack</string>
+    <string name="work_program_kotlin">Kotlin</string>
+    <string name="work_program_java">Java</string>
+    <string name="work_program_swift">Swift</string>
+    <!-- Work End -->
+
+
     <!-- Life Begin -->
     <string name="life_calculator">计算器</string>
     <string name="life_calculator_house">房贷计算器</string>
