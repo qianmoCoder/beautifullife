@@ -145,4 +145,6 @@ dependencies {
     implementation Libs.coroutinesCore
     implementation Libs.coroutinesAndroid
 
+    implementation Libs.lifecycle
+
 }

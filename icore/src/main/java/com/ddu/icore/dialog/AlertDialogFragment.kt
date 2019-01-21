@@ -2,6 +2,7 @@ package com.ddu.icore.dialog
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.*
 import com.ddu.icore.R
@@ -12,6 +13,7 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
 
     var title = ""
     var msg = ""
+    var special: CharSequence = ""
     var leftText = ""
     var rightText = ""
 
@@ -40,9 +42,13 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
             view_line.visibility = View.VISIBLE
         }
 
-        tv_dialog_msg.text = msg
+
         tv_dialog_msg.gravity = msgGravity
         tv_dialog_msg.textSize = size
+
+        tv_dialog_msg.text = special
+        tv_dialog_msg.movementMethod = LinkMovementMethod()
+
         tv_dialog_btn_left.text = leftText
         var color = resources.getColor(leftColor)
         tv_dialog_btn_left.setTextColor(color)

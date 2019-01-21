@@ -2,19 +2,24 @@ package com.ddu.ui.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import androidx.annotation.NonNull;
+import android.graphics.Paint;
 import android.text.Layout;
+import android.text.SpannableString;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Created by yzbzz on 2016/12/19.
  */
 
-public class AlignTextView extends TextView {
+public class AlignTextView extends AppCompatTextView {
 
     private int mViewWidth;
     private int mLineY;
@@ -42,14 +47,18 @@ public class AlignTextView extends TextView {
             paint.setColor(getCurrentTextColor());
             paint.drawableState = getDrawableState();
             mViewWidth = getMeasuredWidth();
-            String text = getText().toString();
+            CharSequence text = getText().toString();
             mLineY = 0;
             mLineY += getTextSize();
             Layout layout = getLayout();
             for (int i = 0; i < layout.getLineCount(); i++) {
                 int lineStart = layout.getLineStart(i);
                 int lineEnd = layout.getLineEnd(i);
-                String line = text.substring(lineStart, lineEnd);
+                CharSequence cline = text.subSequence(lineStart, lineEnd);
+                String line = cline.toString();
+
+
+
                 float width = StaticLayout.getDesiredWidth(text, lineStart, lineEnd, getPaint());
                 if (needScale(line)) {
                     if (i == layout.getLineCount() - 1) {
@@ -62,6 +71,35 @@ public class AlignTextView extends TextView {
                 }
                 mLineY += getLineHeight();
             }
+        }
+    }
+
+    public void drawText(Canvas canvas, SpannableString spannableString, Paint mTextPaint) {
+        // draw each span one at a time
+        int next;
+        float xStart = 0;
+        float xEnd;
+        for (int i = 0; i < spannableString.length(); i = next) {
+
+            // find the next span transition
+            next = spannableString.nextSpanTransition(i, spannableString.length(), CharacterStyle.class);
+
+            // measure the length of the span
+            xEnd = xStart + mTextPaint.measureText(spannableString, i, next);
+
+
+            // draw the text with an optional foreground color
+            ForegroundColorSpan[] fgSpans = spannableString.getSpans(i, next, ForegroundColorSpan.class);
+            if (fgSpans.length > 0) {
+                int saveColor = mTextPaint.getColor();
+                mTextPaint.setColor(fgSpans[0].getForegroundColor());
+                canvas.drawText(spannableString, i, next, xStart, 0, mTextPaint);
+                mTextPaint.setColor(saveColor);
+            } else {
+                mTextPaint.setColor(getCurrentTextColor());
+                canvas.drawText(spannableString, i, next, xStart, 0, mTextPaint);
+            }
+            xStart = xEnd;
         }
     }
 

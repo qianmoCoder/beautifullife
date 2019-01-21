@@ -5,13 +5,17 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
+import android.net.http.SslError
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.webkit.SslErrorHandler
 import android.webkit.WebSettings
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.aidl.GodIntent
@@ -21,7 +25,6 @@ import com.ddu.icore.logic.Actions
 import com.ddu.icore.util.UrlUtils
 import com.google.gson.JsonObject
 import org.json.JSONObject
-import java.io.IOException
 import java.net.URISyntaxException
 
 
@@ -85,18 +88,20 @@ class WebActivity : Activity(), IObserver<GodIntent> {
         //
         //        });
 
-        val am = assets
-        try {
-            val `is` = am.open("protocol.html")
-            val buffer = ByteArray(10000)
-            `is`.read(buffer)
-
-            val data = String(buffer,  Charsets.UTF_8)
-            webView!!.loadData(data, "text/html; charset=UTF-8", null)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
+//        val am = assets
+//        try {
+//            val `is` = am.open("protocol.html")
+//            val buffer = ByteArray(10000)
+//            `is`.read(buffer)
+//
+//            val data = String(buffer,  Charsets.UTF_8)
+//            webView!!.loadData(data, "text/html; charset=UTF-8", null)
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
+        val url = intent.getStringExtra("url")
+        webView!!.webViewClient = webViewClient
+        webView!!.loadUrl(url)
     }
 
     fun getUserStatusInfo(jsonString: JSONObject) {
@@ -249,5 +254,27 @@ class WebActivity : Activity(), IObserver<GodIntent> {
         }
 
         return false
+    }
+
+    private val webViewClient = object : WebViewClient() {
+
+        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+        }
+
+        override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
+            handler.proceed()
+        }
+
+
+        override fun onPageFinished(view: WebView, url: String) {
+            super.onPageFinished(view, url)
+
+        }
+
+        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+            view.loadUrl(url)
+            return true
+        }
+
     }
 }

@@ -44,6 +44,7 @@
             android:lineSpacingExtra="@dimen/dp_5"
             android:textColor="@color/c_000000"
             android:textSize="@dimen/dp_16"
+            android:autoLink="all"
             tools:text="Message" />
     </LinearLayout>
 

@@ -4,9 +4,9 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import android.view.View
 import com.ddu.R
 import com.ddu.icore.common.act
 import com.ddu.icore.common.ctx
@@ -48,6 +48,7 @@ class PermissionFragment : DefaultFragment(), View.OnClickListener, EasyPermissi
                 easyRequestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
             R.id.btn_android -> {
+                easyRequestPermission(Manifest.permission.READ_PHONE_STATE)
             }
         }
     }

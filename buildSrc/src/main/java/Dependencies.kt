@@ -15,6 +15,8 @@ object Versions {
     const val supportLibraryVersion = "1.0.2"
 
     const val coroutinesVersion = "1.1.0"
+
+    const val lifecycleVersion = "2.0.0"
 }
 
 object Libs {
@@ -27,6 +29,7 @@ object Libs {
 
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
+    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
 }
 
 object Deps {
