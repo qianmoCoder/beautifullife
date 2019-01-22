@@ -190,7 +190,9 @@
         ]]>
     </string>
 
-    <string name="home_service_fee_text"><![CDATA[\u3000为了保障您的优质停车体验，ETCP停车将对已享受ETCP停车服务的车主，收取实际停车费的2%作为本次停车的服务费用（最高0.5元），详细收费规则可查看<a href=\"https://static.etcp.cn/m/copyright/chargingRule.html\">《服务费收费规则》</a><br/>\u3000此项收费为ETCP平台收取，非停车场管理方收取，如有疑问请拨打客服电话：400-0000-688。]]>
+    <string name="home_service_fee_text"><![CDATA[
+    <font color="#666"/>　为了保障您的优质停车体验，ETCP停车将对已享受ETCP停车服务的车主，收取实际停车费的2%作为本次停车的服务费用（最高0.5元），详细收费规则可查看<a style=\"color:#0066CC;text-decoration:none\" href=\"https://static.etcp.cn/m/copyright/chargingRule.html\">《服务费收费规则》</a><br>　此项收费为ETCP平台收取，非停车场管理方收取，如有疑问请拨打客服电话客服电话：400-0000-688。</font>
+]]>
     </string>
 
 

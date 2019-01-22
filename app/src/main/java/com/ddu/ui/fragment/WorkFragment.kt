@@ -47,7 +47,7 @@ class WorkFragment : DefaultFragment() {
                     dismissAllowingStateLoss()
                 }
             }
-            dialog.show(fragmentManager, "")
+//            dialog.show(fragmentManager, "")
 
             tv_html.setText(clickableHtml)
             tv_html.movementMethod = LinkMovementMethod()

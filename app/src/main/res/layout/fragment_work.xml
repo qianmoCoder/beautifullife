@@ -15,8 +15,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5"
                 android:text="编程" />
 
             <com.ddu.icore.ui.view.OptionItemView
@@ -49,12 +49,31 @@
 
         </LinearLayout>
 
-        <com.ddu.icore.ui.view.SuperTextView
-            android:id="@+id/tv_html"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="hello"
-            android:autoLink="web"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/tv_html"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:autoLink="web"
+                android:text="hello"
+                />
+
+            <!--<EditText-->
+                <!--android:id="@+id/tv_html"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:autoLink="web"-->
+                <!--android:text="hello"-->
+                <!--android:focusable="false"-->
+                <!--android:focusableInTouchMode="false"-->
+                <!--android:background="@null"-->
+                <!--/>-->
+        </LinearLayout>
 
 
     </LinearLayout>
