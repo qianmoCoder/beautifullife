@@ -35,6 +35,12 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         return this
     }
 
+    fun setTextColor(viewId: Int, color: Int): ViewHolder {
+        val tv = getView<TextView>(viewId)
+        tv?.setTextColor(color)
+        return this
+    }
+
     fun setText(viewId: Int, charSequence: CharSequence): ViewHolder {
         val tv = getView<TextView>(viewId)
         tv?.text = charSequence

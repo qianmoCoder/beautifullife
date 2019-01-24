@@ -1,13 +1,9 @@
 package com.ddu.ui.fragment
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
-import android.view.Gravity
 import com.ddu.R
-import com.ddu.icore.callback.Consumer1
-import com.ddu.icore.dialog.AlertDialogFragment
+import com.ddu.icore.common.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.HtmlUtils
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -23,34 +19,7 @@ class WorkFragment : DefaultFragment() {
         setTitle(R.string.main_tab_work)
 
         oiv_program_swift.setOnClickListener {
-            val clickableHtml = HtmlUtils.getClickableHtml(
-                    getString(R.string.home_service_fee_text),
-                    object : Consumer1<String> {
-                        override fun accept(t: String) {
-                            val args = Bundle()
-                            args.putString("url", t)
-                            startFragment(WebFragment::class.java, args)
-                        }
-                    }
-            )
-
-            val dialog = AlertDialogFragment().apply {
-                title = "即将前往"
-                special = clickableHtml
-                msgGravity = Gravity.LEFT
-                leftText = "不同意"
-                rightText = "同意"
-                mLeftClickListener = { _, _ ->
-                    dismissAllowingStateLoss()
-                }
-                mRightClickListener = { _, _ ->
-                    dismissAllowingStateLoss()
-                }
-            }
-//            dialog.show(fragmentManager, "")
-
-            tv_html.setText(clickableHtml)
-            tv_html.movementMethod = LinkMovementMethod()
+            startActivity<AddressActivity>()
         }
 
     }

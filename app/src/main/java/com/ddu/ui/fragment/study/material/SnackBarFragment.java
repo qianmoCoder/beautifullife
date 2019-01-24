@@ -48,6 +48,10 @@ public class SnackBarFragment extends DefaultFragment {
             @Override
             public void onClick(View v) {
                 Snackbar snackbar = Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT);
+                View view = snackbar.getView();
+                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+                params.gravity = Gravity.TOP;
+                view.setLayoutParams(params);
                 snackbar.show();
             }
         });
@@ -55,10 +59,6 @@ public class SnackBarFragment extends DefaultFragment {
             @Override
             public void onClick(View v) {
                 Snackbar snackbar = Snackbar.make(v, "hello", Snackbar.LENGTH_SHORT);
-                View view = snackbar.getView();
-                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
-                params.gravity = Gravity.TOP;
-                view.setLayoutParams(params);
                 snackbar.show();
             }
         });

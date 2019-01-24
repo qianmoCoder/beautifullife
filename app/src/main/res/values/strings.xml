@@ -17,7 +17,7 @@
 
     <!-- Common -->
     <string name="common_cancel">取消</string>
-    <string name="common_please_wait">请稍候...</string>
+    <string name="common_please_wait">请稍候&#8230;</string>
     <string name="no_install_app_store">未发现应用商店</string>
 
     <!-- Work Begin -->
