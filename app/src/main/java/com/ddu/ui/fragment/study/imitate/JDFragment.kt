@@ -29,7 +29,7 @@ class JDFragment : DefaultFragment() {
     override fun initData(savedInstanceState: Bundle?) {
         addressBeans = Gson().fromJson<List<AddressBean>>(getCityJson(), object : TypeToken<List<AddressBean>>() {
         }.type)
-        areaPickerView = AddressPickerDialog(ctx,R.style.Dialog,addressBeans)
+        areaPickerView = AddressPickerDialog(ctx, R.style.Dialog, addressBeans)
     }
 
     override fun getLayoutId(): Int {

@@ -340,7 +340,7 @@ public class AreaPickerDialog extends AbsBottomDialogFragment {
 
     public void setSelect(int... value) {
         strings = new ArrayList<>();
-        if (value == null) {
+        if (value.length == 0) {
             strings.add("请选择");
             if (isCreate) {
                 tabLayout.setupWithViewPager(viewPager);

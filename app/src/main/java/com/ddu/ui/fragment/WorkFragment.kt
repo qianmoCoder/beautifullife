@@ -2,7 +2,6 @@ package com.ddu.ui.fragment
 
 import android.os.Bundle
 import com.ddu.R
-import com.ddu.icore.common.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_work.*
 
@@ -19,7 +18,6 @@ class WorkFragment : DefaultFragment() {
         setTitle(R.string.main_tab_work)
 
         oiv_program_swift.setOnClickListener {
-            startActivity<AddressActivity>()
         }
 
     }
