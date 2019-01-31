@@ -58,12 +58,6 @@ android {
             println("buildName: ${buildName}")
             def formattedDate = new Date().format('yyyy.MM.dd.HH.mm')
             outputFileName = "app-${buildName}-${defaultConfig.versionName}-${formattedDate}.apk"
-            if (buildName.equalsIgnoreCase("debug")) {
-                def path = output.outputFile.absolutePath
-                variant.assemble.doLast {
-                    println(path)
-                }
-            }
         }
     }
 
@@ -146,5 +140,7 @@ dependencies {
     implementation Libs.coroutinesAndroid
 
     implementation Libs.lifecycle
+
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
 
 }

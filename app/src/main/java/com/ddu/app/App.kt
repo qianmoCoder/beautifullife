@@ -1,5 +1,6 @@
 package com.ddu.app
 
+import android.content.Context
 import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -17,6 +18,10 @@ import com.ddu.util.xml.PullParserUtils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.DiskLogAdapter
 import com.orhanobut.logger.Logger
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.*
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.reactivex.Observable
@@ -26,6 +31,22 @@ import io.reactivex.functions.BiFunction
  * Created by yzbzz on 16/4/6.
  */
 class App : BaseApp() {
+
+    init {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(object : DefaultRefreshHeaderCreator {
+            override fun createRefreshHeader(context: Context, layout: RefreshLayout): RefreshHeader {
+//                layout.setPrimaryColorsId(R.color.c_868686, android.R.color.white)
+                return ClassicsHeader(context).apply {
+                    setEnableLastTime(false)
+                }
+            }
+        })
+        SmartRefreshLayout.setDefaultRefreshFooterCreator(object : DefaultRefreshFooterCreator {
+            override fun createRefreshFooter(context: Context, layout: RefreshLayout): RefreshFooter {
+                return ClassicsFooter(context).setDrawableSize(20f)
+            }
+        })
+    }
 
     override fun onCreate() {
         super.onCreate()
