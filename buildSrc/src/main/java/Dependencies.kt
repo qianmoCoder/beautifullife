@@ -10,7 +10,7 @@ object Versions {
 
     const val materialVersion = "1.0.0"
 
-    const val kotlinVersion = "1.3.11"
+    const val kotlinVersion = "1.3.20"
 
     const val supportLibraryVersion = "1.0.2"
 
@@ -33,13 +33,13 @@ object Libs {
 }
 
 object Deps {
-    const val androidxLegacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
-    const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.supportLibraryVersion}"
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
 
+    const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.supportLibraryVersion}"
+
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
-    const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.materialVersion}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.materialVersion}"
+    const val cardView = "androidx.cardview:cardview:${Versions.materialVersion}"
 
     const val gson = "com.google.code.gson:gson:2.8.5"
-    const val fastjson = "com.alibaba:fastjson:1.1.68.android"
 }

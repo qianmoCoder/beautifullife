@@ -38,17 +38,15 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-//    CommonDependencies.api_dependencies.forEach {
-//        k -> api k
-//    }
-//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation Deps.kotlinStdLib
+
     implementation Deps.androidxAppcompat
-    implementation Deps.recyclerview
+
     implementation Deps.material
+    implementation Deps.recyclerView
+    implementation Deps.cardView
 
     implementation Deps.gson
-    implementation Deps.fastjson
 
     implementation Libs.rxjava
     implementation Libs.rxandroid

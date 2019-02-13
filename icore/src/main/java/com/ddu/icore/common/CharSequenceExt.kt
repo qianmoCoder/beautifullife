@@ -2,7 +2,6 @@ package com.ddu.icore.common
 
 import android.graphics.Color
 import androidx.annotation.ColorInt
-import com.alibaba.fastjson.JSON
 import com.google.gson.Gson
 import java.math.BigDecimal
 import java.security.MessageDigest
@@ -82,13 +81,6 @@ fun String.queryStringToKeysAndValues(): Map<String, String> {
         i = ampersandOffset + 1
     }
     return result
-}
-
-
-inline fun <reified T> String?.fromFastJson(): T? = try {
-    JSON.parseObject(this, T::class.java)
-} catch (e: Exception) {
-    null
 }
 
 inline fun <reified T> String?.fromJson(): T? = try {

@@ -102,10 +102,10 @@ dependencies {
     implementation "com.google.zxing:core:3.3.3"
     implementation "com.google.zxing:android-core:3.3.0"
 
-    implementation "io.objectbox:objectbox-android:2.2.0"
-    implementation "io.objectbox:objectbox-kotlin:2.2.0"
-    kapt  "io.objectbox:objectbox-processor:2.2.0"
-    annotationProcessor "io.objectbox:objectbox-processor:2.2.0"
+    implementation "io.objectbox:objectbox-android:2.3.1"
+    implementation "io.objectbox:objectbox-kotlin:2.3.1"
+    kapt  "io.objectbox:objectbox-processor:2.3.1"
+    annotationProcessor "io.objectbox:objectbox-processor:2.3.1"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.1"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1"
@@ -114,21 +114,18 @@ dependencies {
     implementation "com.github.bumptech.glide:compiler:4.8.0"
     kapt "com.github.bumptech.glide:compiler:4.8.0"
 
-    implementation "com.squareup.okhttp3:okhttp:3.11.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
-    implementation "com.squareup.okio:okio:2.0.0"
+    implementation "com.squareup.okhttp3:okhttp:3.12.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.1"
+    implementation "com.squareup.okio:okio:2.2.2"
 
     implementation "com.google.android.material:material:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.palette:palette:1.0.0"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
-
-    implementation 'in.srain.cube:ultra-ptr:1.0.11'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
     implementation Libs.constraintlayout
     implementation 'com.orhanobut:logger:2.1.1'

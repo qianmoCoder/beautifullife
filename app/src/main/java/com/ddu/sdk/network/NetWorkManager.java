@@ -1,7 +1,6 @@
 package com.ddu.sdk.network;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -14,7 +13,6 @@ public class NetWorkManager {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("")
                 .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(FastJsonConverterFactory.create())
                 .build();
         return retrofit;
     }

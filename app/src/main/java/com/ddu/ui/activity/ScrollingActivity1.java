@@ -2,22 +2,17 @@ package com.ddu.ui.activity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.ddu.R;
 import com.google.android.material.appbar.AppBarLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import in.srain.cube.views.ptr.PtrClassicFrameLayout;
-import in.srain.cube.views.ptr.PtrDefaultHandler;
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.PtrHandler;
+
 
 public class ScrollingActivity1 extends AppCompatActivity {
 
     private AppBarLayout mAppBarLayout;
-    PtrClassicFrameLayout ptrFrameLayout;
     private int mVerticalOffset = 0;
 
     @Override
@@ -25,7 +20,6 @@ public class ScrollingActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling1);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-        ptrFrameLayout = (PtrClassicFrameLayout) findViewById(R.id.ptf);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,20 +30,6 @@ public class ScrollingActivity1 extends AppCompatActivity {
                 Log.v("lhz", "verticalOffset " + verticalOffset);
             }
         });
-        
-        PtrHandler ptrHandler = new PtrHandler() {
 
-            @Override
-            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-                return mVerticalOffset == 0 && PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
-            }
-
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-//                currentPage = 1;
-//                initDates();
-            }
-        };
-        ptrFrameLayout.setPtrHandler(ptrHandler);
     }
 }
