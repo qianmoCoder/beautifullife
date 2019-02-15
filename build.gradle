@@ -6,10 +6,10 @@ buildscript {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         google()
-        jcenter{url "http://jcenter.bintray.com/"}
+        jcenter { url "http://jcenter.bintray.com/" }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.3.0"
+        classpath "com.android.tools.build:gradle:3.3.1"
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
@@ -25,7 +25,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
         maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
         google()
-        jcenter{url "http://jcenter.bintray.com/"}
+        jcenter { url "http://jcenter.bintray.com/" }
     }
 }
 

@@ -10,7 +10,7 @@ object Versions {
 
     const val materialVersion = "1.0.0"
 
-    const val kotlinVersion = "1.3.20"
+    const val kotlinVersion = "1.3.21"
 
     const val supportLibraryVersion = "1.0.2"
 
