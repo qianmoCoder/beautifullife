@@ -17,6 +17,8 @@ object Versions {
     const val coroutinesVersion = "1.1.0"
 
     const val lifecycleVersion = "2.0.0"
+
+    const val objectBox = "2.3.3"
 }
 
 object Libs {

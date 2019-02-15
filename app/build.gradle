@@ -102,10 +102,10 @@ dependencies {
     implementation "com.google.zxing:core:3.3.3"
     implementation "com.google.zxing:android-core:3.3.0"
 
-    implementation "io.objectbox:objectbox-android:2.3.1"
-    implementation "io.objectbox:objectbox-kotlin:2.3.1"
-    kapt  "io.objectbox:objectbox-processor:2.3.1"
-    annotationProcessor "io.objectbox:objectbox-processor:2.3.1"
+    implementation "io.objectbox:objectbox-android:${Versions.objectBox}"
+    implementation "io.objectbox:objectbox-kotlin:${Versions.objectBox}"
+    kapt  "io.objectbox:objectbox-processor:${Versions.objectBox}"
+    annotationProcessor "io.objectbox:objectbox-processor:${Versions.objectBox}"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.1"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1"
