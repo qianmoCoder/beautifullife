@@ -14,7 +14,7 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            storeFile = file("${rootDir}/debug.keystore")
+            storeFile = file("$rootDir/debug.keystore")
         }
     }
 
@@ -37,6 +37,7 @@ android {
         }
         multiDexEnabled = true
     }
+
     buildTypes {
         getByName("debug") {
             //debug模式
@@ -56,6 +57,11 @@ android {
             manifestPlaceholders = mapOf("BUILD_TYPE_VALUE" to "release")
         }
 
+        create("qa") {
+            initWith(getByName("release"))
+            manifestPlaceholders.replace("BUILD_TYPE_VALUE", "qa")
+            matchingFallbacks = arrayListOf("release")
+        }
     }
 
     applicationVariants.all {
