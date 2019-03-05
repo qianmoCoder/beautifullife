@@ -1,0 +1,70 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tab1_spread_w"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="#4897fa"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="none"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tab2_spread_w"
+            app:layout_constraintTop_toBottomOf="@id/tab1_spread" />
+
+
+        <TextView
+            android:id="@+id/tab2_spread_w"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:background="#4897fa"
+            android:gravity="center"
+            android:outlineProvider="background"
+            android:text="background"
+            app:layout_constraintBottom_toBottomOf="@id/tab1_spread_w"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@id/tab1_spread_w"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tab3_spread_w"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="#4897fa"
+            android:gravity="center"
+            android:outlineProvider="bounds"
+            android:text="bounds"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tab4_spread_w"
+            app:layout_constraintTop_toBottomOf="@id/tab2_spread_w" />
+
+
+        <TextView
+            android:id="@+id/tab4_spread_w"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:background="#4897fa"
+            android:gravity="center"
+            android:outlineProvider="paddedBounds"
+            android:text="paddedBounds"
+            app:layout_constraintBottom_toBottomOf="@id/tab3_spread_w"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@id/tab3_spread_w"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

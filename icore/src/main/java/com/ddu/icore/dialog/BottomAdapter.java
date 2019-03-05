@@ -2,7 +2,7 @@ package com.ddu.icore.dialog;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,14 +12,14 @@ import android.widget.TextView;
 import com.ddu.icore.R;
 import com.ddu.icore.callback.Consumer2;
 import com.ddu.icore.entity.BottomItem;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 /**
  * Created by yzbzz on 2017/3/31.
  */
 
-public class BottomAdapter extends DefaultRecycleViewAdapter<BottomItem> {
+public class BottomAdapter extends DefaultRVAdapter<BottomItem> {
 
     private int mHeight;
     private int mSmallHeight;

@@ -22,4 +22,12 @@
     <string name="pull_to_refresh_from_bottom_refreshing_label">正在加载...</string>
 
     <string name="no_install_app_store">未发现应用商店</string>
+    <string name="test_text_html"><![CDATA[
+    \u3000ETCP停车升级啦！本次升级为您提供了车场空闲状态查询、场内查询停车时长及费用、收费公开透明保障用户权益等服务。<br>
+     \u3000同时为了保障您优质的停车体验，ETCP停车对已享受ETCP停车服务的车主将收取一定比例的服务费用。
+     <p>
+        <a href="http://www.baidu.com">点击查看《服务费收费协议》</a>
+     </p><font color="#ED1313">*注：如您对服务费用有异议，可使用现金支付</font>
+    ]]>
+    </string>
 </resources>

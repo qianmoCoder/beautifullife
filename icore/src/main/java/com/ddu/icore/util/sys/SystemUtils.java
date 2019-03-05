@@ -12,9 +12,9 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresPermission;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -33,7 +33,18 @@ public class SystemUtils {
         if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null) {
             context.startActivity(intent);
         }
+
+
     }
+
+    private static void checkActivity(Context context, Class<?> cls) {
+        Intent sendIntent = new Intent(context, cls);
+        // 这种方式判断是否存在
+        if (sendIntent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(sendIntent);
+        }
+    }
+
 
     // 跳转到应用市场
     public static void gotoMarket(Context context) {

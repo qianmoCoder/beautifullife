@@ -1,15 +1,12 @@
 package com.ddu.ui.fragment.person
 
 import android.content.res.Configuration
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.R
-import com.ddu.icore.common.findPreference
-import com.ddu.icore.common.putPreference
-import com.ddu.icore.common.versionName
+import com.ddu.icore.common.*
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_setting.*
-import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
+
 
 /**
  * Created by yzbzz on 16/4/11.

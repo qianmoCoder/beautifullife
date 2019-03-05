@@ -3,10 +3,10 @@ package com.ddu.ui.activity.phrase
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_one_separator.*

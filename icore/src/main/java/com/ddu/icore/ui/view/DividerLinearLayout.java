@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -64,7 +64,7 @@ public class DividerLinearLayout extends LinearLayout {
                 bounds.bottom = bottom + dividerHeight;
                 bounds.left = marginLeft;
                 bounds.right = right - marginRight;
-                drawDivider(canvas, bounds);
+                drawDivider(mDivider, canvas, bounds);
             }
         }
         super.dispatchDraw(canvas);
@@ -84,9 +84,9 @@ public class DividerLinearLayout extends LinearLayout {
         invalidate();
     }
 
-    void drawDivider(@NonNull Canvas canvas, @NonNull Rect bounds) {
-        final Drawable divider = mDivider;
+    void drawDivider(@NonNull Drawable divider, @NonNull Canvas canvas, @NonNull Rect bounds) {
         divider.setBounds(bounds);
         divider.draw(canvas);
     }
+
 }

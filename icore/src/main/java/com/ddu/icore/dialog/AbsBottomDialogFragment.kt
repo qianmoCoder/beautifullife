@@ -3,13 +3,12 @@ package com.ddu.icore.dialog
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.*
 import com.ddu.icore.R
-import org.jetbrains.anko.support.v4.act
+import com.ddu.icore.common.act
 
 
-abstract class AbsBottomDialogFragment : DialogFragment() {
+abstract class AbsBottomDialogFragment : androidx.fragment.app.DialogFragment() {
 
     final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayoutId(), container, false)

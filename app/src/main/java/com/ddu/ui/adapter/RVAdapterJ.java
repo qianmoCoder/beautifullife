@@ -2,7 +2,7 @@ package com.ddu.ui.adapter;
 
 import android.content.Context;
 
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by yzbzz on 2018/3/5.
  */
 
-public class RVAdapterJ extends DefaultRecycleViewAdapter {
+public class RVAdapterJ extends DefaultRVAdapter {
 
     public RVAdapterJ(Context context, List items) {
         super(context, items);

@@ -2,19 +2,17 @@ package com.ddu.ui.fragment.life
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ddu.R
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.work.FragmentA
 import com.ddu.ui.view.BottomView
 import com.ddu.ui.view.DividerItemDecoration
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.PieDataSet
 import kotlinx.android.synthetic.main.fragment_life_mortgage_item.*
 import java.util.*
 
@@ -48,55 +46,55 @@ class LoanFragment : DefaultFragment(), View.OnClickListener {
         btn_calculator1.setOnClickListener(this)
     }
 
-    private fun setData() {
-        ll_mortgage.visibility = View.VISIBLE
-        pc_mortgage.setUsePercentValues(true)
-        pc_mortgage.setDescription("Hello")
-        pc_mortgage.isDrawHoleEnabled = false
-        //        pc_mortgage.setDragDecelerationFrictionCoef(0.95f);
-
-        val yVals1 = ArrayList<Entry>()
-        for (i in 0..2) {
-            yVals1.add(Entry(30f, i))
-        }
-
-        val xVals = ArrayList<String>()
-        for (i in 0..2) {
-            xVals.add(mParties[i % mParties.size])
-        }
-
-        val colors = ArrayList<Int>()
-        COLORFUL_COLORS.indices.forEach {
-            colors.add(it)
-        }
-
-        val dataSet = PieDataSet(yVals1, "Biu")
-        dataSet.sliceSpace = 3f
-        dataSet.selectionShift = 5f
-        dataSet.colors = colors
-
-        //        PieData data = new PieData(xVals, dataSet);
-        //        data.setValueFormatter(new PercentFormatter());
-        //        data.setValueTextSize(11f);
-        //        data.setValueTextColor(Color.WHITE);
-        //
-        //        pc_mortgage.setData(data);
-        //        pc_mortgage.highlightValue(null);
-        //
-        //        pc_mortgage.invalidate();
-        //
-        //
-        //        Legend l = pc_mortgage.getLegend();
-        //        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);
-        ////        l.setXEntrySpace(7f);
-        ////        l.setYEntrySpace(0f);
-        //        l.setYOffset(10f);
-    }
+//    private fun setData() {
+//        ll_mortgage.visibility = View.VISIBLE
+//        pc_mortgage.setUsePercentValues(true)
+//        pc_mortgage.setDescription("Hello")
+//        pc_mortgage.isDrawHoleEnabled = false
+//        //        pc_mortgage.setDragDecelerationFrictionCoef(0.95f);
+//
+//        val yVals1 = ArrayList<Entry>()
+//        for (i in 0..2) {
+//            yVals1.add(Entry(30f, i))
+//        }
+//
+//        val xVals = ArrayList<String>()
+//        for (i in 0..2) {
+//            xVals.add(mParties[i % mParties.size])
+//        }
+//
+//        val colors = ArrayList<Int>()
+//        COLORFUL_COLORS.indices.forEach {
+//            colors.add(it)
+//        }
+//
+//        val dataSet = PieDataSet(yVals1, "Biu")
+//        dataSet.sliceSpace = 3f
+//        dataSet.selectionShift = 5f
+//        dataSet.colors = colors
+//
+//        //        PieData data = new PieData(xVals, dataSet);
+//        //        data.setValueFormatter(new PercentFormatter());
+//        //        data.setValueTextSize(11f);
+//        //        data.setValueTextColor(Color.WHITE);
+//        //
+//        //        pc_mortgage.setData(data);
+//        //        pc_mortgage.highlightValue(null);
+//        //
+//        //        pc_mortgage.invalidate();
+//        //
+//        //
+//        //        Legend l = pc_mortgage.getLegend();
+//        //        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);
+//        ////        l.setXEntrySpace(7f);
+//        ////        l.setYEntrySpace(0f);
+//        //        l.setYOffset(10f);
+//    }
 
     override fun onClick(v: View?) {
         when (view?.id) {
             R.id.rl_mortgage -> showBottomDialog()
-            R.id.btn_calculator -> setData()
+//            R.id.btn_calculator -> setData()
             R.id.btn_calculator1 -> {
                 btn_calculator!!.isEnabled = isEnabled
                 isEnabled = !isEnabled
@@ -113,7 +111,7 @@ class LoanFragment : DefaultFragment(), View.OnClickListener {
         val recyclerView = view.findViewById<View>(R.id.rv_bottom) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(baseActivity)
 
-        val defaultRecycleViewAdapter = object : DefaultRecycleViewAdapter<String>(baseActivity, mList) {
+        val defaultRecycleViewAdapter = object : DefaultRVAdapter<String>(baseActivity, mList) {
             override fun getLayoutId(viewType: Int): Int {
                 return R.layout.rv_item_linear
             }

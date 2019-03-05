@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/default_item_white_bg"
+    android:background="@drawable/default_layout_bg"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -23,12 +23,12 @@
         android:layout_height="1dp"
         android:background="@color/c_cccccc" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </com.ddu.icore.ui.view.BottomLinearLayout>

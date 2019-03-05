@@ -1,7 +1,7 @@
 package com.ddu.icore.ui.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 import com.ddu.icore.ui.help.ShapeInject;
@@ -15,7 +15,7 @@ public class ShapeEditText extends AppCompatEditText {
     }
 
     public ShapeEditText(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.editTextStyle);
+        this(context, attrs, android.R.attr.editTextStyle);
     }
 
     public ShapeEditText(Context context, AttributeSet attrs, int defStyleAttr) {

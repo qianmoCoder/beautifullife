@@ -1,7 +1,7 @@
 package com.ddu.util;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +22,7 @@ public class ToastUtils {
     private TextView mTextView;
 
     private ToastUtils() {
-        mContext = BaseApp.Companion.getContext();
+        mContext = BaseApp.Companion.getContext().getApplicationContext();
         mLayoutInflater = LayoutInflater.from(mContext);
         initToast();
         initView();

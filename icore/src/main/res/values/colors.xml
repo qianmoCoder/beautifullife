@@ -6,24 +6,35 @@
 
     <color name="c_000000">#000000</color>
     <color name="c_a0000000">#a0000000</color>
+    <color name="c_b2000000">#b2000000</color>
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
     <color name="c_e0000000">#e0000000</color>
 
     <color name="c_ff0000">#ff0000</color>
+    <color name="c_b2ff0000">#b2ff0000</color>
+
     <color name="c_00ff00">#00ff00</color>
+    <color name="c_b200ff00">#b200ff00</color>
+
     <color name="c_0000ff">#0000ff</color>
+    <color name="c_b20000ff">#b20000ff</color>
 
     <color name="c_ffff00">#ffff00</color>
+    <color name="c_b2ffff00">#b2ffff00</color>
+
     <color name="c_ff00ff">#ff00ff</color>
+    <color name="c_b2ff00ff">#b2ff00ff</color>
 
     <color name="c_00ffff">#00ffff</color>
+    <color name="c_b200ffff">#b200ffff</color>
 
     <color name="c_17a6f4">#17a6f4</color>
     <color name="c_272727">#272727</color>
     <color name="c_333333">#333333</color>
 
     <color name="c_3b8fed">#3b8fed</color>
+    <color name="c_4291eb">#4291eb</color>
     <color name="c_437fda">#437fda</color>
     <color name="c_4897fa">#4897fa</color>
     <color name="c_994897fa">#994897fa</color>
@@ -39,6 +50,7 @@
     <color name="c_9934c749">#9934c749</color>
     <color name="c_46b942">#46b942</color>
 
+    <color name="c_ecedf1">#ecedf1</color>
     <color name="c_ffffff">#ffffff</color>
     <color name="c_cccccc">#cccccc</color>
     <color name="c_ecedef">#ecedef</color>
@@ -67,5 +79,10 @@
 
     <color name="dark">#FF222222</color>
     <color name="light">#FFEEEEEE</color>
+
+    <color name="red_light">#ffff4444</color>
+    <color name="green_light">#ff99cc00</color>
+    <color name="orange_light">#ffffbb33</color>
+    <color name="blue_light">#ff33b5e5</color>
 
 </resources>

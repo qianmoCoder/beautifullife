@@ -1,13 +1,13 @@
 package com.ddu.ui.fragment.study.ui
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
 import android.widget.TextView
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.HeaderOrFooterRecycleViewAdapter
@@ -23,7 +23,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
 
     private val mDatas = ArrayList<String>()
 
-    private lateinit var mAdapter: DefaultRecycleViewAdapter<String>
+    private lateinit var mAdapter: DefaultRVAdapter<String>
     private lateinit var advanceRecycleViewAdapter: HeaderOrFooterRecycleViewAdapter
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
         rv_swipe_refresh.setHasFixedSize(true)
         rv_swipe_refresh.layoutManager = LinearLayoutManager(mContext)
         rv_swipe_refresh.itemAnimator = DefaultItemAnimator()
-        mAdapter = object : DefaultRecycleViewAdapter<String>(mContext, mDatas) {
+        mAdapter = object : DefaultRVAdapter<String>(mContext, mDatas) {
             override fun getLayoutId(viewType: Int): Int {
                 return R.layout.rv_item_linear
             }

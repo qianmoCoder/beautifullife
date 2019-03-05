@@ -3,18 +3,16 @@ package com.ddu.ui.activity
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.ui.activity.BaseActivity
-import com.ddu.icore.ui.help.BottomNavigationViewHelper
 import com.ddu.icore.util.AnimatorUtils
 import com.ddu.logic.LogicActions
 import com.ddu.ui.fragment.LifeFragment
@@ -22,7 +20,9 @@ import com.ddu.ui.fragment.MeFragment
 import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import com.ddu.util.ToastUtils
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 /**
  * Created by yzbzz on 2018/1/17.
@@ -48,10 +48,8 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             mMeFragment = supportFragmentManager.findFragmentByTag(TAG_ME) as? MeFragment
         }
 
-        BottomNavigationViewHelper.disableShiftMode(navigation)
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
-//        startActivity<MainActivityT>("id" to 5)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -67,12 +65,6 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     private fun hideAll(transaction: FragmentTransaction, vararg fragment: Fragment?) {
-//        fragment?.filter {
-//            it?.isHidden ?: false
-//        }.map {
-//            transaction.hide(it)
-//        }
-
         for (f in fragment) {
             if (f != null) {
                 if (!f.isHidden) {
@@ -112,9 +104,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_study -> {
                 if (null == mStudyFragment) {
                     mStudyFragment = StudyFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mStudyFragment, TAG_STUDY)
+                    transaction.add(fl_home_content!!.getId(), mStudyFragment!!, TAG_STUDY)
                 } else {
-                    transaction.show(mStudyFragment)
+                    transaction.show(mStudyFragment!!)
                 }
                 transaction.commitAllowingStateLoss()
                 return true
@@ -122,9 +114,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_work -> {
                 if (null == mWorkFragment) {
                     mWorkFragment = WorkFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mWorkFragment, TAG_WORK)
+                    transaction.add(fl_home_content!!.getId(), mWorkFragment!!, TAG_WORK)
                 } else {
-                    transaction.show(mWorkFragment)
+                    transaction.show(mWorkFragment!!)
                 }
                 transaction.commitAllowingStateLoss()
                 return true
@@ -132,9 +124,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_life -> {
                 if (null == mLifeFragment) {
                     mLifeFragment = LifeFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mLifeFragment, TAG_LIFE)
+                    transaction.add(fl_home_content!!.getId(), mLifeFragment!!, TAG_LIFE)
                 } else {
-                    transaction.show(mLifeFragment)
+                    transaction.show(mLifeFragment!!)
                 }
                 transaction.commitAllowingStateLoss()
                 return true
@@ -142,9 +134,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
             R.id.navigation_me -> {
                 if (null == mMeFragment) {
                     mMeFragment = MeFragment.newInstance()
-                    transaction.add(fl_home_content!!.getId(), mMeFragment, TAG_ME)
+                    transaction.add(fl_home_content!!.getId(), mMeFragment!!, TAG_ME)
                 } else {
-                    transaction.show(mMeFragment)
+                    transaction.show(mMeFragment!!)
                 }
                 transaction.commitAllowingStateLoss()
                 return true

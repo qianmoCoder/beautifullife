@@ -10,7 +10,6 @@ import com.ddu.icore.common.alphaAnimator
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ToastUtils
 import com.iannotation.IElement
-import com.umeng.socialize.utils.ContextUtil.getPackageName
 import kotlinx.android.synthetic.main.fragment_ui_video.*
 
 /**
@@ -26,7 +25,7 @@ class VideoFragment : DefaultFragment() {
 
     override fun initView() {
         btn_ok.setOnClickListener { ToastUtils.showToast("hello") }
-        surface_view.setVideoURI(Uri.parse("android.resource://" + getPackageName() +
+        surface_view.setVideoURI(Uri.parse("android.resource://" + context?.packageName +
                 "/" + R.raw.videoviewdemo))
         //        surface_view.setMediaController(new MediaController(mContext));
         surface_view.requestFocus()

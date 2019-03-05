@@ -5,9 +5,9 @@ import android.os.Bundle;
 import com.ddu.R;
 import com.ddu.app.BaseApp;
 import com.ddu.icore.refresh.PullToRefreshBase;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
-import com.ddu.icore.ui.fragment.AbstractRecycleViewFragment;
+import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.iannotation.IElement;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by yzbzz on 2017/5/5.
  */
 @IElement("UI")
-public class DRVFragment extends AbstractRecycleViewFragment implements PullToRefreshBase.OnRefreshListener2 {
+public class DRVFragment extends AbsRVFragment implements PullToRefreshBase.OnRefreshListener2 {
 
     private List<String> mDatas = new ArrayList<>();
 
@@ -29,8 +29,8 @@ public class DRVFragment extends AbstractRecycleViewFragment implements PullToRe
     }
 
     @Override
-    public DefaultRecycleViewAdapter getAdapter() {
-        return new DefaultRecycleViewAdapter<String>(getMContext(), mDatas) {
+    public DefaultRVAdapter getAdapter() {
+        return new DefaultRVAdapter<String>(getMContext(), mDatas) {
 
             @Override
             public int getLayoutId(int viewType) {

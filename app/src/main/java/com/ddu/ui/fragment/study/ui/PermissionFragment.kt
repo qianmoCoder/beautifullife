@@ -4,16 +4,16 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.view.View
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.ddu.R
+import com.ddu.icore.common.act
+import com.ddu.icore.common.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ToastUtils
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_permission.*
-import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
@@ -48,6 +48,7 @@ class PermissionFragment : DefaultFragment(), View.OnClickListener, EasyPermissi
                 easyRequestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
             R.id.btn_android -> {
+                easyRequestPermission(Manifest.permission.READ_PHONE_STATE)
             }
         }
     }

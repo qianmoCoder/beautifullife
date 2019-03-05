@@ -2,13 +2,13 @@ package com.ddu.icore.ui.adapter.common
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
 import android.util.SparseArray
 import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
-import org.jetbrains.anko.find
+import androidx.recyclerview.widget.RecyclerView
+import com.ddu.icore.common.find
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -20,7 +20,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             view = itemView.find(viewId)
             mViews.append(viewId, view)
         }
-        return view as T?
+        return view as? T
     }
 
     fun setText(viewId: Int, text: String): ViewHolder {
@@ -32,6 +32,12 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun setText(viewId: Int, resId: Int): ViewHolder {
         val tv = getView<TextView>(viewId)
         tv?.setText(resId)
+        return this
+    }
+
+    fun setTextColor(viewId: Int, color: Int): ViewHolder {
+        val tv = getView<TextView>(viewId)
+        tv?.setTextColor(color)
         return this
     }
 
@@ -65,13 +71,13 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         return this
     }
 
-    fun setBackgroud(viewId: Int, background: Drawable): ViewHolder {
+    fun setBackground(viewId: Int, background: Drawable): ViewHolder {
         val view = getView<View>(viewId)
         view?.background = background
         return this
     }
 
-    fun setBackgroud(viewId: Int, color: Int): ViewHolder {
+    fun setBackground(viewId: Int, color: Int): ViewHolder {
         val view = getView<View>(viewId)
         view?.setBackgroundColor(color)
         return this

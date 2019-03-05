@@ -5,7 +5,7 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 
 import com.ddu.R;
-import com.ddu.icore.ui.adapter.common.DefaultRecycleViewAdapter;
+import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +16,7 @@ import java.util.List;
  * Created by yzbzz on 2017/12/5.
  */
 
-public class StudyUIRecycleViewAdapter extends DefaultRecycleViewAdapter<Integer> {
+public class StudyUIRecycleViewAdapter extends DefaultRVAdapter<Integer> {
 
     public static final int CHOICE_MODE_SINGLE = 1;
     public static final int CHOICE_MODE_MULTIPLE = 2;

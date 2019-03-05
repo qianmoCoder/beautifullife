@@ -1,16 +1,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-        <item name="android:listDivider">@drawable/divider_bg</item>
-        <!--<item name="clockBackground">@android:color/white</item>-->
-        <!--<item name="clockTextColor">@android:color/black</item>-->
+        <item name="android:listDivider">@drawable/default_divider_horizontal</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme"/>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
     <style name="AnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_alpha_in2</item>
@@ -19,14 +28,15 @@
         <item name="android:activityCloseExitAnimation">@anim/activity_alpha_out</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="SplashTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/c_00000000</item> <!-- 背景 -->
+        <item name="android:windowFullscreen">true</item> <!-- 全屏 -->
+        <item name="android:windowIsTranslucent">false</item> <!-- 透明属性，加载图片选择false，否则true -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDisablePreview">true</item> <!-- 设置过渡效果，禁用窗口的预览动画 -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- 半透明背景Theme -->
     <style name="BottomViewThemeDefalut">
@@ -167,10 +177,11 @@
         <item name="android:layout_marginTop">@dimen/dp_20</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:divider">@drawable/divider_horizontal_padding_left</item>
+        <item name="android:divider">@drawable/default_divider_horizontal</item>
+        <item name="android:dividerPadding">@dimen/dp_15</item>
         <item name="android:orientation">vertical</item>
         <item name="android:showDividers">middle</item>
-        <item name="android:background">@drawable/default_linear_layout_shape_bg</item>
+        <item name="android:background">@drawable/default_layout_bg</item>
     </style>
 
     <style name="DefaultRelativeLayout">
@@ -506,5 +517,34 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/c_ffffff</item>
+        <item name="android:maxHeight">@dimen/dp_3</item>
+        <item name="android:maxWidth">@dimen/dp_3</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--边框-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--半透明-->
+        <item name="android:windowNoTitle">true</item>
+        <!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--模糊-->
+    </style>
+
+    <style name="PickerAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
 
 </resources>

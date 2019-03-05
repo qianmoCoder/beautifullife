@@ -4,8 +4,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntDef;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntDef;
 import android.view.View;
 
 import java.lang.annotation.Retention;

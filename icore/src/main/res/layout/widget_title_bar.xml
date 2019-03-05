@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ddu.icore.ui.view.TitleBar xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ddu.icore.ui.widget.TitleBar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_title_bar"
     style="@style/TitleBarLayout"
     android:background="@color/c_3b8fed"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:elevation="@dimen/dp_3"
+    >
 
     <LinearLayout
         android:id="@+id/ll_title_bar_left"
@@ -77,4 +80,4 @@
 
     </LinearLayout>
 
-</com.ddu.icore.ui.view.TitleBar>
+</com.ddu.icore.ui.widget.TitleBar>

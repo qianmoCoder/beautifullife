@@ -15,7 +15,6 @@ class RxBus private constructor() {
         fun get() = SingletonHolder.instance
         val instance = SingletonHolder.instance
 
-        @JvmOverloads
         fun action(action: String, actionCallBack: ActionCallBack<Any>): Observable<Any> {
             return instance.setAction(action, actionCallBack)
         }
@@ -42,7 +41,7 @@ class RxBus private constructor() {
     }
 
     private fun sendPost(action: String, data: Any) {
-        val publishSubject = mSubjects[action]
+        val publishSubject = mSubjects.remove(action)
         if (null != publishSubject) {
             publishSubject.onNext(data)
             publishSubject.onComplete()

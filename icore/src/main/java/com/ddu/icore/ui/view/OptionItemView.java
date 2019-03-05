@@ -1,10 +1,13 @@
 package com.ddu.icore.ui.view;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.DrawableCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,11 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
+import com.ddu.icore.ui.help.ShapeInject;
 
 
 public class OptionItemView extends RelativeLayout {
 
     private Context mContext;
+
+    private TextView tvLeftText;
 
     private ImageView ivLeftIcon;
 
@@ -43,44 +49,51 @@ public class OptionItemView extends RelativeLayout {
 
         init();
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.IOptionItemViewStyle);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OptionItemView);
+
+        setTextData(a, tvLeftText,
+                R.styleable.OptionItemView_i_leftText,
+                R.styleable.OptionItemView_i_leftTextColor,
+                R.styleable.OptionItemView_i_leftTextSize);
 
         setImageData(a, ivLeftIcon,
-                R.styleable.IOptionItemViewStyle_i_leftIcon,
-                R.styleable.IOptionItemViewStyle_i_leftIconScaleType,
-                R.styleable.IOptionItemViewStyle_i_leftIconWidth,
-                R.styleable.IOptionItemViewStyle_i_leftIconHeight);
+                R.styleable.OptionItemView_i_leftIcon,
+                R.styleable.OptionItemView_i_leftIconScaleType,
+                R.styleable.OptionItemView_i_leftIconWidth,
+                R.styleable.OptionItemView_i_leftIconHeight,
+                R.styleable.OptionItemView_i_leftIcon_tint);
 
         setTextData(a, tvTitle,
-                R.styleable.IOptionItemViewStyle_i_title,
-                R.styleable.IOptionItemViewStyle_i_titleColor,
-                R.styleable.IOptionItemViewStyle_i_titleSize);
+                R.styleable.OptionItemView_i_title,
+                R.styleable.OptionItemView_i_titleColor,
+                R.styleable.OptionItemView_i_titleSize);
 
         setTextData(a, tvSubTitle,
-                R.styleable.IOptionItemViewStyle_i_subTitle,
-                R.styleable.IOptionItemViewStyle_i_subTitleColor,
-                R.styleable.IOptionItemViewStyle_i_subTitleSize);
+                R.styleable.OptionItemView_i_subTitle,
+                R.styleable.OptionItemView_i_subTitleColor,
+                R.styleable.OptionItemView_i_subTitleSize);
 
         setTextData(a, tvContent,
-                R.styleable.IOptionItemViewStyle_i_content,
-                R.styleable.IOptionItemViewStyle_i_contentColor,
-                R.styleable.IOptionItemViewStyle_i_contentSize);
+                R.styleable.OptionItemView_i_content,
+                R.styleable.OptionItemView_i_contentColor,
+                R.styleable.OptionItemView_i_contentSize);
 
         setTextData(a, tvRightText,
-                R.styleable.IOptionItemViewStyle_i_rightText,
-                R.styleable.IOptionItemViewStyle_i_rightTextColor,
-                R.styleable.IOptionItemViewStyle_i_rightTextSize);
+                R.styleable.OptionItemView_i_rightText,
+                R.styleable.OptionItemView_i_rightTextColor,
+                R.styleable.OptionItemView_i_rightTextSize);
 
         setImageData(a, ivRightIcon,
-                R.styleable.IOptionItemViewStyle_i_rightIcon,
-                R.styleable.IOptionItemViewStyle_i_rightIconScaleType,
-                R.styleable.IOptionItemViewStyle_i_rightIconWidth,
-                R.styleable.IOptionItemViewStyle_i_rightIconHeight);
+                R.styleable.OptionItemView_i_rightIcon,
+                R.styleable.OptionItemView_i_rightIconScaleType,
+                R.styleable.OptionItemView_i_rightIconWidth,
+                R.styleable.OptionItemView_i_rightIconHeight,
+                R.styleable.OptionItemView_i_rightIcon_tint);
 
         a.recycle();
     }
 
-    private void setImageData(TypedArray a, ImageView imageView, int resIndex, int scaleTypeIndex, int widthIndex, int heightIndex) {
+    private void setImageData(TypedArray a, ImageView imageView, int resIndex, int scaleTypeIndex, int widthIndex, int heightIndex, int tintIndex) {
         int leftResId = a.getResourceId(resIndex, -1);
         if (leftResId > 0) {
             imageView.setVisibility(VISIBLE);
@@ -92,12 +105,22 @@ public class OptionItemView extends RelativeLayout {
         if (leftImageScale > 0) {
             imageView.setScaleType(sScaleTypeArray[leftImageScale]);
         }
+
+        int tintColor = a.getColor(tintIndex, -1);
+        if (tintColor != -1) {
+            final Drawable originBitmapDrawable = imageView.getDrawable();
+            if (null != originBitmapDrawable) {
+                imageView.setBackground(tintDrawable(originBitmapDrawable, ColorStateList.valueOf(tintColor)));
+            }
+        }
+
         int leftIconWidth = a.getInt(widthIndex, 0);
         int leftIconHeight = a.getInt(heightIndex, 0);
         if (leftIconWidth > 0 && leftIconHeight > 0) {
             imageView.setLayoutParams(new RelativeLayout.LayoutParams(leftIconWidth, leftIconHeight));
         }
     }
+
 
     private void setTextData(TypedArray a, TextView textView, int textIndex, int colorIndex, int sizeIndex) {
         String title = a.getString(textIndex);
@@ -118,12 +141,67 @@ public class OptionItemView extends RelativeLayout {
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         inflater.inflate(R.layout.option_item_view, this);
+
+        tvLeftText = findViewById(R.id.tv_left_text);
         ivLeftIcon = findViewById(R.id.iv_left_icon);
         tvTitle = findViewById(R.id.tv_title);
         tvSubTitle = findViewById(R.id.tv_sub_title);
         tvContent = findViewById(R.id.tv_content);
         tvRightText = findViewById(R.id.tv_right_text);
         ivRightIcon = findViewById(R.id.iv_right_icon);
+    }
+
+    public void enableDefaultLeftText(@ColorInt int color) {
+        enableLeftText(ShapeInject.TYPE_ROUND, color, 0);
+    }
+
+    public void enableLeftText(int shapeType, @ColorInt int color) {
+        enableLeftText(shapeType, color, 0);
+    }
+
+    public void enableLeftText(int shapeType, @ColorInt int color, int index) {
+        CharSequence titleText = tvTitle.getText();
+        if (titleText.length() > index) {
+            char firstText = titleText.charAt(index);
+            setLeftText(String.valueOf(firstText));
+            ShapeInject.inject(tvLeftText)
+                    .setShapeType(shapeType)
+                    .setBackgroundColor(color)
+                    .background();
+        }
+    }
+
+    public void setLefText(int shapeType, @ColorInt int color) {
+        CharSequence leftText = tvLeftText.getText();
+        if (leftText.length() > 0) {
+            ShapeInject.inject(tvLeftText)
+                    .setShapeType(shapeType)
+                    .setBackgroundColor(color)
+                    .background();
+        }
+    }
+
+//    public void setLefText(int shapeType, @ColorInt int color, CharSequence text) {
+//        if (!TextUtils.isEmpty(text)) {
+//            setText(tvTitle, text);
+//        }
+//        CharSequence titleText = tvTitle.getText();
+//        if (titleText.length() > index) {
+//            char firstText = titleText.charAt(index);
+//            setLeftText(String.valueOf(firstText));
+//            ShapeInject.inject(tvLeftText)
+//                    .setShapeType(shapeType)
+//                    .setBackgroundColor(color)
+//                    .background();
+//        }
+//    }
+
+    public void setLeftText(int resId) {
+        setText(tvLeftText, resId);
+    }
+
+    public void setLeftText(CharSequence text) {
+        setText(tvLeftText, text);
     }
 
     public void setLeftIcon(Drawable drawable) {
@@ -174,6 +252,10 @@ public class OptionItemView extends RelativeLayout {
         setImage(ivRightIcon, resId);
     }
 
+    public TextView getLeftText() {
+        return tvLeftText;
+    }
+
     private void setText(TextView textView, CharSequence text) {
         if (TextUtils.isEmpty(text)) {
             textView.setVisibility(GONE);
@@ -209,6 +291,13 @@ public class OptionItemView extends RelativeLayout {
             imageView.setImageResource(resId);
         }
     }
+
+    private static Drawable tintDrawable(Drawable drawable, ColorStateList colors) {
+        final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTintList(wrappedDrawable, colors);
+        return wrappedDrawable;
+    }
+
 
     private static final ImageView.ScaleType[] sScaleTypeArray = {
             ImageView.ScaleType.MATRIX,

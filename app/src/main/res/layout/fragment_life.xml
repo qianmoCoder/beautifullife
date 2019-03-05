@@ -23,6 +23,7 @@
                 android:id="@+id/oiv_calculator_house"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_home_icon"
+                app:i_leftIcon_tint="@color/c_b2fdbc40"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="房贷计算器" />
 
@@ -30,6 +31,7 @@
                 android:id="@+id/oiv_calculator_income"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_person_icon"
+                app:i_leftIcon_tint="@color/c_b2ff0000"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="@string/life_calculator_income" />
 
@@ -49,6 +51,7 @@
                 android:id="@+id/oiv_food"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_food_icon"
+                app:i_leftIcon_tint="@color/c_b234c749"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="@string/life_food" />
 
@@ -56,6 +59,7 @@
                 android:id="@+id/oiv_sleep"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_sleep_icon"
+                app:i_leftIcon_tint="@color/c_b2000000"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="@string/life_sleep" />
 
@@ -75,6 +79,7 @@
                 android:id="@+id/oiv_joke"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_joke_icon"
+                app:i_leftIcon_tint="@color/c_b2ff00ff"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="@string/life_joke" />
 
@@ -82,6 +87,7 @@
                 android:id="@+id/oiv_life_sentiment"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/life_sentiment_icon"
+                app:i_leftIcon_tint="@color/c_b20000ff"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="@string/life_sentiment" />
 

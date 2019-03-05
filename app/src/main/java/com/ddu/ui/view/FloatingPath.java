@@ -2,7 +2,7 @@ package com.ddu.ui.view;
 
 import android.graphics.Path;
 import android.graphics.PathMeasure;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Author UFreedom

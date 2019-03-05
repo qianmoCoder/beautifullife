@@ -4,7 +4,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <FrameLayout
         android:id="@+id/fl_home_content"
@@ -14,11 +15,14 @@
 
     </FrameLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <!-- 使用 app:itemBackground 去掉水波纹效果 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        app:itemBackground="@color/c_ffffff"
+        app:menu="@menu/navigation"
+        app:labelVisibilityMode="labeled"/>
 
 </LinearLayout>

@@ -48,7 +48,17 @@
             <EditText
                 android:id="@+id/et_income_tax"
                 style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
-                android:hint="个税起征点为5000元"
+                android:hint="请输入税前月薪"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                style="@style/IncomeTaxGridLayoutLeft"
+                android:text="起征额" />
+
+            <EditText
+                android:id="@+id/et_line_money"
+                style="@style/IncomeTaxGridLayoutRight.IncomeEditText"
+                android:hint="请输入起征额"
                 android:inputType="numberDecimal" />
 
             <TextView

@@ -3,7 +3,7 @@
     android:id="@+id/dialog_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/dialog_corners_bg"
+    android:background="@drawable/default_dialog_bg"
     android:gravity="center"
     android:minHeight="180dp"
     android:minWidth="230dp"
@@ -42,7 +42,7 @@
             android:foregroundTint="@color/c_ff0000"
             />
 
-        <android.support.v4.widget.Space
+        <android.widget.Space
             android:id="@+id/space"
             android:layout_width="@dimen/dp_10"
             android:layout_height="wrap_content" />

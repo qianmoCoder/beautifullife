@@ -2,7 +2,6 @@ package com.ddu.sdk.network.retrofit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.fastjson.FastJsonConverterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -43,7 +42,6 @@ public class RetrofitManager {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("")
                 .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(FastJsonConverterFactory.create())
                 .build();
         return retrofit;
     }

@@ -4,7 +4,7 @@
     android:id="@+id/rl_login"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_corners_white_bg"
+    android:background="@drawable/default_dialog_bg"
     android:minHeight="@dimen/dp_202"
     android:minWidth="@dimen/dp_300"
     android:orientation="vertical">
@@ -110,7 +110,7 @@
             android:id="@+id/ll_voice_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_44"
-            android:divider="@drawable/divider_linear_layout"
+            android:divider="@drawable/default_divider_horizontal"
             android:orientation="vertical"
             android:showDividers="beginning|end"
             android:visibility="gone">

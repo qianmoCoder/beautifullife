@@ -1,7 +1,7 @@
 package com.ddu.icore.ui.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import com.ddu.icore.ui.help.ShapeInject;
@@ -15,7 +15,7 @@ public class ShapeButton extends AppCompatButton {
     }
 
     public ShapeButton(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.buttonStyle);
+        this(context, attrs, android.R.attr.buttonStyle);
     }
 
     public ShapeButton(Context context, AttributeSet attrs, int defStyleAttr) {

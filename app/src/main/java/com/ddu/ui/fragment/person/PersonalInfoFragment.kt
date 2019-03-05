@@ -3,7 +3,6 @@ package com.ddu.ui.fragment.person
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
-import kotlinx.android.synthetic.main.fragment_person_info.*
 
 /**
  * Created by yzbzz on 16/4/11.
@@ -20,14 +19,14 @@ class PersonalInfoFragment : DefaultFragment() {
 
     override fun initView() {
         initInstances()
-        appbar.addOnOffsetChangedListener { _, verticalOffset ->
-            mVerticalOffset = verticalOffset
-            if (mVerticalOffset == 0) {
-                ptf!!.setCanScroll(true)
-            } else {
-                ptf!!.setCanScroll(false)
-            }
-        }
+//        appbar.addOnOffsetChangedListener { _, verticalOffset ->
+//            mVerticalOffset = verticalOffset
+//            if (mVerticalOffset == 0) {
+//                ptf!!.setCanScroll(true)
+//            } else {
+//                ptf!!.setCanScroll(false)
+//            }
+//        }
 
         //        PtrHandler ptrHandler = new PtrHandler() {
         //
@@ -76,7 +75,7 @@ class PersonalInfoFragment : DefaultFragment() {
     }
 
     private fun initInstances() {
-        baseActivity.setSupportActionBar(toolbar)
+//        baseActivity.setSupportActionBar(toolbar)
 
         //        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         //        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));

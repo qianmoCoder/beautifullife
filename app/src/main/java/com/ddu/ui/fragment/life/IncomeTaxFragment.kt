@@ -1,7 +1,5 @@
 package com.ddu.ui.fragment.life
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import com.ddu.R
@@ -9,16 +7,19 @@ import com.ddu.icore.common.formatMoney
 import com.ddu.icore.common.parseDecimals
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_life_income_tax.*
+import java.math.BigDecimal
 
 /**
  * Created by liuhongzhe on 16/6/7.
  */
 class IncomeTaxFragment : DefaultFragment() {
 
+    private var lineMoney = 5000.0
+
     private val average = 8467.0
 
     private var ceiling = average * 3
-    //    private double ceiling = 6463.0 * 3;
+
     private var calculatorMoney: Double = 0.toDouble()
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -30,28 +31,17 @@ class IncomeTaxFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        et_income_average.setText(average.toString() + "")
+        et_line_money.setText(lineMoney.toString())
+        et_income_average.setText(average.toString())
         btn_income_tax.setOnClickListener {
             calculator()
-            try {
-                //            URL data = new URL("http://behappy.Icore.com/app/");
-                //            intentToSms("18610289732", data.toString());
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
         }
-
         setDefaultTitle("个税计算器")
     }
 
-    private fun intentToSms(tel: String, msg: String) {
-        val uri = Uri.parse("smsto:" + tel)
-        val intent = Intent(Intent.ACTION_SENDTO, uri)
-        intent.putExtra("sms_body", msg)
-        startActivity(intent)
-    }
 
     private fun calculator() {
+        lineMoney = java.lang.Double.parseDouble(et_line_money.text.toString().trim { it <= ' '})
         val averageMoney = et_income_average.text.toString().trim { it <= ' ' }
         if (!TextUtils.isEmpty(averageMoney)) {
             val money = java.lang.Double.parseDouble(averageMoney)
@@ -61,7 +51,6 @@ class IncomeTaxFragment : DefaultFragment() {
         }
         val moneyText = et_income_tax.text.toString()
         if (TextUtils.isEmpty(moneyText)) {
-            //            ToastUtil.showTextToast("请输入金额!");
             return
         }
         val money = java.lang.Double.parseDouble(moneyText)
@@ -70,14 +59,14 @@ class IncomeTaxFragment : DefaultFragment() {
             calculatorMoney = ceiling
         }
         val insurance = calculatorMoney * 8 / 100 + (calculatorMoney * 2 / 100 + 3)
-        val providentFund = (calculatorMoney * 12 / 100).parseDecimals()
+        val providentFund = (calculatorMoney * 12 / 100).parseDecimals().toInt()
         val tax = getCalculatorTax(money - insurance - providentFund)
 
         tv_total_money.text = money.formatMoney()
         tv_insurance.text = insurance.formatMoney()
-        tv_providentFund.text = providentFund.formatMoney()
+        tv_providentFund.text = providentFund.toString()
         tv_total_tax_before_deduction.text = (insurance + providentFund).formatMoney()
-        tv_tax.text = tax.formatMoney()
+        tv_tax.text = "${BigDecimal(tax).setScale(2, BigDecimal.ROUND_HALF_UP)}"
         tv_total_deduction.text = (insurance + providentFund + tax).formatMoney()
         tv_money.text = (money - insurance - providentFund - tax).formatMoney()
 
@@ -95,53 +84,39 @@ class IncomeTaxFragment : DefaultFragment() {
      * 70岁以下退休人员个人账户按每人每月100元划入。
      */
     private fun getCalculatorHealthInsuranceMoney(money: Double, age: Double): Double {
+        val selfProportion = 2
         var age = age.parseDecimals()
-        val proportionality: Double
-        if (age < 35) {
-            proportionality = money * 2 / 100 + money * 0.8 / 100
-        } else if (age >= 35 && age < 45) {
-            proportionality = money * 2 / 100 + money * 1 / 100
-        } else if (age >= 45 && age < 65) {
-            proportionality = money * 2 / 100 + money * 2 / 100
-        } else if (age >= 65 && age < 70) {
-            proportionality = 100.0
-        } else {
-            proportionality = 110.0
+        return when {
+            age < 35 -> money * (selfProportion + 0.8) / 100
+            age < 45 -> money * (selfProportion + 1) / 100
+            age < 65 -> money * (selfProportion + 2) / 100
+            age < 70 -> 100.0
+            else -> 110.0
         }
-        return proportionality
     }
 
     /**
-     * 1500 3% 0
-     * 1500~4500 10% 105
-     * 4500~9000 20% 555
-     * 9000~35000 25% 1005 20
-     *
-     * 35000~55000 30% 2755
-     * 55000~80000 35% 5505
-     * 80000 45% 13505
+     * 3000 3% 0
+     * 3000~12000 10% 210
+     * 12000~25000 20% 1410
+     * 25000~35000 25% 2660
+     * 35000~55000 30% 4410
+     * 55000~80000 35% 7160
+     * 80000 45% 15160
      *
      * @param money
      */
     private fun getCalculatorTax(money: Double): Double {
-        var money = money - 5000.0
-        val result: Double
-        if (money < 1500.0) {
-            result = money * 3 / 100 - 0
-        } else if (money >= 1500 && money < 4500) {
-            result = money * 10 / 100 - 105
-        } else if (money >= 4500 && money < 9000) {
-            result = money * 20 / 100 - 555
-        } else if (money >= 9000 && money < 35000) {
-            result = money * 20 / 100 - 1005
-        } else if (money >= 35000 && money < 55000) {
-            result = money * 30 / 100 - 2755
-        } else if (money >= 55000 && money < 80000) {
-            result = money * 35 / 100 - 5505
-        } else {
-            result = money * 45 / 100 - 13505
+        val result = money - lineMoney
+        return when {
+            result < 3000 -> result * 3 / 100 - 0
+            result < 12000 -> result * 10 / 100 - 210
+            result < 25000 -> result * 20 / 100 - 1410
+            result < 35000 -> result * 25 / 100 - 2660
+            result < 55000 -> result * 30 / 100 - 4410
+            result < 80000 -> result * 35 / 100 - 7160
+            else -> money * 45 / 100 - 15160
         }
-        return result
     }
 
 }

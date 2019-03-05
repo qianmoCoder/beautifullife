@@ -3,7 +3,7 @@ package com.ddu.ui.viewpager;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 
 import java.lang.ref.WeakReference;

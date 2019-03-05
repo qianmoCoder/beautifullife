@@ -1,7 +1,6 @@
 package com.ddu.icore.ui.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
-import org.jetbrains.anko.support.v4.ctx
+import com.ddu.icore.common.ctx
 
 
-abstract class BaseBindingFragment : Fragment(), IObserver<GodIntent> {
+abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver<GodIntent> {
 
     private var mRootView: View? = null
 

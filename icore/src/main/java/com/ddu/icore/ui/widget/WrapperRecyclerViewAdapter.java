@@ -1,6 +1,6 @@
 package com.ddu.icore.ui.widget;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/12/15.

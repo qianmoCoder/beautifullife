@@ -2,25 +2,28 @@ package com.ddu.ui.fragment
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
-import android.support.v4.app.DialogFragment
 import android.util.Log
+import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.callback.Consumer3
+import com.ddu.icore.common.act
+import com.ddu.icore.common.ctx
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItem
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.icore.ui.help.ShapeInject
 import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
-import org.jetbrains.anko.support.v4.act
-import org.jetbrains.anko.support.v4.ctx
+
 
 /**
  * Created by yzbzz on 2018/1/17.
@@ -57,6 +60,18 @@ class MeFragment : DefaultFragment() {
         tv_usr_name.text = "yzbzz"
         tv_usr_number.text = "186-xxxx-xxx"
 
+        oiv_buddha.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ffff00"))
+
+        oiv_friend_link.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2fdbc40"))
+        oiv_friend_link.setOnClickListener {
+            showShareDialog()
+        }
+
+        oiv_plan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
+
+        oiv_fav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ff0000"))
+
+        oiv_eggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
         oiv_eggs.setOnClickListener {
             System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
             mHits[mHits.size - 1] = SystemClock.uptimeMillis()
@@ -68,14 +83,18 @@ class MeFragment : DefaultFragment() {
                 }
             }
         }
+
+        oiv_setting.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b234c749"))
         oiv_setting.setOnClickListener {
             startFragment(SettingFragment::class.java)
         }
 
-        oiv_friend_link.setOnClickListener {
-            showShareDialog()
+        oiv_phone_info.enableDefaultLeftText(Color.parseColor("#b24897fa"))
+        oiv_phone_info.setOnClickListener {
+            startFragment(PhoneInfoFragment::class.java)
         }
 
+        oiv_notification.enableDefaultLeftText(Color.parseColor("#b2ff4141"))
         oiv_notification.setOnClickListener {
             val intent = Intent("cn.android.intent.user.click")
             val pIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -85,10 +104,7 @@ class MeFragment : DefaultFragment() {
 //            NotificationUtils.instance.notify(2, builder1)
         }
 
-        oiv_phone_info.setOnClickListener {
-            startFragment(PhoneInfoFragment::class.java)
-        }
-
+        oiv_show_dialog.enableDefaultLeftText(Color.parseColor("#b234c749"))
         oiv_show_dialog.setOnClickListener {
             val dialog = AlertDialogFragment().apply {
                 title = "彩蛋"
@@ -115,6 +131,7 @@ class MeFragment : DefaultFragment() {
             }, 2000)
         }
 
+        oiv_show_bottom_dialog.enableDefaultLeftText(Color.parseColor("#b2ff00ff"))
         oiv_show_bottom_dialog.setOnClickListener {
             showBottomDialog()
         }

@@ -12,7 +12,7 @@ import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;

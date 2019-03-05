@@ -5,8 +5,6 @@
         <item name="android:layout_height">@dimen/dp_50</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/c_f0f0f0</item>
-        <item name="android:paddingLeft">@dimen/dp_10</item>
-        <item name="android:paddingRight">@dimen/dp_10</item>
     </style>
 
     <style name="TitleBarItemLayout">
@@ -88,22 +86,34 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:padding">@dimen/dp_13</item>
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
     </style>
 
-    <style name="OptionItemLeftIcon">
-        <item name="android:layout_width">@dimen/dp_16</item>
-        <item name="android:layout_height">@dimen/dp_16</item>
-        <item name="android:layout_marginRight">@dimen/dp_10</item>
-        <item name="android:scaleType">fitXY</item>
+    <style name="OptionItemLeftView">
+        <item name="android:layout_width">@dimen/dp_25</item>
+        <item name="android:layout_height">@dimen/dp_25</item>
+        <item name="android:layout_marginLeft">@dimen/dp_15</item>
+        <item name="android:layout_marginRight">@dimen/dp_15</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="OptionItemLeftView.text">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="OptionItemLeftView.Icon">
+        <item name="android:layout_width">@dimen/dp_25</item>
+        <item name="android:layout_height">@dimen/dp_25</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <style name="OptionItemTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/c_333333</item>
-        <item name="android:textSize">@dimen/dp_15</item>
+        <item name="android:textSize">@dimen/dp_16</item>
     </style>
 
     <style name="OptionItemSubTitle">
@@ -123,6 +133,17 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+
+    <style name="OptionItemRight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginRight">@dimen/dp_15</item>
+    </style>
+
     <style name="OptionItemRightText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -137,6 +158,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:layout_marginLeft">@dimen/dp_5</item>
     </style>
+
     <!-- OptionItemView End -->
 
 </resources>

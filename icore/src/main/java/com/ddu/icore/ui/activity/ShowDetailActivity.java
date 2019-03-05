@@ -3,12 +3,11 @@ package com.ddu.icore.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.AnimRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.text.TextUtils;
 
 import com.ddu.icore.R;
@@ -30,15 +29,6 @@ public class ShowDetailActivity extends BaseActivity {
     private FragmentManager mFragmentManager;
 
     private boolean isShowTitleBar = false;
-
-    @AnimRes
-    private int enter;
-    @AnimRes
-    private int exit;
-    @AnimRes
-    private int popEnter;
-    @AnimRes
-    private int popExit;
 
     @NonNull
     public static Intent getShowDetailIntent(Context context, String fragmentName, @Nullable Bundle bundle) {
@@ -101,7 +91,6 @@ public class ShowDetailActivity extends BaseActivity {
             if (null != bundle) {
                 type = bundle.getInt(KEY_TYPE, FragmentUtils.INSTANCE.getFRAGMENT_REPLACE());
             }
-//            ft.setCustomAnimations(R.anim.activity_alpha_in2, R.anim.activity_alpha_out2, R.anim.activity_alpha_in, R.anim.activity_alpha_out);
             FragmentUtils.INSTANCE.attachFragment(type, ft, fragment, R.id.container);
         }
     }

@@ -22,15 +22,16 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <meta-data
             android:name="BUILD_TYPE"
             android:value="${BUILD_TYPE_VALUE}" />
 
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.LogoActivity"
             android:configChanges="orientation"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,11 +40,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".icore.ui.activity.ShowDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.activity.ShareActivity"
-            android:theme="@style/ShareStyle" />
         <activity android:name=".ui.activity.WebActivity" />
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -67,7 +69,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.ddu.provider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -123,17 +125,15 @@
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
         <activity
             android:name=".ui.activity.ScrollingActivity3"
-            android:label="@string/title_activity_scrolling3"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.ScrollingActivity2"
-            android:label="@string/title_activity_scrolling2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".ui.activity.phrase.OneSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity"/>
-        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity"/>
+        <activity android:name=".ui.activity.phrase.OneSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity" />
     </application>
 
 </manifest>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <com.ddu.icore.refresh.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/default_refresh_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c_f3f3f3"
+    android:background="@color/c_ecedf1"
     android:fillViewport="true"
     android:overScrollMode="never"
     android:paddingTop="@dimen/dp_3"
@@ -20,12 +20,12 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:padding="@dimen/dp_6"
-            android:text="已完成支付记录"
             android:textColor="@color/c_666666"
             android:textSize="@dimen/dp_16"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:text="标题" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rl_default"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,7 +35,7 @@
             android:overScrollMode="never"
             android:scrollbars="none">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 
 </com.ddu.icore.refresh.PullToRefreshScrollView>

@@ -12,7 +12,6 @@ import com.ddu.icore.util.sys.ViewUtils
 import com.ddu.ui.dialog.ColorPickerDialog
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_shape.*
-import org.jetbrains.anko.backgroundResource
 
 /**
  * Created by yzbzz on 16/4/14.
@@ -66,8 +65,8 @@ class ShapeFragment : DefaultFragment(), RadioGroup.OnCheckedChangeListener, Vie
     fun setBtnBackground(colorText: String) {
         val resId = ViewUtils.getResId("shape_view_$colorText", R.drawable::class.java)
         val hollowResId = ViewUtils.getResId("shape_view_${colorText}_hollow", R.drawable::class.java)
-        btn_xml_shape.backgroundResource = resId
-        btn_xml_hollow_shape.backgroundResource = hollowResId
+        btn_xml_shape.setBackgroundResource(resId)
+        btn_xml_hollow_shape.setBackgroundResource(hollowResId)
     }
 
     override fun onClick(view: View) {

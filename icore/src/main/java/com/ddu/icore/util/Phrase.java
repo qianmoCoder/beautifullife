@@ -2,9 +2,9 @@ package com.ddu.icore.util;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.PluralsRes;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.PluralsRes;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.TextView;

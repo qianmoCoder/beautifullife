@@ -1,39 +1,16 @@
 package com.ddu.ui.fragment
 
-import android.animation.Animator
-import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
-import android.view.View
-import com.ddu.R
-import com.ddu.db.DbManager
-import com.ddu.db.entity.StudyContent
-import com.ddu.icore.common.ObserverManager
-import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.util.AnimatorUtils
-import com.ddu.logic.LogicActions
-import com.ddu.ui.adapter.StudyContentFragmentPagerAdapter
-import com.ddu.ui.fragment.study.StudyTagsFragment
-import dalvik.system.DexFile
-import io.reactivex.Observable
-import kotlinx.android.synthetic.main.fragment_study.*
-import java.io.IOException
-import java.util.*
+import com.ddu.icore.callback.Consumer1
+import com.ddu.icore.ui.fragment.AbsDBRVFragment
+import com.ddu.routes.RouterProvider
+import com.ddu.ui.adapter.StudyDBRVAdapter
+import com.iannotation.model.RouteMeta
 
 /**
  * Created by yzbzz on 2018/1/17.
  */
-class StudyFragment : DefaultFragment() {
-    private var isShow: Boolean = false
-
-    private var mStudyTagsFragment: StudyTagsFragment? = null
-
-    private var mStudyContentFragmentPagerAdapter: StudyContentFragmentPagerAdapter? = null
-
-    private var studyContents: List<StudyContent> = ArrayList()
-
-    private val mTitles = ArrayList<String>()
+class StudyFragment : AbsDBRVFragment<RouteMeta, StudyDBRVAdapter>() {
 
     companion object {
         fun newInstance(): StudyFragment {
@@ -46,115 +23,31 @@ class StudyFragment : DefaultFragment() {
         }
     }
 
+    override fun initView() {
+        super.initView()
+        setTitle("学习")
+        mAdapter.submitList(mDataEntities)
+        mAdapter.setItemClickListener(object : Consumer1<RouteMeta> {
+            override fun accept(t: RouteMeta) {
+                val bundle = Bundle()
+                bundle.putString("title", t.text)
+                bundle.putString("bgColor", t.color)
+                bundle.putString("url", t.path)
+                startFragment(t.cls.name, bundle)
+            }
+        })
+    }
 
     override fun initData(savedInstanceState: Bundle?) {
-
-        mStudyTagsFragment = StudyTagsFragment.newInstance()
-
-        studyContents = DbManager.getStudyContentBox().all
-
-        Observable.fromIterable(studyContents).filter { studyContent -> studyContent.isOld }.subscribe { studyContent -> mTitles.add(studyContent.title) }
-    }
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_study
-    }
-
-    override fun initView() {
-        mStudyContentFragmentPagerAdapter = StudyContentFragmentPagerAdapter(fragmentManager, mTitles)
-        vp_study.setAdapter(mStudyContentFragmentPagerAdapter)
-        tl_study.setupWithViewPager(vp_study)
-        iv_add_item.setOnClickListener(View.OnClickListener {
-            if (!isShow) {
-                ObserverManager.getInstance().notify(LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION)
-                fl_study.visibility = View.VISIBLE
-                ll_study.visibility = View.VISIBLE
-                AnimatorUtils.composeIn(fl_study, ll_study, iv_add_item).start()
-            } else {
-                ObserverManager.getInstance().notify(LogicActions.IC_ADD_ITEM_CLICK_CLOSE_ACTION)
-                val animatorSet = AnimatorUtils.composeOut(fl_study, ll_study, iv_add_item)
-                animatorSet.addListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(animation: Animator) {
-
-                    }
-
-                    override fun onAnimationEnd(animation: Animator) {
-                        fl_study.visibility = View.INVISIBLE
-                        ll_study.visibility = View.INVISIBLE
-                    }
-
-                    override fun onAnimationCancel(animation: Animator) {
-
-                    }
-
-                    override fun onAnimationRepeat(animation: Animator) {
-
-                    }
-                })
-                animatorSet.start()
-            }
-            isShow = !isShow
-        })
-        val ft = fragmentManager!!.beginTransaction()
-
-        if (!mStudyTagsFragment!!.isAdded) {
-            ft.replace(R.id.fl_study, mStudyTagsFragment)
+        val items = RouterProvider.elements
+        for (item in items) {
+            mDataEntities.add(RouteMeta.build(item))
         }
-        ft.commitAllowingStateLoss()
-        setTitle("学习")
-
-        //        setFixedTagLayoutOnPageChangeListener();
+        mDataEntities.sort()
     }
 
-    // 解决点击tab抖动的bug
-    private fun setFixedTagLayoutOnPageChangeListener() {
-        try {
-            val field = TabLayout::class.java.getDeclaredField("mPageChangeListener")
-            field.isAccessible = true
-            field.set(this, FixedTagLayoutOnPageChangeListener(tl_study))
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
+    override fun getAdapter(): StudyDBRVAdapter {
+        return StudyDBRVAdapter()
     }
 
-
-    class FixedTagLayoutOnPageChangeListener(tabLayout: TabLayout) : TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
-        private var isTouchState: Boolean = false
-
-        override fun onPageScrollStateChanged(state: Int) {
-            super.onPageScrollStateChanged(state)
-            if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                isTouchState = true
-            } else if (state == ViewPager.SCROLL_STATE_IDLE) {
-                isTouchState = false
-            }
-        }
-
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            if (isTouchState) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-        }
-    }
-
-    private fun getClasses(mContext: Context, packageName: String): List<*> {
-        val classes = mutableListOf<String>()
-        try {
-            val packageCodePath = mContext.packageCodePath
-            val df = DexFile(packageCodePath)
-            val regExp = "^$packageName.\\w+$"
-            val iter = df.entries()
-            while (iter.hasMoreElements()) {
-                val className = iter.nextElement()
-                if (className.matches(regExp.toRegex())) {
-                    classes.add(className)
-                }
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        return classes
-    }
 }

@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment.study.ui;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -10,7 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +22,6 @@ import com.ddu.icore.rx.activityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.util.ToastUtils;
 import com.iannotation.IElement;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
 
@@ -39,8 +37,6 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
 
     private Button btnCamera;
     private ImageView ivPhoto;
-
-    private RxPermissions rxPermissions;
 
 
     @Override
@@ -58,7 +54,6 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        rxPermissions = new RxPermissions(getMActivity());
     }
 
 
@@ -67,20 +62,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.btn_camera:
-                if (!rxPermissions.isGranted(Manifest.permission.CAMERA)) {
-                    rxPermissions.request(Manifest.permission.CAMERA).subscribe(new Consumer<Boolean>() {
-                        @Override
-                        public void accept(Boolean aBoolean) throws Exception {
-                            if (aBoolean) {
-                                getPhoto();
-                            } else {
-                                ToastUtils.showToast("没有拍照权限");
-                            }
-                        }
-                    });
-                } else {
-                    getPhoto();
-                }
+
                 break;
         }
     }

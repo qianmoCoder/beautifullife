@@ -32,6 +32,6 @@ public abstract class DefaultRecyclerViewActivity<T> extends BaseActivity {
 //        initRefreshView();
 //    }
 //
-//    public abstract DefaultRecycleViewAdapter getAdapter();
+//    public abstract DefaultRVAdapter getAdapter();
 
 }

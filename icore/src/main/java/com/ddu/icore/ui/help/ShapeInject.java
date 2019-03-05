@@ -7,10 +7,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntDef;
-import android.support.annotation.IntRange;
+import androidx.annotation.ColorInt;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntDef;
+import androidx.annotation.IntRange;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
@@ -134,10 +134,10 @@ public class ShapeInject {
     public void parseAttributeSet(AttributeSet attrs) {
         initDrawable();
         if (null != mStateBackground) {
-            TypedArray a = mView.getContext().obtainStyledAttributes(attrs, R.styleable.ShapeView);
+            TypedArray a = mView.getContext().obtainStyledAttributes(attrs, R.styleable.ShapeInject);
 
             //set animation duration
-            mDuration = a.getInteger(R.styleable.ShapeView_animationDuration, mDuration);
+            mDuration = a.getInteger(R.styleable.ShapeInject_animationDuration, mDuration);
             mStateBackground.setEnterFadeDuration(mDuration);
             mStateBackground.setExitFadeDuration(mDuration);
 
@@ -152,25 +152,25 @@ public class ShapeInject {
             }
 
             // backgroundColor
-            mNormalBackgroundColor = a.getColor(R.styleable.ShapeView_normalBackgroundColor, defValue);
-            mPressedBackgroundColor = a.getColor(R.styleable.ShapeView_pressedBackgroundColor, mNormalBackgroundColor);
-            mDisableBackgroundColor = a.getColor(R.styleable.ShapeView_disableBackgroundColor, mNormalBackgroundColor);
+            mNormalBackgroundColor = a.getColor(R.styleable.ShapeInject_normalBackgroundColor, defValue);
+            mPressedBackgroundColor = a.getColor(R.styleable.ShapeInject_pressedBackgroundColor, mNormalBackgroundColor);
+            mDisableBackgroundColor = a.getColor(R.styleable.ShapeInject_disableBackgroundColor, mNormalBackgroundColor);
 
             // stroke
-            mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashWidth, 0);
-            mStrokeDashGap = a.getDimensionPixelSize(R.styleable.ShapeView_strokeDashGap, 0);
-            mNormalStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_normalStrokeWidth, 0);
-            mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_pressedStrokeWidth, mNormalStrokeWidth);
-            mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeView_disableStrokeWidth, mNormalStrokeWidth);
-            mNormalStrokeColor = a.getColor(R.styleable.ShapeView_normalStrokeColor, 0);
-            mPressedStrokeColor = a.getColor(R.styleable.ShapeView_pressedStrokeColor, mNormalStrokeColor);
-            mDisableStrokeColor = a.getColor(R.styleable.ShapeView_disableStrokeColor, mNormalStrokeColor);
+            mStrokeDashWidth = a.getDimensionPixelSize(R.styleable.ShapeInject_strokeDashWidth, 0);
+            mStrokeDashGap = a.getDimensionPixelSize(R.styleable.ShapeInject_strokeDashGap, 0);
+            mNormalStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeInject_normalStrokeWidth, 0);
+            mPressedStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeInject_pressedStrokeWidth, mNormalStrokeWidth);
+            mDisableStrokeWidth = a.getDimensionPixelSize(R.styleable.ShapeInject_disableStrokeWidth, mNormalStrokeWidth);
+            mNormalStrokeColor = a.getColor(R.styleable.ShapeInject_normalStrokeColor, 0);
+            mPressedStrokeColor = a.getColor(R.styleable.ShapeInject_pressedStrokeColor, mNormalStrokeColor);
+            mDisableStrokeColor = a.getColor(R.styleable.ShapeInject_disableStrokeColor, mNormalStrokeColor);
 
             // radius
-            mRadius = a.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
+            mRadius = a.getDimensionPixelSize(R.styleable.ShapeInject_shapeRadius, 0);
 
-            mShapeType = a.getInt(R.styleable.ShapeView_shapeType, TYPE_NULL);
-            mDirection = a.getInt(R.styleable.ShapeView_direction, DIRECTION_LEFT);
+            mShapeType = a.getInt(R.styleable.ShapeInject_shapeType, TYPE_NULL);
+            mDirection = a.getInt(R.styleable.ShapeInject_direction, DIRECTION_LEFT);
 
             if (mView instanceof TextView) {
                 mTextView = (TextView) mView;
@@ -181,9 +181,9 @@ public class ShapeInject {
                 int mDefaultPressedTextColor = mColorStateList.getColorForState(mStates[0], currentTextColor);
                 int mDefaultDisableTextColor = mColorStateList.getColorForState(mStates[3], currentTextColor);
 
-                mNormalTextColor = a.getColor(R.styleable.ShapeView_normalTextColor, mDefaultNormalTextColor);
-                mPressedTextColor = a.getColor(R.styleable.ShapeView_pressedTextColor, mDefaultPressedTextColor);
-                mDisableTextColor = a.getColor(R.styleable.ShapeView_disableTextColor, mDefaultDisableTextColor);
+                mNormalTextColor = a.getColor(R.styleable.ShapeInject_normalTextColor, mDefaultNormalTextColor);
+                mPressedTextColor = a.getColor(R.styleable.ShapeInject_pressedTextColor, mDefaultPressedTextColor);
+                mDisableTextColor = a.getColor(R.styleable.ShapeInject_disableTextColor, mDefaultDisableTextColor);
             }
             a.recycle();
         }

@@ -1,6 +1,6 @@
 package com.ddu.icore.ui.viewpager;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.widget.ImageView;
 
 import java.util.ArrayList;

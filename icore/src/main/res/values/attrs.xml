@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--<attr name="optionItemText" format="string|reference" />-->
-    <!--<attr name="optionTextSize" format="dimension|reference" />-->
-    <!--<attr name="optionTextColor" format="color|reference" />-->
-    <!--<attr name="rightText" format="string" />-->
-    <!--<attr name="rightTextSize" format="dimension" />-->
-    <!--<attr name="rightTextColor" format="color" />-->
-    <!--<attr name="image" format="reference" />-->
-    <!--<attr name="imageScaleType">-->
-    <!--<enum name="matrix" value="0" />-->
-    <!--<enum name="fit_xy" value="1" />-->
-    <!--<enum name="fit_start" value="2" />-->
-    <!--<enum name="fit_center" value="3" />-->
-    <!--<enum name="fit_end" value="4" />-->
-    <!--<enum name="center" value="5" />-->
-    <!--<enum name="center_crop" value="6" />-->
-    <!--<enum name="center_inside" value="7" />-->
-    <!--</attr>-->
-    <!--<attr name="carrowImage" format="reference" />-->
-    <!--<attr name="carrowImageScaleType">-->
-    <!--<enum name="fillXY" value="1" />-->
-    <!--<enum name="center" value="5" />-->
-    <!--</attr>-->
-
     <declare-styleable name="CircleImageView">
         <attr name="civ_border_width" format="dimension" />
         <attr name="civ_border_color" format="color" />
         <attr name="civ_border_overlay" format="boolean" />
-        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
         <attr name="civ_fill_color" format="color" />
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="IOptionItemViewStyle">
+    <declare-styleable name="OptionItemView">
+        <attr name="i_leftText" format="string|reference" />
+        <attr name="i_leftTextSize" format="dimension|reference" />
+        <attr name="i_leftTextColor" format="color|reference" />
+
         <attr name="i_leftIcon" format="reference" />
+        <attr name="i_leftIcon_tint" format="color|reference" />
         <attr name="i_leftIconWidth" format="dimension|reference" />
         <attr name="i_leftIconHeight" format="dimension|reference" />
         <attr name="i_leftIconScaleType" format="enum">
@@ -65,6 +45,7 @@
         <attr name="i_rightTextColor" format="color|reference" />
 
         <attr name="i_rightIcon" format="reference" />
+        <attr name="i_rightIcon_tint" format="color|reference" />
         <attr name="i_rightIconWidth" format="dimension|reference" />
         <attr name="i_rightIconHeight" format="dimension|reference" />
         <attr name="i_rightIconScaleType" format="enum">
@@ -145,13 +126,13 @@
         <attr name="spaceOffset" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="ShapeView">
+    <declare-styleable name="ShapeInject">
 
         <attr name="normalBackgroundColor" format="color|reference" />
         <attr name="pressedBackgroundColor" format="color|reference" />
         <attr name="disableBackgroundColor" format="color|reference" />
 
-        <attr name="radius" format="dimension|reference" />
+        <attr name="shapeRadius" format="dimension|reference" />
 
         <attr name="normalTextColor" format="color|reference" />
         <attr name="pressedTextColor" format="color|reference" />

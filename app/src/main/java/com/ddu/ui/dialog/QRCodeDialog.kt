@@ -1,16 +1,16 @@
 package com.ddu.ui.dialog
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.LinearLayout
+import androidx.fragment.app.DialogFragment
 import com.ddu.R
+import com.ddu.icore.common.ctx
 import com.ddu.icore.common.loadAnimation
 import kotlinx.android.synthetic.main.fragment_qr_code.*
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2017/5/26.

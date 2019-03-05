@@ -1,8 +1,7 @@
 package com.ddu.icore.common
 
 import android.graphics.Color
-import android.support.annotation.ColorInt
-import com.alibaba.fastjson.JSON
+import androidx.annotation.ColorInt
 import com.google.gson.Gson
 import java.math.BigDecimal
 import java.security.MessageDigest
@@ -22,7 +21,7 @@ fun String.md5(): String {
     return sb.toString().toUpperCase()
 }
 
-fun String?.parseColor(@ColorInt defaultColor: Int = Color.BLUE): Int {
+fun String.parseColor(@ColorInt defaultColor: Int = Color.BLUE): Int {
     return try {
         Color.parseColor(this)
     } catch (e: Exception) {
@@ -84,11 +83,8 @@ fun String.queryStringToKeysAndValues(): Map<String, String> {
     return result
 }
 
-
-inline fun <reified T> String.toJsonFromFastJson(): T {
-    return JSON.parseObject(this, T::class.java)
-}
-
-inline fun <reified T> String.toJsonFromGson(): T {
-    return Gson().fromJson(this, T::class.java)
+inline fun <reified T> String?.fromJson(): T? = try {
+    Gson().fromJson(this, T::class.java)
+} catch (e: Exception) {
+    null
 }

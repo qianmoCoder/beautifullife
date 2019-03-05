@@ -2,10 +2,11 @@ package com.ddu.ui.fragment.study.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.ddu.R
+import com.ddu.icore.common.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_tpi.*
@@ -26,8 +27,9 @@ class TabPageIndicatorFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        vp_tpi.adapter = SampleFragmentPagerAdapter(fragmentManager, mContext)
-        tpi.setViewPager(vp_tpi)
+        vp_tpi.adapter = SampleFragmentPagerAdapter(fragmentManager, ctx)
+//        lpi_home_card_view.setViewPager(vp_tpi)
+        linepage.setViewPager(vp_tpi)
     }
 
     inner class SampleFragmentPagerAdapter(fm: FragmentManager?, private val context: Context) : FragmentPagerAdapter(fm) {

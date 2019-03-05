@@ -1,16 +1,19 @@
 package com.ddu.icore.dialog
 
+import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.*
 import com.ddu.icore.R
 import kotlinx.android.synthetic.main.fragment_dialog_default.*
 
 
-class AlertDialogFragment : DialogFragment(), View.OnClickListener {
+class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClickListener {
 
     var title = ""
     var msg = ""
+    var special: CharSequence = ""
     var leftText = ""
     var rightText = ""
 
@@ -19,8 +22,8 @@ class AlertDialogFragment : DialogFragment(), View.OnClickListener {
     var leftColor = R.color.c_4897fa
     var rightColor = R.color.c_272727
 
-    var mLeftClickListener: ((View, DialogFragment) -> Unit)? = null
-    var mRightClickListener: ((View, DialogFragment) -> Unit)? = null
+    var mLeftClickListener: ((View, androidx.fragment.app.DialogFragment) -> Unit)? = null
+    var mRightClickListener: ((View, androidx.fragment.app.DialogFragment) -> Unit)? = null
 
     var size = 17f
 
@@ -39,9 +42,13 @@ class AlertDialogFragment : DialogFragment(), View.OnClickListener {
             view_line.visibility = View.VISIBLE
         }
 
-        tv_dialog_msg.text = msg
+
         tv_dialog_msg.gravity = msgGravity
         tv_dialog_msg.textSize = size
+
+        tv_dialog_msg.text = special
+        tv_dialog_msg.movementMethod = LinkMovementMethod()
+
         tv_dialog_btn_left.text = leftText
         var color = resources.getColor(leftColor)
         tv_dialog_btn_left.setTextColor(color)
@@ -64,5 +71,10 @@ class AlertDialogFragment : DialogFragment(), View.OnClickListener {
         } else if (id == R.id.tv_dialog_btn_right && null != mRightClickListener) {
             mRightClickListener?.invoke(v, this)
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        super.onDismiss(dialog)
+        Log.v("lhz", "onDismiss")
     }
 }

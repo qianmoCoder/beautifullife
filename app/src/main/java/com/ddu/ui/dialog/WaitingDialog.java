@@ -2,7 +2,6 @@ package com.ddu.ui.dialog;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +10,14 @@ import android.widget.LinearLayout;
 
 import com.ddu.R;
 
+import androidx.annotation.Nullable;
+
 
 /**
  * Created by yzbzz on 2017/10/31.
  */
 
-public class WaitingDialog extends android.support.v4.app.DialogFragment {
+public class WaitingDialog extends androidx.fragment.app.DialogFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

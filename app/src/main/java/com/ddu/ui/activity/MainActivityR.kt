@@ -1,12 +1,13 @@
 package com.ddu.ui.activity
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.widget.RadioGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.ddu.R
 import com.ddu.app.BaseApp
+import com.ddu.icore.common.startActivity
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.ui.fragment.LifeFragment
 import com.ddu.ui.fragment.MeFragment
@@ -14,7 +15,6 @@ import com.ddu.ui.fragment.StudyFragment
 import com.ddu.ui.fragment.WorkFragment
 import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_mainr.*
-import org.jetbrains.anko.startActivity
 
 class MainActivityR : BaseActivity(), RadioGroup.OnCheckedChangeListener {
 

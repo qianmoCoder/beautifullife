@@ -3,21 +3,21 @@ package com.ddu.ui.dialog
 import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.R.id.tv_error_msg
 import com.ddu.R.id.tv_phone_number
+import com.ddu.icore.common.ctx
 import com.ddu.icore.common.loadAnimation
 import com.ddu.icore.common.showKeyboard
 import com.ddu.icore.ui.view.NumberInputView
 import com.ddu.icore.util.sys.ViewUtils
-import org.jetbrains.anko.support.v4.ctx
 
 /**
  * Created by yzbzz on 2017/5/26.

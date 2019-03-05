@@ -1,9 +1,9 @@
 package com.ddu.icore.rx.activityresult
 
 
-import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.*
@@ -12,7 +12,7 @@ import java.util.*
  * Created by yzbzz on 2018/1/5.
  */
 
-class RxActivityResultFragment : Fragment() {
+class RxActivityResultFragment : androidx.fragment.app.Fragment() {
 
     private val mSubjects = HashMap<Int, PublishSubject<ActivityResultInfo>>()
 
@@ -24,13 +24,13 @@ class RxActivityResultFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
         val publishSubject = mSubjects.remove(requestCode)
-        if (null != publishSubject) {
+        publishSubject?.run {
             val activityResultInfo = ActivityResultInfo()
             activityResultInfo.requestCode = requestCode
             activityResultInfo.resultCode = resultCode
             activityResultInfo.data = data
-            publishSubject.onNext(activityResultInfo)
-            publishSubject.onComplete()
+            onNext(activityResultInfo)
+            onComplete()
         }
     }
 
