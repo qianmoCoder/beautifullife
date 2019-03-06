@@ -3,7 +3,6 @@ package com.ddu.ui.fragment
 import android.os.Bundle
 import com.ddu.icore.callback.Consumer1
 import com.ddu.icore.ui.fragment.AbsDBRVFragment
-import com.ddu.routes.RouterProvider
 import com.ddu.ui.adapter.StudyDBRVAdapter
 import com.iannotation.model.RouteMeta
 
@@ -39,11 +38,11 @@ class StudyFragment : AbsDBRVFragment<RouteMeta, StudyDBRVAdapter>() {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        val items = RouterProvider.elements
-        for (item in items) {
-            mDataEntities.add(RouteMeta.build(item))
-        }
-        mDataEntities.sort()
+//        val items = RouterProvider.elements
+//        for (item in items) {
+//            mDataEntities.add(RouteMeta.build(item))
+//        }
+//        mDataEntities.sort()
     }
 
     override fun getAdapter(): StudyDBRVAdapter {
