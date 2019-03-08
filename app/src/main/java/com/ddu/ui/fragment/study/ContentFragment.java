@@ -3,10 +3,15 @@ package com.ddu.ui.fragment.study;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.ddu.app.App;
 import com.ddu.icore.callback.Consumer1;
 import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.ddu.ui.adapter.ContentRVAdapter;
+import com.iannotation.Tuple;
 import com.iannotation.model.RouteMeta;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,17 +29,17 @@ public abstract class ContentFragment extends AbsRVFragment<RouteMeta, ContentRV
             url = getUrl();
         }
 
-//        ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(url);
-//        for (Tuple<String, Class<?>> key : keys) {
-//            String first = key.first;
-//            Class<?> second = key.second;
-//
-//            String title = TextUtils.isEmpty(first) ? second.getSimpleName() : first;
-//
-//            RouteMeta routeMeta = RouteMeta.build("", title, color, "", second);
-//            mDataEntities.add(routeMeta);
-//        }
-//        Collections.sort(mDataEntities);
+        ArrayList<Tuple<String, Class<?>>> keys = App.Companion.getElementProvider().provide(url);
+        for (Tuple<String, Class<?>> key : keys) {
+            String first = key.first;
+            Class<?> second = key.second;
+
+            String title = TextUtils.isEmpty(first) ? second.getSimpleName() : first;
+
+            RouteMeta routeMeta = RouteMeta.build("", title, color, "", second);
+            mDataEntities.add(routeMeta);
+        }
+        Collections.sort(mDataEntities);
     }
 
 

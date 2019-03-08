@@ -75,10 +75,10 @@ android {
         enabled = true
     }
 
-    configurations.all {
-        resolutionStrategy.force "androidx.vectordrawable:vectordrawable:1.0.1"
-        resolutionStrategy.force "androidx.appcompat:appcompat:1.0.2"
-    }
+//    configurations.all {
+//        resolutionStrategy.force "androidx.vectordrawable:vectordrawable:1.0.1"
+//        resolutionStrategy.force "androidx.appcompat:appcompat:1.0.2"
+//    }
 
 //    // 1
 //    configurations.all {
@@ -96,7 +96,6 @@ dependencies {
     implementation project(':icore')
     implementation project(':iannotation')
     kapt project(':iprocessors')
-    annotationProcessor project(':iprocessors')
 
     implementation "com.facebook.rebound:rebound:0.3.8"
 
