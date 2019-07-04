@@ -52,10 +52,10 @@ class DrawView1 : View {
         // point
         paint.strokeWidth = 20f
         paint.strokeCap = Paint.Cap.ROUND
-        canvas.drawPoint(600f,  y1 , paint)
+        canvas.drawPoint(600f, y1, paint)
 
         paint.strokeCap = Paint.Cap.SQUARE
-        canvas.drawPoint(700f,  y1 , paint)
+        canvas.drawPoint(700f, y1, paint)
 
         paint.strokeCap = Paint.Cap.BUTT
         canvas.drawPoint(800f, y1, paint)
@@ -98,5 +98,20 @@ class DrawView1 : View {
         paint.setStyle(Paint.Style.STROKE); // 画线模式
         canvas.drawArc(rect, 180f, 60f, false, paint) // 绘制不封口的弧形
 
+        y1 += 200
+        rect.set(10f, y1, 100f, y1 + 200)
+
+        // 用来保存Canvas的状态。save之后，可以调用Canvas的平移、放缩、旋转、错切、裁剪等操作。
+        canvas.save()
+        paint.color = Color.BLUE
+        paint.style = Paint.Style.FILL
+        canvas.clipRect(rect.left, rect.top, rect.right, rect.bottom - 45f, Region.Op.INTERSECT)
+        canvas.drawRoundRect(rect,45f,45f,paint)
+
+        // 用来恢复Canvas之前保存的状态。防止save后对Canvas执行的操作对后续的绘制有影响。
+        // save和restore要配对使用(restore可以比save少，但不能多)，如果restore调用次数比save多，会引发Error。save和restore之间，往往夹杂的是对Canvas的特殊操作
+        canvas.restore()
+
+        y1 += 300
     }
 }

@@ -3,7 +3,6 @@ package com.ddu.ui.fragment
 import android.os.Bundle
 import android.view.View
 import com.ddu.R
-import com.ddu.R.id.*
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.fragment.life.FoodFragment
 import com.ddu.ui.fragment.life.IncomeTaxFragment

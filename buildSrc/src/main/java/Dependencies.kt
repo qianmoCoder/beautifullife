@@ -32,6 +32,8 @@ object Libs {
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+
+    const val immersionbar = "com.gyf.immersionbar:immersionbar:3.0.0-beta05"
 }
 
 object Deps {
@@ -44,4 +46,5 @@ object Deps {
     const val cardView = "androidx.cardview:cardview:${Versions.materialVersion}"
 
     const val gson = "com.google.code.gson:gson:2.8.5"
+
 }

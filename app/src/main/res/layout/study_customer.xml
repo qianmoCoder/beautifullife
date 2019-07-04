@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <com.ddu.ui.view.study.CornerLabelView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:bg_color="#FFAD2C"
+            app:position="left_top"
+            app:side_length="30dp"
+            app:text="Java"
+            app:text_color="#000000"
+            app:text_size="16sp"/>
+
+    <com.ddu.ui.view.study.CornerLabelView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            app:bg_color="#FFAD2C"
+            app:position="right_top"
+            app:side_length="50dp"
+            app:text="Android"
+            app:text_color="#000000"
+            app:text_size="16sp"/>
+
+    <com.ddu.ui.view.study.CornerLabelView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            app:bg_color="#F95A29"
+            app:position="right_bottom"
+            app:side_length="70dp"
+            app:text="Python"
+            app:text_size="16sp"/>
+
+    <com.ddu.ui.view.study.CornerLabelView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            app:bg_color="#F95A29"
+            app:position="left_bottom"
+            app:side_length="100dp"
+            app:text="Kotlin"
+            app:text_size="16sp"/>
+
+
+</RelativeLayout>
+

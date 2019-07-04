@@ -8,10 +8,10 @@ import com.iannotation.IElement;
  * Created by yzbzz on 2018/6/8.
  */
 @IElement("customer")
-public class CustomViewFragment  extends DefaultFragment{
+public class LayoutStudyFragment extends DefaultFragment{
     @Override
     public int getLayoutId() {
-        return R.layout.study_customer;
+        return R.layout.study_layout_customer;
     }
 
     @Override

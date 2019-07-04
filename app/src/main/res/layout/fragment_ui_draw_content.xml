@@ -1,11 +1,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical">
 
-    <com.ddu.ui.view.DrawView1
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <com.ddu.ui.view.DrawView1
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+        <com.ddu.ui.view.DrawView2
+                android:background="@color/c_ecedef"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_200"/>
+    </LinearLayout>
+
 
 </ScrollView>
