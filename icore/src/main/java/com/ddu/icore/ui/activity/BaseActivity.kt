@@ -16,12 +16,15 @@ import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.common.find
 import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.widget.TitleBar
+import com.gyf.immersionbar.ImmersionBar
 
 abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
 
     lateinit var mContext: Context
 
     lateinit var mViewGroup: ViewGroup
+
+    lateinit var mImmersionBar: ImmersionBar
 
     var titleBar: TitleBar? = null
         protected set
@@ -39,6 +42,9 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
         window.setBackgroundDrawable(null)
         mContext = this
         registerObserver()
+
+//        mImmersionBar = ImmersionBar.with(this)
+//        mImmersionBar.statusBarDarkFont(true,0.2f).statusBarColor(R.color.c_ffffff).fitsSystemWindows(true).init()
     }
 
     override fun setContentView(@LayoutRes layoutResID: Int) {
