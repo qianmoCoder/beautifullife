@@ -43,7 +43,7 @@ public class AnimatorUtils {
     }
 
     public static ObjectAnimator rotationY(View target, long duration, float... values) {
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(target, View.ROTATION, values);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(target, View.ROTATION_Y, values);
         objectAnimator.setDuration(duration);
         return objectAnimator;
     }

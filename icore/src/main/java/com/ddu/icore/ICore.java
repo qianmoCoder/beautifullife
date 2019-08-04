@@ -8,7 +8,7 @@ import android.os.Looper;
 /**
  * Created by yzbzz on 2018/8/21.
  */
-public class ICore {
+public final class ICore {
 
     private static Application sApp;
     private static Handler sMainHandler;
@@ -23,19 +23,22 @@ public class ICore {
         sApp = application;
     }
 
-    @SuppressWarnings("unchecked")
-    public static Context getContext() {
-        return getApplication().getApplicationContext();
+    private ICore() {
     }
 
-    public static Application getApplication() {
+    @SuppressWarnings("unchecked")
+    public static Context getContext() {
+        return getApp().getApplicationContext();
+    }
+
+    public static Application getApp() {
         if (null == sApp) {
             throw new RuntimeException("You must call ICore.init first");
         }
         return sApp;
     }
 
-    public static Handler mainHandler() {
+    public static synchronized Handler getMainHandler() {
         if (null == sMainHandler) {
             sMainHandler = new Handler(Looper.getMainLooper());
         }
