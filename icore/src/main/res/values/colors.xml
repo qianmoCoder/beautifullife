@@ -5,11 +5,32 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="c_000000">#000000</color>
-    <color name="c_a0000000">#a0000000</color>
-    <color name="c_b2000000">#b2000000</color>
     <color name="c_00000000">#00000000</color>
     <color name="c_20000000">#20000000</color>
+    <color name="c_a0000000">#a0000000</color>
+    <color name="c_b2000000">#b2000000</color>
     <color name="c_e0000000">#e0000000</color>
+
+    <color name="c_a50_000000">#7f000000</color>
+    <color name="c_a60_000000">#99000000</color>
+    <color name="c_a70_000000">#b2000000</color>
+    <color name="c_a80_000000">#cc000000</color>
+    <color name="c_a90_000000">#e5000000</color>
+
+    <color name="c_ecedf1">#ecedf1</color>
+    <color name="c_ffffff">#ffffff</color>
+    <color name="c_cccccc">#cccccc</color>
+    <color name="c_ecedef">#ecedef</color>
+    <color name="c_dddddd">#dddddd</color>
+    <color name="c_f0f0f0">#f0f0f0</color>
+    <color name="c_f3f3f3">#f3f3f3</color>
+    <color name="c_f6f6g6">#f6f6f6</color>
+
+    <color name="c_4d4d4d">#4d4d4d</color>
+    <color name="c_666666">#666666</color>
+    <color name="c_5a5a5a">#5a5a5a</color>
+    <color name="c_999999">#999999</color>
+    <color name="c_cc999999">#cc999999</color>
 
     <color name="c_ff0000">#ff0000</color>
     <color name="c_b2ff0000">#b2ff0000</color>
@@ -50,20 +71,7 @@
     <color name="c_9934c749">#9934c749</color>
     <color name="c_46b942">#46b942</color>
 
-    <color name="c_ecedf1">#ecedf1</color>
-    <color name="c_ffffff">#ffffff</color>
-    <color name="c_cccccc">#cccccc</color>
-    <color name="c_ecedef">#ecedef</color>
-    <color name="c_dddddd">#dddddd</color>
-    <color name="c_f0f0f0">#f0f0f0</color>
-    <color name="c_f3f3f3">#f3f3f3</color>
-    <color name="c_f6f6g6">#f6f6f6</color>
 
-    <color name="c_4d4d4d">#4d4d4d</color>
-    <color name="c_666666">#666666</color>
-    <color name="c_5a5a5a">#5a5a5a</color>
-    <color name="c_999999">#999999</color>
-    <color name="c_cc999999">#cc999999</color>
 
     <color name="c_f7b218">#f7b218</color>
     <color name="c_fdbc40">#fdbc40</color>
