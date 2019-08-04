@@ -85,4 +85,7 @@
     <color name="orange_light">#ffffbb33</color>
     <color name="blue_light">#ff33b5e5</color>
 
+    <color name="loading_clock_bg">#EA9A5F</color>
+    <color name="loading_clock_pin">#4C0C05</color>
+
 </resources>

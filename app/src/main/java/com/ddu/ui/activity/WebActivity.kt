@@ -252,7 +252,6 @@ class WebActivity : Activity(), IObserver<GodIntent> {
             // ignore the error. If no application can handle the URL,
             // eg about:blank, assume the browser can handle it.
         }
-
         return false
     }
 

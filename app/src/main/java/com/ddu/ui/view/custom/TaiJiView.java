@@ -9,6 +9,7 @@ import android.view.View;
  * Created by yzbzz on 2018/6/8.
  */
 public class TaiJiView extends View {
+
     public TaiJiView(Context context) {
         super(context);
     }
