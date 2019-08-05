@@ -90,7 +90,8 @@ public class GodIntent implements Parcelable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("action: " + action);
+        sb.append("action: ");
+        sb.append(action);
         sb.append(bundle.toString());
         return sb.toString();
     }
