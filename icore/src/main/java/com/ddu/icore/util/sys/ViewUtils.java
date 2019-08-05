@@ -5,14 +5,10 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.View;
+import androidx.annotation.*;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.reflect.Field;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 16/3/1.
@@ -31,13 +27,13 @@ public class ViewUtils {
     }
 
     @NonNull
-    public static <T extends View> T findViewById(@NonNull View view, int resId) {
-        return (T) view.findViewById(resId);
+    public static <T extends View> T findViewById(@NonNull View view, @IdRes int resId) {
+        return view.findViewById(resId);
     }
 
     @NonNull
     public static <T extends View> T findViewById(@NonNull Activity activity, int resId) {
-        return (T) activity.findViewById(resId);
+        return activity.findViewById(resId);
     }
 
 
