@@ -15,6 +15,7 @@ import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.widget.ClockLoadingView;
 import com.ddu.icore.ui.widget.DownloadView;
+import com.ddu.widget.TransparentCircleView;
 import com.iannotation.IElement;
 
 /**
@@ -76,6 +77,8 @@ public class StudyViewFragment extends DefaultFragment {
 
         final int snakeExcursion = (int) getResources().getDimension(R.dimen.dp_20);
 
+
+        final TransparentCircleView t = findViewById(R.id.tcv);
         btn_shake = findViewById(R.id.btn_shake);
         btn_shake1 = findViewById(R.id.btn_shake_1);
         btn_shake2 = findViewById(R.id.btn_shake_2);
@@ -91,8 +94,11 @@ public class StudyViewFragment extends DefaultFragment {
                 snake_objectAnimator1.setDuration(3000);
                 snake_objectAnimator1.setInterpolator(new CycleInterpolator(3));
                 snake_objectAnimator1.start();
+
+                t.startAnim();
             }
         });
+
 
     }
 

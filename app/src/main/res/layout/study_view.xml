@@ -52,6 +52,11 @@
             android:layout_width="@dimen/dp_150"
             android:layout_height="@dimen/dp_100"/>
 
+    <com.ddu.widget.TransparentCircleView
+            android:id="@+id/tcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
 </com.ddu.ui.view.custom.StudyViewGroup>
 
