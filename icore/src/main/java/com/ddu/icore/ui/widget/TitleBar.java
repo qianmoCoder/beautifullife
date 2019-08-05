@@ -115,6 +115,16 @@ public class TitleBar extends LinearLayout implements ITitleBar {
         }
     }
 
+    public void setRightText(String text, int color, OnClickListener onClickListener) {
+        if (null != mRightText) {
+            mTitleBarRight.setVisibility(VISIBLE);
+            mRightText.setVisibility(VISIBLE);
+            mRightText.setText(text);
+            mRightText.setTextColor(color);
+            mRightText.setOnClickListener(onClickListener);
+        }
+    }
+
     public void setRightImg(int resId, OnClickListener onClickListener) {
         if (null != mRightImg) {
             mTitleBarRight.setVisibility(VISIBLE);

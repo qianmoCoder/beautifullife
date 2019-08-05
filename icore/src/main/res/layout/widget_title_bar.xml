@@ -74,6 +74,7 @@
             android:id="@+id/tv_title_bar_right"
             style="@style/TitleBarText.Right"
             android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
             android:visibility="gone"
             tools:text="right"
             tools:visibility="visible" />

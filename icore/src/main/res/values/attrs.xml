@@ -1,244 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CircleImageView">
-        <attr name="civ_border_width" format="dimension" />
-        <attr name="civ_border_color" format="color" />
-        <attr name="civ_border_overlay" format="boolean" />
-        <attr name="civ_fill_color" format="color" />
-        <attr name="civ_circle_background_color" format="color" />
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_fill_color" format="color"/>
+        <attr name="civ_circle_background_color" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="OptionItemView">
-        <attr name="i_leftText" format="string|reference" />
-        <attr name="i_leftTextSize" format="dimension|reference" />
-        <attr name="i_leftTextColor" format="color|reference" />
+        <attr name="i_leftText" format="string|reference"/>
+        <attr name="i_leftTextSize" format="dimension|reference"/>
+        <attr name="i_leftTextColor" format="color|reference"/>
 
-        <attr name="i_leftIcon" format="reference" />
-        <attr name="i_leftIcon_tint" format="color|reference" />
-        <attr name="i_leftIconWidth" format="dimension|reference" />
-        <attr name="i_leftIconHeight" format="dimension|reference" />
+        <attr name="i_leftIcon" format="reference"/>
+        <attr name="i_leftIcon_tint" format="color|reference"/>
+        <attr name="i_leftIconWidth" format="dimension|reference"/>
+        <attr name="i_leftIconHeight" format="dimension|reference"/>
         <attr name="i_leftIconScaleType" format="enum">
-            <enum name="matrix" value="0" />
-            <enum name="fit_xy" value="1" />
-            <enum name="fit_start" value="2" />
-            <enum name="fit_center" value="3" />
-            <enum name="fit_end" value="4" />
-            <enum name="center" value="5" />
-            <enum name="center_crop" value="6" />
-            <enum name="center_inside" value="7" />
+            <enum name="matrix" value="0"/>
+            <enum name="fit_xy" value="1"/>
+            <enum name="fit_start" value="2"/>
+            <enum name="fit_center" value="3"/>
+            <enum name="fit_end" value="4"/>
+            <enum name="center" value="5"/>
+            <enum name="center_crop" value="6"/>
+            <enum name="center_inside" value="7"/>
         </attr>
 
-        <attr name="i_title" format="string|reference" />
-        <attr name="i_titleSize" format="dimension|reference" />
-        <attr name="i_titleColor" format="color|reference" />
+        <attr name="i_title" format="string|reference"/>
+        <attr name="i_titleSize" format="dimension|reference"/>
+        <attr name="i_titleColor" format="color|reference"/>
 
-        <attr name="i_subTitle" format="string|reference" />
-        <attr name="i_subTitleSize" format="dimension|reference" />
-        <attr name="i_subTitleColor" format="color|reference" />
+        <attr name="i_subTitle" format="string|reference"/>
+        <attr name="i_subTitleSize" format="dimension|reference"/>
+        <attr name="i_subTitleColor" format="color|reference"/>
 
-        <attr name="i_content" format="string|reference" />
-        <attr name="i_contentSize" format="dimension|reference" />
-        <attr name="i_contentColor" format="color|reference" />
+        <attr name="i_content" format="string|reference"/>
+        <attr name="i_contentSize" format="dimension|reference"/>
+        <attr name="i_contentColor" format="color|reference"/>
 
-        <attr name="i_rightText" format="string|reference" />
-        <attr name="i_rightTextSize" format="dimension|reference" />
-        <attr name="i_rightTextColor" format="color|reference" />
+        <attr name="i_rightText" format="string|reference"/>
+        <attr name="i_rightTextSize" format="dimension|reference"/>
+        <attr name="i_rightTextColor" format="color|reference"/>
 
-        <attr name="i_rightIcon" format="reference" />
-        <attr name="i_rightIcon_tint" format="color|reference" />
-        <attr name="i_rightIconWidth" format="dimension|reference" />
-        <attr name="i_rightIconHeight" format="dimension|reference" />
+        <attr name="i_rightIcon" format="reference"/>
+        <attr name="i_rightIcon_tint" format="color|reference"/>
+        <attr name="i_rightIconWidth" format="dimension|reference"/>
+        <attr name="i_rightIconHeight" format="dimension|reference"/>
         <attr name="i_rightIconScaleType" format="enum">
-            <enum name="matrix" value="0" />
-            <enum name="fit_xy" value="1" />
-            <enum name="fit_start" value="2" />
-            <enum name="fit_center" value="3" />
-            <enum name="fit_end" value="4" />
-            <enum name="center" value="5" />
-            <enum name="center_crop" value="6" />
-            <enum name="center_inside" value="7" />
+            <enum name="matrix" value="0"/>
+            <enum name="fit_xy" value="1"/>
+            <enum name="fit_start" value="2"/>
+            <enum name="fit_center" value="3"/>
+            <enum name="fit_end" value="4"/>
+            <enum name="center" value="5"/>
+            <enum name="center_crop" value="6"/>
+            <enum name="center_inside" value="7"/>
         </attr>
     </declare-styleable>
 
     <declare-styleable name="common_title">
 
         <!-- 背景颜色 -->
-        <attr name="bgColor" format="reference" />
+        <attr name="bgColor" format="reference"/>
 
         <!-- 左侧图片 -->
-        <attr name="backBtnSrc" format="reference" />
+        <attr name="backBtnSrc" format="reference"/>
 
         <!-- 右侧图片 -->
-        <attr name="rightBtnSrc" format="reference" />
-        <attr name="rightBtn2Src" format="reference" />
+        <attr name="rightBtnSrc" format="reference"/>
+        <attr name="rightBtn2Src" format="reference"/>
 
         <!-- 文字title -->
-        <attr name="titleText" format="reference" />
-        <attr name="titleColor" format="reference" />
+        <attr name="titleText" format="reference"/>
+        <attr name="titleColor" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="FlowLayout">
-        <attr name="lineSpacing" format="dimension" />
+        <attr name="lineSpacing" format="dimension"/>
     </declare-styleable>
 
     <!-- 末行对齐方式 -->
     <declare-styleable name="AlignTextView">
         <attr name="align" format="enum">
-            <enum name="left" value="0" />
-            <enum name="center" value="1" />
-            <enum name="right" value="2" />
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
         </attr>
     </declare-styleable>
 
     <!-- 标点转换 -->
     <declare-styleable name="CBAlignTextView">
-        <attr name="punctuationConvert" format="boolean" />
+        <attr name="punctuationConvert" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="dividerLinearLayout">
-        <attr name="divider" format="reference" />
-        <attr name="divider_height" format="dimension" />
-        <attr name="divider_margin_left" format="dimension" />
-        <attr name="divider_margin_right" format="dimension" />
+        <attr name="divider" format="reference"/>
+        <attr name="divider_height" format="dimension"/>
+        <attr name="divider_margin_left" format="dimension"/>
+        <attr name="divider_margin_right" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="icore_strike_thru">
-        <attr name="strike_thru_color" format="color" />
-        <attr name="strike_thru_width" format="dimension" />
-        <attr name="strike_thru_offset" format="dimension" />
+        <attr name="strike_thru_color" format="color"/>
+        <attr name="strike_thru_width" format="dimension"/>
+        <attr name="strike_thru_offset" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="RecyclerViewPager">
-        <attr name="rvp_triggerOffset" format="float" />
-        <attr name="rvp_flingFactor" format="float" />
-        <attr name="rvp_singlePageFling" format="boolean" />
-        <attr name="rvp_inertia" format="boolean" />
-        <attr name="rvp_millisecondsPerInch" format="float" />
+        <attr name="rvp_triggerOffset" format="float"/>
+        <attr name="rvp_flingFactor" format="float"/>
+        <attr name="rvp_singlePageFling" format="boolean"/>
+        <attr name="rvp_inertia" format="boolean"/>
+        <attr name="rvp_millisecondsPerInch" format="float"/>
     </declare-styleable>
 
     <declare-styleable name="TimeLineMarker">
-        <attr name="markerSize" format="dimension" />
-        <attr name="marker" format="color|reference" />
-        <attr name="beginLine" format="color|reference" />
-        <attr name="endLine" format="color|reference" />
-        <attr name="lineSize" format="dimension" />
-        <attr name="topOffset" format="dimension" />
-        <attr name="spaceOffset" format="dimension" />
+        <attr name="markerSize" format="dimension"/>
+        <attr name="marker" format="color|reference"/>
+        <attr name="beginLine" format="color|reference"/>
+        <attr name="endLine" format="color|reference"/>
+        <attr name="lineSize" format="dimension"/>
+        <attr name="topOffset" format="dimension"/>
+        <attr name="spaceOffset" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="ShapeInject">
 
-        <attr name="normalBackgroundColor" format="color|reference" />
-        <attr name="pressedBackgroundColor" format="color|reference" />
-        <attr name="disableBackgroundColor" format="color|reference" />
+        <attr name="normalBackgroundColor" format="color|reference"/>
+        <attr name="pressedBackgroundColor" format="color|reference"/>
+        <attr name="disableBackgroundColor" format="color|reference"/>
 
-        <attr name="shapeRadius" format="dimension|reference" />
+        <attr name="shapeRadius" format="dimension|reference"/>
 
-        <attr name="normalTextColor" format="color|reference" />
-        <attr name="pressedTextColor" format="color|reference" />
-        <attr name="disableTextColor" format="color|reference" />
+        <attr name="normalTextColor" format="color|reference"/>
+        <attr name="pressedTextColor" format="color|reference"/>
+        <attr name="disableTextColor" format="color|reference"/>
 
-        <attr name="strokeDashWidth" format="dimension|reference" />
-        <attr name="strokeDashGap" format="dimension|reference" />
+        <attr name="strokeDashWidth" format="dimension|reference"/>
+        <attr name="strokeDashGap" format="dimension|reference"/>
 
-        <attr name="normalStrokeWidth" format="dimension|reference" />
-        <attr name="pressedStrokeWidth" format="dimension|reference" />
-        <attr name="disableStrokeWidth" format="dimension|reference" />
+        <attr name="normalStrokeWidth" format="dimension|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension|reference"/>
+        <attr name="disableStrokeWidth" format="dimension|reference"/>
 
-        <attr name="normalStrokeColor" format="color|reference" />
-        <attr name="pressedStrokeColor" format="color|reference" />
-        <attr name="disableStrokeColor" format="color|reference" />
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="disableStrokeColor" format="color|reference"/>
 
-        <attr name="animationDuration" format="integer|reference" />
+        <attr name="animationDuration" format="integer|reference"/>
 
         <attr name="shapeType">
-            <enum name="oval" value="0x01" />
-            <enum name="round" value="0x02" />
-            <enum name="round_rect" value="0x04" />
-            <enum name="segment" value="0x08" />
+            <enum name="oval" value="0x01"/>
+            <enum name="round" value="0x02"/>
+            <enum name="round_rect" value="0x04"/>
+            <enum name="segment" value="0x08"/>
         </attr>
 
         <attr name="direction">
-            <enum name="left" value="0x0010" />
-            <enum name="right" value="0x0020" />
-            <enum name="top" value="0x0040" />
-            <enum name="bottom" value="0x0080" />
+            <enum name="left" value="0x0010"/>
+            <enum name="right" value="0x0020"/>
+            <enum name="top" value="0x0040"/>
+            <enum name="bottom" value="0x0080"/>
         </attr>
 
     </declare-styleable>
 
+
+    <declare-styleable name="ShapeLayoutInject">
+        <attr name="l_background" format="color|reference"/>
+        <attr name="l_radius" format="dimension|reference"/>
+        <attr name="l_strokeColor" format="color|reference"/>
+        <attr name="l_strokeWidth" format="dimension|reference"/>
+        <attr name="l_strokeDashWidth" format="dimension|reference"/>
+        <attr name="l_strokeDashGap" format="dimension|reference"/>
+
+    </declare-styleable>
+
     <declare-styleable name="StateImageView">
-        <attr name="normalBackground" format="color|reference" />
-        <attr name="pressedBackground" format="color|reference" />
-        <attr name="disableBackground" format="color|reference" />
-        <attr name="AnimationDuration" format="integer|reference" />
+        <attr name="normalBackground" format="color|reference"/>
+        <attr name="pressedBackground" format="color|reference"/>
+        <attr name="disableBackground" format="color|reference"/>
+        <attr name="AnimationDuration" format="integer|reference"/>
     </declare-styleable>
 
     <declare-styleable name="PullToRefresh">
 
         <!-- A drawable to use as the background of the Refreshable View -->
-        <attr name="ptrRefreshableViewBackground" format="reference|color" />
+        <attr name="ptrRefreshableViewBackground" format="reference|color"/>
 
         <!-- Mode of Pull-to-Refresh that should be used -->
         <attr name="ptrMode">
-            <flag name="disabled" value="0x0" />
-            <flag name="pullFromStart" value="0x1" />
-            <flag name="pullFromEnd" value="0x2" />
-            <flag name="both" value="0x3" />
-            <flag name="manualOnly" value="0x4" />
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
         </attr>
 
         <!-- Whether the Indicator overlay(s) should be used -->
-        <attr name="ptrShowIndicator" format="reference|boolean" />
+        <attr name="ptrShowIndicator" format="reference|boolean"/>
 
         <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
-        <attr name="ptrDrawable" format="reference" />
+        <attr name="ptrDrawable" format="reference"/>
 
         <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
-        <attr name="ptrDrawableStart" format="reference" />
+        <attr name="ptrDrawableStart" format="reference"/>
 
         <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
-        <attr name="ptrDrawableEnd" format="reference" />
+        <attr name="ptrDrawableEnd" format="reference"/>
 
         <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
-        <attr name="ptrOverScroll" format="reference|boolean" />
+        <attr name="ptrOverScroll" format="reference|boolean"/>
 
         <!-- Whether the user can scroll while the View is Refreshing -->
-        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean" />
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean"/>
 
         <!--
         	Whether PullToRefreshListView has it's extras enabled. This allows the user to be
         	able to scroll while refreshing, and behaves better. It acheives this by adding
         	Header and/or Footer Views to the ListView.
         -->
-        <attr name="ptrListViewExtrasEnabled" format="reference|boolean" />
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean"/>
 
         <!--
         	Whether the Drawable should be continually rotated as you pull. This only
         	takes effect when using the 'Rotate' Animation Style.
         -->
-        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean" />
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean"/>
 
         <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
-        <attr name="ptrAdapterViewBackground" format="reference|color" />
-        <attr name="ptrDrawableTop" format="reference" />
-        <attr name="ptrDrawableBottom" format="reference" />
+        <attr name="ptrAdapterViewBackground" format="reference|color"/>
+        <attr name="ptrDrawableTop" format="reference"/>
+        <attr name="ptrDrawableBottom" format="reference"/>
     </declare-styleable>
     <declare-styleable name="ICoreBanner">
-        <attr name="canLoop" format="boolean" />
+        <attr name="canLoop" format="boolean"/>
     </declare-styleable>
-    <eat-comment />
+    <eat-comment/>
 
     <declare-styleable name="ProgressWheel">
-        <attr name="matProg_progressIndeterminate" format="boolean" />
-        <attr name="matProg_barColor" format="color" />
-        <attr name="matProg_rimColor" format="color" />
-        <attr name="matProg_rimWidth" format="dimension" />
-        <attr name="matProg_spinSpeed" format="float" />
-        <attr name="matProg_barSpinCycleTime" format="integer" />
-        <attr name="matProg_circleRadius" format="dimension" />
-        <attr name="matProg_fillRadius" format="boolean" />
-        <attr name="matProg_barWidth" format="dimension" />
-        <attr name="matProg_linearProgress" format="boolean" />
+        <attr name="matProg_progressIndeterminate" format="boolean"/>
+        <attr name="matProg_barColor" format="color"/>
+        <attr name="matProg_rimColor" format="color"/>
+        <attr name="matProg_rimWidth" format="dimension"/>
+        <attr name="matProg_spinSpeed" format="float"/>
+        <attr name="matProg_barSpinCycleTime" format="integer"/>
+        <attr name="matProg_circleRadius" format="dimension"/>
+        <attr name="matProg_fillRadius" format="boolean"/>
+        <attr name="matProg_barWidth" format="dimension"/>
+        <attr name="matProg_linearProgress" format="boolean"/>
     </declare-styleable>
 </resources>
