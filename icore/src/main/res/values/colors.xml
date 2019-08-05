@@ -354,21 +354,53 @@
 
     <color name="c_ff0000">#ff0000</color>
     <color name="c_b2ff0000">#b2ff0000</color>
+    <color name="c_a50_ff0000">#7fff0000</color>
+    <color name="c_a60_ff0000">#99ff0000</color>
+    <color name="c_a70_ff0000">#b2ff0000</color>
+    <color name="c_a80_ff0000">#ccff0000</color>
+    <color name="c_a90_ff0000">#e5ff0000</color>
+
 
     <color name="c_00ff00">#00ff00</color>
     <color name="c_b200ff00">#b200ff00</color>
+    <color name="c_a50_00ff00">#7f00ff00</color>
+    <color name="c_a60_00ff00">#9900ff00</color>
+    <color name="c_a70_00ff00">#b200ff00</color>
+    <color name="c_a80_00ff00">#cc00ff00</color>
+    <color name="c_a90_00ff00">#e500ff00</color>
 
     <color name="c_0000ff">#0000ff</color>
     <color name="c_b20000ff">#b20000ff</color>
+    <color name="c_a50_0000ff">#7f0000ff</color>
+    <color name="c_a60_0000ff">#990000ff</color>
+    <color name="c_a70_0000ff">#b20000ff</color>
+    <color name="c_a80_0000ff">#cc0000ff</color>
+    <color name="c_a90_0000ff">#e50000ff</color>
+
 
     <color name="c_ffff00">#ffff00</color>
     <color name="c_b2ffff00">#b2ffff00</color>
+    <color name="c_a50_ffff00">#7fffff00</color>
+    <color name="c_a60_ffff00">#99ffff00</color>
+    <color name="c_a70_ffff00">#b2ffff00</color>
+    <color name="c_a80_ffff00">#ccffff00</color>
+    <color name="c_a90_ffff00">#e5ffff00</color>
 
     <color name="c_ff00ff">#ff00ff</color>
     <color name="c_b2ff00ff">#b2ff00ff</color>
+    <color name="c_a50_ff00ff">#7fff00ff</color>
+    <color name="c_a60_ff00ff">#99ff00ff</color>
+    <color name="c_a70_ff00ff">#b2ff00ff</color>
+    <color name="c_a80_ff00ff">#ccff00ff</color>
+    <color name="c_a90_ff00ff">#e5ff00ff</color>
 
     <color name="c_00ffff">#00ffff</color>
     <color name="c_b200ffff">#b200ffff</color>
+    <color name="c_a50_00ffff">#7f00ffff</color>
+    <color name="c_a60_00ffff">#9900ffff</color>
+    <color name="c_a70_00ffff">#b200ffff</color>
+    <color name="c_a80_00ffff">#cc00ffff</color>
+    <color name="c_a90_00ffff">#e500ffff</color>
 
     <color name="c_ef163f">#ef163f</color>
     <color name="c_ff4141">#ff4141</color>
