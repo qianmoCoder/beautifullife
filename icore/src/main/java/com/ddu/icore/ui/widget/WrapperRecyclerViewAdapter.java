@@ -8,5 +8,5 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public interface WrapperRecyclerViewAdapter {
 
-    RecyclerView.Adapter getWrappedAdapter();
+    RecyclerView.Adapter<RecyclerView.ViewHolder> getWrappedAdapter();
 }

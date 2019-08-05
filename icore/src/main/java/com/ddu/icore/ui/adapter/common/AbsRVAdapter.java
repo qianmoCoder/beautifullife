@@ -4,19 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class AbsRVAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int EMPTY_VIEW = 0x0088;
+    private static final int EMPTY_VIEW = 0x0088;
 
-    protected final Context mContext;
+    protected Context mContext;
     protected LayoutInflater mLayoutInflater;
 
     private View mEmptyView;

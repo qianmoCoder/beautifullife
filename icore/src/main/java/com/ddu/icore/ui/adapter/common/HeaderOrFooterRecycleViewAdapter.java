@@ -1,14 +1,12 @@
-package com.ddu.icore.ui.widget;
+package com.ddu.icore.ui.adapter.common;
 
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.ddu.icore.ui.adapter.common.ViewHolder;
+import androidx.recyclerview.widget.RecyclerView;
+import com.ddu.icore.ui.widget.WrapperRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements WrapperRecyclerViewAdapter {
 
@@ -18,7 +16,7 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     private ArrayList<FixedViewInfo> mHeaderViewInfos = new ArrayList<>();
     private ArrayList<FixedViewInfo> mFooterViewInfos = new ArrayList<>();
 
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter<RecyclerView.ViewHolder> mAdapter;
 
     public HeaderOrFooterRecycleViewAdapter(RecyclerView.Adapter adapter) {
         mAdapter = adapter;
@@ -188,7 +186,7 @@ public class HeaderOrFooterRecycleViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
     @Override
-    public RecyclerView.Adapter getWrappedAdapter() {
+    public RecyclerView.Adapter<RecyclerView.ViewHolder> getWrappedAdapter() {
         return mAdapter;
     }
 

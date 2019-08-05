@@ -10,7 +10,7 @@ import com.ddu.app.BaseApp
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.ui.widget.HeaderOrFooterRecycleViewAdapter
+import com.ddu.icore.ui.adapter.common.HeaderOrFooterRecycleViewAdapter
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_swipe_refresh.*
 import java.util.*
