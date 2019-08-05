@@ -347,6 +347,9 @@
     <color name="c_a90_ffffff">#e5ffffff</color>
     <color name="c_a95_ffffff">#f2ffffff</color>
 
+
+    <color name="c_ecedef">#ecedef</color>
+
     <color name="c_4d4d4d">#4d4d4d</color>
     <color name="c_5a5a5a">#5a5a5a</color>
 
@@ -436,6 +439,8 @@
     <color name="c_272727">#272727</color>
     <color name="dark">#FF222222</color>
     <color name="light">#FFEEEEEE</color>
+
+    <color name="c_cc999999">#cc999999</color>
 
     <color name="red_light">#ffff4444</color>
     <color name="green_light">#ff99cc00</color>
