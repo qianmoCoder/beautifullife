@@ -31,7 +31,8 @@
     <color name="c_a95_000000">#f2000000</color>
 
     <color name="c_101010">#101010</color>
-    <color name="c_a51_111111">#82101010</color>
+    <color name="c_a51_101010">#82101010</color>
+    <color name="c_a87_101010">#dd101010</color>
     <color name="c_111111">#111111</color>
     <color name="c_a10_111111">#19111111</color>
     <color name="c_a15_111111">#26111111</color>
