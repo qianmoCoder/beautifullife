@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rl_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp_20"
+                android:orientation="vertical">
+
+    <Button
+            android:clickable="true"
+            android:id="@+id/btn_shake"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_100"/>
+
+    <Button
+            android:layout_below="@id/btn_shake"
+            android:clickable="true"
+            android:id="@+id/btn_start"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"/>
+
+    <Button
+            android:layout_below="@id/btn_start"
+            android:clickable="true"
+            android:id="@+id/btn_control"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_100"/>
+
+    <Button
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/btn_start"
+            android:clickable="true"
+            android:id="@+id/btn_end"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"/>
+
+</RelativeLayout>
+
