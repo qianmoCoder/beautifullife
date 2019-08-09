@@ -1,62 +1,68 @@
-<com.ddu.ui.view.custom.StudyViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                                       xmlns:app="http://schemas.android.com/apk/res-auto"
-                                       android:id="@+id/sv_group"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="match_parent"
-                                       android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
 
-    <com.ddu.ui.view.custom.StudyView
-            android:id="@+id/sv_view"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_100"
-            android:background="@color/c_f0f0f0"/>
+    <data></data>
 
-    <com.ddu.icore.ui.view.ShapeLinearLayout
-            android:layout_margin="@dimen/dp_10"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_100"
-            app:l_background="@color/c_4897fa"
-            app:l_radius="@dimen/dp_20"
-    >
+    <com.ddu.ui.view.custom.StudyViewGroup android:id="@+id/sv_group"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:orientation="vertical">
 
-    </com.ddu.icore.ui.view.ShapeLinearLayout>
+        <com.ddu.ui.view.custom.StudyView
+                android:id="@+id/sv_view"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:background="@color/c_f0f0f0"/>
 
-    <com.ddu.icore.ui.widget.DownloadView
-            android:id="@+id/dlv_process"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_100"/>
+        <com.ddu.icore.ui.view.ShapeLinearLayout
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                app:l_background="@color/c_4897fa"
+                app:l_radius="@dimen/dp_20"
 
-    <com.ddu.icore.ui.widget.ClockLoadingView
-            android:id="@+id/loading_clock_clv"
-            android:layout_width="@dimen/dp_25"
-            android:layout_height="@dimen/dp_25"/>
+        >
 
-    <Button
-            android:clickable="true"
-            android:id="@+id/btn_shake"
-            android:layout_gravity="center"
-            android:layout_width="@dimen/dp_150"
-            android:layout_height="@dimen/dp_100"/>
+        </com.ddu.icore.ui.view.ShapeLinearLayout>
 
-    <Button
-            android:clickable="true"
-            android:id="@+id/btn_shake_1"
-            android:layout_gravity="center"
-            android:layout_width="@dimen/dp_150"
-            android:layout_height="@dimen/dp_100"/>
+        <com.ddu.icore.ui.widget.DownloadView
+                android:id="@+id/dlv_process"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"/>
 
-    <Button
-            android:clickable="true"
-            android:id="@+id/btn_shake_2"
-            android:layout_gravity="center"
-            android:layout_width="@dimen/dp_150"
-            android:layout_height="@dimen/dp_100"/>
+        <com.ddu.icore.ui.widget.ClockLoadingView
+                android:id="@+id/loading_clock_clv"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"/>
 
-    <com.ddu.widget.TransparentCircleView
-            android:id="@+id/tcv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <Button
+                android:clickable="true"
+                android:id="@+id/btn_shake"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_100"
+        />
+
+        <Button
+                android:clickable="true"
+                android:id="@+id/btn_shake_1"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_100"/>
+
+        <Button
+                android:clickable="true"
+                android:id="@+id/btn_shake_2"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_100"/>
+
+        <com.ddu.widget.TransparentCircleView
+                android:id="@+id/tcv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
-</com.ddu.ui.view.custom.StudyViewGroup>
+    </com.ddu.ui.view.custom.StudyViewGroup>
 
+</layout>

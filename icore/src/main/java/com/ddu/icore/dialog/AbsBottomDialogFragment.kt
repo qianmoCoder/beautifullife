@@ -5,7 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import com.ddu.icore.R
-import com.ddu.icore.common.act
+import com.ddu.icore.common.ext.act
 
 
 abstract class AbsBottomDialogFragment : androidx.fragment.app.DialogFragment() {

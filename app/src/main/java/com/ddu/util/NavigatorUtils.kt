@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.fragment.app.FragmentActivity
-import com.ddu.icore.common.ctx
-import com.ddu.icore.common.findPreference
-import com.ddu.icore.common.isNetworkConnected
+import com.ddu.icore.common.ext.ctx
+import com.ddu.icore.common.ext.findPreference
+import com.ddu.icore.common.ext.isNetworkConnected
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.ui.activity.*
 

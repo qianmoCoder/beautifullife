@@ -1,4 +1,4 @@
-package com.ddu.icore.common
+package com.ddu.icore.common.ext
 
 import android.Manifest
 import android.app.Activity
@@ -12,11 +12,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Process
 import android.provider.Settings
-import androidx.annotation.RequiresPermission
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.RequiresPermission
 import com.ddu.icore.ui.activity.ShowDetailActivity
 
 /**

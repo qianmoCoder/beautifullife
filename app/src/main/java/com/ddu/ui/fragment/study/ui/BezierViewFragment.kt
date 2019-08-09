@@ -29,6 +29,7 @@ class BezierViewFragment : DefaultFragment() {
 
         btn_shake.setOnClickListener {
             startBezier()
+
         }
     }
 
@@ -39,7 +40,6 @@ class BezierViewFragment : DefaultFragment() {
 
         val mAnimCoinWidth = btn_start.width
         val mAnimCoinHeight = btn_start.height
-
 
         val start = IntArray(2)
         btn_start.getLocationInWindow(start)

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.ddu.R
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_tpi.*

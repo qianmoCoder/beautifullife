@@ -8,7 +8,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
 import com.ddu.app.BaseApp
-import com.ddu.icore.common.notificationManager
+import com.ddu.icore.common.ext.notificationManager
 import com.ddu.icore.util.sys.SystemUtils
 
 /**

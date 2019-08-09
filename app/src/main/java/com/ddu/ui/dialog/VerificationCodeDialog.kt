@@ -13,9 +13,9 @@ import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.R.id.tv_error_msg
 import com.ddu.R.id.tv_phone_number
-import com.ddu.icore.common.ctx
-import com.ddu.icore.common.loadAnimation
-import com.ddu.icore.common.showKeyboard
+import com.ddu.icore.common.ext.ctx
+import com.ddu.icore.common.ext.loadAnimation
+import com.ddu.icore.common.ext.showKeyboard
 import com.ddu.icore.ui.view.NumberInputView
 import com.ddu.icore.util.sys.ViewUtils
 

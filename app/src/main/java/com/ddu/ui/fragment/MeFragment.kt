@@ -10,8 +10,8 @@ import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.callback.Consumer3
-import com.ddu.icore.common.act
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.act
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment

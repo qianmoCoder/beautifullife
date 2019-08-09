@@ -1,17 +1,17 @@
-package com.ddu.icore.common
+package com.ddu.icore.common.ext
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import androidx.annotation.Size
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.annotation.Size
 
 //fun ImageView.show(url: String) {
 //    Glide.with(this).load(url).into(this)
 //}
 
-fun View.alphaAnimator(duration: Long, vararg values: Float): ObjectAnimator {
+fun View.alphaAnimator(duration: Long = 300, vararg values: Float): ObjectAnimator {
     val objectAnimator = ObjectAnimator.ofFloat(this, View.ALPHA, *values)
     objectAnimator.duration = duration
     return objectAnimator

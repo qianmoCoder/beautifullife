@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.common.alphaAnimator
+import com.ddu.icore.common.ext.alphaAnimator
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ToastUtils
 import com.iannotation.IElement

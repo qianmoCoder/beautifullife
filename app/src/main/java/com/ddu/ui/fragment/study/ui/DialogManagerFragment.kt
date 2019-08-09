@@ -3,7 +3,7 @@ package com.ddu.ui.fragment.study.ui
 import android.os.Bundle
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.common.act
+import com.ddu.icore.common.ext.act
 import com.ddu.icore.dialog.AlertDialogFragment
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement

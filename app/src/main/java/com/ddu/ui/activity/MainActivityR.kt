@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.common.startActivity
+import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.ui.fragment.LifeFragment
 import com.ddu.ui.fragment.MeFragment

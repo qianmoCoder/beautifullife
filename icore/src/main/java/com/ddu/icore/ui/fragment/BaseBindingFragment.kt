@@ -9,7 +9,7 @@ import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.ctx
 
 
 abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver<GodIntent> {

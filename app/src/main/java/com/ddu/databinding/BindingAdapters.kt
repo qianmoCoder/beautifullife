@@ -1,10 +1,10 @@
 package com.ddu.databinding
 
-import androidx.databinding.BindingAdapter
 import android.graphics.drawable.GradientDrawable
-import androidx.annotation.ColorInt
 import android.view.View
-import com.ddu.icore.common.parseColor
+import androidx.annotation.ColorInt
+import androidx.databinding.BindingAdapter
+import com.ddu.icore.common.ext.parseColor
 
 
 /**

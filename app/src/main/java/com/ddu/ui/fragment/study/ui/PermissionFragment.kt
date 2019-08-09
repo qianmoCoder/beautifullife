@@ -8,8 +8,8 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.ddu.R
-import com.ddu.icore.common.act
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.act
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ToastUtils
 import com.iannotation.IElement

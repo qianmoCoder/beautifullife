@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.ddu.icore.R
-import com.ddu.icore.common.act
+import com.ddu.icore.common.ext.act
 import com.ddu.icore.ui.fragment.BaseBindingFragment
 import com.ddu.icore.ui.widget.TitleBar
 

@@ -1,4 +1,4 @@
-package com.ddu.icore.common
+package com.ddu.icore.common.ext
 
 /**
  * Created by yzbzz on 2018/3/12.

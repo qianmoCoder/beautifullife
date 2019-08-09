@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.common.startActivity
+import com.ddu.icore.common.ext.startActivity
 
 /**
  * Created by yzbzz on 2018/1/17.

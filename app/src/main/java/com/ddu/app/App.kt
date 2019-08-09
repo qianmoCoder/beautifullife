@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
-import com.ddu.icore.common.findPreference
+import com.ddu.icore.common.ext.findPreference
 import com.ddu.receiver.NetInfoBroadcastReceiver
 import com.ddu.routes.ElementProvider
 import com.ddu.routes.RouterProvider

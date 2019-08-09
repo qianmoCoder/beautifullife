@@ -3,8 +3,8 @@ package com.ddu.ui.fragment.life
 import android.os.Bundle
 import android.text.TextUtils
 import com.ddu.R
-import com.ddu.icore.common.formatMoney
-import com.ddu.icore.common.parseDecimals
+import com.ddu.icore.common.ext.formatMoney
+import com.ddu.icore.common.ext.parseDecimals
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_life_income_tax.*
 import java.math.BigDecimal

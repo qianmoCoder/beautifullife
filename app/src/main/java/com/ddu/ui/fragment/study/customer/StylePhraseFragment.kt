@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.ddu.R
-import com.ddu.icore.common.ctx
-import com.ddu.icore.common.startActivity
+import com.ddu.icore.common.ext.ctx
+import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.activity.phrase.CustomSeparatorActivity
 import com.ddu.ui.activity.phrase.MultiSeparatorActivity

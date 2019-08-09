@@ -1,7 +1,7 @@
 package com.ddu.icore.util.sys
 
 import android.content.Context
-import com.ddu.icore.common.defaultSharedPreferences
+import com.ddu.icore.common.ext.defaultSharedPreferences
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

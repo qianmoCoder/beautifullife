@@ -1,4 +1,4 @@
-package com.ddu.icore.common
+package com.ddu.icore.common.ext
 
 import android.graphics.Color
 import androidx.annotation.ColorInt

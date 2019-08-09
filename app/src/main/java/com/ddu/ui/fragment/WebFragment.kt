@@ -10,10 +10,10 @@ import android.util.Log
 import android.view.View
 import android.webkit.*
 import com.ddu.R
-import com.ddu.icore.common.act
-import com.ddu.icore.common.clipText
-import com.ddu.icore.common.ctx
-import com.ddu.icore.common.startBrowser
+import com.ddu.icore.common.ext.act
+import com.ddu.icore.common.ext.clipText
+import com.ddu.icore.common.ext.ctx
+import com.ddu.icore.common.ext.startBrowser
 import com.ddu.icore.dialog.BottomDialogFragment
 import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItemEntity

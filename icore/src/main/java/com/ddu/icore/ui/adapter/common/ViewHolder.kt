@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ddu.icore.common.find
+import com.ddu.icore.common.ext.find
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

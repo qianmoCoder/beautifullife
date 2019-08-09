@@ -2,7 +2,7 @@ package com.ddu.ui.fragment.study.ui
 
 import android.graphics.BitmapFactory
 import com.ddu.R
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.util.ZXingUtils
 import com.iannotation.IElement

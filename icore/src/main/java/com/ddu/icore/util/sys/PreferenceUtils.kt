@@ -1,7 +1,7 @@
 //package com.ddu.icore.util.sys
 //
 //import com.ddu.icore.app.BaseApp
-//import com.ddu.icore.common.isSetOf
+//import com.ddu.icore.common.ext.isSetOf
 //import org.jetbrains.anko.defaultSharedPreferences
 //
 ///**

@@ -8,8 +8,8 @@ import android.view.Window
 import android.widget.LinearLayout
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
-import com.ddu.icore.common.ctx
-import com.ddu.icore.common.loadAnimation
+import com.ddu.icore.common.ext.ctx
+import com.ddu.icore.common.ext.loadAnimation
 import kotlinx.android.synthetic.main.fragment_qr_code.*
 
 /**

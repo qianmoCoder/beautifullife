@@ -3,7 +3,7 @@ package com.ddu.ui.fragment.person
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.R
-import com.ddu.icore.common.*
+import com.ddu.icore.common.ext.*
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_setting.*
 

@@ -13,7 +13,7 @@ import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
-import com.ddu.icore.common.find
+import com.ddu.icore.common.ext.find
 import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.widget.TitleBar
 import com.gyf.immersionbar.ImmersionBar

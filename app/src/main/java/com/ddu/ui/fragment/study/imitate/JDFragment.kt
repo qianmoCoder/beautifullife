@@ -2,8 +2,8 @@ package com.ddu.ui.fragment.study.imitate
 
 import android.os.Bundle
 import com.ddu.R
-import com.ddu.icore.common.act
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.act
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.model.AddressBean
 import com.ddu.ui.dialog.AddressPickerDialog

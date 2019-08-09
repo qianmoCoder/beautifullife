@@ -2,7 +2,7 @@ package com.ddu.ui.fragment.study.animation
 
 import android.view.animation.AnimationUtils
 import com.ddu.R
-import com.ddu.icore.common.ctx
+import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_animation_alpha.*
