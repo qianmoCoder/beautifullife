@@ -38,7 +38,7 @@ abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver
             } else {
                 layout = FrameLayout(ctx)
                 layout?.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                val view = LayoutInflater.from(ctx).inflate(R.layout.fragment_lazy_loading, null)
+                val view = LayoutInflater.from(ctx).inflate(R.layout.i_fragment_lazy_loading, null)
                 layout?.addView(view)
             }
             mRootView = getContentView(inflater, container, savedInstanceState)

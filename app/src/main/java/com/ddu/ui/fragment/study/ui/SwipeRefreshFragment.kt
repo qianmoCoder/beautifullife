@@ -47,7 +47,7 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
         rv_swipe_refresh.itemAnimator = DefaultItemAnimator()
         mAdapter = object : DefaultRVAdapter<String>(mContext, mDatas) {
             override fun getLayoutId(viewType: Int): Int {
-                return R.layout.rv_item_linear
+                return R.layout.i_rv_item_linear
             }
 
             override fun bindView(viewHolder: ViewHolder, data: String, position: Int) {

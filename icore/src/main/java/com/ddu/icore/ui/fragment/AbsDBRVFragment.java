@@ -41,7 +41,7 @@ public abstract class AbsDBRVFragment<D, A extends ListAdapter> extends DefaultF
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_recycle_view_default;
+        return R.layout.i_fragment_recycle_view_default;
     }
 
     @Override

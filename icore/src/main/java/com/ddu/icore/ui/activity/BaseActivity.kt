@@ -49,7 +49,7 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
 
     override fun setContentView(@LayoutRes layoutResID: Int) {
         if (isShowTitleBar()) {
-            super.setContentView(R.layout.activity_base)
+            super.setContentView(R.layout.i_activity_base)
             mViewGroup = find(R.id.ll_activity_base)
             titleBar = find(R.id.ll_title_bar)
             layoutInflater.inflate(layoutResID, mViewGroup)

@@ -50,11 +50,11 @@ public abstract class LoadingLayout extends LoadingView implements ILoadingLayou
 
         switch (scrollDirection) {
             case HORIZONTAL:
-                LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_header_horizontal, this);
+                LayoutInflater.from(context).inflate(R.layout.i_pull_to_refresh_header_horizontal, this);
                 break;
             case VERTICAL:
             default:
-                LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_header_vertical, this);
+                LayoutInflater.from(context).inflate(R.layout.i_pull_to_refresh_header_vertical, this);
                 break;
         }
 

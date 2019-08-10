@@ -35,7 +35,7 @@ public class ToastUtils {
 
 
     private void initView() {
-        mView = mLayoutInflater.inflate(R.layout.default_toast, null);
+        mView = mLayoutInflater.inflate(R.layout.i_default_toast, null);
         mTextView = ViewUtils.findViewById(mView, R.id.tv_toast);
     }
 

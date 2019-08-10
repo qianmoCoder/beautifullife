@@ -62,9 +62,9 @@ public class BottomAdapter extends DefaultRVAdapter<BottomItem> {
 
     @Override
     public int getLayoutId(int viewType) {
-        int resId = R.layout.rv_item_linear;
+        int resId = R.layout.i_rv_item_linear;
         if (mParams.mLayoutType == BottomDialogParams.TYPE_GRID) {
-            resId = R.layout.rv_item_grid;
+            resId = R.layout.i_rv_item_grid;
         }
         return resId;
     }

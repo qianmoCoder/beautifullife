@@ -140,7 +140,7 @@ public class OptionItemView extends RelativeLayout {
 
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        inflater.inflate(R.layout.option_item_view, this);
+        inflater.inflate(R.layout.i_option_item_view, this);
 
         tvLeftText = findViewById(R.id.tv_left_text);
         ivLeftIcon = findViewById(R.id.iv_left_icon);

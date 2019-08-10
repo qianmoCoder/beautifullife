@@ -45,7 +45,7 @@ public class ShowDetailActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initData();
-        setContentView(R.layout.show_detail);
+        setContentView(R.layout.i_show_detail);
 
         mFragmentManager = getSupportFragmentManager();
 

@@ -51,7 +51,7 @@ public class ToastView extends FrameLayout {
         paddingLeft = paddingRight = getResources().getDimensionPixelSize(R.dimen.dp_20);
         paddingTop = paddingBottom = getResources().getDimensionPixelSize(R.dimen.dp_15);
 
-        LayoutInflater.from(context).inflate(R.layout.toast_layout, this);
+        LayoutInflater.from(context).inflate(R.layout.i_toast_layout, this);
 
         llToast = findViewById(R.id.ll_toast);
         tvToast = findViewById(R.id.tv_toast);

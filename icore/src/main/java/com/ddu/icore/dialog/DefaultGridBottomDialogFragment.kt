@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ddu.icore.R
 import com.ddu.icore.entity.BottomItemEntity
-import kotlinx.android.synthetic.main.dialog_bottom_content.*
+import kotlinx.android.synthetic.main.i_dialog_bottom_content.*
 
 class DefaultGridBottomDialogFragment : AbsBottomDialogFragment() {
 
@@ -42,7 +42,7 @@ class DefaultGridBottomDialogFragment : AbsBottomDialogFragment() {
         tv_title.text = mTitle
     }
 
-    override fun getLayoutId(): Int = R.layout.dialog_bottom_content
+    override fun getLayoutId(): Int = R.layout.i_dialog_bottom_content
 
     companion object {
 

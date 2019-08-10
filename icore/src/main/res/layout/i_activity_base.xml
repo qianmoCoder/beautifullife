@@ -6,6 +6,6 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/widget_title_bar"/>
+    <include layout="@layout/i_widget_title_bar"/>
 
 </LinearLayout>

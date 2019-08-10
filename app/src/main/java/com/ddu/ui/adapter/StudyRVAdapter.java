@@ -28,7 +28,7 @@ public class StudyRVAdapter extends DefaultRVAdapter<RouteMeta> implements ItemT
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.fragment_study_rv_item;
+        return R.layout.i_fragment_study_rv_item;
     }
 
     @Override

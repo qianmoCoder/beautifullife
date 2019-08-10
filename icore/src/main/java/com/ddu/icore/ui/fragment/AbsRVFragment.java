@@ -41,7 +41,7 @@ public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends Defau
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_recycle_view_default;
+        return R.layout.i_fragment_recycle_view_default;
     }
 
     @Override

@@ -47,7 +47,7 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
             } else {
                 layout = FrameLayout(context!!)
                 layout!!.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                val view = LayoutInflater.from(context).inflate(R.layout.fragment_lazy_loading, null)
+                val view = LayoutInflater.from(context).inflate(R.layout.i_fragment_lazy_loading, null)
                 layout!!.addView(view)
             }
             mRootView = getContentView(inflater, container, savedInstanceState)

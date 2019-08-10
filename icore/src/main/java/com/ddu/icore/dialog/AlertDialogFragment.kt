@@ -6,7 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.*
 import com.ddu.icore.R
-import kotlinx.android.synthetic.main.fragment_dialog_default.*
+import kotlinx.android.synthetic.main.i_fragment_dialog_default.*
 
 
 class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClickListener {
@@ -30,7 +30,7 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dialog.window.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
-        return inflater.inflate(R.layout.fragment_dialog_default, container, false)
+        return inflater.inflate(R.layout.i_fragment_dialog_default, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

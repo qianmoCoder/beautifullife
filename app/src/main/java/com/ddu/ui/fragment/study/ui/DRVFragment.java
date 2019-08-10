@@ -34,7 +34,7 @@ public class DRVFragment extends AbsRVFragment implements PullToRefreshBase.OnRe
 
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.rv_item_linear;
+                return R.layout.i_rv_item_linear;
             }
 
             @Override

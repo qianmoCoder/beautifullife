@@ -51,7 +51,7 @@ public class DefaultGridBottomAdapter extends DefaultRVAdapter<BottomItemEntity>
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.rv_item_grid;
+        return R.layout.i_rv_item_grid;
     }
 
     @Override

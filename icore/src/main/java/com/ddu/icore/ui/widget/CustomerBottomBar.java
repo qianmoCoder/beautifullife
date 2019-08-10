@@ -44,7 +44,7 @@ public class CustomerBottomBar {
         mAccessibilityManager = (AccessibilityManager)
                 mContext.getSystemService(Context.ACCESSIBILITY_SERVICE);
 
-        mView = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.bottom_search_bar, mTargetParent, false);
+        mView = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.i_bottom_search_bar, mTargetParent, false);
         mView.findViewById(R.id.tv_title_bar_title).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

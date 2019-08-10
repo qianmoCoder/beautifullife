@@ -21,7 +21,7 @@ class IToast private constructor() {
 //    lateinit var mImageView
 
     init {
-//        mView = LayoutInflater.from(ICore.getContext()).inflate(R.layout.default_toast, null)
+//        mView = LayoutInflater.from(ICore.getContext()).inflate(R.layout.i_default_toast, null)
     }
 
     object Config {

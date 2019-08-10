@@ -51,7 +51,7 @@ public class PaletteFragment extends DefaultFragment implements View.OnClickList
         rvSwatch.setAdapter(new DefaultRVAdapter<Palette.Swatch>(getMContext(), swatchList) {
             @Override
             public int getLayoutId(int viewType) {
-                return R.layout.rv_item_linear;
+                return R.layout.i_rv_item_linear;
             }
 
             @Override

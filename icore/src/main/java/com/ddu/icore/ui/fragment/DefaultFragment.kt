@@ -27,7 +27,7 @@ abstract class DefaultFragment : BaseFragment() {
 
     override fun getContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (isShowTitleBar()) {
-            mView = inflater.inflate(R.layout.activity_base, container, false)
+            mView = inflater.inflate(R.layout.i_activity_base, container, false)
             titleBar = mView.findViewById(R.id.ll_title_bar)
             inflater.inflate(getLayoutId(), mView as ViewGroup, true)
         } else {

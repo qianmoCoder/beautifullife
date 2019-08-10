@@ -25,7 +25,7 @@ abstract class DefaultBindingFragment<T : ViewDataBinding> : BaseBindingFragment
     override fun getContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutId = getLayoutId()
         if (isShowTitleBar()) {
-            dataBinding = DataBindingUtil.inflate(inflater, R.layout.activity_base, container, false)
+            dataBinding = DataBindingUtil.inflate(inflater, R.layout.i_activity_base, container, false)
             mView = dataBinding.root
             titleBar = mView.findViewById(R.id.ll_title_bar)
             inflater.inflate(layoutId, mView as ViewGroup, true)
