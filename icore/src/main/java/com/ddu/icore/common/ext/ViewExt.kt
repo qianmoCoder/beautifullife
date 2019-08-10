@@ -7,10 +7,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.annotation.Size
 
-//fun ImageView.show(url: String) {
-//    Glide.with(this).load(url).into(this)
-//}
-
 fun View.alphaAnimator(duration: Long = 300, vararg values: Float): ObjectAnimator {
     val objectAnimator = ObjectAnimator.ofFloat(this, View.ALPHA, *values)
     objectAnimator.duration = duration

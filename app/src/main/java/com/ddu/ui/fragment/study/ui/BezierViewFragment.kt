@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import com.ddu.R
-import com.ddu.icore.bezier.PointFTypeEvaluator
+import com.ddu.icore.bezier.QuadraticPointFTypeEvaluator
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.widget.MoveButton
 import com.iannotation.IElement
@@ -99,7 +99,7 @@ class BezierViewFragment : DefaultFragment() {
         Log.v("lhz", "startP: $endP")
 
         val objectAnimator =
-            ObjectAnimator.ofObject(button, "mPointF", PointFTypeEvaluator(controlP), startP, endP)
+            ObjectAnimator.ofObject(button, "mPointF", QuadraticPointFTypeEvaluator(controlP), startP, endP)
 //        objectAnimator.addListener(object : Animator.AnimatorListener {
 //            override fun onAnimationRepeat(animation: Animator?) {
 //            }

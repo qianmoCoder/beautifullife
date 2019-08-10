@@ -88,7 +88,7 @@ fun Context.clipText(text: String = "") {
 }
 
 fun Context.getMarketIntent(): Intent {
-    val uri = Uri.parse("market://details?id=" + packageName)
+    val uri = Uri.parse("market://details?id=$packageName")
     val intent = Intent(Intent.ACTION_VIEW, uri)
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     return intent
