@@ -9,12 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
+import androidx.core.content.FileProvider;
 import com.bumptech.glide.Glide;
 import com.ddu.R;
 import com.ddu.icore.rx.activityresult.ActivityResultInfo;
@@ -22,10 +21,10 @@ import com.ddu.icore.rx.activityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.util.ToastUtils;
 import com.iannotation.IElement;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 import java.io.File;
-
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by yzbzz on 2017/11/14.
@@ -76,7 +75,7 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
     }
 
     private void getPhoto() {
-        RxActivityResult.Companion.with(getMActivity())
+        Disposable t =  RxActivityResult.Companion.with(getMActivity())
                 .startActivityForResult(startCamera(getMActivity()), CAMERA_REQUEST_CODE)
                 .subscribe(new Consumer<ActivityResultInfo>() {
                     @Override

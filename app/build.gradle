@@ -110,9 +110,9 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.1"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1"
 
-    implementation "com.github.bumptech.glide:glide:4.8.0"
-    implementation "com.github.bumptech.glide:compiler:4.8.0"
-    kapt "com.github.bumptech.glide:compiler:4.8.0"
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    implementation "com.github.bumptech.glide:compiler:4.9.0"
+    kapt "com.github.bumptech.glide:compiler:4.9.0"
 
     implementation "com.squareup.okhttp3:okhttp:3.12.1"
     implementation "com.squareup.okhttp3:logging-interceptor:3.12.1"
@@ -123,14 +123,14 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.palette:palette:1.0.0"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
     implementation Libs.constraintlayout
-    implementation 'com.orhanobut:logger:2.1.1'
+    implementation 'com.orhanobut:logger:2.2.0'
 
-    implementation 'pub.devrel:easypermissions:2.0.0'
+    implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation Libs.coroutinesCore
     implementation Libs.coroutinesAndroid

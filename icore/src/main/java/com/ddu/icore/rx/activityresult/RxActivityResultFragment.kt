@@ -1,9 +1,9 @@
 package com.ddu.icore.rx.activityresult
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.util.*
@@ -14,6 +14,7 @@ import java.util.*
 
 class RxActivityResultFragment : androidx.fragment.app.Fragment() {
 
+    @SuppressLint("UseSparseArrays")
     private val mSubjects = HashMap<Int, PublishSubject<ActivityResultInfo>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
