@@ -70,7 +70,7 @@ public class GodIntent implements Parcelable {
 
     protected GodIntent(@NonNull Parcel in) {
         this.action = in.readInt();
-        this.bundle = in.readBundle();
+        this.bundle = in.readBundle(getClass().getClassLoader());
     }
 
     public static final Creator<GodIntent> CREATOR = new Creator<GodIntent>() {
@@ -89,10 +89,8 @@ public class GodIntent implements Parcelable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("action: ");
-        sb.append(action);
-        sb.append(bundle.toString());
-        return sb.toString();
+        return "action: " +
+                action +
+                bundle.toString();
     }
 }
