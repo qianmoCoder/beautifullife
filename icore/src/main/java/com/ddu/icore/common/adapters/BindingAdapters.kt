@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 import com.ddu.icore.common.ext.parseColor
 import com.ddu.icore.common.ext.px2dp
-import com.ddu.icore.sdk.SDKManager
 
 /**
  * Created by yzbzz on 2019-08-08.
@@ -110,5 +110,6 @@ fun View.bindMargin(margin: String) {
 
 @BindingAdapter("imageUrl")
 fun ImageView.setImageUrl(url: String) {
-    SDKManager.instance.getImageLoader()?.loadUrl(url, this)
+//    SDKManager.instance.getImageLoader()?.loadUrl(url, this)
+    Glide.with(context).load(url).into(this)
 }

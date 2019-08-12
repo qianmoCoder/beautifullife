@@ -19,6 +19,8 @@ object Versions {
     const val lifecycleVersion = "2.0.0"
 
     const val objectBox = "2.3.3"
+
+    const val glideVersion = "4.9.0"
 }
 
 object Libs {
@@ -34,6 +36,9 @@ object Libs {
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
 
     const val immersionbar = "com.gyf.immersionbar:immersionbar:3.0.0-beta05"
+
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
 }
 
 object Deps {

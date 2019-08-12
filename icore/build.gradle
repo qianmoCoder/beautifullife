@@ -46,6 +46,9 @@ dependencies {
     implementation Deps.recyclerView
     implementation Deps.cardView
 
+    implementation Libs.glide
+    kapt Libs.glideCompiler
+
     implementation Deps.gson
 
     implementation Libs.rxjava
