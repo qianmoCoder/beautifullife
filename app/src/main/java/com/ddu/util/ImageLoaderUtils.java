@@ -2,11 +2,11 @@ package com.ddu.util;
 
 import android.app.Activity;
 import android.content.Context;
-import androidx.fragment.app.Fragment;
 import android.widget.ImageView;
-
+import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
 
 /**
  * Created by yzbzz on 2017/12/19.

@@ -1,6 +1,7 @@
 package com.ddu.sdk.network
 
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
 /**
  * Created by yzbzz on 2018/2/26.
@@ -11,7 +12,7 @@ object OkHttpUtils {
         if (urlParams.size <= 0) {
             return url
         }
-        val httpUrl: HttpUrl? = HttpUrl.parse(url)
+        val httpUrl: HttpUrl? = url.toHttpUrlOrNull()
         if (null == httpUrl) {
             return url
         }

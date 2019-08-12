@@ -6,10 +6,10 @@ import android.os.Bundle
 import com.ddu.R
 import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.util.ToastUtils
 import com.ddu.ui.activity.TestActivity
+import com.ddu.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_work_state.*
-import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import java.net.URLEncoder
 
 /**
@@ -102,7 +102,7 @@ class FragmentA : DefaultFragment() {
         if (urlParams == null || urlParams.size <= 0) {
             return url
         }
-        val httpUrl = HttpUrl.parse(url) ?: return url
+        val httpUrl = url!!.toHttpUrlOrNull() ?: return url
         val urlBuilder = httpUrl.newBuilder()
         for ((key, value) in urlParams) {
             urlBuilder.addQueryParameter(key, value)

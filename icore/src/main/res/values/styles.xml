@@ -129,7 +129,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/c_999999</item>
         <item name="android:textSize">@dimen/dp_12</item>
-        <item name="android:layout_marginLeft">@dimen/dp_10</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
 

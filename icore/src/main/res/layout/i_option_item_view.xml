@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/OptionItemView">
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/OptionItemView">
 
     <TextView
-        android:id="@+id/tv_left_text"
-        style="@style/OptionItemLeftView.text"
-        android:visibility="gone" />
+            android:id="@+id/tv_left_text"
+            style="@style/OptionItemLeftView.text"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/iv_left_icon"
-        style="@style/OptionItemLeftView.Icon"
-        android:layout_toRightOf="@id/tv_left_text"
-        android:visibility="gone" />
+            android:id="@+id/iv_left_icon"
+            style="@style/OptionItemLeftView.Icon"
+            android:layout_toRightOf="@id/tv_left_text"
+            android:visibility="gone"/>
 
     <LinearLayout
-        android:id="@+id/ll_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/iv_left_icon"
-        android:orientation="vertical">
+            android:id="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_left_icon"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toLeftOf="@id/tv_content"
+            android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_title"
-            style="@style/OptionItemTitle"
-            tools:text="Title" />
+                android:id="@+id/tv_title"
+                style="@style/OptionItemTitle"
+                tools:text="Title"/>
 
         <TextView
-            android:id="@+id/tv_sub_title"
-            style="@style/OptionItemSubTitle"
-            tools:text="SubTitle" />
+                android:id="@+id/tv_sub_title"
+                style="@style/OptionItemSubTitle"
+                tools:text="SubTitle"/>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_content"
-        style="@style/OptionItemContent"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/ll_title"
-        tools:text="102.00元" />
+            android:layout_toLeftOf="@id/ll_right"
+            android:id="@+id/tv_content"
+            style="@style/OptionItemContent"
+            android:layout_centerVertical="true"
+            android:text="102.00元"/>
 
-    <LinearLayout style="@style/OptionItemRight">
+    <LinearLayout
+            android:id="@+id/ll_right"
+            style="@style/OptionItemRight">
 
         <TextView
-            android:id="@+id/tv_right_text"
-            style="@style/OptionItemRightText"
-            tools:text="right" />
+                android:id="@+id/tv_right_text"
+                style="@style/OptionItemRightText"
+                tools:text="right"/>
 
         <ImageView
-            android:id="@+id/iv_right_icon"
-            style="@style/OptionItemRightIcon" />
+                android:id="@+id/iv_right_icon"
+                style="@style/OptionItemRightIcon"/>
 
     </LinearLayout>
 

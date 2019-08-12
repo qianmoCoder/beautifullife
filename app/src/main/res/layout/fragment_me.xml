@@ -83,6 +83,7 @@
                 style="@style/DefaultRelativeLayout"
                 app:i_leftText="友"
                 app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_subTitle="友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链友链"
                 app:i_title="友链" />
 
             <com.ddu.icore.ui.view.OptionItemView
