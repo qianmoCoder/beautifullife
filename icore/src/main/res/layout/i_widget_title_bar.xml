@@ -20,6 +20,7 @@
             android:layout_gravity="left"
             android:duplicateParentState="true"
             android:scaleType="center"
+            android:tint="@color/c_ffffff"
             tools:src="@drawable/titlebar_back_icon"
             tools:visibility="visible" />
 
@@ -48,6 +49,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:textSize="@dimen/dp_18"
+            android:textColor="@color/c_ffffff"
             tools:text="Title"
             tools:visibility="visible" />
 

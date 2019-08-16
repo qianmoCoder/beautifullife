@@ -30,11 +30,11 @@
     </style>
 
     <style name="TitleBarText.Left">
-        <item name="android:textColor">@color/c_333333</item>
+        <item name="android:textColor">@color/c_ffffff</item>
     </style>
 
     <style name="TitleBarText.Right">
-        <item name="android:textColor">@color/c_4897fa</item>
+        <item name="android:textColor">@color/c_ffffff</item>
     </style>
     <!-- TitleBar End -->
 
