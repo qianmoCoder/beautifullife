@@ -3,6 +3,7 @@ package com.ddu.ui.fragment
 import android.os.Bundle
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.taobao.sophix.SophixManager
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -19,6 +20,12 @@ class WorkFragment : DefaultFragment() {
 
         oiv_program_swift.setOnClickListener {
         }
+
+        btn_get.setOnClickListener {
+            SophixManager.getInstance().queryAndLoadNewPatch()
+        }
+
+        tv_html.text = "LIMI"
 
     }
 
