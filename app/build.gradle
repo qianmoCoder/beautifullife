@@ -85,6 +85,15 @@ android {
         enabled = true
     }
 
+    sourceSets {
+        main {
+            jni.srcDirs = []
+        }
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
 //    configurations.all {
 //        resolutionStrategy.force "androidx.vectordrawable:vectordrawable:1.0.1"
 //        resolutionStrategy.force "androidx.appcompat:appcompat:1.0.2"

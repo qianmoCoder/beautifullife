@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.properties.Delegates
 
-open class BaseApp : SophixStubApplication(), Application.ActivityLifecycleCallbacks {
+open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
     companion object {
         var instance by Delegates.notNull<BaseApp>()
