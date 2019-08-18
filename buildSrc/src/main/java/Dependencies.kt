@@ -21,6 +21,8 @@ object Versions {
     const val objectBox = "2.3.3"
 
     const val glideVersion = "4.9.0"
+
+    const val retrofit = "2.6.1"
 }
 
 object Libs {
