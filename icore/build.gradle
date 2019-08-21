@@ -38,20 +38,19 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    implementation Deps.kotlinStdLib
 
-    implementation Deps.androidxAppcompat
+    api Deps.androidxAppcompat
+    api Deps.kotlinStdLib
 
-    implementation Deps.material
-    implementation Deps.recyclerView
-    implementation Deps.cardView
+    api Deps.material
+    api Deps.recyclerView
+    api Deps.cardView
 
-    implementation Libs.glide
+    api Libs.glide
     kapt Libs.glideCompiler
 
-    implementation Deps.gson
-
-    implementation Libs.rxjava
-    implementation Libs.rxandroid
-    implementation Libs.immersionbar
+    api Libs.rxjava
+    api Libs.rxandroid
+    api Deps.gson
+    api Libs.immersionbar
 }

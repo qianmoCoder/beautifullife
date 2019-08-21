@@ -1,1 +1,1 @@
-include ':app', ':iannotation', ':iprocessors',  ":icore"
+include ':app', ':iannotation', ':iprocessors', ':icore-network',  ":icore"

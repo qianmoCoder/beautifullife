@@ -12,7 +12,7 @@ import retrofit2.http.*
 interface ApiEndpointInterface<T> {
 
     @GET("/users/{username}")
-    fun getT(@Path("username") username: String): Call<T>
+    fun getT(@Path("username") username: String): retrofit2.Call<T>
 
     @GET("/group/{id}/users")
     fun groupList(@Path("id") groupId: Int, @Query("sort") sort: String): Call<List<T>>

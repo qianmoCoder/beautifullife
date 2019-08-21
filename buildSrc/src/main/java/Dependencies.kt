@@ -30,8 +30,8 @@ object Libs {
 
     const val androidxKtx = "androidx.core:core-ktx:1.0.1"
 
-    const val rxjava = "io.reactivex.rxjava2:rxjava:2.2.2"
-    const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.0"
+    const val rxjava = "io.reactivex.rxjava2:rxjava:2.2.11"
+    const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
@@ -41,6 +41,14 @@ object Libs {
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
     const val glideCompiler = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+
+    const val okhttp = "com.squareup.okhttp3:okhttp:4.1.0"
+    const val okio = "com.squareup.okio:okio:2.3.0"
+    const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:3.14.1"
+
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitConverterGson =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val retrofitAdapterRxjava =  "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 }
 
 object Deps {

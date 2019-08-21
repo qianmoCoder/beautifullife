@@ -23,10 +23,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation Deps.kotlinStdLib
-    implementation Deps.androidxAppcompat
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+    api project(':icore')
+
+    // 网络请求库
+    api Libs.okhttp
+    api Libs.okio
+    api Libs.okhttpLogging
+    api Libs.retrofit
+    api Libs.retrofitConverterGson
+    api Libs.retrofitAdapterRxjava
 
 }
