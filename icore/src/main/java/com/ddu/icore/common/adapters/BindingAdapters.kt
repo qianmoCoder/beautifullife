@@ -1,5 +1,6 @@
 package com.ddu.icore.common.adapters
 
+import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
@@ -20,9 +21,9 @@ import com.ddu.icore.common.ext.px2dp
 @BindingAdapter("isGone")
 fun View.bindIsGone(isGone: Boolean) {
     visibility = if (isGone) {
-        View.GONE
+        GONE
     } else {
-        View.VISIBLE
+        VISIBLE
     }
 }
 
@@ -65,6 +66,24 @@ fun View.bindBackground(radius: Float, @ColorInt color: Int?, colorString: Strin
     }
     gd.cornerRadius = radius
     background = gd
+}
+
+@BindingAdapter(value = ["color", "color_focused", "color_disable"], requireAll = false)
+fun TextView.bindTextColor(@ColorInt color: Int, @ColorInt colorFocused: Int?, @ColorInt colorDisable: Int? = color) {
+
+    val mStates = arrayOfNulls<IntArray>(4)
+    mStates[0] = intArrayOf(android.R.attr.state_focused)
+    mStates[1] = intArrayOf(android.R.attr.state_pressed)
+    mStates[2] = intArrayOf(-android.R.attr.state_enabled)
+    mStates[3] = intArrayOf()
+
+    val mColors = IntArray(4)
+    mColors[0] = colorFocused ?: color
+    mColors[1] = colorFocused ?: color
+    mColors[2] = colorDisable ?: color
+    mColors[3] = color
+
+    setTextColor(ColorStateList(mStates, mColors))
 }
 
 @BindingAdapter("renderHtml")

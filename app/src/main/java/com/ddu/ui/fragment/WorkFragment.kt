@@ -1,9 +1,10 @@
 package com.ddu.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import com.ddu.R
+import com.ddu.icore.common.adapters.bindTextColor
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.taobao.sophix.SophixManager
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -22,10 +23,19 @@ class WorkFragment : DefaultFragment() {
         }
 
         btn_get.setOnClickListener {
-            SophixManager.getInstance().queryAndLoadNewPatch()
+            //            SophixManager.getInstance().queryAndLoadNewPatch()
+            tv_html.isEnabled = false
         }
 
-        tv_html.text = "LIMI"
+        tv_html.text = "LIMILIMILIMILIMILIMILIMILIMILIMILIMILIMILIMI"
+        tv_html.isClickable = true
+        tv_html.isFocusable = true
+//        tv_html.setTextColor( resources.getColorStateList(R.color.fragment_ui_navi_item_text_selector))
+        tv_html.bindTextColor(
+            resources.getColor(R.color.c_ff0000),
+            resources.getColor(R.color.c_4897fa),
+            Color.BLACK
+        )
 
     }
 

@@ -18,6 +18,8 @@ object Versions {
 
     const val lifecycleVersion = "2.0.0"
 
+    const val pagingVersion = "2.1.0"
+
     const val objectBox = "2.3.3"
 
     const val glideVersion = "4.9.0"
@@ -36,6 +38,8 @@ object Libs {
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+    const val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
+    const val pagingRx = "androidx.paging:paging-rxjava2:${Versions.pagingVersion}"
 
     const val immersionbar = "com.gyf.immersionbar:immersionbar:3.0.0-beta05"
 

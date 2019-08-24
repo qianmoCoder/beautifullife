@@ -23,12 +23,24 @@ abstract class ResponseObserver<T>(ctx: Context, showLoading: Boolean = true) : 
     }
 
     override fun onNext(t: Resource<T>) {
-        if (Resource.isSuccessful(t.code)) {
-            onResponse(ApiResponse.create(t))
-        } else {
-            onResponse(ApiResponse.create(t.code, Exception(t.msg)))
+        try {
+            if (Resource.isSuccessful(t.code)) {
+                onResponse(ApiResponse.create(t))
+            } else {
+                onResponse(ApiResponse.create(t.code, Exception(t.msg)))
+            }
+        } catch (e: Throwable) {
+            onError(e)
+        } finally {
+            disposable?.let {
+                if (!it.isDisposed) {
+                    it.dispose()
+                }
+            }
         }
-        disposable?.dispose()
+
+
+
     }
 
     override fun onError(e: Throwable) {

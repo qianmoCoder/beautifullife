@@ -20,7 +20,6 @@
                 android:layout_height="@dimen/dp_100"
                 app:l_background="@color/c_4897fa"
                 app:l_radius="@dimen/dp_20"
-
         >
 
         </com.ddu.icore.ui.view.ShapeLinearLayout>

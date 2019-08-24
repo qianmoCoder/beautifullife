@@ -58,6 +58,7 @@ inline fun <reified T> Context.findPreference(key: String, default: T): T? = wit
         is Long -> getLong(key, default)
         is String -> getString(key, default)
         is Set<*> -> when {
+            @Suppress("UNCHECKED_CAST")
             default.isSetOf<String>() -> getStringSet(key, default as Set<out String>)
             else -> setOf()
         }

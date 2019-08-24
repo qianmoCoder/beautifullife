@@ -46,6 +46,9 @@ dependencies {
     api Deps.recyclerView
     api Deps.cardView
 
+    api Libs.paging
+    api Libs.pagingRx
+
     api Libs.glide
     kapt Libs.glideCompiler
 
