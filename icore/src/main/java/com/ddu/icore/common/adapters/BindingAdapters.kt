@@ -9,6 +9,7 @@ import android.view.View.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -127,8 +128,12 @@ fun View.bindMargin(margin: String) {
     }
 }
 
-@BindingAdapter("imageUrl")
-fun ImageView.setImageUrl(url: String) {
-//    SDKManager.instance.getImageLoader()?.loadUrl(url, this)
-    Glide.with(context).load(url).into(this)
+@BindingAdapter(value = ["imageUrl", "placeholder"], requireAll = false)
+fun ImageView.setImageUrl(url: String, @DrawableRes resourceId: Int? = null) {
+    if (resourceId != null) {
+        Glide.with(context).load(url).placeholder(resourceId).into(this)
+    } else {
+        Glide.with(context).load(url).into(this)
+    }
+
 }

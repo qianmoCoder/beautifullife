@@ -37,6 +37,8 @@ class WorkFragment : DefaultFragment() {
             Color.BLACK
         )
 
+        1.toString()
+
     }
 
     fun ToDBC(input: String): String {

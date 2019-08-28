@@ -65,7 +65,6 @@ class PagingFragment1 : DefaultFragment() {
             dataBean.data = "测试的内容=${dataBean.id}"
             list.add(dataBean)
         }
-
         return list
     }
 

@@ -12,7 +12,10 @@ import com.ddu.icore.callback.Consumer1
 /**
  * Created by yzbzz on 2019-08-22.
  */
-abstract class AbsPagedListAdapter<T>(ctx: FragmentActivity, diffCallback: DiffUtil.ItemCallback<T>) :
+abstract class AbsPagedListAdapter<T>(
+    ctx: FragmentActivity,
+    diffCallback: DiffUtil.ItemCallback<T>
+) :
     PagedListAdapter<T, ViewHolder>(diffCallback) {
 
     private val liveData: LiveData<PagedList<T>>
@@ -21,7 +24,8 @@ abstract class AbsPagedListAdapter<T>(ctx: FragmentActivity, diffCallback: DiffU
         val config = PagedList.Config.Builder()
             .setPageSize(10)
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
+            .setPrefetchDistance(5)
+            .setInitialLoadSizeHint(20)
             .build()
 
         liveData = LivePagedListBuilder(MyDataSourceFactory(), config).build()
@@ -54,16 +58,16 @@ abstract class AbsPagedListAdapter<T>(ctx: FragmentActivity, diffCallback: DiffU
         ) {
             consumer(0, object : Consumer1<List<T>> {
                 override fun accept(t: List<T>) {
-                    callback.onResult(t, 0, 1)
+                    val size = params.requestedLoadSize
+                    callback.onResult(t, 0, size.inc())
                 }
-
             })
         }
 
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, T>) {
-            consumer(params.key + 1, object : Consumer1<List<T>> {
+            consumer(params.key.inc(), object : Consumer1<List<T>> {
                 override fun accept(t: List<T>) {
-                    callback.onResult(t, params.key + 1)
+                    callback.onResult(t, params.key.inc())
                 }
             })
         }
