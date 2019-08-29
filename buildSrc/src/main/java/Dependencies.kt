@@ -44,7 +44,7 @@ object Libs {
     const val immersionbar = "com.gyf.immersionbar:immersionbar:3.0.0-beta05"
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
-    const val glideCompiler = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 
     const val okhttp = "com.squareup.okhttp3:okhttp:4.1.0"
     const val okio = "com.squareup.okio:okio:2.3.0"
