@@ -33,18 +33,6 @@ fun Double.px2dp(context: Context) = this / context.density
 
 fun Double.px2sp(context: Context) = this / context.scaledDensity
 
-fun String.dp2px(context: Context) = try {
-    this.toDouble().dp2px(context)
-} catch (e: Exception) {
-    0.0
-}
-
-fun String.px2dp(context: Context) = try {
-    this.toDouble().px2dp(context)
-} catch (e: Exception) {
-    0.0
-}
-
 
 inline fun <reified T> Number.convert(value: Float): T {
     val result: Any = when (T::class) {

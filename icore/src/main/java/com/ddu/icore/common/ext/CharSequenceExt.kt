@@ -1,11 +1,24 @@
 package com.ddu.icore.common.ext
 
+import android.content.Context
 import android.graphics.Color
 import androidx.annotation.ColorInt
 import com.google.gson.Gson
 import java.math.BigDecimal
 import java.security.MessageDigest
 import java.util.regex.Pattern
+
+fun String.dp2px(context: Context) = try {
+    this.toDouble().dp2px(context)
+} catch (e: Exception) {
+    0.0
+}
+
+fun String.px2dp(context: Context) = try {
+    this.toDouble().px2dp(context)
+} catch (e: Exception) {
+    0.0
+}
 
 fun String.md5(): String {
     val digestInstance = MessageDigest.getInstance("MD5")

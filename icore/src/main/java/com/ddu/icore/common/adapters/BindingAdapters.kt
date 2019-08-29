@@ -13,6 +13,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.ddu.icore.common.ext.parseColor
 import com.ddu.icore.common.ext.px2dp
 
@@ -59,7 +60,6 @@ var View.gone
 @BindingAdapter(value = ["bg_radius", "bg_color", "bg_color_s"], requireAll = false)
 fun View.bindBackground(radius: Float, @ColorInt color: Int?, colorString: String?) {
     val gd = GradientDrawable()
-
     if (null != color) {
         gd.setColor(color)
     } else if (null != colorString) {
@@ -97,7 +97,7 @@ fun TextView.bindRenderHtml(description: String?) {
     }
 }
 
-@BindingAdapter("margin")
+@BindingAdapter("padding")
 fun View.bindMargin(margin: String) {
     if (!TextUtils.isEmpty(margin)) {
         val margins = margin.split(" ")
@@ -128,12 +128,18 @@ fun View.bindMargin(margin: String) {
     }
 }
 
-@BindingAdapter(value = ["imageUrl", "placeholder"], requireAll = false)
-fun ImageView.setImageUrl(url: String, @DrawableRes resourceId: Int? = null) {
-    if (resourceId != null) {
-        Glide.with(context).load(url).placeholder(resourceId).into(this)
-    } else {
-        Glide.with(context).load(url).into(this)
+@BindingAdapter(value = ["imageUrl", "placeholder", "error"], requireAll = false)
+fun ImageView.setImageUrl(
+    url: String,
+    @DrawableRes resourceId: Int? = null,
+    @DrawableRes errorResId: Int? = null
+) {
+    var option = RequestOptions()
+    if (null != resourceId) {
+        option = option.placeholder(resourceId)
     }
-
+    if (null != errorResId) {
+        option = option.error(errorResId)
+    }
+    Glide.with(context).load(url).apply(option).into(this)
 }

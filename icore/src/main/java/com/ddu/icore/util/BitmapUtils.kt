@@ -22,30 +22,35 @@ object BitmapUtils {
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
 
-
-    fun Bitmap2StrByBase64(bit: Bitmap): String {
-        val bos = ByteArrayOutputStream()
-        bit.compress(Bitmap.CompressFormat.JPEG, 40, bos)
-        val bytes = bos.toByteArray()
-        return Base64.encodeToString(bytes, Base64.DEFAULT)
+    fun getPhotos(path: String, reqHeight: Int = 800, reqWidth: Int = 800): String {
+        val bitmap = decodeSampledBitmapFromResource(path, reqHeight, reqWidth)
+        return bitmap2StrByBase64(bitmap)
     }
 
-    fun Bitmap2Bytes(bit: Bitmap): ByteArray {
+    fun bitmap2StrByBase64(bit: Bitmap): String {
+        var bos: ByteArrayOutputStream? = null
+        try {
+            bos = ByteArrayOutputStream()
+            bit.compress(Bitmap.CompressFormat.JPEG, 40, bos)
+            val bytes = bos.toByteArray()
+            return Base64.encodeToString(bytes, Base64.DEFAULT)
+        } catch (e: Exception) {
+            return ""
+        } finally {
+            bos?.let {
+                try {
+                    bos.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun bitmap2Bytes(bit: Bitmap): ByteArray {
         val bos = ByteArrayOutputStream()
         bit.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         return bos.toByteArray()
-    }
-
-    fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Float, reqHeight: Float): Int {
-        val height = options.outHeight
-        val width = options.outWidth
-        var inSampleSize = 1
-        if (height > reqHeight || width > reqWidth) {
-            val heightRatio = Math.round(height.toFloat() / reqHeight)
-            val widthRatio = Math.round(width.toFloat() / reqWidth)
-            inSampleSize = if (heightRatio < widthRatio) heightRatio else widthRatio
-        }
-        return inSampleSize
     }
 
     fun decodeBGBitmapFromResource(filePath: String): Bitmap {
@@ -80,7 +85,12 @@ object BitmapUtils {
         return BitmapFactory.decodeFile(filePath, options)
     }
 
-    fun decodeSampledBitmapFromResource(res: Resources, resId: Int, reqWidth: Int, reqHeight: Int): Bitmap {
+    fun decodeSampledBitmapFromResource(
+        res: Resources,
+        resId: Int,
+        reqWidth: Int,
+        reqHeight: Int
+    ): Bitmap {
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
 
@@ -117,8 +127,10 @@ object BitmapUtils {
         var degree = 0
         try {
             val exifInterface = ExifInterface(path)
-            val orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-            when (orientation) {
+            when (exifInterface.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL
+            )) {
                 ExifInterface.ORIENTATION_ROTATE_90 -> degree = 90
                 ExifInterface.ORIENTATION_ROTATE_180 -> degree = 180
                 ExifInterface.ORIENTATION_ROTATE_270 -> degree = 270
@@ -155,16 +167,19 @@ object BitmapUtils {
             return drawable.bitmap
         } else if (drawable is NinePatchDrawable) {
             val bitmap = Bitmap
-                    .createBitmap(
-                            drawable.getIntrinsicWidth(),
-                            drawable.getIntrinsicHeight(),
-                            if (drawable.getOpacity() != PixelFormat.OPAQUE)
-                                Bitmap.Config.ARGB_8888
-                            else
-                                Bitmap.Config.RGB_565)
+                .createBitmap(
+                    drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(),
+                    if (drawable.getOpacity() != PixelFormat.OPAQUE)
+                        Bitmap.Config.ARGB_8888
+                    else
+                        Bitmap.Config.RGB_565
+                )
             val canvas = Canvas(bitmap)
-            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
-                    drawable.getIntrinsicHeight())
+            drawable.setBounds(
+                0, 0, drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight()
+            )
             drawable.draw(canvas)
             return bitmap
         } else {
@@ -207,20 +222,19 @@ object BitmapUtils {
         return null
     }
 
-    fun getSampleSize(size: Float, outSize: Float): Int {
+    private fun getSampleSize(size: Float, outSize: Float): Int {
         var be = (size / outSize).toInt()
         if (be <= 0) {
             be = 1
         }
         return be
-
     }
 
     fun getMatrixBitmap(bm: Bitmap?, w: Int, h: Int, needRecycle: Boolean): Bitmap {
         val width = bm!!.width
         val height = bm.height
         val isCompress = width > w && height > h && w != 0 && h != 0
-        if (isCompress) {
+        return if (isCompress) {
             val scaleWidth = w.toFloat() / width
             val scaleHeight = h.toFloat() / height
             val scale = Math.max(scaleWidth, scaleHeight)
@@ -230,9 +244,9 @@ object BitmapUtils {
             if (needRecycle && bm != null && bm != bitmap) {
                 bm.recycle()
             }
-            return bitmap
+            bitmap
         } else {
-            return bm
+            bm
         }
 
     }
@@ -247,11 +261,14 @@ object BitmapUtils {
     fun getViewBitmap(view: View): Bitmap {
 
         view.measure(
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED))
-        view.layout(0, 0,
-                view.measuredWidth,
-                view.measuredHeight)
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+            View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        )
+        view.layout(
+            0, 0,
+            view.measuredWidth,
+            view.measuredHeight
+        )
 
         view.buildDrawingCache()
         val cacheBitmap = view.drawingCache

@@ -10,6 +10,7 @@
 
     <string name="no_data">暂无数据</string>
 
+    <string name="loading_text">加载中&#8230;&#8230;&#8230;</string>
     <string name="parse_data_error">解析数据失败!</string>
     <string name="request_error_msg">获取数据失败!（%d）</string>
 
