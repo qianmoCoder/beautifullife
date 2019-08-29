@@ -3,6 +3,10 @@ package com.ddu.icore.ui.fragment;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ddu.icore.R;
 import com.ddu.icore.refresh.PullToRefreshBase;
 import com.ddu.icore.refresh.PullToRefreshScrollView;
@@ -10,10 +14,6 @@ import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/4/19.
@@ -72,7 +72,6 @@ public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends Defau
     public void initRefreshView() {
         mPullToRefreshScrollView.setMode(PullToRefreshBase.Mode.DISABLED);
     }
-
 
     public RecyclerView.ItemDecoration getItemDecoration() {
         return new DividerItemDecoration(getMContext(), DividerItemDecoration.VERTICAL);

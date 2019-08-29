@@ -10,7 +10,7 @@ object Versions {
 
     const val materialVersion = "1.0.0"
 
-    const val kotlinVersion = "1.3.41"
+    const val kotlinVersion = "1.3.50"
 
     const val supportLibraryVersion = "1.0.2"
 
@@ -53,6 +53,8 @@ object Libs {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitConverterGson =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofitAdapterRxjava =  "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+
+    const val smartRefreshLayout = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0"
 }
 
 object Deps {

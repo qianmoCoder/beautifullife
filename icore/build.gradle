@@ -24,12 +24,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-    }
-
-    lintOptions {
-        abortOnError false
-    }
 
     dataBinding {
         enabled = true
@@ -50,6 +44,7 @@ dependencies {
     api Deps.material
     api Deps.recyclerView
     api Deps.cardView
+    api Deps.gson
 
     api Libs.paging
     api Libs.pagingRx
@@ -59,6 +54,8 @@ dependencies {
 
     api Libs.rxjava
     api Libs.rxandroid
-    api Deps.gson
+
     api Libs.immersionbar
+
+    api Libs.smartRefreshLayout
 }
