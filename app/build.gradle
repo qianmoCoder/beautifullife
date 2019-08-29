@@ -7,19 +7,19 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
-    Properties properties = new Properties()
-    properties.load(project.file('./local.properties').newDataInputStream())
+//    Properties properties = new Properties()
+//    properties.load(project.file('./local.properties').newDataInputStream())
 
     signingConfigs {
         debug {
             storeFile file("${rootDir}/debug.keystore")
         }
-        release {
-            storeFile file(properties.getProperty("keystroe_storeFile"))
-            storePassword properties.getProperty("keystroe_storePassword")
-            keyAlias properties.getProperty("keystroe_keyAlias")
-            keyPassword properties.getProperty("keystroe_keyPassword")
-        }
+//        release {
+//            storeFile file(properties.getProperty("keystroe_storeFile"))
+//            storePassword properties.getProperty("keystroe_storePassword")
+//            keyAlias properties.getProperty("keystroe_keyAlias")
+//            keyPassword properties.getProperty("keystroe_keyPassword")
+//        }
     }
 
     compileSdkVersion Versions.compileSdkVersion
@@ -60,7 +60,7 @@ android {
             zipAlignEnabled true
             //混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             manifestPlaceholders = [BUILD_TYPE_VALUE: "release"]
         }
 
