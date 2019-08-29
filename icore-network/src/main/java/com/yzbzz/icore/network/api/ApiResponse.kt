@@ -14,11 +14,11 @@ sealed class ApiResponse<T> {
         }
 
         fun <T> create(response: Resource<T>): ApiSuccessResponse<T> {
-            return ApiSuccessResponse(response.data, response.msg)
+            return ApiSuccessResponse(response.code, response.data, response.msg)
         }
     }
 }
 
-data class ApiSuccessResponse<T>(val data: T?, val msg: String?) : ApiResponse<T>()
+data class ApiSuccessResponse<T>(val code: Int?, val data: T?, val msg: String?) : ApiResponse<T>()
 
 data class ApiErrorResponse<T>(val code: Int?, val errorMsg: String) : ApiResponse<T>()
