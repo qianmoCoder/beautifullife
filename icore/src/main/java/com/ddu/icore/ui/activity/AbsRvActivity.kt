@@ -19,6 +19,8 @@ abstract class AbsRvActivity<D, A : DefaultRVAdapter<D>> : BaseActivity(), OnLoa
 
     lateinit var mAdapter: A
 
+    var mItems = mutableListOf<D>()
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
@@ -34,8 +36,6 @@ abstract class AbsRvActivity<D, A : DefaultRVAdapter<D>> : BaseActivity(), OnLoa
         getItemDecoration()?.let {
             rv_default.addItemDecoration(it)
         }
-
-
         initRefreshView()
     }
 
