@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="1500"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:valueType="floatType"
+        android:valueFrom="-100"
+        android:valueTo="800"
+        android:startOffset="0"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"/>

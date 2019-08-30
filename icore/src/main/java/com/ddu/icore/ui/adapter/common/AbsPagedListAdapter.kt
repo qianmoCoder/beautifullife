@@ -53,16 +53,14 @@ abstract class AbsPagedListAdapter<T>(
 
     inner class MyDataSource : PageKeyedDataSource<Int, T>() {
 
-        private final var FIRST_PAGE = 1
-
         override fun loadInitial(
             params: LoadInitialParams<Int>,
             callback: LoadInitialCallback<Int, T>
         ) {
-            consumer(FIRST_PAGE, object : Consumer1<List<T>> {
+            consumer(1, object : Consumer1<List<T>> {
                 override fun accept(t: List<T>) {
                     val size = params.requestedLoadSize
-                    callback.onResult(t, null, ++FIRST_PAGE)
+                    callback.onResult(t, 1, 2)
                 }
             })
         }
