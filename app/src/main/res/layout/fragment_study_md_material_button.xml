@@ -1,0 +1,146 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_snack_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
+
+    <TextView
+            android:id="@+id/tv_icon_header"
+            style="@style/UIMaterialButtonHeader"
+            android:text="ICON相关"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/tv_icon"
+            style="@style/UIMaterialButtonItem"
+            android:text="用于定义在按钮左侧显示的drawable"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_icon_header" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:icon"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_android_white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_icon" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_icon_tint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:iconTint"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_android_white"
+            app:iconTint="@color/c_4897fa"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_icon" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_icon_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:iconPadding=30dp"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_android_white"
+            app:iconPadding="@dimen/dp_30"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_icon_tint" />
+
+    <TextView
+            android:id="@+id/tv_color_header"
+            style="@style/UIMaterialButtonHeader"
+            android:text="COLOR相关"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_icon_padding" />
+
+    <TextView
+            android:id="@+id/tv_color"
+            style="@style/UIMaterialButtonItem"
+            android:text="用于定义按钮背景颜色、水波纹颜色"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_color_header" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_background_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:backgroundTint=ff00ff"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/c_ff00ff"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_color" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_ripple_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:rippleColor=00ff00"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_background_color"
+            app:rippleColor="@color/c_00ff00" />
+
+    <TextView
+        android:id="@+id/tv_stroke_header"
+        style="@style/UIMaterialButtonHeader"
+        android:text="STROKE相关"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mb_ripple_color" />
+
+    <TextView
+            android:id="@+id/tv_stroke"
+            style="@style/UIMaterialButtonItem"
+            android:text="用于定义按钮边框的颜色和宽度"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_stroke_header" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_stroke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:strokeColor=cc0000ff app:strokeWidth=3dp"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_stroke"
+            app:strokeColor="@color/c_a80_0000ff"
+            app:strokeWidth="@dimen/dp_3"/>
+
+    <TextView
+            android:id="@+id/tv_radius_header"
+            style="@style/UIMaterialButtonHeader"
+            android:text="RADIUS相关"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_stroke" />
+
+    <TextView
+            android:id="@+id/tv_radius"
+            style="@style/UIMaterialButtonItem"
+            android:text="用于定义按钮的角度"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_radius_header" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="app:cornerRadius=20dp"
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/dp_20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_radius"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

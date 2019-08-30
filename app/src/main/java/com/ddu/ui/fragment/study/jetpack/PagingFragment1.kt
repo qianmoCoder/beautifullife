@@ -56,10 +56,10 @@ class PagingFragment1 : DefaultFragment() {
     }
 
     fun loadData(startPosition: Int, count: Int): List<DataBean> {
-        Log.v("lhz","startPosition: " + startPosition)
+        Log.v("lhz", "startPosition: " + startPosition)
         Thread.sleep(2000)
         val list = mutableListOf<DataBean>()
-        for (i in 0 until count) {
+        for (i in startPosition until (startPosition + 10)) {
             val dataBean = DataBean()
             dataBean.id = startPosition + i
             dataBean.data = "测试的内容=${dataBean.id}"
