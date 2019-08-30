@@ -1,28 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/fl_home_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+            android:id="@+id/fl_home_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/navigation">
 
     </FrameLayout>
 
     <!-- 使用 app:itemBackground 去掉水波纹效果 -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/c_ffffff"
-        app:menu="@menu/navigation"
-        app:labelVisibilityMode="labeled"/>
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="?android:attr/windowBackground"
+            app:itemBackground="@color/c_ffffff"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/navigation" />
 
-</LinearLayout>
+<!--    <LinearLayout-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_above="@+id/navigation"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginBottom="-5dp"-->
+<!--            android:background="@drawable/round_circle_white"-->
+<!--            android:elevation="8dp" />-->
+
+<!--    <ImageView-->
+<!--            android:id="@+id/ma_iv_index"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginBottom="30dp"-->
+<!--            android:elevation="8dp"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/main_tab_ic_middle" />-->
+
+</RelativeLayout>

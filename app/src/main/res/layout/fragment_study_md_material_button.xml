@@ -92,11 +92,11 @@
             app:rippleColor="@color/c_00ff00" />
 
     <TextView
-        android:id="@+id/tv_stroke_header"
-        style="@style/UIMaterialButtonHeader"
-        android:text="STROKE相关"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mb_ripple_color" />
+            android:id="@+id/tv_stroke_header"
+            style="@style/UIMaterialButtonHeader"
+            android:text="STROKE相关"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mb_ripple_color" />
 
     <TextView
             android:id="@+id/tv_stroke"
@@ -120,7 +120,7 @@
     <TextView
             android:id="@+id/tv_radius_header"
             style="@style/UIMaterialButtonHeader"
-            android:text="RADIUS相关"
+            android:text="STROKE相关"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mb_stroke" />
 
@@ -141,6 +141,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_radius"
-        />
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
