@@ -25,7 +25,7 @@ abstract class AbsPagedListAdapter<T>(
             .setPageSize(10)
             .setEnablePlaceholders(false)
             .setPrefetchDistance(5)
-            .setInitialLoadSizeHint(20)
+//            .setInitialLoadSizeHint(20)
             .build()
 
         liveData = LivePagedListBuilder(MyDataSourceFactory(), config).build()
@@ -52,14 +52,17 @@ abstract class AbsPagedListAdapter<T>(
     }
 
     inner class MyDataSource : PageKeyedDataSource<Int, T>() {
+
+        private final var FIRST_PAGE = 1
+
         override fun loadInitial(
             params: LoadInitialParams<Int>,
             callback: LoadInitialCallback<Int, T>
         ) {
-            consumer(0, object : Consumer1<List<T>> {
+            consumer(FIRST_PAGE, object : Consumer1<List<T>> {
                 override fun accept(t: List<T>) {
                     val size = params.requestedLoadSize
-                    callback.onResult(t, 0, size.inc())
+                    callback.onResult(t, null, ++FIRST_PAGE)
                 }
             })
         }

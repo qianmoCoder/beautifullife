@@ -40,7 +40,7 @@ class PagingFragment1 : DefaultFragment() {
             }
 
             override fun consumer(index: Int, call: Consumer1<List<DataBean>>) {
-                call.accept(loadData(index, 20))
+                call.accept(loadData(index, 10))
             }
 
         }
