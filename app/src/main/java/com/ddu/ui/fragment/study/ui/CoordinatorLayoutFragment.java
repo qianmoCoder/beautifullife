@@ -2,6 +2,7 @@ package com.ddu.ui.fragment.study.ui;
 
 import android.os.Bundle;
 
+import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.iannotation.IElement;
 
@@ -13,7 +14,7 @@ public class CoordinatorLayoutFragment extends DefaultFragment {
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.fragment_ui_coordinator_layout;
     }
 
     @Override
