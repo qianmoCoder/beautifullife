@@ -16,7 +16,8 @@ class IncomeTaxFragment : DefaultFragment() {
 
     private var lineMoney = 5000.0
 
-    private val average = 8467.0
+//    private val average = 8467.0
+    private val average = 9261.0
 
     private var ceiling = average * 3
 

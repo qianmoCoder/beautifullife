@@ -28,7 +28,7 @@ object Versions {
 }
 
 object Libs {
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:1.1.3"
+    const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta1"
 
     const val androidxKtx = "androidx.core:core-ktx:1.0.1"
 

@@ -25,7 +25,7 @@ object NavigatorUtils {
         val defaultData = intent?.getStringExtra(DEFAULT_DATA)
         return uri?.let {
             when (it.scheme) {
-                "etcp" -> {
+                "yzbzz" -> {
                     when (it.host) {
                         DEFAULT_HOST -> {
                             val tempUrl = try {
@@ -132,7 +132,7 @@ object NavigatorUtils {
 
     fun getIntent(ctx: Context, uri: Uri?): Intent? = uri?.run {
         when (scheme) {
-            "etcp" -> when (host) {
+            "yzbzz" -> when (host) {
                 "0" -> Intent(ctx, LoginActivity::class.java)
                 "1" -> Intent(ctx, LoginActivity1::class.java)
                 "2" -> Intent(ctx, LoginActivity2::class.java)

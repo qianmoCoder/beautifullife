@@ -21,13 +21,13 @@ class FragmentA : DefaultFragment() {
         set(value) {
             startTo(value)
         }
-    var etcpUrl: String? = null
+    var yzbzzUrl: String? = null
     var httpUrl: String? = null
-    var defaultData = "etcp://5"
+    var defaultData = "yzbzz://5"
     var login = "1"
 
     override fun initData(savedInstanceState: Bundle?) {
-        etcpUrl = URLEncoder.encode("etcp://5?userId=3&phone=186xxx&t=张三", "utf-8")
+        yzbzzUrl = URLEncoder.encode("yzbzz://5?userId=3&phone=186xxx&t=张三", "utf-8")
         httpUrl = URLEncoder.encode("http://www.baidu.com?userId=3&phone=186xxx&t=张三", "utf-8")
     }
 
@@ -45,34 +45,34 @@ class FragmentA : DefaultFragment() {
                 ToastUtils.showToast("登录开启")
             }
         }
-        btn_etcp.setOnClickListener {
-            schemeUrl = "etcp://3?login=$login"
+        btn_yzbzz.setOnClickListener {
+            schemeUrl = "yzbzz://3?login=$login"
         }
         btn_http.setOnClickListener {
             schemeUrl = "http://www.baidu.com"
         }
-        btn_etcp_s_e.setOnClickListener {
-            schemeUrl = "etcp://100?url=$etcpUrl&login=$login"
+        btn_yzbzz_s_e.setOnClickListener {
+            schemeUrl = "yzbzz://100?url=$yzbzzUrl&login=$login"
         }
-        btn_etcp_s_h.setOnClickListener {
-            schemeUrl = "etcp://100?url=$httpUrl&login=$login"
+        btn_yzbzz_s_h.setOnClickListener {
+            schemeUrl = "yzbzz://100?url=$httpUrl&login=$login"
         }
-        btn_etcp_s_d_e.setOnClickListener {
-            defaultData = "etcp://2"
-            schemeUrl = "etcp://101?login=$login"
+        btn_yzbzz_s_d_e.setOnClickListener {
+            defaultData = "yzbzz://2"
+            schemeUrl = "yzbzz://101?login=$login"
         }
-        btn_etcp_s_d_h.setOnClickListener {
+        btn_yzbzz_s_d_h.setOnClickListener {
             defaultData = "http://www.163.com"
-            schemeUrl = "etcp://101?login=$login"
+            schemeUrl = "yzbzz://101?login=$login"
         }
-        btn_etcp_s_d_error.setOnClickListener {
-            defaultData = "etcp://102"
-            schemeUrl = "etcp://101?login=$login"
+        btn_yzbzz_s_d_error.setOnClickListener {
+            defaultData = "yzbzz://102"
+            schemeUrl = "yzbzz://101?login=$login"
         }
 
-        btn_etcp_s_d_error_o.setOnClickListener {
+        btn_yzbzz_s_d_error_o.setOnClickListener {
             defaultData = "abc**102"
-            schemeUrl = "etcp://101?login=$login"
+            schemeUrl = "yzbzz://101?login=$login"
         }
 
     }
