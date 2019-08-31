@@ -12,7 +12,7 @@ public class ConstraintLayoutFragment extends DefaultFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_ui_constraint_up;
+        return R.layout.fragment_ui_constraint_layout;
     }
 
     @Override

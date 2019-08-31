@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_20">
+
+        <TextView
+                android:id="@+id/tv_relative"
+                style="@style/UIMaterialButtonItem"
+                android:text="相对定位"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+                android:id="@+id/tv1"
+                android:layout_width="@dimen/dp_140"
+                android:layout_height="@dimen/dp_86"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="#fd3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_relative" />
+
+        <TextView
+                android:id="@+id/tv2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_12"
+                android:text="hello world hello world hello world"
+                android:textColor="#000000"
+                android:textSize="@dimen/dp_16"
+                app:layout_constraintLeft_toRightOf="@id/tv1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv1" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="12dp"
+                android:text="8分钟前"
+                android:textColor="#333"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv1"
+                app:layout_constraintLeft_toRightOf="@id/tv1" />
+
+        <TextView
+                android:id="@+id/tv_alignment"
+                style="@style/UIMaterialButtonItem"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="对齐方式"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv1" />
+
+        <TextView
+                android:id="@+id/tv_alignment_center"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="相对父布局居中"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment" />
+
+        <TextView
+                android:id="@+id/tv_alignment_b"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="靠右边的 B"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment_center" />
+
+        <TextView
+                android:id="@+id/tv_alignment_a"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="相对于 B 居中"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_alignment_b"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment_center" />
+
+        <TextView
+                android:id="@+id/tv_alignment_c"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="靠右边的小 C"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment_b" />
+
+        <TextView
+                android:id="@+id/tv_alignment_d"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_50"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="中间对齐C"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintBottom_toBottomOf="@id/tv_alignment_c"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_alignment_c" />
+
+        <TextView
+                android:id="@+id/tv_alignment_e"
+                android:layout_width="@dimen/dp_90"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="中线对C上边"
+                android:textColor="@color/c_ffffff"
+                app:layout_constraintTop_toTopOf="@id/tv_alignment_c"
+                app:layout_constraintBottom_toTopOf="@id/tv_alignment_c"
+                app:layout_constraintLeft_toRightOf="@id/tv_alignment_d" />
+
+        <TextView
+                android:id="@+id/tv_alignment_f"
+                android:layout_width="@dimen/dp_90"
+                android:layout_height="@dimen/dp_50"
+                android:background="@color/c_4897fa"
+                android:gravity="center"
+                android:text="中线对C下边"
+                android:textColor="@color/c_ffffff"
+                android:layout_marginLeft="@dimen/dp_10"
+                app:layout_constraintLeft_toRightOf="@id/tv_alignment_e"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment_c"
+                app:layout_constraintBottom_toBottomOf="@id/tv_alignment_c" />
+
+        <TextView
+                android:id="@+id/tv_icon"
+                style="@style/UIMaterialButtonItem"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="比例约束"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_alignment_f" />
+
+        <TextView
+                android:id="@+id/proportion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#765"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:text="layout_constraintWidth_percent = 0.7"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_icon"
+                app:layout_constraintWidth_percent="0.7" />
+
+        <TextView
+                android:id="@+id/proportion_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#765"
+                android:gravity="center"
+                android:padding="@dimen/dp_10"
+                android:text="layout_constraintHorizontal_bias = 0.3"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/proportion" />
+
+        <TextView
+                android:id="@+id/banner"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_0"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#765"
+                android:gravity="center"
+                android:text="layout_constraintDimensionRatio 16：6 "
+                app:layout_constraintDimensionRatio="16:6"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/proportion_h" />
+
+        <TextView
+                android:id="@+id/banner1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#765"
+                android:gravity="center"
+                android:text="layout_constraintDimensionRatio h 6：16"
+                app:layout_constraintDimensionRatio="h,6:16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner" />
+
+        <TextView
+                android:id="@+id/banner3"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_0"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#765"
+                android:gravity="center"
+                android:text="layout_constraintDimensionRatio w 6：16 "
+                app:layout_constraintDimensionRatio="w, 6:16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner1" />
+
+
+        <TextView
+                android:id="@+id/tv_circle"
+                style="@style/UIMaterialButtonItem"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="Circle用法(圆形定位)"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner3" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+                android:id="@+id/tv_circle_a"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_150"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="Circle A"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_circle"
+                app:normalStrokeColor="@color/c_4897fa"
+                app:normalStrokeWidth="0.5dp"
+                app:shapeType="round" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+                android:id="@+id/tv_circle_b"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:gravity="center"
+                android:text="Circle B 0"
+                app:layout_constraintCircle="@id/tv_circle_a"
+                app:layout_constraintCircleAngle="0"
+                app:layout_constraintCircleRadius="@dimen/dp_130"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:normalBackgroundColor="@color/c_b23eb5f5"
+                app:normalStrokeColor="@color/c_4897fa"
+                app:normalStrokeWidth="1dp"
+                app:shapeType="round" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+                android:id="@+id/tv_circle_c"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:gravity="center"
+                android:text="Circle C 315"
+                app:layout_constraintCircle="@id/tv_circle_a"
+                app:layout_constraintCircleAngle="315"
+                app:layout_constraintCircleRadius="@dimen/dp_150"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:normalBackgroundColor="@color/c_b23eb5f5"
+                app:normalStrokeColor="@color/c_4897fa"
+                app:normalStrokeWidth="1dp"
+                app:shapeType="round" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+                android:id="@+id/tv_circle_d"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:gravity="center"
+                android:text="Circle D 270"
+                app:layout_constraintCircle="@id/tv_circle_a"
+                app:layout_constraintCircleAngle="270"
+                app:layout_constraintCircleRadius="@dimen/dp_150"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:normalBackgroundColor="@color/c_b23eb5f5"
+                app:normalStrokeColor="@color/c_4897fa"
+                app:normalStrokeWidth="1dp"
+                app:shapeType="round" />
+
+
+        <!--app:layout_constraintHorizontal_chainStyle width 0 begin-->
+        <TextView
+                android:id="@+id/tv_chainStyle"
+                style="@style/UIMaterialButtonItem"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="ChainStyle用法"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_circle_a" />
+
+        <TextView
+                android:id="@+id/tab1_spread"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="#f67"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tab2_spread"
+                app:layout_constraintTop_toBottomOf="@id/tv_chainStyle" />
+
+
+        <TextView
+                android:id="@+id/tab2_spread"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="#A67"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintBottom_toBottomOf="@id/tab1_spread"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/tab1_spread"
+                app:layout_constraintRight_toLeftOf="@+id/tab3_spread" />
+
+        <TextView
+                android:id="@+id/tab3_spread"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="#767"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintBottom_toBottomOf="@id/tab2_spread"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/tab2_spread"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <!--app:layout_constraintHorizontal_chainStyle width 0 end-->
+
+        <!--app:layout_constraintHorizontal_chainStyle weight begin-->
+        <TextView
+                android:id="@+id/tab1_spread_weight"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#f67"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tab2_spread"
+                app:layout_constraintTop_toBottomOf="@id/tab1_spread" />
+
+
+        <TextView
+                android:id="@+id/tab2_spread_weight"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="#A67"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintBottom_toBottomOf="@id/tab1_spread_weight"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/tab1_spread_weight"
+                app:layout_constraintRight_toLeftOf="@+id/tab3_spread_weight" />
+
+        <TextView
+                android:id="@+id/tab3_spread_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="#767"
+                android:gravity="center"
+                android:text="spread w 0"
+                app:layout_constraintBottom_toBottomOf="@id/tab2_spread_weight"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toRightOf="@id/tab2_spread_weight"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <!--app:layout_constraintHorizontal_chainStyle weight end-->
+
+        <!--app:layout_constraintHorizontal_chainStyle spread begin-->
+        <TextView
+                android:id="@+id/tab1_spread_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#f67"
+                android:gravity="center"
+                android:text="spread w 100"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tab2_spread_w"
+                app:layout_constraintTop_toBottomOf="@id/tab1_spread_weight" />
+
+
+        <TextView
+                android:id="@+id/tab2_spread_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#A67"
+                android:gravity="center"
+                android:text="spread w 100"
+                app:layout_constraintBottom_toBottomOf="@id/tab1_spread_w"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toRightOf="@id/tab1_spread_w"
+                app:layout_constraintRight_toLeftOf="@+id/tab3_spread_w" />
+
+        <TextView
+                android:id="@+id/tab3_spread_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#767"
+                android:gravity="center"
+                android:text="spread w 100"
+                app:layout_constraintBottom_toBottomOf="@id/tab2_spread_w"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintLeft_toRightOf="@id/tab2_spread_w"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <!--app:layout_constraintHorizontal_chainStyle spread end-->
+
+        <!--app:layout_constraintHorizontal_chainStyle spread_inside begin-->
+        <TextView
+                android:id="@+id/tab1_spread_inside_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#f67"
+                android:gravity="center"
+                android:text="spread_inside"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tab2_spread_inside_w"
+                app:layout_constraintTop_toBottomOf="@id/tab1_spread_w" />
+
+
+        <TextView
+                android:id="@+id/tab2_spread_inside_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#A67"
+                android:gravity="center"
+                android:text="width 100"
+                app:layout_constraintBottom_toBottomOf="@id/tab1_spread_inside_w"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@id/tab1_spread_inside_w"
+                app:layout_constraintRight_toLeftOf="@+id/tab3_spread_inside_w" />
+
+        <TextView
+                android:id="@+id/tab3_spread_inside_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#767"
+                android:gravity="center"
+                android:text="spread_inside"
+                app:layout_constraintBottom_toBottomOf="@id/tab2_spread_inside_w"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@id/tab2_spread_inside_w"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <!--app:layout_constraintHorizontal_chainStyle spread_inside end-->
+
+        <!--app:layout_constraintHorizontal_chainStyle packed begin-->
+        <TextView
+                android:id="@+id/tab1_packed_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="#f67"
+                android:gravity="center"
+                android:text="Packed w 100"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tab2_packed_w"
+                app:layout_constraintTop_toBottomOf="@id/tab1_spread_inside_w" />
+
+
+        <TextView
+                android:id="@+id/tab2_packed_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#A67"
+                android:gravity="center"
+                android:text="Packed w 100"
+                app:layout_constraintBottom_toBottomOf="@id/tab1_packed_w"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@id/tab1_packed_w"
+                app:layout_constraintRight_toLeftOf="@+id/tab3_packed_w" />
+
+        <TextView
+                android:id="@+id/tab3_packed_w"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="#767"
+                android:gravity="center"
+                android:text="Packed w 100"
+                app:layout_constraintBottom_toBottomOf="@id/tab2_packed_w"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@id/tab2_packed_w"
+                app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
