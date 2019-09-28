@@ -10,6 +10,7 @@ import android.net.ConnectivityManager
 import android.os.PowerManager
 import android.preference.PreferenceManager
 import android.telephony.TelephonyManager
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
@@ -43,7 +44,7 @@ val Context.notificationManager
 val Context.defaultSharedPreferences
     get() = PreferenceManager.getDefaultSharedPreferences(this)
 
-val Context.displayMetrics
+val Context.displayMetrics: DisplayMetrics
     get() = resources.displayMetrics
 
 val Activity.act

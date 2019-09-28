@@ -38,9 +38,6 @@ abstract class ResponseObserver<T>(ctx: Context, showLoading: Boolean = true) : 
                 }
             }
         }
-
-
-
     }
 
     override fun onError(e: Throwable) {

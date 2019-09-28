@@ -1,3 +1,6 @@
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -58,4 +61,44 @@ dependencies {
     api Libs.immersionbar
 
     api Libs.smartRefreshLayout
+
+    api "org.aspectj:aspectjrt:1.9.1"
+
+    api "org.kodein.di:kodein-di-generic-jvm:5.2.0"
+    api 'org.kodein.di:kodein-di-framework-android-x:5.2.0'
 }
+
+android.libraryVariants.all { variant ->
+    JavaCompile javaCompile
+    if (variant.hasProperty('javaCompileProvider')) {
+        javaCompile = variant.javaCompileProvider.get()
+    } else {
+        javaCompile = variant.javaCompile
+    }
+
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.8",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(
+                File.pathSeparator)]
+        String[] kotlinArgs = ["-showWeaveInfo",
+                               "-1.8",
+                               "-inpath", project.buildDir.path + "/tmp/kotlin-classes/" + "<debugFolderName>",
+                               "-aspectpath", javaCompiler.classpath.asFileTree.filter {
+            !it.canonicalPath.contains("transforms")
+        }.asPath,
+                               "-d", project.buildDir.path + "/tmp/kotlin-classes/" + "<debugFolderName>",
+                               "-classpath", javaCompile.classpath.asPath,
+                               "-bootclasspath", project.android.bootClasspath.join(
+                File.pathSeparator)]
+
+        MessageHandler handler = new MessageHandler(true)
+        new Main().run(kotlinArgs,handler)
+        new Main().run(args, handler)
+    }
+}
+

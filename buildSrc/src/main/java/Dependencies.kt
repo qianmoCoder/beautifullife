@@ -58,7 +58,7 @@ object Libs {
 }
 
 object Deps {
-    const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
+    const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}"
 
     const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.supportLibraryVersion}"
 

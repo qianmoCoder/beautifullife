@@ -26,15 +26,28 @@ import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.androidXModule
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.singleton
 
 /**
  * Created by yzbzz on 16/4/6.
  */
-class App : BaseApp() {
+class App : BaseApp(),KodeinAware {
+
+    override val kodein = Kodein {
+        bind<Context>() with singleton {this@App}
+        import(androidXModule(this@App))
+    }
 
     init {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(object : DefaultRefreshHeaderCreator {
-            override fun createRefreshHeader(context: Context, layout: RefreshLayout): RefreshHeader {
+            override fun createRefreshHeader(
+                context: Context,
+                layout: RefreshLayout
+            ): RefreshHeader {
 //                layout.setPrimaryColorsId(R.color.c_868686, android.R.color.white)
                 return ClassicsHeader(context).apply {
                     setEnableLastTime(false)
@@ -42,7 +55,10 @@ class App : BaseApp() {
             }
         })
         SmartRefreshLayout.setDefaultRefreshFooterCreator(object : DefaultRefreshFooterCreator {
-            override fun createRefreshFooter(context: Context, layout: RefreshLayout): RefreshFooter {
+            override fun createRefreshFooter(
+                context: Context,
+                layout: RefreshLayout
+            ): RefreshFooter {
                 return ClassicsFooter(context).setDrawableSize(20f)
             }
         })
@@ -116,13 +132,16 @@ class App : BaseApp() {
         val observableTitle = Observable.fromArray(*titleList)
         val observableDescList = Observable.fromArray(*descList)
 
-        Observable.zip(observableTitle, observableDescList, BiFunction<String, String, StudyContent> { s, s2 ->
-            val studyItemModel = StudyContent()
-            studyItemModel.setTitle(s)
-            studyItemModel.setDescription(s2)
-            studyItemModel.setType(s)
-            studyItemModel
-        }).subscribe { studyContent -> studyContentBox.put(studyContent) }
+        Observable.zip(
+            observableTitle,
+            observableDescList,
+            BiFunction<String, String, StudyContent> { s, s2 ->
+                val studyItemModel = StudyContent()
+                studyItemModel.setTitle(s)
+                studyItemModel.setDescription(s2)
+                studyItemModel.setType(s)
+                studyItemModel
+            }).subscribe { studyContent -> studyContentBox.put(studyContent) }
     }
 
 
