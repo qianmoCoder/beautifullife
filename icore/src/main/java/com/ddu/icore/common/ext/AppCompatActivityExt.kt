@@ -13,9 +13,9 @@ fun AppCompatActivity.addFragmentToActivity(fragment: androidx.fragment.app.Frag
         add(fragment, tag)
     }
 }
-
-inline fun <reified T : ViewModel> AppCompatActivity.obtainViewModel() =
-        ViewModelProviders.of(this).get(T::class.java)
+//
+//inline fun <reified T : ViewModel> AppCompatActivity.obtainViewModel() =
+//        ViewModelProviders.of(this).get(T::class.java)
 
 private inline fun androidx.fragment.app.FragmentManager.transact(action: androidx.fragment.app.FragmentTransaction.() -> Unit) {
     beginTransaction().apply {
