@@ -30,9 +30,9 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
         initData(savedInstanceState)
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-        mContext = context!!
+        mContext = context
     }
 
     open fun isShowTitleBar() = true
@@ -63,7 +63,7 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
 
     override fun onDestroyView() {
         super.onDestroyView()
-        val parent = mRootView!!.parent as ViewGroup
+        val parent = mRootView?.parent as? ViewGroup
         parent?.removeView(mRootView)
     }
 

@@ -8,7 +8,8 @@ import kotlin.reflect.KProperty
 /**
  * Created by yzbzz on 2018/1/24.
  */
-class Preference<T>(val context: Context, val name: String, val default: T) : ReadWriteProperty<Any?, T> {
+class Preference<T>(val context: Context, val name: String, val default: T) :
+    ReadWriteProperty<Any?, T> {
 
     private val prefs by lazy {
         context.defaultSharedPreferences
@@ -25,12 +26,12 @@ class Preference<T>(val context: Context, val name: String, val default: T) : Re
     private fun <T> findPreference(name: String, default: T): T = with(prefs) {
         val res: Any = when (default) {
             is Long -> getLong(name, default)
-            is String -> getString(name, default)
+            is String -> getString(name, default) ?: ""
             is Int -> getInt(name, default)
             is Boolean -> getBoolean(name, default)
             is Float -> getFloat(name, default)
             else -> throw IllegalArgumentException(
-                    "This type can be saved into Preferences"
+                "This type can be saved into Preferences"
             )
         }
         res as T
@@ -48,7 +49,7 @@ class Preference<T>(val context: Context, val name: String, val default: T) : Re
             is Boolean -> putBoolean(name, value)
             is Float -> putFloat(name, value)
             else -> throw IllegalArgumentException(
-                    "This type can be saved into Preferences"
+                "This type can be saved into Preferences"
             )
         }
     }

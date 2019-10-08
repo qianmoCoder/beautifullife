@@ -1,9 +1,9 @@
 object Versions {
 
-    const val compileSdkVersion = 28
+    const val compileSdkVersion = 29
 
     const val minSdkVersion = 19
-    const val targetSdkVersion = 28
+    const val targetSdkVersion = 29
 
     const val versionCode = 1
     const val versionName = "1.0"
@@ -16,7 +16,7 @@ object Versions {
 
     const val coroutinesVersion = "1.1.0"
 
-    const val lifecycleVersion = "2.0.0"
+    const val lifecycleVersion = "2.1.0"
 
     const val pagingVersion = "2.1.0"
 
@@ -38,6 +38,8 @@ object Libs {
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+    const val livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+    const val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
     const val pagingRx = "androidx.paging:paging-rxjava2:${Versions.pagingVersion}"
 

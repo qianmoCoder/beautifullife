@@ -26,21 +26,11 @@ import io.objectbox.Box
 import io.objectbox.BoxStore
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.androidXModule
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.singleton
-
 /**
  * Created by yzbzz on 16/4/6.
  */
-class App : BaseApp(),KodeinAware {
+class App : BaseApp() {
 
-    override val kodein = Kodein {
-        bind<Context>() with singleton {this@App}
-        import(androidXModule(this@App))
-    }
 
     init {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(object : DefaultRefreshHeaderCreator {

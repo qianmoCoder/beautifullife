@@ -85,7 +85,7 @@ inline fun <reified T> Context.pPreference(key: String, value: T) {
 }
 
 fun Context.clipText(text: String = "") {
-    clipboardManager.primaryClip = ClipData.newPlainText("clipText", text)
+    clipboardManager.setPrimaryClip(ClipData.newPlainText("clipText", text))
 }
 
 fun Context.getMarketIntent(): Intent {

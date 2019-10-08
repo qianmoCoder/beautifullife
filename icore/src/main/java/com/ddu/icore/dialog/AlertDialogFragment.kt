@@ -28,15 +28,15 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
     var size = 17f
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog.window.requestFeature(Window.FEATURE_NO_TITLE)
-        dialog.window.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         return inflater.inflate(R.layout.i_fragment_dialog_default, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (!title.isNullOrEmpty()) {
+        if (title.isNotEmpty()) {
             tv_dialog_title.text = title
             tv_dialog_title.visibility = View.VISIBLE
             view_line.visibility = View.VISIBLE

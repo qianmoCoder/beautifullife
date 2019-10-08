@@ -58,18 +58,19 @@ class CustomSeparatorActivity : AppCompatActivity() {
         val multiClickText = getString(R.string.text_phrase_multi_click)
         val multiClickPhrase = StylePhrase(multiClickText)
         multiClickPhrase.firstBuilder.setSize(20).addParcelableSpan(object : ClickableSpan() {
-            override fun onClick(widget: View?) {
+
+            override fun onClick(widget: View) {
 //                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
                 showToast("跳转百度")
             }
         })
         multiClickPhrase.secondBuilder.setSize(15).addParcelableSpan(object : ClickableSpan() {
-            override fun onClick(widget: View?) {
+            override fun onClick(widget: View) {
                 showToast("跳转网易")
 //                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
             }
 
-            override fun updateDrawState(ds: TextPaint?) {
+            override fun updateDrawState(ds: TextPaint) {
                 ds?.color = Color.BLUE
                 ds?.isUnderlineText = false
             }

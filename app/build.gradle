@@ -161,8 +161,8 @@ dependencies {
     implementation Libs.glide
     kapt Libs.glideCompiler
 
+    api "org.aspectj:aspectjrt:1.9.4"
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
-
     implementation "com.android.support:multidex:1.0.3"
 }
 

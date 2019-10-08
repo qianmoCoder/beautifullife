@@ -10,7 +10,11 @@ import com.ddu.icore.common.ext.act
 
 abstract class AbsBottomDialogFragment : androidx.fragment.app.DialogFragment() {
 
-    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    final override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(getLayoutId(), container, false)
     }
 
@@ -22,13 +26,15 @@ abstract class AbsBottomDialogFragment : androidx.fragment.app.DialogFragment() 
         dialog.show()
 
         val window = dialog.window
-        window.setBackgroundDrawableResource(android.R.color.transparent)
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        val wlp = window.attributes
-        wlp.gravity = Gravity.BOTTOM
-        wlp.width = WindowManager.LayoutParams.MATCH_PARENT
-        wlp.windowAnimations = R.style.BottomDialogAnim
-        window.attributes = wlp
+        val wlp = window?.attributes
+        wlp?.run {
+            gravity = Gravity.BOTTOM
+            width = WindowManager.LayoutParams.MATCH_PARENT
+            windowAnimations = R.style.BottomDialogAnim
+        }
+        window?.attributes = wlp
 
         return dialog
     }
