@@ -39,50 +39,19 @@ val Context.scaledDensity
     get() = displayMetrics.scaledDensity
 
 val Context.versionName
-    get() = packageManager?.getPackageInfo(packageName, 0)?.versionName
-
+    get() = try {
+        packageManager.getPackageInfo(packageName, 0).versionName
+    } catch (e: Exception) {
+        ""
+    }
 
 val Context.versionCode
-    get() = packageManager.getPackageInfo(packageName, 0)?.versionCode
-
-val Context.getDeviceId
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
-    get() = telephonyManager.deviceId
-
-
-inline fun <reified T> Context.findPreference(key: String, default: T): T? = with(defaultSharedPreferences) {
-    val res: Any? = when (default) {
-        is Boolean -> getBoolean(key, default)
-        is Float -> getFloat(key, default)
-        is Int -> getInt(key, default)
-        is Long -> getLong(key, default)
-        is String -> getString(key, default)
-        is Set<*> -> when {
-            @Suppress("UNCHECKED_CAST")
-            default.isSetOf<String>() -> getStringSet(key, default as Set<out String>)
-            else -> setOf()
-        }
-        else -> throw IllegalArgumentException("Unsupported type")
+    get() = try {
+        packageManager.getPackageInfo(packageName, 0).versionCode
+    } catch (e: Exception) {
+        0
     }
-    res as? T
-}
 
-inline fun <reified T> Context.pPreference(key: String, value: T) {
-//    defaultSharedPreferences.edit {
-//        when (value) {
-//            is Boolean -> putBoolean(key, value)
-//            is Float -> putFloat(key, value)
-//            is Int -> putInt(key, value)
-//            is Long -> putLong(key, value)
-//            is String -> putString(key, value)
-//            is Set<*> -> when {
-//                value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
-//                else -> throw IllegalArgumentException("Unsupported type")
-//            }
-//            else -> throw IllegalArgumentException("This type can be saved into Preferences")
-//        }
-//    }
-}
 
 fun Context.clipText(text: String = "") {
     clipboardManager.setPrimaryClip(ClipData.newPlainText("clipText", text))
@@ -113,7 +82,8 @@ fun Context.isScreenOn(): Boolean? = powerManager.isScreenOn
 
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-    val appProcessed: List<ActivityManager.RunningAppProcessInfo>? = activityManager.runningAppProcesses
+    val appProcessed: List<ActivityManager.RunningAppProcessInfo>? =
+        activityManager.runningAppProcesses
     appProcessed?.let {
         appProcessed.filter {
             it.processName == packageName && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == it.importance
@@ -132,22 +102,8 @@ fun Context.launchApp(packageName: String): Intent {
 
 fun Context.loadAnimation(id: Int): Animation = AnimationUtils.loadAnimation(this, id)
 
-fun <T> Context.putPreference(key: String, value: T) = with(defaultSharedPreferences.edit()) {
-    when (value) {
-        is Boolean -> putBoolean(key, value)
-        is Float -> putFloat(key, value)
-        is Int -> putInt(key, value)
-        is Long -> putLong(key, value)
-        is String -> putString(key, value)
-        is Set<*> -> when {
-            value.isSetOf<String>() -> putStringSet(key, value as Set<out String>)
-            else -> throw IllegalArgumentException("Unsupported type")
-        }
-        else -> throw IllegalArgumentException("This type can be saved into Preferences")
-    }
-}
-
-fun Context.toggleSoftInput() = inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+fun Context.toggleSoftInput() =
+    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
 inline fun <reified T : Fragment> Context.startFragment(bundle: Bundle = Bundle()) {
     startFragment(T::class.java.name, bundle)
@@ -178,7 +134,10 @@ var Activity.screenBrightness
 fun Activity.hideKeyboard(view: View?): Boolean? {
     val currentView = currentFocus ?: view
     currentView?.let {
-        return inputMethodManager.hideSoftInputFromWindow(currentView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        return inputMethodManager.hideSoftInputFromWindow(
+            currentView.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
     }
     return false
 }

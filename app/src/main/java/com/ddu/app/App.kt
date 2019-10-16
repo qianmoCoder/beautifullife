@@ -6,10 +6,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatDelegate
-import com.ddu.R
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
-import com.ddu.icore.common.ext.findPreference
+import com.ddu.icore.common.ext.commitPreference
 import com.ddu.receiver.NetInfoBroadcastReceiver
 import com.ddu.routes.ElementProvider
 import com.ddu.routes.RouterProvider
@@ -24,8 +23,6 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import io.objectbox.Box
 import io.objectbox.BoxStore
-import io.reactivex.Observable
-import io.reactivex.functions.BiFunction
 /**
  * Created by yzbzz on 16/4/6.
  */
@@ -77,11 +74,11 @@ class App : BaseApp() {
     }
 
     private fun initNightMode() {
-        val isAutoNight = findPreference("isAutoNight", false) ?: false
+        val isAutoNight = commitPreference("isAutoNight", false) ?: false
         if (isAutoNight) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
         } else {
-            val isNightMode = findPreference("isNightMode", false) ?: false
+            val isNightMode = commitPreference("isNightMode", false) ?: false
             if (isNightMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
@@ -115,25 +112,6 @@ class App : BaseApp() {
         }
 
     }
-
-    private fun loadStringArray(studyContentBox: Box<StudyContent>) {
-        val titleList = resources.getStringArray(R.array.study_ui_title)
-        val descList = resources.getStringArray(R.array.study_ui_description)
-        val observableTitle = Observable.fromArray(*titleList)
-        val observableDescList = Observable.fromArray(*descList)
-
-        Observable.zip(
-            observableTitle,
-            observableDescList,
-            BiFunction<String, String, StudyContent> { s, s2 ->
-                val studyItemModel = StudyContent()
-                studyItemModel.setTitle(s)
-                studyItemModel.setDescription(s2)
-                studyItemModel.setType(s)
-                studyItemModel
-            }).subscribe { studyContent -> studyContentBox.put(studyContent) }
-    }
-
 
     private fun setupDatabase() {
         boxStore = MyObjectBox.builder().androidContext(this).build()

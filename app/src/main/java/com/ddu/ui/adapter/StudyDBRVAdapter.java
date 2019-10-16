@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.ddu.R;
 import com.ddu.databinding.FragmentStudyDbRvItemBinding;
-import com.ddu.icore.callback.Consumer1;
+import com.ddu.icore.callback.InConsumer1;
 import com.ddu.viewmodels.StudyViewModel;
 import com.iannotation.model.RouteMeta;
 
@@ -17,14 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class StudyDBRVAdapter extends ListAdapter<RouteMeta, StudyDBRVAdapter.ViewHolder> {
 
-    private Consumer1<RouteMeta> consumer1;
+    private InConsumer1<RouteMeta> consumer1;
 
     public StudyDBRVAdapter() {
         super(new StudyDiffCallback());
     }
 
 
-    public void setItemClickListener(Consumer1<RouteMeta> consumer1) {
+    public void setItemClickListener(InConsumer1<RouteMeta> consumer1) {
         this.consumer1 = consumer1;
     }
 

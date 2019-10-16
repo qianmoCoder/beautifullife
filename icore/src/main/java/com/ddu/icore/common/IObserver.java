@@ -8,5 +8,5 @@ public interface IObserver<T> {
 
     void registerObserver();
 
-    void onReceiverNotify(T godIntent);
+    void onReceiverNotify(T t);
 }

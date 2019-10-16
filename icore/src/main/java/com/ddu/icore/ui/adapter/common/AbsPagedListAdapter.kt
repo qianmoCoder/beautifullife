@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.paging.*
 import androidx.recyclerview.widget.DiffUtil
-import com.ddu.icore.callback.Consumer1
+import com.ddu.icore.callback.InConsumer1
 
 /**
  * Created by yzbzz on 2019-08-22.
@@ -57,7 +57,7 @@ abstract class AbsPagedListAdapter<T>(
             params: LoadInitialParams<Int>,
             callback: LoadInitialCallback<Int, T>
         ) {
-            consumer(1, object : Consumer1<List<T>> {
+            consumer(1, object : InConsumer1<List<T>> {
                 override fun accept(t: List<T>) {
                     val size = params.requestedLoadSize
                     callback.onResult(t, 1, 2)
@@ -66,7 +66,7 @@ abstract class AbsPagedListAdapter<T>(
         }
 
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, T>) {
-            consumer(params.key.inc(), object : Consumer1<List<T>> {
+            consumer(params.key.inc(), object : InConsumer1<List<T>> {
                 override fun accept(t: List<T>) {
                     callback.onResult(t, params.key.inc())
                 }
@@ -87,6 +87,6 @@ abstract class AbsPagedListAdapter<T>(
 
     abstract fun bindView(viewHolder: ViewHolder, data: T?, position: Int)
 
-    abstract fun consumer(index: Int, call: Consumer1<List<T>>)
+    abstract fun consumer(index: Int, call: InConsumer1<List<T>>)
 
 }

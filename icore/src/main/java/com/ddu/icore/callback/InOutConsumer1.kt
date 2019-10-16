@@ -4,7 +4,7 @@ package com.ddu.icore.callback
  * Created by yzbzz on 2018/2/9.
  */
 
-interface Consumer3<in A, in D, in P> {
+interface InOutConsumer1<in A, out B> {
 
-    fun accept(a: A, d: D, p: P)
+    fun accept(a: A): B
 }

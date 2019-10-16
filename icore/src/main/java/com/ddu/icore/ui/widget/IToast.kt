@@ -13,7 +13,7 @@ class IToast private constructor() {
 
 
     val mToast by lazy {
-        Toast(ICore.getContext())
+        Toast(ICore.context)
     }
 
 //    lateinit var mView

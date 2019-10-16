@@ -1,5 +1,6 @@
 package com.ddu.ui.fragment.person
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.R
@@ -21,16 +22,16 @@ class SettingFragment : DefaultFragment() {
         setDefaultTitle("设置")
         oiv_version.setRightText(ctx.versionName)
 
-        val isNightMode = ctx.findPreference("isNightMode", false) ?: false
+        val isNightMode = commitPreference("isNightMode", false) ?: false
         st_night.isChecked = isNightMode
-        st_night.setOnCheckedChangeListener({ _, isChecked ->
+        st_night.setOnCheckedChangeListener { _, isChecked ->
             setMode(isChecked)
-        })
+        }
 
-        val isAutoNight = ctx.findPreference("isAutoNight", false) ?: false
+        val isAutoNight = commitPreference("isAutoNight", false) ?: false
         st_night_auto.isChecked = isAutoNight
         st_night_auto.setOnCheckedChangeListener { _, isChecked ->
-            ctx.putPreference("isAutoNight", isChecked)
+            applyPreference("isAutoNight", isChecked)
         }
     }
 
@@ -41,15 +42,16 @@ class SettingFragment : DefaultFragment() {
      * MODE_NIGHT_AUTO 根据当前时间自动切换亮色/暗色
      * MODE_NIGHT_FOLLOW_SYSTEM(默认选项).设置为跟随系统，通常为MODE_NIGHT_NO
      */
+    @SuppressLint("WrongConstant")
     private fun setMode(isChecked: Boolean) {
         val mode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         if (isChecked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            ctx.putPreference("isNightMode", true)
+            applyPreference("isNightMode", true)
         } else {
             // AppCompatDelegate.MODE_NIGHT_NO
             AppCompatDelegate.setDefaultNightMode(mode)
-            ctx.putPreference("isNightMode", false)
+            applyPreference("isNightMode", false)
         }
         act.recreate()
     }

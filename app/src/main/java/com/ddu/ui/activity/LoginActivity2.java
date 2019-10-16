@@ -36,7 +36,7 @@ public class LoginActivity2 extends BaseActivity {
 
     public void login() {
         GodIntent msg = new GodIntent();
-        msg.setAction(1);
+        msg.setAction("1");
         msg.putString("", "");
         msg.putString("", "");
     }

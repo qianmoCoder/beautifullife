@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
-import com.ddu.icore.callback.Consumer2;
-import com.ddu.icore.callback.Consumer3;
+import com.ddu.icore.callback.InConsumer2;
+import com.ddu.icore.callback.InConsumer3;
 import com.ddu.icore.entity.BottomItem;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -70,7 +70,7 @@ public class BottomDialogFragment extends BottomSheetDialogFragment {
             }
             rvItems.setLayoutManager(layoutManager);
             BottomAdapter adapter = new BottomAdapter(getContext(), mParams);
-            adapter.setConsumer2(new Consumer2<BottomItem, Integer>() {
+            adapter.setConsumer2(new InConsumer2<BottomItem, Integer>() {
                 @Override
                 public void accept(BottomItem item, Integer integer) {
                     mParams.mConsumer3.accept(BottomDialogFragment.this, item, integer);
@@ -123,7 +123,7 @@ public class BottomDialogFragment extends BottomSheetDialogFragment {
             return this;
         }
 
-        public Builder setItemClickListener(Consumer3<DialogFragment, BottomItem, Integer> callBack) {
+        public Builder setItemClickListener(InConsumer3<DialogFragment, BottomItem, Integer> callBack) {
             p.mConsumer3 = callBack;
             return this;
         }

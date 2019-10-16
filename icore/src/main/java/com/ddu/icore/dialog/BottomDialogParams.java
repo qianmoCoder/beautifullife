@@ -2,7 +2,7 @@ package com.ddu.icore.dialog;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.ddu.icore.callback.Consumer3;
+import com.ddu.icore.callback.InConsumer3;
 import com.ddu.icore.entity.BottomItem;
 
 import java.util.ArrayList;
@@ -32,6 +32,6 @@ public class BottomDialogParams {
 
     public int mSpanCount = 4;
 
-    public Consumer3<DialogFragment, BottomItem, Integer> mConsumer3;
+    public InConsumer3<DialogFragment, BottomItem, Integer> mConsumer3;
 
 }

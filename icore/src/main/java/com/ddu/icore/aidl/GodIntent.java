@@ -1,58 +1,93 @@
 package com.ddu.icore.aidl;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
-/**
- * Created by yzbzz on 16/5/13.
- */
+import org.jetbrains.annotations.NotNull;
+
 public class GodIntent implements Parcelable {
 
-    private int action;
-    private Bundle bundle = new Bundle();
+    private String action;
+    private Message message;
 
-    public int getAction() {
-        return action;
+    public String getAction() {
+        return action == null ? "" : action;
     }
 
-    public void setAction(int action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
-    public Bundle getBundle() {
-        return bundle;
+    public Message getMessage() {
+        return message == null ? Message.obtain() : message;
     }
 
-    public void setBundle(Bundle bundle) {
-        this.bundle = bundle;
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public Bundle getData() {
+        Bundle data = message.getData();
+        if (null == data) { // 再检查一遍，避免不同Android版本带来的影响
+            data = new Bundle();
+            message.setData(data);
+        }
+        return data;
+    }
+
+    public void setWhat(int what) {
+        message.what = what;
     }
 
     public void putInt(String key, int value) {
-        bundle.putInt(key, value);
+        getData().putInt(key, value);
     }
 
-    public int getInt(String key) {
-        return bundle.getInt(key);
+    public void getInt(String key, int defaultValue) {
+        getData().getInt(key, defaultValue);
     }
 
-    public void putLong(String key, long value) {
-        bundle.putLong(key, value);
+    public void putFloat(String key, float value) {
+        getData().putFloat(key, value);
+    }
+
+    public void getFloat(String key, float defaultValue) {
+        getData().getFloat(key, defaultValue);
+    }
+
+    public void putDouble(String key, double value) {
+        getData().putDouble(key, value);
+    }
+
+    public void getDouble(String key, double defaultValue) {
+        getData().getDouble(key, defaultValue);
     }
 
     public void putString(String key, String value) {
-        bundle.putString(key, value);
+        getData().putString(key, value);
     }
 
-    public String getString(String key) {
-        return bundle.getString(key, "");
+    public void getString(String key, String defaultValue) {
+        getData().getString(key, defaultValue);
     }
 
-    public <T> T getKey(String key) {
-        return (T) bundle.get(key);
-    }
+//    public <T> void putKey(String key, T value) {
+//        if (value instanceof String) {
+//            getData().putString(key, (String) value);
+//        }
+//    }
 
+//    public <T> T getKey(String key, T defaultValue) {
+//        T value = null;
+//        if (defaultValue instanceof String) {
+//            value = (T) getData().getString(key, (String) defaultValue);
+//        }
+//        return value;
+//    }
 
     @Override
     public int describeContents() {
@@ -61,16 +96,22 @@ public class GodIntent implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(this.action);
-        dest.writeBundle(this.bundle);
+        dest.writeString(this.action);
+        dest.writeParcelable(this.message, 0);
     }
 
     public GodIntent() {
+        message = Message.obtain();
     }
 
-    protected GodIntent(@NonNull Parcel in) {
-        this.action = in.readInt();
-        this.bundle = in.readBundle(getClass().getClassLoader());
+    public GodIntent(String action, Message message) {
+        this.action = action;
+        this.message = message;
+    }
+
+    private GodIntent(@NonNull Parcel in) {
+        this.action = in.readString();
+        this.message = in.readParcelable(getClass().getClassLoader());
     }
 
     public static final Creator<GodIntent> CREATOR = new Creator<GodIntent>() {
@@ -87,10 +128,19 @@ public class GodIntent implements Parcelable {
         }
     };
 
+    @NotNull
     @Override
     public String toString() {
-        return "action: " +
-                action +
-                bundle.toString();
+        StringBuilder b = new StringBuilder();
+        if (action != null) {
+            b.append("{ action=");
+            b.append(action);
+        }
+        if (message != null) {
+            b.append(" message=");
+            b.append(message);
+        }
+        b.append(" }");
+        return b.toString();
     }
 }

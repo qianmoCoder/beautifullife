@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ddu.icore.R;
-import com.ddu.icore.callback.Consumer2;
+import com.ddu.icore.callback.InConsumer2;
 import com.ddu.icore.entity.BottomItem;
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
@@ -32,7 +32,7 @@ public class BottomAdapter extends DefaultRVAdapter<BottomItem> {
 
     private BottomDialogParams mParams;
 
-    private Consumer2<BottomItem, Integer> mConsumer2;
+    private InConsumer2<BottomItem, Integer> mConsumer2;
 
     public BottomAdapter(Context context, @NonNull BottomDialogParams params) {
         super(context, params.mItems);
@@ -103,7 +103,7 @@ public class BottomAdapter extends DefaultRVAdapter<BottomItem> {
         });
     }
 
-    public void setConsumer2(Consumer2<BottomItem, Integer> consumer2) {
+    public void setConsumer2(InConsumer2<BottomItem, Integer> consumer2) {
         this.mConsumer2 = consumer2;
     }
 }

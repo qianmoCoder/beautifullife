@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ddu.R;
-import com.ddu.icore.callback.Consumer1;
+import com.ddu.icore.callback.InConsumer1;
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 import com.ddu.icore.ui.help.ShapeInject;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class StudyRVAdapter extends DefaultRVAdapter<RouteMeta> implements ItemTouchHelperAdapter {
 
-    private Consumer1<RouteMeta> consumer1;
+    private InConsumer1<RouteMeta> consumer1;
     private int radius;
 
     public StudyRVAdapter(Context context, List<RouteMeta> items) {
@@ -77,7 +77,7 @@ public class StudyRVAdapter extends DefaultRVAdapter<RouteMeta> implements ItemT
     }
 
 
-    public void setItemClickListener(Consumer1<RouteMeta> consumer1) {
+    public void setItemClickListener(InConsumer1<RouteMeta> consumer1) {
         this.consumer1 = consumer1;
     }
 }

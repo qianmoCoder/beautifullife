@@ -9,7 +9,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.icore.callback.Consumer3
+import com.ddu.icore.callback.InConsumer3
 import com.ddu.icore.common.ext.act
 import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.dialog.AlertDialogFragment
@@ -189,7 +189,7 @@ class MeFragment : DefaultFragment() {
                 .setItems(shareEntities)
                 .setTitle("分享")
                 .gridLayout()
-                .setItemClickListener(object : Consumer3<DialogFragment, BottomItem, Int> {
+                .setItemClickListener(object : InConsumer3<DialogFragment, BottomItem, Int> {
                     override fun accept(a: DialogFragment, d: BottomItem, p: Int) {
                         a.dismissAllowingStateLoss()
                         Log.v("lhz", "d: " + d.title + " p: " + p)

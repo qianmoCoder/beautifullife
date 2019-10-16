@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ddu.icore.callback.Consumer1
+import com.ddu.icore.callback.InConsumer1
 import com.ddu.icore.common.ext.act
 import com.ddu.icore.ui.adapter.common.AbsPagedListAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
@@ -39,7 +39,7 @@ class PagingFragment1 : DefaultFragment() {
                 text2?.setText(data?.data)
             }
 
-            override fun consumer(index: Int, call: Consumer1<List<DataBean>>) {
+            override fun consumer(index: Int, call: InConsumer1<List<DataBean>>) {
                 call.accept(loadData(index, 10))
             }
 

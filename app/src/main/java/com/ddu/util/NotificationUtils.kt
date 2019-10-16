@@ -28,11 +28,19 @@ class NotificationUtils private constructor() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            val channelPrimary = NotificationChannel(PRIMARY_CHANNEL, PRIMARY_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
+            val channelPrimary = NotificationChannel(
+                PRIMARY_CHANNEL,
+                PRIMARY_CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_HIGH
+            )
             channelPrimary.setShowBadge(true)
             mNotificationManager.createNotificationChannel(channelPrimary)
 
-            val channelSecond = NotificationChannel(SECONDARY_CHANNEL, SECONDARY_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
+            val channelSecond = NotificationChannel(
+                SECONDARY_CHANNEL,
+                SECONDARY_CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_HIGH
+            )
             channelSecond.setShowBadge(true)
             mNotificationManager.createNotificationChannel(channelSecond)
         }
@@ -46,7 +54,16 @@ class NotificationUtils private constructor() {
         return getNotification(ctx, title, title, body, 1, SECONDARY_CHANNEL, null, null)
     }
 
-    fun getNotification(context: Context, ticker: String, contentTitle: String, contentText: String, number: Int, channelId: String, largeIcon: Bitmap? = null, intent: PendingIntent? = null): Notification.Builder {
+    fun getNotification(
+        context: Context,
+        ticker: String,
+        contentTitle: String,
+        contentText: String,
+        number: Int,
+        channelId: String,
+        largeIcon: Bitmap? = null,
+        intent: PendingIntent? = null
+    ): Notification.Builder {
         val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = mNotificationManager.getNotificationChannel(channelId)
             if (channel.importance == NotificationManager.IMPORTANCE_NONE) {
@@ -59,12 +76,12 @@ class NotificationUtils private constructor() {
         }
         // setDefaults(Notification.DEFAULT_SOUND)
         builder.setTicker(ticker)
-                .setContentTitle(contentTitle)
-                .setContentText(contentText)
-                .setSmallIcon(smallIcon)
-                .setWhen(System.currentTimeMillis())
-                .setNumber(number)
-                .setAutoCancel(true)
+            .setContentTitle(contentTitle)
+            .setContentText(contentText)
+            .setSmallIcon(smallIcon)
+            .setWhen(System.currentTimeMillis())
+            .setNumber(number)
+            .setAutoCancel(true)
         if (largeIcon != null) {
             // BitmapFactory.decodeResource(context.resources, smallIcon)
             builder.setLargeIcon(largeIcon)
@@ -75,8 +92,13 @@ class NotificationUtils private constructor() {
         return builder
     }
 
-    fun notify(id: Int, builder: Notification.Builder) {
-        mNotificationManager.notify(id, builder.build())
+    fun notify(id: Int, builder: Notification.Builder, tag: String = "") {
+        if (tag.isEmpty()) {
+            mNotificationManager.notify(id, builder.build())
+        } else {
+            mNotificationManager.notify(tag, id, builder.build())
+        }
+
     }
 
     private object SingletonHolder {

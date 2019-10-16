@@ -9,14 +9,14 @@ import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.view.View;
 
-import com.ddu.icore.callback.Consumer1;
+import com.ddu.icore.callback.InConsumer1;
 
 /**
  * Created by yzbzz on 2019/1/21.
  */
 public class HtmlUtils {
 
-    private static void setLinkClickable(final Consumer1<String> consumer1, final SpannableStringBuilder clickableHtmlBuilder,
+    private static void setLinkClickable(final InConsumer1<String> consumer1, final SpannableStringBuilder clickableHtmlBuilder,
                                          final URLSpan urlSpan) {
         int start = clickableHtmlBuilder.getSpanStart(urlSpan);
         int end = clickableHtmlBuilder.getSpanEnd(urlSpan);
@@ -41,7 +41,7 @@ public class HtmlUtils {
     }
 
 
-    public static CharSequence getClickableHtml(String html, Consumer1<String> consumer1) {
+    public static CharSequence getClickableHtml(String html, InConsumer1<String> consumer1) {
         Spanned spannedHtml = Html.fromHtml(html);
         SpannableStringBuilder clickableHtmlBuilder = new SpannableStringBuilder(spannedHtml);
         URLSpan[] urls = clickableHtmlBuilder.getSpans(0, spannedHtml.length(), URLSpan.class);

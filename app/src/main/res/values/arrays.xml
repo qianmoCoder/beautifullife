@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="study_ui_title">
-        <item>UI</item>
-        <item>Animator</item>
-        <item>RxJava</item>
-        <item>Retrofit</item>
-        <item>Glide</item>
-        <item>Fragment</item>
-        <item>高仿</item>
-    </string-array>
-
-    <string-array name="study_ui_description">
-        <item>layout shape drawable</item>
-        <item>Animator</item>
-        <item>RxJava</item>
-        <item>Retrofit</item>
-        <item>Glide</item>
-        <item>Fragment</item>
-        <item>网易</item>
-    </string-array>
-
     <string-array name="progress_value_options">
         <item>Cycle between 0% and 100%</item>
         <item>0%</item>

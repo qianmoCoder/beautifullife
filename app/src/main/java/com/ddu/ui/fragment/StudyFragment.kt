@@ -1,7 +1,7 @@
 package com.ddu.ui.fragment
 
 import android.os.Bundle
-import com.ddu.icore.callback.Consumer1
+import com.ddu.icore.callback.InConsumer1
 import com.ddu.icore.ui.fragment.AbsDBRVFragment
 import com.ddu.routes.RouterProvider
 import com.ddu.ui.adapter.StudyDBRVAdapter
@@ -27,7 +27,7 @@ class StudyFragment : AbsDBRVFragment<RouteMeta, StudyDBRVAdapter>() {
         super.initView()
         setTitle("学习")
         mAdapter.submitList(mDataEntities)
-        mAdapter.setItemClickListener(object : Consumer1<RouteMeta> {
+        mAdapter.setItemClickListener(object : InConsumer1<RouteMeta> {
             override fun accept(t: RouteMeta) {
                 val bundle = Bundle()
                 bundle.putString("title", t.text)

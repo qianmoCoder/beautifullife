@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.ddu.app.App;
-import com.ddu.icore.callback.Consumer1;
+import com.ddu.icore.callback.InConsumer1;
 import com.ddu.icore.ui.fragment.AbsRVFragment;
 import com.ddu.ui.adapter.ContentRVAdapter;
 import com.iannotation.Tuple;
@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Created by yzbzz on 2017/5/16.
  */
-public abstract class ContentFragment extends AbsRVFragment<RouteMeta, ContentRVAdapter> implements Consumer1<RouteMeta> {
+public abstract class ContentFragment extends AbsRVFragment<RouteMeta, ContentRVAdapter> implements InConsumer1<RouteMeta> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
