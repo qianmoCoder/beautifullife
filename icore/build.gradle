@@ -41,17 +41,30 @@ dependencies {
     api Deps.androidxAppcompat
     api Deps.kotlinStdLib
 
+    api Deps.androidxCoreKtx
+    api Deps.fragmentKtx
+
+    api Deps.lifecycleExtensions
+    api Deps.lifecycleLiveDataKtx
+    api Deps.lifecycleViewModelKtx
+
+    api Deps.coroutinesCore
+    api Deps.coroutinesAndroid
+
     api Deps.material
     api Deps.recyclerView
-    api Deps.cardView
+//    api Deps.cardView
+
+    api Deps.paging
+    api Deps.pagingRx
+
     api Deps.gson
 
-    api Libs.paging
-    api Libs.pagingRx
-
-    api Libs.glide
-    kapt Libs.glideCompiler
+    api Deps.glide
+    kapt Deps.glideCompiler
 
     api Libs.smartRefreshLayout
+    api Libs.rxandroid
+    api Libs.rxjava
 
 }

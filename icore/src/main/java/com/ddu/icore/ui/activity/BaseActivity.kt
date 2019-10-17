@@ -16,7 +16,6 @@ import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.common.ext.find
 import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.widget.TitleBar
-import com.gyf.immersionbar.ImmersionBar
 
 open class BaseActivity : AppCompatActivity(),
     IObserver {
@@ -24,8 +23,6 @@ open class BaseActivity : AppCompatActivity(),
     lateinit var mContext: Context
 
     lateinit var mViewGroup: ViewGroup
-
-    lateinit var mImmersionBar: ImmersionBar
 
     var titleBar: TitleBar? = null
         protected set

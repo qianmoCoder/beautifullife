@@ -22,7 +22,7 @@ class RxActivityResultFragment : androidx.fragment.app.Fragment() {
         retainInstance = true
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val publishSubject = mSubjects.remove(requestCode)
         publishSubject?.run {

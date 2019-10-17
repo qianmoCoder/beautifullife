@@ -1,6 +1,6 @@
 package com.ddu.icore
 
-import android.app.Application
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
@@ -8,9 +8,10 @@ import android.os.Looper
 /**
  * Created by yzbzz on 2018/8/21.
  */
+@SuppressLint("StaticFieldLeak")
 object ICore {
 
-    private var sApp: Application? = null
+    private var sContext: Context? = null
 
     private var sMainHandler: Handler? = null
 
@@ -18,15 +19,11 @@ object ICore {
 
     @JvmStatic
     val context: Context
-        get() = app.applicationContext
-
-    @JvmStatic
-    val app: Application
         get() {
-            if (null == sApp) {
+            if (null == sContext) {
                 throw RuntimeException("You must call ICore.init first")
             }
-            return sApp!!
+            return sContext!!
         }
 
     @JvmStatic
@@ -38,11 +35,11 @@ object ICore {
             return sMainHandler!!
         }
 
-    fun init(application: Application) {
+    fun init(context: Context?) {
         if (isInit) {
             return
         }
         isInit = true
-        sApp = application
+        sContext = context?.applicationContext
     }
 }

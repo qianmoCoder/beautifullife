@@ -28,8 +28,8 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
     var size = 17f
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         return inflater.inflate(R.layout.i_fragment_dialog_default, container, false)
     }
 
@@ -73,7 +73,7 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
         }
     }
 
-    override fun onDismiss(dialog: DialogInterface?) {
+    override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         Log.v("lhz", "onDismiss")
     }

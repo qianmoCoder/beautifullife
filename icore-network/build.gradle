@@ -40,6 +40,9 @@ dependencies {
 
     api project(':icore')
 
+    api Libs.rxjava
+    api Libs.rxandroid
+
     // 网络请求库
     api Libs.okhttp
     api Libs.okio
