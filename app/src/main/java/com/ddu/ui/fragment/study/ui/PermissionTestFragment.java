@@ -7,14 +7,15 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.ddu.R;
 import com.ddu.icore.aidl.GodIntent;
@@ -58,9 +59,9 @@ public class PermissionTestFragment extends DefaultFragment {
 
     @Override
     public void onReceiverNotify(GodIntent godIntent) {
-        int action = godIntent.getAction();
-        if (action == Actions.DOWNLOAD_COMPLETE) {
-            downLoadId = godIntent.getKey("downloadId");
+        String action = godIntent.getAction();
+        if (action.equals(Actions.DOWNLOAD_COMPLETE)) {
+            downLoadId = godIntent.getInt("downloadId", -1);
             checkIsAndroidO();
         }
     }

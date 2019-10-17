@@ -52,11 +52,6 @@ dependencies {
     api Libs.glide
     kapt Libs.glideCompiler
 
-    api Libs.rxjava
-    api Libs.rxandroid
-
-    api Libs.immersionbar
-
     api Libs.smartRefreshLayout
 
 }

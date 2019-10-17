@@ -16,9 +16,11 @@ object ICore {
 
     private var isInit = false
 
+    @JvmStatic
     val context: Context
         get() = app.applicationContext
 
+    @JvmStatic
     val app: Application
         get() {
             if (null == sApp) {
@@ -27,6 +29,7 @@ object ICore {
             return sApp!!
         }
 
+    @JvmStatic
     val mainHandler: Handler
         @Synchronized get() {
             if (null == sMainHandler) {

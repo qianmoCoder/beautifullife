@@ -12,7 +12,8 @@ import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.common.ext.ctx
 
 
-abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver<GodIntent> {
+abstract class BaseBindingFragment : androidx.fragment.app.Fragment(),
+    IObserver {
 
     private var mRootView: View? = null
 
@@ -31,13 +32,20 @@ abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver
 
     open fun isShowActivityTitleBar() = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         if (null == mRootView) {
             if (userVisibleHint) {
                 onDataLoad()
             } else {
                 layout = FrameLayout(ctx)
-                layout?.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                layout?.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
                 val view = LayoutInflater.from(ctx).inflate(R.layout.i_fragment_lazy_loading, null)
                 layout?.addView(view)
             }
@@ -51,7 +59,11 @@ abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver
 
     }
 
-    abstract fun getContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    abstract fun getContentView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View?
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -67,7 +79,7 @@ abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver
     private fun onDataLoad() {
     }
 
-    override fun registerObserver() {
+    fun registerObserver() {
 
     }
 
@@ -75,12 +87,12 @@ abstract class BaseBindingFragment : androidx.fragment.app.Fragment(), IObserver
 
     }
 
-    fun register(action: Int) {
-        ObserverManager.getInstance().registerObserver(action, this)
+    fun register(action: String) {
+        ObserverManager.registerObserver(action, this)
     }
 
     fun unregister() {
-        ObserverManager.getInstance().unRegisterObserver(this)
+        ObserverManager.unRegisterObserver(this)
     }
 
 }

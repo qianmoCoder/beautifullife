@@ -28,7 +28,7 @@ import org.json.JSONObject
 import java.net.URISyntaxException
 
 
-class WebActivity : Activity(), IObserver<GodIntent> {
+class WebActivity : Activity(), IObserver {
 
 
     private var webView: WebView? = null
@@ -173,13 +173,13 @@ class WebActivity : Activity(), IObserver<GodIntent> {
         //        }
     }
 
-    override fun registerObserver() {
-        ObserverManager.getInstance().registerObserver(Actions.TEST_ACTION, this)
+    fun registerObserver() {
+        ObserverManager.registerObserver(Actions.TEST_ACTION, this)
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
         findViewById<View>(R.id.rl_title_bar).visibility = View.GONE
-        val method = godIntent.getString("method")
+        val method = godIntent.getString("method", "")
         webView!!.loadUrl("javascript:$method()")
     }
 
@@ -200,7 +200,10 @@ class WebActivity : Activity(), IObserver<GodIntent> {
             val packagename = intent.`package`
             if (packagename != null) {
                 try {
-                    intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:" + packagename))
+                    intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("market://search?q=pname:" + packagename)
+                    )
                     intent.addCategory(Intent.CATEGORY_BROWSABLE)
                     startActivity(intent)
                 } catch (e: Exception) {

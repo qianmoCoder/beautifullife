@@ -12,7 +12,8 @@ import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
 
 
-abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodIntent> {
+abstract class BaseFragment : androidx.fragment.app.Fragment(),
+    IObserver {
 
     private var mRootView: View? = null
 
@@ -40,14 +41,22 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
     open fun isShowActivityTitleBar() = false
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         if (null == mRootView) {
             if (userVisibleHint) {
                 onDataLoad()
             } else {
                 layout = FrameLayout(context!!)
-                layout!!.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                val view = LayoutInflater.from(context).inflate(R.layout.i_fragment_lazy_loading, null)
+                layout!!.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+                val view =
+                    LayoutInflater.from(context).inflate(R.layout.i_fragment_lazy_loading, null)
                 layout!!.addView(view)
             }
             mRootView = getContentView(inflater, container, savedInstanceState)
@@ -59,7 +68,11 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
 
     }
 
-    abstract fun getContentView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    abstract fun getContentView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View?
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -75,7 +88,7 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
     private fun onDataLoad() {
     }
 
-    override fun registerObserver() {
+    fun registerObserver() {
 
     }
 
@@ -83,12 +96,12 @@ abstract class BaseFragment : androidx.fragment.app.Fragment(), IObserver<GodInt
 
     }
 
-    fun register(action: Int) {
-        ObserverManager.getInstance().registerObserver(action, this)
+    fun register(action: String) {
+        ObserverManager.registerObserver(action, this)
     }
 
     fun unregister() {
-        ObserverManager.getInstance().unRegisterObserver(this)
+        ObserverManager.unRegisterObserver(this)
     }
 
 }

@@ -49,7 +49,7 @@ public class DownLoadCompleteReceiver extends BroadcastReceiver {
                             GodIntent godIntent = new GodIntent();
                             godIntent.setAction(Actions.DOWNLOAD_COMPLETE);
                             godIntent.putLong("downloadId", id);
-                            ObserverManager.getInstance().notify(godIntent);
+                            ObserverManager.notify(godIntent);
 //                            DownloadManagerUtils.startInstall(context.getApplicationContext(), id);
                             break;
                         //下载失败

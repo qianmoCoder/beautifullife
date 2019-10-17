@@ -1,5 +1,6 @@
 package com.ddu.icore.common;
 
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
@@ -13,23 +14,28 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Objects;
 
-
-public class ObserverManager {
+/**
+ * Created by yzbzz on 2019-10-17.
+ */
+public class GodIntentObservable {
 
     @NonNull
     private MultiHashMap<String, WeakReference<IObserver>> observers = new MultiHashMap<>();
 
     @NonNull
-    public static ObserverManager getInstance() {
-        return SingletonHolder.instance;
+    public static GodIntentObservable getInstance() {
+        return GodIntentObservable.SingletonHolder.instance;
     }
 
     private static class SingletonHolder {
         @NonNull
-        private static ObserverManager instance = new ObserverManager();
+        private static GodIntentObservable instance = new GodIntentObservable();
     }
 
     public void registerObserver(String action, IObserver observer) {
+        if (TextUtils.isEmpty(action) || null == observer) {
+            return;
+        }
         synchronized (this) {
             observers.put(action, new WeakReference<>(observer));
         }
@@ -76,24 +82,42 @@ public class ObserverManager {
         }
     }
 
-    public void notify(@NonNull GodIntent godIntent) {
-        String action = godIntent.getAction();
-        ArrayList<WeakReference<IObserver>> listeners = observers.get(action);
-        if (null == listeners || listeners.isEmpty()) {
-            return;
-        }
-        listeners.removeAll(Collections.singleton(null));
-        for (WeakReference<IObserver> weakListener : listeners) {
-            final IObserver listener = weakListener.get();
-            if (listener != null) {
-                listener.onReceiverNotify(godIntent);
+    public void notify(String action) {
+        GodIntent godIntent = new GodIntent();
+        godIntent.setAction(action);
+        synchronized (this) {
+            ArrayList<WeakReference<IObserver>> listeners = observers.get(action);
+            if (null == listeners || listeners.isEmpty()) {
+                return;
+            }
+            listeners.removeAll(Collections.singleton(null));
+            for (WeakReference<IObserver> weakListener : listeners) {
+                final IObserver listener = weakListener.get();
+                if (listener != null) {
+                    listener.onReceiverNotify(godIntent);
+                }
             }
         }
     }
 
-    public void notify(String action) {
-        GodIntent godIntent = new GodIntent();
-        godIntent.setAction(action);
-        notify(godIntent);
+    public void notify(GodIntent godIntent) {
+        String action = godIntent.getAction();
+        synchronized (this) {
+            ArrayList<WeakReference<IObserver>> listeners = observers.get(action);
+            if (null == listeners || listeners.isEmpty()) {
+                return;
+            }
+            listeners.removeAll(Collections.singleton(null));
+            for (WeakReference<IObserver> weakListener : listeners) {
+                final IObserver listener = weakListener.get();
+                if (listener != null) {
+                    listener.onReceiverNotify(godIntent);
+                }
+            }
+        }
+    }
+
+    public void clear() {
+        observers.clear();
     }
 }

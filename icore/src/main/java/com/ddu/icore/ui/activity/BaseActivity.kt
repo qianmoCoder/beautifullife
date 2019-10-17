@@ -18,7 +18,8 @@ import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.widget.TitleBar
 import com.gyf.immersionbar.ImmersionBar
 
-abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
+open class BaseActivity : AppCompatActivity(),
+    IObserver {
 
     lateinit var mContext: Context
 
@@ -76,7 +77,7 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
     }
 
 
-    override fun registerObserver() {
+    open fun registerObserver() {
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
@@ -85,7 +86,7 @@ abstract class BaseActivity : AppCompatActivity(), IObserver<GodIntent> {
 
     override fun onDestroy() {
         super.onDestroy()
-        ObserverManager.getInstance().unRegisterObserver(this)
+        ObserverManager.unRegisterObserver(this)
     }
 
     fun setDefaultTitle(resId: Int) {

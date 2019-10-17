@@ -47,32 +47,40 @@ public class GodIntent implements Parcelable {
         getData().putInt(key, value);
     }
 
-    public void getInt(String key, int defaultValue) {
-        getData().getInt(key, defaultValue);
+    public int getInt(String key, int defaultValue) {
+        return getData().getInt(key, defaultValue);
     }
 
     public void putFloat(String key, float value) {
         getData().putFloat(key, value);
     }
 
-    public void getFloat(String key, float defaultValue) {
-        getData().getFloat(key, defaultValue);
+    public float getFloat(String key, float defaultValue) {
+        return getData().getFloat(key, defaultValue);
+    }
+
+    public void putLong(String key, long value) {
+        getData().putLong(key, value);
+    }
+
+    public long getLong(String key, long defaultValue) {
+        return getData().getLong(key, defaultValue);
     }
 
     public void putDouble(String key, double value) {
         getData().putDouble(key, value);
     }
 
-    public void getDouble(String key, double defaultValue) {
-        getData().getDouble(key, defaultValue);
+    public double getDouble(String key, double defaultValue) {
+        return getData().getDouble(key, defaultValue);
     }
 
     public void putString(String key, String value) {
         getData().putString(key, value);
     }
 
-    public void getString(String key, String defaultValue) {
-        getData().getString(key, defaultValue);
+    public String getString(String key, String defaultValue) {
+        return getData().getString(key, defaultValue);
     }
 
 //    public <T> void putKey(String key, T value) {

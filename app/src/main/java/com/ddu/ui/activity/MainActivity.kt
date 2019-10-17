@@ -60,7 +60,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         val index = savedInstanceState?.getInt("itemId", R.id.navigation_study)
-                ?: R.id.navigation_study
+            ?: R.id.navigation_study
         navigation.selectedItemId = index
     }
 
@@ -146,12 +146,12 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun registerObserver() {
-        ObserverManager.getInstance().registerObserver(LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION, this)
-        ObserverManager.getInstance().registerObserver(LogicActions.IC_ADD_ITEM_CLICK_CLOSE_ACTION, this)
+        ObserverManager.registerObserver(LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION, this)
+        ObserverManager.registerObserver(LogicActions.IC_ADD_ITEM_CLICK_CLOSE_ACTION, this)
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
-        val action = godIntent.getAction()
+        val action = godIntent.action
         if (action == LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION) {
             navigation!!.visibility = View.GONE
             //            doAnimator(navigation, true);
@@ -167,7 +167,12 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         }
         val height = view.height.toFloat()
 
-        val translationY = AnimatorUtils.translationY(view, 300, if (isClose) 0f else height, if (isClose) height else 0f)
+        val translationY = AnimatorUtils.translationY(
+            view,
+            300,
+            if (isClose) 0f else height,
+            if (isClose) height else 0f
+        )
         val alpha = AnimatorUtils.alpha(view, 300, if (isClose) 1f else 0f, if (isClose) 0f else 1f)
         val animatorSet = AnimatorSet()
         animatorSet.duration = 3000
