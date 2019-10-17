@@ -9,9 +9,7 @@ import android.net.Uri
  * Created by yzbzz on 2019-10-17.
  */
 abstract class EmptyProvider : ContentProvider() {
-    override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        throw Exception("unimplemented")
-    }
+    override fun insert(uri: Uri, values: ContentValues?): Uri? = null
 
     override fun query(
         uri: Uri,
@@ -19,25 +17,17 @@ abstract class EmptyProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?,
         sortOrder: String?
-    ): Cursor? {
-        throw Exception("unimplemented")
-    }
+    ): Cursor? = null
 
     override fun update(
         uri: Uri,
         values: ContentValues?,
         selection: String?,
         selectionArgs: Array<out String>?
-    ): Int {
-        throw Exception("unimplemented")
-    }
+    ): Int = 0
 
-    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        throw Exception("unimplemented")
-    }
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int = 0
 
-    override fun getType(uri: Uri): String? {
-        throw Exception("unimplemented")
-    }
+    override fun getType(uri: Uri): String? = null
 
 }

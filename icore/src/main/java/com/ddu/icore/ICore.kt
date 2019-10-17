@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * Created by yzbzz on 2018/8/21.
@@ -15,7 +16,7 @@ object ICore {
 
     private var sMainHandler: Handler? = null
 
-    private var isInit = false
+    private var sInitialized = AtomicBoolean(false)
 
     @JvmStatic
     val context: Context
@@ -36,10 +37,9 @@ object ICore {
         }
 
     fun init(context: Context?) {
-        if (isInit) {
+        if (sInitialized.getAndSet(true)) {
             return
         }
-        isInit = true
         sContext = context?.applicationContext
     }
 }
