@@ -4,13 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
-import androidx.annotation.NonNull;
-import androidx.legacy.widget.Space;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Space;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.ddu.R;
 import com.ddu.icore.util.sys.ViewUtils;
@@ -68,12 +69,7 @@ public class DialogUtils {
 
         Space space = ViewUtils.findViewById(layout, R.id.space);
         if (listener instanceof ITwoButtonListener) {
-            btnCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((ITwoButtonListener) listener).onBtnCancelClickListener(dialog);
-                }
-            });
+            btnCancel.setOnClickListener(v -> ((ITwoButtonListener) listener).onBtnCancelClickListener(dialog));
         } else {
             btnCancel.setVisibility(View.GONE);
             space.setVisibility(View.GONE);

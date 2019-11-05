@@ -19,8 +19,8 @@ import kotlinx.android.synthetic.main.fragment_qr_code.*
 class QRCodeDialog : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val mLlLogin = inflater.inflate(R.layout.fragment_qr_code, container, false) as LinearLayout
 
@@ -37,7 +37,7 @@ class QRCodeDialog : DialogFragment() {
     private fun startTo() {
         val tempPhone = arguments?.getString(VerificationCodeDialog.EXTRA_PHONE, "") ?: ""
         val verificationCodeDialog = VerificationCodeDialog.newInstance(tempPhone)
-        verificationCodeDialog.show(fragmentManager, "verificationCodeDialog")
+        verificationCodeDialog.show(parentFragmentManager, "verificationCodeDialog")
     }
 
     companion object {

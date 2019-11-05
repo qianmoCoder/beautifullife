@@ -27,12 +27,12 @@ class TabPageIndicatorFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        vp_tpi.adapter = SampleFragmentPagerAdapter(fragmentManager, ctx)
+        vp_tpi.adapter = SampleFragmentPagerAdapter(parentFragmentManager, ctx)
 //        lpi_home_card_view.setViewPager(vp_tpi)
         linepage.setViewPager(vp_tpi)
     }
 
-    inner class SampleFragmentPagerAdapter(fm: FragmentManager?, private val context: Context) : FragmentPagerAdapter(fm) {
+    inner class SampleFragmentPagerAdapter(fm: FragmentManager, private val context: Context) : FragmentPagerAdapter(fm,BEHAVIOR_SET_USER_VISIBLE_HINT) {
         private val tabTitles = arrayOf("缴费", "入场", "更多")
 
         override fun getCount(): Int {

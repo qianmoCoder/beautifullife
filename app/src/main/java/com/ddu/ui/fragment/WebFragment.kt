@@ -106,7 +106,7 @@ class WebFragment : DefaultFragment() {
         val dialog = DefaultGridBottomDialogFragment.newInstance(list = entity, cb = { _, _, dialog ->
             dialog.dismissAllowingStateLoss()
         })
-        dialog.show(fragmentManager, "")
+        dialog.show(parentFragmentManager, "")
     }
 
     private fun getEntity(): List<BottomItemEntity> {

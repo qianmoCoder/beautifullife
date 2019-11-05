@@ -63,8 +63,8 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
             isKillService = false
             isUserCancel = false
             synchronized(this) {
-                val service = Intent(ICore.app, ICoreService::class.java)
-                isBind = ICore.app.bindService(service, this, Context.BIND_AUTO_CREATE)
+                val service = Intent(ICore.context, ICoreService::class.java)
+                isBind = ICore.context.bindService(service, this, Context.BIND_AUTO_CREATE)
                 if (null == mGetRelyHandler) {
                     mGetRelyHandler = GetRelyHandler(this)
 
@@ -81,7 +81,7 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
         release()
         synchronized(this) {
             if (isBind) {
-                ICore.app.unbindService(this)
+                ICore.context.unbindService(this)
                 isBind = false
             }
             isConnected = false

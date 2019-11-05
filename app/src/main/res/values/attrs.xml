@@ -104,4 +104,6 @@
         </attr>
     </declare-styleable>
 
+    <attr name="highlight" format="boolean"></attr>
+
 </resources>

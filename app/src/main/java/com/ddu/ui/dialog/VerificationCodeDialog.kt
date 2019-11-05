@@ -45,14 +45,14 @@ class VerificationCodeDialog : DialogFragment(), View.OnClickListener {
         mRegisterTimer!!.start()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog.window!!.requestFeature(Window.FEATURE_NO_TITLE)
-        dialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog?.window!!.requestFeature(Window.FEATURE_NO_TITLE)
+        dialog?.window!!.setBackgroundDrawableResource(android.R.color.transparent)
 
         val mLlLogin = inflater.inflate(R.layout.fragment_verification_code, container, false) as LinearLayout
 

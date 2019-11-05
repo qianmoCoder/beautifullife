@@ -9,7 +9,6 @@ import android.graphics.Bitmap
 import android.os.Build
 import com.ddu.app.BaseApp
 import com.ddu.icore.common.ext.notificationManager
-import com.ddu.icore.util.sys.SystemUtils
 
 /**
  * Created by yzbzz on 2017/4/27.
@@ -67,7 +66,7 @@ class NotificationUtils private constructor() {
         val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = mNotificationManager.getNotificationChannel(channelId)
             if (channel.importance == NotificationManager.IMPORTANCE_NONE) {
-                SystemUtils.openChannelSetting(context, channel.id)
+//                SystemUtils.openChannelSetting(context, channel.id)
                 ToastUtils.showToast("请先打开通知")
             }
             Notification.Builder(context, channelId)
@@ -110,7 +109,7 @@ class NotificationUtils private constructor() {
 
     companion object {
 
-        const val PRIMARY_CHANNEL = "default"
+        const val PRIMARY_CHANNEL = "LIMI_PUSH"
         const val PRIMARY_CHANNEL_NAME = "Primary Channel"
 
         const val SECONDARY_CHANNEL = "second"

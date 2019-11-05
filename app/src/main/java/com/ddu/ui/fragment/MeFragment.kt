@@ -118,7 +118,7 @@ class MeFragment : DefaultFragment() {
                     dismissAllowingStateLoss()
                 }
             }
-            dialog.show(fragmentManager, "")
+            dialog.show(parentFragmentManager, "")
             BaseApp.postDelayed(Runnable {
                 val sb = StringBuilder()
                 sb.append("isadd: ${dialog.isAdded} ")
@@ -233,10 +233,10 @@ class MeFragment : DefaultFragment() {
                         startFragment(WebFragment::class.java, args)
                     }
                 }
-                dialog.show(fragmentManager, "")
+                dialog.show(parentFragmentManager, "")
 
             }
         })
-        shareDialog.show(fragmentManager, "")
+        shareDialog.show(parentFragmentManager, "")
     }
 }

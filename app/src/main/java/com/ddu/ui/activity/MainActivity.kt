@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.ddu.R
@@ -50,9 +51,13 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
+
+        val notification = NotificationManagerCompat.from(this);
+        val isEnabled = notification.areNotificationsEnabled()
+        ToastUtils.showToast("通知是否开启：$isEnabled")
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState?.putInt("itemId", navigation.selectedItemId)
     }

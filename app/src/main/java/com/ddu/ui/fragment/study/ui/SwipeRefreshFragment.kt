@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ddu.R
-import com.ddu.app.BaseApp
 import com.ddu.icore.ui.adapter.common.DefaultRVAdapter
+import com.ddu.icore.ui.adapter.common.HeaderOrFooterRecycleViewAdapter
 import com.ddu.icore.ui.adapter.common.ViewHolder
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.ui.adapter.common.HeaderOrFooterRecycleViewAdapter
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_swipe_refresh.*
 import java.util.*
@@ -19,7 +17,7 @@ import java.util.*
  * Created by yzbzz on 16/5/6.
  */
 @IElement("UI")
-class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshListener {
+class SwipeRefreshFragment : DefaultFragment() {
 
     private val mDatas = ArrayList<String>()
 
@@ -38,9 +36,9 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
 
     override fun initView() {
 
-        srl_swipe_refresh.setOnRefreshListener(this)
-        srl_swipe_refresh.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
-                android.R.color.holo_orange_light, android.R.color.holo_red_light)
+//        srl_swipe_refresh.setOnRefreshListener(this)
+//        srl_swipe_refresh.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+//                android.R.color.holo_orange_light, android.R.color.holo_red_light)
 
         rv_swipe_refresh.setHasFixedSize(true)
         rv_swipe_refresh.layoutManager = LinearLayoutManager(mContext)
@@ -87,17 +85,17 @@ class SwipeRefreshFragment : DefaultFragment(), SwipeRefreshLayout.OnRefreshList
         super.onDestroy()
     }
 
-    override fun onRefresh() {
-        BaseApp.postDelayed(Runnable{
-            val size = mDatas.size
-            for (i in size until size + 10) {
-                mDatas.add("i - " + i)
-            }
-            advanceRecycleViewAdapter.notifyDataSetChanged()
-            srl_swipe_refresh.isRefreshing = false
-        }, 2000)
-
-    }
+//    override fun onRefresh() {
+//        BaseApp.postDelayed(Runnable{
+//            val size = mDatas.size
+//            for (i in size until size + 10) {
+//                mDatas.add("i - " + i)
+//            }
+//            advanceRecycleViewAdapter.notifyDataSetChanged()
+////            srl_swipe_refresh.isRefreshing = false
+//        }, 2000)
+//
+//    }
 
     companion object {
 

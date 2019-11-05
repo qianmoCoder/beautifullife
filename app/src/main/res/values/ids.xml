@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="expandable_text"/>
-    <item type="id" name="expand_collapse"/>
-    <item type="id" name="FloatingText_wrapper"/>
+    <item name="expandable_text" type="id" />
+    <item name="expand_collapse" type="id" />
+    <item name="FloatingText_wrapper" type="id" />
+    <item name="high_light_view" type="id" />
 </resources>
