@@ -1,11 +1,11 @@
 package com.ddu.app
 
-import android.content.Context
 import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatDelegate
+import com.ddu.BuildConfig
 import com.ddu.db.entity.MyObjectBox
 import com.ddu.db.entity.StudyContent
 import com.ddu.icore.common.ext.commitPreference
@@ -14,15 +14,18 @@ import com.ddu.routes.ElementProvider
 import com.ddu.routes.RouterProvider
 import com.ddu.util.SystemUtils
 import com.ddu.util.xml.PullParserUtils
+import com.growingio.android.sdk.collection.GrowingIO
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.DiskLogAdapter
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.*
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.umeng.analytics.MobclickAgent
+import com.umeng.commonsdk.UMConfigure
 import io.objectbox.Box
 import io.objectbox.BoxStore
+
 /**
  * Created by yzbzz on 16/4/6.
  */
@@ -30,25 +33,17 @@ class App : BaseApp() {
 
 
     init {
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator(object : DefaultRefreshHeaderCreator {
-            override fun createRefreshHeader(
-                context: Context,
-                layout: RefreshLayout
-            ): RefreshHeader {
-//                layout.setPrimaryColorsId(R.color.c_868686, android.R.color.white)
-                return ClassicsHeader(context).apply {
-                    setEnableLastTime(false)
-                }
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+            //                layout.setPrimaryColorsId(R.color.c_868686, android.R.color.white)
+            ClassicsHeader(context).apply {
+                setEnableLastTime(false)
             }
-        })
-        SmartRefreshLayout.setDefaultRefreshFooterCreator(object : DefaultRefreshFooterCreator {
-            override fun createRefreshFooter(
-                context: Context,
-                layout: RefreshLayout
-            ): RefreshFooter {
-                return ClassicsFooter(context).setDrawableSize(20f)
-            }
-        })
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
+            ClassicsFooter(
+                context
+            ).setDrawableSize(20f)
+        }
     }
 
     override fun onCreate() {
@@ -56,6 +51,14 @@ class App : BaseApp() {
         init()
         Logger.addLogAdapter(AndroidLogAdapter())
         Logger.addLogAdapter(DiskLogAdapter())
+
+        GrowingIO.startWithConfiguration(this, com.growingio.android.sdk.collection.Configuration()
+            .trackAllFragments()
+            .setTestMode(BuildConfig.DEBUG)
+            .setDebugMode(BuildConfig.DEBUG)
+            .setChannel("ddu")
+        )
+
     }
 
     private fun init() {
@@ -70,7 +73,22 @@ class App : BaseApp() {
             registerActivityLifecycleCallbacks(this)
             initData()
             registorNetInfoBroadcastReceiver()
+            initUMengSDK()
         }
+    }
+
+    private fun initUMengSDK() {
+        UMConfigure.init(
+            this,
+            "5dc11e184ca357fd5e000709",
+            "UMENG_CHANNEL",
+            UMConfigure.DEVICE_TYPE_PHONE,
+            ""
+        )
+
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO)
+        UMConfigure.setLogEnabled(true)
+        MobclickAgent.onProfileSignIn("18610909732")
     }
 
     private fun initNightMode() {

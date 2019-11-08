@@ -14,7 +14,7 @@ class ChipFragment : DefaultFragment() {
 
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_study_md_material_button
+        return R.layout.fragment_study_md_chip
     }
 
     override fun initView() {

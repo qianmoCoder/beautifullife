@@ -6,6 +6,7 @@ buildscript {
         maven {
             url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
         }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
         mavenCentral()
         maven { url 'https://jitpack.io' }
         google()
@@ -13,7 +14,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
@@ -21,6 +22,8 @@ buildscript {
         classpath 'com.aliyun.ams:emas-services:1.0.1'
         classpath 'org.aspectj:aspectjtools:1.9.4'
         classpath 'org.aspectj:aspectjweaver:1.9.4'
+        classpath 'com.growingio.android:vds-gradle-plugin:autotrack-2.8.4'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle.kts files
     }
@@ -34,6 +37,7 @@ allprojects {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         maven { url 'http://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
         google()
         jcenter { url "http://jcenter.bintray.com/" }
 

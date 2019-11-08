@@ -135,6 +135,11 @@ class MeFragment : DefaultFragment() {
         oiv_show_bottom_dialog.setOnClickListener {
             showBottomDialog()
         }
+
+
+        rl_person_info.setOnClickListener {
+            val i =  5 / 0
+        }
     }
 
     companion object {
