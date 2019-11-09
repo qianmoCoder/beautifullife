@@ -118,6 +118,12 @@ android {
 //        }
 //    }
 
+
+    // 通过Kotlin编译器参数实现将所有的warnings按照errors对待
+//    kotlinOptions {
+//        allWarningsAsErrors = true
+//    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -138,7 +144,7 @@ dependencies {
 
     implementation "io.objectbox:objectbox-android:${Versions.objectBox}"
     implementation "io.objectbox:objectbox-kotlin:${Versions.objectBox}"
-    kapt  "io.objectbox:objectbox-processor:${Versions.objectBox}"
+    kapt "io.objectbox:objectbox-processor:${Versions.objectBox}"
     annotationProcessor "io.objectbox:objectbox-processor:${Versions.objectBox}"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.3"
@@ -160,8 +166,8 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
     implementation "com.android.support:multidex:1.0.3"
 
-    implementation  'com.umeng.umsdk:analytics:8.0.0'
-    implementation  'com.umeng.umsdk:common:2.0.0'
+    implementation 'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.umeng.umsdk:common:2.0.0'
 //    implementation  'com.umeng.umsdk:utdid:1.1.5.3'
 
     // Bugly SDK
@@ -203,7 +209,7 @@ variants.all { variant ->
                 File.pathSeparator)]
 
         MessageHandler handler = new MessageHandler(true)
-        new Main().run(kotlinArgs,handler)
+        new Main().run(kotlinArgs, handler)
         new Main().run(args, handler)
     }
 }

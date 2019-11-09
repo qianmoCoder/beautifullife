@@ -12,9 +12,9 @@ import com.ddu.icore.common.ext.find
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val mViews: SparseArray<View> = SparseArray()
+    val mViews: SparseArray<View> = SparseArray()
 
-    fun <T : View> getView(viewId: Int): T? {
+    inline fun <reified T : View> getView(viewId: Int): T? {
         var view = mViews.get(viewId)
         if (null == view) {
             view = itemView.find(viewId)
