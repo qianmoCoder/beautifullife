@@ -1,28 +1,48 @@
 package com.ddu.icore.data
 
 /**
- * Created by yzbzz on 2019-11-08.
- *
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
+ *
+ * [Read more about this.](https://medium.com/google-developers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150)
  */
 open class Event<out T>(private val content: T) {
 
-    private var hasBeenHandled = false
+    var consumed = false
+        private set // Allow external read but not write
 
     /**
-     * Returns the content and prevents its use again.
+     * Consumes the content if it's not been consumed yet.
+     * @return The unconsumed content or `null` if it was consumed already.
      */
-    fun getContentIfNotHandled(): T? {
-        return if (hasBeenHandled) {
+    fun consume(): T? {
+        return if (consumed) {
             null
         } else {
-            hasBeenHandled = true
+            consumed = true
             content
         }
     }
 
     /**
-     * Returns the content, even if it's already been handled.
+     * @return The content whether it's been handled or not.
      */
-    fun peekContent(): T = content
+    fun peek(): T = content
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Event<*>
+
+        if (content != other.content) return false
+        if (consumed != other.consumed) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = content?.hashCode() ?: 0
+        result = 31 * result + consumed.hashCode()
+        return result
+    }
 }

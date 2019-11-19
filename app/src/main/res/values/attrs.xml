@@ -2,15 +2,15 @@
 <resources>
 
     <declare-styleable name="ExpandableTextView">
-        <attr name="maxCollapsedLines" format="integer"/>
-        <attr name="animDuration" format="integer"/>
-        <attr name="animAlphaStart" format="float"/>
-        <attr name="expandDrawable" format="reference"/>
-        <attr name="collapseDrawable" format="reference"/>
+        <attr name="maxCollapsedLines" format="integer" />
+        <attr name="animDuration" format="integer" />
+        <attr name="animAlphaStart" format="float" />
+        <attr name="expandDrawable" format="reference" />
+        <attr name="collapseDrawable" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="MagnificentChart">
-        <attr name="m_animation" format="boolean"/>
+        <attr name="m_animation" format="boolean" />
         <attr name="m_round" format="boolean" />
         <attr name="m_shadow" format="boolean" />
         <attr name="m_showTitle" format="boolean" />
@@ -42,36 +42,36 @@
     </declare-styleable>
 
     <declare-styleable name="AvatarImageBehavior">
-        <attr name="finalYPosition" format="dimension"/>
-        <attr name="startXPosition" format="dimension"/>
-        <attr name="startToolbarPosition" format="dimension"/>
-        <attr name="startHeight" format="dimension"/>
-        <attr name="finalHeight" format="dimension"/>
+        <attr name="finalYPosition" format="dimension" />
+        <attr name="startXPosition" format="dimension" />
+        <attr name="startToolbarPosition" format="dimension" />
+        <attr name="startHeight" format="dimension" />
+        <attr name="finalHeight" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="NumberProgressBar">
-        <attr name="progress_current" format="integer"/>
-        <attr name="progress_max" format="integer"/>
+        <attr name="progress_current" format="integer" />
+        <attr name="progress_max" format="integer" />
 
-        <attr name="progress_unreached_color" format="color"/>
-        <attr name="progress_reached_color" format="color"/>
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
 
-        <attr name="progress_reached_bar_height" format="dimension"/>
-        <attr name="progress_unreached_bar_height" format="dimension"/>
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
 
-        <attr name="progress_text_size" format="dimension"/>
-        <attr name="progress_text_color" format="color"/>
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
 
-        <attr name="progress_text_offset" format="dimension"/>
+        <attr name="progress_text_offset" format="dimension" />
 
         <attr name="progress_text_visibility" format="enum">
-            <enum name="visible" value="0"/>
-            <enum name="invisible" value="1"/>
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
         </attr>
     </declare-styleable>
 
     <declare-styleable name="Themes">
-        <attr name="numberProgressBarStyle" format="reference"/>
+        <attr name="numberProgressBarStyle" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="LockPatternView">
@@ -104,6 +104,19 @@
         </attr>
     </declare-styleable>
 
-    <attr name="highlight" format="boolean"></attr>
+    <attr name="highlight" format="boolean" />
+
+    <declare-styleable name="DrawView3">
+        <attr name="column_total_count" format="integer" />
+        <attr name="column_light_count" format="integer" />
+        <attr name="column_width" format="reference|dimension|float" />
+        <attr name="column_space" format="reference|dimension|float" />
+        <attr name="column_init_height" format="reference|dimension|float" />
+        <attr name="column_increase_height" format="reference|dimension|float" />
+        <attr name="column_color_light" format="reference|color" />
+        <attr name="column_color_dark" format="reference|color" />
+        <attr name="column_rx" format="reference|dimension|float" />
+        <attr name="column_ry" format="reference|dimension|float" />
+    </declare-styleable>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.ddu.icore.common.ext
 
 import com.ddu.icore.util.sys.PreferenceUtils
+import java.util.concurrent.locks.Lock
 
 /**
  * Created by yzbzz on 2018/3/12.
@@ -21,3 +22,12 @@ inline fun <reified T> findPreference(key: String, default: T): T? =
 inline fun <reified T> applyPreference(key: String, value: T) = PreferenceUtils.apply(key, value)
 
 inline fun <reified T> commitPreference(key: String, value: T) = PreferenceUtils.commit(key, value)
+
+inline fun <T> method(lock: Lock, body: () -> T): T {
+    lock.lock()
+    try {
+        return body()
+    } finally {
+        lock.unlock()
+    }
+}

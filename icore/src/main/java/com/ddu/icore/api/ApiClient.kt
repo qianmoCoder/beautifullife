@@ -1,6 +1,6 @@
-package com.yzbzz.icore.network.api
+package com.ddu.icore.api
 
-import com.yzbzz.icore.network.BuildConfig
+import com.ddu.icore.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

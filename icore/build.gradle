@@ -53,7 +53,8 @@ dependencies {
 
     api Deps.material
     api Deps.recyclerView
-//    api Deps.cardView
+    api Deps.cardView
+    api Deps.preference
 
     api Deps.paging
     api Deps.pagingRx
@@ -66,5 +67,14 @@ dependencies {
     api Libs.smartRefreshLayout
     api Libs.rxandroid
     api Libs.rxjava
+
+    // 网络请求库
+    api Libs.okhttp
+    api Libs.okio
+    api Libs.okhttpLogging
+    api Libs.retrofit
+    api Libs.retrofitConverterGson
+    api Libs.retrofitAdapterRxjava
+
 
 }

@@ -13,6 +13,8 @@ import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 
 /**
  * Created by yzbzz on 2018/1/18.
@@ -50,15 +52,25 @@ val Context.displayMetrics: DisplayMetrics
 val Activity.act
     get() = this
 
-val androidx.fragment.app.Fragment.ctx
+val Fragment.ctx
     get() = context!!
 
-val androidx.fragment.app.Fragment.act
+val Fragment.act
     get() = activity!!
 
-inline fun <reified T : Activity> Context.startActivity() = startActivity(Intent(this, T::class.java))
+inline fun <reified T : Activity> Context.getIntent(vararg args: Pair<String, Any?>): Intent {
+    val intent = Intent(this, T::class.java)
+    intent.putExtras(bundleOf(*args))
+    return intent
+}
 
-inline fun <reified T : Activity> androidx.fragment.app.Fragment.startActivity() = startActivity(Intent(ctx, T::class.java))
+inline fun <reified T : Activity> Context.startActivity(vararg args: Pair<String, Any?>) {
+    startActivity(getIntent<T>(*args))
+}
+
+inline fun <reified T : Activity> Fragment.startActivity(vararg args: Pair<String, Any?>) {
+    startActivity(ctx.getIntent<T>(*args))
+}
 
 inline fun <reified T : View> Activity.find(id: Int): T = findViewById(id)
 

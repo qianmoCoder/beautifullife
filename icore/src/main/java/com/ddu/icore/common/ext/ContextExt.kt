@@ -1,7 +1,6 @@
 package com.ddu.icore.common.ext
 
 import android.Manifest
-import android.app.Activity
 import android.app.ActivityManager
 import android.app.Fragment
 import android.content.ClipData
@@ -11,8 +10,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Process
-import android.provider.Settings
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
@@ -122,32 +119,4 @@ fun Context.startBrowser(url: String = "") {
         startActivity(intent)
     }
 }
-
-var Activity.screenBrightness
-    get() = Settings.System.getInt(contentResolver, Settings.System.SCREEN_BRIGHTNESS)
-    set(value) {
-        val lp = window.attributes
-        lp.screenBrightness = value / 255f
-        window.attributes = lp
-    }
-
-fun Activity.hideKeyboard(view: View?): Boolean? {
-    val currentView = currentFocus ?: view
-    currentView?.let {
-        return inputMethodManager.hideSoftInputFromWindow(
-            currentView.windowToken,
-            InputMethodManager.HIDE_NOT_ALWAYS
-        )
-    }
-    return false
-}
-
-fun Activity.showKeyboard(view: View?): Boolean? {
-    val currentView = currentFocus ?: view
-    currentView?.let {
-        return inputMethodManager.showSoftInput(currentView, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
-    return false
-}
-
 

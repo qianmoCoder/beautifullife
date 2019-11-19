@@ -4,19 +4,18 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
+import android.util.AttributeSet;
+
 import androidx.annotation.IntRange;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
 
 import com.ddu.icore.R;
 
 public class StateImageView extends AppCompatImageView {
 
     private Drawable mNormalDrawable;
-
     private Drawable mPressedDrawable;
-
-    private Drawable mUnableDrawable;
+    private Drawable mDisableDrawable;
 
     private int mDuration = 0;
 
@@ -36,15 +35,15 @@ public class StateImageView extends AppCompatImageView {
         super(context, attrs, defStyleAttr);
 
         states = new int[4][];
-        states[0] = new int[] { android.R.attr.state_pressed, android.R.attr.state_enabled };
-        states[1] = new int[] { android.R.attr.state_enabled, android.R.attr.state_focused };
-        states[3] = new int[] { -android.R.attr.state_enabled };
-        states[2] = new int[] { android.R.attr.state_enabled };
+        states[0] = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
+        states[1] = new int[]{android.R.attr.state_enabled, android.R.attr.state_focused};
+        states[3] = new int[]{-android.R.attr.state_enabled};
+        states[2] = new int[]{android.R.attr.state_enabled};
 
         Drawable drawable = getBackground();
-        if(drawable != null && drawable instanceof StateListDrawable){
+        if (drawable instanceof StateListDrawable) {
             mStateBackground = (StateListDrawable) drawable;
-        }else{
+        } else {
             mStateBackground = new StateListDrawable();
         }
 
@@ -52,36 +51,36 @@ public class StateImageView extends AppCompatImageView {
 
         mNormalDrawable = a.getDrawable(R.styleable.StateImageView_normalBackground);
         mPressedDrawable = a.getDrawable(R.styleable.StateImageView_pressedBackground);
-        mUnableDrawable = a.getDrawable(R.styleable.StateImageView_disableBackground);
-        setStateBackground(mNormalDrawable, mPressedDrawable, mUnableDrawable);
+        mDisableDrawable = a.getDrawable(R.styleable.StateImageView_disableBackground);
+        setStateBackground(mNormalDrawable, mPressedDrawable, mDisableDrawable);
 
         mDuration = a.getInteger(R.styleable.StateImageView_AnimationDuration, mDuration);
         setAnimationDuration(mDuration);
         a.recycle();
     }
 
-    public void setStateBackground(Drawable normal, Drawable pressed, Drawable unable){
+    public void setStateBackground(Drawable normal, Drawable pressed, Drawable unable) {
         this.mNormalDrawable = normal;
         this.mPressedDrawable = pressed;
-        this.mUnableDrawable = unable;
+        this.mDisableDrawable = unable;
 
         //set background
-        if(mPressedDrawable != null) {
+        if (mPressedDrawable != null) {
             mStateBackground.addState(states[0], mPressedDrawable);
             mStateBackground.addState(states[1], mPressedDrawable);
         }
 
-        if(mUnableDrawable != null) {
-            mStateBackground.addState(states[3], mUnableDrawable);
+        if (mDisableDrawable != null) {
+            mStateBackground.addState(states[3], mDisableDrawable);
         }
 
-        if(mNormalDrawable != null) {
+        if (mNormalDrawable != null) {
             mStateBackground.addState(states[2], mNormalDrawable);
         }
         setBackgroundDrawable(mStateBackground);
     }
 
-    public void setAnimationDuration(@IntRange(from = 0)int duration){
+    public void setAnimationDuration(@IntRange(from = 0) int duration) {
         this.mDuration = duration;
         mStateBackground.setEnterFadeDuration(mDuration);
         mStateBackground.setExitFadeDuration(mDuration);

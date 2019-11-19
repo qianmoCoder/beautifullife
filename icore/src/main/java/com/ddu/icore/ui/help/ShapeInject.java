@@ -7,13 +7,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.TextView;
 
 import com.ddu.icore.R;
 
@@ -307,15 +308,12 @@ public class ShapeInject {
         }
 
         if (null != mView) {
-            mView.post(new Runnable() {
-                @Override
-                public void run() {
-                    setShape();
-                    background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
-                    background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
-                    background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
-                    mView.setBackground(mStateBackground);
-                }
+            mView.post(() -> {
+                setShape();
+                background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
+                background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
+                background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
+                mView.setBackground(mStateBackground);
             });
         }
     }
@@ -328,15 +326,12 @@ public class ShapeInject {
         }
 
         if (null != mView) {
-            mView.post(new Runnable() {
-                @Override
-                public void run() {
-                    setShape();
-                    background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
-                    background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
-                    background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
-                    mView.setBackground(mStateBackground);
-                }
+            mView.post(() -> {
+                setShape();
+                background(mPressedBackground, mPressedBackgroundColor, mPressedStrokeWidth, mPressedStrokeColor);
+                background(mDisableBackground, mDisableBackgroundColor, mDisableStrokeWidth, mDisableStrokeColor);
+                background(mNormalBackground, mNormalBackgroundColor, mNormalStrokeWidth, mNormalStrokeColor);
+                mView.setBackground(mStateBackground);
             });
         }
     }

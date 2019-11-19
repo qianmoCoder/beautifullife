@@ -9,10 +9,11 @@ object Versions {
     const val versionName = "1.0"
 
     const val supportLibraryVersion = "1.1.0"
-    const val materialVersion = "1.1.0-beta01"
-    const val recyclerViewVersion = "1.1.0-beta05"
+    const val materialVersion = "1.0.0"
+    const val recyclerViewVersion = "1.1.0-rc01"
+    const val cardViewVersion = "1.0.0"
 
-    const val kotlinVersion = "1.3.50"
+    const val kotlinVersion = "1.3.60"
     const val coroutinesVersion = "1.3.0-M2"
 
     const val ktxVersion = "1.1.0"
@@ -53,22 +54,24 @@ object Deps {
     const val androidxCoreKtx = "androidx.core:core-ktx:${Versions.ktxVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
 
+    const val preference = "androidx.preference:preference:1.1.0"
+
     const val lifecycleExtensions =
-        "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+            "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
     const val lifecycleLiveDataKtx =
-        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
     const val lifecycleViewModelKtx =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
 
     const val coroutinesCore =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val coroutinesAndroid =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
 
 
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerViewVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
-    const val cardView = "androidx.cardview:cardview:${Versions.materialVersion}"
+    const val cardView = "androidx.cardview:cardview:${Versions.cardViewVersion}"
 
     const val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
     const val pagingRx = "androidx.paging:paging-rxjava2:${Versions.pagingVersion}"

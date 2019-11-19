@@ -1,20 +1,42 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <com.ddu.ui.view.DrawView1
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-        android:visibility="gone"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <com.ddu.ui.view.DrawView2
-                android:background="@color/c_ecedef"
-                android:layout_width="@dimen/dp_100"
-                android:layout_height="@dimen/dp_200"/>
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_150"
+            android:background="@color/c_ecedef"
+            android:visibility="gone" />
+
+        <com.ddu.ui.view.DrawView3
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/c_007a9c"
+            app:column_total_count="15"
+            app:column_light_count="8"
+            app:column_color_light="@color/c_4897fa"
+            app:column_color_dark="@color/c_ffff00"
+            app:column_width="@dimen/dp_10"
+            app:column_init_height="@dimen/dp_15"
+            app:column_increase_height="@dimen/dp_10"
+            app:column_space="@dimen/dp_5"
+            app:column_rx="@dimen/dp_20"
+            app:column_ry="@dimen/dp_20"
+            />
+
     </LinearLayout>
 
 
