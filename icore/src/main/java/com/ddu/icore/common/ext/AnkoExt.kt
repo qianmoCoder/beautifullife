@@ -5,16 +5,15 @@ import android.app.ActivityManager
 import android.app.NotificationManager
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.PowerManager
-import android.preference.PreferenceManager
 import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 
 /**
  * Created by yzbzz on 2018/1/18.
@@ -43,7 +42,8 @@ val Context.telephonyManager
 val Context.notificationManager
     get() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-val Context.defaultSharedPreferences
+
+val Context.defaultSharedPreferences: SharedPreferences
     get() = PreferenceManager.getDefaultSharedPreferences(this)
 
 val Context.displayMetrics: DisplayMetrics
@@ -57,20 +57,6 @@ val Fragment.ctx
 
 val Fragment.act
     get() = activity!!
-
-inline fun <reified T : Activity> Context.getIntent(vararg args: Pair<String, Any?>): Intent {
-    val intent = Intent(this, T::class.java)
-    intent.putExtras(bundleOf(*args))
-    return intent
-}
-
-inline fun <reified T : Activity> Context.startActivity(vararg args: Pair<String, Any?>) {
-    startActivity(getIntent<T>(*args))
-}
-
-inline fun <reified T : Activity> Fragment.startActivity(vararg args: Pair<String, Any?>) {
-    startActivity(ctx.getIntent<T>(*args))
-}
 
 inline fun <reified T : View> Activity.find(id: Int): T = findViewById(id)
 

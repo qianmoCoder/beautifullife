@@ -37,7 +37,7 @@ val Context.scaledDensity
 
 val Context.versionName
     get() = try {
-        packageManager.getPackageInfo(packageName, 0).versionName
+        packageManager.getPackageInfo(packageName, 0).versionName ?: ""
     } catch (e: Exception) {
         ""
     }
@@ -80,7 +80,7 @@ fun Context.isScreenOn(): Boolean? = powerManager.isScreenOn
 fun Context.isAppOnForeground(packageName: String = getPackageName()): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
     val appProcessed: List<ActivityManager.RunningAppProcessInfo>? =
-        activityManager.runningAppProcesses
+            activityManager.runningAppProcesses
     appProcessed?.let {
         appProcessed.filter {
             it.processName == packageName && ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND == it.importance
@@ -100,7 +100,7 @@ fun Context.launchApp(packageName: String): Intent {
 fun Context.loadAnimation(id: Int): Animation = AnimationUtils.loadAnimation(this, id)
 
 fun Context.toggleSoftInput() =
-    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 
 inline fun <reified T : Fragment> Context.startFragment(bundle: Bundle = Bundle()) {
     startFragment(T::class.java.name, bundle)

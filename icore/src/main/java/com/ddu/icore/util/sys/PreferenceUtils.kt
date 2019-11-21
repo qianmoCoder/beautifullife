@@ -35,7 +35,6 @@ object PreferenceUtils {
         res as? T
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun <V> putPreference(key: String, value: V) = with(prefs.edit()) {
         when (value) {
             is Boolean -> putBoolean(key, value)
