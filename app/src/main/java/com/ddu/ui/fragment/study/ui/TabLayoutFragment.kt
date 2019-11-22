@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.ddu.R
 import com.ddu.help.TabLayoutHelper
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.google.android.material.tabs.TabLayout
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_ui_tab_layout.*
 
@@ -27,7 +26,7 @@ class TabLayoutFragment : DefaultFragment() {
     override fun getLayoutId() = R.layout.fragment_ui_tab_layout
 
     val fragmentList = arrayListOf<Fragment>()
-    val titles = arrayOf("体育", "新闻", "好看福利", "新闻2")
+    val titles = arrayOf("体育新闻", "新闻新闻", "好看福利", "新闻新闻")
     lateinit var tagFragmentAdapter: TabFragmentAdapter
 
     override fun initView() {
@@ -37,10 +36,14 @@ class TabLayoutFragment : DefaultFragment() {
         fragmentList.add(TabFragment.getInstance(Color.BLUE));
 
         tagFragmentAdapter = TabFragmentAdapter(childFragmentManager, fragmentList, titles)
+        view_pager.setNoScroll(true)
         view_pager.adapter = tagFragmentAdapter
         tb_bar.setupWithViewPager(view_pager)
-        tb_bar.tabMode = TabLayout.MODE_FIXED
-        setTabLayout()
+        (titles.indices).forEach {
+            tb_bar.getTabAt(it)?.setCustomView(R.layout.fragment_common_tab_item)
+        }
+//        tb_bar.tabMode = TabLayout.MODE_SCROLLABLE
+//        setTabLayout()
     }
 
     fun setTabLayout() = TabLayoutHelper.Builder(tb_bar)
