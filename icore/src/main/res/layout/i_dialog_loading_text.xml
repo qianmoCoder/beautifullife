@@ -16,7 +16,8 @@
         android:layout_gravity="center_horizontal"
         android:indeterminateBehavior="repeat"
         android:indeterminateDrawable="@anim/i_dialog_loading"
-        android:indeterminateOnly="true" />
+        android:indeterminateOnly="true"
+        android:max="100"/>
 
     <TextView
         android:id="@+id/text"
