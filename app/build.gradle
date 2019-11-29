@@ -1,13 +1,8 @@
-import org.aspectj.bridge.MessageHandler
-import org.aspectj.tools.ajc.Main
-
 apply plugin: 'com.android.application'
-apply plugin: 'com.aliyun.ams.emas-services'
 apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.growingio.android'
 
 android {
 
@@ -47,8 +42,6 @@ android {
         flavorDimensions 'default'
 
         multiDexEnabled = true
-        resValue("string", "growingio_project_id", "a2b0af9b9c91204c")
-        resValue("string", "growingio_url_scheme", "growing.a3d4b0ccbebbb48f")
     }
 
     buildTypes {
@@ -95,6 +88,11 @@ android {
         enabled = true
     }
 
+    viewBinding {
+        enabled = true
+    }
+
+
     sourceSets {
         main {
             jni.srcDirs = []
@@ -139,7 +137,7 @@ dependencies {
 
     implementation "com.facebook.rebound:rebound:0.3.8"
 
-    implementation "com.google.zxing:core:3.3.3"
+    implementation 'com.google.zxing:core:3.4.0'
     implementation "com.google.zxing:android-core:3.3.0"
 
     implementation "io.objectbox:objectbox-android:${Versions.objectBox}"
@@ -147,11 +145,11 @@ dependencies {
     kapt "io.objectbox:objectbox-processor:${Versions.objectBox}"
     annotationProcessor "io.objectbox:objectbox-processor:${Versions.objectBox}"
 
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.3"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
+//    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
 
     implementation "com.google.android.material:material:1.0.0"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.palette:palette:1.0.0"
 
@@ -161,54 +159,4 @@ dependencies {
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation Libs.smartRefreshLayout
-
-    api "org.aspectj:aspectjrt:1.9.4"
-    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
-    implementation "com.android.support:multidex:1.0.3"
-
-    implementation 'com.umeng.umsdk:analytics:8.0.0'
-    implementation 'com.umeng.umsdk:common:2.0.0'
-//    implementation  'com.umeng.umsdk:utdid:1.1.5.3'
-
-    // Bugly SDK
-    implementation 'com.tencent.bugly:crashreport:3.1.0'
-    implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
-
-    implementation 'com.growingio.android:vds-android-agent:autotrack-2.8.4@aar'
-}
-
-final def variants = project.android.applicationVariants
-//在构建工程时，执行编织
-variants.all { variant ->
-    JavaCompile javaCompile
-    if (variant.hasProperty('javaCompileProvider')) {
-        javaCompile = variant.javaCompileProvider.get()
-    } else {
-        javaCompile = variant.javaCompile
-    }
-
-    javaCompile.doLast {
-        String[] args = ["-showWeaveInfo",
-                         "-1.8",
-                         "-inpath", javaCompile.destinationDir.toString(),
-                         "-aspectpath", javaCompile.classpath.asPath,
-                         "-d", javaCompile.destinationDir.toString(),
-                         "-classpath", javaCompile.classpath.asPath,
-                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
-
-        String[] kotlinArgs = ["-showWeaveInfo",
-                               "-1.8",
-                               "-inpath", project.buildDir.path + "/tmp/kotlin-classes/" + "<debugFolderName>",
-                               "-aspectpath", javaCompiler.classpath.asFileTree.filter {
-            !it.canonicalPath.contains("transforms")
-        }.asPath,
-                               "-d", project.buildDir.path + "/tmp/kotlin-classes/" + "<debugFolderName>",
-                               "-classpath", javaCompile.classpath.asPath,
-                               "-bootclasspath", project.android.bootClasspath.join(
-                File.pathSeparator)]
-
-        MessageHandler handler = new MessageHandler(true)
-        new Main().run(kotlinArgs, handler)
-        new Main().run(args, handler)
-    }
 }

@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
+import com.ddu.databinding.FragmentMeBinding
 import com.ddu.icore.callback.InConsumer3
 import com.ddu.icore.common.ext.act
 import com.ddu.icore.common.ext.ctx
@@ -34,6 +35,13 @@ class MeFragment : DefaultFragment() {
     var dialog: AlertDialogFragment? = null
     var nid = 0
 
+    private lateinit var binding: FragmentMeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = FragmentMeBinding.inflate(layoutInflater)
+    }
+
     override fun initData(savedInstanceState: Bundle?) {
         dialog = AlertDialogFragment().apply {
             title = "彩蛋"
@@ -57,22 +65,22 @@ class MeFragment : DefaultFragment() {
     override fun initView() {
         setTitle(R.string.main_tab_me)
 
-        tv_usr_name.text = "yzbzz"
-        tv_usr_number.text = "186-xxxx-xxx"
+        binding.tvUsrName.text = "yzbzz"
+        binding.tvUsrNumber.text = "186-xxxx-xxx"
 
-        oiv_buddha.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ffff00"))
+        binding.oivBuddha.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ffff00"))
 
-        oiv_friend_link.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2fdbc40"))
-        oiv_friend_link.setOnClickListener {
+        binding.oivFriendLink.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2fdbc40"))
+        binding.oivFriendLink.setOnClickListener {
             showShareDialog()
         }
 
-        oiv_plan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
+        binding.oivPlan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
 
-        oiv_fav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ff0000"))
+        binding.oivFav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ff0000"))
 
-        oiv_eggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
-        oiv_eggs.setOnClickListener {
+        binding.oivEggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
+        binding.oivEggs.setOnClickListener {
             System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
             mHits[mHits.size - 1] = SystemClock.uptimeMillis()
             if (mHits[0] >= SystemClock.uptimeMillis() - DURATION) {

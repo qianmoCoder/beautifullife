@@ -5,11 +5,11 @@
         android:background="@color/c_ffffff"
         android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -18,9 +18,9 @@
                 app:tabIndicatorColor="#4897fa"
                 app:tabSelectedTextColor="#4897fa"
                 app:tabTextColor="#a2c699" />
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
             android:id="@+id/one_view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

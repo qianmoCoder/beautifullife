@@ -33,7 +33,7 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
         }
     }
 
-    lateinit var currentActivity: WeakReference<Activity>
+    private lateinit var currentActivity: WeakReference<Activity>
     private val sCacheActivities: MutableMap<Int, WeakReference<Activity>> by lazy {
         mutableMapOf<Int, WeakReference<Activity>>()
     }
@@ -70,7 +70,7 @@ open class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
     open fun finishAllActivity(): Int {
         var finishCount = 0
-        if (sCacheActivities != null && !sCacheActivities.isEmpty()) {
+        if (sCacheActivities != null && sCacheActivities.isNotEmpty()) {
             val activities = ArrayList(sCacheActivities.values)
             for (activity in activities) {
                 val tempActivity = activity.get() ?: continue

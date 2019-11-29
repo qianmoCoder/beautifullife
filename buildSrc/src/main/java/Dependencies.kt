@@ -2,7 +2,7 @@ object Versions {
 
     const val compileSdkVersion = 29
 
-    const val minSdkVersion = 19
+    const val minSdkVersion = 21
     const val targetSdkVersion = 29
 
     const val versionCode = 1
@@ -29,7 +29,7 @@ object Versions {
 }
 
 object Libs {
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
+    const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta3"
 
     const val rxjava = "io.reactivex.rxjava2:rxjava:2.2.11"
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
