@@ -4,8 +4,7 @@ import android.content.IntentFilter
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.net.wifi.WifiManager
-import com.ddu.db.entity.MyObjectBox
-import com.ddu.db.entity.StudyContent
+import com.ddu.db.AppDatabase
 import com.ddu.receiver.NetInfoBroadcastReceiver
 import com.ddu.routes.ElementProvider
 import com.ddu.routes.RouterProvider
@@ -17,8 +16,6 @@ import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
-import io.objectbox.Box
-import io.objectbox.BoxStore
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -51,7 +48,6 @@ class App : BaseApp() {
         val processName = SystemUtils.getProcessName()
         val currentPackageName = packageName
         if (processName == currentPackageName) {// 防止多进程重复实始化
-            setupDatabase()
             registerActivityLifecycleCallbacks(this)
             initData()
             registorNetInfoBroadcastReceiver()
@@ -65,31 +61,23 @@ class App : BaseApp() {
     }
 
     private fun initData() {
-        val studyContentBox = boxStore!!.boxFor(StudyContent::class.java)
-        val count = studyContentBox.count()
+        val studyContentBox = AppDatabase.getInstance(this).studyContentDao().getStudyContents()
+        val count = studyContentBox.size
         if (count <= 0) {
-            try {
-                loadFile(studyContentBox)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
+            loadFile()
         }
     }
 
-    private fun loadFile(studyContentBox: Box<StudyContent>) {
+    private fun loadFile() {
         try {
             val studyContents = PullParserUtils.getStudyContent(assets.open("config_tag.xml"))
-            studyContentBox.put(studyContents)
+            AppDatabase.getInstance(this).studyContentDao().insertAll(studyContents)
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
     }
 
-    private fun setupDatabase() {
-        boxStore = MyObjectBox.builder().androidContext(this).build()
-    }
 
     // 强制字体不随着系统改变而改变
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -113,9 +101,6 @@ class App : BaseApp() {
     }
 
     companion object {
-
-        var boxStore: BoxStore? = null
-            private set
 
         var routerProvider = RouterProvider()
 

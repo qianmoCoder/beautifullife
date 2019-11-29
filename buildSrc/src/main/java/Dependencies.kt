@@ -22,8 +22,6 @@ object Versions {
     const val lifecycleVersion = "2.2.0-beta01"
     const val pagingVersion = "2.1.0"
 
-    const val objectBox = "2.3.3"
-
     const val glideVersion = "4.9.0"
     const val retrofit = "2.6.1"
 }

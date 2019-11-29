@@ -3,6 +3,11 @@ package com.ddu.ui.fragment.study.imitate;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ddu.R;
 import com.ddu.db.DbManager;
 import com.ddu.db.entity.StudyContent;
@@ -15,11 +20,6 @@ import com.iannotation.IElement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by yzbzz on 2017/5/16.
@@ -48,7 +48,7 @@ public class StudyTagsFragment extends DefaultFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        studyContents = DbManager.getStudyContentBox().getAll();
+        studyContents = DbManager.getStudyContentDao().getStudyContents();
 
         for (StudyContent studyContent : studyContents) {
             if (studyContent.isOld()) {
@@ -83,7 +83,7 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.title);
+                viewHolder.setText(R.id.tv_tag, data.getTitle());
             }
         });
 
@@ -95,7 +95,7 @@ public class StudyTagsFragment extends DefaultFragment {
 
             @Override
             public void bindView(ViewHolder viewHolder, StudyContent data, int position) {
-                viewHolder.setText(R.id.tv_tag, data.title);
+                viewHolder.setText(R.id.tv_tag, data.getTitle());
             }
         });
 

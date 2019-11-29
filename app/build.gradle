@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -140,11 +139,6 @@ dependencies {
     implementation 'com.google.zxing:core:3.4.0'
     implementation "com.google.zxing:android-core:3.3.0"
 
-    implementation "io.objectbox:objectbox-android:${Versions.objectBox}"
-    implementation "io.objectbox:objectbox-kotlin:${Versions.objectBox}"
-    kapt "io.objectbox:objectbox-processor:${Versions.objectBox}"
-    annotationProcessor "io.objectbox:objectbox-processor:${Versions.objectBox}"
-
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
 //    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
 
@@ -159,4 +153,11 @@ dependencies {
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation Libs.smartRefreshLayout
+
+    implementation 'androidx.room:room-runtime:2.2.2'
+    annotationProcessor "androidx.room:room-compiler:2.2.2"
+    kapt "androidx.room:room-compiler:2.2.2"
+    implementation 'androidx.room:room-ktx:2.2.2'
+    implementation 'androidx.room:room-rxjava2:2.2.2'
+
 }
