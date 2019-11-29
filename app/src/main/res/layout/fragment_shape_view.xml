@@ -242,6 +242,33 @@
                 android:text="CODE_ALL" />
         </LinearLayout>
 
+        <com.ddu.icore.ui.view.ShapeButton
+            android:id="@+id/sb_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="搜索"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/stv_search"
+            app:layout_constraintTop_toBottomOf="@id/tv_all_xml"
+            app:normalBackgroundColor="@color/c_4897fa"
+            app:shapeRadius="@dimen/dp_20" />
+
+        <com.ddu.icore.ui.view.ShapeTextView
+            android:id="@+id/stv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_20"
+            android:gravity="center"
+            android:text="搜索"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/sb_search"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_all_xml"
+            app:normalBackgroundColor="@color/c_4897fa"
+            app:shapeRadius="@dimen/dp_20" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

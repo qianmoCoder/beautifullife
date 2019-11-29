@@ -22,6 +22,7 @@ fun <T> SparseArray<T>?.hasKey(key: Int): Boolean {
     return if (isNullOrEmpty()) {
         false
     } else {
-        this?.indexOfKey(key) ?: -1 > 0
+        val index = this?.indexOfKey(key)
+        index ?: -1 >= 0
     }
 }

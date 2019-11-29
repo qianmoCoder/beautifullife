@@ -93,6 +93,9 @@ class WorkFlow(var flowNodes: SparseArray<WorkNode>?) {
 
     private fun findAndExecuteNextNodeIfExist(startIndex: Int) {
         val nextIndex = startIndex + 1
+        if (!flowNodes.hasKey(nextIndex)) {
+            return
+        }
         val nextNode = flowNodes?.valueAt(nextIndex)
         nextNode?.apply {
             recentNode = nextNode
@@ -107,7 +110,7 @@ class WorkFlow(var flowNodes: SparseArray<WorkNode>?) {
     private fun reset() {
         flowNodes?.apply {
             forEach { key, _ ->
-                valueAt(key).removeCallback()
+                get(key).removeCallback()
             }
         }
     }
