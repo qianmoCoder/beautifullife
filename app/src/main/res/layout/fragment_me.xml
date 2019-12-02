@@ -39,7 +39,7 @@
                 android:ems="16"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/c_333333"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="@dimen/sp_21" />
 
             <TextView

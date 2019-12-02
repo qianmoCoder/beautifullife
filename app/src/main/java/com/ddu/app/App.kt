@@ -1,8 +1,6 @@
 package com.ddu.app
 
 import android.content.IntentFilter
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.net.wifi.WifiManager
 import com.ddu.db.AppDatabase
 import com.ddu.receiver.NetInfoBroadcastReceiver
@@ -87,26 +85,26 @@ class App : BaseApp() {
     }
 
 
-    // 强制字体不随着系统改变而改变
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        if (newConfig.fontScale != 1f) {
-            resources
-        }
-        super.onConfigurationChanged(newConfig)
-    }
-
-    override fun getResources(): Resources {
-        var res = super.getResources()
-        if (res.configuration.fontScale != 1f) {//非默认值
-            val newConfig = Configuration()
-            newConfig.setToDefaults()
-            //设置默认
-            //            res.updateConfiguration(newConfig, res.getDisplayMetrics());
-            val context = createConfigurationContext(newConfig)
-            res = context.resources
-        }
-        return res
-    }
+//    // 强制字体不随着系统改变而改变
+//    override fun onConfigurationChanged(newConfig: Configuration) {
+//        if (newConfig.fontScale != 1f) {
+//            resources
+//        }
+//        super.onConfigurationChanged(newConfig)
+//    }
+//
+//    override fun getResources(): Resources {
+//        var res = super.getResources()
+//        if (res.configuration.fontScale != 1f) {//非默认值
+//            val newConfig = Configuration()
+//            newConfig.setToDefaults()
+//            //设置默认
+//            //            res.updateConfiguration(newConfig, res.getDisplayMetrics());
+//            val context = createConfigurationContext(newConfig)
+//            res = context.resources
+//        }
+//        return res
+//    }
 
     companion object {
 

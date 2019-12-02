@@ -88,7 +88,7 @@
     </style>
 
     <style name="MainTab.Study">
-        <item name="android:drawableTop">@drawable/main_tab_ic_book</item>
+        <item name="android:drawableTop">@drawable/main_tab_ic_study</item>
 
     </style>
 

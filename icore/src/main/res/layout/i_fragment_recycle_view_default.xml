@@ -4,7 +4,7 @@
     android:id="@+id/default_refresh_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c_ecedef"
+    android:background="@color/c_fbfbfb"
     android:fillViewport="true"
     android:overScrollMode="never"
     android:paddingTop="@dimen/dp_3"

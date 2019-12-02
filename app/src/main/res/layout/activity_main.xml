@@ -15,13 +15,18 @@
 
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/c_cccccc" />
+
     <!-- 使用 app:itemBackground 去掉水波纹效果 -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/c_f4f4f4"
+        app:itemBackground="@color/c_f3f3f3"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation" />
 

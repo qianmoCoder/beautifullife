@@ -77,7 +77,7 @@ class MeFragment : DefaultFragment() {
 
         binding.oivPlan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
 
-        binding.oivFav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ff0000"))
+        binding.oivFav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#ff0000"))
 
         binding.oivEggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
         binding.oivEggs.setOnClickListener {

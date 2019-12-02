@@ -20,6 +20,13 @@
                     android:text="编程"/>
 
             <com.ddu.icore.ui.view.OptionItemView
+                android:id="@+id/oiv_program_android"
+                style="@style/DefaultRelativeLayout"
+                app:i_leftIcon="@drawable/work_program_android"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/work_program_jet_pack"/>
+
+            <com.ddu.icore.ui.view.OptionItemView
                     android:id="@+id/oiv_program_jet_pack"
                     style="@style/DefaultRelativeLayout"
                     app:i_leftIcon="@drawable/work_program_jet_pack"

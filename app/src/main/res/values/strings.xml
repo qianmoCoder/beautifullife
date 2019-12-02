@@ -21,6 +21,7 @@
     <string name="no_install_app_store">未发现应用商店</string>
 
     <!-- Work Begin -->
+    <string name="work_program_android">android</string>
     <string name="work_program_jet_pack">JetPack</string>
     <string name="work_program_kotlin">Kotlin</string>
     <string name="work_program_java">Java</string>
