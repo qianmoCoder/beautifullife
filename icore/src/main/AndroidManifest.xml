@@ -27,7 +27,7 @@
         </activity>
 
         <service
-                android:name=".aidl.ICoreService"
+                android:name=".aidl.ICoreMessengerService"
                 android:enabled="true"
                 android:exported="true"
                 android:permission="com.icore.permission.ACCESS_LIVE_SERVICE"
