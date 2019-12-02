@@ -16,6 +16,10 @@ import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Created by yzbzz on 16/4/6.
@@ -61,10 +65,14 @@ class App : BaseApp() {
     }
 
     private fun initData() {
-        val studyContentBox = AppDatabase.getInstance(this).studyContentDao().getStudyContents()
-        val count = studyContentBox.size
-        if (count <= 0) {
-            loadFile()
+        MainScope().launch {
+            val studyContentBox = withContext(Dispatchers.IO) {
+                AppDatabase.getInstance(mContext).studyContentDao().getStudyContents()
+            }
+            val count = studyContentBox.size
+            if (count <= 0) {
+                loadFile()
+            }
         }
     }
 

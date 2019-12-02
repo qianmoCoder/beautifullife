@@ -5,13 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ddu.db.dao.StudyContentDao
+import com.ddu.db.entity.StudyContent
 import com.ddu.util.Constants.DATABASE_NAME
 
 /**
  * Created by yzbzz on 2019/11/29.
  */
 @Database(
-        entities = [StudyContentDao::class],
+        entities = [StudyContent::class],
         version = 1,
         exportSchema = false
 )

@@ -5,5 +5,5 @@ package com.ddu.util
  */
 object Constants {
 
-    const val DATABASE_NAME = "beautiful-life_db"
+    const val DATABASE_NAME = "beautiful-life-db"
 }
