@@ -3,9 +3,7 @@ package com.ddu.ui.activity.service
 import android.os.Bundle
 import android.os.Message
 import com.ddu.R
-import com.ddu.icore.aidl.GodIntent
-import com.ddu.icore.aidl.ICoreMessengerServiceConnection
-import com.ddu.icore.aidl.ICoreServiceConnection
+import com.ddu.icore.aidl.*
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.logic.Actions
 import com.ddu.icore.ui.activity.BaseActivity
@@ -22,8 +20,6 @@ class MyServiceActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
-        ICoreServiceConnection.bindICoreService()
-        ICoreMessengerServiceConnection.bindICoreService()
         initView()
     }
 
@@ -47,16 +43,11 @@ class MyServiceActivity : BaseActivity() {
             setText(txt)
             val msg = Message.obtain()
             msg.data.putString("client_msg", txt)
-            msg.data.putString(Actions.REPLY_TO_MSG, "aidl_msg: $txt")
-            ICoreServiceConnection.sendMessage(msg)
+            msg.data.putString(Actions.REPLY_TO_MSG, "${ICoreIPCManager.getIPCName()}: $txt")
+            ICoreIPCManager.getIPC().sendMessage(msg)
         }
-        btn_send_message_messenger.setOnClickListener {
-            val txt = et_msg.text.toString()
-            setText(txt)
-            val msg = Message.obtain()
-            msg.data.putString("client_msg", txt)
-            msg.data.putString(Actions.REPLY_TO_MSG, "messenger_msg: $txt")
-            ICoreMessengerServiceConnection.sendMessage(msg)
+        btn_switch.setOnClickListener {
+            ICoreIPCManager.switchIPC()
         }
     }
 
@@ -68,8 +59,7 @@ class MyServiceActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        ICoreServiceConnection.unBindICoreService()
-        ICoreMessengerServiceConnection.unBindICoreService()
+        ICoreIPCManager.getIPC().unBindICoreService()
     }
 
 }

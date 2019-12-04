@@ -13,13 +13,13 @@
         android:id="@+id/btn_send_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AIDL发送" />
+        android:text="发送消息" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_send_message_messenger"
+        android:id="@+id/btn_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MESSENGER发送" />
+        android:text="切换IPC" />
 
     <TextView
         android:id="@+id/tv_im"

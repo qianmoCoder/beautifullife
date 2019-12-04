@@ -10,7 +10,7 @@ import com.ddu.icore.ICore
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.logic.Actions
 
-class ICoreServiceConnection private constructor() : ServiceConnection {
+class ICoreServiceConnection private constructor() : ServiceConnection, ICoreIPCInterface {
 
     private var isConnected = false
     private var isBind = false
@@ -111,7 +111,7 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
     }
 
     private fun reSendAllMsg(mICoreAidlInterface: ICoreAidlInterface?) {
-        if (isServiceAvailable && null != mICoreAidlInterface) {
+        if (isServiceAvailable() && null != mICoreAidlInterface) {
             val concurrentLinkedQueue = MessageManager.getMessages()
             val messageIterator = concurrentLinkedQueue.iterator()
             while (messageIterator.hasNext()) {
@@ -180,33 +180,34 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
         }
     }
 
+    override fun bindICoreService() {
+        instance.bindService(true)
+    }
+
+    override fun unBindICoreService() {
+        instance.unBindService()
+    }
+
+    override fun sendMessage(message: Message?) {
+        message?.let {
+            instance.sendMsg(it)
+        }
+    }
+
+    override fun isServiceAvailable(): Boolean {
+        return instance.isBind && instance.isConnected
+    }
+
+    override fun killICoreService() {
+        instance.killService()
+    }
+
     companion object {
 
         private const val DEATH_RECIPIENT_FLAGS = 0
 
-        private val instance: ICoreServiceConnection
+        val instance: ICoreServiceConnection
             get() = SingletonHolder.instance
-
-        fun bindICoreService() {
-            instance.bindService(true)
-        }
-
-        fun unBindICoreService() {
-            instance.unBindService()
-        }
-
-        fun sendMessage(message: Message?) {
-            if (null != message) {
-                instance.sendMsg(message)
-            }
-        }
-
-        val isServiceAvailable: Boolean
-            get() = instance.isBind && instance.isConnected
-
-        fun killICoreService() {
-            instance.killService()
-        }
     }
 
 }

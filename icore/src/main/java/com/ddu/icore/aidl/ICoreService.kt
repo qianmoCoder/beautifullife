@@ -30,7 +30,7 @@ class ICoreService : Service(), IObserver {
 
     private fun init() {
         registerObserver()
-        mRemoteCallbackList = RemoteCallbackList<ICoreAidlCallBackInterface>()
+        mRemoteCallbackList = RemoteCallbackList()
         mLogicManager = LogicManager.getInstance()
         mLogicManager?.initAllLogic()
     }
