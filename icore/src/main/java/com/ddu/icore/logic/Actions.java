@@ -14,10 +14,10 @@ public class Actions {
     public static String SERVICE_CONNECTED_ACTION = "service_connected_action";
 
     // 接收服务端消息
-    public static String RECEIVE_SERVICE_MSG_ACTION = "receive_service_msg_action";
+    public static String SERVICE_MSG_ACTION = "service_msg_action";
 
     // 接收客户端消息
-    public static String RECEIVE_CLIENT_MSG_ACTION = "receive_client_msg_action";
+    public static String CLIENT_MSG_ACTION = "client_msg_action";
 
     public static String EXIT_ACTION = "exit_action";
 

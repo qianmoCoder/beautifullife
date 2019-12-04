@@ -13,7 +13,7 @@ public class GlobalLogic extends BaseLogic {
     }
 
     public void registerObserver() {
-        registerObserver(Actions.RECEIVE_CLIENT_MSG_ACTION);
+        registerObserver(Actions.CLIENT_MSG_ACTION);
     }
 
     @Override

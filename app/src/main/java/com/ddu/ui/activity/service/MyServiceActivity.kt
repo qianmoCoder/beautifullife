@@ -29,13 +29,13 @@ class MyServiceActivity : BaseActivity() {
 
     override fun registerObserver() {
         super.registerObserver()
-        ObserverManager.registerObserver(Actions.RECEIVE_SERVICE_MSG_ACTION, this)
+        ObserverManager.registerObserver(Actions.SERVICE_MSG_ACTION, this)
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
-        when(godIntent.action) {
-            Actions.RECEIVE_SERVICE_MSG_ACTION -> {
-                val msg = godIntent.getString("service_msg","")
+        when (godIntent.action) {
+            Actions.SERVICE_MSG_ACTION -> {
+                val msg = godIntent.getString(Actions.REPLY_TO_MSG, "")
                 setText(msg)
             }
         }
@@ -47,6 +47,7 @@ class MyServiceActivity : BaseActivity() {
             setText(txt)
             val msg = Message.obtain()
             msg.data.putString("client_msg", txt)
+            msg.data.putString(Actions.REPLY_TO_MSG, "aidl_msg: $txt")
             ICoreServiceConnection.sendMessage(msg)
         }
         btn_send_message_messenger.setOnClickListener {
@@ -54,6 +55,7 @@ class MyServiceActivity : BaseActivity() {
             setText(txt)
             val msg = Message.obtain()
             msg.data.putString("client_msg", txt)
+            msg.data.putString(Actions.REPLY_TO_MSG, "messenger_msg: $txt")
             ICoreMessengerServiceConnection.sendMessage(msg)
         }
     }

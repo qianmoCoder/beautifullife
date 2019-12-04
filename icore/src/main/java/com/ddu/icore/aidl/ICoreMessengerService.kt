@@ -106,50 +106,40 @@ class ICoreMessengerService : Service(), IObserver {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
 
-            val clientMessenger = msg.replyTo
-            val bundle = msg.data
-
-
             val iCoreService = serviceWeakReference.get()
 
-            val what = msg.what
-            if (what == Actions.KILL_SERVICE) {
-                iCoreService?.killSelf()
-                return
-            }
+            iCoreService?.let {
 
-            if (null != iCoreService) {
-                iCoreService.setClientMessenger(clientMessenger)
+                val what = msg.what
+                if (what == Actions.KILL_SERVICE) {
+                    it.killSelf()
+                    return
+                }
+
+                val clientMessenger = msg.replyTo
+                it.setClientMessenger(clientMessenger)
+
                 //取出客户端的消息内容
-                val godIntent = GodIntent(Actions.RECEIVE_CLIENT_MSG_ACTION, msg)
+                val godIntent = GodIntent(Actions.CLIENT_MSG_ACTION, msg)
+                val bundle = msg.data
+
                 if (null != bundle) {
+                    //新建一个Message对象，作为回复客户端的对象
+                    val replyToMsg = bundle.getString(Actions.REPLY_TO_MSG, "")
+                    if (!TextUtils.isEmpty(replyToMsg)) {
+                        val replyToMessage = Message.obtain()
+                        replyToMessage.data = bundle
+                        it.sendServiceMessage(replyToMessage)
+                    }
+
                     val value = bundle.getString(SEND_CLIENT_MESSENGER, "")
                     if (SEND_CLIENT_MESSENGER.equals(value, ignoreCase = true)) {
                         iCoreService.reSendAllMsg(clientMessenger)
                     } else {
-                        val msg = bundle.getString("client_msg", "")
-                        val serviceMsg = Message.obtain()
-                        serviceMsg.data.putString("service_msg", "messenger service: $msg")
-                        iCoreService.sendServiceMessage(serviceMsg)
                         iCoreService.notifyListener(godIntent)
                     }
                 } else {
                     iCoreService.notifyListener(godIntent)
-                }
-            }
-
-            //新建一个Message对象，作为回复客户端的对象
-            if (null != bundle) {
-                val replyToMsg = bundle.getString(Actions.REPLY_TO_MSG, "")
-                if (!TextUtils.isEmpty(replyToMsg)) {
-                    val replyToMessage = Message.obtain()
-                    replyToMessage.data = bundle
-                    try {
-                        clientMessenger?.send(replyToMessage)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-
                 }
             }
         }
@@ -180,7 +170,6 @@ class ICoreMessengerService : Service(), IObserver {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
     }
 

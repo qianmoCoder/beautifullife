@@ -91,10 +91,7 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
         if (null != message) {
             if (isConnected && null != mICoreAidlInterface) {
                 try {
-                    val godIntent = GodIntent()
-                    godIntent.action = Actions.RECEIVE_CLIENT_MSG_ACTION
-                    godIntent.message = message
-                    mICoreAidlInterface?.sendMessage(godIntent)
+                    mICoreAidlInterface?.sendMessage(GodIntent(Actions.CLIENT_MSG_ACTION, message))
                 } catch (e: Exception) {
                     e.printStackTrace()
                     enqueueMessageAndReBindService(message)
@@ -114,16 +111,13 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
     }
 
     private fun reSendAllMsg(mICoreAidlInterface: ICoreAidlInterface?) {
-        if (ICoreMessengerServiceConnection.isServiceAvailable && null != mICoreAidlInterface) {
+        if (isServiceAvailable && null != mICoreAidlInterface) {
             val concurrentLinkedQueue = MessageManager.getMessages()
             val messageIterator = concurrentLinkedQueue.iterator()
             while (messageIterator.hasNext()) {
                 val message = messageIterator.next()
-                val godIntent = GodIntent()
-                godIntent.action = Actions.RECEIVE_CLIENT_MSG_ACTION
-                godIntent.message = message
                 try {
-                    mICoreAidlInterface.sendMessage(godIntent)
+                    mICoreAidlInterface.sendMessage(GodIntent(Actions.CLIENT_MSG_ACTION, message))
                     messageIterator.remove()
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -177,7 +171,7 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
         isConnected = false
     }
 
-    private inner class ServiceCallBack : ICoreAidlCallBackInterface.Stub() {
+    private class ServiceCallBack : ICoreAidlCallBackInterface.Stub() {
 
         override fun callback(godIntent: GodIntent?) {
             godIntent?.let {
@@ -188,12 +182,10 @@ class ICoreServiceConnection private constructor() : ServiceConnection {
 
     companion object {
 
-        private const val SEND_CLIENT_MESSENGER = "send_client_messenger"
-
         private const val DEATH_RECIPIENT_FLAGS = 0
 
         private val instance: ICoreServiceConnection
-            get() = ICoreServiceConnection.SingletonHolder.instance
+            get() = SingletonHolder.instance
 
         fun bindICoreService() {
             instance.bindService(true)

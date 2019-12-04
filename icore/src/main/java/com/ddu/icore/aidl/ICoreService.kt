@@ -4,6 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.*
+import android.text.TextUtils
 import com.ddu.icore.common.IObserver
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.logic.Actions
@@ -88,11 +89,14 @@ class ICoreService : Service(), IObserver {
 
         override fun sendMessage(godIntent: GodIntent?) {
             godIntent?.let {
-                val msg = it.getString("client_msg", "")
+                val replyToMsg = it.getString(Actions.REPLY_TO_MSG, "")
+                if (!TextUtils.isEmpty(replyToMsg)) {
+                    val replyToMessage = Message.obtain()
+                    replyToMessage.data = it.data
+                    sendServiceMessage(replyToMessage)
+                }
 
-                val serviceMsg = Message.obtain()
-                serviceMsg.data.putString("service_msg", "aidl service: $msg")
-                sendServiceMessage(serviceMsg)
+                notifyListener(godIntent)
             }
         }
 
@@ -137,7 +141,7 @@ class ICoreService : Service(), IObserver {
     private fun sendServiceMessage(message: Message?) {
         if (null != message) {
             try {
-                val godIntent = GodIntent(Actions.RECEIVE_SERVICE_MSG_ACTION, message)
+                val godIntent = GodIntent(Actions.SERVICE_MSG_ACTION, message)
                 sendMessageToAllClient(godIntent)
             } catch (e: Exception) {
                 MessageManager.add(message)
@@ -154,7 +158,7 @@ class ICoreService : Service(), IObserver {
                 while (messageIterator.hasNext()) {
                     val message = messageIterator.next()
                     try {
-                        val godIntent = GodIntent(Actions.RECEIVE_SERVICE_MSG_ACTION, message)
+                        val godIntent = GodIntent(Actions.SERVICE_MSG_ACTION, message)
                         sendMessageToAllClient(godIntent)
                         messageIterator.remove()
                     } catch (e: Exception) {
