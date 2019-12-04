@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ddu">
 
-
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -77,6 +76,11 @@
             android:name=".ui.activity.LoginActivity2"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".ui.activity.service.MyServiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.ddu.provider"
@@ -143,6 +147,7 @@
         <activity android:name=".ui.activity.phrase.TwoSeparatorActivity" />
         <activity android:name=".ui.activity.phrase.MultiSeparatorActivity" />
         <activity android:name=".ui.activity.phrase.CustomSeparatorActivity" />
+
     </application>
 
 </manifest>

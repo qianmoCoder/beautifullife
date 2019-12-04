@@ -32,20 +32,29 @@ class ICoreMessengerService : Service(), IObserver {
         init()
     }
 
+    private fun init() {
+        registerObserver()
+        mMessengerHandler = MessengerHandler(this)
+        mMessenger = Messenger(mMessengerHandler)
+
+        mLogicManager = LogicManager.getInstance()
+        mLogicManager?.initAllLogic()
+    }
+
     fun registerObserver() {
-        ObserverManager.registerObserver(Actions.SEND_SERVICE_MSG_ACTION, this)
-        ObserverManager.registerObserver(Actions.KILL_SERVICE_PROCESS, this)
-        ObserverManager.registerObserver(Actions.RE_SEND_ALL_SERVICE_MSG, this)
+        ObserverManager.registerObserver(SEND_SERVICE_MSG_ACTION, this)
+        ObserverManager.registerObserver(KILL_SERVICE_PROCESS, this)
+        ObserverManager.registerObserver(RE_SEND_ALL_SERVICE_MSG, this)
     }
 
     override fun onReceiverNotify(godIntent: GodIntent) {
         when (godIntent.action) {
-            Actions.SEND_SERVICE_MSG_ACTION -> {
+            SEND_SERVICE_MSG_ACTION -> {
                 val message = godIntent.message
                 sendServiceMessage(message)
             }
-            Actions.KILL_SERVICE_PROCESS -> killSelf()
-            Actions.RE_SEND_ALL_SERVICE_MSG -> reSendAllMsg(mClientMessenger)
+            KILL_SERVICE_PROCESS -> killSelf()
+            RE_SEND_ALL_SERVICE_MSG -> reSendAllMsg(mClientMessenger)
         }
     }
 
@@ -58,15 +67,6 @@ class ICoreMessengerService : Service(), IObserver {
     override fun onDestroy() {
         super.onDestroy()
         release()
-    }
-
-    private fun init() {
-        registerObserver()
-        mMessengerHandler = MessengerHandler(this)
-        mMessenger = Messenger(mMessengerHandler)
-
-        mLogicManager = LogicManager.getInstance()
-        mLogicManager?.initAllLogic()
     }
 
     private fun release() {
@@ -91,11 +91,12 @@ class ICoreMessengerService : Service(), IObserver {
     }
 
     override fun onBind(intent: Intent): IBinder? {
-        return if (checkCallingOrSelfPermission("com.icore.permission.ACCESS_LIVE_SERVICE") == PackageManager.PERMISSION_DENIED) {
+        return if (checkCallingOrSelfPermission("com.icore.permission.ACCESS_SERVICE") == PackageManager.PERMISSION_DENIED) {
             null
-        } else mMessenger?.binder
+        } else {
+            mMessenger?.binder
+        }
     }
-
 
     @SuppressLint("HandlerLeak")
     private inner class MessengerHandler(s: ICoreMessengerService) : Handler() {
@@ -126,6 +127,10 @@ class ICoreMessengerService : Service(), IObserver {
                     if (SEND_CLIENT_MESSENGER.equals(value, ignoreCase = true)) {
                         iCoreService.reSendAllMsg(clientMessenger)
                     } else {
+                        val msg = bundle.getString("client_msg", "")
+                        val serviceMsg = Message.obtain()
+                        serviceMsg.data.putString("service_msg", "messenger service: $msg")
+                        iCoreService.sendServiceMessage(serviceMsg)
                         iCoreService.notifyListener(godIntent)
                     }
                 } else {
@@ -200,31 +205,35 @@ class ICoreMessengerService : Service(), IObserver {
         }
     }
 
-    fun reSendAllMessage() {
-        ObserverManager.notify(Actions.RE_SEND_ALL_SERVICE_MSG)
-    }
-
     companion object {
 
         private const val SEND_CLIENT_MESSENGER = "send_client_messenger"
 
+        // 发送服务端消息
+        private const val SEND_SERVICE_MSG_ACTION = "send_service_msg_action"
+        // 关闭Service进程
+        private const val KILL_SERVICE_PROCESS = "kill_service_process"
+        // 重发所有消息
+        private const val RE_SEND_ALL_SERVICE_MSG = "re_send_all_service_msg"
+
         fun sendMessage(message: Message) {
             val godIntent = GodIntent()
-            godIntent.action = Actions.SEND_SERVICE_MSG_ACTION
+            godIntent.action = SEND_SERVICE_MSG_ACTION
             godIntent.message = message
             ObserverManager.notify(godIntent)
         }
 
         fun sendMessage(godIntent: GodIntent) {
-            godIntent.action = Actions.SEND_SERVICE_MSG_ACTION
+            godIntent.action = SEND_SERVICE_MSG_ACTION
             ObserverManager.notify(godIntent)
         }
 
         fun killService() {
-            val godIntent = GodIntent()
-            godIntent.action = Actions.SEND_SERVICE_MSG_ACTION
-            godIntent.setWhat(Actions.KILL_SERVICE)
-            ObserverManager.notify(godIntent)
+            ObserverManager.notify(KILL_SERVICE_PROCESS)
+        }
+
+        fun reSendAllMessage() {
+            ObserverManager.notify(RE_SEND_ALL_SERVICE_MSG)
         }
     }
 }

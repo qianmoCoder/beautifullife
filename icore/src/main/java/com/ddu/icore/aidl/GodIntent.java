@@ -43,6 +43,10 @@ public class GodIntent implements Parcelable {
         message.what = what;
     }
 
+    public int getWhat() {
+        return message.what;
+    }
+
     public void putInt(String key, int value) {
         getData().putInt(key, value);
     }
@@ -97,6 +101,28 @@ public class GodIntent implements Parcelable {
 //        return value;
 //    }
 
+    public GodIntent() {
+        this.message = Message.obtain();
+    }
+
+    public GodIntent(String action, Message message) {
+        this.action = action;
+        this.message = message;
+    }
+
+    private GodIntent(@NonNull Parcel in) {
+        readFromParcel(in);
+    }
+
+    /**
+     * 使用out tag序列化的时候一定要有下面的函数
+     * 否则会报找不到符号 方法 readFromParcel(Parcel)
+     */
+    public void readFromParcel(Parcel in) {
+        this.action = in.readString();
+        this.message = in.readParcelable(getClass().getClassLoader());
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -106,20 +132,6 @@ public class GodIntent implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(this.action);
         dest.writeParcelable(this.message, 0);
-    }
-
-    public GodIntent() {
-        message = Message.obtain();
-    }
-
-    public GodIntent(String action, Message message) {
-        this.action = action;
-        this.message = message;
-    }
-
-    private GodIntent(@NonNull Parcel in) {
-        this.action = in.readString();
-        this.message = in.readParcelable(getClass().getClassLoader());
     }
 
     public static final Creator<GodIntent> CREATOR = new Creator<GodIntent>() {

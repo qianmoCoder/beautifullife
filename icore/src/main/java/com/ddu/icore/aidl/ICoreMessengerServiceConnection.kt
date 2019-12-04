@@ -21,41 +21,18 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection 
     private var isConnected = false
     private var isBind = false
 
-    private var mMessenger: Messenger? = null
-    private var mRelyMessenger: Messenger? = null
-    private var mGetRelyHandler: GetRelyHandler? = null
-
     private var isUserCancel = false
     private var isKillService = false
 
     private val isCanRebind: Boolean
         get() = !isUserCancel && !isKillService
 
-    private val mDeathRecipient = object : IBinder.DeathRecipient {
-        override fun binderDied() {
-            isConnected = false
-            if (mMessenger == null) {
-                return
-            }
-            mMessenger?.binder?.unlinkToDeath(this, DEATH_RECIPIENT_FLAGS)
-            mMessenger = null
-            // Binder死亡，重新绑定服务
-            reBindService()
-        }
-    }
+    private var mMessenger: Messenger? = null
+    private var mRelyMessenger: Messenger? = null
+    private var mGetRelyHandler: GetRelyHandler? = null
 
     private object SingletonHolder {
         val instance = ICoreMessengerServiceConnection()
-    }
-
-    private fun reBindService() {
-        if (isCanRebind) {
-            synchronized(this) {
-                if (isCanRebind) {
-                    bindService(false)
-                }
-            }
-        }
     }
 
     private fun bindService(isFirstBind: Boolean) {
@@ -70,6 +47,16 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection 
 
                     mRelyMessenger = null
                     mRelyMessenger = Messenger(mGetRelyHandler)
+                }
+            }
+        }
+    }
+
+    private fun reBindService() {
+        if (isCanRebind) {
+            synchronized(this) {
+                if (isCanRebind) {
+                    bindService(false)
                 }
             }
         }
@@ -180,6 +167,19 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection 
             } else {
                 ObserverManager.notify(godIntent)
             }
+        }
+    }
+
+    private val mDeathRecipient = object : IBinder.DeathRecipient {
+        override fun binderDied() {
+            isConnected = false
+            if (mMessenger == null) {
+                return
+            }
+            mMessenger?.binder?.unlinkToDeath(this, DEATH_RECIPIENT_FLAGS)
+            mMessenger = null
+            // Binder死亡，重新绑定服务
+            reBindService()
         }
     }
 

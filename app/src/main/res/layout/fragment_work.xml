@@ -1,93 +1,61 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/c_ecedf1">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_ecedf1">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout style="@style/DefaultLinearLayout">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_13"
-                    android:paddingTop="@dimen/dp_5"
-                    android:paddingBottom="@dimen/dp_5"
-                    android:text="编程"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_13"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5"
+                android:text="编程"
+                android:textColor="@color/c_000000" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_program_android"
                 style="@style/DefaultRelativeLayout"
                 app:i_leftIcon="@drawable/work_program_android"
                 app:i_rightIcon="@drawable/right_arrow_gray"
-                app:i_title="@string/work_program_jet_pack"/>
+                app:i_title="@string/work_program_android" />
 
             <com.ddu.icore.ui.view.OptionItemView
-                    android:id="@+id/oiv_program_jet_pack"
-                    style="@style/DefaultRelativeLayout"
-                    app:i_leftIcon="@drawable/work_program_jet_pack"
-                    app:i_rightIcon="@drawable/right_arrow_gray"
-                    app:i_title="@string/work_program_jet_pack"/>
+                android:id="@+id/oiv_program_jet_pack"
+                style="@style/DefaultRelativeLayout"
+                app:i_leftIcon="@drawable/work_program_jet_pack"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/work_program_jet_pack" />
 
             <com.ddu.icore.ui.view.OptionItemView
-                    android:id="@+id/oiv_program_kotlin"
-                    style="@style/DefaultRelativeLayout"
-                    app:i_leftIcon="@drawable/work_program_kotlin"
-                    app:i_rightIcon="@drawable/right_arrow_gray"
-                    app:i_title="@string/work_program_kotlin"/>
+                android:id="@+id/oiv_program_kotlin"
+                style="@style/DefaultRelativeLayout"
+                app:i_leftIcon="@drawable/work_program_kotlin"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/work_program_kotlin" />
 
             <com.ddu.icore.ui.view.OptionItemView
-                    android:id="@+id/oiv_program_java"
-                    style="@style/DefaultRelativeLayout"
-                    app:i_leftIcon="@drawable/work_program_java"
-                    app:i_rightIcon="@drawable/right_arrow_gray"
-                    app:i_title="@string/work_program_java"/>
+                android:id="@+id/oiv_program_java"
+                style="@style/DefaultRelativeLayout"
+                app:i_leftIcon="@drawable/work_program_java"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/work_program_java" />
 
             <com.ddu.icore.ui.view.OptionItemView
-                    android:id="@+id/oiv_program_swift"
-                    style="@style/DefaultRelativeLayout"
-                    app:i_leftIcon="@drawable/work_program_swift"
-                    app:i_rightIcon="@drawable/right_arrow_gray"
-                    app:i_title="@string/work_program_swift"/>
+                android:id="@+id/oiv_program_swift"
+                style="@style/DefaultRelativeLayout"
+                app:i_leftIcon="@drawable/work_program_swift"
+                app:i_rightIcon="@drawable/right_arrow_gray"
+                app:i_title="@string/work_program_swift" />
 
         </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/dp_20">
-
-            <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_get"
-                    android:text="获取补丁包"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <TextView
-                    android:id="@+id/tv_html"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:autoLink="web"
-                    android:text="hello word"
-            />
-
-            <!--<EditText-->
-            <!--android:id="@+id/tv_html"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:autoLink="web"-->
-            <!--android:text="hello"-->
-            <!--android:focusable="false"-->
-            <!--android:focusableInTouchMode="false"-->
-            <!--android:background="@null"-->
-            <!--/>-->
-        </LinearLayout>
-
 
     </LinearLayout>
 

@@ -1,10 +1,10 @@
 package com.ddu.ui.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import com.ddu.R
-import com.ddu.icore.common.adapters.bindTextColor
+import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
+import com.ddu.ui.activity.service.MyServiceActivity
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -18,27 +18,9 @@ class WorkFragment : DefaultFragment() {
 
     override fun initView() {
         setTitle(R.string.main_tab_work)
-
-        oiv_program_swift.setOnClickListener {
+        oiv_program_android.setOnClickListener {
+            startActivity<MyServiceActivity>()
         }
-
-        btn_get.setOnClickListener {
-            //            SophixManager.getInstance().queryAndLoadNewPatch()
-            tv_html.isEnabled = false
-        }
-
-        tv_html.text = "LIMILIMILIMILIMILIMILIMILIMILIMILIMILIMILIMI"
-        tv_html.isClickable = true
-        tv_html.isFocusable = true
-//        tv_html.setTextColor( resources.getColorStateList(R.color.fragment_ui_navi_item_text_selector))
-        tv_html.bindTextColor(
-            resources.getColor(R.color.c_ff0000),
-            resources.getColor(R.color.c_4897fa),
-            Color.BLACK
-        )
-
-        1.toString()
-
     }
 
     fun ToDBC(input: String): String {

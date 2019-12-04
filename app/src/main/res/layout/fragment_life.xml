@@ -15,9 +15,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
-                android:text="金融理财" />
+                android:paddingBottom="@dimen/dp_5"
+                android:text="金融理财"
+                android:textColor="@color/c_000000" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_calculator_house"
@@ -43,9 +44,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
-                android:text="健康" />
+                android:paddingBottom="@dimen/dp_5"
+                android:text="健康"
+                android:textColor="@color/c_000000" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_food"
@@ -71,9 +73,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
-                android:text="生活感悟" />
+                android:paddingBottom="@dimen/dp_5"
+                android:text="生活感悟"
+                android:textColor="@color/c_000000" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_joke"
