@@ -1,7 +1,6 @@
 package com.ddu.util;
 
 import android.os.Environment;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,7 +33,6 @@ public class HttpUtils {
             }
             out.append(key).append("=").append(form.get(key));
         }
-        Log.v("lhz", "out: " + out);
         try {
             conn = (HttpURLConnection) new URL(url).openConnection();
             conn.setRequestMethod("POST");
@@ -77,7 +75,6 @@ public class HttpUtils {
 
     public static void saveAd(InputStream inputStream) {
         File file = new File(Environment.getExternalStorageDirectory() + "/icore/1.jpg");
-        Log.v("lhz", "file: " + file.getAbsolutePath());
         FileOutputStream out = null;
         try {
             if (!file.exists()) {

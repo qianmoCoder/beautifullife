@@ -1,20 +1,19 @@
 package com.ddu.ui.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.ddu.R;
-import com.ddu.icore.util.sys.DensityUtils;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
+
+import com.ddu.R;
+import com.ddu.icore.util.sys.DensityUtils;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -53,7 +52,6 @@ public class ScrollingActivity extends AppCompatActivity {
         int a = DensityUtils.px2dip(this, 132);
         int b = DensityUtils.px2dip(this, 162);
         int c = DensityUtils.px2dip(this, 102);
-        Log.v("lhz", "a: " + a + " b: " + b + " c: " + c);
 
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -64,7 +62,6 @@ public class ScrollingActivity extends AppCompatActivity {
 //                        isExpanded = false;
 //                    }
 //                }
-                Log.v("lhz","appBarLayout.getTotalScrollRange(): " + appBarLayout.getTotalScrollRange());
                 int rightMargin = Math.abs(verticalOffset);
                 rl_title_bar.setPadding(offsetY, offsetY, rightMargin + offsetY, offsetY);
             }

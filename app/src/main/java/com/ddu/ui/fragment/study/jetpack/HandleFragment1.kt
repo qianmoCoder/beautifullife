@@ -1,7 +1,6 @@
 package com.ddu.ui.fragment.study.jetpack
 
 import android.os.Message
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.ddu.help.LifeCycleHandler1
 import com.ddu.icore.ui.fragment.DefaultFragment
@@ -28,7 +27,6 @@ class HandleFragment1 : DefaultFragment() {
 
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            Log.v("lhz", "handleMessage")
             if (msg.what == 1) {
                 sendEmptyMessageDelayed(1, 1000)
             }
@@ -38,7 +36,6 @@ class HandleFragment1 : DefaultFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.v("lhz", "HandleFragment onDestroy")
     }
 
 }

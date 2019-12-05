@@ -2,7 +2,6 @@ package com.ddu.ui.fragment.study.jetpack
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,7 +84,6 @@ class PagingFragment : DefaultFragment() {
     }
 
     fun loadData(startPosition: Int, count: Int): List<DataBean> {
-        Log.v("lhz","startPosition: " + startPosition)
         Thread.sleep(2000)
         val list = mutableListOf<DataBean>()
         for (i in 0 until count) {

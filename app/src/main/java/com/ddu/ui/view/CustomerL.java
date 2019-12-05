@@ -2,7 +2,6 @@ package com.ddu.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -32,12 +31,10 @@ public class CustomerL extends RelativeLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.v("lhz","CustomerL onMeasure");
     }
 
     @Override
     protected void measureChild(View child, int parentWidthMeasureSpec, int parentHeightMeasureSpec) {
         super.measureChild(child, parentWidthMeasureSpec, parentHeightMeasureSpec);
-        Log.v("lhz","CustomerL measureChild");
     }
 }

@@ -64,8 +64,7 @@ class WebActivity : Activity(), IObserver {
         //
         //            @Override
         //            public boolean onJsPrompt(WebView view, String data, String message, String defaultValue, JsPromptResult result) {
-        //                Log.v("lhz", "messge: " + message);
-        //                Log.v("lhz", "defaultValue: " + defaultValue);
+
         //                return super.onJsPrompt(view, data, message, defaultValue, result);
         //            }
         //        });
@@ -130,7 +129,6 @@ class WebActivity : Activity(), IObserver {
 
             BaseApp.post(Runnable {
                 try {
-                    Log.v("lhz", "json: " + jsonString)
                     getUserStatusInfo(JSONObject(jsonString))
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -138,12 +136,9 @@ class WebActivity : Activity(), IObserver {
             })
 
             //            try {
-            //                Log.v("lhz", json);
             //                JSONObject jsonObject = new JSONObject(json);
             //                String type = jsonObject.getString("type");
-            //                Log.v("lhz", "type: " + type);
             //            } catch (Exception e) {
-            //                Log.v("lhz", e.toString());
             //            }
 
 
@@ -161,7 +156,6 @@ class WebActivity : Activity(), IObserver {
         //        @android.webkit.JavascriptInterface
         //        /** 解决Android 17（包括17）之后js无法调用Android方法*/
         //        public void invoke(Object json) {
-        //            Log.v("lhz", json.toString());
         ////            try {
         ////                // 解析js传递过来的json串
         ////                JSONObject mJson = new JSONObject(json);

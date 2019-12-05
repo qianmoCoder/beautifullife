@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
@@ -134,7 +133,6 @@ class MeFragment : DefaultFragment() {
                 sb.append("isHidden: ${dialog.isHidden} ")
                 sb.append("isRemoving: ${dialog.isRemoving} ")
                 sb.append("isVisible: ${dialog.isVisible} ")
-                Log.v("lhz", sb.toString())
                 dialog.dismissAllowingStateLoss()
             }, 2000)
         }
@@ -205,7 +203,6 @@ class MeFragment : DefaultFragment() {
                 .setItemClickListener(object : InConsumer3<DialogFragment, BottomItem, Int> {
                     override fun accept(a: DialogFragment, d: BottomItem, p: Int) {
                         a.dismissAllowingStateLoss()
-                        Log.v("lhz", "d: " + d.title + " p: " + p)
                     }
                 }).create()
         dialogFragment.showDialog(act)

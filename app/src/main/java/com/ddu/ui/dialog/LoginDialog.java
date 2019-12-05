@@ -1,12 +1,8 @@
 package com.ddu.ui.dialog;
 
 import android.os.Bundle;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.ddu.R;
 import com.ddu.icore.util.sys.ViewUtils;
@@ -56,7 +56,6 @@ public class LoginDialog extends DialogFragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        Log.v("lhz", "tag: " + tagItem);
         LinearLayout mLlLogin = (LinearLayout) inflater.inflate(R.layout.fragment_login, container, false);
         mTvToast = ViewUtils.findViewById(mLlLogin, R.id.tv_toast);
         mBtnNext = ViewUtils.findViewById(mLlLogin, R.id.btn_next);

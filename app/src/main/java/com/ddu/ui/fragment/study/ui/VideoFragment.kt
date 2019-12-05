@@ -2,7 +2,6 @@ package com.ddu.ui.fragment.study.ui
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.ddu.R
 import com.ddu.app.BaseApp
@@ -30,17 +29,14 @@ class VideoFragment : DefaultFragment() {
         //        surface_view.setMediaController(new MediaController(mContext));
         surface_view.requestFocus()
         surface_view.setOnPreparedListener { mp ->
-            Log.v("lhz", " onPrepared ")
             mp.setOnBufferingUpdateListener { mp, percent ->
                 val currentPosition = surface_view.currentPosition
                 val duration = surface_view.duration
-                Log.v("lhz", " current $currentPosition $duration")
             }
             surface_view.start()
             mp.isLooping = true
         }
         surface_view.setOnCompletionListener {
-            Log.v("lhz", " onCompletion ")
             surface_view.start()
         }
 

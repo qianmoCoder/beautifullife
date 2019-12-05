@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment.study.customer
 
-import android.util.Log
 import com.ddu.R
 import com.ddu.icore.flow.workflow.Node
 import com.ddu.icore.flow.workflow.WorkFlow
@@ -39,7 +38,6 @@ class WorkFlowFragment : DefaultFragment() {
         return WorkNode.build(id, object : Worker {
             override fun doWork(current: Node) {
                 Thread.sleep(2000)
-                Log.v("lhz", "$id is completed")
                 current.onCompleted()
             }
         })

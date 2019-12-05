@@ -1,5 +1,6 @@
 package com.ddu.icore.aidl
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -8,9 +9,11 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Message
 import android.os.Messenger
+import android.text.TextUtils
 import com.ddu.icore.ICore
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.logic.Actions
+import java.lang.ref.WeakReference
 
 class ICoreMessengerServiceConnection private constructor() : ServiceConnection, ICoreIPCInterface {
 
@@ -39,7 +42,7 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection,
                 val service = Intent(ICore.context, ICoreMessengerService::class.java)
                 isBind = ICore.context.bindService(service, this, Context.BIND_AUTO_CREATE)
                 if (null == mGetRelyHandler) {
-                    mGetRelyHandler = GetRelyHandler()
+                    mGetRelyHandler = GetRelyHandler(this)
 
                     mRelyMessenger = null
                     mRelyMessenger = Messenger(mGetRelyHandler)
@@ -146,12 +149,24 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection,
         sendMsg(message)
     }
 
-    private class GetRelyHandler : Handler() {
+    @SuppressLint("HandlerLeak")
+    private inner class GetRelyHandler(serviceConnection: ICoreMessengerServiceConnection) : Handler() {
+
+        private var serviceWeakReference: WeakReference<ICoreMessengerServiceConnection> = WeakReference(serviceConnection)
 
         override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-            val godIntent = GodIntent(Actions.SERVICE_MSG_ACTION, msg)
-            ObserverManager.notify(godIntent)
+//            super.handleMessage(msg)
+            val serviceConnection = serviceWeakReference.get()
+            serviceConnection?.apply {
+                val godIntent = GodIntent(Actions.SERVICE_MSG_ACTION, msg)
+                val replyToMsg = godIntent.getString(Actions.REPLY_SERVICE_MSG, "")
+                if (!TextUtils.isEmpty(replyToMsg)) {
+                    val replyToMessage = Message.obtain()
+                    replyToMessage.data = godIntent.data
+                    sendMessage(replyToMessage)
+                }
+                ObserverManager.notify(godIntent)
+            }
         }
     }
 

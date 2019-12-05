@@ -1,6 +1,5 @@
 package com.ddu.ui.fragment.study.jetpack
 
-import android.util.Log
 import com.ddu.help.LifeCycleHandler
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
@@ -18,7 +17,6 @@ class HandleFragment : DefaultFragment() {
 
     override fun initView() {
         myHandler = LifeCycleHandler(this) {
-            Log.v("lhz", "handleMessage")
             if (it.what == 1) {
                 myHandler.sendEmptyMessageDelayed(1, 1000)
             }
@@ -29,7 +27,6 @@ class HandleFragment : DefaultFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.v("lhz", "HandleFragment onDestroy")
     }
 
 }

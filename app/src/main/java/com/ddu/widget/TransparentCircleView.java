@@ -101,7 +101,6 @@ public class TransparentCircleView extends View {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
 
                 rx = (Float) valueAnimator.getAnimatedValue();
-                Log.i("lhz", "currentValue = " + rx);
                 setPath();
                 invalidate();
             }

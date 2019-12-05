@@ -2,7 +2,6 @@ package com.ddu.help
 
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleObserver
@@ -28,7 +27,6 @@ open class LifeCycleHandler(owner: LifecycleOwner, val block: (Message) -> Unit)
             if (state == Lifecycle.State.DESTROYED) {
                 removeCallbacksAndMessages(null)
                 source.lifecycle.removeObserver(this)
-                Log.v("lhz", "LifeCycleHandle removeCallbacksAndMessages")
             }
         }
     }

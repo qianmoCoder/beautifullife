@@ -11,9 +11,6 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_test_design.*
 import java.util.*
 
-/**
- * Created by lhz on 16/5/6.
- */
 class TestDesignFragment : DefaultFragment() {
 
     private lateinit var fragmentA: FragmentA

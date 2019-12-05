@@ -49,27 +49,22 @@ class PersonalInfoFragment : DefaultFragment() {
         //        ptf.addPtrUIHandler(new PtrUIHandler() {
         //            @Override
         //            public void onUIReset(ptf frame) {
-        //                Log.v("lhz", "onUIReset");
         //            }
         //
         //            @Override
         //            public void onUIRefreshPrepare(ptf frame) {
-        //                Log.v("lhz", "onUIRefreshPrepare");
         //            }
         //
         //            @Override
         //            public void onUIRefreshBegin(ptf frame) {
-        //                Log.v("lhz", "onUIRefreshBegin");
         //            }
         //
         //            @Override
         //            public void onUIRefreshComplete(ptf frame) {
-        //                Log.v("lhz", "onUIRefreshComplete");
         //            }
         //
         //            @Override
         //            public void onUIPositionChange(ptf frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
-        //                Log.v("lhz", "onUIPositionChange: " + ptrIndicator.getCurrentPosY() + " " + ptrIndicator.getOffsetY());
         //            }
         //        });
     }

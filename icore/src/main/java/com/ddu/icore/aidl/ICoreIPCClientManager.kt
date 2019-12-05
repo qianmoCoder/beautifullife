@@ -6,12 +6,12 @@ import androidx.annotation.IntDef
 /**
  * Created by yzbzz on 2019/12/2.
  */
-object ICoreIPCManager {
+object ICoreIPCClientManager {
 
     private const val IPC_AIDL = 0x001
     private const val IPC_MESSENGER = 0x002
 
-    private var IPC = IPC_AIDL
+    private var IPC = IPC_MESSENGER
 
     fun getIPC(): ICoreIPCInterface = if (IPC == IPC_AIDL) {
         ICoreServiceConnection.instance

@@ -9,11 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import androidx.core.content.FileProvider;
+
 import com.bumptech.glide.Glide;
 import com.ddu.R;
 import com.ddu.icore.rx.activityresult.ActivityResultInfo;
@@ -21,10 +22,11 @@ import com.ddu.icore.rx.activityresult.RxActivityResult;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.util.ToastUtils;
 import com.iannotation.IElement;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 import java.io.File;
+
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by yzbzz on 2017/11/14.
@@ -111,7 +113,6 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         }
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-        Log.v("lhz", "photoUri: " + photoUri);
         return intent;
     }
 
@@ -122,7 +123,6 @@ public class CameraFragment extends DefaultFragment implements View.OnClickListe
         } else {
             inputUri = Uri.fromFile(mFile);
         }
-        Log.v("lhz", "inputUri: " + inputUri);
         return inputUri;
     }
 

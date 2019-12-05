@@ -1,13 +1,12 @@
 package com.ddu.ui.activity;
 
 import android.os.Bundle;
-import android.util.Log;
-
-import com.ddu.R;
-import com.google.android.material.appbar.AppBarLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.ddu.R;
+import com.google.android.material.appbar.AppBarLayout;
 
 
 public class ScrollingActivity1 extends AppCompatActivity {
@@ -27,7 +26,6 @@ public class ScrollingActivity1 extends AppCompatActivity {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 mVerticalOffset = verticalOffset;
-                Log.v("lhz", "verticalOffset " + verticalOffset);
             }
         });
 

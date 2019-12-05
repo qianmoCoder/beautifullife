@@ -6,7 +6,6 @@ import android.net.Uri
 import android.net.http.SslError
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.webkit.*
 import com.ddu.R
@@ -68,7 +67,6 @@ class WebFragment : DefaultFragment() {
         wv_web.webViewClient = webViewClient
         wv_web.webChromeClient = webChromeClient
 //        wv_web.setFindListener { activeMatchOrdinal, numberOfMatches, isDoneCounting ->
-//            Log.v("lhz", "$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
 //        }
 
         initTitle()
@@ -76,7 +74,6 @@ class WebFragment : DefaultFragment() {
         wv_web.loadUrl(mUrl)
         wv_web.setDownloadListener(object : DownloadListener{
             override fun onDownloadStart(url: String?, userAgent: String?, contentDisposition: String?, mimetype: String?, contentLength: Long) {
-                Log.v("lhz","download url: " + url)
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.addCategory(Intent.CATEGORY_BROWSABLE)
                 intent.setData(Uri.parse(url))
@@ -125,7 +122,6 @@ class WebFragment : DefaultFragment() {
 //            wv_web.findAllAsync("一")
 //            wv_web.setFindListener { activeMatchOrdinal, numberOfMatches, isDoneCounting ->
 //                ToastUtils.showToast("$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
-//                Log.v("lhz", "$activeMatchOrdinal - $numberOfMatches - $isDoneCounting")
 //            }
             CustomerBottomBar.make(wv_web).show()
         }
@@ -218,7 +214,6 @@ class WebFragment : DefaultFragment() {
         }
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-            Log.v("lhz","shouldOverrideUrlLoading: " + url)
             view.loadUrl(url)
             return true
         }

@@ -6,9 +6,11 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.os.Message
+import android.text.TextUtils
 import com.ddu.icore.ICore
 import com.ddu.icore.common.ObserverManager
 import com.ddu.icore.logic.Actions
+import java.lang.ref.WeakReference
 
 class ICoreServiceConnection private constructor() : ServiceConnection, ICoreIPCInterface {
 
@@ -38,7 +40,7 @@ class ICoreServiceConnection private constructor() : ServiceConnection, ICoreIPC
                 if (null != mServiceCallBack) {
                     mServiceCallBack = null
                 }
-                mServiceCallBack = ServiceCallBack()
+                mServiceCallBack = ServiceCallBack(this)
             }
         }
     }
@@ -171,12 +173,24 @@ class ICoreServiceConnection private constructor() : ServiceConnection, ICoreIPC
         isConnected = false
     }
 
-    private class ServiceCallBack : ICoreAidlCallBackInterface.Stub() {
+    private inner class ServiceCallBack(serviceConnection: ICoreServiceConnection) : ICoreAidlCallBackInterface.Stub() {
+
+        private var serviceWeakReference: WeakReference<ICoreServiceConnection> = WeakReference(serviceConnection)
 
         override fun callback(godIntent: GodIntent?) {
-            godIntent?.let {
-                ObserverManager.notify(godIntent)
+            val serviceConnection = serviceWeakReference.get()
+            serviceConnection?.let {
+                godIntent?.let {
+                    val replyToMsg = it.getString(Actions.REPLY_SERVICE_MSG, "")
+                    if (!TextUtils.isEmpty(replyToMsg)) {
+                        val replyToMessage = Message.obtain()
+                        replyToMessage.data = it.data
+                        sendMessage(replyToMessage)
+                    }
+                    ObserverManager.notify(godIntent)
+                }
             }
+
         }
     }
 

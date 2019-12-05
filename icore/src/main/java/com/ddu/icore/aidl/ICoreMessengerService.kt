@@ -99,13 +99,12 @@ class ICoreMessengerService : Service(), IObserver {
     }
 
     @SuppressLint("HandlerLeak")
-    private inner class MessengerHandler(s: ICoreMessengerService) : Handler() {
+    private inner class MessengerHandler(service: ICoreMessengerService) : Handler() {
 
-        private var serviceWeakReference: WeakReference<ICoreMessengerService> = WeakReference(s)
+        private var serviceWeakReference: WeakReference<ICoreMessengerService> = WeakReference(service)
 
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-
             val iCoreService = serviceWeakReference.get()
 
             iCoreService?.let {
@@ -125,7 +124,7 @@ class ICoreMessengerService : Service(), IObserver {
 
                 if (null != bundle) {
                     //新建一个Message对象，作为回复客户端的对象
-                    val replyToMsg = bundle.getString(Actions.REPLY_TO_MSG, "")
+                    val replyToMsg = bundle.getString(Actions.REPLY_CLIENT_MSG, "")
                     if (!TextUtils.isEmpty(replyToMsg)) {
                         val replyToMessage = Message.obtain()
                         replyToMessage.data = bundle
@@ -205,24 +204,24 @@ class ICoreMessengerService : Service(), IObserver {
         // 重发所有消息
         private const val RE_SEND_ALL_SERVICE_MSG = "re_send_all_service_msg"
 
-        fun sendMessage(message: Message) {
-            val godIntent = GodIntent()
-            godIntent.action = SEND_SERVICE_MSG_ACTION
-            godIntent.message = message
-            ObserverManager.notify(godIntent)
-        }
-
-        fun sendMessage(godIntent: GodIntent) {
-            godIntent.action = SEND_SERVICE_MSG_ACTION
-            ObserverManager.notify(godIntent)
-        }
-
-        fun killService() {
-            ObserverManager.notify(KILL_SERVICE_PROCESS)
-        }
-
-        fun reSendAllMessage() {
-            ObserverManager.notify(RE_SEND_ALL_SERVICE_MSG)
-        }
+//        fun sendMessage(message: Message) {
+//            val godIntent = GodIntent()
+//            godIntent.action = SEND_SERVICE_MSG_ACTION
+//            godIntent.message = message
+//            ObserverManager.notify(godIntent)
+//        }
+//
+//        fun sendMessage(godIntent: GodIntent) {
+//            godIntent.action = SEND_SERVICE_MSG_ACTION
+//            ObserverManager.notify(godIntent)
+//        }
+//
+//        fun killService() {
+//            ObserverManager.notify(KILL_SERVICE_PROCESS)
+//        }
+//
+//        fun reSendAllMessage() {
+//            ObserverManager.notify(RE_SEND_ALL_SERVICE_MSG)
+//        }
     }
 }

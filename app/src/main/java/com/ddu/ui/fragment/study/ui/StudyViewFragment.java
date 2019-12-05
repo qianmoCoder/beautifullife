@@ -4,13 +4,13 @@ import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
 import com.ddu.icore.ui.widget.ClockLoadingView;
@@ -49,14 +49,12 @@ public class StudyViewFragment extends DefaultFragment {
         mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("lhz", "onTouch: " + event.getAction());
                 return false;
             }
         });
         mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("lhz", "onClick: ");
             }
         });
 

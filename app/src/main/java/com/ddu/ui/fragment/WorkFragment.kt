@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.ddu.R
 import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.ui.activity.service.MyServiceActivity
+import com.ddu.ui.activity.service.MyClientActivity
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -19,7 +19,7 @@ class WorkFragment : DefaultFragment() {
     override fun initView() {
         setTitle(R.string.main_tab_work)
         oiv_program_android.setOnClickListener {
-            startActivity<MyServiceActivity>()
+            startActivity<MyClientActivity>()
         }
     }
 

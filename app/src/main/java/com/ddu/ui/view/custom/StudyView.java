@@ -2,7 +2,6 @@ package com.ddu.ui.view.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -29,7 +28,6 @@ public class StudyView extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.v("lhz", "dispatchTouchEvent: " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
@@ -37,7 +35,6 @@ public class StudyView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.v("lhz", "onTouchEvent: " + event.getAction());
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 //将点下的点的坐标保存

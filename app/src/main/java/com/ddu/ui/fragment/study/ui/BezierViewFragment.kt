@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.PointF
-import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import com.ddu.R
@@ -94,9 +93,6 @@ class BezierViewFragment : DefaultFragment() {
 //        controlP.y = (startP.y - endP.y) / 2
 
 
-        Log.v("lhz", "startP: $startP")
-        Log.v("lhz", "startP: $controlP")
-        Log.v("lhz", "startP: $endP")
 
         val objectAnimator =
             ObjectAnimator.ofObject(button, "mPointF", QuadraticPointFTypeEvaluator(controlP), startP, endP)

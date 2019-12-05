@@ -1,9 +1,10 @@
 package com.ddu.ui.fragment.work;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
 
 import com.ddu.R;
 import com.ddu.icore.ui.fragment.DefaultFragment;
@@ -44,18 +45,15 @@ public class FragmentC extends DefaultFragment {
             public void onClick(View v) {
                 //FragmentManager.POP_BACK_STACK_INCLUSIVE
 //                String tag = FragmentA.class.getName();
-//                Log.v("lhz", "tag: " + tag);
 //
 //                int size = getFragmentManager().getBackStackEntryCount();
 //                for (int i = 0; i < size; i++) {
 //                    FragmentManager.BackStackEntry backStackEntry = getFragmentManager().getBackStackEntryAt(i);
-//                    Log.v("lhz", backStackEntry.getName());
 //
 //                }
 //
 //
 //                boolean rst = getFragmentManager().popBackStackImmediate(tag, 0);
-//                Log.v("lhz", "rst: " + rst);
             }
         });
         setDefaultTitle("FragmentC");

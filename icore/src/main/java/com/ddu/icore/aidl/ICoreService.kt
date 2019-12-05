@@ -89,7 +89,7 @@ class ICoreService : Service(), IObserver {
 
         override fun sendMessage(godIntent: GodIntent?) {
             godIntent?.let {
-                val replyToMsg = it.getString(Actions.REPLY_TO_MSG, "")
+                val replyToMsg = it.getString(Actions.REPLY_CLIENT_MSG, "")
                 if (!TextUtils.isEmpty(replyToMsg)) {
                     val replyToMessage = Message.obtain()
                     replyToMessage.data = it.data
@@ -180,25 +180,25 @@ class ICoreService : Service(), IObserver {
         // 重发所有消息
         private const val RE_SEND_ALL_SERVICE_MSG = "re_send_all_service_msg"
 
-        fun sendMessage(message: Message) {
-            val godIntent = GodIntent()
-            godIntent.action = SEND_SERVICE_MSG_ACTION
-            godIntent.message = message
-            ObserverManager.notify(godIntent)
-        }
-
-        fun sendMessage(godIntent: GodIntent) {
-            godIntent.action = SEND_SERVICE_MSG_ACTION
-            ObserverManager.notify(godIntent)
-        }
-
-        fun killService() {
-            ObserverManager.notify(KILL_SERVICE_PROCESS)
-        }
-
-        fun reSendAllMessage() {
-            ObserverManager.notify(RE_SEND_ALL_SERVICE_MSG)
-        }
+//        fun sendMessage(message: Message) {
+//            val godIntent = GodIntent()
+//            godIntent.action = SEND_SERVICE_MSG_ACTION
+//            godIntent.message = message
+//            ObserverManager.notify(godIntent)
+//        }
+//
+//        fun sendMessage(godIntent: GodIntent) {
+//            godIntent.action = SEND_SERVICE_MSG_ACTION
+//            ObserverManager.notify(godIntent)
+//        }
+//
+//        fun killService() {
+//            ObserverManager.notify(KILL_SERVICE_PROCESS)
+//        }
+//
+//        fun reSendAllMessage() {
+//            ObserverManager.notify(RE_SEND_ALL_SERVICE_MSG)
+//        }
     }
 
 }

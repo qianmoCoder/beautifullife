@@ -2,15 +2,14 @@ package com.ddu.ui.dialog;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.ddu.R;
-
 import androidx.annotation.Nullable;
+
+import com.ddu.R;
 
 
 /**
@@ -41,30 +40,25 @@ public class WaitingDialog extends androidx.fragment.app.DialogFragment {
     @Override
     public void onCancel(DialogInterface dialog) {
         super.onCancel(dialog);
-        Log.v("lhz","onCancel");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.v("lhz","onDestroyView");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.v("lhz","onDetach");
     }
 
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
-        Log.v("lhz","onDismiss");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.v("lhz","onDestroy");
     }
 }

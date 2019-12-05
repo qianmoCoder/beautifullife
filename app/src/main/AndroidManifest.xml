@@ -78,8 +78,12 @@
 
         <activity
             android:name=".ui.activity.service.MyServiceActivity"
+            android:process=":iCoreService"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".ui.activity.service.MyClientActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -2,7 +2,6 @@ package com.ddu.ui.view.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
@@ -29,7 +28,6 @@ public class StudyViewGroup extends LinearLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.v("lhz", "g dispatchTouchEvent: " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
@@ -43,7 +41,6 @@ public class StudyViewGroup extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.v("lhz", "g onTouchEvent: " + event.getAction());
         return super.onTouchEvent(event);
     }
 

@@ -3,7 +3,6 @@ package com.ddu.icore.dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.view.*
 import com.ddu.icore.R
 import kotlinx.android.synthetic.main.i_fragment_dialog_default.*
@@ -75,6 +74,5 @@ class AlertDialogFragment : androidx.fragment.app.DialogFragment(), View.OnClick
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        Log.v("lhz", "onDismiss")
     }
 }

@@ -1,16 +1,15 @@
 package com.ddu.ui.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ddu.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class ScrollingActivity3 extends AppCompatActivity {
 
@@ -35,7 +34,6 @@ public class ScrollingActivity3 extends AppCompatActivity {
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                Log.v("lhz","ScrollingActivity3 verticalOffset: " + verticalOffset);
             }
         });
     }
