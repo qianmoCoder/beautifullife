@@ -3,7 +3,7 @@ package com.ddu.icore.data
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  *
- * [Read more about this.](https://medium.com/google-developers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150)
+ * [Read more about this.](https://medium.com/google-developers/livedata-with-snackbar-bottom_navigation_view_menu-and-other-events-the-singleliveevent-case-ac2622673150)
  */
 open class Event<out T>(private val content: T) {
 

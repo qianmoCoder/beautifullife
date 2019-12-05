@@ -154,9 +154,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         val action = godIntent.action
         if (action == LogicActions.IC_ADD_ITEM_CLICK_OPEN_ACTION) {
             navigation!!.visibility = View.GONE
-            //            doAnimator(navigation, true);
+            //            doAnimator(bottom_navigation_view_menu, true);
         } else {
-            //            doAnimator(navigation, false);
+            //            doAnimator(bottom_navigation_view_menu, false);
             navigation!!.visibility = View.VISIBLE
         }
     }
