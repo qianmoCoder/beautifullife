@@ -10,14 +10,14 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
-import com.ddu.icore.help.ClickableMovementMethod
+import com.ddu.icore.help.TextMovementMethod
 import com.ddu.icore.help.UserLinkMovementMethod
+import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_custom_separator.*
 
-class CustomSeparatorActivity : AppCompatActivity() {
+class CustomSeparatorActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,41 +55,43 @@ class CustomSeparatorActivity : AppCompatActivity() {
         underlinePhrase.firstBuilder.addParcelableSpan(UnderlineSpan())
         tv_content_underline.text = underlinePhrase.format()
 
+        val textMovementMethod = TextMovementMethod()
         val multiClickText = getString(R.string.text_phrase_multi_click)
         val multiClickPhrase = StylePhrase(multiClickText)
         multiClickPhrase.firstBuilder.setSize(20).addParcelableSpan(object : ClickableSpan() {
 
             override fun onClick(widget: View) {
-//                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
-                showToast("跳转百度")
+                if (textMovementMethod.isPassToTv) {
+                    showToast("跳转百度")
+                }
             }
         })
         multiClickPhrase.secondBuilder.setSize(15).addParcelableSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                showToast("跳转网易")
-//                (widget as TextView).movementMethod = CustomLinkMovementMethod.getInstance()
+                if (textMovementMethod.isPassToTv) {
+                    showToast("跳转网易")
+                }
             }
 
             override fun updateDrawState(ds: TextPaint) {
-                ds?.color = Color.BLUE
-                ds?.isUnderlineText = false
+                ds.color = Color.BLUE
+                ds.isUnderlineText = false
             }
         })
 
-
+        tv_content_multi_click.movementMethod = textMovementMethod
         tv_content_multi_click.text = multiClickPhrase.format()
         tv_content_multi_click.setOnClickListener {
             showToast("点击了文本")
         }
-        tv_content_multi_click.movementMethod = ClickableMovementMethod.getInstance()
-//        tv_content_multi_click.setClickable(false);
-//        tv_content_multi_click.setLongClickable(false);
 
         tv_content_multi_click_1.text = multiClickPhrase.format()
         tv_content_multi_click_1.movementMethod = UserLinkMovementMethod.getInstance()
 
 
         tv_separator.text = colorAndSize.firstBuilder.separator
+
+        setDefaultTitle("自定义分割符")
     }
 
     fun showToast(msg: String) {

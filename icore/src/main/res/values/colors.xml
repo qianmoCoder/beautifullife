@@ -461,4 +461,7 @@
     <color name="c_f4f4f4">#f4f4f4</color>
     <color name="c_fbfbfb">#fbfbfb</color>
 
+    <color name="default_clickable_color">#cccccc</color>
+    <color name="basic_color_primary">#373b3e</color>
+
 </resources>

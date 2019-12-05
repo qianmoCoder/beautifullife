@@ -7,10 +7,7 @@ import com.ddu.R
 import com.ddu.icore.common.ext.ctx
 import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.ui.activity.phrase.CustomSeparatorActivity
-import com.ddu.ui.activity.phrase.MultiSeparatorActivity
-import com.ddu.ui.activity.phrase.OneSeparatorActivity
-import com.ddu.ui.activity.phrase.TwoSeparatorActivity
+import com.ddu.ui.activity.phrase.*
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_style_phrase.*
 
@@ -34,6 +31,7 @@ class StylePhraseFragment : DefaultFragment(), View.OnClickListener {
         btn_two.setOnClickListener(this)
         btn_multi.setOnClickListener(this)
         btn_custom.setOnClickListener(this)
+        btn_advance.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -49,6 +47,9 @@ class StylePhraseFragment : DefaultFragment(), View.OnClickListener {
             }
             R.id.btn_custom -> {
                 startActivity(Intent(ctx, CustomSeparatorActivity::class.java))
+            }
+            R.id.btn_advance -> {
+                startActivity(Intent(ctx, AdvancedSeparatorActivity::class.java))
             }
         }
     }

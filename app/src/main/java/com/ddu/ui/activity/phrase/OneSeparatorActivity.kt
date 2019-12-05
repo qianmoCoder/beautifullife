@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
-import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
+import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_one_separator.*
 
-class OneSeparatorActivity : AppCompatActivity() {
+class OneSeparatorActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,5 +44,7 @@ class OneSeparatorActivity : AppCompatActivity() {
         tv_content_underline.text = underlinePhrase.format()
 
         tv_separator.text = colorAndSize.firstBuilder.separator
+
+        setDefaultTitle("一种分割符")
     }
 }

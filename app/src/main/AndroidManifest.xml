@@ -151,6 +151,7 @@
         <activity android:name=".ui.activity.phrase.TwoSeparatorActivity" />
         <activity android:name=".ui.activity.phrase.MultiSeparatorActivity" />
         <activity android:name=".ui.activity.phrase.CustomSeparatorActivity" />
+        <activity android:name=".ui.activity.phrase.AdvancedSeparatorActivity" />
 
     </application>
 

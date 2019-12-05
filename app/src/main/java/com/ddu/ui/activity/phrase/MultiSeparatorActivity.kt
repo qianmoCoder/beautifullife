@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.text.style.StrikethroughSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
-import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
+import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_one_separator.*
 
-class MultiSeparatorActivity : AppCompatActivity() {
+class MultiSeparatorActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,5 +73,7 @@ class MultiSeparatorActivity : AppCompatActivity() {
             sb.append(" ")
         }
         tv_separator.text = sb.toString()
+
+        setDefaultTitle("多种分割符")
     }
 }

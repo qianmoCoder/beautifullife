@@ -2,12 +2,6 @@ package com.ddu.icore.util;
 
 import android.content.Context;
 import android.content.res.Resources;
-import androidx.annotation.ColorInt;
-import androidx.annotation.IntRange;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.fragment.app.Fragment;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -15,8 +9,16 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -488,7 +490,7 @@ public class StylePhrase {
 
             if (null != mCharacterStyles) {
                 for (CharacterStyle span : mCharacterStyles) {
-                    if (span instanceof ClickableSpan) {
+                    if (span instanceof ClickableSpan || span instanceof ImageSpan) {
                         target.setSpan(span, replaceFrom, replaceTo - 2, mFlags);
                     } else {
                         target.setSpan(CharacterStyle.wrap(span), replaceFrom, replaceTo - 2, mFlags);

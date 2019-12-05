@@ -170,6 +170,7 @@
     <string name="two_separator">二种分割符</string>
     <string name="multi_separator">多种分割符</string>
     <string name="custom_separator">自定义分割符</string>
+    <string name="advance_separator">高级操作符</string>
 
     <string name="text_phrase_one">永生不过是场{幻梦}，唯吾{所爱}不朽</string>
     <string name="text_phrase_two">何以{缘起}?何以[缘灭]?当以{剑歌}问之</string>
@@ -178,4 +179,8 @@
     <string name="text_phrase_custom">邂逅你，是(生生世世)的宿命</string>
     <string name="text_phrase_multi_click">众里寻他千{百度}，蓦然回首，那人却在[网易]</string>
 
+    <string name="text_advanced">永生不过是场幻梦，唯吾所爱不朽。邂逅你，是生生世世的宿命。何以缘起?何以缘灭?当以剑歌问之。{我是小尾巴}</string>
+
+    <string name="text_img_span_content">永生不过是场幻梦，唯吾所爱不朽。邂逅你，是生生世世的宿命。何以缘起?何以缘灭?当以剑歌问之。</string>
+    <string name="text_img_span_tail">我是小尾巴</string>
 </resources>
