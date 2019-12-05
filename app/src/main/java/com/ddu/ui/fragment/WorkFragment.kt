@@ -18,7 +18,7 @@ class WorkFragment : DefaultFragment() {
 
     override fun initView() {
         setTitle(R.string.main_tab_work)
-        oiv_program_android.setOnClickListener {
+        oiv_android_ipc.setOnClickListener {
             startActivity<MyClientActivity>()
         }
     }

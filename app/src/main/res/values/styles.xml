@@ -323,6 +323,26 @@
     </style>
     <!--Home End -->
 
+    <!-- Work Begin -->
+    <style name="WorkDefaultLinearLayout">
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:divider">@drawable/default_divider_horizontal</item>
+        <item name="android:dividerPadding">@dimen/dp_35</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:background">@drawable/default_layout_bg</item>
+    </style>
+
+    <style name="WorkDefaultRelativeLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/dp_35</item>
+    </style>
+    <!-- Work End -->
+
     <style name="NumberProgressBar_Default">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
