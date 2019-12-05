@@ -5,15 +5,16 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.DrawableCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.ddu.icore.R;
 import com.ddu.icore.ui.help.ShapeInject;
@@ -51,17 +52,17 @@ public class OptionItemView extends RelativeLayout {
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.OptionItemView);
 
-        setTextData(a, tvLeftText,
-                R.styleable.OptionItemView_i_leftText,
-                R.styleable.OptionItemView_i_leftTextColor,
-                R.styleable.OptionItemView_i_leftTextSize);
-
         setImageData(a, ivLeftIcon,
                 R.styleable.OptionItemView_i_leftIcon,
                 R.styleable.OptionItemView_i_leftIconScaleType,
                 R.styleable.OptionItemView_i_leftIconWidth,
                 R.styleable.OptionItemView_i_leftIconHeight,
                 R.styleable.OptionItemView_i_leftIcon_tint);
+
+        setTextData(a, tvLeftText,
+                R.styleable.OptionItemView_i_leftText,
+                R.styleable.OptionItemView_i_leftTextColor,
+                R.styleable.OptionItemView_i_leftTextSize);
 
         setTextData(a, tvTitle,
                 R.styleable.OptionItemView_i_title,
@@ -120,7 +121,6 @@ public class OptionItemView extends RelativeLayout {
             imageView.setLayoutParams(new RelativeLayout.LayoutParams(leftIconWidth, leftIconHeight));
         }
     }
-
 
     private void setTextData(TypedArray a, TextView textView, int textIndex, int colorIndex, int sizeIndex) {
         String title = a.getString(textIndex);

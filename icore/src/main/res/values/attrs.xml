@@ -9,9 +9,6 @@
     </declare-styleable>
 
     <declare-styleable name="OptionItemView">
-        <attr name="i_leftText" format="string|reference"/>
-        <attr name="i_leftTextSize" format="dimension|reference"/>
-        <attr name="i_leftTextColor" format="color|reference"/>
 
         <attr name="i_leftIcon" format="reference"/>
         <attr name="i_leftIcon_tint" format="color|reference"/>
@@ -27,6 +24,10 @@
             <enum name="center_crop" value="6"/>
             <enum name="center_inside" value="7"/>
         </attr>
+
+        <attr name="i_leftText" format="string|reference"/>
+        <attr name="i_leftTextSize" format="dimension|reference"/>
+        <attr name="i_leftTextColor" format="color|reference"/>
 
         <attr name="i_title" format="string|reference"/>
         <attr name="i_titleSize" format="dimension|reference"/>
