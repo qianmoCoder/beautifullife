@@ -155,7 +155,6 @@ class ICoreMessengerServiceConnection private constructor() : ServiceConnection,
         private var serviceWeakReference: WeakReference<ICoreMessengerServiceConnection> = WeakReference(serviceConnection)
 
         override fun handleMessage(msg: Message) {
-//            super.handleMessage(msg)
             val serviceConnection = serviceWeakReference.get()
             serviceConnection?.apply {
                 val godIntent = GodIntent(Actions.SERVICE_MSG_ACTION, msg)

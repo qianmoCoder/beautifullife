@@ -24,6 +24,7 @@ class MyServiceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
         initView()
+        setDefaultTitle("服务端")
     }
 
     override fun registerObserver() {

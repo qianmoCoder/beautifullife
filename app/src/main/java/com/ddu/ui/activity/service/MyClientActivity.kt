@@ -22,6 +22,7 @@ class MyClientActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client)
         initView()
+        setDefaultTitle("客户端")
         ICoreIPCClientManager.getIPC().bindICoreService()
     }
 
