@@ -195,25 +195,25 @@ class ICoreServiceConnection private constructor() : ServiceConnection, ICoreIPC
     }
 
     override fun bindICoreService() {
-        instance.bindService(true)
+        bindService(true)
     }
 
     override fun unBindICoreService() {
-        instance.unBindService()
+        unBindService()
     }
 
     override fun sendMessage(message: Message?) {
         message?.let {
-            instance.sendMsg(it)
+            sendMsg(it)
         }
     }
 
     override fun isServiceAvailable(): Boolean {
-        return instance.isBind && instance.isConnected
+        return isBind && isConnected
     }
 
     override fun killICoreService() {
-        instance.killService()
+        killService()
     }
 
     companion object {
