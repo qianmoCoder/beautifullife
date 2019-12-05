@@ -7,7 +7,6 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,6 +18,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import androidx.core.view.ViewCompat;
 
 import com.ddu.icore.R;
 import com.ddu.icore.refresh.internal.FlipLoadingLayout;
@@ -1147,12 +1148,12 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      * @param scrollValue - Position to scroll to
      * @param duration    - Duration of animation in milliseconds
      */
-    private final void smoothScrollTo(int scrollValue, long duration) {
+    private void smoothScrollTo(int scrollValue, long duration) {
         smoothScrollTo(scrollValue, duration, 0, null);
     }
 
-    private final void smoothScrollTo(int newScrollValue, long duration, long delayMillis,
-                                      OnSmoothScrollFinishedListener listener) {
+    private void smoothScrollTo(int newScrollValue, long duration, long delayMillis,
+                                OnSmoothScrollFinishedListener listener) {
         if (null != mCurrentSmoothScrollRunnable) {
             mCurrentSmoothScrollRunnable.stop();
         }
@@ -1187,7 +1188,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         }
     }
 
-    private final void smoothScrollToAndBack(int y) {
+    private void smoothScrollToAndBack(int y) {
         smoothScrollTo(y, SMOOTH_SCROLL_DURATION_MS, 0, new OnSmoothScrollFinishedListener() {
 
             @Override

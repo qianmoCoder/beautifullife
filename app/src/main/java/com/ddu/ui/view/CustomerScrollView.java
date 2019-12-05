@@ -1,12 +1,13 @@
 package com.ddu.ui.view;
 
 import android.content.Context;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ScrollView;
+
+import androidx.core.view.ViewCompat;
 
 import static android.R.attr.duration;
 
@@ -217,7 +218,7 @@ public class CustomerScrollView extends ScrollView {
     }
 
 
-    private final void smoothScrollTo(int newScrollValue, long delayMillis, OnSmoothScrollFinishedListener listener) {
+    private void smoothScrollTo(int newScrollValue, long delayMillis, OnSmoothScrollFinishedListener listener) {
         if (null != mCurrentSmoothScrollRunnable) {
             mCurrentSmoothScrollRunnable.stop();
         }

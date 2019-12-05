@@ -8,6 +8,8 @@ import android.graphics.PathMeasure;
 import android.graphics.Rect;
 import android.os.Build;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +21,7 @@ import android.widget.TextView;
 /**
  * UFreedom
  */
-public class FloatingTextView extends TextView {
+public class FloatingTextView extends AppCompatTextView {
 
     private static final String TAG = "FloatingTextView";
     private static final int PATH_WIDTH = 2;

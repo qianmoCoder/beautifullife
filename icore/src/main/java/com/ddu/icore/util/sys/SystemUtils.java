@@ -12,12 +12,13 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresPermission;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 
 /**
  * Created by yzbzz on 16/7/25.
@@ -97,7 +98,7 @@ public class SystemUtils {
     }
 
     // 拨打电话
-    public static final boolean startActivityTel(@NonNull Context context, String phoneNumber) {
+    public static boolean startActivityTel(@NonNull Context context, String phoneNumber) {
         if (PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber)) {
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel://" + phoneNumber)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             try {

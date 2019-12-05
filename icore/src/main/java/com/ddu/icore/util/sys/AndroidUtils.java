@@ -12,8 +12,10 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
 import android.text.Editable;
@@ -101,7 +103,7 @@ public class AndroidUtils {
 
     // 是否开启飞行模式
     public static boolean isAirplaneModeOn(@NonNull Context context) {
-        return Settings.System.getInt(context.getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        return Settings.System.getInt(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
     }
 
     // sdcard是否可读写
@@ -113,8 +115,8 @@ public class AndroidUtils {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             File sdcardDir = Environment.getExternalStorageDirectory();
             StatFs sf = new StatFs(sdcardDir.getPath());
-            long availCount = sf.getAvailableBlocks();
-            long blockSize = sf.getBlockSize();
+            long availCount = sf.getAvailableBlocksLong();
+            long blockSize = sf.getBlockSizeLong();
             long availSize = availCount * blockSize / 1024;
 
             if (availSize >= 3072) {
@@ -132,9 +134,9 @@ public class AndroidUtils {
         long availableSize = -1;
         if (dirName != null && dirName.exists()) {
             StatFs sf = new StatFs(dirName.getPath());
-            long blockSize = sf.getBlockSize();
-            long blockCount = sf.getBlockCount();
-            long availableBlocks = sf.getAvailableBlocks();
+            long blockSize = sf.getBlockSizeLong();
+            long blockCount = sf.getBlockCountLong();
+            long availableBlocks = sf.getAvailableBlocksLong();
             availableSize = availableBlocks * blockSize / 1024;
         }
         return availableSize;
