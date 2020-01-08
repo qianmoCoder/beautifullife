@@ -1,10 +1,12 @@
 package com.ddu.ui.fragment
 
+import android.Manifest
 import android.app.PendingIntent
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
@@ -74,9 +76,19 @@ class MeFragment : DefaultFragment() {
             showShareDialog()
         }
 
+
         binding.oivPlan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
 
         binding.oivFav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#ff0000"))
+        binding.oivFav.setOnClickListener {
+            //1、首先声明一个数组permissions，将所有需要申请的权限都放在里面
+            val permissions = arrayOf<String>(Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.INTERNET)
+
+            ActivityCompat.requestPermissions(act, permissions, 100)
+        }
 
         binding.oivEggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
         binding.oivEggs.setOnClickListener {
@@ -144,7 +156,12 @@ class MeFragment : DefaultFragment() {
 
 
         rl_person_info.setOnClickListener {
-            val i =  5 / 0
+            val permissions = arrayOf<String>(Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.INTERNET)
+
+            ActivityCompat.requestPermissions(act, permissions, 100)
         }
     }
 

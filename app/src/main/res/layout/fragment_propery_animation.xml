@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_centerHorizontal="true" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:flexWrap="wrap"
+        app:flexDirection="row"
+        app:alignItems="stretch"
+        app:alignContent="stretch">
+
+        <Button
+            android:id="@+id/btn_rotate"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rotate" />
+
+        <Button
+            android:id="@+id/btn_translate"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="translate" />
+
+        <Button
+            android:id="@+id/btn_scale"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scale" />
+
+        <Button
+            android:id="@+id/btn_fade"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fade" />
+
+        <Button
+            android:id="@+id/btn_bg_color"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="background color" />
+
+        <Button
+            android:id="@+id/btn_shower"
+            style="@style/TextAppearance.MaterialComponents.Chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shower" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+</RelativeLayout>
+

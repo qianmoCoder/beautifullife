@@ -43,6 +43,8 @@ object Libs {
     const val retrofitAdapterRxjava = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
 
     const val smartRefreshLayout = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0"
+
+    const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
 }
 
 object Deps {
@@ -77,7 +79,5 @@ object Deps {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 
-
     const val gson = "com.google.code.gson:gson:2.8.5"
-
 }

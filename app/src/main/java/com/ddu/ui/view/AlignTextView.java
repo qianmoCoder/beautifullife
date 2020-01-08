@@ -12,6 +12,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -137,4 +138,15 @@ public class AlignTextView extends AppCompatTextView {
             return line.charAt(line.length() - 1) != '\n';
         }
     }
+
+    @Keep
+    public void setNumber(int number) {
+        setText(String.valueOf(number));
+    }
+
+    @Keep
+    public int getNumber() {
+        return Integer.parseInt(getText().toString());
+    }
+
 }

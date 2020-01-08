@@ -1,6 +1,7 @@
 package com.ddu.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import com.ddu.R
 import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
@@ -20,6 +21,13 @@ class WorkFragment : DefaultFragment() {
         setTitle(R.string.main_tab_work)
         oiv_android_ipc.setOnClickListener {
             startActivity<MyClientActivity>()
+        }
+        btn_click_me.setOnClickListener {
+            Log.v("lhz","click me")
+            Thread.sleep(10000)
+        }
+        btn_click_me_1.setOnClickListener {
+            Log.v("lhz","click me 1")
         }
     }
 

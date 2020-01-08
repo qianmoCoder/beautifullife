@@ -110,6 +110,18 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_click_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click me"/>
+
+        <Button
+            android:id="@+id/btn_click_me_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click me 1"/>
+
     </LinearLayout>
 
 </ScrollView>

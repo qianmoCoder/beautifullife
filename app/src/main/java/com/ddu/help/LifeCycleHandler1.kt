@@ -9,7 +9,7 @@ import androidx.lifecycle.OnLifecycleEvent
 /**
  * Created by yzbzz on 2019/11/23.
  */
-open class LifeCycleHandler1(val owner: LifecycleOwner) : Handler(), LifecycleObserver {
+open class LifeCycleHandler1(private val owner: LifecycleOwner) : Handler(), LifecycleObserver {
 
     init {
         owner.lifecycle.addObserver(this)

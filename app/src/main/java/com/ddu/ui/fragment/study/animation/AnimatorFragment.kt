@@ -10,6 +10,7 @@ import com.ddu.icore.ui.fragment.DefaultFragment
 import com.iannotation.IElement
 import kotlinx.android.synthetic.main.fragment_animator.*
 
+
 /**
  * Created by yzbzz on 16/4/8.
  */
@@ -24,7 +25,7 @@ class AnimatorFragment : DefaultFragment() {
         Glide.with(this).load(R.drawable.more_user_icon).circleCrop().into(iv_icon)
 
         val valueAnimator =
-            AnimatorInflater.loadAnimator(ctx, R.animator.value_animator) as ValueAnimator
+                AnimatorInflater.loadAnimator(ctx, R.animator.value_animator) as ValueAnimator
         valueAnimator.addUpdateListener {
             iv_icon.y = it.animatedValue as Float
         }
@@ -38,6 +39,12 @@ class AnimatorFragment : DefaultFragment() {
 
         btn_object.setOnClickListener {
             objectAnimator.start()
+        }
+
+        btn_object_number.setOnClickListener {
+            val objectAnimator1 = ObjectAnimator.ofInt(tv_count, "Number", 2000)
+            objectAnimator1.duration = 8 * (1000 - 1)
+            objectAnimator1.start()
         }
     }
 
