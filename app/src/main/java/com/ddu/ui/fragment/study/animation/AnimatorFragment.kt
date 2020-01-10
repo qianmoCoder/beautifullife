@@ -3,6 +3,7 @@ package com.ddu.ui.fragment.study.animation
 import android.animation.AnimatorInflater
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.view.View
 import com.bumptech.glide.Glide
 import com.ddu.R
 import com.ddu.icore.common.ext.ctx
@@ -45,6 +46,14 @@ class AnimatorFragment : DefaultFragment() {
             val objectAnimator1 = ObjectAnimator.ofInt(tv_count, "Number", 2000)
             objectAnimator1.duration = 8 * (1000 - 1)
             objectAnimator1.start()
+        }
+
+        btn_object_snake.setOnClickListener {
+            val animator1 = ObjectAnimator.ofFloat(iv_in_class1, View.ROTATION, 0f, -20f, 10f, -15f, 5f, -5f, 0f)
+            animator1.duration = 1000
+            animator1.repeatCount = -1
+            animator1.repeatMode = ObjectAnimator.RESTART
+            animator1.start()
         }
     }
 
