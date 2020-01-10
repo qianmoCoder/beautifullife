@@ -1,11 +1,12 @@
 package com.ddu.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import com.ddu.R
 import com.ddu.icore.common.ext.startActivity
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.ui.activity.service.MyClientActivity
+import com.ddu.ui.fragment.work.kotlin.CodeLabsFragment
 import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
@@ -19,16 +20,22 @@ class WorkFragment : DefaultFragment() {
 
     override fun initView() {
         setTitle(R.string.main_tab_work)
+
+        oiv_android_ipc.enableDefaultLeftText(Color.parseColor("#b27BB641"))
         oiv_android_ipc.setOnClickListener {
             startActivity<MyClientActivity>()
         }
-        btn_click_me.setOnClickListener {
-            Log.v("lhz","click me")
-            Thread.sleep(10000)
+        oiv_android_service.enableDefaultLeftText(Color.parseColor("#b27BB641"))
+
+        oiv_kotlin_code_labs.enableDefaultLeftText(Color.parseColor("#b23A64DC"))
+        oiv_kotlin_code_labs.setOnClickListener {
+            startFragment(CodeLabsFragment::class.java)
         }
-        btn_click_me_1.setOnClickListener {
-            Log.v("lhz","click me 1")
-        }
+
+        oiv_jet_pack.enableDefaultLeftText(Color.parseColor("#b2FED133"))
+
+        oiv_java.enableDefaultLeftText(Color.parseColor("#b2FB303A"))
+
     }
 
     fun ToDBC(input: String): String {

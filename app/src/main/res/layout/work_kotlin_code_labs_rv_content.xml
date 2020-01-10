@@ -1,0 +1,5 @@
+<com.ddu.icore.ui.view.OptionItemView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/oiv_content"
+    style="@style/DefaultRelativeLayout"
+    app:i_rightIcon="@drawable/right_arrow_gray" />

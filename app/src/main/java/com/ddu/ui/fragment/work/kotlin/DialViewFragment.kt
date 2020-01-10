@@ -1,13 +1,11 @@
-package com.ddu.ui.fragment.study.customer
+package com.ddu.ui.fragment.work.kotlin
 
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.iannotation.IElement
 
 /**
  * Created by yzbzz on 2018/6/8.
  */
-@IElement("customer")
 class DialViewFragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {
@@ -15,6 +13,8 @@ class DialViewFragment : DefaultFragment() {
     }
 
     override fun initView() {
-
+        setDefaultTitle("DialView")
     }
+
+
 }

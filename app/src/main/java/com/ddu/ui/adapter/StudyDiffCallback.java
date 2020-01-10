@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.iannotation.model.RouteMeta;
 
+import java.util.Objects;
+
 public class StudyDiffCallback extends DiffUtil.ItemCallback<RouteMeta> {
 
     @Override
@@ -13,6 +15,6 @@ public class StudyDiffCallback extends DiffUtil.ItemCallback<RouteMeta> {
 
     @Override
     public boolean areContentsTheSame(RouteMeta oldItem, RouteMeta newItem) {
-        return oldItem == newItem;
+        return Objects.equals(oldItem,newItem);
     }
 }

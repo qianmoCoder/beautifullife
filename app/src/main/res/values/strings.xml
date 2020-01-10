@@ -29,7 +29,12 @@
     <string name="work_android_service">Service</string>
     <string name="work_android_ipc">AIDL &amp; Messenger</string>
 
+    <string name="work_kotlin">kotlin</string>
+    <string name="work_kotlin_code_labs">CodeLabs</string>
+
     <string name="work_jet_pack">JetPack</string>
+
+    <string name="work_java">Java</string>
     <!-- Work End -->
 
 

@@ -23,32 +23,32 @@
                 android:id="@+id/ic_usr"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="@dimen/dp_60"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/more_user_icon" />
 
             <TextView
                 android:id="@+id/tv_usr_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_8"
-                android:layout_toRightOf="@+id/ic_usr"
+                android:layout_toEndOf="@+id/ic_usr"
                 android:ellipsize="end"
                 android:ems="16"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="@color/c_999999"
                 android:textSize="@dimen/sp_21" />
 
             <TextView
                 android:id="@+id/tv_usr_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tv_usr_name"
+                android:layout_alignStart="@id/tv_usr_name"
                 android:layout_below="@id/tv_usr_name"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text=""
@@ -59,9 +59,9 @@
                 android:id="@+id/tv_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/tv_usr_name"
-                android:layout_marginRight="@dimen/dp_10" />
+                android:layout_marginEnd="@dimen/dp_10" />
 
         </RelativeLayout>
 
@@ -74,29 +74,24 @@
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_buddha"
                 style="@style/DefaultRelativeLayout"
-                app:i_leftText="佛"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="佛说" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_friend_link"
                 style="@style/DefaultRelativeLayout"
-                app:i_leftText="友"
                 app:i_rightIcon="@drawable/right_arrow_gray"
-                app:i_subTitle="友链"
                 app:i_title="友链" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_plan"
                 style="@style/DefaultRelativeLayout"
-                app:i_leftText="计"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="计划" />
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_fav"
                 style="@style/DefaultRelativeLayout"
-                app:i_leftText="收"
                 app:i_rightIcon="@drawable/right_arrow_gray"
                 app:i_title="收藏" />
 

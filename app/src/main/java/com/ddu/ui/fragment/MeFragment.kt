@@ -10,7 +10,6 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import com.ddu.R
 import com.ddu.app.BaseApp
-import com.ddu.databinding.FragmentMeBinding
 import com.ddu.icore.callback.InConsumer3
 import com.ddu.icore.common.ext.act
 import com.ddu.icore.common.ext.ctx
@@ -20,7 +19,6 @@ import com.ddu.icore.dialog.DefaultGridBottomDialogFragment
 import com.ddu.icore.entity.BottomItem
 import com.ddu.icore.entity.BottomItemEntity
 import com.ddu.icore.ui.fragment.DefaultFragment
-import com.ddu.icore.ui.help.ShapeInject
 import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
@@ -35,13 +33,6 @@ class MeFragment : DefaultFragment() {
     var mHits = LongArray(COUNTS)
     var dialog: AlertDialogFragment? = null
     var nid = 0
-
-    private lateinit var binding: FragmentMeBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = FragmentMeBinding.inflate(layoutInflater)
-    }
 
     override fun initData(savedInstanceState: Bundle?) {
         dialog = AlertDialogFragment().apply {
@@ -66,21 +57,21 @@ class MeFragment : DefaultFragment() {
     override fun initView() {
         setTitle(R.string.main_tab_me)
 
-        binding.tvUsrName.text = "yzbzz"
-        binding.tvUsrNumber.text = "186-xxxx-xxx"
+        tv_usr_name.text = "yzbzz"
+        tv_usr_number.text = "186-xxxx-xxx"
 
-        binding.oivBuddha.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2ffff00"))
+        oiv_buddha.enableDefaultLeftText(Color.parseColor("#b2ffff00"))
 
-        binding.oivFriendLink.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2fdbc40"))
-        binding.oivFriendLink.setOnClickListener {
+        oiv_friend_link.enableDefaultLeftText(Color.parseColor("#b2fdbc40"))
+        oiv_friend_link.setOnClickListener {
             showShareDialog()
         }
 
 
-        binding.oivPlan.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b200ff00"))
+        oiv_plan.enableDefaultLeftText(Color.parseColor("#b200ff00"))
 
-        binding.oivFav.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#ff0000"))
-        binding.oivFav.setOnClickListener {
+        oiv_fav.enableDefaultLeftText(Color.parseColor("#ff0000"))
+        oiv_fav.setOnClickListener {
             //1、首先声明一个数组permissions，将所有需要申请的权限都放在里面
             val permissions = arrayOf<String>(Manifest.permission.CAMERA,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -90,8 +81,8 @@ class MeFragment : DefaultFragment() {
             ActivityCompat.requestPermissions(act, permissions, 100)
         }
 
-        binding.oivEggs.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b2437fda"))
-        binding.oivEggs.setOnClickListener {
+        oiv_eggs.enableDefaultLeftText(Color.parseColor("#b2437fda"))
+        oiv_eggs.setOnClickListener {
             System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
             mHits[mHits.size - 1] = SystemClock.uptimeMillis()
             if (mHits[0] >= SystemClock.uptimeMillis() - DURATION) {
@@ -103,7 +94,7 @@ class MeFragment : DefaultFragment() {
             }
         }
 
-        oiv_setting.setLefText(ShapeInject.TYPE_ROUND, Color.parseColor("#b234c749"))
+        oiv_setting.enableDefaultLeftText(Color.parseColor("#b234c749"))
         oiv_setting.setOnClickListener {
             startFragment(SettingFragment::class.java)
         }

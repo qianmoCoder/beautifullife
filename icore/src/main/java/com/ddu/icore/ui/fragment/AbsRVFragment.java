@@ -3,6 +3,7 @@ package com.ddu.icore.ui.fragment;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.CallSuper;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,7 @@ public abstract class AbsRVFragment<D, A extends DefaultRVAdapter> extends Defau
     }
 
     @Override
+    @CallSuper
     public void initView() {
 
         mPullToRefreshScrollView = findViewById(R.id.default_refresh_view);
