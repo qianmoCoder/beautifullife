@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.study.ui
+package com.ddu.ui.fragment.study.customer
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

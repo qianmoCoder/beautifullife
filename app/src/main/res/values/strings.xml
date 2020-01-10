@@ -183,4 +183,11 @@
 
     <string name="text_img_span_content">永生不过是场幻梦，唯吾所爱不朽。邂逅你，是生生世世的宿命。何以缘起?何以缘灭?当以剑歌问之。</string>
     <string name="text_img_span_tail">我是小尾巴</string>
+
+    <string name="fan_off">off</string>
+    <string name="fan_low">1</string>
+    <string name="fan_medium">2</string>
+    <string name="fan_high">3</string>
+    <string name="change">Change</string>
+    <string name="reset">Reset</string>
 </resources>

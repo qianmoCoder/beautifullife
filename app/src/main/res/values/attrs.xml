@@ -119,4 +119,10 @@
         <attr name="column_ry" format="reference|dimension|float" />
     </declare-styleable>
 
+    <declare-styleable name="DialView">
+        <attr name="fanColor1" format="color" />
+        <attr name="fanColor2" format="color" />
+        <attr name="fanColor3" format="color" />
+    </declare-styleable>
+
 </resources>
