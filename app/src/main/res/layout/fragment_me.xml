@@ -108,7 +108,8 @@
                 style="@style/DefaultRelativeLayout"
                 app:i_leftText="彩"
                 app:i_rightIcon="@drawable/right_arrow_gray"
-                app:i_title="彩蛋" />
+                app:i_title="彩蛋"
+                app:i_rightText="3秒点10下"/>
 
             <com.ddu.icore.ui.view.OptionItemView
                 android:id="@+id/oiv_setting"

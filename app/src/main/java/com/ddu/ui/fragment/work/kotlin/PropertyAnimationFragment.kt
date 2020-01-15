@@ -1,17 +1,18 @@
-package com.ddu.ui.fragment.study.animation
+package com.ddu.ui.fragment.work.kotlin
 
 import android.animation.*
 import android.graphics.Color
+import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
-import com.bumptech.glide.Glide
 import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import com.ddu.icore.ui.view.CircleImageView
-import com.iannotation.IElement
+import com.ddu.ui.fragment.WebFragment
+import com.iannotation.ICodeLabsElement
 import kotlinx.android.synthetic.main.fragment_animator.iv_icon
 import kotlinx.android.synthetic.main.fragment_propery_animation.*
 
@@ -19,7 +20,8 @@ import kotlinx.android.synthetic.main.fragment_propery_animation.*
 /**
  * Created by yzbzz on 16/4/8.
  */
-@IElement("AN")
+@ICodeLabsElement(path = "Kotlin_CodeLabs", parentId = "3", parentContent = "Animation",
+        id = "1", content = "Property Animation")
 class PropertyAnimationFragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {
@@ -27,7 +29,13 @@ class PropertyAnimationFragment : DefaultFragment() {
     }
 
     override fun initView() {
-        Glide.with(this).load(R.drawable.more_user_icon).circleCrop().into(iv_icon)
+        setDefaultTitle("Property Animation")
+        setRightText("地址", View.OnClickListener {
+            val bundle = Bundle()
+            bundle.putString("title", "Property Animation")
+            bundle.putString("url", "https://codelabs.developers.google.com/codelabs/advanced-android-kotlin-training-property-animation/#0")
+            startFragment(WebFragment::class.java, bundle)
+        })
 
         btn_rotate.setOnClickListener {
             rotate(iv_icon)
@@ -104,7 +112,7 @@ class PropertyAnimationFragment : DefaultFragment() {
         var starH = iv_icon.height.toFloat()
 
         val newStar = CircleImageView(mContext)
-        newStar.setImageResource(R.drawable.more_user_icon)
+        newStar.setImageResource(R.drawable.ic_star)
         newStar.layoutParams = FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT)

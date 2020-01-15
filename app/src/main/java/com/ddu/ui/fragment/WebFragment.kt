@@ -168,7 +168,7 @@ class WebFragment : DefaultFragment() {
     private val webChromeClient = object : WebChromeClient() {
 
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
-            pb_web.progress = newProgress
+            pb_web?.progress = newProgress
         }
 
         override fun onReceivedTitle(view: WebView, title: String) {
@@ -183,7 +183,7 @@ class WebFragment : DefaultFragment() {
     private val webViewClient = object : WebViewClient() {
 
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-            pb_web.visibility = View.VISIBLE
+            pb_web?.visibility = View.VISIBLE
         }
 
         override fun onReceivedSslError(view: WebView, handler: SslErrorHandler, error: SslError) {
@@ -193,12 +193,12 @@ class WebFragment : DefaultFragment() {
 
         override fun onPageFinished(view: WebView, url: String) {
             super.onPageFinished(view, url)
-            pb_web.visibility = View.GONE
+            pb_web?.visibility = View.GONE
             val title = view.title
             if (!TextUtils.isEmpty(title)) {
                 setDefaultTitle(title)
             }
-            wv_web.visibility = View.VISIBLE
+            wv_web?.visibility = View.VISIBLE
         }
 
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -211,9 +211,26 @@ class WebFragment : DefaultFragment() {
     override fun onDestroy() {
         super.onDestroy()
         if (null != wv_web) {
-            wv_web.removeAllViews()
-            wv_web.destroy()
+            hidWebView()
         }
+    }
+
+    private fun hidWebView() {
+        wv_web.stopLoading()
+        // 退出时调用此方法，移除绑定的服务，否则某些特定系统会报错
+        wv_web.settings.javaScriptEnabled = false;
+        wv_web.removeAllViews()
+        wv_web.clearFormData()
+        wv_web.clearMatches()
+        wv_web.clearSslPreferences()
+        wv_web.clearDisappearingChildren()
+        wv_web.clearHistory()
+        wv_web.loadUrl("about:blank")
+        wv_web.clearCache(true)
+        wv_web.removeAllViews()
+        wv_web.clearAnimation()
+        wv_web.destroy()
+        wv_web.visibility = View.GONE
     }
 
     companion object {

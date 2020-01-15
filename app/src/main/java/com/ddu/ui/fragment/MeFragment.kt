@@ -30,9 +30,9 @@ import kotlinx.android.synthetic.main.fragment_me.*
  */
 class MeFragment : DefaultFragment() {
 
-    var mHits = LongArray(COUNTS)
+    private var mHits = LongArray(COUNTS)
     var dialog: AlertDialogFragment? = null
-    var nid = 0
+    private var nid = 0
 
     override fun initData(savedInstanceState: Bundle?) {
         dialog = AlertDialogFragment().apply {
@@ -217,7 +217,7 @@ class MeFragment : DefaultFragment() {
     }
 
     private fun showShareDialog() {
-        var shareEntities = mutableListOf<BottomItemEntity>()
+        val shareEntities = mutableListOf<BottomItemEntity>()
 
         val github = BottomItemEntity()
         github.name = "GitHub"

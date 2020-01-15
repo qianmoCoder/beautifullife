@@ -202,4 +202,15 @@
     <string name="clipping">Clipping</string>
     <string name="translated">translated text</string>
     <string name="skewed">"Skewed and "</string>
+
+    <string name="instructions_title">
+   <b>How to play:</b>
+   </string>
+
+    <string name="instructions">
+       \t \u2022 Find the Android hidden behind the dark surface. \n
+       \t \u2022 Touch and hold the screen for the spotlight. \n
+       \t \u2022 Once you find the Android, lift your finger to end the game. \n \n
+       \t \u2022 To restart the game touch the screen again.
+   </string>
 </resources>

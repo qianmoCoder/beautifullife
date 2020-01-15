@@ -1,7 +1,7 @@
 package com.ddu.ui.fragment.person
 
-import com.ddu.R
 import android.os.Build
+import com.ddu.R
 import com.ddu.icore.ui.fragment.DefaultFragment
 import kotlinx.android.synthetic.main.fragment_me_phone_info.*
 
@@ -13,6 +13,7 @@ class PhoneInfoFragment : DefaultFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_me_phone_info
 
     override fun initView() {
+        setDefaultTitle("手机信息")
         val sb = StringBuilder()
         sb.append("device: " + Build.DEVICE +"\n")
         sb.append("mode: " + Build.MODEL +"\n")

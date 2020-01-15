@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dp_16"
+        android:textColor="@color/c_a80_ffffff"
         tools:text="card" />
 
 </LinearLayout>
