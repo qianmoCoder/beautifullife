@@ -11,20 +11,20 @@ import com.iannotation.ICodeLabsElement
  * Created by yzbzz on 2018/6/8.
  */
 @ICodeLabsElement(path = "Kotlin_CodeLabs", parentId = "2", parentContent = "Advanced Graphics",
-        id = "1", content = "Creating Custom Views")
-class DialViewFragment : DefaultFragment() {
+        id = "3", content = "Clipping Canvas Objects")
+class ClippingFragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.study_customer_dial_view
+        return R.layout.study_customer_clipped_view
     }
 
     override fun initView() {
-        setDefaultTitle("DialView")
+        setDefaultTitle("ClippedView")
         setRightText("地址", View.OnClickListener {
             val bundle = Bundle()
-            bundle.putString("title", "Creating Custom Views")
-            bundle.putString("url", "https://codelabs.developers.google.com/codelabs/advanced-android-kotlin-training-welcome/#0")
-            startFragment(WebFragment::class.java,bundle)
+            bundle.putString("title", "Clipping Canvas Objects")
+            bundle.putString("url", "https://codelabs.developers.google.com/codelabs/advanced-android-kotlin-training-clipping-canvas-objects/#0")
+            startFragment(WebFragment::class.java, bundle)
         })
     }
 

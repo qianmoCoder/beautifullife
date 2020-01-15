@@ -50,7 +50,6 @@ class WebFragment : DefaultFragment() {
             useWideViewPort = true
             loadWithOverviewMode = true
 
-            javaScriptEnabled = true
             javaScriptCanOpenWindowsAutomatically = true
             cacheMode = WebSettings.LOAD_NO_CACHE
             domStorageEnabled = true
@@ -72,30 +71,19 @@ class WebFragment : DefaultFragment() {
         initTitle()
 
         wv_web.loadUrl(mUrl)
-        wv_web.setDownloadListener(object : DownloadListener{
-            override fun onDownloadStart(url: String?, userAgent: String?, contentDisposition: String?, mimetype: String?, contentLength: Long) {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.addCategory(Intent.CATEGORY_BROWSABLE)
-                intent.setData(Uri.parse(url))
-                startActivity(intent);
-            }
-
-        })
+        wv_web.setDownloadListener { url, userAgent, contentDisposition, mimetype, contentLength ->
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
+            intent.data = Uri.parse(url)
+            startActivity(intent);
+        }
     }
 
     private fun initTitle() {
         setDefaultTitle(mTitle)
-        setRightImg(R.drawable.ic_more_add_selector, object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                showBottomDialog()
-            }
-        })
+        setRightImg(R.drawable.ic_more_add_selector, View.OnClickListener { showBottomDialog() })
 
-        setTitleBarOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                wv_web.pageUp(true)
-            }
-        })
+        setTitleBarOnClickListener(View.OnClickListener { wv_web.pageUp(true) })
     }
 
     private fun showBottomDialog() {

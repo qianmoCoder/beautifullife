@@ -2,8 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tv_title"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_60"
-    android:textColor="#b23A64DC"
+    android:layout_height="@dimen/dp_45"
+    android:textColor="@color/c_ffffff"
     android:gravity="center_vertical"
-    android:textSize="@dimen/dp_20"
+    android:background="@color/c_b23A64DC"
+    android:paddingLeft="@dimen/dp_10"
+    android:textSize="@dimen/dp_18"
     tools:ignore="SpUsage" />

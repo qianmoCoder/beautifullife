@@ -1,6 +1,8 @@
 package com.ddu.icore.ui.activity
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -18,7 +20,7 @@ import com.ddu.icore.navigation.Navigator
 import com.ddu.icore.ui.widget.TitleBar
 
 open class BaseActivity : AppCompatActivity(),
-    IObserver {
+        IObserver {
 
     lateinit var mContext: Context
 
@@ -57,7 +59,7 @@ open class BaseActivity : AppCompatActivity(),
 
     }
 
-    fun startFragment(fragment: Class<out androidx.fragment.app.Fragment>) {
+    fun startFragment(fragment: Class<*>) {
         startFragment(fragment, null)
     }
 
@@ -69,10 +71,13 @@ open class BaseActivity : AppCompatActivity(),
         Navigator.startShowDetailActivity(this, fragmentName, bundle)
     }
 
-    fun startFragment(fragment: Class<out androidx.fragment.app.Fragment>, bundle: Bundle?) {
+    fun startFragment(fragment: Class<*>, bundle: Bundle?) {
         Navigator.startShowDetailActivity(this, fragment, bundle)
     }
 
+    fun startActivity(activity: Class<out Activity>) {
+        startActivity(Intent(this, activity))
+    }
 
     open fun registerObserver() {
     }

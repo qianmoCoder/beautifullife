@@ -1,9 +1,11 @@
 package com.ddu.icore.ui.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.ddu.icore.R
 import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.ui.activity.ShowDetailActivity
@@ -51,7 +53,7 @@ abstract class DefaultFragment : BaseFragment() {
 
     abstract fun initView()
 
-    fun startFragment(className: Class<out androidx.fragment.app.Fragment>) {
+    fun startFragment(className: Class<*>) {
         baseActivity?.startFragment(className)
     }
 
@@ -63,11 +65,15 @@ abstract class DefaultFragment : BaseFragment() {
         baseActivity?.startFragment(className, bundle)
     }
 
-    fun startFragment(className: Class<out androidx.fragment.app.Fragment>, bundle: Bundle) {
+    fun startFragment(className: Class<*>, bundle: Bundle) {
         baseActivity?.startFragment(className, bundle)
     }
 
-    fun replaceFragment(fragment: androidx.fragment.app.Fragment) {
+    fun startActivity(className: Class<out Activity>) {
+        baseActivity.startActivity(className)
+    }
+
+    fun replaceFragment(fragment: Fragment) {
         if (mActivity is ShowDetailActivity) {
             (mActivity as ShowDetailActivity).replaceFragment(fragment, FragmentUtils.FRAGMENT_ADD_TO_BACK_STACK)
         }

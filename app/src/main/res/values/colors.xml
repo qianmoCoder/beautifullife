@@ -52,4 +52,7 @@
     <color name="c_868686">#868686</color>
     <color name="c_8a9599">#8a9599</color>
     <color name="gray">#ECECEC</color>
+
+    <color name="colorBackground">#ffff5500</color>
+    <color name="colorPaint">#FFFFEB3B</color>
 </resources>

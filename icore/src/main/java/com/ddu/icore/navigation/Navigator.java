@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.ddu.icore.ui.activity.ShowDetailActivity;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+
+import com.ddu.icore.ui.activity.ShowDetailActivity;
 
 /**
  * Created by yzbzz on 2016/10/28.
@@ -31,11 +30,11 @@ public class Navigator {
         Uri uri = Uri.parse(url);
     }
 
-    public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<? extends Fragment> fragment) {
+    public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<?> fragment) {
         startShowDetailActivity(context, fragment.getName(), new Bundle());
     }
 
-    public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<? extends Fragment> fragment, Bundle bundle) {
+    public static void startShowDetailActivity(@NonNull Context context, @NonNull Class<?> fragment, Bundle bundle) {
         startShowDetailActivity(context, fragment.getName(), bundle);
     }
 

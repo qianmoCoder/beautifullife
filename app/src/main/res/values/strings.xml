@@ -195,4 +195,11 @@
     <string name="fan_high">3</string>
     <string name="change">Change</string>
     <string name="reset">Reset</string>
+
+    <string name="canvasContentDescription">Mini Paint is a simple line drawing app.
+        Drag your fingers to draw. Rotate the phone to clear.</string>
+
+    <string name="clipping">Clipping</string>
+    <string name="translated">translated text</string>
+    <string name="skewed">"Skewed and "</string>
 </resources>

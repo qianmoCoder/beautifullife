@@ -12,5 +12,5 @@ data class WorkEntity(
         var title: String = "",
         var number: String = "",
         val content: String = "",
-        val fragmentName: String? = null
+        val clazz: Class<out Any>? = null
 )

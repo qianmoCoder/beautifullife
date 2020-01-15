@@ -45,8 +45,8 @@ class LifeFragment : DefaultFragment(), View.OnClickListener {
             R.id.oiv_food -> startFragment(FoodFragment::class.java)
             R.id.oiv_joke -> {
                 val bundle = Bundle()
-                bundle.putString("mTitle", "测试")
-                bundle.putString("data", "http://www.wdxhb.com/m/Icorejsapi.html")
+                bundle.putString("title", "测试")
+                bundle.putString("url", "http://www.wdxhb.com/m/Icorejsapi.html")
                 startFragment(WebFragment::class.java, bundle)
             }
         }

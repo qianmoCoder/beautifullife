@@ -4,6 +4,7 @@ import android.content.IntentFilter
 import android.net.wifi.WifiManager
 import com.ddu.db.AppDatabase
 import com.ddu.receiver.NetInfoBroadcastReceiver
+import com.ddu.routes.CodeLabsElementProvider
 import com.ddu.routes.ElementProvider
 import com.ddu.routes.RouterProvider
 import com.ddu.util.SystemUtils
@@ -111,5 +112,7 @@ class App : BaseApp() {
         var routerProvider = RouterProvider()
 
         var elementProvider = ElementProvider()
+
+        val codeLabsProvider = CodeLabsElementProvider()
     }
 }

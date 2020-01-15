@@ -4,8 +4,10 @@ package com.iannotation;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class MultiHashMap<K, V> {
@@ -27,7 +29,7 @@ public class MultiHashMap<K, V> {
         return model.containsKey(key);
     }
 
-    public boolean containsValue(V value) {
+    public boolean containsValue(ArrayList<V> value) {
         return model.containsValue(value);
     }
 
@@ -47,10 +49,14 @@ public class MultiHashMap<K, V> {
         return model.keySet();
     }
 
+    public Collection<ArrayList<V>> values() {
+        return model.values();
+    }
+
     public void put(K key, V value) {
         ArrayList<V> ls = model.get(key);
         if (ls == null) {
-            ls = new ArrayList<V>();
+            ls = new ArrayList<>();
             model.put(key, ls);
         }
         if (!ls.contains(value)) {
@@ -58,11 +64,11 @@ public class MultiHashMap<K, V> {
         }
     }
 
-    public ArrayList<V> remove(K key) {
+    public ArrayList<V> removeKey(K key) {
         return model.remove(key);
     }
 
-    public void remove(K key, V val) {
+    public void removeValueFromKey(K key, V val) {
         ArrayList<V> ls = model.get(key);
         if (ls != null) {
             ls.remove(val);
@@ -70,15 +76,17 @@ public class MultiHashMap<K, V> {
     }
 
     public void removeValue(V val) {
-        for (Map.Entry<K, ArrayList<V>> e : model.entrySet()) {
-            ArrayList<V> ls = e.getValue();
-            for (int i = 0; i < ls.size(); ) {
-                V v = ls.get(i);
-                if (v == val || (v != null && v.equals(val))) {
-                    e.getValue().remove(val);
-                    continue;
+        Collection<ArrayList<V>> values = values();
+        for (ArrayList<V> value : values) {
+            if (value == null || value.isEmpty()) {
+                continue;
+            }
+            Iterator<V> iterator = value.iterator();
+            while (iterator.hasNext()) {
+                V v = iterator.next();
+                if (Objects.equals(v, val)) {
+                    iterator.remove();
                 }
-                ++i;
             }
         }
     }
@@ -87,7 +95,15 @@ public class MultiHashMap<K, V> {
         return model.size();
     }
 
-    public Collection<ArrayList<V>> values() {
-        return model.values();
+    public int fullSize() {
+        int size = 0;
+        Collection<ArrayList<V>> values = values();
+        for (ArrayList<V> value : values) {
+            if (value == null || value.isEmpty()) {
+                continue;
+            }
+            size += value.size();
+        }
+        return size;
     }
 }
