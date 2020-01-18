@@ -10,14 +10,14 @@ import com.ddu.ui.fragment.WebFragment
 /**
  * Created by yzbzz on 16/4/8.
  */
-class Step1Fragment : DefaultFragment() {
+class Step5Fragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.study_motion_layout_1
+        return R.layout.study_motion_layout_5
     }
 
     override fun initView() {
-        setDefaultTitle("Step1Fragment")
+        setDefaultTitle("Step5Fragment")
         setRightText("地址", View.OnClickListener {
             val bundle = Bundle()
             bundle.putString("title", "Animation with MotionLayout")

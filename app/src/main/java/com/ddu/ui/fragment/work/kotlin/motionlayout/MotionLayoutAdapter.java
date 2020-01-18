@@ -1,6 +1,7 @@
 package com.ddu.ui.fragment.work.kotlin.motionlayout;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.ddu.R;
 import com.ddu.icore.navigation.Navigator;
@@ -8,6 +9,7 @@ import com.ddu.icore.ui.adapter.common.DefaultRVAdapter;
 import com.ddu.icore.ui.adapter.common.ViewHolder;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MotionLayoutAdapter extends DefaultRVAdapter<Step> {
 
@@ -34,7 +36,13 @@ public class MotionLayoutAdapter extends DefaultRVAdapter<Step> {
         }
         viewHolder.setTextColor(R.id.header, color);
         viewHolder.setTextColor(R.id.description, color);
-        viewHolder.itemView.setOnClickListener(v -> Navigator.startShowDetailActivity(mContext, data.getFragment()));
+        viewHolder.itemView.setOnClickListener(v -> {
+            if (Objects.equals(data.getClassType(), "1")) {
+                mContext.startActivity(new Intent(mContext, data.getClazz()));
+            } else {
+                Navigator.startShowDetailActivity(mContext, data.getClazz());
+            }
+        });
     }
 }
 

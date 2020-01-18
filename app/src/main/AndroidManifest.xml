@@ -165,6 +165,12 @@
         <activity
             android:name=".ui.fragment.work.kotlin.notification.EggTimerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragment.work.kotlin.motionlayout.Step8Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragment.work.kotlin.motionlayout.Step8CompletedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
             android:name=".ui.fragment.work.kotlin.notification.receiver.AlarmReceiver"

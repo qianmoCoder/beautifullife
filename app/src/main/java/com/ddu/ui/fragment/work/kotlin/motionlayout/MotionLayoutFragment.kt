@@ -2,7 +2,6 @@ package com.ddu.ui.fragment.work.kotlin.motionlayout
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.ddu.icore.ui.fragment.AbsRVFragment
 import com.ddu.ui.fragment.WebFragment
 import com.iannotation.ICodeLabsElement
@@ -11,8 +10,9 @@ data class Step(
         val number: String,
         val name: String,
         val caption: String,
-        val fragment: Class<out Fragment>,
-        val highlight: Boolean = false)
+        val clazz: Class<*>,
+        val highlight: Boolean = false,
+        val classType: String? = "0")
 
 private val data = listOf(
         Step("Step 1",
@@ -34,39 +34,41 @@ private val data = listOf(
                 "Building complex paths",
                 "Learn how to use KeyFrames to build complex paths through multiple KeyFrames.",
                 Step4Fragment::class.java
+        ),
+        Step("Step 5",
+                "Changing attributes with motion",
+                "Learn how to resize and rotate views during animations.",
+                Step5Fragment::class.java
+        ),
+        Step("Step 6",
+                "Changing custom attributes",
+                "Learn how to change custom attributes during motion.",
+                Step6Fragment::class.java
+        ),
+        Step("Step 7",
+                "OnSwipe with complex paths",
+                "Learn how to control motion through complex paths with OnSwipe.",
+                Step7Fragment::class.java
+        ),
+        Step("Completed: Steps 2-7",
+                "Steps 2-7 completed",
+                "All changes in steps 2-7 applied",
+                Step7CompletedFragment::class.java,
+                highlight = true
+        ),
+        Step("Step 8",
+                "Running motion with code",
+                "Learn how to use MotionLayout to build complex collapsing toolbar animations.",
+                Step8Activity::class.java,
+                classType = "1"
+        ),
+        Step("Completed: Step 8 ",
+                "Implements running motion with code",
+                "Changes applied from step 8",
+                Step8CompletedActivity::class.java,
+                highlight = true,
+                classType = "1"
         )
-//        Step("Step 5",
-//                "Changing attributes with motion",
-//                "Learn how to resize and rotate views during animations.",
-//                Step5Activity::class
-//        ),
-//        Step("Step 6",
-//                "Changing custom attributes",
-//                "Learn how to change custom attributes during motion.",
-//                Step6Activity::class
-//        ),
-//        Step("Step 7",
-//                "OnSwipe with complex paths",
-//                "Learn how to control motion through complex paths with OnSwipe.",
-//                Step7Activity::class
-//        ),
-//        Step("Completed: Steps 2-7",
-//                "Steps 2-7 completed",
-//                "All changes in steps 2-7 applied",
-//                Step7CompletedActivity::class,
-//                highlight = true
-//        ),
-//        Step("Step 8",
-//                "Running motion with code",
-//                "Learn how to use MotionLayout to build complex collapsing toolbar animations.",
-//                Step8Activity::class
-//        ),
-//        Step("Completed: Step 8 ",
-//                "Implements running motion with code",
-//                "Changes applied from step 8",
-//                Step8CompletedActivity::class,
-//                highlight = true
-//        )
 )
 
 

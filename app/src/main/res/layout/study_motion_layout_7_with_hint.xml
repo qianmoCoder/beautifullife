@@ -1,0 +1,44 @@
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/study_motion_layout_scene7_with_hint"
+    app:motionDebug="SHOW_PATH">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/study_motion_layout_background" />
+
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@color/colorBackground"
+        app:srcCompat="@drawable/ic_moon"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/credits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/credits"
+        android:textColor="@color/colorBackground"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Added a hint that flies out and fades after the user swipes to the right -->
+    <TextView
+        android:id="@+id/swipe_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/swipe_towards_the_right"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.motion.widget.MotionLayout>
