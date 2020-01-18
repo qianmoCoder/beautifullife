@@ -10,6 +10,7 @@ public class CodeLabsData implements Comparable<CodeLabsData> {
     private String parentContent;
     private String id;
     private String content;
+    private String classType; // 0.Fragment 1.Activity
 
     private Class<?> cls;
     private String className;
@@ -22,9 +23,10 @@ public class CodeLabsData implements Comparable<CodeLabsData> {
         this.content = data.content;
         this.cls = data.cls;
         this.className = cls.getName();
+        this.classType = data.classType;
     }
 
-    private CodeLabsData(String path, String parentId, String parentContent, String id, String content, Class<?> cls) {
+    private CodeLabsData(String path, String parentId, String parentContent, String id, String content, Class<?> cls, String classType) {
         this.path = path;
         this.parentId = parentId;
         this.parentContent = parentContent;
@@ -32,14 +34,15 @@ public class CodeLabsData implements Comparable<CodeLabsData> {
         this.content = content;
         this.cls = cls;
         this.className = cls.getName();
+        this.classType = classType;
     }
 
     public static CodeLabsData build(CodeLabsData routeMeta) {
         return new CodeLabsData(routeMeta);
     }
 
-    public static CodeLabsData build(String path, String parentId, String parentContent, String id, String content, Class<?> cls) {
-        return new CodeLabsData(path, parentId, parentContent, id, content, cls);
+    public static CodeLabsData build(String path, String parentId, String parentContent, String id, String content, Class<?> cls, String classType) {
+        return new CodeLabsData(path, parentId, parentContent, id, content, cls, classType);
     }
 
     public String getPath() {
@@ -96,6 +99,14 @@ public class CodeLabsData implements Comparable<CodeLabsData> {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
     }
 
     @Override

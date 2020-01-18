@@ -109,9 +109,10 @@ public class ICodeLabsElementProcessor extends AbstractProcessor {
             String parentContent = elementAnnotation.parentContent();
             String id = elementAnnotation.id();
             String content = elementAnnotation.content();
+            String classType = elementAnnotation.classType();
 
-            staticBlock.add("elements.put($S, $T.build($S, $S, $S, $S, $S, $T.class));\n",
-                    path, ClassName.get(CodeLabsData.class), path, parentId, parentContent, id, content, fragment);
+            staticBlock.add("elements.put($S, $T.build($S, $S, $S, $S, $S, $T.class, $S));\n",
+                    path, ClassName.get(CodeLabsData.class), path, parentId, parentContent, id, content, fragment, classType);
         }
 
 

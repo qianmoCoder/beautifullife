@@ -106,11 +106,7 @@ open class BaseActivity : AppCompatActivity(),
     }
 
     fun setRightText(text: String, onClickListener: View.OnClickListener) {
-        if (null != titleBar) {
-            val textView = titleBar!!.rightText
-            textView.text = text
-            textView.setOnClickListener(onClickListener)
-        }
+        titleBar?.setRightText(text, onClickListener)
     }
 
     fun setRightImg(resId: Int, onClickListener: View.OnClickListener) {

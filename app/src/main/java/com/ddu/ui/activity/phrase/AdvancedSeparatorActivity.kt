@@ -10,14 +10,14 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.ddu.R
 import com.ddu.icore.common.ext.dp2px
+import com.ddu.icore.ui.activity.BaseActivity
 import com.ddu.icore.util.StylePhrase
 import kotlinx.android.synthetic.main.activity_custom_separator.*
 
 
-class AdvancedSeparatorActivity : AppCompatActivity() {
+class AdvancedSeparatorActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,7 @@ class AdvancedSeparatorActivity : AppCompatActivity() {
         val stylePhrase = StylePhrase(customSeparatorString)
         stylePhrase.firstBuilder.addParcelableSpan(getImageSpan("abc"))
         tv_content.text = stylePhrase.format()
+        setDefaultTitle("高级用法")
     }
 
     private fun getImageSpan(tag: String): ImageSpan {

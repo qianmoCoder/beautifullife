@@ -147,12 +147,35 @@
             android:name=".ui.activity.ScrollingActivity2"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".ui.activity.phrase.OneSeparatorActivity" />
-        <activity android:name=".ui.activity.phrase.TwoSeparatorActivity" />
-        <activity android:name=".ui.activity.phrase.MultiSeparatorActivity" />
-        <activity android:name=".ui.activity.phrase.CustomSeparatorActivity" />
-        <activity android:name=".ui.activity.phrase.AdvancedSeparatorActivity" />
+        <activity
+            android:name=".ui.activity.phrase.OneSeparatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.phrase.TwoSeparatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.phrase.MultiSeparatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.phrase.CustomSeparatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.phrase.AdvancedSeparatorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragment.work.kotlin.notification.EggTimerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
+        <receiver
+            android:name=".ui.fragment.work.kotlin.notification.receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
+        <receiver
+            android:name=".ui.fragment.work.kotlin.notification.receiver.SnoozeReceiver"
+            android:enabled="true"
+            android:exported="false">
+        </receiver>
     </application>
 
 </manifest>

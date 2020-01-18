@@ -21,4 +21,6 @@ public @interface ICodeLabsElement {
     String id() default "";
 
     String content() default "";
+
+    String classType() default "0";
 }

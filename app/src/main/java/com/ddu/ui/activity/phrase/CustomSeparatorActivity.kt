@@ -61,16 +61,12 @@ class CustomSeparatorActivity : BaseActivity() {
         multiClickPhrase.firstBuilder.setSize(20).addParcelableSpan(object : ClickableSpan() {
 
             override fun onClick(widget: View) {
-                if (textMovementMethod.isPassToTv) {
-                    showToast("跳转百度")
-                }
+                showToast("跳转百度")
             }
         })
         multiClickPhrase.secondBuilder.setSize(15).addParcelableSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                if (textMovementMethod.isPassToTv) {
-                    showToast("跳转网易")
-                }
+                showToast("跳转网易")
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -82,7 +78,9 @@ class CustomSeparatorActivity : BaseActivity() {
         tv_content_multi_click.movementMethod = textMovementMethod
         tv_content_multi_click.text = multiClickPhrase.format()
         tv_content_multi_click.setOnClickListener {
-            showToast("点击了文本")
+            if (textMovementMethod.isPassToTv) {
+                showToast("点击了文本")
+            }
         }
 
         tv_content_multi_click_1.text = multiClickPhrase.format()

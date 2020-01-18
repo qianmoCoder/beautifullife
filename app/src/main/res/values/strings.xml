@@ -189,6 +189,26 @@
     <string name="text_img_span_content">永生不过是场幻梦，唯吾所爱不朽。邂逅你，是生生世世的宿命。何以缘起?何以缘灭?当以剑歌问之。</string>
     <string name="text_img_span_tail">我是小尾巴</string>
 
+    <!-- Notification Begin -->
+    <string name="egg_prompt">How do you like your egg?</string>
+    <string name="timer_on">Start</string>
+    <string name="timer_off">Stop</string>
+    <string name="notification_title">Egg Timer</string>
+    <string name="notification_text">Your egg is ready!!</string>
+
+    <string name="fcm_message">FCM Message</string>
+    <string name="message_subscribe_failed">Failed to subscribe to topic</string>
+    <string name="message_subscribed">Subscribed to topic</string>
+    <string name="egg_notification_channel_id" translatable="false">egg_channel</string>
+    <string name="egg_notification_channel_name" translatable="true">Egg</string>
+    <string name="breakfast_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="breakfast_notification_channel_name" translatable="true">Breakfast</string>
+    <string name="eggs_ready">It is time! Bon appetit!</string>
+    <string name="timer_running">Egg timer is running...</string>
+    <string name="breakfast_notification_channel_description">Breakfast reminder</string>
+    <string name="snooze">Snooze</string>
+    <!-- Notification End -->
+
     <string name="fan_off">off</string>
     <string name="fan_low">1</string>
     <string name="fan_medium">2</string>
@@ -213,4 +233,8 @@
        \t \u2022 Once you find the Android, lift your finger to end the game. \n \n
        \t \u2022 To restart the game touch the screen again.
    </string>
+
+    <string name="star">Star</string>
+
+
 </resources>

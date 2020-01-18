@@ -1,4 +1,4 @@
-package com.ddu.ui.fragment.work.kotlin
+package com.ddu.ui.fragment.work.kotlin.motionlayout
 
 import android.os.Bundle
 import android.view.View
@@ -13,10 +13,10 @@ import com.iannotation.ICodeLabsElement
  */
 @ICodeLabsElement(path = "Kotlin_CodeLabs", parentId = "3", parentContent = "Animation",
         id = "2", content = "Animation with MotionLayout")
-class MotionLayoutFragment : DefaultFragment() {
+class Step4Fragment : DefaultFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_propery_animation
+        return R.layout.study_motion_layout
     }
 
     override fun initView() {

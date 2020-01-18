@@ -1,43 +1,23 @@
 package com.ddu.icore.ui.fragment;
 
-import android.os.Bundle;
-import androidx.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 /**
  * Created by yzbzz on 2016/11/4.
  */
 
-public class LazyFragment extends BaseFragment {
+public abstract class LazyFragment extends BaseFragment {
 
-    public static final String INTENT_BOOLEAN_LAZYLOAD = "intent_boolean_lazyLoad";
-
-    private boolean isInit = false;
-    private boolean isLazyLoad = true;
-    private Bundle mSavedInstanceState;
+    private boolean isFirstLoad = true; // 是否第一次加载
 
     @Override
-    public void initData(Bundle savedInstanceState) {
-
+    public void onResume() {
+        super.onResume();
+        if (isFirstLoad) {
+            getData();
+            isFirstLoad = false;
+        }
     }
 
-    @Nullable
-    @Override
-    public View getContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Bundle bundle = getArguments();
-        if (null != bundle) {
-            isLazyLoad = bundle.getBoolean(INTENT_BOOLEAN_LAZYLOAD);
-        }
-        if (isLazyLoad) {
-            if (getUserVisibleHint() && !isInit) {
-                mSavedInstanceState = savedInstanceState;
+    public void getData() {
 
-            }
-        }
-        return null;
     }
-
-
 }

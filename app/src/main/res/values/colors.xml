@@ -55,4 +55,13 @@
 
     <color name="colorBackground">#ffff5500</color>
     <color name="colorPaint">#FFFFEB3B</color>
+
+    <color name="primaryColor">#263238</color>
+    <color name="primaryLightColor">#4f5b62</color>
+    <color name="primaryDarkColor">#000a12</color>
+    <color name="secondaryColor">#ff7043</color>
+    <color name="secondaryLightColor">#ffa270</color>
+    <color name="secondaryDarkColor">#c63f17</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
 </resources>
