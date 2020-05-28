@@ -12,14 +12,11 @@
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/ic_star" />
 
-    <com.google.android.flexbox.FlexboxLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:alignContent="stretch"
-        app:alignItems="stretch"
-        app:flexDirection="row"
-        app:flexWrap="wrap">
+        >
 
         <Button
             android:id="@+id/btn_rotate"
@@ -63,6 +60,6 @@
             android:layout_height="wrap_content"
             android:text="shower" />
 
-    </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
 </RelativeLayout>
 

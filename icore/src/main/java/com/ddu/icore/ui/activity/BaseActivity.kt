@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import com.ddu.icore.R
 import com.ddu.icore.aidl.GodIntent
 import com.ddu.icore.common.IObserver
@@ -29,12 +28,6 @@ open class BaseActivity : AppCompatActivity(),
     var titleBar: TitleBar? = null
         protected set
 
-    var fragmentCallback: OnFragmentCallback? = null
-
-    protected var mCustomerTitleBar: View? = null
-
-    private val appCompatDelegate: AppCompatDelegate? = null
-
     open fun isShowTitleBar() = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +36,6 @@ open class BaseActivity : AppCompatActivity(),
         mContext = this
         registerObserver()
 
-//        mImmersionBar = ImmersionBar.with(this)
-//        mImmersionBar.statusBarDarkFont(true,0.2f).statusBarColor(R.color.c_ffffff).fitsSystemWindows(true).init()
     }
 
     override fun setContentView(@LayoutRes layoutResID: Int) {

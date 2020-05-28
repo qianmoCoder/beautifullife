@@ -4,7 +4,7 @@
     <style name="TitleBarLayout">
         <item name="android:layout_height">@dimen/dp_50</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/c_f0f0f0</item>
+        <item name="android:background">@color/c_3b8fed</item>
     </style>
 
     <style name="TitleBarItemLayout">

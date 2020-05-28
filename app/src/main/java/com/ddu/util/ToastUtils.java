@@ -1,12 +1,13 @@
 package com.ddu.util;
 
 import android.content.Context;
-import androidx.annotation.StringRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.StringRes;
 
 import com.ddu.app.BaseApp;
 import com.ddu.icore.R;
@@ -58,24 +59,21 @@ public class ToastUtils {
     }
 
     public static <T> void showToast(final T text, final int duration) {
-        BaseApp.Companion.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (text instanceof String) {
-                        getInstance().showTextToast((String) text, duration);
-                    } else if (text instanceof Integer) {
-                        getInstance().showTextToast((Integer) text, duration);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    if (text instanceof String) {
-                        Toast.makeText(BaseApp.Companion.getContext(), (String) text, duration).show();
-                    } else if (text instanceof Integer) {
-                        Toast.makeText(BaseApp.Companion.getContext(), (Integer) text, duration).show();
-                    }
-
+        BaseApp.Companion.post(() -> {
+            try {
+                if (text instanceof String) {
+                    getInstance().showTextToast((String) text, duration);
+                } else if (text instanceof Integer) {
+                    getInstance().showTextToast((Integer) text, duration);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+                if (text instanceof String) {
+                    Toast.makeText(BaseApp.Companion.getContext(), (String) text, duration).show();
+                } else if (text instanceof Integer) {
+                    Toast.makeText(BaseApp.Companion.getContext(), (Integer) text, duration).show();
+                }
+
             }
         });
     }

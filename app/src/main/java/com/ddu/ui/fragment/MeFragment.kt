@@ -2,6 +2,8 @@ package com.ddu.ui.fragment
 
 import android.Manifest
 import android.app.PendingIntent
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -23,6 +25,7 @@ import com.ddu.ui.fragment.person.PhoneInfoFragment
 import com.ddu.ui.fragment.person.SettingFragment
 import com.ddu.util.NotificationUtils
 import kotlinx.android.synthetic.main.fragment_me.*
+import java.lang.reflect.Field
 
 
 /**
@@ -64,7 +67,10 @@ class MeFragment : DefaultFragment() {
 
         oiv_friend_link.enableDefaultLeftText(Color.parseColor("#b2fdbc40"))
         oiv_friend_link.setOnClickListener {
-            showShareDialog()
+            //            showShareDialog()
+            val intent = Intent("cn.ddu.android.intent.NOTIFICATION_RECEIVED");
+            intent.component = ComponentName("com.iflytek.mscv5plusdemo", "com.iflytek.broadcast.UserReceiver");
+            mContext.sendBroadcast(intent)
         }
 
 
@@ -147,12 +153,31 @@ class MeFragment : DefaultFragment() {
 
 
         rl_person_info.setOnClickListener {
-            val permissions = arrayOf<String>(Manifest.permission.CAMERA,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.INTERNET)
+//            val permissions = arrayOf<String>(Manifest.permission.CAMERA,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                    Manifest.permission.INTERNET)
+//
+//            ActivityCompat.requestPermissions(act, permissions, 100)
+            setXiaoMiBadge(ctx,20)
+        }
+    }
 
-            ActivityCompat.requestPermissions(act, permissions, 100)
+
+    private fun setXiaoMiBadge(context: Context, number: Int) {
+        try {
+            val miuiNotificationClass = Class.forName("android.app.MiuiNotification")
+            val miuiNotification = miuiNotificationClass.newInstance()
+            val field: Field = miuiNotification.javaClass.getDeclaredField("messageCount")
+            field.setAccessible(true)
+            field.set(miuiNotification, if (number == 0) "" else number.toString())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // miui6之前
+            val localIntent = Intent("android.intent.action.APPLICATION_MESSAGE_UPDATE")
+            localIntent.putExtra("android.intent.extra.update_application_component_name", context.getPackageName().toString() + "/." + "MainActivity")
+            localIntent.putExtra("android.intent.extra.update_application_message_text", if (number == 0) "" else number.toString())
+            context.sendBroadcast(localIntent)
         }
     }
 

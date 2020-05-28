@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.ddu.R
 import com.ddu.app.BaseApp
 import com.ddu.icore.aidl.GodIntent
@@ -50,6 +51,8 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         navigation.setOnNavigationItemSelectedListener(this)
         navigation.selectedItemId = R.id.navigation_study
+
+        lifecycleScope
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

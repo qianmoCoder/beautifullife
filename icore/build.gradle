@@ -79,6 +79,4 @@ dependencies {
     api Libs.retrofit
     api Libs.retrofitConverterGson
     api Libs.retrofitAdapterRxjava
-
-
 }

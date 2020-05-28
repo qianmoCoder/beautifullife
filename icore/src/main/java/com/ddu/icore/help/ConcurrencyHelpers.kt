@@ -12,6 +12,8 @@ class SingleRunner {
 
     /**
      * 将下一个任务入队
+     * 使用互斥锁
+     * 注意: 这个方法对于排序或者是过滤来说并不是一个很好的解决方案，但是它对于解决网络请求引起的并发问题非常适合
      * class ProductsRepository(val productsDao: ProductsDao, val productsApi: ProductsService) {
      *      var singleRunner = SingleRunner<>()
      *
@@ -40,7 +42,7 @@ class ControllerRunner<T> {
     private val activeTask = AtomicReference<Deferred<T>?>(null)
 
     /**
-     * 取消前一个任务
+     * 在开启新的任务之前，取消前一个任务
      * class ProductsRepository(val productsDao: ProductsDao, val productsApi: ProductsService) {
      *      var controlledRunner = ControlledRunner<List<ProductListing>>()
      *
@@ -56,6 +58,7 @@ class ControllerRunner<T> {
      *       }
      *   }
      *
+     * https://gist.github.com/objcode/7ab4e7b1df8acd88696cb0ccecad16f7
      * */
     suspend fun cancelPreviousThenRun(block: suspend () -> T): T {
         activeTask.get()?.cancelAndJoin()
