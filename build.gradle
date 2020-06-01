@@ -3,16 +3,17 @@
 
 buildscript {
     repositories {
+        jcenter()
+        google()
         mavenCentral()
         maven { url "https://maven.google.com" }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
         maven { url 'https://jitpack.io' }
-        google()
         jcenter { url "http://jcenter.bintray.com/" }
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0-alpha04'
+        classpath 'com.android.tools.build:gradle:4.0.0'
         classpath 'com.google.gms:google-services:4.3.3'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
@@ -25,11 +26,12 @@ buildscript {
 
 allprojects {
     repositories {
+        jcenter()
+        google()
         mavenCentral()
         maven { url "https://maven.google.com" }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
         maven { url 'https://jitpack.io' }
-        google()
         jcenter { url "http://jcenter.bintray.com/" }
     }
 }

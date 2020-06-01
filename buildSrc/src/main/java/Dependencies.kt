@@ -8,8 +8,10 @@ object Versions {
     const val versionCode = 1
     const val versionName = "1.0"
 
-    const val supportLibraryVersion = "1.1.0"
-    const val materialVersion = "1.0.0"
+    const val appcompat = "1.1.0-rc01"
+    const val androidx = "1.0.0"
+
+    const val materialVersion = "1.1.0-alpha05"
     const val recyclerViewVersion = "1.1.0-rc01"
     const val cardViewVersion = "1.0.0"
 
@@ -32,8 +34,6 @@ object Libs {
     const val rxjava = "io.reactivex.rxjava2:rxjava:2.2.11"
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
 
-    const val immersionbar = "com.gyf.immersionbar:immersionbar:3.0.0-beta05"
-
     const val okhttp = "com.squareup.okhttp3:okhttp:4.1.0"
     const val okio = "com.squareup.okio:okio:2.3.0"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:3.14.1"
@@ -48,7 +48,8 @@ object Libs {
 }
 
 object Deps {
-    const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.supportLibraryVersion}"
+    const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlinVersion}"
 
     const val androidxCoreKtx = "androidx.core:core-ktx:${Versions.ktxVersion}"
