@@ -282,7 +282,7 @@
             android:text="Circle B 0"
             app:layout_constraintCircle="@id/tv_circle_a"
             app:layout_constraintCircleAngle="0"
-            app:layout_constraintCircleRadius="@dimen/dp_130"
+            app:layout_constraintCircleRadius="@dimen/dp_20"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:normalBackgroundColor="@color/c_b23eb5f5"
