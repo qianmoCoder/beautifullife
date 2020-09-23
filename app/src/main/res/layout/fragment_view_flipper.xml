@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始" />
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止" />
+
+    <ViewFlipper
+        android:id="@+id/vf_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/c_4897fa"
+        android:gravity="center">
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="向日葵小班"-->
+        <!--            android:textColor="@color/c_ffffff"-->
+        <!--            android:textSize="@dimen/dp_16" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="天香水榭"-->
+        <!--            android:textColor="@color/c_ffffff"-->
+        <!--            android:textSize="@dimen/dp_16" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="藏剑山庄"-->
+        <!--            android:textColor="@color/c_ffffff"-->
+        <!--            android:textSize="@dimen/dp_16" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="梦回千年"-->
+        <!--            android:textColor="@color/c_ffffff"-->
+        <!--            android:textSize="@dimen/dp_16" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="盛世唐朝"-->
+        <!--            android:textColor="@color/c_ffffff"-->
+        <!--            android:textSize="@dimen/dp_16" />-->
+
+    </ViewFlipper>
+
+    <com.ddu.widget.VerticalTextview
+        android:id="@+id/vt_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffff" />
+
+    <com.ddu.widget.RunningTextView
+        android:id="@+id/rtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.ddu.widget.CreditsRollView
+        android:id="@+id/creditsroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="@string/demotext"
+        android:textColor="#ffffc92a"
+        android:textSize="30sp"
+        app:angle="0"
+        app:distanceFromText="200"
+        app:endScrollMultiplier="4.5" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:max="100000" />
+</LinearLayout>
