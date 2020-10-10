@@ -15,7 +15,7 @@ object Versions {
     const val recyclerViewVersion = "1.1.0-rc01"
     const val cardViewVersion = "1.0.0"
 
-    const val kotlinVersion = "1.3.72"
+    const val kotlinVersion = "1.4.10"
     const val coroutinesVersion = "1.3.0-M2"
 
     const val ktxVersion = "1.1.0"

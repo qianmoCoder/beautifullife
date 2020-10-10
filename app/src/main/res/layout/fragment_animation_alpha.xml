@@ -20,5 +20,15 @@
         android:layout_height="@dimen/dp_100"
         android:background="@color/colorPrimary" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_20" />
+
+    <TextView
+        android:id="@+id/tv_animator"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_100"
+        android:background="@color/c_41aaf2"
+        android:visibility="gone" />
 
 </LinearLayout>
